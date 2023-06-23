@@ -1,3 +1,4 @@
+import { CatsModule } from '@main/cats/cats.module'
 import { NestFactory } from '@nestjs/core'
 import { app } from 'electron'
 import type { MicroserviceOptions } from '@nestjs/microservices'
@@ -40,7 +41,11 @@ async function bootstrap() {
         strategy: new ElectronIpcTransport('IpcTransport'),
       },
     )
-
+    const nestApp2 = await NestFactory.create(
+      CatsModule,
+    )
+    nestApp2.enableCors()
+    await nestApp2.listen(3007)
     await nestApp.listen()
   }
   catch (error) {

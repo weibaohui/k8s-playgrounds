@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import K8s from '@render/components/k8s.vue'
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" class="logo">
-  <HelloWorld title="Vite + Electron & Esbuild" />
+  <!--  <HelloWorld title="Vite + Electron & Esbuild" /> -->
+  <K8s name="kkkkkk" />
 </template>
 
 <style>
