@@ -1,3 +1,4 @@
+import { EventsGateway } from '@main/events/events.gateway'
 import {
   Body,
   Controller,
@@ -25,6 +26,7 @@ export class CatsController {
   constructor(
     private catsService: CatsService,
     private configService: ConfigService,
+    private eventsGateway: EventsGateway,
   ) {}
 
   @Get('/config')
@@ -57,7 +59,11 @@ export class CatsController {
 
   @Get('/k8s')
   async k8s() {
-    return await this.catsService.k8sPods()
+    const pods = await this.catsService.k8sPods()
+    pods.forEach((v) => {
+      this.eventsGateway.sendPod(v)
+    })
+    return pods
   }
 
   @Get('error')
@@ -72,6 +78,7 @@ export class CatsController {
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateCatDto: CreateCatDto) {
+    console.log(updateCatDto)
     return `This action updates a #${id} cat`
   }
 

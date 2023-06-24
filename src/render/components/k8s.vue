@@ -2,6 +2,7 @@
 import type { V1Pod } from '@kubernetes/client-node'
 import { get } from '@main/utils/axios/api'
 import { NButton, NCard, NGradientText } from 'naive-ui'
+import { io } from 'socket.io-client'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -19,11 +20,31 @@ async function getK8s() {
   pod.value = x[0]
   podList.value = x
 }
+async function socketio() {
+  const socket = io('http://127.0.0.1:3007', {
+    transports: ['websocket'], // 指定传输方式，如WebSocket
+    autoConnect: true, // 是否自动连接
+    reconnection: true, // 是否自动重新连接
+    reconnectionAttempts: 3, // 重新连接尝试次数
+    reconnectionDelay: 1000, // 重新连接延迟时间（毫秒）
+    query: { token: 'your-token' }, // 自定义查询参数
+    // 其他可选参数...
+  })
+  socket.on('events', (data) => {
+    // 处理接收到的数据
+    console.log(data)
+  })
+  socket.emit('events', 'xxxxxx')
+}
+socketio()
 </script>
 
 <template>
   <div>k8s:{{ props.name }}</div>
 
+  <NButton type="primary" @click="socketio">
+    socketio
+  </NButton>
   <NButton type="primary" @click="getK8s">
     getK8s
   </NButton>
