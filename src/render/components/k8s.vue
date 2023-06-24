@@ -11,8 +11,8 @@ const props = defineProps({
   },
 })
 const podname = ref('pn')
-const pod = ref()
-const podList = ref()
+const pod = ref<V1Pod>()
+const podList = ref<V1Pod[]>()
 async function getK8s() {
   const x = await get<V1Pod[]>('/cats/k8s')
   podname.value = x[0].metadata.name
