@@ -14,13 +14,10 @@ const podname = ref('pn')
 const pod = ref()
 const podList = ref()
 async function getK8s() {
-  const x = await get<V1Pod[]>('http://127.0.0.1:3007/cats/k8s')
-  const data = x[0].metadata.name
-  podname.value = data
+  const x = await get<V1Pod[]>('/cats/k8s')
+  podname.value = x[0].metadata.name
   pod.value = x[0]
   podList.value = x
-  console.log(data)
-  console.log('sss')
 }
 </script>
 
@@ -35,7 +32,7 @@ async function getK8s() {
     {{ podname }}
     {{ !pod ? "" : pod.metadata.name }}
   </NCard>
-  <NCard v-for="p in podList" :title="p.metadata.name">
+  <NCard v-for="p in podList" :key="p.metadata.name" :title="p.metadata.name">
     <NGradientText type="danger" :size="34">
       {{ p.metadata.name }}
     </NGradientText>
