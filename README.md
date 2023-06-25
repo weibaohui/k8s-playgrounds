@@ -53,8 +53,7 @@ shamefully-hoist=true
 ```
 
 ## Relative
-
-My blog post:
-
-- [极速 DX Vite + Electron + esbuild](https://archergu.me/posts/vite-electron-esbuild)
-- [用装饰器给 Electron 提供一个基础 API 框架](https://archergu.me/posts/electron-decorators)
+ 
+k8s model 生成
+ * 使用https://editor.swagger.io/ 生成client，选择typescript-angular
+ * 将文件名称中的ioK8sApiCore替换掉，文件内的处理掉。这样用起来方便
