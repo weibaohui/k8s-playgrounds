@@ -1,5 +1,4 @@
 import { Injectable, Logger } from '@nestjs/common'
-import * as k8s from '@kubernetes/client-node'
 import { Cat } from './interfaces/cat.interface'
 import { CreateCatDto } from './dto/create-cat.dto'
 
@@ -24,26 +23,5 @@ export class CatsService {
 
   findAll(): Cat[] {
     return this.cats
-  }
-
-  async k8s() {
-    const kc = new k8s.KubeConfig()
-    kc.loadFromFile('/Users/weibh/.kube/config')
-    const k8sApi = kc.makeApiClient(k8s.CoreV1Api)
-    return await k8sApi.listNamespacedPod('default').then((res) => {
-      return res.body.items.map((v) => {
-        return v.metadata.name
-      })
-    })
-  }
-
-  async k8sPods() {
-    const kc = new k8s.KubeConfig()
-    kc.loadFromFile('/Users/weibh/.kube/config')
-
-    const k8sApi = kc.makeApiClient(k8s.CoreV1Api)
-    return await k8sApi.listNamespacedPod('default').then((res) => {
-      return res.body.items
-    })
   }
 }

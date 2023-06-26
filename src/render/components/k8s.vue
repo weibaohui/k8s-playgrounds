@@ -36,7 +36,6 @@ async function socketio() {
   })
   socket.emit('events', 'xxxxxx')
 }
-socketio()
 </script>
 
 <template>

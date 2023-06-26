@@ -33,4 +33,8 @@ export class EventsGateway {
   async sendPod(v1Pod: V1Pod) {
     this.server.emit('events', v1Pod)
   }
+
+  async sendResource(obj: object) {
+    this.server.emit('events', obj)
+  }
 }

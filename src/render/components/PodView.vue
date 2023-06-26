@@ -3,14 +3,12 @@ import { V1Pod } from '../../model/V1Pod'
 
 const props = defineProps({
   item: V1Pod,
+  name: String,
 })
 </script>
 
 <template>
-  {{ item.metadata.name }}
-  {{ item.metadata.namespace }}
-  {{ item.status.phase }}
-  {{ item.status.podIP }}
+  {{ props.item.metadata.name }}
 </template>
 
 <style scoped>

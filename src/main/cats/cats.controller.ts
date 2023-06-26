@@ -1,4 +1,4 @@
-import { EventsGateway } from '@main/events/events.gateway'
+import { WatchService } from '@main/watch/watch.service'
 import {
   Body,
   Controller,
@@ -13,10 +13,10 @@ import {
   UseInterceptors,
 } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
-import { RolesGuard } from '../common/roles.guard'
 import { LoggingInterceptor } from '../common/logging.interceptor'
-import { CreateCatDto } from './dto/create-cat.dto'
+import { RolesGuard } from '../common/roles.guard'
 import { CatsService } from './cats.service'
+import { CreateCatDto } from './dto/create-cat.dto'
 import { Cat } from './interfaces/cat.interface'
 
 @Controller('cats')
@@ -25,8 +25,8 @@ import { Cat } from './interfaces/cat.interface'
 export class CatsController {
   constructor(
     private catsService: CatsService,
+    private watchService: WatchService,
     private configService: ConfigService,
-    private eventsGateway: EventsGateway,
   ) {}
 
   @Get('/config')
@@ -57,13 +57,26 @@ export class CatsController {
     return { status: 'ok' }
   }
 
-  @Get('/k8s')
-  async k8s() {
-    const pods = await this.catsService.k8sPods()
-    pods.forEach((v) => {
-      this.eventsGateway.sendPod(v)
-    })
-    return pods
+  @Get('/watch')
+  async watch() {
+    await this.watchService.PodWatcher()
+    await this.watchService.NsWatcher()
+    return { status: 'ok' }
+  }
+
+  @Get('/pods')
+  async pods() {
+    return await this.watchService.k8sPods()
+  }
+
+  @Get('/pods/:ns')
+  async podsByNs(@Param('ns') ns) {
+    return await this.watchService.k8sPods(ns)
+  }
+
+  @Get('/ns')
+  async ns() {
+    return await this.watchService.k8sNs()
   }
 
   @Get('error')

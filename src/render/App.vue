@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import K8s from '@render/components/k8s.vue'
 import PodList from '@render/components/PodList.vue'
 import { NMessageProvider } from 'naive-ui'
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" class="logo">
   <!--  <HelloWorld title="Vite + Electron & Esbuild" /> -->
-  <K8s name="kkkkkk" />
   <NMessageProvider>
     <PodList />
   </NMessageProvider>
