@@ -84,12 +84,17 @@ async function socketio() {
     // 处理接收到的数据
 
     const item = data.object as V1Pod
+    if (selectedNs.value != null && item.metadata.namespace !== selectedNs.value) {
+      // console.log('跳过', selectedNs.value, item.metadata.namespace)
+      return
+    }
+
     const pods = podList.value
     const index = pods.findIndex(r => r.metadata.name === item.metadata.name)
 
     switch (data.type) {
       case 'MODIFIED':
-        console.log('修改')
+        // console.log('修改')
         for (let i = 0; i < pods.length; i++) {
           if (pods[i].metadata.name === item.metadata.name) {
             console.log('111找到修改的pod了', item.metadata.name)
@@ -100,20 +105,20 @@ async function socketio() {
       case 'ADDED':
         if (index === -1) {
           // 不存在，真新增
-          console.log('真新增', item.metadata.name)
+          // console.log('真新增', item.metadata.name)
           pods.push(item)
         }
         else {
           for (let i = 0; i < pods.length; i++) {
             if (pods[i].metadata.name === item.metadata.name) {
-              console.log('222找到修改的pod了', item.metadata.name)
+              // console.log('222找到修改的pod了', item.metadata.name)
               pods[i] = item
             }
           }
         }
         break
       case 'DELETED':
-        console.log('删除', index)
+        // console.log('删除', index)
         if (index !== -1)
           pods.splice(index, 1)
         break
