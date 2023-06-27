@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { get } from '@main/utils/axios/api'
+import ContainerStatusIcon from '@render/components/ContainerStatusIcon.vue'
 import PodView from '@render/components/PodView.vue'
 import type { DataTableColumns, SelectOption } from 'naive-ui'
 import { NButton, NDataTable, NDrawer, NDrawerContent, NFormItemGi, NGrid, NSelect, useMessage } from 'naive-ui'
@@ -22,16 +23,46 @@ const options = ref<SelectOption[]>()
 function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColumns<V1Pod> {
   return [
     {
-      title: 'podName',
+      title: 'Name',
       key: 'metadata.name',
     },
     {
-      title: 'ns',
+      title: 'Namespace',
       key: 'metadata.namespace',
     },
     {
-      title: 'Length',
+      title: 'Status',
       key: 'status.phase',
+    },
+    {
+      title: 'Node',
+      key: 'spec.nodeName',
+    },
+    {
+      title: 'QoS',
+      key: 'status.qosClass',
+    },
+    {
+      title: 'Containers',
+      key: 'Containers',
+      render(row, index) {
+        return h(ContainerStatusIcon,
+          {
+            pod: row,
+          },
+        )
+      },
+    },
+    {
+      title: 'Restarts',
+      key: 'Restarts',
+      render(row, index) {
+        return restartCounts(row)
+      },
+    },
+    {
+      title: 'ControllerBy',
+      key: 'metadata.ownerReferences[0].kind',
     },
     {
       title: 'Action',
@@ -59,7 +90,12 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
 async function getK8sPodList() {
   podList.value = await get<V1Pod[]>(`/cats/pods/${selectedNs.value}`)
 }
-
+function restartCounts(item: V1Pod) {
+  return item.status.containerStatuses
+    .filter(r => r.restartCount > 0)
+    .map(r => r.restartCount)
+    .reduce((a, b) => a + b, 0)
+}
 async function getK8sNsList() {
   const ns = await get<V1Namespace[]>('/cats/ns')
   options.value = ns.map((r) => {

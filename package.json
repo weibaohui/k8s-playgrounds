@@ -24,12 +24,12 @@
     "naive-ui": "^2.34.4",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
-    "vfonts": "^0.0.3",
     "vue": "^3.2.47"
   },
   "devDependencies": {
     "@lightwing/eslint-config": "^0.0.17",
     "@types/socket.io-client": "^3.0.0",
+    "@vicons/fluent": "^0.12.0",
     "@vicons/ionicons5": "^0.12.0",
     "@vitejs/plugin-vue": "4.2.3",
     "@vue/compiler-sfc": "3.3.4",
