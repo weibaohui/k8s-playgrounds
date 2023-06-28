@@ -36,23 +36,23 @@ export class WatchService {
       (type, apiObj, watchObj) => {
         if (type === 'ADDED') {
           // tslint:disable-next-line:no-console
-          console.log('new object:')
+          // console.log('new object:')
         }
         else if (type === 'MODIFIED') {
           // tslint:disable-next-line:no-console
-          console.log('changed object:')
+          // console.log('changed object:')
         }
         else if (type === 'DELETED') {
           // tslint:disable-next-line:no-console
-          console.log('deleted object:')
+          // console.log('deleted object:')
         }
         else if (type === 'BOOKMARK') {
           // tslint:disable-next-line:no-console
-          console.log(`bookmark: ${watchObj.metadata.resourceVersion}`)
+          // console.log(`bookmark: ${watchObj.metadata.resourceVersion}`)
         }
         else {
           // tslint:disable-next-line:no-console
-          console.log(`unknown type: ${type}`)
+          // console.log(`unknown type: ${type}`)
         }
         this.eventsGateway.sendPod(watchObj)
       },

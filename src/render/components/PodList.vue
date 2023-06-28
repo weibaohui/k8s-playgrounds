@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { get } from '@main/utils/axios/api'
+import ContainerRestartCount from '@render/components/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/ContainerStatusIcon.vue'
 import PodView from '@render/components/PodView.vue'
 import type { DataTableColumns, SelectOption } from 'naive-ui'
@@ -45,10 +46,10 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
     {
       title: 'Containers',
       key: 'Containers',
-      render(row, index) {
+      render(row) {
         return h(ContainerStatusIcon,
           {
-            pod: row,
+            pod: row as V1Pod,
           },
         )
       },
@@ -57,7 +58,11 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
       title: 'Restarts',
       key: 'Restarts',
       render(row, index) {
-        return restartCounts(row)
+        return h(ContainerRestartCount,
+          {
+            pod: row as V1Pod,
+          },
+        )
       },
     },
     {
@@ -88,16 +93,14 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
 }
 
 async function getK8sPodList() {
-  podList.value = await get<V1Pod[]>(`/cats/pods/${selectedNs.value}`)
+  podList.value = await get<V1Pod[]>(`/watch/pods/${selectedNs.value}`)
 }
-function restartCounts(item: V1Pod) {
-  return item.status.containerStatuses
-    .filter(r => r.restartCount > 0)
-    .map(r => r.restartCount)
-    .reduce((a, b) => a + b, 0)
+
+async function startK8sWatch() {
+  await get('/watch/init')
 }
 async function getK8sNsList() {
-  const ns = await get<V1Namespace[]>('/cats/ns')
+  const ns = await get<V1Namespace[]>('/watch/ns')
   options.value = ns.map((r) => {
     return {
       label: r.metadata.name,
@@ -116,6 +119,7 @@ async function socketio() {
     query: { token: 'your-token' }, // 自定义查询参数
     // 其他可选参数...
   })
+  console.log('socket-io', socket.active)
   socket.on('events', (data) => {
     // 处理接收到的数据
 
@@ -130,10 +134,10 @@ async function socketio() {
 
     switch (data.type) {
       case 'MODIFIED':
-        // console.log('修改')
+        console.log('修改')
         for (let i = 0; i < pods.length; i++) {
           if (pods[i].metadata.name === item.metadata.name) {
-            console.log('111找到修改的pod了', item.metadata.name)
+            // console.log('111找到修改的pod了', item.metadata.name)
             pods[i] = item
           }
         }
@@ -167,6 +171,7 @@ getK8sPodList()
 setTimeout(
   () => {
     socketio()
+    startK8sWatch()
   }, 5000)
 </script>
 

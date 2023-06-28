@@ -1,5 +1,6 @@
 import { LoggerMiddleware } from '@main/common/logger.middleware'
 import { EventsModule } from '@main/events/events.module'
+import { WatchController } from '@main/watch/watch.controller'
 import { WatchModule } from '@main/watch/watch.module'
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
@@ -10,7 +11,7 @@ import { CatsService } from './cats.service'
 
 @Module({
   imports: [EventsModule, CatsModule, WatchModule, ConfigModule.forRoot({ isGlobal: true })],
-  controllers: [CatsController],
+  controllers: [CatsController, WatchController],
   providers: [
     CatsService,
     {

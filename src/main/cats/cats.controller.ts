@@ -1,4 +1,3 @@
-import { WatchService } from '@main/watch/watch.service'
 import {
   Body,
   Controller,
@@ -25,7 +24,6 @@ import { Cat } from './interfaces/cat.interface'
 export class CatsController {
   constructor(
     private catsService: CatsService,
-    private watchService: WatchService,
     private configService: ConfigService,
   ) {}
 
@@ -55,28 +53,6 @@ export class CatsController {
   async init() {
     this.catsService.init()
     return { status: 'ok' }
-  }
-
-  @Get('/watch')
-  async watch() {
-    await this.watchService.PodWatcher()
-    await this.watchService.NsWatcher()
-    return { status: 'ok' }
-  }
-
-  @Get('/pods')
-  async pods() {
-    return await this.watchService.k8sPods()
-  }
-
-  @Get('/pods/:ns')
-  async podsByNs(@Param('ns') ns) {
-    return await this.watchService.k8sPods(ns)
-  }
-
-  @Get('/ns')
-  async ns() {
-    return await this.watchService.k8sNs()
   }
 
   @Get('error')
