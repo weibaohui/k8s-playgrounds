@@ -87,7 +87,8 @@ export class WatchService {
   }
 
   public getKubeConfig() {
-    this.kc.loadFromFile('/Users/weibh/.kube/config')
+    const home = process.env.HOME || process.env.USERPROFILE
+    this.kc.loadFromFile(`${home}/.kube/config`)
     return this.kc
   }
 
