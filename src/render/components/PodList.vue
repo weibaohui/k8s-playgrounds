@@ -2,6 +2,7 @@
 import { get } from '@main/utils/axios/api'
 import ContainerRestartCount from '@render/components/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/ContainerStatusIcon.vue'
+import ContainerStatusText from '@render/components/ContainerStatusText.vue'
 import PodView from '@render/components/PodView.vue'
 import type { DataTableColumns, SelectOption } from 'naive-ui'
 import { NButton, NDataTable, NDrawer, NDrawerContent, NFormItemGi, NGrid, NSelect, useMessage } from 'naive-ui'
@@ -34,6 +35,13 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
     {
       title: 'Status',
       key: 'status.phase',
+      render(row) {
+        return h(ContainerStatusText,
+          {
+            pod: row as V1Pod,
+          },
+        )
+      },
     },
     {
       title: 'Node',
@@ -94,6 +102,15 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
 
 async function getK8sPodList() {
   podList.value = await get<V1Pod[]>(`/watch/pods/${selectedNs.value}`)
+  podList.value.sort((a, b) => {
+    if (a.status.startTime > b.status.startTime)
+      return -1
+
+    if (a.status.startTime < b.status.startTime)
+      return 1
+
+    return 0
+  })
 }
 
 async function startK8sWatch() {
