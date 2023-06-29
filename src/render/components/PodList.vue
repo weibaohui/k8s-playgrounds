@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { get } from '@main/utils/axios/api'
-import { TimeAge } from '@main/utils/timeAge'
 import ContainerRestartCount from '@render/components/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/ContainerStatusIcon.vue'
 import ContainerStatusText from '@render/components/ContainerStatusText.vue'
+import PodAge from '@render/components/PodAge.vue'
 import PodView from '@render/components/PodView.vue'
 import type { DataTableColumns, SelectOption } from 'naive-ui'
 import { NButton, NDataTable, NDrawer, NDrawerContent, NFormItemGi, NGrid, NSelect, useMessage } from 'naive-ui'
@@ -68,7 +68,14 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
     },
     {
       title: 'Age',
-      key: 'spec.nodeName',
+      key: 'age',
+      render(row) {
+        return h(PodAge,
+          {
+            pod: row as V1Pod,
+          },
+        )
+      },
     },
     {
       title: 'QoS',
@@ -157,7 +164,6 @@ async function socketio() {
 
     switch (data.type) {
       case 'MODIFIED':
-        console.log('修改')
         for (let i = 0; i < pods.length; i++) {
           if (pods[i].metadata.name === item.metadata.name) {
             // console.log('111找到修改的pod了', item.metadata.name)
@@ -196,11 +202,6 @@ setTimeout(
     socketio()
     startK8sWatch()
   }, 5000)
-
-const age = new TimeAge()
-
-const s = age.getDuration(31415926538979, 7)
-console.log(s)
 </script>
 
 <template>
@@ -222,9 +223,8 @@ console.log(s)
     :pagination="false"
     :bordered="false"
   />
-  <NDrawer v-model:show="show" :width="502">
+  <NDrawer v-model:show="show" :width="600">
     <NDrawerContent :title="item.metadata.name" closable>
-      {{ item.metadata.name }}
       <PodView :item="item" />
     </NDrawerContent>
   </NDrawer>
