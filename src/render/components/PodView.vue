@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import ContainerStatusText from '@render/components/ContainerStatusText.vue'
+import ContainersView from '@render/components/ContainersView.vue'
 import { GameControllerOutline } from '@vicons/ionicons5'
 import moment from 'moment'
-import { NButton, NCollapse, NCollapseItem, NDivider, NIcon, NSpace, NTable, NTag } from 'naive-ui'
+import { NAlert, NButton, NCollapse, NCollapseItem, NDivider, NIcon, NSpace, NTable, NTag } from 'naive-ui'
 import { V1Pod } from '../../model/V1Pod'
 
 const props = defineProps({
@@ -153,6 +154,10 @@ const props = defineProps({
       </tr>
     </tbody>
   </NTable>
+  <NAlert type="info" :show-icon="false">
+    Containers
+  </NAlert>
+  <ContainersView :item="props.item" />
 </template>
 
 <style scoped>

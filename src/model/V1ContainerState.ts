@@ -16,7 +16,7 @@ import type { V1ContainerStateWaiting } from './V1ContainerStateWaiting'
 /**
  * ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.
  */
-export interface V1ContainerState {
+export class V1ContainerState {
   /**
      * Details about a running container
      */
