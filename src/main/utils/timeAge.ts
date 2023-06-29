@@ -75,16 +75,18 @@ export class TimeAge {
       return `${days}d`
     }
     if (days === 0) {
-      if (hours >= 0 && minutesMod > 0)
+      if (hours > 0 && minutesMod > 0)
         return `${hours}h${minutesMod}m`
-      if (hours >= 0 && minutesMod === 0)
+      if (hours > 0 && minutesMod === 0)
         return `${hours}h`
+      if (hours === 0)
+        return `${minutes}m`
     }
     if (hours === 0) {
-      if (minutes >= 0 && secondsMod > 0)
+      if (minutes > 0 && secondsMod > 0)
         return `${minutes}m${secondsMod}s`
 
-      if (minutes >= 0 && secondsMod === 0)
+      if (minutes > 0 && secondsMod === 0)
         return `${minutes}m`
 
       if (minutes === 0)
