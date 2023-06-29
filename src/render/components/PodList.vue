@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { get } from '@main/utils/axios/api'
+import { TimeAge } from '@main/utils/timeAge'
 import ContainerRestartCount from '@render/components/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/ContainerStatusIcon.vue'
 import ContainerStatusText from '@render/components/ContainerStatusText.vue'
@@ -10,6 +11,7 @@ import { io } from 'socket.io-client'
 import { h, ref } from 'vue'
 import type { V1Namespace } from '../../model/V1Namespace'
 import type { V1Pod } from '../../model/V1Pod'
+import '../../extension'
 
 const show = ref(false)
 const item = ref<V1Pod>()
@@ -25,12 +27,24 @@ const options = ref<SelectOption[]>()
 function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColumns<V1Pod> {
   return [
     {
+      title: 'Namespace',
+      key: 'metadata.namespace',
+    },
+    {
       title: 'Name',
       key: 'metadata.name',
     },
+
     {
-      title: 'Namespace',
-      key: 'metadata.namespace',
+      title: 'Restarts',
+      key: 'Restarts',
+      render(row, index) {
+        return h(ContainerRestartCount,
+          {
+            pod: row as V1Pod,
+          },
+        )
+      },
     },
     {
       title: 'Status',
@@ -44,7 +58,16 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
       },
     },
     {
+      title: 'IP',
+      key: 'status.podIP',
+
+    },
+    {
       title: 'Node',
+      key: 'spec.nodeName',
+    },
+    {
+      title: 'Age',
       key: 'spec.nodeName',
     },
     {
@@ -61,21 +84,6 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
           },
         )
       },
-    },
-    {
-      title: 'Restarts',
-      key: 'Restarts',
-      render(row, index) {
-        return h(ContainerRestartCount,
-          {
-            pod: row as V1Pod,
-          },
-        )
-      },
-    },
-    {
-      title: 'ControllerBy',
-      key: 'metadata.ownerReferences[0].kind',
     },
     {
       title: 'Action',
@@ -105,10 +113,8 @@ async function getK8sPodList() {
   podList.value.sort((a, b) => {
     if (a.status.startTime > b.status.startTime)
       return -1
-
     if (a.status.startTime < b.status.startTime)
       return 1
-
     return 0
   })
 }
@@ -190,6 +196,11 @@ setTimeout(
     socketio()
     startK8sWatch()
   }, 5000)
+
+const age = new TimeAge()
+
+const s = age.getDuration(31415926538979, 7)
+console.log(s)
 </script>
 
 <template>
