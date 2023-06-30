@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ContainerLastState from '@render/components/ContainerLastState.vue'
+import ContainerProbeView from '@render/components/ContainerProbeView.vue'
 import { Link12Regular } from '@vicons/fluent'
 import { NDivider, NIcon, NTable, NTag } from 'naive-ui'
 import { V1Pod } from '../../model/V1Pod'
@@ -9,9 +10,6 @@ const props = defineProps({
 })
 function getContainerStatusByName(name) {
   return props.item.status.containerStatuses.filter(r => r.name === name).pop()
-}
-function getContainerByName(name) {
-  return props.item.spec.containers.filter(r => r.name === name).pop()
 }
 </script>
 
@@ -44,21 +42,21 @@ function getContainerByName(name) {
         <tr>
           <td>ImagePullPolicy</td>
           <td>
-            {{ getContainerByName(t.name).imagePullPolicy }}
+            {{ t.imagePullPolicy }}
           </td>
         </tr>
-        <tr v-if="getContainerByName(t.name).ports">
+        <tr v-if="t.ports">
           <td>Ports</td>
           <td>
-            <span v-for="p in getContainerByName(t.name).ports" :key="p.containerPort">
+            <span v-for="p in t.ports" :key="p.containerPort">
               {{ p.containerPort }}/{{ p.protocol }}
             </span>
           </td>
         </tr>
-        <tr v-if="getContainerByName(t.name).env">
+        <tr v-if="t.env">
           <td>Environment</td>
           <td>
-            <NTag v-for="p in getContainerByName(t.name).env" :key="p.name">
+            <NTag v-for="p in t.env" :key="p.name">
               {{ p.name }}:{{ p.valueFrom }}({{ p.value }})
             </NTag>
           </td>
@@ -66,15 +64,15 @@ function getContainerByName(name) {
         <tr>
           <td>Mounts</td>
           <td>
-            <div v-for="p in getContainerByName(t.name).volumeMounts" :key="p.name">
+            <div v-for="p in t.volumeMounts" :key="p.name">
               <NTag type="success">
                 {{ p.mountPath }}{{ p.subPath }}
               </NTag>
               <NTag v-if="p.readOnly" type="warning">
-                rw
+                ro
               </NTag>
               <NTag v-else type="error">
-                ro
+                rw
               </NTag>
               <NIcon :component="Link12Regular" />
               <NTag type="success">
@@ -83,10 +81,28 @@ function getContainerByName(name) {
             </div>
           </td>
         </tr>
-        <tr v-if="getContainerByName(t.name).command">
+        <tr v-if="t.command">
           <td>Command</td>
           <td>
-            {{ getContainerByName(t.name).command }}
+            {{ t.command }}
+          </td>
+        </tr>
+        <tr v-if="t.livenessProbe">
+          <td>readinessProbe</td>
+          <td>
+            <ContainerProbeView :probe="t.livenessProbe" />
+          </td>
+        </tr>
+        <tr v-if="t.readinessProbe">
+          <td>readinessProbe</td>
+          <td>
+            <ContainerProbeView :probe="t.readinessProbe" />
+          </td>
+        </tr>
+        <tr v-if="t.startupProbe">
+          <td>startupProbe</td>
+          <td>
+            <ContainerProbeView :probe="t.startupProbe" />
           </td>
         </tr>
       </tbody>

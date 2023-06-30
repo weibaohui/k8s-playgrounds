@@ -17,7 +17,7 @@ import type { V1TCPSocketAction } from './V1TCPSocketAction'
 /**
  * Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
  */
-export interface V1Probe {
+export class V1Probe {
   /**
      * Exec specifies the action to take.
      */
