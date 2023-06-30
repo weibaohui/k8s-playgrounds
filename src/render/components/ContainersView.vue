@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ContainerLastState from '@render/components/ContainerLastState.vue'
-import { NDivider, NTable, NTag } from 'naive-ui'
+import { Link12Regular } from '@vicons/fluent'
+import { NDivider, NIcon, NTable, NTag } from 'naive-ui'
 import { V1Pod } from '../../model/V1Pod'
 
 const props = defineProps({
@@ -46,7 +47,7 @@ function getContainerByName(name) {
             {{ getContainerByName(t.name).imagePullPolicy }}
           </td>
         </tr>
-        <tr>
+        <tr v-if="getContainerByName(t.name).ports">
           <td>Ports</td>
           <td>
             <span v-for="p in getContainerByName(t.name).ports" :key="p.containerPort">
@@ -54,7 +55,7 @@ function getContainerByName(name) {
             </span>
           </td>
         </tr>
-        <tr>
+        <tr v-if="getContainerByName(t.name).env">
           <td>Environment</td>
           <td>
             <NTag v-for="p in getContainerByName(t.name).env" :key="p.name">
@@ -65,9 +66,27 @@ function getContainerByName(name) {
         <tr>
           <td>Mounts</td>
           <td>
-            <NTag v-for="p in getContainerByName(t.name).volumeMounts" :key="p.name" type="success">
-              from{{ p.name }}{{ p.readOnly }}:{{ p.mountPath }}{{ p.subPath }}{{ p.mountPropagation }}
-            </NTag>
+            <div v-for="p in getContainerByName(t.name).volumeMounts" :key="p.name">
+              <NTag type="success">
+                {{ p.mountPath }}{{ p.subPath }}
+              </NTag>
+              <NTag v-if="p.readOnly" type="warning">
+                rw
+              </NTag>
+              <NTag v-else type="error">
+                ro
+              </NTag>
+              <NIcon :component="Link12Regular" />
+              <NTag type="success">
+                {{ p.name }}
+              </NTag>
+            </div>
+          </td>
+        </tr>
+        <tr v-if="getContainerByName(t.name).command">
+          <td>Command</td>
+          <td>
+            {{ getContainerByName(t.name).command }}
           </td>
         </tr>
       </tbody>

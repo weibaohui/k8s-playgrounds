@@ -223,7 +223,7 @@ setTimeout(
     :pagination="false"
     :bordered="false"
   />
-  <NDrawer v-model:show="show" :width="600">
+  <NDrawer v-model:show="show" :width="800">
     <NDrawerContent :title="item.metadata.name" closable>
       <PodView :item="item" />
     </NDrawerContent>

@@ -3,7 +3,7 @@ import ContainerStatusText from '@render/components/ContainerStatusText.vue'
 import ContainersView from '@render/components/ContainersView.vue'
 import { GameControllerOutline } from '@vicons/ionicons5'
 import moment from 'moment'
-import { NAlert, NButton, NCollapse, NCollapseItem, NDivider, NIcon, NSpace, NTable, NTag } from 'naive-ui'
+import { NAlert, NBadge, NButton, NCollapse, NCollapseItem, NDivider, NIcon, NSpace, NTable, NTag } from 'naive-ui'
 import { V1Pod } from '../../model/V1Pod'
 
 const props = defineProps({
@@ -119,15 +119,14 @@ const props = defineProps({
           </NTag>
         </td>
       </tr>
-      <tr>
+      <tr v-if="props.item.spec.tolerations.length">
         <td>Tolerations</td>
         <td>
           <NCollapse>
             <NCollapseItem title="show" name="1">
               <template #header-extra>
-                {{ props.item.spec.tolerations.length }}
+                <NBadge :value="props.item.spec.tolerations.length " />
               </template>
-
               <NTable :single-line="false">
                 <thead>
                   <tr>
