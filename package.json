@@ -31,7 +31,6 @@
   "devDependencies": {
     "@lightwing/eslint-config": "^0.0.17",
     "@ricons/material": "^0.12.0",
-    "@types/socket.io-client": "^3.0.0",
     "@vicons/fluent": "^0.12.0",
     "@vicons/ionicons5": "^0.12.0",
     "@vitejs/plugin-vue": "4.2.3",
@@ -43,7 +42,7 @@
     "naive-ui": "^2.34.4",
     "rimraf": "5.0.1",
     "simple-git-hooks": "2.8.1",
-    "socket.io-client": "^4.7.0",
+    "socket.io-client": "^4.7.1",
     "swagger-ts-generator": "^2.0.6",
     "typescript": "5.1.3",
     "vfonts": "^0.0.3",
