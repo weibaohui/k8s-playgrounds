@@ -39,10 +39,18 @@ function toggle() {
         <td>Namespace</td>
         <td>{{ props.item.metadata.namespace }}</td>
       </tr>
-      <tr>
+      <tr v-if="props.item.metadata.labels">
         <td>Labels</td>
         <td>
           <NTag v-for="(v, k) in props.item.metadata.labels" :key="k">
+            {{ k }}={{ v }}
+          </NTag>
+        </td>
+      </tr>
+      <tr v-if="props.item.metadata.annotations">
+        <td>Annotations</td>
+        <td>
+          <NTag v-for="(v, k) in props.item.metadata.annotations" :key="k">
             {{ k }}={{ v }}
           </NTag>
         </td>
@@ -75,11 +83,11 @@ function toggle() {
           </NTag>
         </td>
       </tr>
-      <tr>
+      <tr v-if="props.item.spec.serviceAccount">
         <td>Service Account</td>
         <td>{{ props.item.spec.serviceAccount }}</td>
       </tr>
-      <tr>
+      <tr v-if="props.item.spec.priorityClassName">
         <td>Priority Class</td>
         <td>{{ props.item.spec.priorityClassName }}</td>
       </tr>
@@ -100,7 +108,7 @@ function toggle() {
           </span>
         </td>
       </tr>
-      <tr>
+      <tr v-if="props.item.spec.nodeSelector">
         <td>Node Selector</td>
         <td>
           <NTag v-for="(v, k) in props.item.spec.nodeSelector" :key="k">
