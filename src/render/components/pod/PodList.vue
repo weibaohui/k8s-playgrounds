@@ -249,14 +249,11 @@ setTimeout(
     </NFormItemGi>
     <NFormItemGi :span="12">
       <NInputGroup>
-        <NInput v-model:value="searchText" round clearable :style="{ width: '50%' }" placeholder="请输入">
+        <NInput v-model:value="searchText" round clearable :style="{ width: '50%' }" placeholder="搜索Pod" @input="searchPods">
           <template #clear-icon>
             <NIcon :component="TrashBinOutline" />
           </template>
         </NInput>
-        <NButton type="primary" ghost @click="searchPods()">
-          搜索
-        </NButton>
       </NInputGroup>
     </NFormItemGi>
   </NGrid>
