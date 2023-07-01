@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ContainerLastState from '@render/components/container/ContainerLastState.vue'
 import ContainerProbeView from '@render/components/container/ContainerProbeView.vue'
-import { Link12Regular } from '@vicons/fluent'
+import { Docker } from '@vicons/fa'
 import { NDivider, NIcon, NTable, NTag } from 'naive-ui'
 import { V1Pod } from '../../../model/V1Pod'
 
@@ -16,6 +16,7 @@ function getContainerStatusByName(name) {
 <template>
   <NSpace v-for="t in props.item.spec.containers" :key="t.name">
     <NDivider title-placement="left">
+      <NIcon :component="Docker" size="20" />
       {{ t.name }}
     </NDivider>
     <NTable :single-line="false">
