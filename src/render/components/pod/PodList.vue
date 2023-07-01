@@ -29,6 +29,19 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
     {
       title: 'Namespace',
       key: 'metadata.namespace',
+      render(row) {
+        return h(
+          NButton,
+          {
+            text: true,
+            onClick: () => {
+              selectedNs.value = (row as V1Pod).metadata.namespace
+              getK8sPodList()
+            },
+          },
+          { default: () => (row as V1Pod).metadata.namespace },
+        )
+      },
     },
     {
       title: 'Name',
