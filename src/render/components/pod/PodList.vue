@@ -5,6 +5,7 @@ import ContainerStatusIcon from '@render/components/container/ContainerStatusIco
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
 import PodAge from '@render/components/pod/PodAge.vue'
 import PodView from '@render/components/pod/PodView.vue'
+import { TrashBinOutline } from '@vicons/ionicons5'
 import _ from 'lodash'
 import type { DataTableColumns, SelectOption } from 'naive-ui'
 import {
@@ -13,7 +14,7 @@ import {
   NDrawer,
   NDrawerContent,
   NFormItemGi,
-  NGrid, NInput,
+  NGrid, NIcon, NInput,
   NInputGroup,
   NSelect,
   useMessage,
@@ -248,7 +249,11 @@ setTimeout(
     </NFormItemGi>
     <NFormItemGi :span="12">
       <NInputGroup>
-        <NInput v-model:value="searchText" :style="{ width: '50%' }" placeholder="请输入" />
+        <NInput v-model:value="searchText" round clearable :style="{ width: '50%' }" placeholder="请输入">
+          <template #clear-icon>
+            <NIcon :component="TrashBinOutline" />
+          </template>
+        </NInput>
         <NButton type="primary" ghost @click="searchPods()">
           搜索
         </NButton>
