@@ -16,10 +16,10 @@ export class TimeAge {
     const hoursMod = hours % 24
     const minutesMod = minutes % 60
     const secondsMod = seconds % 60
-    if (days > 2)
+    if (days > 5)
       return `${days}d`
 
-    if (days <= 2 && days > 0) {
+    if (days <= 5 && days > 0) {
       if (hoursMod > 0)
         return `${days}d${hoursMod}h`
       return `${days}d`

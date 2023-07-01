@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import ContainerLastState from '@render/components/container/ContainerLastState.vue'
 import ContainerProbeView from '@render/components/container/ContainerProbeView.vue'
+import ContainerState from '@render/components/container/ContainerState.vue'
 import { Docker } from '@vicons/fa'
-import { NDivider, NIcon, NTable, NTag } from 'naive-ui'
+import { NDivider, NIcon, NTable, NTag, NText } from 'naive-ui'
 import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
@@ -26,14 +26,10 @@ function getContainerStatusByName(name) {
             Status
           </td>
           <td>
-            {{ getContainerStatusByName(t.name).ready }}
-            {{ getContainerStatusByName(t.name).state }}
-          </td>
-        </tr>
-        <tr>
-          <td>Last Status</td>
-          <td>
-            <ContainerLastState :item="getContainerStatusByName(t.name).lastState" />
+            <ContainerState :item="getContainerStatusByName(t.name).state" />
+            <NText v-if="getContainerStatusByName(t.name).ready" type="success">
+              ready
+            </NText>
           </td>
         </tr>
         <tr>

@@ -23,7 +23,6 @@ import { io } from 'socket.io-client'
 import { h, ref } from 'vue'
 import type { V1Namespace } from '../../../model/V1Namespace'
 import type { V1Pod } from '../../../model/V1Pod'
-import '../../../extension'
 
 const show = ref(false)
 const item = ref<V1Pod>()
