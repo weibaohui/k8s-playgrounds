@@ -21,6 +21,7 @@
     "@nestjs/platform-express": "^10.0.4",
     "@nestjs/platform-socket.io": "^10.0.4",
     "@nestjs/websockets": "^10.0.4",
+    "@types/lodash": "^4.14.195",
     "dayjs": "^1.11.9",
     "moment": "^2.29.4",
     "naive-ui": "^2.34.4",

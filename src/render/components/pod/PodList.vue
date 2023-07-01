@@ -5,8 +5,19 @@ import ContainerStatusIcon from '@render/components/container/ContainerStatusIco
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
 import PodAge from '@render/components/pod/PodAge.vue'
 import PodView from '@render/components/pod/PodView.vue'
+import _ from 'lodash'
 import type { DataTableColumns, SelectOption } from 'naive-ui'
-import { NButton, NDataTable, NDrawer, NDrawerContent, NFormItemGi, NGrid, NSelect, useMessage } from 'naive-ui'
+import {
+  NButton,
+  NDataTable,
+  NDrawer,
+  NDrawerContent,
+  NFormItemGi,
+  NGrid, NInput,
+  NInputGroup,
+  NSelect,
+  useMessage,
+} from 'naive-ui'
 import { io } from 'socket.io-client'
 import { h, ref } from 'vue'
 import type { V1Namespace } from '../../../model/V1Namespace'
@@ -23,6 +34,7 @@ const columns = createColumns({
 })
 const podList = ref<V1Pod[]>()
 const selectedNs = ref('default')
+const searchText = ref('')
 const options = ref<SelectOption[]>()
 function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColumns<V1Pod> {
   return [
@@ -207,6 +219,13 @@ async function socketio() {
     }
   })
 }
+function searchPods() {
+  if (_.isEmpty(searchText.value)) {
+    getK8sPodList()
+    return
+  }
+  podList.value = podList.value.filter(r => r.metadata.name.includes(searchText.value))
+}
 getK8sNsList()
 getK8sPodList()
 
@@ -219,7 +238,8 @@ setTimeout(
 
 <template>
   <NGrid :cols="24" :x-gap="24">
-    <NFormItemGi :span="12">
+    <NFormItemGi :span="1" />
+    <NFormItemGi :span="11">
       <NSelect
         v-model:value="selectedNs" :options="options"
         placeholder="请选择ns"
@@ -227,7 +247,12 @@ setTimeout(
       />
     </NFormItemGi>
     <NFormItemGi :span="12">
-      {{ selectedNs }}
+      <NInputGroup>
+        <NInput v-model:value="searchText" :style="{ width: '50%' }" placeholder="请输入" />
+        <NButton type="primary" ghost @click="searchPods()">
+          搜索
+        </NButton>
+      </NInputGroup>
     </NFormItemGi>
   </NGrid>
   <NDataTable
