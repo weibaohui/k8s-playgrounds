@@ -42,7 +42,7 @@ import type { V1VsphereVirtualDiskVolumeSource } from './V1VsphereVirtualDiskVol
 /**
  * Volume represents a named volume in a pod that may be accessed by any container in the pod.
  */
-export interface V1Volume {
+export class V1Volume {
   /**
      * awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
      */

@@ -566,6 +566,11 @@
   resolved "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
+"@ricons/material@^0.12.0":
+  version "0.12.0"
+  resolved "https://registry.npmjs.org/@ricons/material/-/material-0.12.0.tgz"
+  integrity sha512-fz4niIeTl0UG28BhB/zagLW4yjK2btWxT7cXKwizjOAZlchaNLE7wzg3fV1rQMaxs1ijjCV0uz/65xQvVSXZow==
+
 "@sideway/address@^4.1.3":
   version "4.1.4"
   resolved "https://registry.npmjs.org/@sideway/address/-/address-4.1.4.tgz"

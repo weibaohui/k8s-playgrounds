@@ -17,7 +17,7 @@ import type { V1ServiceAccountTokenProjection } from './V1ServiceAccountTokenPro
 /**
  * Projection that may be projected along with other supported volume types
  */
-export interface V1VolumeProjection {
+export class V1VolumeProjection {
   /**
      * configMap information about the configMap data to project
      */
