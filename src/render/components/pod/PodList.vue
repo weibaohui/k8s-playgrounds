@@ -1,17 +1,17 @@
 <script lang="ts" setup>
 import { get } from '@main/utils/axios/api'
-import ContainerRestartCount from '@render/components/ContainerRestartCount.vue'
-import ContainerStatusIcon from '@render/components/ContainerStatusIcon.vue'
-import ContainerStatusText from '@render/components/ContainerStatusText.vue'
-import PodAge from '@render/components/PodAge.vue'
-import PodView from '@render/components/PodView.vue'
+import ContainerRestartCount from '@render/components/container/ContainerRestartCount.vue'
+import ContainerStatusIcon from '@render/components/container/ContainerStatusIcon.vue'
+import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
+import PodAge from '@render/components/pod/PodAge.vue'
+import PodView from '@render/components/pod/PodView.vue'
 import type { DataTableColumns, SelectOption } from 'naive-ui'
 import { NButton, NDataTable, NDrawer, NDrawerContent, NFormItemGi, NGrid, NSelect, useMessage } from 'naive-ui'
 import { io } from 'socket.io-client'
 import { h, ref } from 'vue'
-import type { V1Namespace } from '../../model/V1Namespace'
-import type { V1Pod } from '../../model/V1Pod'
-import '../../extension'
+import type { V1Namespace } from '../../../model/V1Namespace'
+import type { V1Pod } from '../../../model/V1Pod'
+import '../../../extension'
 
 const show = ref(false)
 const item = ref<V1Pod>()

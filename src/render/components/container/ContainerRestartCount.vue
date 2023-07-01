@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { V1Pod } from '../../model/V1Pod'
+import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,

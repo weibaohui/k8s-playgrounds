@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import VolumeConfigMapView from '@render/components/VolumeConfigMapView.vue'
-import VolumeDownwardAPIView from '@render/components/VolumeDownwardAPIView.vue'
-import VolumeServiceAccountView from '@render/components/VolumeServiceAccountView.vue'
+import VolumeConfigMapView from '@render/components/volume/projected/ProjectedVolumeConfigMapView.vue'
+import VolumeDownwardAPIView from '@render/components/volume/projected/ProjectedVolumeDownwardAPIView.vue'
+import VolumeServiceAccountView from '@render/components/volume/projected/ProjectedVolumeServiceAccountView.vue'
 import { NTable } from 'naive-ui'
-import { V1Volume } from '../../model/V1Volume'
+import { V1Volume } from '../../../../model/V1Volume'
 
 const props = defineProps({
   v: V1Volume,

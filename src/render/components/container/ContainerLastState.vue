@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1ContainerState } from '../../model/V1ContainerState'
+import { V1ContainerState } from '../../../model/V1ContainerState'
 
 const props = defineProps({
   item: V1ContainerState,

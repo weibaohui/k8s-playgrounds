@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PodList from '@render/components/PodList.vue'
+import PodList from '@render/components/pod/PodList.vue'
 import { NMessageProvider } from 'naive-ui'
 </script>
 

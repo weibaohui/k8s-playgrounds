@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NGradientText } from 'naive-ui'
-import { V1Pod } from '../../model/V1Pod'
+import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,

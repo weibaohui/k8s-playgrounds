@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import ContainerStatusText from '@render/components/ContainerStatusText.vue'
+import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
 import moment from 'moment/moment'
 import { NBadge, NCollapse, NCollapseItem, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
-import { V1Pod } from '../../model/V1Pod'
+import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
   item: V1Pod,

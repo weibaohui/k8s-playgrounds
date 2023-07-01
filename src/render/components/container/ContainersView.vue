@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import ContainerLastState from '@render/components/ContainerLastState.vue'
-import ContainerProbeView from '@render/components/ContainerProbeView.vue'
+import ContainerLastState from '@render/components/container/ContainerLastState.vue'
+import ContainerProbeView from '@render/components/container/ContainerProbeView.vue'
 import { Link12Regular } from '@vicons/fluent'
 import { NDivider, NIcon, NTable, NTag } from 'naive-ui'
-import { V1Pod } from '../../model/V1Pod'
+import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
   item: V1Pod,

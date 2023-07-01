@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NTable } from 'naive-ui'
-import { V1Volume } from '../../model/V1Volume'
+import { V1Volume } from '../../../model/V1Volume'
 
 const props = defineProps({
   v: V1Volume,
@@ -19,7 +19,7 @@ const props = defineProps({
       <td>Node's Host Filesystem Path</td>
       <td>{{ props.v.hostPath.path }}</td>
     </tr>
-    <tr>
+    <tr v-if="props.v.hostPath.type">
       <td>Check Behaviour</td>
       <td>{{ props.v.hostPath.type }}</td>
     </tr>
