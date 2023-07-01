@@ -21,7 +21,9 @@ function getContainerStatusByName(name) {
     <NTable :single-line="false">
       <tbody>
         <tr>
-          <td>Status</td>
+          <td class="left">
+            Status
+          </td>
           <td>
             {{ getContainerStatusByName(t.name).ready }}
             {{ getContainerStatusByName(t.name).state }}
@@ -111,5 +113,7 @@ function getContainerStatusByName(name) {
 </template>
 
 <style scoped>
-
+.left {
+  width: 120px;
+}
 </style>
