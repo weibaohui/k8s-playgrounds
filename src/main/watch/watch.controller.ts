@@ -30,6 +30,11 @@ export class WatchController {
     return await this.watchService.k8sPods(ns)
   }
 
+  @Get('/events/:ns')
+  async eventsByNs(@Param('ns') ns) {
+    return await this.watchService.events(ns)
+  }
+
   @Get('/ns')
   async ns() {
     return await this.watchService.k8sNs()

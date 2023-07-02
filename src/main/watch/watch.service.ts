@@ -95,19 +95,27 @@ export class WatchService {
   async k8sPods(ns?: string) {
     const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
     if (!ns || ns === 'null') {
-      return await k8sApi.listPodForAllNamespaces().then((res) => {
-        return res.body.items
-      })
+      const podAllResp = await k8sApi.listPodForAllNamespaces()
+      return podAllResp.body.items
     }
-    return await k8sApi.listNamespacedPod(ns).then((res) => {
-      return res.body.items
-    })
+    const podResp = await k8sApi.listNamespacedPod(ns)
+    return podResp.body.items
   }
 
   async k8sNs() {
     const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
-    return await k8sApi.listNamespace().then((res) => {
-      return res.body.items
-    })
+    const res = await k8sApi.listNamespace()
+    return res.body.items
+  }
+
+  async events(ns?: string) {
+    const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
+
+    if (!ns || ns === 'null') {
+      const eventsAll = await k8sApi.listEventForAllNamespaces()
+      return eventsAll.body.items
+    }
+    const events = await k8sApi.listNamespacedEvent(ns)
+    return events.body.items
   }
 }
