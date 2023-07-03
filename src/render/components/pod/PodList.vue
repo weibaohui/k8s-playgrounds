@@ -32,6 +32,7 @@ const columns = createColumns({
 })
 const podList = ref<V1Pod[]>()
 const selectedNs = ref('default')
+const nsSelectRef = ref<InstanceType<typeof NsSelect>>()
 
 function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColumns<V1Pod> {
   return [
@@ -236,7 +237,7 @@ setTimeout(
   <NGrid :cols="24" :x-gap="24">
     <NFormItemGi :span="1" />
     <NFormItemGi :span="11">
-      <NsSelect @on-ns-changed="onNsChanged" />
+      <NsSelect ref="nsSelectRef" @on-ns-changed="onNsChanged" />
     </NFormItemGi>
     <NFormItemGi :span="11">
       <SearchFilter @on-text-changed="onTextChanged" />

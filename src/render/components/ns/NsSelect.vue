@@ -6,7 +6,7 @@ import { ref } from 'vue'
 import type { V1Namespace } from '../../../model/V1Namespace'
 
 const props = defineProps({
-  n: String,
+  ns: String,
 })
 
 const emit = defineEmits(['onNsChanged', 'update'])
@@ -26,6 +26,9 @@ async function getK8sNsList2() {
 function onNsChanged() {
   // console.log(`ns 变为${selectedNs.value}`)
   emit('onNsChanged', selectedNs.value)
+}
+function setNsSelected(ns: string) {
+  selectedNs.value = ns
 }
 getK8sNsList2()
 </script>
