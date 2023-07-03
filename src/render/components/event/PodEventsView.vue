@@ -2,19 +2,18 @@
 import { get } from '@main/utils/axios/api'
 import { NBadge, NCollapse, NCollapseItem, NTable, NText } from 'naive-ui'
 import { ref } from 'vue'
-import type { V1Event } from '../../model/V1Event'
-import { V1Pod } from '../../model/V1Pod'
+import type { V1Event } from '../../../model/V1Event'
+import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,
-  ns: String,
 })
-
 const eventList = ref<V1Event[]>()
+const podEventList = ref<V1Event[]>()
 
 async function getEventsList() {
-  eventList.value = await get<V1Event[]>(`/watch/events/${props.ns}`)
-  eventList.value = eventList.value.filter((r) => {
+  eventList.value = await get<V1Event[]>(`/watch/events/${props.pod.metadata.namespace}`)
+  podEventList.value = eventList.value.filter((r) => {
     return r.involvedObject.namespace === props.pod.metadata.namespace && r.involvedObject.name === props.pod.metadata.name
   })
 }
@@ -23,7 +22,7 @@ getEventsList()
 
 <template>
   <NCollapse>
-    <NCollapseItem v-for="x in eventList" :key="x.metadata.name" :name="x.metadata.name">
+    <NCollapseItem v-for="x in podEventList" :key="x.metadata.name">
       <NTable>
         <tr>
           <td class="left">
@@ -32,20 +31,19 @@ getEventsList()
           <td>{{ x.type }}:{{ x.reason }}</td>
         </tr>
         <tr>
-          <td class="left">
+          <td>
             source
           </td>
           <td>{{ x.source.host }}/{{ x.source.component }}</td>
         </tr>
         <tr v-if="x.involvedObject.fieldPath">
-          <td class="left">
+          <td>
             Sub-object
           </td>
           <td>{{ x.involvedObject.fieldPath }}</td>
         </tr>
-
         <tr>
-          <td class="left">
+          <td>
             Last seen
           </td>
           <td>{{ x.lastTimestamp }}</td>
@@ -64,14 +62,4 @@ getEventsList()
       </template>
     </NCollapseItem>
   </NCollapse>
-
-  <div v-for="x in eventList" :key="x.metadata.name">
-    <div style="width: 100%;height: 100%" />
-  </div>
 </template>
-
-<style scoped>
-.left{
-  width: 120px;
-}
-</style>

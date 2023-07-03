@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import ContainersView from '@render/components/container/ContainersView.vue'
-import EventsView from '@render/components/EventsView.vue'
 import PodActions from '@render/components/pod/PodActions.vue'
 import PodBasicInfoView from '@render/components/pod/PodBasicInfoView.vue'
+import PodEventsView from '@render/components/event/PodEventsView.vue'
 import PodVolumesView from '@render/components/volume/PodVolumesView.vue'
 import { NH6, NText } from 'naive-ui'
 import { V1Pod } from '../../../model/V1Pod'
@@ -38,5 +38,5 @@ const props = defineProps({
       Events
     </NText>
   </NH6>
-  <EventsView :ns="props.item.metadata.namespace" :pod="props.item" />
+  <PodEventsView :pod="props.item" />
 </template>
