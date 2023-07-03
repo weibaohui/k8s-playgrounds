@@ -6,7 +6,7 @@ import ContainerStatusText from '@render/components/container/ContainerStatusTex
 import NsSelect from '@render/components/ns/NsSelect.vue'
 import PodAge from '@render/components/pod/PodAge.vue'
 import PodView from '@render/components/pod/PodView.vue'
-import { TrashBinOutline } from '@vicons/ionicons5'
+import SearchFilter from '@render/components/SearchFilter.vue'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import {
@@ -15,8 +15,7 @@ import {
   NDrawer,
   NDrawerContent,
   NFormItemGi,
-  NGrid, NIcon, NInput,
-  NInputGroup,
+  NGrid,
   useMessage,
 } from 'naive-ui'
 import { io } from 'socket.io-client'
@@ -34,6 +33,7 @@ const columns = createColumns({
 const podList = ref<V1Pod[]>()
 const selectedNs = ref('default')
 const searchText = ref('')
+
 function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColumns<V1Pod> {
   return [
     {
@@ -143,8 +143,10 @@ async function getK8sPodList() {
   podList.value.sort((a, b) => {
     if (a.status.startTime > b.status.startTime)
       return -1
+
     if (a.status.startTime < b.status.startTime)
       return 1
+
     return 0
   })
 }
@@ -204,21 +206,25 @@ async function socketio() {
         // console.log('删除', index)
         if (index !== -1)
           pods.splice(index, 1)
+
         break
     }
   })
 }
-function searchPods() {
-  if (_.isEmpty(searchText.value)) {
+
+function onTextChanged(text: String) {
+  if (_.isEmpty(text)) {
     getK8sPodList()
     return
   }
-  podList.value = podList.value.filter(r => r.metadata.name.includes(searchText.value))
+  podList.value = podList.value.filter(r => r.metadata.name.includes(text))
 }
-function onNsChanged(ns: string) {
+
+function onNsChanged(ns: String) {
   selectedNs.value = ns
   getK8sPodList()
 }
+
 getK8sPodList()
 setTimeout(
   () => {
@@ -233,15 +239,10 @@ setTimeout(
     <NFormItemGi :span="11">
       <NsSelect @on-ns-changed="onNsChanged" />
     </NFormItemGi>
-    <NFormItemGi :span="12">
-      <NInputGroup>
-        <NInput v-model:value="searchText" round clearable :style="{ width: '50%' }" placeholder="搜索Pod" @input="searchPods">
-          <template #clear-icon>
-            <NIcon :component="TrashBinOutline" />
-          </template>
-        </NInput>
-      </NInputGroup>
+    <NFormItemGi :span="11">
+      <SearchFilter @on-text-changed="onTextChanged" />
     </NFormItemGi>
+    <NFormItemGi :span="1" />
   </NGrid>
   <NDataTable
     :columns="columns"
