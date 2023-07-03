@@ -12,10 +12,7 @@ const props = defineProps({
     running
   </NText>
   <NText v-else-if="item.terminated" type="error">
-    <NTooltip
-      placement="bottom"
-      trigger="hover"
-    >
+    <NTooltip placement="bottom" trigger="hover">
       <template #trigger>
         terminated
       </template>
@@ -28,10 +25,7 @@ const props = defineProps({
     </NTooltip>
   </NText>
   <NText v-else-if="item.waiting" type="error">
-    <NTooltip
-      placement="bottom"
-      trigger="hover"
-    >
+    <NTooltip placement="bottom" trigger="hover">
       <template #trigger>
         waiting
       </template>
@@ -40,7 +34,7 @@ const props = defineProps({
     </NTooltip>
   </NText>
   <NText v-else type="error">
-    eeee
+    error
   </NText>
 </template>
 
