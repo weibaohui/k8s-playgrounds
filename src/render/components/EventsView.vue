@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { get } from '@main/utils/axios/api'
-import { NCollapse, NCollapseItem, NTable, NText } from 'naive-ui'
+import { NBadge, NCollapse, NCollapseItem, NTable, NText } from 'naive-ui'
 import { ref } from 'vue'
 import type { V1Event } from '../../model/V1Event'
 import { V1Pod } from '../../model/V1Pod'
@@ -59,9 +59,8 @@ getEventsList()
           {{ x.message }}
         </NText>
       </template>
-
       <template #header-extra>
-        {{ x.count }}
+        <NBadge :value="x.count " />
       </template>
     </NCollapseItem>
   </NCollapse>
