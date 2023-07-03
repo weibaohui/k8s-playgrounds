@@ -16,7 +16,8 @@ function getContainerStatusByName(name) {
 <template>
   <NSpace v-for="t in props.item.spec.containers" :key="t.name">
     <NDivider title-placement="left">
-      <NIcon :component="Docker" size="20" />
+      <NIcon v-if="getContainerStatusByName(t.name).ready" :component="Docker" color="green" size="20" />
+      <NIcon v-else :component="Docker" color="red" size="20" />
       {{ t.name }}
     </NDivider>
     <NTable :single-line="false">
