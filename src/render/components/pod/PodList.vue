@@ -231,7 +231,7 @@ setTimeout(
   <NGrid :cols="24" :x-gap="24">
     <NFormItemGi :span="1" />
     <NFormItemGi :span="11">
-      <NsSelect :on-ns-changed="onNsChanged" />
+      <NsSelect @on-ns-changed="onNsChanged" />
     </NFormItemGi>
     <NFormItemGi :span="12">
       <NInputGroup>
