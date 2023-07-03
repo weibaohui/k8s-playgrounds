@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { get } from '@main/utils/axios/api'
+import { NCollapse, NCollapseItem, NTable, NText } from 'naive-ui'
 import { ref } from 'vue'
 import type { V1Event } from '../../model/V1Event'
 import { V1Pod } from '../../model/V1Pod'
@@ -21,13 +22,57 @@ getEventsList()
 </script>
 
 <template>
+  <NCollapse>
+    <NCollapseItem v-for="x in eventList" :key="x.metadata.name" :name="x.metadata.name">
+      <NTable>
+        <tr>
+          <td class="left">
+            reason
+          </td>
+          <td>{{ x.reason }}</td>
+        </tr>
+        <tr>
+          <td class="left">
+            source
+          </td>
+          <td>{{ x.source.host }}/{{ x.source.component }}</td>
+        </tr>
+        <tr v-if="x.involvedObject.fieldPath">
+          <td class="left">
+            Sub-object
+          </td>
+          <td>{{ x.involvedObject.fieldPath }}</td>
+        </tr>
+
+        <tr>
+          <td class="left">
+            Last seen
+          </td>
+          <td>{{ x.lastTimestamp }}</td>
+        </tr>
+      </NTable>
+      <template #header>
+        <NText v-if="x.type === 'Normal'" type="success">
+          {{ x.message }}
+        </NText>
+        <NText v-else type="error">
+          {{ x.message }}
+        </NText>
+      </template>
+
+      <template #header-extra>
+        {{ x.count }}
+      </template>
+    </NCollapseItem>
+  </NCollapse>
+
   <div v-for="x in eventList" :key="x.metadata.name">
-    {{ x.type }}{{ x.source.host }}{{ x.source.component }}
-    {{ x.reason }}
-    {{ x.message }}
+    <div style="width: 100%;height: 100%" />
   </div>
 </template>
 
 <style scoped>
-
+.left{
+  width: 120px;
+}
 </style>
