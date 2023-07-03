@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
 import moment from 'moment/moment'
-import { NBadge, NCollapse, NCollapseItem, NTable, NTag } from 'naive-ui'
+import { NBadge, NCollapse, NCollapseItem, NSpace, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
 import { V1Pod } from '../../../model/V1Pod'
 
@@ -10,10 +10,12 @@ const props = defineProps({
 })
 const isExpended = ref(false)
 const expendedText = ref('Hide')
+
 function getShowText() {
   expendedText.value = isExpended.value ? 'Hide' : 'Show'
   return expendedText.value
 }
+
 function toggle() {
   isExpended.value = !isExpended.value
 }
@@ -42,20 +44,24 @@ function toggle() {
       <tr v-if="props.item.metadata.labels">
         <td>Labels</td>
         <td>
-          <NTag v-for="(v, k) in props.item.metadata.labels" :key="k">
-            {{ k }}={{ v }}
-          </NTag>
+          <NSpace v-for="(v, k) in props.item.metadata.labels" :key="k">
+            <NTag>
+              {{ k }}={{ v }}
+            </NTag>
+          </NSpace>
         </td>
       </tr>
       <tr v-if="props.item.metadata.annotations">
         <td>Annotations</td>
         <td>
-          <NTag v-for="(v, k) in props.item.metadata.annotations" :key="k">
-            {{ k }}={{ v }}
-          </NTag>
+          <NSpace v-for="(v, k) in props.item.metadata.annotations" :key="k">
+            <NTag v-if="!k.endsWith('last-applied-configuration')">
+              {{ k }}={{ v }}
+            </NTag>
+          </NSpace>
         </td>
       </tr>
-      <tr>
+      <tr v-if="props.item.metadata.ownerReferences">
         <td>Controlled By</td>
         <td>
           <span v-for="r in props.item.metadata.ownerReferences" :key="r.uid">
@@ -65,7 +71,9 @@ function toggle() {
       </tr>
       <tr>
         <td>Status</td>
-        <td><ContainerStatusText :pod="props.item" /></td>
+        <td>
+          <ContainerStatusText :pod="props.item" />
+        </td>
       </tr>
       <tr>
         <td>Node</td>
