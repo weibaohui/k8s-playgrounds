@@ -29,7 +29,7 @@ getEventsList()
           <td class="left">
             reason
           </td>
-          <td>{{ x.reason }}</td>
+          <td>{{ x.type }}:{{ x.reason }}</td>
         </tr>
         <tr>
           <td class="left">
