@@ -29,7 +29,7 @@ function toggle() {
           Created
         </td>
         <td>
-          {{ moment(item.status.startTime).format('yyyy-MM-d H:mm:s') }}
+          {{ moment(item.status.startTime).format('yyyy-MM-DD H:mm:s Z') }}
           {{ moment(item.status.startTime).fromNow() }}
         </td>
       </tr>

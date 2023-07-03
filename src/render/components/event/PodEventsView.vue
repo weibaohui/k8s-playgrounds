@@ -2,6 +2,7 @@
 import { get } from '@main/utils/axios/api'
 import { NBadge, NCollapse, NCollapseItem, NTable, NText } from 'naive-ui'
 import { ref } from 'vue'
+import moment from 'moment'
 import type { V1Event } from '../../../model/V1Event'
 import { V1Pod } from '../../../model/V1Pod'
 
@@ -46,7 +47,7 @@ getEventsList()
           <td>
             Last seen
           </td>
-          <td>{{ x.lastTimestamp }}</td>
+          <td>{{ moment(x.lastTimestamp).format('yyyy-MM-DD H:mm:s Z') }}</td>
         </tr>
       </NTable>
       <template #header>
