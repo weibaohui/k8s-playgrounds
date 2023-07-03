@@ -3,11 +3,12 @@ import { get } from '@main/utils/axios/api'
 import ContainerRestartCount from '@render/components/container/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/container/ContainerStatusIcon.vue'
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
+import NsSelect from '@render/components/ns/NsSelect.vue'
 import PodAge from '@render/components/pod/PodAge.vue'
 import PodView from '@render/components/pod/PodView.vue'
 import { TrashBinOutline } from '@vicons/ionicons5'
 import _ from 'lodash'
-import type { DataTableColumns, SelectOption } from 'naive-ui'
+import type { DataTableColumns } from 'naive-ui'
 import {
   NButton,
   NDataTable,
@@ -16,12 +17,10 @@ import {
   NFormItemGi,
   NGrid, NIcon, NInput,
   NInputGroup,
-  NSelect,
   useMessage,
 } from 'naive-ui'
 import { io } from 'socket.io-client'
 import { h, ref } from 'vue'
-import type { V1Namespace } from '../../../model/V1Namespace'
 import type { V1Pod } from '../../../model/V1Pod'
 
 const show = ref(false)
@@ -35,7 +34,6 @@ const columns = createColumns({
 const podList = ref<V1Pod[]>()
 const selectedNs = ref('default')
 const searchText = ref('')
-const options = ref<SelectOption[]>()
 function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColumns<V1Pod> {
   return [
     {
@@ -154,15 +152,6 @@ async function getK8sPodList() {
 async function startK8sWatch() {
   await get('/watch/init')
 }
-async function getK8sNsList() {
-  const ns = await get<V1Namespace[]>('/watch/ns')
-  options.value = ns.map((r) => {
-    return {
-      label: r.metadata.name,
-      value: r.metadata.name,
-    }
-  })
-}
 
 async function socketio() {
   const socket = io('http://127.0.0.1:3007', {
@@ -226,9 +215,11 @@ function searchPods() {
   }
   podList.value = podList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
-getK8sNsList()
+function onNsChanged(ns: string) {
+  selectedNs.value = ns
+  getK8sPodList()
+}
 getK8sPodList()
-
 setTimeout(
   () => {
     socketio()
@@ -240,11 +231,7 @@ setTimeout(
   <NGrid :cols="24" :x-gap="24">
     <NFormItemGi :span="1" />
     <NFormItemGi :span="11">
-      <NSelect
-        v-model:value="selectedNs" :options="options"
-        placeholder="请选择ns"
-        clearable @update:value="getK8sPodList"
-      />
+      <NsSelect :on-ns-changed="onNsChanged" />
     </NFormItemGi>
     <NFormItemGi :span="12">
       <NInputGroup>
