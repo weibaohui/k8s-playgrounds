@@ -32,7 +32,6 @@ const columns = createColumns({
 })
 const podList = ref<V1Pod[]>()
 const selectedNs = ref('default')
-const searchText = ref('')
 
 function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColumns<V1Pod> {
   return [
