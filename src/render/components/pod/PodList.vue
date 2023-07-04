@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { get, post } from '@main/utils/axios/api'
+import { PodArray } from '@main/utils/podArray'
 import ContainerRestartCount from '@render/components/container/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/container/ContainerStatusIcon.vue'
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
@@ -135,9 +136,11 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
     },
   ]
 }
+
 function handleCheck(keys: string[]) {
   checkedRowKeysRef.value = keys
 }
+
 function rowKey(row: V1Pod) {
   return `${row.metadata.namespace}/${row.metadata.name}`
 }
@@ -179,37 +182,19 @@ async function socketio() {
       return
     }
 
-    const pods = podList.value
-    const index = pods.findIndex(r => r.metadata.name === item.metadata.name)
-
+    const pa = new PodArray()
     switch (data.type) {
       case 'MODIFIED':
-        for (let i = 0; i < pods.length; i++) {
-          if (pods[i].metadata.name === item.metadata.name) {
-            // console.log('111找到修改的pod了', item.metadata.name)
-            pods[i] = item
-          }
-        }
+        pa.UpdatePods(podList.value, item)
         break
       case 'ADDED':
-        if (index === -1) {
-          // 不存在，真新增
-          // console.log('真新增', item.metadata.name)
-          pods.push(item)
-        }
-        else {
-          for (let i = 0; i < pods.length; i++) {
-            if (pods[i].metadata.name === item.metadata.name) {
-              // console.log('222找到修改的pod了', item.metadata.name)
-              pods[i] = item
-            }
-          }
-        }
+        pa.AddPods(podList.value, item)
         break
       case 'DELETED':
-        // console.log('删除', index)
-        if (index !== -1)
-          pods.splice(index, 1)
+        pa.DeletePods(podList.value, item)
+        checkedRowKeysRef.value = _.remove(checkedRowKeysRef.value, (n) => {
+          return (n as V1Pod).metadata.name === item.metadata.name
+        })
         break
     }
   })
@@ -222,6 +207,7 @@ function onTextChanged(text: String) {
   }
   podList.value = podList.value.filter(r => r.metadata.name.includes(text))
 }
+
 async function onRemoveBtnClicked() {
   await post('/watch/pods/delete/', checkedRowKeysRef.value)
   checkedRowKeysRef.value = []
