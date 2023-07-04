@@ -139,6 +139,16 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
 
 function handleCheck(keys: string[]) {
   checkedRowKeysRef.value = keys
+  // 过滤掉不存在的pod,尤其是已经选中的但是被删掉的pod
+  _.remove(checkedRowKeysRef.value, (n) => {
+    // 找出不存在的
+    return _.findIndex(podList.value.map(r => `${r.metadata.namespace}/${r.metadata.name}`), (m) => {
+      // 当前的podlist 先变形ns/name,筛选出其中的选中的一致的。
+      return m === n
+    }) === -1
+    // -1 代表最终没有匹配上，那么用remove删除没有匹配上的，也就是不在pod列表中的，不在是因为已经删除了
+  })
+  console.log('handleCheck', JSON.stringify(checkedRowKeysRef.value))
 }
 
 function rowKey(row: V1Pod) {
@@ -176,8 +186,8 @@ async function socketio() {
   socket.on('events', (data) => {
     // 处理接收到的数据
 
-    const item = data.object as V1Pod
-    if (selectedNs.value != null && item.metadata.namespace !== selectedNs.value) {
+    const p = data.object as V1Pod
+    if (selectedNs.value != null && p.metadata.namespace !== selectedNs.value) {
       // console.log('跳过', selectedNs.value, item.metadata.namespace)
       return
     }
@@ -185,16 +195,16 @@ async function socketio() {
     const pa = new PodArray()
     switch (data.type) {
       case 'MODIFIED':
-        pa.UpdatePods(podList.value, item)
+        pa.UpdatePods(podList.value, p)
         break
       case 'ADDED':
-        pa.AddPods(podList.value, item)
+        pa.AddPods(podList.value, p)
         break
       case 'DELETED':
-        pa.DeletePods(podList.value, item)
-        checkedRowKeysRef.value = _.remove(checkedRowKeysRef.value, (n) => {
-          return (n as V1Pod).metadata.name === item.metadata.name
-        })
+
+        pa.DeletePods(podList.value, p)
+
+        // console.log('DELETED', JSON.stringify(checkedRowKeysRef.value))
         break
     }
   })
