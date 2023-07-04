@@ -9,6 +9,7 @@ const props = defineProps({
   ns: String,
 })
 
+// 定义调用方法
 const emit = defineEmits(['onNsChanged', 'update'])
 
 const selectedNs = ref('default')
@@ -31,6 +32,9 @@ function setNsSelected(ns: string) {
   selectedNs.value = ns
 }
 getK8sNsList2()
+
+// 导出，父组件可调用
+defineExpose({ setNsSelected })
 </script>
 
 <template>

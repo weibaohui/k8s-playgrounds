@@ -47,6 +47,7 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
             onClick: () => {
               selectedNs.value = (row as V1Pod).metadata.namespace
               getK8sPodList()
+              nsSelectRef.value.setNsSelected(selectedNs.value)
             },
           },
           { default: () => (row as V1Pod).metadata.namespace },
