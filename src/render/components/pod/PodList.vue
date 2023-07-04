@@ -148,7 +148,6 @@ function handleCheck(keys: string[]) {
     }) === -1
     // -1 代表最终没有匹配上，那么用remove删除没有匹配上的，也就是不在pod列表中的，不在是因为已经删除了
   })
-  console.log('handleCheck', JSON.stringify(checkedRowKeysRef.value))
 }
 
 function rowKey(row: V1Pod) {
@@ -201,10 +200,7 @@ async function socketio() {
         pa.AddPods(podList.value, p)
         break
       case 'DELETED':
-
         pa.DeletePods(podList.value, p)
-
-        // console.log('DELETED', JSON.stringify(checkedRowKeysRef.value))
         break
     }
   })
