@@ -1,8 +1,9 @@
 import { WatchService } from '@main/watch/watch.service'
 import {
+  Body,
   Controller,
   Get,
-  Param,
+  Param, Post,
 } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 
@@ -38,5 +39,18 @@ export class WatchController {
   @Get('/ns')
   async ns() {
     return await this.watchService.k8sNs()
+  }
+
+  @Post('/pods/delete')
+  async delPods(@Body() nsn: Array<string>) {
+    console.log(nsn)
+    nsn.forEach((r) => {
+      const nsname = r.split('/')
+      const ns = nsname[0]
+      const name = nsname[1]
+      this.watchService.deletePods(name, ns)
+    })
+    return {}
+    // return await this.watchService.deletePods()
   }
 }

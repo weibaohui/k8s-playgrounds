@@ -118,4 +118,10 @@ export class WatchService {
     const events = await k8sApi.listNamespacedEvent(ns)
     return events.body.items
   }
+
+  async deletePods(name: string, ns: string) {
+    const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
+    const r = await k8sApi.deleteNamespacedPod(name, ns)
+    return r.body
+  }
 }

@@ -1,23 +1,16 @@
 <script lang="ts" setup>
-import { get } from '@main/utils/axios/api'
+import { get, post } from '@main/utils/axios/api'
 import ContainerRestartCount from '@render/components/container/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/container/ContainerStatusIcon.vue'
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
 import NsSelect from '@render/components/ns/NsSelect.vue'
+import FloatRemoveButton from '@render/components/common/FloatRemoveButton.vue'
 import PodAge from '@render/components/pod/PodAge.vue'
 import PodView from '@render/components/pod/PodView.vue'
-import SearchFilter from '@render/components/SearchFilter.vue'
+import SearchFilter from '@render/components/common/SearchFilter.vue'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import {
-  NButton,
-  NDataTable,
-  NDrawer,
-  NDrawerContent,
-  NFormItemGi,
-  NGrid,
-  useMessage,
-} from 'naive-ui'
+import { NButton, NDataTable, NDrawer, NDrawerContent, NFormItemGi, NGrid, useMessage } from 'naive-ui'
 import { io } from 'socket.io-client'
 import { h, ref } from 'vue'
 import type { V1Pod } from '../../../model/V1Pod'
@@ -33,9 +26,13 @@ const columns = createColumns({
 const podList = ref<V1Pod[]>()
 const selectedNs = ref('default')
 const nsSelectRef = ref<InstanceType<typeof NsSelect>>()
+const checkedRowKeysRef = ref<string[]>([])
 
 function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColumns<V1Pod> {
   return [
+    {
+      type: 'selection',
+    },
     {
       title: 'Namespace',
       key: 'metadata.namespace',
@@ -138,6 +135,12 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
     },
   ]
 }
+function handleCheck(keys: string[]) {
+  checkedRowKeysRef.value = keys
+}
+function rowKey(row: V1Pod) {
+  return `${row.metadata.namespace}/${row.metadata.name}`
+}
 
 async function getK8sPodList() {
   podList.value = await get<V1Pod[]>(`/watch/pods/${selectedNs.value}`)
@@ -220,6 +223,10 @@ function onTextChanged(text: String) {
   }
   podList.value = podList.value.filter(r => r.metadata.name.includes(text))
 }
+async function onRemoveBtnClicked() {
+  await post('/watch/pods/delete/', checkedRowKeysRef.value)
+  checkedRowKeysRef.value = []
+}
 
 function onNsChanged(ns: String) {
   selectedNs.value = ns
@@ -245,11 +252,15 @@ setTimeout(
     </NFormItemGi>
     <NFormItemGi :span="1" />
   </NGrid>
+  <FloatRemoveButton :items="checkedRowKeysRef" @on-clicked="onRemoveBtnClicked" />
+
   <NDataTable
     :columns="columns"
     :data="podList"
     :pagination="false"
     :bordered="false"
+    :row-key="rowKey"
+    @update:checked-row-keys="handleCheck"
   />
   <NDrawer v-model:show="show" :width="800">
     <NDrawerContent :title="item.metadata.name" closable>
