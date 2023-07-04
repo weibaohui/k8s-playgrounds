@@ -6,10 +6,25 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fast Vite Electron App</title>
+
+  <style >
+      .html{
+          height: 100%;
+          position: fixed;
+          background-color: #18181C;
+      }
+      body {
+          margin: 0;
+          padding: 0;
+      }
+      html,body,#app{
+          height: 100%;
+      }
+  </style>
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app" class="html"></div>
     <script type="module" src="/main.ts"></script>
 </body>
 

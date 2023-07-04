@@ -4,7 +4,7 @@ import type { Component } from 'vue'
 import { h, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
-import { NIcon, NLayout, NLayoutSider, NMenu, NMessageProvider, NSpace } from 'naive-ui'
+import { NConfigProvider, NIcon, NLayout, NLayoutSider, NMenu, NMessageProvider, NSpace, darkTheme } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 
 const menuOptions: MenuOption[] = [
@@ -108,30 +108,32 @@ function renderIcon(icon: Component) {
 </script>
 
 <template>
-  <NSpace vertical>
-    <NLayout has-sider>
-      <NLayoutSider
-        bordered
-        collapse-mode="width"
-        :collapsed-width="64"
-        :width="240"
-        :collapsed="collapsed"
-        show-trigger
-        @collapse="collapsed = true"
-        @expand="collapsed = false"
-      >
-        <NMenu
-          :collapsed="collapsed"
+  <NConfigProvider :theme="darkTheme">
+    <NSpace vertical>
+      <NLayout has-sider>
+        <NLayoutSider
+          bordered
+          collapse-mode="width"
           :collapsed-width="64"
-          :collapsed-icon-size="22"
-          :options="menuOptions"
-        />
-      </NLayoutSider>
-      <NLayout>
-        <NMessageProvider>
-          <RouterView />
-        </NMessageProvider>
+          :width="240"
+          :collapsed="collapsed"
+          show-trigger
+          @collapse="collapsed = true"
+          @expand="collapsed = false"
+        >
+          <NMenu
+            :collapsed="collapsed"
+            :collapsed-width="64"
+            :collapsed-icon-size="22"
+            :options="menuOptions"
+          />
+        </NLayoutSider>
+        <NLayout>
+          <NMessageProvider>
+            <RouterView />
+          </NMessageProvider>
+        </NLayout>
       </NLayout>
-    </NLayout>
-  </NSpace>
+    </NSpace>
+  </NConfigProvider>
 </template>
