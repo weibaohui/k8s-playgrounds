@@ -20,8 +20,10 @@ const show = ref(false)
 const item = ref<V1Pod>()
 const message = useMessage()
 const columns = createColumns({
-  play(item: V1Pod) {
-    message.success(`Play ${item.metadata.name}`)
+  play(x: V1Pod) {
+    item.value = x
+    show.value = true
+    message.success(`Play ${x.metadata.name}`)
   },
 })
 const podList = ref<V1Pod[]>()
@@ -55,6 +57,18 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
     {
       title: 'Name',
       key: 'metadata.name',
+      render(row) {
+        return h(
+          NButton,
+          {
+            text: true,
+            onClick: () => {
+              play(row)
+            },
+          },
+          { default: () => (row as V1Pod).metadata.name },
+        )
+      },
     },
 
     {
@@ -126,8 +140,6 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
             size: 'small',
             onClick: () => {
               play(row)
-              item.value = row
-              show.value = true
             },
           },
           { default: () => 'Play1' },
