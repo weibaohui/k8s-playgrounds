@@ -4,7 +4,7 @@ import type { Component } from 'vue'
 import { h, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
-import { NConfigProvider, NIcon, NLayout, NLayoutSider, NMenu, NMessageProvider, NSpace, darkTheme } from 'naive-ui'
+import { NConfigProvider, NIcon, NLayout, NLayoutSider, NMenu, NSpace, darkTheme } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 
 const menuOptions: MenuOption[] = [
@@ -130,7 +130,9 @@ function renderIcon(icon: Component) {
         </NLayoutSider>
         <NLayout>
           <NMessageProvider>
-            <RouterView />
+            <XDrawerServiceProvider>
+              <RouterView />
+            </XDrawerServiceProvider>
           </NMessageProvider>
         </NLayout>
       </NLayout>

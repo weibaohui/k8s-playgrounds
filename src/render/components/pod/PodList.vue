@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { get, post } from '@main/utils/axios/api'
 import { PodArray } from '@main/utils/podArray'
+import ContainerReadyCount from '@render/components/container/ContainerReadyCount.vue'
 import ContainerRestartCount from '@render/components/container/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/container/ContainerStatusIcon.vue'
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
@@ -11,19 +12,17 @@ import PodView from '@render/components/pod/PodView.vue'
 import SearchFilter from '@render/components/common/SearchFilter.vue'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NDataTable, NDrawer, NDrawerContent, NFormItemGi, NGrid, useMessage } from 'naive-ui'
+import { NButton, NDataTable, NDrawer, NDrawerContent, NFormItemGi, NGrid } from 'naive-ui'
 import { io } from 'socket.io-client'
 import { h, ref } from 'vue'
 import type { V1Pod } from '../../../model/V1Pod'
 
 const show = ref(false)
 const item = ref<V1Pod>()
-const message = useMessage()
 const columns = createColumns({
   play(x: V1Pod) {
     item.value = x
     show.value = true
-    message.success(`Play ${x.metadata.name}`)
   },
 })
 const podList = ref<V1Pod[]>()
@@ -70,7 +69,17 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
         )
       },
     },
-
+    {
+      title: 'Ready',
+      key: 'Ready',
+      render(row, index) {
+        return h(ContainerReadyCount,
+          {
+            pod: row as V1Pod,
+          },
+        )
+      },
+    },
     {
       title: 'Restarts',
       key: 'Restarts',

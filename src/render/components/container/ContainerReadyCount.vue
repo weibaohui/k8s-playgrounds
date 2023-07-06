@@ -5,18 +5,18 @@ import { V1Pod } from '../../../model/V1Pod'
 const props = defineProps({
   pod: V1Pod,
 })
-const counts = ref(0)
+const readyText = ref('')
 
 if (props.pod.status.containerStatuses) {
-  counts.value = props.pod.status.containerStatuses
-    .filter(r => r.restartCount > 0)
-    .map(r => r.restartCount)
-    .reduce((a, b) => a + b, 0)
+  const ready = props.pod.status.containerStatuses
+    .filter(r => r.ready).length
+  const all = props.pod.status.containerStatuses.length
+  readyText.value = `${ready}/${all}`
 }
 </script>
 
 <template>
-  {{ counts }}
+  {{ readyText }}
 </template>
 
 <style scoped>
