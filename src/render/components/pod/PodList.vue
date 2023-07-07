@@ -10,6 +10,7 @@ import FloatRemoveButton from '@render/components/common/FloatRemoveButton.vue'
 import PodAge from '@render/components/pod/PodAge.vue'
 import PodView from '@render/components/pod/PodView.vue'
 import SearchFilter from '@render/components/common/SearchFilter.vue'
+import { useDrawerService } from '@render/DrawerService/use-drawer'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, NDataTable, NDrawer, NDrawerContent, NFormItemGi, NGrid } from 'naive-ui'
@@ -17,14 +18,14 @@ import { io } from 'socket.io-client'
 import { h, ref } from 'vue'
 import type { V1Pod } from '../../../model/V1Pod'
 
-// const drawer = useDrawerService()
+const drawer = useDrawerService()
 const show = ref(false)
 const item = ref<V1Pod>()
 const columns = createColumns({
   play(x: V1Pod) {
-    // drawer.error('sdsds')
-    item.value = x
-    show.value = true
+    drawer.error(x.metadata.name)
+    // item.value = x
+    // show.value = true
   },
 })
 const podList = ref<V1Pod[]>()

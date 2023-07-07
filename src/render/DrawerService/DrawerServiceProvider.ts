@@ -1,3 +1,4 @@
+import { NDrawer, NDrawerContent } from 'naive-ui'
 import {
   defineComponent, h,
   provide,
@@ -60,9 +61,25 @@ export default defineComponent({
     )
   },
   render() {
-    return (
+    const sh = ref(true)
+    return [
+      [this.drawerServiceRef
+        ? h(
+          NDrawer,
+          { width: '100', show: sh.value, closeOnEsc: true, maskClosable: true },
+          () =>
+            h(
+              NDrawerContent,
+              {
+                title: 'xxxxx',
+                closable: true,
+              },
+              () => this.drawerServiceRef.content),
+        )
+        : h('div'),
+      ],
+      [this.$slots.default?.()],
 
-      h('div', [this.drawerServiceRef ? h('div', this.drawerServiceRef.content) : h('span', [this.$slots.default?.()])])
-    )
+    ]
   },
 })
