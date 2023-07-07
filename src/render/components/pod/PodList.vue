@@ -17,10 +17,12 @@ import { io } from 'socket.io-client'
 import { h, ref } from 'vue'
 import type { V1Pod } from '../../../model/V1Pod'
 
+// const drawer = useDrawerService()
 const show = ref(false)
 const item = ref<V1Pod>()
 const columns = createColumns({
   play(x: V1Pod) {
+    // drawer.error('sdsds')
     item.value = x
     show.value = true
   },

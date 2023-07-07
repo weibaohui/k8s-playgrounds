@@ -1,9 +1,9 @@
 import type { DrawerServiceApiInjection, DrawerServiceSetupProps } from '@render/DrawerService/DrawerServiceProvider'
 import { createInjectionKey } from 'naive-ui/es/_utils'
+import type { InjectionKey } from 'vue'
 
-export const drawerServiceApiInjectionKey
-  = createInjectionKey<DrawerServiceApiInjection>('x-drawer-service-api')
+export const drawerServiceApiInjectionKey: InjectionKey<DrawerServiceApiInjection> = Symbol('')
 
 export const drawerServiceProviderInjectionKey = createInjectionKey<{
   props: DrawerServiceSetupProps
-}>('x-drawer-service-provider')
+}>('drawer-service-provider')

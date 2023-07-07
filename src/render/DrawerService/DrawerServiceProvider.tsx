@@ -1,7 +1,7 @@
 import {
-  defineComponent,
+  defineComponent, h,
   provide,
-  reactive,
+  reactive, ref,
 } from 'vue'
 import type { ExtractPropTypes } from 'vue'
 import { drawerServiceApiInjectionKey, drawerServiceProviderInjectionKey } from '@render/DrawerService/context'
@@ -31,6 +31,8 @@ export default defineComponent({
   name: 'DrawerServiceProvider',
   props: drawerServiceProviderProps,
   setup(props) {
+    const drawerServiceRef = ref<DrawerServiceReactive>()
+
     const api: DrawerServiceApiInjection = {
       error(content: ContentType) {
         return create(content)
@@ -40,21 +42,27 @@ export default defineComponent({
     provide(drawerServiceApiInjectionKey, api)
 
     function create(content: ContentType): DrawerServiceReactive {
-      const showIcon = true
+      const showIcon = false
       const drawerServiceReactive = reactive({
         content,
         showIcon,
       })
+      drawerServiceRef.value = drawerServiceReactive
       return drawerServiceReactive
     }
 
-    return api
+    return Object.assign(
+      {
+        drawerServiceRef,
+        ok: true,
+      },
+      api,
+    )
   },
   render() {
     return (
-            <>
-                <div>xxxxx</div>
-            </>
+
+      h('div', [this.drawerServiceRef ? h('div', this.drawerServiceRef.content) : h('span', [this.$slots.default?.()])])
     )
   },
 })

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import DrawerServiceProvider from '@render/DrawerService/DrawerServiceProvider'
 import { FishOutline, PawOutline } from '@vicons/ionicons5'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'
@@ -130,9 +131,9 @@ function renderIcon(icon: Component) {
         </NLayoutSider>
         <NLayout>
           <NMessageProvider>
-            <XDrawerServiceProvider>
+            <DrawerServiceProvider>
               <RouterView />
-            </XDrawerServiceProvider>
+            </DrawerServiceProvider>
           </NMessageProvider>
         </NLayout>
       </NLayout>
