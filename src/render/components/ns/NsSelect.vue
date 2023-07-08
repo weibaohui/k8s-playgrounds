@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { get } from '@main/utils/axios/api'
+import { K8sService } from '@render/service/k8s/K8sService'
 import { NSelect } from 'naive-ui'
 import type { SelectOption } from 'naive-ui'
 import { ref } from 'vue'
-import type { V1Namespace } from '../../../model/V1Namespace'
 
 const props = defineProps({
   ns: String,
@@ -16,7 +15,7 @@ const selectedNs = ref('default')
 const options = ref<SelectOption[]>()
 
 async function getK8sNsList2() {
-  const ns = await get<V1Namespace[]>('/watch/ns')
+  const ns = await K8sService.namespaceService.getNamespaceList()
   options.value = ns.map((r) => {
     return {
       label: r.metadata.name,
