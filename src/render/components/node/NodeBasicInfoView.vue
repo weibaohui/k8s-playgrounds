@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import NodeRole from '@render/components/node/NodeRole.vue'
 import { NBadge, NCollapse, NCollapseItem, NSpace, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
 import moment from 'moment/moment'
@@ -35,6 +36,12 @@ function toggle() {
       <tr>
         <td>Name</td>
         <td>{{ props.item.metadata.name }}</td>
+      </tr>
+      <tr>
+        <td>Role</td>
+        <td>
+          <NodeRole :node="item" />
+        </td>
       </tr>
 
       <tr v-if="props.item.metadata.labels">
