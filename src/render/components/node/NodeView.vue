@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import NodeEventsView from '@render/components/node/NodeEventsView.vue'
 import NodeBasicInfoView from '@render/components/node/NodeBasicInfoView.vue'
+import NodeResourceView from '@render/components/node/NodeResourceView.vue'
 import { NH6, NText } from 'naive-ui'
 import { V1Node } from '../../../model/V1Node'
 
@@ -9,9 +11,6 @@ const props = defineProps({
 </script>
 
 <template>
-  {{ props.node.status.nodeInfo }}
-  {{ props.node.status.nodeInfo }}
-
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
       Basic Info
@@ -20,19 +19,16 @@ const props = defineProps({
   <NodeBasicInfoView :item="node" />
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
-      Containers
+      Resource
     </NText>
   </NH6>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Volumes
-    </NText>
-  </NH6>
+  <NodeResourceView :item="node" />
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
       Events
     </NText>
   </NH6>
+  <NodeEventsView :node="node" />
 </template>
 
 <style scoped>

@@ -65,6 +65,24 @@ function toggle() {
           </NTag>
         </td>
       </tr>
+      <tr v-if="props.item.spec.podCIDR">
+        <td>podCIDR</td>
+        <td>{{ props.item.spec.podCIDR }}</td>
+      </tr>
+      <tr v-if="props.item.spec.podCIDRs">
+        <td>podCIDR</td>
+        <td>
+          <NTag v-for="p in props.item.spec.podCIDRs" :key="p">
+            {{ p }}
+          </NTag>
+        </td>
+      </tr>
+      <tr v-if="props.item.status.nodeInfo.architecture">
+        <td>architecture</td>
+        <td>
+          {{ props.item.status.nodeInfo.architecture }}
+        </td>
+      </tr>
       <tr v-if="props.item.status.nodeInfo.operatingSystem">
         <td>OS</td>
         <td>{{ props.item.status.nodeInfo.operatingSystem }}</td>

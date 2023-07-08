@@ -1,29 +1,17 @@
 <script setup lang="ts">
-import { K8sService } from '@render/service/k8s/K8sService'
 import { NBadge, NCollapse, NCollapseItem, NTable, NText } from 'naive-ui'
 import { ref } from 'vue'
 import moment from 'moment'
 import type { V1Event } from '../../../model/V1Event'
-import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
-  pod: V1Pod,
+  eventList: ref<V1Event[]>,
 })
-const eventList = ref<V1Event[]>()
-const podEventList = ref<V1Event[]>()
-
-async function getEventsList() {
-  eventList.value = await K8sService.eventService.getEventsList(props.pod.metadata.namespace)
-  podEventList.value = eventList.value.filter((r) => {
-    return r.involvedObject.namespace === props.pod.metadata.namespace && r.involvedObject.name === props.pod.metadata.name
-  })
-}
-getEventsList()
 </script>
 
 <template>
   <NCollapse>
-    <NCollapseItem v-for="x in podEventList" :key="x.metadata.name">
+    <NCollapseItem v-for="x in eventList" :key="x.metadata.name">
       <NTable>
         <tr>
           <td class="left">
