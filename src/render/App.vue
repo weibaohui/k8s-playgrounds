@@ -15,12 +15,26 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
+            path: '/nodes',
+          },
+        },
+        { default: () => 'Node' },
+      ),
+    key: 'go-to-nodes',
+    icon: renderIcon(FishOutline),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
             path: '/pods',
           },
         },
         { default: () => 'Pods' },
       ),
-    key: 'go-to-work',
+    key: 'go-to-pods',
     icon: renderIcon(FishOutline),
   },
   {

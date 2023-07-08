@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NodeRole from '@render/components/node/NodeRole.vue'
+import NodeRoleView from '@render/components/node/NodeRoleView.vue'
 import { NBadge, NCollapse, NCollapseItem, NSpace, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
 import moment from 'moment/moment'
@@ -40,7 +40,7 @@ function toggle() {
       <tr>
         <td>Role</td>
         <td>
-          <NodeRole :node="item" />
+          <NodeRoleView :node="item" />
         </td>
       </tr>
 
