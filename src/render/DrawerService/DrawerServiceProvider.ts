@@ -1,69 +1,54 @@
+import type { VNode } from '@vue/runtime-core'
 import { NButton, NDrawer, NDrawerContent } from 'naive-ui'
 import {
   defineComponent,
-  h,
-  provide, reactive, ref,
+  h, provide, ref,
 } from 'vue'
-import type { ExtractPropTypes } from 'vue'
-import { drawerServiceApiInjectionKey, drawerServiceProviderInjectionKey } from '@render/DrawerService/context'
+
+import { drawerServiceApiInjectionKey } from '@render/DrawerService/context'
 
 type ContentType = string
 
 export interface DrawerServiceApiInjection {
-  error: (content: ContentType, drawerProps: DrawerServiceProps) => DrawerServiceReactive
-}
-
-export interface DrawerServiceReactive {
-  content?: ContentType
-  duration?: number
-  closable?: boolean
-  showIcon?: boolean
+  show: (content: ContentType, drawerProps?: DrawerServiceProps, children?: VNode) => void
 }
 
 export class DrawerServiceProps {
-  width?: string | number
+  width?: string | number = 500
   title?: string
 }
 
 export const drawerServiceProviderProps = {}
 
-export type DrawerServiceSetupProps = ExtractPropTypes<typeof drawerServiceProviderProps>
-
 export default defineComponent({
   name: 'DrawerServiceProvider',
   props: drawerServiceProviderProps,
-  setup(props) {
-    const drawerServiceRef = ref<DrawerServiceReactive>()
-    const show = ref(true)
+  setup() {
+    const show = ref(false)
     const drawerProps = ref<DrawerServiceProps>()
+    const children = ref<VNode>()
     const api: DrawerServiceApiInjection = {
-      error(content: ContentType, drawerProps: DrawerServiceProps) {
-        return create(content, drawerProps)
+      show(content: ContentType, drawerProps?: DrawerServiceProps, children?: VNode) {
+        create(content, drawerProps, children)
       },
     }
-
-    provide(drawerServiceProviderInjectionKey, { props })
     provide(drawerServiceApiInjectionKey, api)
-
     function onClose() {
       show.value = false
     }
-    function create(content: ContentType, dp: DrawerServiceProps): DrawerServiceReactive {
-      const showIcon = false
-      const drawerServiceReactive = reactive({
-        content,
-        showIcon,
-      })
-      drawerServiceRef.value = drawerServiceReactive
+    function create(content: ContentType, dp?: DrawerServiceProps, child?: VNode) {
+      if (!dp?.width)
+        dp.width = 500
+
       show.value = true
       drawerProps.value = dp
-      return drawerServiceReactive
+      children.value = child
     }
 
     return Object.assign(
       {
         drawerProps,
-        drawerServiceRef,
+        children,
         show,
         onClose,
       },
@@ -72,7 +57,7 @@ export default defineComponent({
   },
   render() {
     return [
-      [this.drawerServiceRef
+      [this.show
         ? h(
           NDrawer,
           {
@@ -92,7 +77,7 @@ export default defineComponent({
                 closable: true,
               },
               [
-                h('div', this.drawerServiceRef.content),
+                this.children,
                 h(NButton,
                   {
                     onClick: () => alert('x'),
@@ -104,8 +89,6 @@ export default defineComponent({
         : h('div'),
       ],
       [this.$slots.default?.()],
-      [],
-
     ]
   },
 })

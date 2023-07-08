@@ -13,22 +13,22 @@ import SearchFilter from '@render/components/common/SearchFilter.vue'
 import { useDrawerService } from '@render/DrawerService/use-drawer'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NDataTable, NDrawer, NDrawerContent, NFormItemGi, NGrid } from 'naive-ui'
+import { NButton, NDataTable, NFormItemGi, NGrid } from 'naive-ui'
 import { io } from 'socket.io-client'
 import { h, ref } from 'vue'
 import type { V1Pod } from '../../../model/V1Pod'
 
 const drawer = useDrawerService()
-const show = ref(false)
-const item = ref<V1Pod>()
 const columns = createColumns({
   play(x: V1Pod) {
-    drawer.error(x.metadata.name, {
-      width: 500,
-      title: x.metadata.name,
-    })
-    // item.value = x
-    // show.value = true
+    drawer.show(
+      x.metadata.name,
+      {
+        title: x.metadata.name,
+        width: 800,
+      },
+      h(PodView, { item: x }),
+    )
   },
 })
 const podList = ref<V1Pod[]>()
@@ -280,9 +280,4 @@ setTimeout(
     :row-key="rowKey"
     @update:checked-row-keys="handleCheck"
   />
-  <NDrawer v-model:show="show" :width="800">
-    <NDrawerContent :title="item.metadata.name" closable>
-      <PodView :item="item" />
-    </NDrawerContent>
-  </NDrawer>
 </template>
