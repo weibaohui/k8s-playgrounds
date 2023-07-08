@@ -23,7 +23,10 @@ const show = ref(false)
 const item = ref<V1Pod>()
 const columns = createColumns({
   play(x: V1Pod) {
-    drawer.error(x.metadata.name)
+    drawer.error(x.metadata.name, {
+      width: 500,
+      title: x.metadata.name,
+    })
     // item.value = x
     // show.value = true
   },
