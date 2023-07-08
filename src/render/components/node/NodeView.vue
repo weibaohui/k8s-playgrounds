@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import NodeBasicInfoView from '@render/components/node/NodeBasicInfoView.vue'
 import { NH6, NText } from 'naive-ui'
 import { V1Node } from '../../../model/V1Node'
 
@@ -16,6 +17,7 @@ const props = defineProps({
       Basic Info
     </NText>
   </NH6>
+  <NodeBasicInfoView :item="node" />
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
       Containers
