@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import DrawerServiceProvider from '@render/service/drawer-service/DrawerServiceProvider'
-import { FishOutline, PawOutline } from '@vicons/ionicons5'
+import { Cube, FishOutline, PawOutline } from '@vicons/ionicons5'
+import { Server } from '@vicons/fa'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'
 import { RouterLink } from 'vue-router'
@@ -21,21 +22,29 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Node' },
       ),
     key: 'go-to-nodes',
-    icon: renderIcon(FishOutline),
+    icon: renderIcon(Server),
   },
+
   {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: {
-            path: '/pods',
-          },
-        },
-        { default: () => 'Pods' },
-      ),
-    key: 'go-to-pods',
-    icon: renderIcon(FishOutline),
+    label: 'Workloads',
+    key: 'workloads',
+    icon: renderIcon(Cube),
+    children: [
+      {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/pods',
+              },
+            },
+            { default: () => 'Pods' },
+          ),
+        key: 'go-to-pods',
+        icon: renderIcon(FishOutline),
+      },
+    ],
   },
   {
     label: () =>
@@ -50,68 +59,6 @@ const menuOptions: MenuOption[] = [
       ),
     key: 'hear-the-wind-sing',
     icon: renderIcon(PawOutline),
-  },
-  {
-    label: '1973年的弹珠玩具',
-    key: 'pinball-1973',
-    disabled: true,
-    children: [
-      {
-        label: '鼠',
-        key: 'rat',
-      },
-    ],
-  },
-  {
-    label: '寻羊冒险记',
-    key: 'a-wild-sheep-chase',
-    disabled: true,
-  },
-  {
-    label: '舞，舞，舞',
-    key: 'dance-dance-dance',
-    children: [
-      {
-        type: 'group',
-        label: '人物',
-        key: 'people',
-        children: [
-          {
-            label: '叙事者',
-            key: 'narrator',
-          },
-          {
-            label: '羊男',
-            key: 'sheep-man',
-          },
-        ],
-      },
-      {
-        label: '饮品',
-        key: 'beverage',
-        children: [
-          {
-            label: '威士忌',
-            key: 'whisky',
-            href: 'https://baike.baidu.com/item/%E5%A8%81%E5%A3%AB%E5%BF%8C%E9%85%92/2959816?fromtitle=%E5%A8%81%E5%A3%AB%E5%BF%8C&fromid=573&fr=aladdin',
-          },
-        ],
-      },
-      {
-        label: '食物',
-        key: 'food',
-        children: [
-          {
-            label: '三明治',
-            key: 'sandwich',
-          },
-        ],
-      },
-      {
-        label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes',
-      },
-    ],
   },
 ]
 
