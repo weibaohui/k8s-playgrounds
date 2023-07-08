@@ -21,13 +21,11 @@ import type { V1Pod } from '../../../model/V1Pod'
 const drawer = useDrawerService()
 const columns = createColumns({
   play(x: V1Pod) {
-    drawer.show(
-      x.metadata.name,
-      {
-        title: x.metadata.name,
-        width: 800,
-      },
-      h(PodView, { item: x }),
+    drawer.showDrawer({
+      title: x.metadata.name,
+      width: 800,
+    },
+    h(PodView, { item: x }),
     )
   },
 })

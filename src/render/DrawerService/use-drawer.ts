@@ -8,7 +8,7 @@ export function useDrawerService(): DrawerServiceApiInjection {
   if (api === null) {
     throwError(
       'use-drawer',
-      'No outer <n-drawer-service-provider /> founded. xoxoxoxox',
+      'No outer <DrawerServiceProvider></DrawerServiceProvider> founded. xoxoxoxox',
     )
   }
   return api

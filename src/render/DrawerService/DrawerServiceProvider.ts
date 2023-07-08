@@ -1,5 +1,5 @@
 import type { VNode } from '@vue/runtime-core'
-import { NButton, NDrawer, NDrawerContent } from 'naive-ui'
+import { NDrawer, NDrawerContent } from 'naive-ui'
 import {
   defineComponent,
   h, provide, ref,
@@ -7,10 +7,8 @@ import {
 
 import { drawerServiceApiInjectionKey } from '@render/DrawerService/context'
 
-type ContentType = string
-
 export interface DrawerServiceApiInjection {
-  show: (content: ContentType, drawerProps?: DrawerServiceProps, children?: VNode) => void
+  showDrawer: (drawerProps: DrawerServiceProps, children: VNode) => void
 }
 
 export class DrawerServiceProps {
@@ -28,21 +26,20 @@ export default defineComponent({
     const drawerProps = ref<DrawerServiceProps>()
     const children = ref<VNode>()
     const api: DrawerServiceApiInjection = {
-      show(content: ContentType, drawerProps?: DrawerServiceProps, children?: VNode) {
-        create(content, drawerProps, children)
+      showDrawer(drawerProps: DrawerServiceProps, children: VNode) {
+        create(drawerProps, children)
       },
     }
     provide(drawerServiceApiInjectionKey, api)
     function onClose() {
       show.value = false
     }
-    function create(content: ContentType, dp?: DrawerServiceProps, child?: VNode) {
-      if (!dp?.width)
+    function create(dp: DrawerServiceProps, child: VNode) {
+      if (!dp.width)
         dp.width = 500
-
-      show.value = true
       drawerProps.value = dp
       children.value = child
+      show.value = true
     }
 
     return Object.assign(
@@ -78,11 +75,7 @@ export default defineComponent({
               },
               [
                 this.children,
-                h(NButton,
-                  {
-                    onClick: () => alert('x'),
-                  },
-                  () => 'xxx'),
+                h('div'),
               ],
             ),
         )
