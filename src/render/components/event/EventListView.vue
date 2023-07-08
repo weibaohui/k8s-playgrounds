@@ -60,6 +60,20 @@ function createColumns(): DataTableColumns<V1Namespace> {
       key: 'metadata.namespace',
     },
     {
+      title: 'Involved',
+      key: 'Involved',
+      width: 200,
+      ellipsis: {
+        tooltip: true,
+      },
+      render(row) {
+        return h(
+          NSpace,
+          () => `${(row as V1Event).involvedObject.kind}:${(row as V1Event).involvedObject.name}`,
+        )
+      },
+    },
+    {
       title: 'Source',
       key: 'Source',
       render(row) {
