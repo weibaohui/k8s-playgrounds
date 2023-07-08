@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { get, post } from '@main/utils/axios/api'
 import { PodArray } from '@main/utils/podArray'
 import ContainerReadyCount from '@render/components/container/ContainerReadyCount.vue'
 import ContainerRestartCount from '@render/components/container/ContainerRestartCount.vue'
@@ -11,10 +10,11 @@ import PodAge from '@render/components/pod/PodAge.vue'
 import PodView from '@render/components/pod/PodView.vue'
 import SearchFilter from '@render/components/common/SearchFilter.vue'
 import { useDrawerService } from '@render/DrawerService/use-drawer'
+import { PodService } from '@render/k8sService/podService'
+import { SocketIOService } from '@render/k8sService/SocketIOService'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, NDataTable, NFormItemGi, NGrid } from 'naive-ui'
-import { io } from 'socket.io-client'
 import { h, ref } from 'vue'
 import type { V1Pod } from '../../../model/V1Pod'
 
@@ -29,6 +29,7 @@ const columns = createColumns({
     )
   },
 })
+const podService = new PodService()
 const podList = ref<V1Pod[]>()
 const selectedNs = ref('default')
 const nsSelectRef = ref<InstanceType<typeof NsSelect>>()
@@ -180,7 +181,7 @@ function rowKey(row: V1Pod) {
 }
 
 async function getK8sPodList() {
-  podList.value = await get<V1Pod[]>(`/watch/pods/${selectedNs.value}`)
+  podList.value = await podService.getK8sPodList(selectedNs.value)
   podList.value.sort((a, b) => {
     if (a.status.startTime > b.status.startTime)
       return -1
@@ -192,20 +193,8 @@ async function getK8sPodList() {
   })
 }
 
-async function startK8sWatch() {
-  await get('/watch/init')
-}
-
 async function socketio() {
-  const socket = io('http://127.0.0.1:3007', {
-    transports: ['websocket'], // 指定传输方式，如WebSocket
-    autoConnect: true, // 是否自动连接
-    reconnection: true, // 是否自动重新连接
-    reconnectionAttempts: 3, // 重新连接尝试次数
-    reconnectionDelay: 1000, // 重新连接延迟时间（毫秒）
-    query: { token: 'your-token' }, // 自定义查询参数
-    // 其他可选参数...
-  })
+  const socket = new SocketIOService().open()
   console.log('socket-io', socket.active)
   socket.on('events', (data) => {
     // 处理接收到的数据
@@ -240,7 +229,7 @@ function onTextChanged(text: String) {
 }
 
 async function onRemoveBtnClicked() {
-  await post('/watch/pods/delete/', checkedRowKeysRef.value)
+  await podService.deletePods(checkedRowKeysRef.value)
   checkedRowKeysRef.value = []
 }
 
@@ -253,7 +242,7 @@ getK8sPodList()
 setTimeout(
   () => {
     socketio()
-    startK8sWatch()
+    podService.startK8sWatch()
   }, 5000)
 </script>
 
