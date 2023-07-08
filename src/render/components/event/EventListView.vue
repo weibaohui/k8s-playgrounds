@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { TimeAge } from '@main/utils/timeAge'
+import EventMessageView from '@render/components/event/EventMessageView.vue'
 import EventView from '@render/components/event/EventView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
@@ -50,7 +51,7 @@ function createColumns(): DataTableColumns<V1Namespace> {
               showEventView(row)
             },
           },
-          { default: () => (row as V1Event).message },
+          () => h(EventMessageView, { item: row as V1Event }),
         )
       },
     },
