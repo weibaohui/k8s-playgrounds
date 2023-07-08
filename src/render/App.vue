@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DrawerServiceProvider from '@render/DrawerService/DrawerServiceProvider'
+import DrawerServiceProvider from '@render/service/drawer-service/DrawerServiceProvider'
 import { FishOutline, PawOutline } from '@vicons/ionicons5'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'

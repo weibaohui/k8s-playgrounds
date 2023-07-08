@@ -1,5 +1,5 @@
-import { drawerServiceApiInjectionKey } from '@render/DrawerService/context'
-import type { DrawerServiceApiInjection } from '@render/DrawerService/DrawerServiceProvider'
+import { drawerServiceApiInjectionKey } from '@render/service/drawer-service/context'
+import type { DrawerServiceApiInjection } from '@render/service/drawer-service/DrawerServiceProvider'
 import { throwError } from 'naive-ui/es/_utils'
 import { inject } from 'vue'
 

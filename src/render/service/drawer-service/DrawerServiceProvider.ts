@@ -5,7 +5,7 @@ import {
   h, provide, ref,
 } from 'vue'
 
-import { drawerServiceApiInjectionKey } from '@render/DrawerService/context'
+import { drawerServiceApiInjectionKey } from '@render/service/drawer-service/context'
 
 export interface DrawerServiceApiInjection {
   showDrawer: (drawerProps: DrawerServiceProps, children: VNode) => void

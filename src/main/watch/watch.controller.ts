@@ -26,6 +26,16 @@ export class WatchController {
     return await this.watchService.k8sPods()
   }
 
+  @Get('/nodes')
+  async getNodes() {
+    return await this.watchService.getNodes()
+  }
+
+  @Get('/node/:name')
+  async getNode(@Param('name') name) {
+    return await this.watchService.getNode(name)
+  }
+
   @Get('/pods/:ns')
   async podsByNs(@Param('ns') ns) {
     return await this.watchService.k8sPods(ns)

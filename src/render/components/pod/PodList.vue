@@ -4,14 +4,15 @@ import ContainerReadyCount from '@render/components/container/ContainerReadyCoun
 import ContainerRestartCount from '@render/components/container/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/container/ContainerStatusIcon.vue'
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
+import NodeView from '@render/components/node/NodeView.vue'
 import NsSelect from '@render/components/ns/NsSelect.vue'
 import FloatRemoveButton from '@render/components/common/FloatRemoveButton.vue'
 import PodAge from '@render/components/pod/PodAge.vue'
 import PodView from '@render/components/pod/PodView.vue'
 import SearchFilter from '@render/components/common/SearchFilter.vue'
-import { useDrawerService } from '@render/DrawerService/use-drawer'
-import { PodService } from '@render/k8sService/podService'
-import { SocketIOService } from '@render/k8sService/SocketIOService'
+import { useDrawerService } from '@render/service/drawer-service/use-drawer'
+import { K8sService } from '@render/service/k8s/K8sService'
+import { SocketIOService } from '@render/service/k8s/SocketIOService'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, NDataTable, NFormItemGi, NGrid } from 'naive-ui'
@@ -19,23 +20,31 @@ import { h, ref } from 'vue'
 import type { V1Pod } from '../../../model/V1Pod'
 
 const drawer = useDrawerService()
-const columns = createColumns({
-  play(x: V1Pod) {
-    drawer.showDrawer({
-      title: x.metadata.name,
-      width: 800,
-    },
-    h(PodView, { item: x }),
-    )
+
+function showPodView(x: V1Pod) {
+  drawer.showDrawer({
+    title: x.metadata.name,
+    width: 800,
   },
-})
-const podService = new PodService()
+  h(PodView, { item: x }),
+  )
+}
+async function showNodeView(x: V1Pod) {
+  drawer.showDrawer({
+    title: x.spec.nodeName,
+    width: 800,
+  },
+  h(NodeView, { node: await K8sService.nodeService.getNode(x.spec.nodeName) }),
+  )
+}
+
+const columns = createColumns()
 const podList = ref<V1Pod[]>()
 const selectedNs = ref('default')
 const nsSelectRef = ref<InstanceType<typeof NsSelect>>()
 const checkedRowKeysRef = ref<string[]>([])
 
-function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColumns<V1Pod> {
+function createColumns(): DataTableColumns<V1Pod> {
   return [
     {
       type: 'selection',
@@ -67,7 +76,7 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
           {
             text: true,
             onClick: () => {
-              play(row)
+              showPodView(row)
             },
           },
           { default: () => (row as V1Pod).metadata.name },
@@ -115,6 +124,18 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
     {
       title: 'Node',
       key: 'spec.nodeName',
+      render(row) {
+        return h(
+          NButton,
+          {
+            text: true,
+            onClick: () => {
+              showNodeView(row)
+            },
+          },
+          { default: () => (row as V1Pod).spec.nodeName },
+        )
+      },
     },
     {
       title: 'Age',
@@ -153,7 +174,7 @@ function createColumns({ play }: { play: (row: V1Pod) => void }): DataTableColum
             tertiary: true,
             size: 'small',
             onClick: () => {
-              play(row)
+              showPodView(row)
             },
           },
           { default: () => 'Play1' },
@@ -181,7 +202,7 @@ function rowKey(row: V1Pod) {
 }
 
 async function getK8sPodList() {
-  podList.value = await podService.getK8sPodList(selectedNs.value)
+  podList.value = await K8sService.podService.getPodList(selectedNs.value)
   podList.value.sort((a, b) => {
     if (a.status.startTime > b.status.startTime)
       return -1
@@ -229,7 +250,7 @@ function onTextChanged(text: String) {
 }
 
 async function onRemoveBtnClicked() {
-  await podService.deletePods(checkedRowKeysRef.value)
+  await K8sService.podService.deletePods(checkedRowKeysRef.value)
   checkedRowKeysRef.value = []
 }
 
@@ -242,7 +263,7 @@ getK8sPodList()
 setTimeout(
   () => {
     socketio()
-    podService.startK8sWatch()
+    K8sService.podService.startK8sWatch()
   }, 5000)
 </script>
 
