@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DrawerServiceProvider from '@render/service/drawer-service/DrawerServiceProvider'
-import { Cube, FishOutline, Layers, PawOutline } from '@vicons/ionicons5'
+import { Cube, FishOutline, Layers, PawOutline, Time } from '@vicons/ionicons5'
 import { Server } from '@vicons/fa'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'
@@ -37,6 +37,19 @@ const menuOptions: MenuOption[] = [
       ),
     key: 'go-to-ns',
     icon: renderIcon(Layers),
+  }, {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            path: '/events',
+          },
+        },
+        { default: () => 'Events' },
+      ),
+    key: 'go-to-events',
+    icon: renderIcon(Time),
   },
 
   {

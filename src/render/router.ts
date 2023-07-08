@@ -1,3 +1,4 @@
+import EventListView from '@render/components/event/EventListView.vue'
 import HelloWorld from '@render/components/HelloWorld.vue'
 import NodeListView from '@render/components/node/NodeListView.vue'
 import NsListView from '@render/components/ns/NsListView.vue'
@@ -18,6 +19,9 @@ export default createRouter({
     {
       path: '/pods',
       component: PodListView,
+    }, {
+      path: '/events',
+      component: EventListView,
     },
 
     {
