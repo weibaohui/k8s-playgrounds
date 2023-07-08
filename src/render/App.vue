@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DrawerServiceProvider from '@render/service/drawer-service/DrawerServiceProvider'
-import { Cube, FishOutline, PawOutline } from '@vicons/ionicons5'
+import { Cube, FishOutline, Layers, PawOutline } from '@vicons/ionicons5'
 import { Server } from '@vicons/fa'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'
@@ -23,6 +23,20 @@ const menuOptions: MenuOption[] = [
       ),
     key: 'go-to-nodes',
     icon: renderIcon(Server),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            path: '/ns',
+          },
+        },
+        { default: () => 'Namespace' },
+      ),
+    key: 'go-to-ns',
+    icon: renderIcon(Layers),
   },
 
   {

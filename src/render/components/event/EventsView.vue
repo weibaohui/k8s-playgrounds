@@ -5,7 +5,7 @@ import moment from 'moment'
 import type { V1Event } from '../../../model/V1Event'
 
 const props = defineProps({
-  eventList: ref<V1Event[]>,
+  eventList: ref<Array<V1Event>>,
 })
 </script>
 
@@ -24,6 +24,12 @@ const props = defineProps({
             source
           </td>
           <td>{{ x.source.host }}/{{ x.source.component }}</td>
+        </tr>
+        <tr v-if="x.involvedObject">
+          <td>
+            involvedObject
+          </td>
+          <td>{{ x.involvedObject.kind }}:{{ x.involvedObject.namespace }}/{{ x.involvedObject.name }}</td>
         </tr>
         <tr v-if="x.involvedObject.fieldPath">
           <td>
