@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import NodeRoleView from '@render/components/node/NodeRoleView.vue'
+import { ErrorCircle20Regular } from '@vicons/fluent'
 import { CheckmarkCircle } from '@vicons/ionicons5'
 import { NBadge, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
@@ -130,9 +131,15 @@ function toggle() {
         <td>
           <NTag v-if="props.node.spec.unschedulable" type="error">
             Unschedulable
+            <template #icon>
+              <NIcon :component="ErrorCircle20Regular" />
+            </template>
           </NTag>
           <NTag v-else type="success">
             Schedulable
+            <template #icon>
+              <NIcon :component="CheckmarkCircle" />
+            </template>
           </NTag>
         </td>
       </tr>

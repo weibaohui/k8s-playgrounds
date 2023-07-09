@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
+import { ErrorCircle20Regular } from '@vicons/fluent'
 import { CheckmarkCircle } from '@vicons/ionicons5'
 import moment from 'moment/moment'
 import { NBadge, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'naive-ui'
@@ -128,6 +129,9 @@ function toggle() {
             </NTag>
             <NTag v-else type="error">
               {{ c.type }}
+              <template #icon>
+                <NIcon :component="ErrorCircle20Regular" />
+              </template>
             </NTag>
           </span>
         </td>
