@@ -128,8 +128,10 @@ export class WatchService {
 
   async events(ns?: string) {
     const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
-
-    if (!ns || ns === 'null') {
+    console.log(ns)
+    console.log(ns === 'null')
+    console.log(ns === null)
+    if (!ns || ns === 'null' || ns === 'undefined') {
       const eventsAll = await k8sApi.listEventForAllNamespaces()
       return eventsAll.body.items
     }

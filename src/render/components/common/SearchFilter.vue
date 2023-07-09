@@ -5,6 +5,7 @@ import { ref } from 'vue'
 
 const props = defineProps({
   n: String,
+  placeholder: String,
 })
 const emit = defineEmits(['onTextChanged', 'update'])
 const searchText = ref('')
@@ -15,7 +16,7 @@ function onTextChanged() {
 
 <template>
   <NInputGroup>
-    <NInput v-model:value="searchText" round clearable placeholder="搜索Pod" @input="onTextChanged">
+    <NInput v-model:value="searchText" round clearable :placeholder="props.placeholder" @input="onTextChanged">
       <template #clear-icon>
         <NIcon :component="TrashBinOutline" />
       </template>

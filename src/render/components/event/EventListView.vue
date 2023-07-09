@@ -1,18 +1,23 @@
 <script setup lang="ts">
+import SearchFilter from '@render/components/common/SearchFilter.vue'
 import EventInvolvedClickAction from '@render/components/event/EventInvolvedClickAction.vue'
 import EventLastSeen from '@render/components/event/EventLastSeen.vue'
 import EventMessageView from '@render/components/event/EventMessageView.vue'
 import EventView from '@render/components/event/EventView.vue'
+import NsSelect from '@render/components/ns/NsSelect.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
+import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NDataTable, NSpace } from 'naive-ui'
+import { NButton, NDataTable, NFormItemGi, NGrid, NSpace } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Event } from '../../../model/V1Event'
 import type { V1Namespace } from '../../../model/V1Namespace'
+import type { V1Pod } from '../../../model/V1Pod'
 
 const drawer = useDrawerService()
-
+const nsSelectRef = ref<InstanceType<typeof NsSelect>>()
+const selectedNs = ref('default')
 async function showEventView(x: V1Event) {
   drawer.showDrawer({
     title: x.metadata.name,
@@ -59,6 +64,20 @@ function createColumns(): DataTableColumns<V1Namespace> {
     {
       title: 'Namespace',
       key: 'metadata.namespace',
+      render(row) {
+        return h(
+          NButton,
+          {
+            text: true,
+            onClick: () => {
+              selectedNs.value = (row as V1Pod).metadata.namespace
+              getEventList()
+              nsSelectRef.value.setNsSelected(selectedNs.value)
+            },
+          },
+          { default: () => (row as V1Pod).metadata.namespace },
+        )
+      },
     },
     {
       title: 'Involved',
@@ -107,12 +126,36 @@ function createColumns(): DataTableColumns<V1Namespace> {
 }
 
 async function getEventList() {
-  eventList.value = await K8sService.eventService.getEventsList('null')
+  eventList.value = await K8sService.eventService.getEventsList(selectedNs.value)
+}
+
+function onTextChanged(text: String) {
+  if (_.isEmpty(text)) {
+    getEventList()
+    return
+  }
+  eventList.value = eventList.value.filter(r => r.message.includes(text))
+}
+
+function onNsChanged(ns: String) {
+  selectedNs.value = ns
+  console.log('nnnnnnn', ns)
+  getEventList()
 }
 getEventList()
 </script>
 
 <template>
+  <NGrid :cols="24" :x-gap="24">
+    <NFormItemGi :span="1" />
+    <NFormItemGi :span="11">
+      <NsSelect ref="nsSelectRef" @on-ns-changed="onNsChanged" />
+    </NFormItemGi>
+    <NFormItemGi :span="11">
+      <SearchFilter placeholder="搜索Message" @on-text-changed="onTextChanged" />
+    </NFormItemGi>
+    <NFormItemGi :span="1" />
+  </NGrid>
   <NDataTable
     :columns="columns"
     :data="eventList"
