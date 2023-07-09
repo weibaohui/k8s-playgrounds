@@ -1,3 +1,7 @@
+import { Stream, Writable } from 'node:stream'
+import * as stream from 'node:stream'
+import { LogOptions } from '@kubernetes/client-node/dist/log'
+import { V1Status } from '@kubernetes/client-node/dist/api'
 import { EventsGateway } from '@main/events/events.gateway'
 import { Injectable, Logger } from '@nestjs/common'
 import * as k8s from '@kubernetes/client-node'
@@ -143,5 +147,21 @@ export class WatchService {
     const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
     const r = await k8sApi.deleteNamespacedPod(name, ns)
     return r.body
+  }
+
+  async logPods(namespace: string, podName: string, containerName: string, stream: Writable, options?: LogOptions) {
+    const log = new k8s.Log(this.getKubeConfig())
+    const logStream = new Stream.PassThrough()
+
+    logStream.on('data', (chunk) => {
+      // use write rather than console.log to prevent double line feed
+      process.stdout.write(chunk)
+    })
+    await log.log(namespace, podName, containerName, stream, options)
+  }
+
+  async execPod(namespace: string, podName: string, containerName: string, command: string | string[], stdout: stream.Writable | null, stderr: stream.Writable | null, stdin: stream.Readable | null, tty: boolean, statusCallback?: (status: V1Status) => void) {
+    const exec = new k8s.Exec(this.getKubeConfig())
+    return exec.exec(namespace, podName, containerName, command, stdout, stderr, stdin, tty, statusCallback)
   }
 }
