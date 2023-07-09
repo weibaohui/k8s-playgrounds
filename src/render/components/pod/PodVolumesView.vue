@@ -7,12 +7,12 @@ import { NDivider, NIcon } from 'naive-ui'
 import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
-  item: V1Pod,
+  pod: V1Pod,
 })
 </script>
 
 <template>
-  <div v-for="v in props.item.spec.volumes" :key="v.name">
+  <div v-for="v in props.pod.spec.volumes" :key="v.name">
     <NDivider title-placement="left">
       <NIcon :component="Storage24Regular" size="30" />
       {{ v.name }}

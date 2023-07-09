@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import EventInvolvedClickAction from '@render/components/event/EventInvolvedClickAction.vue'
 import EventLastSeen from '@render/components/event/EventLastSeen.vue'
 import EventMessageView from '@render/components/event/EventMessageView.vue'
 import EventView from '@render/components/event/EventView.vue'
@@ -51,7 +52,7 @@ function createColumns(): DataTableColumns<V1Namespace> {
               showEventView(row)
             },
           },
-          () => h(EventMessageView, { item: row as V1Event }),
+          () => h(EventMessageView, { event: row as V1Event }),
         )
       },
     },
@@ -68,8 +69,10 @@ function createColumns(): DataTableColumns<V1Namespace> {
       },
       render(row) {
         return h(
-          NSpace,
-          () => `${(row as V1Event).involvedObject.kind}:${(row as V1Event).involvedObject.name}`,
+          EventInvolvedClickAction,
+          {
+            event: row as V1Event,
+          },
         )
       },
     },

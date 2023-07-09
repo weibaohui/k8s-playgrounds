@@ -3,7 +3,7 @@ import { NTable } from 'naive-ui'
 import { V1Event } from '../../../model/V1Event'
 
 const props = defineProps({
-  item: V1Event,
+  event: V1Event,
 })
 </script>
 
@@ -14,19 +14,19 @@ const props = defineProps({
         <td class="left">
           Name
         </td>
-        <td>{{ props.item.involvedObject.name }}</td>
+        <td>{{ props.event.involvedObject.name }}</td>
       </tr>
       <tr>
         <td>Namespace</td>
-        <td>{{ props.item.involvedObject.namespace }}</td>
+        <td>{{ props.event.involvedObject.namespace }}</td>
       </tr>
       <tr>
         <td>kind</td>
-        <td>{{ props.item.involvedObject.kind }}</td>
+        <td>{{ props.event.involvedObject.kind }}</td>
       </tr>
       <tr>
         <td>fieldPath</td>
-        <td>{{ props.item.involvedObject.fieldPath }}</td>
+        <td>{{ props.event.involvedObject.fieldPath }}</td>
       </tr>
     </tbody>
   </NTable>

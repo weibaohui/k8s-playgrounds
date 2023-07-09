@@ -6,7 +6,7 @@ import moment from 'moment/moment'
 import { V1Node } from '../../../model/V1Node'
 
 const props = defineProps({
-  item: V1Node,
+  node: V1Node,
 })
 const isExpended = ref(false)
 const expendedText = ref('Hide')
@@ -29,35 +29,35 @@ function toggle() {
           Created
         </td>
         <td>
-          {{ moment(item.metadata.creationTimestamp).format('yyyy-MM-DD H:mm:s Z') }}
-          {{ moment(item.metadata.creationTimestamp).fromNow() }}
+          {{ moment(node.metadata.creationTimestamp).format('yyyy-MM-DD H:mm:s Z') }}
+          {{ moment(node.metadata.creationTimestamp).fromNow() }}
         </td>
       </tr>
       <tr>
         <td>Name</td>
-        <td>{{ props.item.metadata.name }}</td>
+        <td>{{ props.node.metadata.name }}</td>
       </tr>
       <tr>
         <td>Role</td>
         <td>
-          <NodeRoleView :node="item" />
+          <NodeRoleView :node="node" />
         </td>
       </tr>
 
-      <tr v-if="props.item.metadata.labels">
+      <tr v-if="props.node.metadata.labels">
         <td>Labels</td>
         <td>
-          <NSpace v-for="(v, k) in props.item.metadata.labels" :key="k">
+          <NSpace v-for="(v, k) in props.node.metadata.labels" :key="k">
             <NTag>
               {{ k }}={{ v }}
             </NTag>
           </NSpace>
         </td>
       </tr>
-      <tr v-if="props.item.metadata.annotations">
+      <tr v-if="props.node.metadata.annotations">
         <td>Annotations</td>
         <td>
-          <NSpace v-for="(v, k) in props.item.metadata.annotations" :key="k">
+          <NSpace v-for="(v, k) in props.node.metadata.annotations" :key="k">
             <NTag v-if="!k.endsWith('last-applied-configuration')">
               {{ k }}={{ v }}
             </NTag>
@@ -67,57 +67,57 @@ function toggle() {
       <tr>
         <td>Address</td>
         <td>
-          <NTag v-for="p in props.item.status.addresses" :key="p.address">
+          <NTag v-for="p in props.node.status.addresses" :key="p.address">
             {{ p.type }}: {{ p.address }}
           </NTag>
         </td>
       </tr>
-      <tr v-if="props.item.spec.podCIDR">
+      <tr v-if="props.node.spec.podCIDR">
         <td>podCIDR</td>
-        <td>{{ props.item.spec.podCIDR }}</td>
+        <td>{{ props.node.spec.podCIDR }}</td>
       </tr>
-      <tr v-if="props.item.spec.podCIDRs">
+      <tr v-if="props.node.spec.podCIDRs">
         <td>podCIDR</td>
         <td>
-          <NTag v-for="p in props.item.spec.podCIDRs" :key="p">
+          <NTag v-for="p in props.node.spec.podCIDRs" :key="p">
             {{ p }}
           </NTag>
         </td>
       </tr>
-      <tr v-if="props.item.status.nodeInfo.architecture">
+      <tr v-if="props.node.status.nodeInfo.architecture">
         <td>architecture</td>
         <td>
-          {{ props.item.status.nodeInfo.architecture }}
+          {{ props.node.status.nodeInfo.architecture }}
         </td>
       </tr>
-      <tr v-if="props.item.status.nodeInfo.operatingSystem">
+      <tr v-if="props.node.status.nodeInfo.operatingSystem">
         <td>OS</td>
-        <td>{{ props.item.status.nodeInfo.operatingSystem }}</td>
+        <td>{{ props.node.status.nodeInfo.operatingSystem }}</td>
       </tr>
-      <tr v-if="props.item.status.nodeInfo.osImage">
+      <tr v-if="props.node.status.nodeInfo.osImage">
         <td>osImage</td>
-        <td>{{ props.item.status.nodeInfo.osImage }}</td>
+        <td>{{ props.node.status.nodeInfo.osImage }}</td>
       </tr>
-      <tr v-if="props.item.status.nodeInfo.kernelVersion">
+      <tr v-if="props.node.status.nodeInfo.kernelVersion">
         <td>kernelVersion</td>
-        <td>{{ props.item.status.nodeInfo.kernelVersion }}</td>
+        <td>{{ props.node.status.nodeInfo.kernelVersion }}</td>
       </tr>
-      <tr v-if="props.item.status.nodeInfo.containerRuntimeVersion">
+      <tr v-if="props.node.status.nodeInfo.containerRuntimeVersion">
         <td>containerRuntime</td>
-        <td>{{ props.item.status.nodeInfo.containerRuntimeVersion }}</td>
+        <td>{{ props.node.status.nodeInfo.containerRuntimeVersion }}</td>
       </tr>
-      <tr v-if="props.item.status.nodeInfo.kubeletVersion">
+      <tr v-if="props.node.status.nodeInfo.kubeletVersion">
         <td>kubeletVersion</td>
-        <td>{{ props.item.status.nodeInfo.kubeletVersion }}</td>
+        <td>{{ props.node.status.nodeInfo.kubeletVersion }}</td>
       </tr>
-      <tr v-if="props.item.status.nodeInfo.kubeProxyVersion">
+      <tr v-if="props.node.status.nodeInfo.kubeProxyVersion">
         <td>kubeProxyVersion</td>
-        <td>{{ props.item.status.nodeInfo.kubeProxyVersion }}</td>
+        <td>{{ props.node.status.nodeInfo.kubeProxyVersion }}</td>
       </tr>
-      <tr v-if="props.item.metadata.ownerReferences">
+      <tr v-if="props.node.metadata.ownerReferences">
         <td>Controlled By</td>
         <td>
-          <span v-for="r in props.item.metadata.ownerReferences" :key="r.uid">
+          <span v-for="r in props.node.metadata.ownerReferences" :key="r.uid">
             {{ r.kind }} {{ r.name }}
           </span>
         </td>
@@ -125,7 +125,7 @@ function toggle() {
       <tr>
         <td>Conditions</td>
         <td>
-          <span v-for="c in props.item.status.conditions" :key="c.type" style="margin-left: 5px">
+          <span v-for="c in props.node.status.conditions" :key="c.type" style="margin-left: 5px">
             <NTag v-if="c.status === 'True'" type="success">
               {{ c.type }}
             </NTag>
@@ -136,15 +136,15 @@ function toggle() {
         </td>
       </tr>
 
-      <tr v-if="props.item.spec.taints?.length">
+      <tr v-if="props.node.spec.taints?.length">
         <td>taints</td>
         <td>
           <NCollapse>
-            <NCollapseItem
+            <NCollapseItem>
               :title="getShowText()" name="1" @click="toggle()"
-            >
+              >
               <template #header-extra>
-                <NBadge :value="props.item.spec.taints.length " />
+                <NBadge :value="props.node.spec.taints.length " />
               </template>
               <NTable :single-line="false">
                 <thead>
@@ -156,7 +156,7 @@ function toggle() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="t in props.item.spec.taints" :key="t.key">
+                  <tr v-for="t in props.node.spec.taints" :key="t.key">
                     <td>{{ t.key }}</td>
                     <td>{{ t.value }}</td>
                     <td>{{ t.effect }}</td>

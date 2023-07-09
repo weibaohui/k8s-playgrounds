@@ -6,15 +6,15 @@ import { NDivider, NIcon, NTable, NTag, NText } from 'naive-ui'
 import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
-  item: V1Pod,
+  pod: V1Pod,
 })
 function getContainerStatusByName(name) {
-  return props.item.status.containerStatuses.filter(r => r.name === name).pop()
+  return props.pod.status.containerStatuses.filter(r => r.name === name).pop()
 }
 </script>
 
 <template>
-  <NSpace v-for="t in props.item.spec.containers" :key="t.name">
+  <NSpace v-for="t in props.pod.spec.containers" :key="t.name">
     <NDivider title-placement="left">
       <NIcon v-if="getContainerStatusByName(t.name).ready" :component="Docker" color="green" size="20" />
       <NIcon v-else :component="Docker" color="red" size="20" />
@@ -27,7 +27,7 @@ function getContainerStatusByName(name) {
             Status
           </td>
           <td>
-            <ContainerState :item="getContainerStatusByName(t.name).state" />
+            <ContainerState :pod="getContainerStatusByName(t.name).state" />
             <NText v-if="getContainerStatusByName(t.name).ready" type="success">
               ready
             </NText>

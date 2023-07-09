@@ -15,13 +15,13 @@ const props = defineProps({
       Basic Info
     </NText>
   </NH6>
-  <EventBasicInfoView :item="event" />
+  <EventBasicInfoView :event="event" />
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
       Involved object
     </NText>
   </NH6>
-  <EventInvolvedView :item="event" />
+  <EventInvolvedView :event="event" />
 </template>
 
 <style scoped>

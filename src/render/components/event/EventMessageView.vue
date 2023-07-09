@@ -3,16 +3,16 @@ import { NText } from 'naive-ui'
 import { V1Event } from '../../../model/V1Event'
 
 const props = defineProps({
-  item: V1Event,
+  event: V1Event,
 })
 </script>
 
 <template>
-  <NText v-if="item.type === 'Warning'" type="error">
-    {{ item.message }}
+  <NText v-if="event.type === 'Warning'" type="error">
+    {{ event.message }}
   </NText>
   <NText v-else type="default">
-    {{ item.message }}
+    {{ event.message }}
   </NText>
 </template>
 

@@ -4,7 +4,7 @@ import moment from 'moment/moment'
 import { V1Event } from '../../../model/V1Event'
 
 const props = defineProps({
-  item: V1Event,
+  event: V1Event,
 })
 </script>
 
@@ -16,49 +16,49 @@ const props = defineProps({
           Created
         </td>
         <td>
-          {{ moment(item.metadata.creationTimestamp).format('yyyy-MM-DD H:mm:s Z') }}
-          {{ moment(item.metadata.creationTimestamp).fromNow() }}
+          {{ moment(event.metadata.creationTimestamp).format('yyyy-MM-DD H:mm:s Z') }}
+          {{ moment(event.metadata.creationTimestamp).fromNow() }}
         </td>
       </tr>
       <tr>
         <td>Name</td>
-        <td>{{ props.item.metadata.name }}</td>
+        <td>{{ props.event.metadata.name }}</td>
       </tr>
       <tr>
         <td>Namespace</td>
-        <td>{{ props.item.metadata.namespace }}</td>
+        <td>{{ props.event.metadata.namespace }}</td>
       </tr>
       <tr>
         <td>Message</td>
-        <td>{{ props.item.message }}</td>
+        <td>{{ props.event.message }}</td>
       </tr>
       <tr>
         <td>Reason</td>
-        <td>{{ props.item.reason }}</td>
+        <td>{{ props.event.reason }}</td>
       </tr>
       <tr>
         <td>source</td>
-        <td>{{ props.item.source.component }} {{ props.item.source.host }}</td>
+        <td>{{ props.event.source.component }} {{ props.event.source.host }}</td>
       </tr>
       <tr>
         <td>First seen</td>
         <td>
-          {{ moment(item.firstTimestamp).fromNow() }} ({{ moment(item.firstTimestamp).format('yyyy-MM-DD H:mm:s Z') }})
+          {{ moment(event.firstTimestamp).fromNow() }} ({{ moment(event.firstTimestamp).format('yyyy-MM-DD H:mm:s Z') }})
         </td>
       </tr>
       <tr>
         <td>Last seen</td>
         <td>
-          {{ moment(item.lastTimestamp).fromNow() }} ({{ moment(item.lastTimestamp).format('yyyy-MM-DD H:mm:s Z') }})
+          {{ moment(event.lastTimestamp).fromNow() }} ({{ moment(event.lastTimestamp).format('yyyy-MM-DD H:mm:s Z') }})
         </td>
       </tr>
       <tr>
         <td>Count</td>
-        <td>{{ props.item.count }}</td>
+        <td>{{ props.event.count }}</td>
       </tr>
       <tr>
         <td>Type</td>
-        <td>{{ props.item.type }}</td>
+        <td>{{ props.event.type }}</td>
       </tr>
     </tbody>
   </NTable>

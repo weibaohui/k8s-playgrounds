@@ -10,6 +10,10 @@ export class PodService {
     return await get<V1Pod[]>(`/watch/pods/${ns}`)
   }
 
+  async getPod(ns: string, name: string): Promise<V1Pod> {
+    return await get<V1Pod>(`/watch/pod/${ns}/${name}`)
+  }
+
   async deletePods(podNsName: string[]) {
     await post('/watch/pods/delete/', podNsName)
   }

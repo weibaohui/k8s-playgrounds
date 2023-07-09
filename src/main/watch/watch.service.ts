@@ -102,6 +102,12 @@ export class WatchService {
     return podResp.body.items
   }
 
+  async getPod(ns: string, name: string) {
+    const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
+    const podResp = await k8sApi.readNamespacedPod(name, ns)
+    return podResp.body
+  }
+
   async getNodes() {
     const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
     const podResp = await k8sApi.listNode()

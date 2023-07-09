@@ -16,13 +16,13 @@ const props = defineProps({
       Basic Info
     </NText>
   </NH6>
-  <NodeBasicInfoView :item="node" />
+  <NodeBasicInfoView :node="node" />
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
       Resource
     </NText>
   </NH6>
-  <NodeResourceView :item="node" />
+  <NodeResourceView :node="node" />
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
       Events

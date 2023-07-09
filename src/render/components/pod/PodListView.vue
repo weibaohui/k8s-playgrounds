@@ -26,7 +26,7 @@ function showPodView(x: V1Pod) {
     title: x.metadata.name,
     width: 800,
   },
-  h(PodView, { item: x }),
+  h(PodView, { pod: x }),
   )
 }
 async function showNodeView(x: V1Pod) {
