@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TimeAge } from '@main/utils/timeAge'
+import EventLastSeen from '@render/components/event/EventLastSeen.vue'
 import EventMessageView from '@render/components/event/EventMessageView.vue'
 import EventView from '@render/components/event/EventView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
@@ -92,8 +92,10 @@ function createColumns(): DataTableColumns<V1Namespace> {
       key: 'LastSeen',
       render(row) {
         return h(
-          NSpace,
-          () => TimeAge.getK8sAge((row as V1Event).lastTimestamp),
+          EventLastSeen,
+          {
+            event: row as V1Event,
+          },
         )
       },
     },
