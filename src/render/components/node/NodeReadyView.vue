@@ -8,6 +8,9 @@ const props = defineProps({
 </script>
 
 <template>
+  <NTag v-if="props.node.spec.unschedulable" type="error">
+    SchedulingDisable
+  </NTag>
   <NTag v-if="node.status.conditions.filter(r => r.type === 'Ready').pop().status === 'True'" type="success">
     Ready
   </NTag>

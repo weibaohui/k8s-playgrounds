@@ -48,6 +48,16 @@ function createColumns(): DataTableColumns<V1Node> {
       },
     },
     {
+      title: 'Taints',
+      key: 'Taints',
+      render(row) {
+        return h(
+          NSpace,
+          () => (row as V1Node).spec.taints ? (row as V1Node).spec.taints.length : 0,
+        )
+      },
+    },
+    {
       title: 'Role',
       key: 'Role',
       render(row) {

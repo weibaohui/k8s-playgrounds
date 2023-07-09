@@ -123,6 +123,19 @@ function toggle() {
         </td>
       </tr>
       <tr>
+        <td>
+          schedule
+        </td>
+        <td>
+          <NTag v-if="props.node.spec.unschedulable" type="error">
+            Unschedulable
+          </NTag>
+          <NTag v-else type="success">
+            Schedulable
+          </NTag>
+        </td>
+      </tr>
+      <tr>
         <td>Conditions</td>
         <td>
           <span v-for="c in props.node.status.conditions" :key="c.type" style="margin-left: 5px">
@@ -140,9 +153,9 @@ function toggle() {
         <td>taints</td>
         <td>
           <NCollapse>
-            <NCollapseItem>
+            <NCollapseItem
               :title="getShowText()" name="1" @click="toggle()"
-              >
+            >
               <template #header-extra>
                 <NBadge :value="props.node.spec.taints.length " />
               </template>
