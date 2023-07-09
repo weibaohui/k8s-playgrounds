@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
+import { CheckmarkCircle } from '@vicons/ionicons5'
 import moment from 'moment/moment'
-import { NBadge, NCollapse, NCollapseItem, NSpace, NTable, NTag } from 'naive-ui'
+import { NBadge, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
 import { V1Pod } from '../../../model/V1Pod'
 
@@ -91,6 +92,18 @@ function toggle() {
           </NTag>
         </td>
       </tr>
+      <tr v-if="props.pod.spec.dnsPolicy">
+        <td>dnsPolicy</td>
+        <td>{{ props.pod.spec.dnsPolicy }}</td>
+      </tr>
+      <tr v-if="props.pod.spec.schedulerName">
+        <td>schedulerName</td>
+        <td>{{ props.pod.spec.schedulerName }}</td>
+      </tr>
+      <tr v-if="props.pod.spec.restartPolicy">
+        <td>restartPolicy</td>
+        <td>{{ props.pod.spec.restartPolicy }}</td>
+      </tr>
       <tr v-if="props.pod.spec.serviceAccount">
         <td>Service Account</td>
         <td>{{ props.pod.spec.serviceAccount }}</td>
@@ -109,6 +122,9 @@ function toggle() {
           <span v-for="c in props.pod.status.conditions" :key="c.type" style="margin-left: 5px">
             <NTag v-if="c.status === 'True'" type="success">
               {{ c.type }}
+              <template #icon>
+                <NIcon :component="CheckmarkCircle" />
+              </template>
             </NTag>
             <NTag v-else type="error">
               {{ c.type }}

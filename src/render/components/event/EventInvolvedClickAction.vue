@@ -18,6 +18,7 @@ async function openDrawer() {
   const kind = props.event.involvedObject.kind
   const drawerProps = {
     title: name,
+    width: 800,
   }
   let content: VNode
   switch (kind) {

@@ -2,6 +2,7 @@
 import ContainerProbeView from '@render/components/container/ContainerProbeView.vue'
 import ContainerState from '@render/components/container/ContainerState.vue'
 import { Docker } from '@vicons/fa'
+import { DocumentLink24Filled } from '@vicons/fluent'
 import { NDivider, NIcon, NTable, NTag, NText } from 'naive-ui'
 import { V1Pod } from '../../../model/V1Pod'
 
@@ -74,7 +75,9 @@ function getContainerStatusByName(name) {
               <NTag v-else type="error">
                 rw
               </NTag>
-              <NIcon :component="Link12Regular" />
+              <NTag>
+                <NIcon :component="DocumentLink24Filled" />
+              </NTag>
               <NTag type="success">
                 {{ p.name }}
               </NTag>

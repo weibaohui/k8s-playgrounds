@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import NodeRoleView from '@render/components/node/NodeRoleView.vue'
-import { NBadge, NCollapse, NCollapseItem, NSpace, NTable, NTag } from 'naive-ui'
+import { CheckmarkCircle } from '@vicons/ionicons5'
+import { NBadge, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
 import moment from 'moment/moment'
 import { V1Node } from '../../../model/V1Node'
@@ -139,8 +140,17 @@ function toggle() {
         <td>Conditions</td>
         <td>
           <span v-for="c in props.node.status.conditions" :key="c.type" style="margin-left: 5px">
-            <NTag v-if="c.status === 'True'" type="success">
+            <NTag v-if="c.status === 'True' && c.type === 'Ready'" type="success">
               {{ c.type }}
+              <template #icon>
+                <NIcon :component="CheckmarkCircle" />
+              </template>
+            </NTag>
+            <NTag v-else-if="c.status === 'False' && c.type.endsWith('Pressure') " type="success">
+              {{ c.type }}
+              <template #icon>
+                <NIcon :component="CheckmarkCircle" />
+              </template>
             </NTag>
             <NTag v-else type="error">
               {{ c.type }}
