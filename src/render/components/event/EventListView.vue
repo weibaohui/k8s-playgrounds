@@ -139,7 +139,6 @@ function onTextChanged(text: String) {
 
 function onNsChanged(ns: String) {
   selectedNs.value = ns
-  console.log('nnnnnnn', ns)
   getEventList()
 }
 getEventList()
