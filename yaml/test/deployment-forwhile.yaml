@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: forwhile
+  name: forwhile
+spec:
+  selector:
+    matchLabels:
+      app: forwhile
+  template:
+    metadata:
+      labels:
+        app: forwhile
+    spec:
+      containers:
+      - image: bash
+        name: forwhile
+        command:
+          - bash
+          - -c
+          - for((i=0;i<=100000000;i++));do sleep 1;echo $i; done;

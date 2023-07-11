@@ -34,6 +34,10 @@ export class EventsGateway {
     this.server.emit('events', v1Pod)
   }
 
+  async sendLog(nsn: string, log: string) {
+    this.server.emit(`log:${nsn}`, log)
+  }
+
   async sendResource(obj: object) {
     this.server.emit('events', obj)
   }

@@ -1,4 +1,4 @@
-import { Stream, Writable } from 'node:stream'
+import { Stream } from 'node:stream'
 import * as stream from 'node:stream'
 import { LogOptions } from '@kubernetes/client-node/dist/log'
 import { V1Status } from '@kubernetes/client-node/dist/api'
@@ -149,15 +149,16 @@ export class WatchService {
     return r.body
   }
 
-  async logPods(namespace: string, podName: string, containerName: string, stream: Writable, options?: LogOptions) {
+  async logPods(namespace: string, podName: string, containerName: string, options?: LogOptions) {
     const log = new k8s.Log(this.getKubeConfig())
     const logStream = new Stream.PassThrough()
 
     logStream.on('data', (chunk) => {
       // use write rather than console.log to prevent double line feed
       process.stdout.write(chunk)
+      this.eventsGateway.sendLog(`${namespace}/${podName}`, chunk)
     })
-    await log.log(namespace, podName, containerName, stream, options)
+    await log.log(namespace, podName, containerName, logStream, options)
   }
 
   async execPod(namespace: string, podName: string, containerName: string, command: string | string[], stdout: stream.Writable | null, stderr: stream.Writable | null, stdin: stream.Readable | null, tty: boolean, statusCallback?: (status: V1Status) => void) {
