@@ -1,3 +1,4 @@
+import stream from 'node:stream'
 import { LogOptions } from '@kubernetes/client-node/dist/log'
 import { WatchService } from '@main/watch/watch.service'
 import {
@@ -86,5 +87,22 @@ export class WatchController {
 
     await this.watchService.logPods(ns, podName, containerName, opt)
     return { aaaa: opt }
+  }
+
+  @Get('/pod/exec/:ns/:podName/:containerName')
+  async execPod(@Param('ns') ns,
+                  @Param('podName') podName,
+                  @Param('containerName') containerName,
+  ) {
+    console.log(ns, podName, containerName)
+    const duplexStream = new stream.PassThrough()
+    duplexStream.on('data', (res) => {
+      console.log('duplexStream on data')
+      console.log(res.toString())
+    })
+
+    const stdin = process.stdin
+    await this.watchService.execPod('default', 'forwhile-745849b656-4kvcm', 'forwhile', 'date', duplexStream, duplexStream, stdin, true)
+    return { ok: 'ok' }
   }
 }

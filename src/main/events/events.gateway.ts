@@ -1,13 +1,13 @@
 import { V1Pod } from '@kubernetes/client-node'
 import {
+  ConnectedSocket,
   MessageBody,
   SubscribeMessage,
   WebSocketGateway,
   WebSocketServer,
   WsResponse,
 } from '@nestjs/websockets'
-import { Observable, from } from 'rxjs'
-import { map } from 'rxjs/operators'
+import { Observable, from, map } from 'rxjs'
 import { Server } from 'socket.io'
 
 @WebSocketGateway({
@@ -19,10 +19,13 @@ export class EventsGateway {
   @WebSocketServer()
   server: Server
 
-  @SubscribeMessage('events')
-  findAll(@MessageBody() data: any): Observable<WsResponse<number>> {
-    console.log(data)
+  @SubscribeMessage('xxxx')
+  findAll(@MessageBody() data: any, @ConnectedSocket() client: any): Observable<WsResponse<any>> {
+    console.log(data, client.handshake.query.token)
+
     return from([1, 2, 3]).pipe(map(item => ({ event: 'events', data: item })))
+    // return new Observable<WsResponse<any>>((r) => {
+    //    })
   }
 
   @SubscribeMessage('identity')

@@ -217,6 +217,8 @@ async function getK8sPodList() {
 async function socketio() {
   const socket = new SocketIOService().open()
   console.log('socket-io', socket.active)
+  socket.send('2222')
+  socket.emit('xxxx', 'yyyyy')
   socket.on('events', (data) => {
     // 处理接收到的数据
 

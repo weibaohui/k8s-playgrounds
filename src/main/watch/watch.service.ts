@@ -163,6 +163,9 @@ export class WatchService {
 
   async execPod(namespace: string, podName: string, containerName: string, command: string | string[], stdout: stream.Writable | null, stderr: stream.Writable | null, stdin: stream.Readable | null, tty: boolean, statusCallback?: (status: V1Status) => void) {
     const exec = new k8s.Exec(this.getKubeConfig())
-    return exec.exec(namespace, podName, containerName, command, stdout, stderr, stdin, tty, statusCallback)
+
+    const ws = await exec.exec(namespace, podName, containerName, command, stdout, stderr, stdin, tty, statusCallback)
+
+    return ws
   }
 }
