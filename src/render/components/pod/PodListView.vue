@@ -8,6 +8,7 @@ import NodeView from '@render/components/node/NodeView.vue'
 import NsSelect from '@render/components/ns/NsSelect.vue'
 import FloatRemoveButton from '@render/components/common/FloatRemoveButton.vue'
 import PodAge from '@render/components/pod/PodAge.vue'
+import PodExecView from '@render/components/pod/PodExecView.vue'
 import PodView from '@render/components/pod/PodView.vue'
 import SearchFilter from '@render/components/common/SearchFilter.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
@@ -27,6 +28,14 @@ function showPodView(x: V1Pod) {
     width: 800,
   },
   h(PodView, { pod: x }),
+  )
+}
+function showPodExecView(x: V1Pod) {
+  drawer.showDrawer({
+    title: x.metadata.name,
+    width: 1000,
+  },
+  h(PodExecView, { pod: x }),
   )
 }
 async function showNodeView(x: V1Pod) {
@@ -174,10 +183,10 @@ function createColumns(): DataTableColumns<V1Pod> {
             tertiary: true,
             size: 'small',
             onClick: () => {
-              showPodView(row)
+              showPodExecView(row)
             },
           },
-          { default: () => 'Play1' },
+          { default: () => 'exec' },
         )
       },
     },

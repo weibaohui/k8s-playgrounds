@@ -28,7 +28,9 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.2"
+    "vue-router": "^4.2.2",
+    "xterm": "^5.2.1",
+    "xterm-addon-fit": "^0.7.0"
   },
   "devDependencies": {
     "@lightwing/eslint-config": "^0.0.17",
