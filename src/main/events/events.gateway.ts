@@ -46,12 +46,18 @@ export class EventsGateway {
     const duplexStream = new stream.PassThrough()
 
     const stdin = process.stdin
-    const ws = await this.watchService.execPod('default', 'forwhile-745849b656-mcmsb', 'forwhile', 'bash', duplexStream, duplexStream, stdin, true)
+    const command = 'bash'
+    const ws = await this.watchService.execPod('default', 'forwhile-745849b656-mcmsb', 'forwhile', command, duplexStream, duplexStream, stdin, true)
 
     ws.on('message', (d, f) => {
       console.log('onmessage', f, d.toString(), btoa(data))
       this.server.emit('terminal', d.toString())
     })
+    ws.send(`0${btoa(data)}`, (e) => {
+      console.log(e)
+    })
+    ws.send(`0${btoa('date')}`)
+    ws.send(`0${btoa('ls')}`)
     ws.send(`0${btoa(data)}`)
   }
 
