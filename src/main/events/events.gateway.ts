@@ -1,3 +1,4 @@
+import stream from 'node:stream'
 import { V1Pod } from '@kubernetes/client-node'
 import { WatchService } from '@main/watch/watch.service'
 import {
@@ -34,9 +35,22 @@ export class EventsGateway {
     //    })
   }
 
-  @SubscribeMessage('identity')
-  async identity(@MessageBody() data: number): Promise<number> {
-    return data
+  @SubscribeMessage('terminal')
+  async identity(@MessageBody() data: any): Promise<any> {
+    console.log('terminal receive', data)
+    // return data
+    //
+    // return new Observable<string>((s) => {
+    //
+    // })
+    const duplexStream = new stream.PassThrough()
+    duplexStream.on('data', (res) => {
+      console.log('duplexStream on data')
+      console.log(res.toString())
+      this.server.emit('terminal', res.toString())
+    })
+    const stdin = process.stdin
+    await this.watchService.execPod('default', 'forwhile-745849b656-mcmsb', 'forwhile', data, duplexStream, duplexStream, stdin, true)
   }
 
   @SubscribeMessage('watch-init')

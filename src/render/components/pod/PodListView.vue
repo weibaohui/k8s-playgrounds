@@ -229,7 +229,7 @@ async function watchPodChange() {
   console.log('socket-io', socket.active)
   socket.on('events-pod', (data) => {
     // 处理接收到的数据
-    const p = data.object as V1Pod
+    const p: V1Pod = data.object as V1Pod
     if (selectedNs.value != null && p.metadata.namespace !== selectedNs.value) {
       // console.log('跳过', selectedNs.value, item.metadata.namespace)
       return
