@@ -109,7 +109,7 @@ function termData() {
           cmdData.value = `${cmdData.value + data}`
         else
           cmdData.value = `${cmdData.value}`
-        term.value.writeln('')
+        // term.value.writeln('')
         // const cmd = Base64.encode(cmdData.value)
         terminalSocket.value.emit('terminal', `${cmdData.value}`)
         cmdData.value = ''
