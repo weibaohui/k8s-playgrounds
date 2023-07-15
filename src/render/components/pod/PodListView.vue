@@ -214,14 +214,12 @@ async function getK8sPodList() {
   })
 }
 
-async function socketio() {
+async function watchPodChange() {
   const socket = new SocketIOService().open()
+  socket.emit('watch-init', 'init')
   console.log('socket-io', socket.active)
-  socket.send('2222')
-  socket.emit('xxxx', 'yyyyy')
-  socket.on('events', (data) => {
+  socket.on('events-pod', (data) => {
     // 处理接收到的数据
-
     const p = data.object as V1Pod
     if (selectedNs.value != null && p.metadata.namespace !== selectedNs.value) {
       // console.log('跳过', selectedNs.value, item.metadata.namespace)
@@ -264,8 +262,7 @@ function onNsChanged(ns: String) {
 getK8sPodList()
 setTimeout(
   () => {
-    socketio()
-    K8sService.podService.startK8sWatch()
+    watchPodChange()
   }, 5000)
 </script>
 

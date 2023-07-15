@@ -1,4 +1,5 @@
 import { V1Pod } from '@kubernetes/client-node'
+import { WatchService } from '@main/watch/watch.service'
 import {
   ConnectedSocket,
   MessageBody,
@@ -7,6 +8,7 @@ import {
   WebSocketServer,
   WsResponse,
 } from '@nestjs/websockets'
+import { once } from 'lodash'
 import { Observable, from, map } from 'rxjs'
 import { Server } from 'socket.io'
 
@@ -16,6 +18,10 @@ import { Server } from 'socket.io'
   },
 })
 export class EventsGateway {
+  constructor(
+    private watchService: WatchService,
+  ) {}
+
   @WebSocketServer()
   server: Server
 
@@ -33,15 +39,31 @@ export class EventsGateway {
     return data
   }
 
-  async sendPod(v1Pod: V1Pod) {
-    this.server.emit('events', v1Pod)
+  @SubscribeMessage('watch-init')
+  async watchInit(@MessageBody() data: string): Promise<string> {
+    console.log('watchInit')
+    await this.startWatch()
+    return data
   }
 
-  async sendLog(nsn: string, log: string) {
+  private async sendPod(v1Pod: V1Pod) {
+    this.server.emit('events-pod', v1Pod)
+  }
+
+  private async sendLog(nsn: string, log: string) {
     this.server.emit(`log:${nsn}`, log)
   }
 
-  async sendResource(obj: object) {
-    this.server.emit('events', obj)
+  private async sendResource(obj: object) {
+    this.server.emit('events-res', obj)
+  }
+
+  private async startWatch() {
+    once(() => {
+      console.log('start pod watcher')
+      this.watchService.PodWatcher(async (d) => {
+        return await this.sendPod(d)
+      })
+    })()
   }
 }

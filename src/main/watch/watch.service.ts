@@ -2,7 +2,6 @@ import { Stream } from 'node:stream'
 import * as stream from 'node:stream'
 import { LogOptions } from '@kubernetes/client-node/dist/log'
 import { V1Status } from '@kubernetes/client-node/dist/api'
-import { EventsGateway } from '@main/events/events.gateway'
 import { Injectable, Logger } from '@nestjs/common'
 import * as k8s from '@kubernetes/client-node'
 import { ConfigService } from '@nestjs/config'
@@ -13,21 +12,20 @@ export class WatchService {
 
   constructor(
     private configService: ConfigService,
-    private eventsGateway: EventsGateway,
   ) {
   }
 
   private kc = new k8s.KubeConfig()
 
-  async PodWatcher() {
-    this.watch('pod')
+  async PodWatcher(cb?: (d: any) => void) {
+    this.watch('pod', cb)
   }
 
-  async NsWatcher() {
-    this.watch('ns')
+  async NsWatcher(cb?: (d: any) => void) {
+    this.watch('ns', cb)
   }
 
-  private watch(resType: string) {
+  private watch(resType: string, cb?: (d: any) => void) {
     const watchAPI = this.getResourceWatchPath(resType)
     const kc = this.getKubeConfig()
     const watch = new k8s.Watch(kc)
@@ -38,27 +36,28 @@ export class WatchService {
       },
       // callback is called for each received object.
       (type, apiObj, watchObj) => {
-        if (type === 'ADDED') {
-          // tslint:disable-next-line:no-console
-          // console.log('new object:')
-        }
-        else if (type === 'MODIFIED') {
-          // tslint:disable-next-line:no-console
-          // console.log('changed object:')
-        }
-        else if (type === 'DELETED') {
-          // tslint:disable-next-line:no-console
-          // console.log('deleted object:')
-        }
-        else if (type === 'BOOKMARK') {
-          // tslint:disable-next-line:no-console
-          // console.log(`bookmark: ${watchObj.metadata.resourceVersion}`)
-        }
-        else {
-          // tslint:disable-next-line:no-console
-          // console.log(`unknown type: ${type}`)
-        }
-        this.eventsGateway.sendPod(watchObj)
+        cb(watchObj)
+        // if (type === 'ADDED') {
+        //   // tslint:disable-next-line:no-console
+        //   // console.log('new object:')
+        // }
+        // else if (type === 'MODIFIED') {
+        //   // tslint:disable-next-line:no-console
+        //   // console.log('changed object:')
+        // }
+        // else if (type === 'DELETED') {
+        //   // tslint:disable-next-line:no-console
+        //   // console.log('deleted object:')
+        // }
+        // else if (type === 'BOOKMARK') {
+        //   // tslint:disable-next-line:no-console
+        //   // console.log(`bookmark: ${watchObj.metadata.resourceVersion}`)
+        // }
+        // else {
+        //   // tslint:disable-next-line:no-console
+        //   // console.log(`unknown type: ${type}`)
+        // }
+        // this.eventsGateway.sendPod(watchObj)
       },
       // done callback is called if the watch terminates normally
       (err) => {
@@ -132,9 +131,6 @@ export class WatchService {
 
   async events(ns?: string) {
     const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
-    console.log(ns)
-    console.log(ns === 'null')
-    console.log(ns === null)
     if (!ns || ns === 'null' || ns === 'undefined') {
       const eventsAll = await k8sApi.listEventForAllNamespaces()
       return eventsAll.body.items
@@ -156,7 +152,7 @@ export class WatchService {
     logStream.on('data', (chunk) => {
       // use write rather than console.log to prevent double line feed
       process.stdout.write(chunk)
-      this.eventsGateway.sendLog(`${namespace}/${podName}`, chunk)
+      // this.eventsGateway.sendLog(`${namespace}/${podName}`, chunk)
     })
     await log.log(namespace, podName, containerName, logStream, options)
   }
