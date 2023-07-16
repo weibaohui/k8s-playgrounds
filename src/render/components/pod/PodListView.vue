@@ -224,7 +224,7 @@ async function getK8sPodList() {
 }
 
 async function watchPodChange() {
-  const socket = SocketIOService.instance.getSocket('podWatch')
+  const socket = SocketIOService.instance.getSocket()
   socket.emit('watch-init', 'init')
   console.log('socket-io', socket.active)
   socket.on('events-pod', (data) => {

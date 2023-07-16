@@ -21,7 +21,7 @@ const selectedContainerName = ref('')
 const options = ref<SelectOption[]>()
 
 function createWS() {
-  terminalSocket.value = SocketIOService.instance.getSocket('terminal')
+  terminalSocket.value = SocketIOService.instance.getSocket()
   console.log('isWsOpen()', isWsOpen())
   // server 返回数据写到termjs上
   terminalSocket.value.on('terminal', (data: TerminalData) => {
