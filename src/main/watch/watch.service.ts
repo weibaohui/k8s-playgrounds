@@ -184,7 +184,6 @@ export class WatchService {
       env: process.env,
     })
     pk.onData((d) => {
-      podTerminal.data = d.toString()
       cb(d.toString())
     })
     pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash || ash || sh)"\r`)
