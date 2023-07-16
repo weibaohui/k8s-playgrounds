@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { TerminalData } from '@main/watch/watch.model'
 import { SocketIOService } from '@render/service/k8s/SocketIOService'
 import { debounce } from 'lodash'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
@@ -16,30 +17,19 @@ const term = ref(null)
 const fitAddon = new FitAddon()
 
 function createWS() {
-  // const url = 'ws://127.0.0.1:3007/socket.io/?token=your-token&EIO=4&transport=websocket'
-  // terminalSocket.value = new WebSocket(url)
-  // terminalSocket.value.onopen = runRealTerminal
-  // terminalSocket.value.onmessage = onWSReceive
-  // terminalSocket.value.onclose = closeRealTerminal
-  // terminalSocket.value.onerror = errorRealTerminal
-
-  terminalSocket.value = new SocketIOService().open()
-
+  terminalSocket.value = SocketIOService.instance.getSocket()
+  console.log(SocketIOService.instance.getSocket())
+  console.log(SocketIOService.instance.getSocket().active)
   // server 返回数据写到termjs上
-  terminalSocket.value.on('terminal', (data) => {
+  terminalSocket.value.on('terminal', (data: TerminalData) => {
     console.log('terminalSocket on terminal', data)
     // term.value.element && term.value.focus()
-    term.value.write(typeof data === 'string' ? data : new Uint8Array(data))
+    term.value.write(data.data)
   })
 }
 function initWS() {
   if (!terminalSocket.value)
     createWS()
-
-  if (isWsOpen()) {
-    terminalSocket.value.close()
-    createWS()
-  }
 }
 // 发送给后端,调整后端终端大小,和前端保持一致,不然前端只是范围变大了,命令还是会换行
 function resizeRemoteTerminal() {
@@ -111,7 +101,13 @@ function termData() {
           cmdData.value = `${cmdData.value}`
         // term.value.writeln('')
         // const cmd = Base64.encode(cmdData.value)
-        terminalSocket.value.emit('terminal', `${cmdData.value}`)
+        const c = props.pod.spec.containers[0]
+        const x = new TerminalData()
+        x.ns = props.pod.metadata.namespace
+        x.name = props.pod.metadata.name
+        x.containerName = c.name
+        x.command = `${cmdData.value}`
+        terminalSocket.value.emit('terminal', x)
         cmdData.value = ''
       }
     }

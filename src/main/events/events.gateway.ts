@@ -1,5 +1,6 @@
 import * as process from 'node:process'
 import os from 'node:os'
+import { TerminalData } from '@main/watch/watch.model'
 import { IPty } from 'node-pty'
 import { V1Pod } from '@kubernetes/client-node'
 import { WatchService } from '@main/watch/watch.service'
@@ -27,7 +28,7 @@ export class EventsGateway {
     private watchService: WatchService,
   ) {}
 
-  ptys = new Map<string, IPty>()
+  ptyList = new Map<string, IPty>()
 
   @WebSocketServer()
   server: Server
@@ -42,16 +43,16 @@ export class EventsGateway {
   }
 
   @SubscribeMessage('terminal')
-  async identity(@MessageBody() data: any): Promise<any> {
-    console.log('terminal receive', data)
-    const pk = this.getPty('default', 'forwhile-745849b656-swff6', 'forwhile')
-    pk.write(`${data}\r`)
+  async identity(@MessageBody() podTerminal: TerminalData): Promise<any> {
+    console.log('terminal receive', podTerminal)
+    const pk = this.getPty(podTerminal)
+    pk.write(`${podTerminal.command}\r`)
   }
 
-  private getPty(ns: string, name: string, containerName: string) {
-    const key = `${ns}/${name}/${containerName}`
-    if (this.ptys.has(key))
-      return this.ptys.get(key)
+  private getPty(podTerminal: TerminalData) {
+    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
+    if (this.ptyList.has(key))
+      return this.ptyList.get(key)
 
     const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
 
@@ -63,13 +64,14 @@ export class EventsGateway {
       env: process.env,
     })
 
-    pk.onData((data) => {
-      process.stdout.write(data.toString())
-      this.server.emit('terminal', data.toString())
+    pk.onData((d) => {
+      process.stdout.write(d.toString())
+      podTerminal.data = d.toString()
+      this.server.emit('terminal', podTerminal)
     })
-    pk.write(`kubectl exec -i -t -n ${ns} ${name} -c ${containerName} -- sh -c "clear; (bash || ash || sh)"\r`)
-    this.ptys.set(key, pk)
-    return this.ptys.get(key)
+    pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash || ash || sh)"\r`)
+    this.ptyList.set(key, pk)
+    return this.ptyList.get(key)
   }
 
   @SubscribeMessage('watch-init')
