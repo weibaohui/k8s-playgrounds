@@ -5,8 +5,10 @@ export class SocketIOService {
   sc = null
   static instance = new SocketIOService()
   getSocket() {
-    if (this.sc !== null)
+    if (this.sc !== null) {
+      this.sc.connect()
       return this.sc
+    }
     once(() => {
       this.sc = io('http://127.0.0.1:3007', {
         transports: ['websocket'], // 指定传输方式，如WebSocket

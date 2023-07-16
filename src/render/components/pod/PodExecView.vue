@@ -28,6 +28,8 @@ function createWS() {
 function initWS() {
   if (!terminalSocket.value)
     createWS()
+  if (!isWsOpen())
+    createWS()
 }
 // 发送给后端,调整后端终端大小,和前端保持一致,不然前端只是范围变大了,命令还是会换行
 function resizeRemoteTerminal() {
