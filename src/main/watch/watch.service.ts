@@ -14,7 +14,7 @@ import { ConfigService } from '@nestjs/config'
 @Injectable()
 export class WatchService {
   private readonly logger = new Logger(WatchService.name)
-  private ptyList = new Map<string, IPty>()
+  private ptyMap = new Map<string, IPty>()
 
   constructor(
     private configService: ConfigService,
@@ -169,10 +169,10 @@ export class WatchService {
     return ws
   }
 
-  getPty(podTerminal: TerminalData, cb: (d: string) => void) {
+  getKubectlPty(podTerminal: TerminalData, cb: (d: string) => void) {
     const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
-    if (this.ptyList.has(key))
-      return this.ptyList.get(key)
+    if (this.ptyMap.has(key))
+      return this.ptyMap.get(key)
 
     const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
 
@@ -186,8 +186,17 @@ export class WatchService {
     pk.onData((d) => {
       cb(d.toString())
     })
-    pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash || ash || sh)"\r`)
-    this.ptyList.set(key, pk)
-    return this.ptyList.get(key)
+    pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash || ash || zsh || sh)"\r`)
+    this.ptyMap.set(key, pk)
+    return this.ptyMap.get(key)
+  }
+
+  resizeKubectlPty(podTerminal: TerminalData, cb?: () => void) {
+    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
+    if (this.ptyMap.has(key)) {
+      const pk = this.ptyMap.get(key)
+      pk.resize(podTerminal.columns, podTerminal.rows)
+      cb?.()
+    }
   }
 }

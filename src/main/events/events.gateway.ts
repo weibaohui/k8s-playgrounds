@@ -33,12 +33,17 @@ export class EventsGateway {
   }
 
   @SubscribeMessage('terminal')
-  async identity(@MessageBody() podTerminal: TerminalData): Promise<any> {
-    const pk = this.watchService.getPty(podTerminal, (r) => {
+  async terminal(@MessageBody() podTerminal: TerminalData): Promise<any> {
+    const pk = this.watchService.getKubectlPty(podTerminal, (r) => {
       podTerminal.data = r
       this.server.emit('terminal', podTerminal)
     })
     pk.write(`${podTerminal.command}\r`)
+  }
+
+  @SubscribeMessage('terminal-resize')
+  async terminalResize(@MessageBody() podTerminal: TerminalData): Promise<any> {
+    this.watchService.resizeKubectlPty(podTerminal)
   }
 
   @SubscribeMessage('watch-init')
@@ -49,7 +54,7 @@ export class EventsGateway {
   }
 
   private async sendPod(v1Pod: V1Pod) {
-    console.log('watch pod change', this.server.emit('events-pod', v1Pod))
+    this.server.emit('events-pod', v1Pod)
   }
 
   private async sendLog(nsn: string, log: string) {
@@ -57,7 +62,7 @@ export class EventsGateway {
   }
 
   private async sendResource(obj: object) {
-    console.log('watch pod change', this.server.emit('events-res', obj))
+    this.server.emit('events-res', obj)
   }
 
   private async startWatch() {

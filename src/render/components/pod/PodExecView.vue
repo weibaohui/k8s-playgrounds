@@ -21,9 +21,8 @@ const selectedContainerName = ref('')
 const options = ref<SelectOption[]>()
 
 function createWS() {
-  terminalSocket.value = SocketIOService.instance.getSocket()
-  console.log(SocketIOService.instance.getSocket())
-  console.log(SocketIOService.instance.getSocket().active)
+  terminalSocket.value = SocketIOService.instance.getSocket('terminal')
+  console.log('isWsOpen()', isWsOpen())
   // server 返回数据写到termjs上
   terminalSocket.value.on('terminal', (data: TerminalData) => {
     term.value.write(data.data)
@@ -39,11 +38,13 @@ function initWS() {
 function resizeRemoteTerminal() {
   const { cols, rows } = term.value
   if (isWsOpen()) {
-    terminalSocket.value.send(JSON.stringify({
-      Op: 'resize',
-      Cols: cols,
-      Rows: rows,
-    }))
+    const x = new TerminalData()
+    x.ns = props.pod.metadata.namespace
+    x.name = props.pod.metadata.name
+    x.containerName = selectedContainerName.value
+    x.rows = rows
+    x.columns = cols
+    terminalSocket.value.emit('terminal-resize', x)
   }
 }
 function initTerm() {
@@ -70,6 +71,8 @@ function isWsOpen() {
 }
 function fitTerm() {
   fitAddon.fit()
+  resizeRemoteTerminal()
+  console.log('fitTerm')
 }
 const onResize = debounce(() => fitTerm(), 800)
 
@@ -129,7 +132,7 @@ function fillContainerOptions() {
 }
 function onContainerChanged() {
   // console.log(`ns 变为${selectedNs.value}`)
-  console.log('onContainerChanged', selectedContainerName.value)
+  // console.log('onContainerChanged', selectedContainerName.value)
   sendCommand('clear')
 }
 onMounted(() => {
@@ -141,7 +144,6 @@ onMounted(() => {
 })
 onBeforeUnmount(() => {
   removeResizeListener()
-  terminalSocket.value && terminalSocket.value.close()
 })
 </script>
 
