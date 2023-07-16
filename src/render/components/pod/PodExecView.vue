@@ -22,8 +22,6 @@ function createWS() {
   console.log(SocketIOService.instance.getSocket().active)
   // server 返回数据写到termjs上
   terminalSocket.value.on('terminal', (data: TerminalData) => {
-    console.log('terminalSocket on terminal', data)
-    // term.value.element && term.value.focus()
     term.value.write(data.data)
   })
 }
@@ -54,12 +52,7 @@ function initTerm() {
     tabStopWidth: 4,
   })
   term.value.open(terminalDom.value)
-  term.value.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ')
-
   term.value.loadAddon(fitAddon)
-  // const attachAddon = new AttachAddon(terminalSocket.value)
-  // term.value.loadAddon(attachAddon)
-
   // 不能初始化的时候fit,需要等terminal准备就绪,可以设置延时操作
   setTimeout(() => {
     fitAddon.fit()
@@ -73,22 +66,29 @@ function fitTerm() {
 }
 const onResize = debounce(() => fitTerm(), 800)
 
+function sendCommand(cmdData: string) {
+  const x = new TerminalData()
+  const c = props.pod.spec.containers[0]
+  x.ns = props.pod.metadata.namespace
+  x.name = props.pod.metadata.name
+  x.containerName = c.name
+  x.command = `${cmdData}`
+  terminalSocket.value.emit('terminal', x)
+}
+
 function termData() {
-  console.log('termData ws', isWsOpen())
+  sendCommand('clear')
+
   // 输入与粘贴的情况,onData不能重复绑定,不然会发送多次
   const cmdData = ref('')
   term.value.onKey((e) => {
     if (e.key === '\x7F' || e.key === 'Enter')
       term.value.write('\x1B[D')
-    console.log('key', e.domEvent.key, e.key)
   })
   term.value.onData((data) => {
     if (data === '')
       return
-    // if (data.charCodeAt(0) < 32)
-    //   return
 
-    console.log(`data=${data}`)
     term.value.write(data)
     if (isWsOpen()) {
       if ((data !== '\r') && (data !== '\u0003')) {
@@ -99,15 +99,7 @@ function termData() {
           cmdData.value = `${cmdData.value + data}`
         else
           cmdData.value = `${cmdData.value}`
-        // term.value.writeln('')
-        // const cmd = Base64.encode(cmdData.value)
-        const c = props.pod.spec.containers[0]
-        const x = new TerminalData()
-        x.ns = props.pod.metadata.namespace
-        x.name = props.pod.metadata.name
-        x.containerName = c.name
-        x.command = `${cmdData.value}`
-        terminalSocket.value.emit('terminal', x)
+        sendCommand(cmdData.value)
         cmdData.value = ''
       }
     }
