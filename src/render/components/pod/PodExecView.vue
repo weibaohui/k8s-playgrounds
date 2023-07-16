@@ -2,6 +2,8 @@
 import { TerminalData } from '@main/watch/watch.model'
 import { SocketIOService } from '@render/service/k8s/SocketIOService'
 import { debounce } from 'lodash'
+import type { SelectOption } from 'naive-ui'
+import { NSelect } from 'naive-ui'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
@@ -15,6 +17,8 @@ const terminalDom = ref(null)
 const terminalSocket = ref(null)
 const term = ref(null)
 const fitAddon = new FitAddon()
+const selectedContainerName = ref('')
+const options = ref<SelectOption[]>()
 
 function createWS() {
   terminalSocket.value = SocketIOService.instance.getSocket()
@@ -54,6 +58,7 @@ function initTerm() {
     tabStopWidth: 4,
   })
   term.value.open(terminalDom.value)
+  term.value.clear()
   term.value.loadAddon(fitAddon)
   // 不能初始化的时候fit,需要等terminal准备就绪,可以设置延时操作
   setTimeout(() => {
@@ -70,10 +75,9 @@ const onResize = debounce(() => fitTerm(), 800)
 
 function sendCommand(cmdData: string) {
   const x = new TerminalData()
-  const c = props.pod.spec.containers[0]
   x.ns = props.pod.metadata.namespace
   x.name = props.pod.metadata.name
-  x.containerName = c.name
+  x.containerName = selectedContainerName.value
   x.command = `${cmdData}`
   terminalSocket.value.emit('terminal', x)
 }
@@ -114,11 +118,26 @@ function removeResizeListener() {
   window.removeEventListener('resize', onResize)
 }
 
+function fillContainerOptions() {
+  options.value = props.pod.spec.containers.map((r) => {
+    return {
+      label: r.name,
+      value: r.name,
+    }
+  })
+  selectedContainerName.value = props.pod.spec.containers[0].name
+}
+function onContainerChanged() {
+  // console.log(`ns 变为${selectedNs.value}`)
+  console.log('onContainerChanged', selectedContainerName.value)
+  sendCommand('clear')
+}
 onMounted(() => {
   initWS()
   initTerm()
   termData()
   onTerminalResize()
+  fillContainerOptions()
 })
 onBeforeUnmount(() => {
   removeResizeListener()
@@ -127,6 +146,11 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
+  <NSelect
+    v-model:value="selectedContainerName" :options="options" show-checkmark show-on-focus
+    placeholder="请选择容器"
+    @update:value="onContainerChanged"
+  />
   <div id="xterm-container" ref="terminalDom" />
 </template>
 

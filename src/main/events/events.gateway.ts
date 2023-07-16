@@ -49,7 +49,7 @@ export class EventsGateway {
   }
 
   private async sendPod(v1Pod: V1Pod) {
-    this.server.emit('events-pod', v1Pod)
+    console.log('watch pod change', this.server.emit('events-pod', v1Pod))
   }
 
   private async sendLog(nsn: string, log: string) {
@@ -57,14 +57,14 @@ export class EventsGateway {
   }
 
   private async sendResource(obj: object) {
-    this.server.emit('events-res', obj)
+    console.log('watch pod change', this.server.emit('events-res', obj))
   }
 
   private async startWatch() {
-    once(() => {
+    return once(() => {
       console.log('start pod watcher')
-      this.watchService.PodWatcher(async (d) => {
-        return await this.sendPod(d)
+      this.watchService.PodWatcher((d) => {
+        return this.sendPod(d)
       })
     })()
   }

@@ -184,7 +184,6 @@ export class WatchService {
       env: process.env,
     })
     pk.onData((d) => {
-      process.stdout.write(d.toString())
       podTerminal.data = d.toString()
       cb(d.toString())
     })
