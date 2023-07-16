@@ -1,5 +1,10 @@
+import os from 'node:os'
+import process from 'node:process'
 import { Stream } from 'node:stream'
 import * as stream from 'node:stream'
+import { IPty } from 'node-pty'
+import * as pty from 'node-pty'
+import { TerminalData } from '@main/watch/watch.model'
 import { LogOptions } from '@kubernetes/client-node/dist/log'
 import { V1Status } from '@kubernetes/client-node/dist/api'
 import { Injectable, Logger } from '@nestjs/common'
@@ -9,6 +14,7 @@ import { ConfigService } from '@nestjs/config'
 @Injectable()
 export class WatchService {
   private readonly logger = new Logger(WatchService.name)
+  private ptyList = new Map<string, IPty>()
 
   constructor(
     private configService: ConfigService,
@@ -161,5 +167,29 @@ export class WatchService {
     const exec = new k8s.Exec(this.getKubeConfig())
     const ws = await exec.exec(namespace, podName, containerName, command, stdout, stderr, stdin, tty, statusCallback)
     return ws
+  }
+
+  getPty(podTerminal: TerminalData, cb: (d: string) => void) {
+    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
+    if (this.ptyList.has(key))
+      return this.ptyList.get(key)
+
+    const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
+
+    const pk = pty.spawn(shell, [], {
+      name: 'xterm-color',
+      cols: 80,
+      rows: 30,
+      cwd: process.env.HOME,
+      env: process.env,
+    })
+    pk.onData((d) => {
+      process.stdout.write(d.toString())
+      podTerminal.data = d.toString()
+      cb(d.toString())
+    })
+    pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash || ash || sh)"\r`)
+    this.ptyList.set(key, pk)
+    return this.ptyList.get(key)
   }
 }
