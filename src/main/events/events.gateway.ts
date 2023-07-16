@@ -1,4 +1,7 @@
+import * as process from 'node:process'
 import stream from 'node:stream'
+import os from 'node:os'
+import { IPty } from 'node-pty'
 import { V1Pod } from '@kubernetes/client-node'
 import { WatchService } from '@main/watch/watch.service'
 import {
@@ -12,6 +15,9 @@ import {
 import { once } from 'lodash'
 import { Observable, from, map } from 'rxjs'
 import { Server } from 'socket.io'
+import { WebSocket } from 'isomorphic-ws'
+
+import * as pty from 'node-pty'
 
 @WebSocketGateway({
   cors: {
@@ -22,6 +28,10 @@ export class EventsGateway {
   constructor(
     private watchService: WatchService,
   ) {}
+
+  private ws: WebSocket = null
+  private ptyPodExec: IPty = null
+  ptys = new Map<string, IPty>()
 
   @WebSocketServer()
   server: Server
@@ -38,27 +48,66 @@ export class EventsGateway {
   @SubscribeMessage('terminal')
   async identity(@MessageBody() data: any): Promise<any> {
     console.log('terminal receive', data)
-    // return data
-    //
-    // return new Observable<string>((s) => {
-    //
-    // })
-    const duplexStream = new stream.PassThrough()
+    const pk = this.getPty('default', 'forwhile-745849b656-swff6', 'forwhile')
+    pk.write(`${data}\r`)
 
+    // ptyProcess.write('ls\r')
+    // ptyProcess.resize(100, 40)
+    // ptyProcess.write('ls\r')
+
+    // const pws = await this.getPodExecWebsocket()
+    // console.log(pws.readyState)
+    // console.log(pws.emit('message111', `0${btoa(data)}`))
+    // console.log(pws.send(`0${btoa(data)}`))
+    // console.log('sended')
+  }
+
+  private getPty(ns: string, name: string, containerName: string) {
+    const key = `${ns}/${name}/${containerName}`
+    if (this.ptys.has(key))
+      return this.ptys.get(key)
+
+    const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
+
+    const pk = pty.spawn(shell, [], {
+      name: 'xterm-color',
+      cols: 80,
+      rows: 30,
+      cwd: process.env.HOME,
+      env: process.env,
+    })
+
+    pk.onData((data) => {
+      process.stdout.write(data.toString())
+      this.server.emit('terminal', data.toString())
+    })
+    pk.write(`kubectl exec -i -t -n ${ns} ${name} -c ${containerName} -- sh -c "clear; (bash || ash || sh)"\r`)
+    this.ptys.set(key, pk)
+    return this.ptys.get(key)
+  }
+
+  private async getPodExecWebsocket() {
+    if (this.ws !== null)
+      return this.ws
+
+    const stdout = new stream.PassThrough()
+    stdout.on('data', (r) => {
+      console.log('stdout ondata', r)
+    })
     const stdin = process.stdin
     const command = 'bash'
-    const ws = await this.watchService.execPod('default', 'forwhile-745849b656-mcmsb', 'forwhile', command, duplexStream, duplexStream, stdin, true)
+    this.ws = await this.watchService.execPod('default', 'forwhile-745849b656-swff6', 'forwhile', command, stdout, stdout, stdin, true, (status) => {
+      console.log('execPod status', status)
+    })
+    console.log('open exec pod websocket')
+    // this.ws.on('message111', (d, f) => {
+    //   const data = d.slice(1)
+    //
+    //   console.log('on  message111', atob(data.toString()))
+    //   this.server.emit('terminal', atob(data.toString()))
+    // })
 
-    ws.on('message', (d, f) => {
-      console.log('onmessage', f, d.toString(), btoa(data))
-      this.server.emit('terminal', d.toString())
-    })
-    ws.send(`0${btoa(data)}`, (e) => {
-      console.log(e)
-    })
-    ws.send(`0${btoa('date')}`)
-    ws.send(`0${btoa('ls')}`)
-    ws.send(`0${btoa(data)}`)
+    return this.ws
   }
 
   @SubscribeMessage('watch-init')

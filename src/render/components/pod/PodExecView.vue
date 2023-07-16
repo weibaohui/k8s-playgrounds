@@ -27,9 +27,9 @@ function createWS() {
 
   // server 返回数据写到termjs上
   terminalSocket.value.on('terminal', (data) => {
-    console.log(data)
+    console.log('terminalSocket on terminal', data)
     // term.value.element && term.value.focus()
-    term.value.writeln(typeof data === 'string' ? data : new Uint8Array(data))
+    term.value.write(typeof data === 'string' ? data : new Uint8Array(data))
   })
 }
 function initWS() {
@@ -89,7 +89,7 @@ function termData() {
   const cmdData = ref('')
   term.value.onKey((e) => {
     if (e.key === '\x7F' || e.key === 'Enter')
-      term.value.writeln('\x1B[D')
+      term.value.write('\x1B[D')
     console.log('key', e.domEvent.key, e.key)
   })
   term.value.onData((data) => {
