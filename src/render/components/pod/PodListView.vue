@@ -11,12 +11,13 @@ import PodAge from '@render/components/pod/PodAge.vue'
 import PodExecView from '@render/components/pod/PodExecView.vue'
 import PodView from '@render/components/pod/PodView.vue'
 import SearchFilter from '@render/components/common/SearchFilter.vue'
+import PodWarnIcon from '@render/components/pod/PodWarnIcon.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
 import { SocketIOService } from '@render/service/k8s/SocketIOService'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NDataTable, NFormItemGi, NGrid } from 'naive-ui'
+import { NButton, NDataTable, NFormItemGi, NGrid, NText } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Pod } from '../../../model/V1Pod'
 
@@ -88,7 +89,10 @@ function createColumns(): DataTableColumns<V1Pod> {
               showPodView(row)
             },
           },
-          { default: () => (row as V1Pod).metadata.name },
+          [
+            h(NText, (row as V1Pod).metadata.name),
+            h(PodWarnIcon, { pod: row as V1Pod }),
+          ],
         )
       },
     },
