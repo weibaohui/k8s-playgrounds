@@ -7,8 +7,8 @@ import { NSelect } from 'naive-ui'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
-import { V1Pod } from '../../../model/V1Pod'
 import 'xterm/css/xterm.css'
+import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,
@@ -72,7 +72,6 @@ function isWsOpen() {
 function fitTerm() {
   fitAddon.fit()
   resizeRemoteTerminal()
-  console.log('fitTerm')
 }
 const onResize = debounce(() => fitTerm(), 800)
 
@@ -84,10 +83,16 @@ function sendCommand(cmdData: string) {
   x.command = `${cmdData}`
   terminalSocket.value.emit('terminal', x)
 }
+function initTty() {
+  const podTerminal = new TerminalData()
+  podTerminal.ns = props.pod.metadata.namespace
+  podTerminal.name = props.pod.metadata.name
+  podTerminal.containerName = selectedContainerName.value
+  podTerminal.command = `kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash || ash || zsh || sh)"\r`
+  terminalSocket.value.emit('terminal', podTerminal)
+}
 
 function termData() {
-  sendCommand('clear')
-
   // 输入与粘贴的情况,onData不能重复绑定,不然会发送多次
   const cmdData = ref('')
   term.value.onKey((e) => {
@@ -133,7 +138,12 @@ function fillContainerOptions() {
 function onContainerChanged() {
   // console.log(`ns 变为${selectedNs.value}`)
   // console.log('onContainerChanged', selectedContainerName.value)
-  sendCommand('clear')
+  sendInitCommand()
+}
+function sendInitCommand() {
+  setTimeout(() => {
+    sendCommand('clear')
+  }, 500)
 }
 onMounted(() => {
   initWS()
@@ -141,6 +151,7 @@ onMounted(() => {
   termData()
   onTerminalResize()
   fillContainerOptions()
+  sendInitCommand()
 })
 onBeforeUnmount(() => {
   removeResizeListener()
