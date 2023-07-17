@@ -8,7 +8,7 @@ import NodeView from '@render/components/node/NodeView.vue'
 import NsSelect from '@render/components/ns/NsSelect.vue'
 import FloatRemoveButton from '@render/components/common/FloatRemoveButton.vue'
 import PodAge from '@render/components/pod/PodAge.vue'
-import PodExecView from '@render/components/pod/PodExecView.vue'
+import PodDropdownMenu from '@render/components/pod/PodDropdownMenu.vue'
 import PodView from '@render/components/pod/PodView.vue'
 import SearchFilter from '@render/components/common/SearchFilter.vue'
 import PodWarnIcon from '@render/components/pod/PodWarnIcon.vue'
@@ -24,27 +24,22 @@ import type { V1Pod } from '../../../model/V1Pod'
 const drawer = useDrawerService()
 
 function showPodView(x: V1Pod) {
-  drawer.showDrawer({
-    title: x.metadata.name,
-    width: 800,
-  },
-  h(PodView, { pod: x }),
+  drawer.showDrawer(
+    {
+      title: x.metadata.name,
+      width: 800,
+    },
+    h(PodView, { pod: x }),
   )
 }
-function showPodExecView(x: V1Pod) {
-  drawer.showDrawer({
-    title: x.metadata.name,
-    width: 1000,
-  },
-  h(PodExecView, { pod: x }),
-  )
-}
+
 async function showNodeView(x: V1Pod) {
-  drawer.showDrawer({
-    title: x.spec.nodeName,
-    width: 800,
-  },
-  h(NodeView, { node: await K8sService.nodeService.getNode(x.spec.nodeName) }),
+  drawer.showDrawer(
+    {
+      title: x.spec.nodeName,
+      width: 800,
+    },
+    h(NodeView, { node: await K8sService.nodeService.getNode(x.spec.nodeName) }),
   )
 }
 
@@ -178,19 +173,12 @@ function createColumns(): DataTableColumns<V1Pod> {
     },
     {
       title: 'Action',
-      key: 'actions',
+      key: 'Action',
       render(row) {
-        return h(
-          NButton,
+        return h(PodDropdownMenu,
           {
-            strong: true,
-            tertiary: true,
-            size: 'small',
-            onClick: () => {
-              showPodExecView(row)
-            },
+            pod: row as V1Pod,
           },
-          { default: () => 'exec' },
         )
       },
     },

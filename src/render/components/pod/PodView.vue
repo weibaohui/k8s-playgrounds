@@ -13,7 +13,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <PodActions />
+  <PodActions :pod="props.pod" />
 
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
