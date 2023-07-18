@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PodExecView from '@render/components/pod/PodExecView.vue'
+import PodLogView from '@render/components/pod/PodLogView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { DeleteRound, EditNoteRound, FormatAlignLeftRound, TerminalRound } from '@vicons/material'
 import { NButton, NDropdown, NIcon } from 'naive-ui'
@@ -30,10 +31,22 @@ function showPodExecView(x: V1Pod) {
     h(PodExecView, { pod: x }),
   )
 }
+function showPodLogView(x: V1Pod) {
+  drawer.showDrawer(
+    {
+      title: x.metadata.name,
+      width: 1000,
+    },
+    h(PodLogView, { pod: x }),
+  )
+}
 function handleSelect(key: string) {
   switch (key) {
     case 'Shell':
       showPodExecView(props.pod)
+      break
+    case 'Log':
+      showPodLogView(props.pod)
       break
     default:
       alert('尚未实现')

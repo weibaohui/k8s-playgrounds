@@ -46,6 +46,17 @@ export class EventsGateway {
     this.watchService.resizeKubectlPty(podTerminal)
   }
 
+  @SubscribeMessage('terminal-log')
+  async terminalLog(@MessageBody() podTerminal: TerminalData): Promise<any> {
+    await this.watchService.getPodLogs(podTerminal, (r) => {
+      podTerminal.data = r
+      this.server.emit('terminal-log', podTerminal)
+    }, {
+      follow: true,
+      pretty: true,
+    })
+  }
+
   @SubscribeMessage('watch-init')
   async watchInit(@MessageBody() data: string): Promise<string> {
     console.log('watchInit')

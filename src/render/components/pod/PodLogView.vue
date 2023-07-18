@@ -24,8 +24,8 @@ function createWS() {
   terminalSocket.value = SocketIOService.instance.getSocket()
   console.log('isWsOpen()', isWsOpen())
   // server 返回数据写到termjs上
-  terminalSocket.value.on('terminal', (data: TerminalData) => {
-    term.value.write(data.data)
+  terminalSocket.value.on('terminal-log', (data: TerminalData) => {
+    term.value.writeln(data.data)
   })
 }
 function initWS() {
@@ -34,19 +34,7 @@ function initWS() {
   if (!isWsOpen())
     createWS()
 }
-// 发送给后端,调整后端终端大小,和前端保持一致,不然前端只是范围变大了,命令还是会换行
-function resizeRemoteTerminal() {
-  const { cols, rows } = term.value
-  if (isWsOpen()) {
-    const x = new TerminalData()
-    x.ns = props.pod.metadata.namespace
-    x.name = props.pod.metadata.name
-    x.containerName = selectedContainerName.value
-    x.rows = rows
-    x.columns = cols
-    terminalSocket.value.emit('terminal-resize', x)
-  }
-}
+
 function initTerm() {
   term.value = new Terminal({
     lineHeight: 1.2,
@@ -71,7 +59,6 @@ function isWsOpen() {
 }
 function fitTerm() {
   fitAddon.fit()
-  resizeRemoteTerminal()
 }
 const onResize = debounce(() => fitTerm(), 800)
 
@@ -81,36 +68,9 @@ function sendCommand(cmdData: string) {
   x.name = props.pod.metadata.name
   x.containerName = selectedContainerName.value
   x.command = `${cmdData}`
-  terminalSocket.value.emit('terminal', x)
+  terminalSocket.value.emit('terminal-log', x)
 }
 
-function termData() {
-  // 输入与粘贴的情况,onData不能重复绑定,不然会发送多次
-  const cmdData = ref('')
-  term.value.onKey((e) => {
-    if (e.key === '\x7F' || e.key === 'Enter')
-      term.value.write('\x1B[D')
-  })
-  term.value.onData((data) => {
-    if (data === '')
-      return
-
-    term.value.write(data)
-    if (isWsOpen()) {
-      if ((data !== '\r') && (data !== '\u0003')) {
-        cmdData.value = cmdData.value + data
-      }
-      else {
-        if (data === '\u0003')
-          cmdData.value = `${cmdData.value + data}`
-        else
-          cmdData.value = `${cmdData.value}`
-        sendCommand(cmdData.value)
-        cmdData.value = ''
-      }
-    }
-  })
-}
 function onTerminalResize() {
   window.addEventListener('resize', onResize)
 }
@@ -134,13 +94,12 @@ function onContainerChanged() {
 }
 function sendInitCommand() {
   setTimeout(() => {
-    sendCommand('clear')
+    sendCommand('start')
   }, 500)
 }
 onMounted(() => {
   initWS()
   initTerm()
-  termData()
   onTerminalResize()
   fillContainerOptions()
   sendInitCommand()

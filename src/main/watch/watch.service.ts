@@ -156,9 +156,7 @@ export class WatchService {
     const logStream = new Stream.PassThrough()
 
     logStream.on('data', (chunk) => {
-      // use write rather than console.log to prevent double line feed
       process.stdout.write(chunk)
-      // this.eventsGateway.sendLog(`${namespace}/${podName}`, chunk)
     })
     await log.log(namespace, podName, containerName, logStream, options)
   }
@@ -167,6 +165,16 @@ export class WatchService {
     const exec = new k8s.Exec(this.getKubeConfig())
     const ws = await exec.exec(namespace, podName, containerName, command, stdout, stderr, stdin, tty, statusCallback)
     return ws
+  }
+
+  async getPodLogs(podTerminal: TerminalData, cb: (d: string) => void, options?: LogOptions) {
+    const log = new k8s.Log(this.getKubeConfig())
+    const logStream = new Stream.PassThrough()
+
+    logStream.on('data', (chunk) => {
+      cb(chunk.toString())
+    })
+    await log.log(podTerminal.ns, podTerminal.name, podTerminal.containerName, logStream, options)
   }
 
   getKubectlPty(podTerminal: TerminalData, cb: (d: string) => void) {
@@ -186,6 +194,7 @@ export class WatchService {
     pk.onData((d) => {
       cb(d.toString())
     })
+
     pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash || ash || zsh || sh)"\r`)
     this.ptyMap.set(key, pk)
     return this.ptyMap.get(key)
