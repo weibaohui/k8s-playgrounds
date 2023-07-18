@@ -191,7 +191,14 @@ export class WatchService {
     pk.onData((d) => {
       cb(d.toString())
     })
-    const extCmd = ' -f '
+    let extCmd = ' '
+    if (podTerminal.logOptions.follow)
+      extCmd += ' --follow '
+    if (podTerminal.logOptions.showTimestamp)
+      extCmd += ' --timestamps '
+    if (podTerminal.logOptions.sinceTimestamp)
+      extCmd += ` --since-time='${podTerminal.logOptions.sinceTimestamp}' `
+
     pk.write(`kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`)
 
     this.logPtyMap.set(key, pk)

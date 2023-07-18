@@ -2,8 +2,9 @@
 import { TerminalData } from '@main/watch/watch.model'
 import { SocketIOService } from '@render/service/k8s/SocketIOService'
 import { debounce } from 'lodash'
+import moment from 'moment'
 import type { SelectOption } from 'naive-ui'
-import { NSelect } from 'naive-ui'
+import { NCheckbox, NDatePicker, NFormItemGi, NGrid, NSelect } from 'naive-ui'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
@@ -18,8 +19,16 @@ const terminalSocket = ref(null)
 const term = ref(null)
 const fitAddon = new FitAddon()
 const selectedContainerName = ref('')
+const logShowTimestamp = ref<boolean>(false)
+const logFollow = ref<boolean>(true)
+const sinceTimestamp = ref<number>(moment().valueOf())
 const options = ref<SelectOption[]>()
-
+const shortcuts = {
+  '1d': () => new Date().getTime() - 24 * 60 * 60 * 1000,
+  '1h': () => new Date().getTime() - 60 * 60 * 1000,
+  '10m': () => new Date().getTime() - 10 * 60 * 1000,
+  '5m': () => new Date().getTime() - 5 * 60 * 1000,
+}
 function createWS() {
   terminalSocket.value = SocketIOService.instance.getSocket()
   console.log('isWsOpen()', isWsOpen())
@@ -74,6 +83,11 @@ function sendCommand(cmdData: string) {
   x.name = props.pod.metadata.name
   x.containerName = selectedContainerName.value
   x.command = `${cmdData}`
+  x.logOptions = {
+    showTimestamp: logShowTimestamp.value,
+    follow: logFollow.value,
+    sinceTimestamp: moment(sinceTimestamp.value).toISOString(),
+  }
   terminalSocket.value.emit('terminal-log', x)
 }
 
@@ -98,6 +112,15 @@ function onContainerChanged() {
   // console.log('onContainerChanged', selectedContainerName.value)
   sendInitCommand()
 }
+function onCheckedChange() {
+  sendInitCommand()
+}
+function onTimeChange() {
+  sendInitCommand()
+}
+function onFollowChange() {
+  sendInitCommand()
+}
 function sendInitCommand() {
   setTimeout(() => {
     sendCommand('start')
@@ -116,11 +139,39 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <NSelect
-    v-model:value="selectedContainerName" :options="options" show-checkmark show-on-focus
-    placeholder="请选择容器"
-    @update:value="onContainerChanged"
-  />
+  <NGrid :cols="24" :x-gap="24">
+    <NFormItemGi :span="1" />
+    <NFormItemGi :span="11">
+      <NSelect
+        v-model:value="selectedContainerName" :options="options" show-checkmark show-on-focus
+        placeholder="请选择容器"
+        @update:value="onContainerChanged"
+      />
+    </NFormItemGi>
+    <NFormItemGi :span="11">
+      <NDatePicker
+        v-model:value="sinceTimestamp"
+        type="datetime"
+        :shortcuts="shortcuts"
+        @update:value="onTimeChange"
+      />
+
+      <NCheckbox
+        v-model:checked="logShowTimestamp"
+        @update:checked="onCheckedChange"
+      >
+        时间戳
+      </NCheckbox>
+      <NCheckbox
+        v-model:checked="logFollow"
+        @update:checked="onFollowChange"
+      >
+        跟随
+      </NCheckbox>
+    </NFormItemGi>
+    <NFormItemGi :span="1" />
+  </NGrid>
+
   <div id="xterm-container" ref="terminalDom" />
 </template>
 

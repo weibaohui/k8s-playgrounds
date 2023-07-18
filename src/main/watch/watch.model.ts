@@ -9,4 +9,9 @@ export class TerminalData {
   // resize
   columns: number
   rows: number
+  logOptions: {
+    showTimestamp: boolean
+    follow: boolean
+    sinceTimestamp: string
+  }
 }
