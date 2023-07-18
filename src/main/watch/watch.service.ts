@@ -199,7 +199,7 @@ export class WatchService {
     if (podTerminal.logOptions.sinceTimestamp)
       extCmd += ` --since-time='${podTerminal.logOptions.sinceTimestamp}' `
 
-    pk.write(`kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`)
+    pk.write(`clear;kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`)
 
     this.logPtyMap.set(key, pk)
     return this.logPtyMap.get(key)

@@ -157,16 +157,16 @@ onBeforeUnmount(() => {
       />
 
       <NCheckbox
-        v-model:checked="logShowTimestamp"
-        @update:checked="onCheckedChange"
-      >
-        时间戳
-      </NCheckbox>
-      <NCheckbox
         v-model:checked="logFollow"
         @update:checked="onFollowChange"
       >
         跟随
+      </NCheckbox>
+      <NCheckbox
+        v-model:checked="logShowTimestamp"
+        @update:checked="onCheckedChange"
+      >
+        显示时间戳
       </NCheckbox>
     </NFormItemGi>
     <NFormItemGi :span="1" />
