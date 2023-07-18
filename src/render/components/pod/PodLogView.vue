@@ -158,6 +158,7 @@ onBeforeUnmount(() => {
 
       <NCheckbox
         v-model:checked="logFollow"
+        disabled
         @update:checked="onFollowChange"
       >
         跟随
