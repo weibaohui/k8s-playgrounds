@@ -25,7 +25,13 @@ function createWS() {
   console.log('isWsOpen()', isWsOpen())
   // server 返回数据写到termjs上
   terminalSocket.value.on('terminal-log', (data: TerminalData) => {
-    term.value.writeln(data.data)
+    if (selectedContainerName.value !== data.containerName)
+      return
+
+    if (data.data.endsWith('\n'))
+      term.value.writeln(data.data.slice(0, data.data.length - 1))
+    else
+      term.value.writeln(data.data)
   })
 }
 function initWS() {

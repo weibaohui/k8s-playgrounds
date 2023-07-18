@@ -34,7 +34,7 @@ export class EventsGateway {
 
   @SubscribeMessage('terminal')
   async terminal(@MessageBody() podTerminal: TerminalData): Promise<any> {
-    const pk = this.watchService.getKubectlPty(podTerminal, (r) => {
+    const pk = this.watchService.getExecPodPty(podTerminal, (r) => {
       podTerminal.data = r
       this.server.emit('terminal', podTerminal)
     })
@@ -48,12 +48,9 @@ export class EventsGateway {
 
   @SubscribeMessage('terminal-log')
   async terminalLog(@MessageBody() podTerminal: TerminalData): Promise<any> {
-    await this.watchService.getPodLogs(podTerminal, (r) => {
+    await this.watchService.getLogPodPty(podTerminal, (r) => {
       podTerminal.data = r
       this.server.emit('terminal-log', podTerminal)
-    }, {
-      follow: true,
-      pretty: true,
     })
   }
 

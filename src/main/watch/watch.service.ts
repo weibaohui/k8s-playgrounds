@@ -14,7 +14,8 @@ import { ConfigService } from '@nestjs/config'
 @Injectable()
 export class WatchService {
   private readonly logger = new Logger(WatchService.name)
-  private ptyMap = new Map<string, IPty>()
+  private execPtyMap = new Map<string, IPty>()
+  private logPtyMap = new Map<string, IPty>()
 
   constructor(
     private configService: ConfigService,
@@ -154,7 +155,6 @@ export class WatchService {
   async logPods(namespace: string, podName: string, containerName: string, options?: LogOptions) {
     const log = new k8s.Log(this.getKubeConfig())
     const logStream = new Stream.PassThrough()
-
     logStream.on('data', (chunk) => {
       process.stdout.write(chunk)
     })
@@ -167,21 +167,38 @@ export class WatchService {
     return ws
   }
 
-  async getPodLogs(podTerminal: TerminalData, cb: (d: string) => void, options?: LogOptions) {
-    const log = new k8s.Log(this.getKubeConfig())
-    const logStream = new Stream.PassThrough()
+  getExecPodPty(podTerminal: TerminalData, cb: (d: string) => void) {
+    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
+    if (this.execPtyMap.has(key))
+      return this.execPtyMap.get(key)
 
-    logStream.on('data', (chunk) => {
-      cb(chunk.toString())
+    const pk = this.getNodePty()
+    pk.onData((d) => {
+      cb(d.toString())
     })
-    await log.log(podTerminal.ns, podTerminal.name, podTerminal.containerName, logStream, options)
+
+    pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash || ash || zsh || sh)"\r`)
+    this.execPtyMap.set(key, pk)
+    return this.execPtyMap.get(key)
   }
 
-  getKubectlPty(podTerminal: TerminalData, cb: (d: string) => void) {
+  getLogPodPty(podTerminal: TerminalData, cb: (d: string) => void) {
     const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
-    if (this.ptyMap.has(key))
-      return this.ptyMap.get(key)
+    if (this.logPtyMap.has(key))
+      this.logPtyMap.get(key).kill()
 
+    const pk = this.getNodePty()
+    pk.onData((d) => {
+      cb(d.toString())
+    })
+    const extCmd = ' -f '
+    pk.write(`kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`)
+
+    this.logPtyMap.set(key, pk)
+    return this.logPtyMap.get(key)
+  }
+
+  private getNodePty() {
     const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
 
     const pk = pty.spawn(shell, [], {
@@ -191,19 +208,13 @@ export class WatchService {
       cwd: process.env.HOME,
       env: process.env,
     })
-    pk.onData((d) => {
-      cb(d.toString())
-    })
-
-    pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash || ash || zsh || sh)"\r`)
-    this.ptyMap.set(key, pk)
-    return this.ptyMap.get(key)
+    return pk
   }
 
   resizeKubectlPty(podTerminal: TerminalData, cb?: () => void) {
     const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
-    if (this.ptyMap.has(key)) {
-      const pk = this.ptyMap.get(key)
+    if (this.execPtyMap.has(key)) {
+      const pk = this.execPtyMap.get(key)
       pk.resize(podTerminal.columns, podTerminal.rows)
       cb?.()
     }
