@@ -5,9 +5,8 @@ import { TerminalData, TerminalInstance } from '@main/watch/watch.model'
 import { Injectable, Logger } from '@nestjs/common'
 import moment from 'moment/moment'
 import * as pty from 'node-pty'
-import {
-  IPty,
-} from 'node-pty'
+import { IPty } from 'node-pty'
+import { Cron, CronExpression } from '@nestjs/schedule'
 
 @Injectable()
 export class WatchPodService {
@@ -23,25 +22,24 @@ export class WatchPodService {
     this.handleHeartBeat()
   }
 
+  @Cron(CronExpression.EVERY_10_SECONDS)
   handleHeartBeat() {
-    setInterval(() => {
-      this.logInstanceMap.forEach((inst, key) => {
-        // 20秒心跳
-        if (moment().diff(inst.lastHeartBeatTime, 'seconds') > 20) {
-          this.logger.debug(`log 心跳超时 清除 ${key}`)
-          inst.pty.kill()
-          this.logInstanceMap.delete(key)
-        }
-      })
-      this.execInstanceMap.forEach((inst, key) => {
-        // 20秒心跳
-        if (moment().diff(inst.lastHeartBeatTime, 'seconds') > 20) {
-          this.logger.debug(`exec 心跳超时 清除 ${key}`)
-          inst.pty.kill()
-          this.execInstanceMap.delete(key)
-        }
-      })
-    }, 10 * 1000)
+    this.logInstanceMap.forEach((inst, key) => {
+      // 20秒心跳
+      if (moment().diff(inst.lastHeartBeatTime, 'seconds') > 20) {
+        this.logger.debug(`log 心跳超时 清除 ${key}`)
+        inst.pty.kill()
+        this.logInstanceMap.delete(key)
+      }
+    })
+    this.execInstanceMap.forEach((inst, key) => {
+      // 20秒心跳
+      if (moment().diff(inst.lastHeartBeatTime, 'seconds') > 20) {
+        this.logger.debug(`exec 心跳超时 清除 ${key}`)
+        inst.pty.kill()
+        this.execInstanceMap.delete(key)
+      }
+    })
   }
 
   getExecPodPty(podTerminal: TerminalData, cb: (d: string) => void) {
