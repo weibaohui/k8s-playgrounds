@@ -1,50 +1,21 @@
-import { ChildProcess, exec } from 'node:child_process'
-import os from 'node:os'
 import process from 'node:process'
-import * as stream from 'node:stream'
-import { Stream } from 'node:stream'
-import moment from 'moment'
+import { WatchPodService } from '@main/watch/watch.pod.service'
 import * as k8s from '@kubernetes/client-node'
-import { V1Status } from '@kubernetes/client-node/dist/api'
-import { LogOptions } from '@kubernetes/client-node/dist/log'
-import { TerminalData, TerminalInstance } from '@main/watch/watch.model'
 import { Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
-import * as pty from 'node-pty'
-import { IPty } from 'node-pty'
 
 @Injectable()
 export class WatchService {
   private readonly logger = new Logger(WatchService.name)
-  private execPtyMap = new Map<string, IPty>()
-  private logPtyMap = new Map<string, IPty>()
-  private logPtyInstanceMap = new Map<string, TerminalInstance>()
-  private logTaskMap = new Map<string, ChildProcess>()
-  private execTaskMap = new Map<string, ChildProcess>()
-  private logPtyTTLMap = new Map<string, number>()
 
   constructor(
     private configService: ConfigService,
+    public podService: WatchPodService,
   ) {
-    this.handleHeartBeat()
+    this.podService.handleHeartBeat()
   }
 
   private kc = new k8s.KubeConfig()
-
-  handleHeartBeat() {
-    setInterval(() => {
-      // console.log('心跳检测')
-      this.logPtyInstanceMap.forEach((inst, key) => {
-        // console.log(` ${key}:  ${inst.lastHeartBeatTime} : ${moment().diff(inst.lastHeartBeatTime, 'seconds')}`)
-        // 20秒心跳
-        if (moment().diff(inst.lastHeartBeatTime, 'seconds') > 20) {
-          // console.log(`${key}超时，删除`)
-          inst.pty.kill()
-          this.logPtyInstanceMap.delete(key)
-        }
-      })
-    }, 10 * 1000)
-  }
 
   async PodWatcher(cb?: (d: any) => void) {
     this.watch('pod', cb)
@@ -97,10 +68,10 @@ export class WatchService {
   }
 
   /**
-   * 获取监控资源的访问地址
-   * @private
-   * @param resType
-   */
+     * 获取监控资源的访问地址
+     * @private
+     * @param resType
+     */
   private getResourceWatchPath(resType: String) {
     switch (resType) {
       case 'pod' || 'pods' :
@@ -172,133 +143,5 @@ export class WatchService {
     const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
     const r = await k8sApi.deleteNamespacedPod(name, ns)
     return r.body
-  }
-
-  async logPods(namespace: string, podName: string, containerName: string, options?: LogOptions) {
-    const log = new k8s.Log(this.getKubeConfig())
-    const logStream = new Stream.PassThrough()
-    logStream.on('data', (chunk) => {
-      process.stdout.write(chunk)
-    })
-    await log.log(namespace, podName, containerName, logStream, options)
-  }
-
-  async execPod(namespace: string, podName: string, containerName: string, command: string | string[], stdout: stream.Writable | null, stderr: stream.Writable | null, stdin: stream.Readable | null, tty: boolean, statusCallback?: (status: V1Status) => void) {
-    const exec = new k8s.Exec(this.getKubeConfig())
-    const ws = await exec.exec(namespace, podName, containerName, command, stdout, stderr, stdin, tty, statusCallback)
-    return ws
-  }
-
-  getExecPodPty(podTerminal: TerminalData, cb: (d: string) => void) {
-    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
-    if (this.execPtyMap.has(key))
-      return this.execPtyMap.get(key)
-
-    const pk = this.getNodePty()
-    pk.onData((d) => {
-      cb(d.toString())
-    })
-
-    pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash  || sh)"\r`)
-    this.execPtyMap.set(key, pk)
-    return this.execPtyMap.get(key)
-  }
-
-  getLogPodPty(podTerminal: TerminalData, cb: (d: string) => void) {
-    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
-    if (this.logPtyInstanceMap.has(key))
-      this.logPtyInstanceMap.get(key).pty.kill()
-
-    const pk = this.getNodePty()
-    pk.onData((d) => {
-      cb(d.toString())
-    })
-    let extCmd = ' '
-    if (podTerminal.logOptions.follow)
-      extCmd += ' --follow '
-    if (podTerminal.logOptions.showTimestamp)
-      extCmd += ' --timestamps '
-    if (podTerminal.logOptions.sinceTimestamp)
-      extCmd += ` --since-time='${podTerminal.logOptions.sinceTimestamp}' `
-
-    const cmd = `kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`
-    pk.write(cmd)
-    this.logPtyInstanceMap.set(key, {
-      pty: pk,
-      lastHeartBeatTime: moment().toISOString(),
-    })
-    return this.logPtyInstanceMap.get(key).pty
-  }
-
-  getExecPodTask(podTerminal: TerminalData, cb: (d: string) => void) {
-    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
-    if (this.execTaskMap.has(key))
-      return this.execTaskMap.get(key)
-
-    const cmd = `kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash  || sh)"`
-    const task = exec(cmd, { encoding: 'utf-8' })
-    task.stdout.on('data', (chunk) => {
-      cb(chunk.toString())
-    })
-    task.stderr.on('data', (chunk) => {
-      cb(chunk.toString())
-    })
-
-    this.execTaskMap.set(key, task)
-    return this.execTaskMap.get(key)
-  }
-
-  getLogPodTask(podTerminal: TerminalData, cb: (d: string) => void) {
-    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
-    if (this.logTaskMap.has(key))
-      this.logTaskMap.get(key).kill()
-
-    let extCmd = ' '
-    if (podTerminal.logOptions.follow)
-      extCmd += ' --follow '
-    if (podTerminal.logOptions.showTimestamp)
-      extCmd += ' --timestamps '
-    if (podTerminal.logOptions.sinceTimestamp)
-      extCmd += ` --since-time='${podTerminal.logOptions.sinceTimestamp}' `
-
-    const cmd = `kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} `
-
-    const task = exec(cmd, { encoding: 'utf-8' })
-    task.stdout.on('data', (chunk) => {
-      cb(chunk.toString())
-    })
-    task.stderr.on('data', (chunk) => {
-      cb(chunk.toString())
-    })
-
-    this.logTaskMap.set(key, task)
-    return this.logTaskMap.get(key)
-  }
-
-  private getNodePty() {
-    const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
-
-    return pty.spawn(shell, [], {
-      name: 'xterm-color',
-      cols: 80,
-      rows: 30,
-      env: process.env,
-      cwd: process.cwd(),
-    })
-  }
-
-  resizeKubectlPty(podTerminal: TerminalData, cb?: () => void) {
-    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
-    if (this.execPtyMap.has(key)) {
-      const pk = this.execPtyMap.get(key)
-      pk.resize(podTerminal.columns, podTerminal.rows)
-      cb?.()
-    }
-  }
-
-  async handlePodLogHeartBeat(podTerminal: TerminalData) {
-    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
-    if (this.logPtyInstanceMap.has(key))
-      this.logPtyInstanceMap.get(key).lastHeartBeatTime = moment().toISOString()
   }
 }

@@ -2,6 +2,7 @@
 import { TerminalData } from '@main/watch/watch.model'
 import { SocketIOService } from '@render/service/k8s/SocketIOService'
 import { debounce } from 'lodash'
+import moment from 'moment/moment'
 import type { SelectOption } from 'naive-ui'
 import { NSelect } from 'naive-ui'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
@@ -81,6 +82,7 @@ function sendCommand(cmdData: string) {
   x.name = props.pod.metadata.name
   x.containerName = selectedContainerName.value
   x.command = `${cmdData}`
+  x.lastHeartBeatTime = moment().toISOString()
   terminalSocket.value.emit('terminal', x)
 }
 
@@ -132,11 +134,17 @@ function onContainerChanged() {
   // console.log('onContainerChanged', selectedContainerName.value)
   sendInitCommand()
 }
+function sendHeartBeat() {
+  return setInterval(() => {
+    sendCommand('HeartBeat')
+  }, 20 * 1000)
+}
 function sendInitCommand() {
   setTimeout(() => {
     sendCommand('clear')
   }, 500)
 }
+let heartBeatInstId: number
 onMounted(() => {
   initWS()
   initTerm()
@@ -144,9 +152,11 @@ onMounted(() => {
   onTerminalResize()
   fillContainerOptions()
   sendInitCommand()
+  heartBeatInstId = sendHeartBeat()
 })
 onBeforeUnmount(() => {
   removeResizeListener()
+  clearInterval(heartBeatInstId)
 })
 </script>
 

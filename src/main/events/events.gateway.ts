@@ -34,7 +34,11 @@ export class EventsGateway {
 
   @SubscribeMessage('terminal')
   async terminal(@MessageBody() podTerminal: TerminalData): Promise<any> {
-    const pk = this.watchService.getExecPodPty(podTerminal, (r) => {
+    if (podTerminal.command === 'HeartBeat') {
+      await this.watchService.podService.handlePodExecHeartBeat(podTerminal)
+      return
+    }
+    const pk = this.watchService.podService.getExecPodPty(podTerminal, (r) => {
       podTerminal.data = r
       this.server.emit('terminal', podTerminal)
     })
@@ -44,17 +48,17 @@ export class EventsGateway {
 
   @SubscribeMessage('terminal-resize')
   async terminalResize(@MessageBody() podTerminal: TerminalData): Promise<any> {
-    this.watchService.resizeKubectlPty(podTerminal)
+    this.watchService.podService.resizeKubectlPty(podTerminal)
   }
 
   @SubscribeMessage('terminal-log')
   async terminalLog(@MessageBody() podTerminal: TerminalData): Promise<any> {
     if (podTerminal.command === 'HeartBeat') {
-      await this.watchService.handlePodLogHeartBeat(podTerminal)
+      await this.watchService.podService.handlePodLogHeartBeat(podTerminal)
       return
     }
 
-    await this.watchService.getLogPodPty(podTerminal, (r) => {
+    await this.watchService.podService.getLogPodPty(podTerminal, (r) => {
       podTerminal.data = r
       this.server.emit('terminal-log', podTerminal)
     })
