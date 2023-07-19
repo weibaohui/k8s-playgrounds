@@ -2,7 +2,7 @@ import os from 'node:os'
 import process from 'node:process'
 import { ConfigService } from '@nestjs/config'
 import { TerminalData, TerminalInstance } from '@main/watch/watch.model'
-import { Injectable } from '@nestjs/common'
+import { Injectable, Logger } from '@nestjs/common'
 import moment from 'moment/moment'
 import * as pty from 'node-pty'
 import {
@@ -11,6 +11,8 @@ import {
 
 @Injectable()
 export class WatchPodService {
+  private readonly logger = new Logger(WatchPodService.name)
+
   private execPtyMap = new Map<string, IPty>()
   private logInstanceMap = new Map<string, TerminalInstance>()
   private execInstanceMap = new Map<string, TerminalInstance>()
@@ -26,7 +28,7 @@ export class WatchPodService {
       this.logInstanceMap.forEach((inst, key) => {
         // 20秒心跳
         if (moment().diff(inst.lastHeartBeatTime, 'seconds') > 20) {
-          console.log(`log 心跳超时 清除 ${key}`)
+          this.logger.debug(`log 心跳超时 清除 ${key}`)
           inst.pty.kill()
           this.logInstanceMap.delete(key)
         }
@@ -34,7 +36,7 @@ export class WatchPodService {
       this.execInstanceMap.forEach((inst, key) => {
         // 20秒心跳
         if (moment().diff(inst.lastHeartBeatTime, 'seconds') > 20) {
-          console.log(`exec 心跳超时 清除 ${key}`)
+          this.logger.debug(`exec 心跳超时 清除 ${key}`)
           inst.pty.kill()
           this.execInstanceMap.delete(key)
         }

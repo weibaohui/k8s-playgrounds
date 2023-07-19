@@ -42,7 +42,9 @@ async function bootstrap() {
       },
     )
     const nestApp2 = await NestFactory.create(
-      CatsModule,
+      CatsModule, {
+        logger: ['error', 'warn', 'debug', 'log'],
+      },
     )
     nestApp2.enableCors()
     await nestApp2.listen(3007)

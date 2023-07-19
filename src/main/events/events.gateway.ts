@@ -1,6 +1,7 @@
 import { TerminalData } from '@main/watch/watch.model'
 import { V1Pod } from '@kubernetes/client-node'
 import { WatchService } from '@main/watch/watch.service'
+import { Logger } from '@nestjs/common'
 import {
   ConnectedSocket,
   MessageBody,
@@ -19,6 +20,8 @@ import { Server } from 'socket.io'
   },
 })
 export class EventsGateway {
+  private readonly logger = new Logger(EventsGateway.name)
+
   constructor(
     private watchService: WatchService,
   ) {}
@@ -28,7 +31,7 @@ export class EventsGateway {
 
   @SubscribeMessage('xxxx')
   findAll(@MessageBody() data: any, @ConnectedSocket() client: any): Observable<WsResponse<any>> {
-    console.log('url query', client.handshake.query.token)
+    this.logger.debug('url query', client.handshake.query.token)
     return from([1, 2, 3]).pipe(map(item => ({ event: 'events', data: item })))
   }
 
@@ -66,7 +69,7 @@ export class EventsGateway {
 
   @SubscribeMessage('watch-init')
   async watchInit(@MessageBody() data: string): Promise<string> {
-    console.log('watchInit')
+    this.logger.debug('watchInit')
     await this.startWatch()
     return data
   }
@@ -85,7 +88,7 @@ export class EventsGateway {
 
   private async startWatch() {
     return once(() => {
-      console.log('start pod watcher')
+      this.logger.debug('start pod watcher')
       this.watchService.PodWatcher((d) => {
         return this.sendPod(d)
       })

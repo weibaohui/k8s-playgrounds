@@ -62,7 +62,7 @@ export class WatchService {
       // done callback is called if the watch terminates normally
       (err) => {
         // tslint:disable-next-line:no-console
-        console.log(err)
+        this.logger.error(err)
       }).then(() => {
     })
   }

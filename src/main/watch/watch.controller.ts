@@ -1,5 +1,3 @@
-import stream from 'node:stream'
-import { LogOptions } from '@kubernetes/client-node/dist/log'
 import { WatchService } from '@main/watch/watch.service'
 import {
   Body,
@@ -67,42 +65,5 @@ export class WatchController {
       this.watchService.deletePods(name, ns)
     })
     return {}
-  }
-
-  /**
-   * http://127.0.0.1:3007/watch/pod/log/default/forwhile-745849b656-4kvcm/forwhile
-   * @param ns
-   * @param podName
-   * @param containerName
-   */
-  @Get('/pod/log/:ns/:podName/:containerName')
-  async getPodLog(@Param('ns') ns,
-                  @Param('podName') podName,
-                  @Param('containerName') containerName,
-  ) {
-    const opt: LogOptions = {
-      follow: true,
-      tailLines: 10,
-    }
-
-    await this.watchService.logPods(ns, podName, containerName, opt)
-    return { aaaa: opt }
-  }
-
-  @Get('/pod/exec/:ns/:podName/:containerName')
-  async execPod(@Param('ns') ns,
-                  @Param('podName') podName,
-                  @Param('containerName') containerName,
-  ) {
-    console.log(ns, podName, containerName)
-    const duplexStream = new stream.PassThrough()
-    duplexStream.on('data', (res) => {
-      console.log('duplexStream on data')
-      console.log(res.toString())
-    })
-
-    const stdin = process.stdin
-    await this.watchService.execPod('default', 'forwhile-745849b656-4kvcm', 'forwhile', 'date', duplexStream, duplexStream, stdin, true)
-    return { ok: 'ok' }
   }
 }
