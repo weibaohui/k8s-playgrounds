@@ -4,24 +4,23 @@
  
  
 ## Introduce
-This is a template based on my repo: [fast-vite-electron](https://github.com/ArcherGu/fast-vite-electron). In the main process, I integrated nestjs. In the main process, you can build your code just as you would write a nestjs backend. Desktop clients built from this template can quickly split the electron when you need to switch to B/S.
+使用Vue、TypeScript、Electron技术打造的k8s playground客户端
+使用ChatGPT进行智能化加持，做使用简单、智能的k8s 管理UI。
 
 ## Features
 
-- 🔨 [vite-plugin-doubleshot](https://github.com/archergu/doubleshot/tree/main/packages/plugin-vite#readme) to run/build electron main process or node backend.
+- 🔨 资源管理：Node、Pod、Deployment.
 <br>
 
-- 🛻 An electron ipc transport for [nestjs](https://nestjs.com/) that provides simple ipc communication.
+- 🛻 命令执行：Pod Exec.
 <br>
 
-- 🪟 An electron module for [nestjs](https://nestjs.com/) to launch electron windows.
+- 🪟 日志查看：Pod Log.
 <br>
 
-- ⏩ Quick start and build, powered by [tsup](https://tsup.egoist.sh/) and [electron-builder](https://www.electron.build/) integrated in [@doubleshot/builder](https://github.com/Doubleshotjs/doubleshot/tree/main/packages/builder)
 
 ## How to use
 
-- Click the [Use this template](https://github.com/ArcherGu/fast-vite-electron/generate) button (you must be logged in) or just clone this repo.
 - In the project folder: 
   ```bash
   # install dependencies
@@ -47,7 +46,7 @@ public-hoist-pattern=*
 shamefully-hoist=true
 ```
 
-## Relative
+## 开发提示
  
 k8s model 生成
  * 使用https://editor.swagger.io/ 生成client，选择typescript-angular
