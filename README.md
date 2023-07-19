@@ -4,7 +4,8 @@
  
  
 ## Introduce
-使用Vue、TypeScript、Electron技术打造的k8s playground客户端
+使用Vue、TypeScript、Electron技术打造的k8s playground客户端。
+框架上使用了NaiveUI+NestJS。
 使用ChatGPT进行智能化加持，做使用简单、智能的k8s 管理UI。
 
 ## Features
