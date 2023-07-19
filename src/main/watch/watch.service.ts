@@ -1,21 +1,24 @@
+import { ChildProcess, exec } from 'node:child_process'
 import os from 'node:os'
 import process from 'node:process'
-import { Stream } from 'node:stream'
 import * as stream from 'node:stream'
-import { IPty } from 'node-pty'
-import * as pty from 'node-pty'
-import { TerminalData } from '@main/watch/watch.model'
-import { LogOptions } from '@kubernetes/client-node/dist/log'
-import { V1Status } from '@kubernetes/client-node/dist/api'
-import { Injectable, Logger } from '@nestjs/common'
+import { Stream } from 'node:stream'
 import * as k8s from '@kubernetes/client-node'
+import { V1Status } from '@kubernetes/client-node/dist/api'
+import { LogOptions } from '@kubernetes/client-node/dist/log'
+import { TerminalData } from '@main/watch/watch.model'
+import { Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
+import * as pty from 'node-pty'
+import { IPty } from 'node-pty'
 
 @Injectable()
 export class WatchService {
   private readonly logger = new Logger(WatchService.name)
   private execPtyMap = new Map<string, IPty>()
   private logPtyMap = new Map<string, IPty>()
+  private logTaskMap = new Map<string, ChildProcess>()
+  private execTaskMap = new Map<string, ChildProcess>()
 
   constructor(
     private configService: ConfigService,
@@ -177,7 +180,7 @@ export class WatchService {
       cb(d.toString())
     })
 
-    pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash || ash || zsh || sh)"\r`)
+    pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash  || sh)"\r`)
     this.execPtyMap.set(key, pk)
     return this.execPtyMap.get(key)
   }
@@ -199,23 +202,67 @@ export class WatchService {
     if (podTerminal.logOptions.sinceTimestamp)
       extCmd += ` --since-time='${podTerminal.logOptions.sinceTimestamp}' `
 
-    pk.write(`clear;kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`)
-
+    const cmd = `kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`
+    pk.write(cmd)
     this.logPtyMap.set(key, pk)
     return this.logPtyMap.get(key)
+  }
+
+  getExecPodTask(podTerminal: TerminalData, cb: (d: string) => void) {
+    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
+    if (this.execTaskMap.has(key))
+      return this.execTaskMap.get(key)
+
+    const cmd = `kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash  || sh)"`
+    const task = exec(cmd, { encoding: 'utf-8' })
+    task.stdout.on('data', (chunk) => {
+      cb(chunk.toString())
+    })
+    task.stderr.on('data', (chunk) => {
+      cb(chunk.toString())
+    })
+
+    this.execTaskMap.set(key, task)
+    return this.execTaskMap.get(key)
+  }
+
+  getLogPodTask(podTerminal: TerminalData, cb: (d: string) => void) {
+    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
+    if (this.logTaskMap.has(key))
+      this.logTaskMap.get(key).kill()
+
+    let extCmd = ' '
+    if (podTerminal.logOptions.follow)
+      extCmd += ' --follow '
+    if (podTerminal.logOptions.showTimestamp)
+      extCmd += ' --timestamps '
+    if (podTerminal.logOptions.sinceTimestamp)
+      extCmd += ` --since-time='${podTerminal.logOptions.sinceTimestamp}' `
+
+    const cmd = `kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} `
+
+    const task = exec(cmd, { encoding: 'utf-8' })
+    task.stdout.on('data', (chunk) => {
+      cb(chunk.toString())
+    })
+    task.stderr.on('data', (chunk) => {
+      cb(chunk.toString())
+    })
+
+    this.logTaskMap.set(key, task)
+    return this.logTaskMap.get(key)
   }
 
   private getNodePty() {
     const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
 
-    const pk = pty.spawn(shell, [], {
+    return pty.spawn(shell, [], {
       name: 'xterm-color',
       cols: 80,
       rows: 30,
-      cwd: process.env.HOME,
       env: process.env,
+      cwd: process.cwd(),
     })
-    return pk
   }
 
   resizeKubectlPty(podTerminal: TerminalData, cb?: () => void) {

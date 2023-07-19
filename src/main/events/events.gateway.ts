@@ -38,6 +38,7 @@ export class EventsGateway {
       podTerminal.data = r
       this.server.emit('terminal', podTerminal)
     })
+    // pk.stdin.write(`${podTerminal.command}`)
     pk.write(`${podTerminal.command}\r`)
   }
 
