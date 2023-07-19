@@ -88,6 +88,7 @@ function sendCommand(cmdData: string) {
     follow: logFollow.value,
     sinceTimestamp: moment(sinceTimestamp.value).toISOString(),
   }
+  x.lastHeartBeatTime = moment().toISOString()
   terminalSocket.value.emit('terminal-log', x)
 }
 
@@ -126,15 +127,23 @@ function sendInitCommand() {
     sendCommand('start')
   }, 500)
 }
+function sendHeartBeat() {
+  return setInterval(() => {
+    sendCommand('HeartBeat')
+  }, 20 * 1000)
+}
+let heartBeatInstId: number
 onMounted(() => {
   initWS()
   initTerm()
   onTerminalResize()
   fillContainerOptions()
   sendInitCommand()
+  heartBeatInstId = sendHeartBeat()
 })
 onBeforeUnmount(() => {
   removeResizeListener()
+  clearInterval(heartBeatInstId)
 })
 </script>
 

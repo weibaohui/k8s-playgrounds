@@ -49,6 +49,11 @@ export class EventsGateway {
 
   @SubscribeMessage('terminal-log')
   async terminalLog(@MessageBody() podTerminal: TerminalData): Promise<any> {
+    if (podTerminal.command === 'HeartBeat') {
+      await this.watchService.handlePodLogHeartBeat(podTerminal)
+      return
+    }
+
     await this.watchService.getLogPodPty(podTerminal, (r) => {
       podTerminal.data = r
       this.server.emit('terminal-log', podTerminal)

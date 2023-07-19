@@ -1,3 +1,5 @@
+import { IPty } from 'node-pty'
+
 export class TerminalData {
   ns: string
   name: string
@@ -14,4 +16,10 @@ export class TerminalData {
     follow: boolean
     sinceTimestamp: string
   }
+
+  lastHeartBeatTime: string
+}
+export class TerminalInstance {
+  lastHeartBeatTime: string
+  pty: IPty
 }

@@ -3,10 +3,11 @@ import os from 'node:os'
 import process from 'node:process'
 import * as stream from 'node:stream'
 import { Stream } from 'node:stream'
+import moment from 'moment'
 import * as k8s from '@kubernetes/client-node'
 import { V1Status } from '@kubernetes/client-node/dist/api'
 import { LogOptions } from '@kubernetes/client-node/dist/log'
-import { TerminalData } from '@main/watch/watch.model'
+import { TerminalData, TerminalInstance } from '@main/watch/watch.model'
 import { Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import * as pty from 'node-pty'
@@ -17,15 +18,33 @@ export class WatchService {
   private readonly logger = new Logger(WatchService.name)
   private execPtyMap = new Map<string, IPty>()
   private logPtyMap = new Map<string, IPty>()
+  private logPtyInstanceMap = new Map<string, TerminalInstance>()
   private logTaskMap = new Map<string, ChildProcess>()
   private execTaskMap = new Map<string, ChildProcess>()
+  private logPtyTTLMap = new Map<string, number>()
 
   constructor(
     private configService: ConfigService,
   ) {
+    this.handleHeartBeat()
   }
 
   private kc = new k8s.KubeConfig()
+
+  handleHeartBeat() {
+    setInterval(() => {
+      // console.log('心跳检测')
+      this.logPtyInstanceMap.forEach((inst, key) => {
+        // console.log(` ${key}:  ${inst.lastHeartBeatTime} : ${moment().diff(inst.lastHeartBeatTime, 'seconds')}`)
+        // 20秒心跳
+        if (moment().diff(inst.lastHeartBeatTime, 'seconds') > 20) {
+          // console.log(`${key}超时，删除`)
+          inst.pty.kill()
+          this.logPtyInstanceMap.delete(key)
+        }
+      })
+    }, 10 * 1000)
+  }
 
   async PodWatcher(cb?: (d: any) => void) {
     this.watch('pod', cb)
@@ -187,8 +206,8 @@ export class WatchService {
 
   getLogPodPty(podTerminal: TerminalData, cb: (d: string) => void) {
     const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
-    if (this.logPtyMap.has(key))
-      this.logPtyMap.get(key).kill()
+    if (this.logPtyInstanceMap.has(key))
+      this.logPtyInstanceMap.get(key).pty.kill()
 
     const pk = this.getNodePty()
     pk.onData((d) => {
@@ -204,8 +223,11 @@ export class WatchService {
 
     const cmd = `kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`
     pk.write(cmd)
-    this.logPtyMap.set(key, pk)
-    return this.logPtyMap.get(key)
+    this.logPtyInstanceMap.set(key, {
+      pty: pk,
+      lastHeartBeatTime: moment().toISOString(),
+    })
+    return this.logPtyInstanceMap.get(key).pty
   }
 
   getExecPodTask(podTerminal: TerminalData, cb: (d: string) => void) {
@@ -272,5 +294,11 @@ export class WatchService {
       pk.resize(podTerminal.columns, podTerminal.rows)
       cb?.()
     }
+  }
+
+  async handlePodLogHeartBeat(podTerminal: TerminalData) {
+    const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
+    if (this.logPtyInstanceMap.has(key))
+      this.logPtyInstanceMap.get(key).lastHeartBeatTime = moment().toISOString()
   }
 }
