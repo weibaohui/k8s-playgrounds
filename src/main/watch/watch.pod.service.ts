@@ -1,5 +1,6 @@
 import os from 'node:os'
 import process from 'node:process'
+import { exec } from 'node:child_process'
 import { ConfigService } from '@nestjs/config'
 import { TerminalData, TerminalInstance } from '@main/watch/watch.model'
 import { Injectable, Logger } from '@nestjs/common'
@@ -117,5 +118,15 @@ export class WatchPodService {
     const key = `${podTerminal.ns}/${podTerminal.name}/${podTerminal.containerName}`
     if (this.execInstanceMap.has(key))
       this.execInstanceMap.get(key).lastHeartBeatTime = moment().toISOString()
+  }
+
+  getPodContainerLogs(ns: string, podName: string, containerName: string) {
+    console.log(ns, podName, containerName)
+    const cmd = `kubectl logs -n ${ns} ${podName} -c ${containerName} `
+    const process = exec(cmd)
+    process.stdout.on('data', (d) => {
+      console.log(d.toString())
+    })
+    return process.stdout
   }
 }

@@ -3,7 +3,7 @@ import {
   Body,
   Controller,
   Get,
-  Param, Post,
+  Param, Post, StreamableFile,
 } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 
@@ -65,5 +65,13 @@ export class WatchController {
       this.watchService.deletePods(name, ns)
     })
     return {}
+  }
+
+  @Get('pods/log/file/:ns/:podName/:containerName')
+  getPodContainerLogs(@Param('ns') ns,
+                            @Param('podName') podName,
+  @Param('containerName') containerName): StreamableFile {
+    const file = this.watchService.podService.getPodContainerLogs(ns, podName, containerName)
+    return new StreamableFile(file)
   }
 }

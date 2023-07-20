@@ -20,6 +20,6 @@ export class PodService {
 
   getPodContainerLogsDownloadURL(ns: string, podName: string, containerName: string) {
     const baseURL = HttpClient.inst.getBaseURL()
-    return `${baseURL}/watch/pods/log/file/${ns}/${podName}/${containerName}`
+    return `${baseURL}watch/pods/log/file/${ns}/${podName}/${containerName}`
   }
 }

@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { TerminalData } from '@main/watch/watch.model'
+import { K8sService } from '@render/service/k8s/K8sService'
 import { SocketIOService } from '@render/service/k8s/SocketIOService'
 import { debounce } from 'lodash'
 import moment from 'moment'
 import type { SelectOption } from 'naive-ui'
-import { NCheckbox, NDatePicker, NFormItemGi, NGrid, NSelect } from 'naive-ui'
+import { NButton, NCheckbox, NDatePicker, NDropdown, NFormItemGi, NGrid, NSelect } from 'naive-ui'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
@@ -30,6 +31,16 @@ const shortcuts = {
   '10m': () => new Date().getTime() - 10 * 60 * 1000,
   '5m': () => new Date().getTime() - 5 * 60 * 1000,
 }
+const downloadOptions = [
+  {
+    label: '显示日志',
+    key: 'term',
+  },
+  {
+    label: '全部日志',
+    key: 'all',
+  },
+]
 function createWS() {
   terminalSocket.value = SocketIOService.instance.getSocket()
   console.log('isWsOpen()', isWsOpen())
@@ -115,6 +126,21 @@ function onContainerChanged() {
   // console.log('onContainerChanged', selectedContainerName.value)
   sendInitCommand()
 }
+function handleDownloadSelect(key: string) {
+  console.log(key)
+  if (key === 'all') {
+    const x = new TerminalData()
+    x.ns = props.pod.metadata.namespace
+    x.name = props.pod.metadata.name
+    x.containerName = selectedContainerName.value
+    const url = K8sService.podService.getPodContainerLogsDownloadURL(x.ns, x.name, x.containerName)
+    const link = document.createElement('a')
+    link.style.display = 'none'
+    link.href = url
+    document.body.appendChild(link)
+    link.click()
+  }
+}
 function onShowTimestampChange() {
   sendInitCommand()
 }
@@ -188,6 +214,9 @@ onBeforeUnmount(() => {
         :shortcuts="shortcuts"
         @update:value="onTimeChange"
       />
+      <NDropdown trigger="hover" :options="downloadOptions" @select="handleDownloadSelect">
+        <NButton>下载</NButton>
+      </NDropdown>
     </NFormItemGi>
   </NGrid>
 
