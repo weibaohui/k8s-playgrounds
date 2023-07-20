@@ -1,11 +1,11 @@
-import { get } from '@main/utils/axios/api'
+import { HttpClient } from '@main/utils/axios/HttpClient'
 import type { V1Event } from '../../../model/V1Event'
 import type { V1Node } from '../../../model/V1Node'
 import type { V1Pod } from '../../../model/V1Pod'
 
 export class EventService {
   async getEventsList(ns?: string) {
-    return await get<V1Event[]>(`/watch/events/${ns}`)
+    return await HttpClient.inst.get<V1Event[]>(`/watch/events/${ns}`)
   }
 
   async getPodEventsList(pod: V1Pod) {

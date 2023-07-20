@@ -1,12 +1,12 @@
-import { get } from '@main/utils/axios/api'
+import { HttpClient } from '@main/utils/axios/HttpClient'
 import type { V1Node } from '../../../model/V1Node'
 
 export class NodeService {
   async getNodeList(): Promise<V1Node[]> {
-    return await get<V1Node[]>('/watch/nodes')
+    return await HttpClient.inst.get<V1Node[]>('/watch/nodes')
   }
 
   async getNode(name: string): Promise<V1Node> {
-    return await get<V1Node>(`/watch/node/${name}`)
+    return await HttpClient.inst.get<V1Node>(`/watch/node/${name}`)
   }
 }
