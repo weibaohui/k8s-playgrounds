@@ -124,9 +124,6 @@ export class WatchPodService {
     console.log(ns, podName, containerName)
     const cmd = `kubectl logs -n ${ns} ${podName} -c ${containerName} `
     const process = exec(cmd)
-    process.stdout.on('data', (d) => {
-      console.log(d.toString())
-    })
     return process.stdout
   }
 }
