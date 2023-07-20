@@ -74,7 +74,7 @@ export class WatchPodService {
       extCmd += ' --follow '
     if (podTerminal.logOptions.showTimestamp)
       extCmd += ' --timestamps '
-    if (podTerminal.logOptions.sinceTimestamp)
+    if (!podTerminal.logOptions.showAll && podTerminal.logOptions.sinceTimestamp)
       extCmd += ` --since-time='${podTerminal.logOptions.sinceTimestamp}' `
 
     const cmd = `kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`

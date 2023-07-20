@@ -21,6 +21,7 @@ const fitAddon = new FitAddon()
 const selectedContainerName = ref('')
 const logShowTimestamp = ref<boolean>(false)
 const logFollow = ref<boolean>(true)
+const logShowAll = ref<boolean>(false)
 const sinceTimestamp = ref<number>(moment().valueOf())
 const options = ref<SelectOption[]>()
 const shortcuts = {
@@ -87,6 +88,7 @@ function sendCommand(cmdData: string) {
     showTimestamp: logShowTimestamp.value,
     follow: logFollow.value,
     sinceTimestamp: moment(sinceTimestamp.value).toISOString(),
+    showAll: logShowAll.value,
   }
   x.lastHeartBeatTime = moment().toISOString()
   terminalSocket.value.emit('terminal-log', x)
@@ -113,13 +115,16 @@ function onContainerChanged() {
   // console.log('onContainerChanged', selectedContainerName.value)
   sendInitCommand()
 }
-function onCheckedChange() {
+function onShowTimestampChange() {
   sendInitCommand()
 }
 function onTimeChange() {
   sendInitCommand()
 }
 function onFollowChange() {
+  sendInitCommand()
+}
+function onShowAllChange() {
   sendInitCommand()
 }
 function sendInitCommand() {
@@ -150,21 +155,14 @@ onBeforeUnmount(() => {
 <template>
   <NGrid :cols="24" :x-gap="24">
     <NFormItemGi :span="1" />
-    <NFormItemGi :span="11">
+    <NFormItemGi :span="4">
       <NSelect
         v-model:value="selectedContainerName" :options="options" show-checkmark show-on-focus
         placeholder="请选择容器"
         @update:value="onContainerChanged"
       />
     </NFormItemGi>
-    <NFormItemGi :span="11">
-      <NDatePicker
-        v-model:value="sinceTimestamp"
-        type="datetime"
-        :shortcuts="shortcuts"
-        @update:value="onTimeChange"
-      />
-
+    <NFormItemGi :span="19">
       <NCheckbox
         v-model:checked="logFollow"
         disabled
@@ -174,12 +172,23 @@ onBeforeUnmount(() => {
       </NCheckbox>
       <NCheckbox
         v-model:checked="logShowTimestamp"
-        @update:checked="onCheckedChange"
+        @update:checked="onShowTimestampChange"
       >
         显示时间戳
       </NCheckbox>
+      日志范围<NCheckbox
+        v-model:checked="logShowAll"
+        @update:checked="onShowAllChange"
+      />
+      全部
+      <NDatePicker
+        v-if="!logShowAll"
+        v-model:value="sinceTimestamp"
+        type="datetime"
+        :shortcuts="shortcuts"
+        @update:value="onTimeChange"
+      />
     </NFormItemGi>
-    <NFormItemGi :span="1" />
   </NGrid>
 
   <div id="xterm-container" ref="terminalDom" />

@@ -21,9 +21,16 @@ export class TerminalData {
    * 日志选项
    */
   logOptions: {
+    /**
+     * 显示时间戳
+     */
     showTimestamp: boolean
     follow: boolean
     sinceTimestamp: string
+    /**
+     * 显示所有日志
+     */
+    showAll: boolean
   }
 
   /**
