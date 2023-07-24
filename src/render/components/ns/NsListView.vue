@@ -22,9 +22,8 @@ async function showNsView(x: V1Namespace) {
 
 const columns = createColumns()
 const nsList = ref<V1Namespace[]>()
-const checkedRowKeysRef = ref<string[]>([])
 
-function createColumns(): DataTableColumns<V1Namespace> {
+function createColumns(): Array<DataTableColumns<V1Namespace>> {
   return [
     {
       type: 'selection',
