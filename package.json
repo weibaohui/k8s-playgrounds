@@ -24,6 +24,7 @@
     "@nestjs/websockets": "^10.0.5",
     "@types/lodash": "^4.14.195",
     "dayjs": "^1.11.9",
+    "file-saver": "^2.0.5",
     "moment": "^2.29.4",
     "naive-ui": "^2.34.4",
     "node-pty": "^1.0.0",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@lightwing/eslint-config": "^0.0.17",
+    "@types/file-saver": "^2.0.5",
     "@vicons/fa": "^0.12.0",
     "@vicons/fluent": "^0.12.0",
     "@vicons/ionicons5": "^0.12.0",

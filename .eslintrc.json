@@ -1,19 +1,5 @@
 {
   "extends": "@lightwing",
-  "globals": {
-    "process": true
-  },
-  "rules": {
-    "no-console": "off",
-    "no-alert": "off",
-    "no-unused-vars": "off"
-  },
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true,
-    "commonjs": true
-  },
   "overrides": [
     {
       "files": "**/*.vue",
