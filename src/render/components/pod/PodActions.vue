@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import PodExecView from '@render/components/pod/PodExecView.vue'
+import PodLogView from '@render/components/pod/PodLogView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { DeleteRound, EditNoteRound, FormatAlignLeftRound, TerminalRound } from '@vicons/material'
+import type { ConcreteComponent } from '@vue/runtime-core'
 import { NButton, NButtonGroup, NIcon, NSpace, NTooltip } from 'naive-ui'
 import { h } from 'vue'
 import { V1Pod } from '../../../model/V1Pod'
@@ -10,13 +12,13 @@ const props = defineProps({
   pod: V1Pod,
 })
 const drawer = useDrawerService()
-function showPodExecView(x: V1Pod) {
+function showView(comp: ConcreteComponent, x: V1Pod) {
   drawer.showDrawer(
     {
       title: x.metadata.name,
       width: 1000,
     },
-    h(PodExecView, { pod: x }),
+    h(comp, { pod: x }),
   )
 }
 </script>
@@ -26,7 +28,7 @@ function showPodExecView(x: V1Pod) {
     <NButtonGroup>
       <NTooltip>
         <template #trigger>
-          <NButton type="default" @click="showPodExecView(props.pod)">
+          <NButton type="default" @click="showView(PodExecView, props.pod)">
             <NIcon :component="TerminalRound" />
           </NButton>
         </template>
@@ -34,7 +36,7 @@ function showPodExecView(x: V1Pod) {
       </NTooltip>
       <NTooltip>
         <template #trigger>
-          <NButton @click="showPodExecView(props.pod)">
+          <NButton @click="showView(PodLogView, props.pod)">
             <NIcon :component="FormatAlignLeftRound" />
           </NButton>
         </template>
