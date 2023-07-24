@@ -1,4 +1,5 @@
 import { join } from 'node:path'
+import process from 'node:process'
 import { Module } from '@nestjs/common'
 import { ElectronModule } from '@doubleshot/nest-electron'
 import { BrowserWindow, app } from 'electron'
@@ -23,7 +24,6 @@ import { AppService } from './app.service'
         win.on('closed', () => {
           win.destroy()
         })
-
         const URL = isDev
           ? process.env.DS_RENDERER_URL
           : `file://${join(app.getAppPath(), 'dist/render/index.html')}`

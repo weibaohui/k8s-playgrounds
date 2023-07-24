@@ -94,7 +94,7 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'Ready',
       key: 'Ready',
-      render(row, index) {
+      render(row) {
         return h(ContainerReadyCount,
           {
             pod: row as V1Pod,
@@ -105,7 +105,7 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'Restarts',
       key: 'Restarts',
-      render(row, index) {
+      render(row) {
         return h(ContainerRestartCount,
           {
             pod: row as V1Pod,
@@ -242,7 +242,7 @@ async function watchPodChange() {
   })
 }
 
-function onTextChanged(text: String) {
+function onTextChanged(text: string) {
   if (_.isEmpty(text)) {
     getK8sPodList()
     return
@@ -255,7 +255,7 @@ async function onRemoveBtnClicked() {
   checkedRowKeysRef.value = []
 }
 
-function onNsChanged(ns: String) {
+function onNsChanged(ns: string) {
   selectedNs.value = ns
   getK8sPodList()
 }

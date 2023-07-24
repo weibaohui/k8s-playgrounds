@@ -14,7 +14,7 @@ function onClicked() {
 </script>
 
 <template>
-  <NP v-if="items && items.length > 0" class="fix">
+  <NP v-if="props.items.value && props.items.value.length > 0" class="fix">
     <NBadge :value="items.length" :max="15">
       <NButton color="#FADC19" circle @click="onClicked">
         <template #icon>

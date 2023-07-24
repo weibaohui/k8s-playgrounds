@@ -72,7 +72,7 @@ export class WatchService {
      * @private
      * @param resType
      */
-  private getResourceWatchPath(resType: String) {
+  private getResourceWatchPath(resType: string) {
     switch (resType) {
       case 'pod' || 'pods' :
         resType = 'pods'

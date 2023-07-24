@@ -23,7 +23,6 @@ async function showNodeView(x: V1Node) {
 
 const columns = createColumns()
 const nodeList = ref<V1Node[]>()
-const checkedRowKeysRef = ref<string[]>([])
 
 function createColumns(): DataTableColumns<V1Node> {
   return [

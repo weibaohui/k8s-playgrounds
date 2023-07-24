@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { CatsModule } from '@main/cats/cats.module'
 import { NestFactory } from '@nestjs/core'
 import { app } from 'electron'

@@ -29,7 +29,6 @@ async function showEventView(x: V1Event) {
 
 const columns = createColumns()
 const eventList = ref<V1Event[]>()
-const checkedRowKeysRef = ref<string[]>([])
 
 function createColumns(): DataTableColumns<V1Namespace> {
   return [
@@ -129,7 +128,7 @@ async function getEventList() {
   eventList.value = await K8sService.eventService.getEventsList(selectedNs.value)
 }
 
-function onTextChanged(text: String) {
+function onTextChanged(text: string) {
   if (_.isEmpty(text)) {
     getEventList()
     return
@@ -137,7 +136,7 @@ function onTextChanged(text: String) {
   eventList.value = eventList.value.filter(r => r.message.includes(text))
 }
 
-function onNsChanged(ns: String) {
+function onNsChanged(ns: string) {
   selectedNs.value = ns
   getEventList()
 }
