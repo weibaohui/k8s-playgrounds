@@ -3,7 +3,6 @@ import SearchFilter from '@render/components/common/SearchFilter.vue'
 import EventInvolvedClickAction from '@render/components/event/EventInvolvedClickAction.vue'
 import EventLastSeen from '@render/components/event/EventLastSeen.vue'
 import EventMessageView from '@render/components/event/EventMessageView.vue'
-import EventView from '@render/components/event/EventView.vue'
 import NsSelect from '@render/components/ns/NsSelect.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
@@ -18,14 +17,6 @@ import type { V1Pod } from '../../../model/V1Pod'
 const drawer = useDrawerService()
 const nsSelectRef = ref<InstanceType<typeof NsSelect>>()
 const selectedNs = ref('default')
-async function showEventView(x: V1Event) {
-  drawer.showDrawer({
-    title: x.metadata.name,
-    width: 800,
-  },
-  h(EventView, { event: x }),
-  )
-}
 
 const columns = createColumns()
 const eventList = ref<V1Event[]>()
@@ -44,20 +35,8 @@ function createColumns(): DataTableColumns<V1Namespace> {
       title: 'Message',
       key: 'message',
       width: 300,
-      ellipsis: {
-        tooltip: true,
-      },
       render(row) {
-        return h(
-          NButton,
-          {
-            text: true,
-            onClick: () => {
-              showEventView(row)
-            },
-          },
-          () => h(EventMessageView, { event: row as V1Event }),
-        )
+        return h(EventMessageView, { event: row as V1Event })
       },
     },
     {
