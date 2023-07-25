@@ -58,7 +58,7 @@ export class WatchPodService {
     })
     setTimeout(() => {
       pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash  || sh)"\r`)
-    }, 1500)
+    }, 1000)
     return this.execInstanceMap.get(key).pty
   }
 
@@ -86,7 +86,7 @@ export class WatchPodService {
     })
     setTimeout(() => {
       pk.write(cmd)
-    }, 1500)
+    }, 1000)
     return this.logInstanceMap.get(key).pty
   }
 
