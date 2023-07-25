@@ -52,12 +52,13 @@ export class WatchPodService {
     pk.onData((d) => {
       cb(d.toString())
     })
-
-    pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash  || sh)"\r`)
     this.execInstanceMap.set(key, {
       pty: pk,
       lastHeartBeatTime: moment().toISOString(),
     })
+    setTimeout(() => {
+      pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash  || sh)"\r`)
+    }, 1500)
     return this.execInstanceMap.get(key).pty
   }
 
