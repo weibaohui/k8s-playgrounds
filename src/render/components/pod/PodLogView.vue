@@ -2,6 +2,7 @@
 import { TerminalData } from '@main/watch/watch.model'
 import { K8sService } from '@render/service/k8s/K8sService'
 import { SocketIOService } from '@render/service/k8s/SocketIOService'
+import { saveAs } from 'file-saver'
 import { debounce } from 'lodash'
 import moment from 'moment'
 import type { SelectOption } from 'naive-ui'
@@ -128,17 +129,23 @@ function onContainerChanged() {
 }
 function handleDownloadSelect(key: string) {
   console.log(key)
+  const x = new TerminalData()
+  x.ns = props.pod.metadata.namespace
+  x.name = props.pod.metadata.name
+  x.containerName = selectedContainerName.value
   if (key === 'all') {
-    const x = new TerminalData()
-    x.ns = props.pod.metadata.namespace
-    x.name = props.pod.metadata.name
-    x.containerName = selectedContainerName.value
     const url = K8sService.podService.getPodContainerLogsDownloadURL(x.ns, x.name, x.containerName)
     const link = document.createElement('a')
     link.style.display = 'none'
     link.href = url
     document.body.appendChild(link)
     link.click()
+  }
+  else if (key === 'term') {
+    term.value.selectAll()
+    const selection = term.value.getSelection()
+    const str = new Blob([selection], { type: 'text/plain;charset=utf-8' })
+    saveAs(str, `${x.ns}-${x.name}-${x.containerName}-${Math.random()}.txt`)
   }
 }
 function onShowTimestampChange() {
