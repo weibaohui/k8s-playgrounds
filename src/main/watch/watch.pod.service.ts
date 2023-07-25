@@ -80,11 +80,13 @@ export class WatchPodService {
       extCmd += ` --since-time='${podTerminal.logOptions.sinceTimestamp}' `
 
     const cmd = `kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`
-    pk.write(cmd)
     this.logInstanceMap.set(key, {
       pty: pk,
       lastHeartBeatTime: moment().toISOString(),
     })
+    setTimeout(() => {
+      pk.write(cmd)
+    }, 1500)
     return this.logInstanceMap.get(key).pty
   }
 
