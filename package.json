@@ -1,6 +1,7 @@
 {
   "name": "k8s-playground",
   "version": "0.0.1",
+  "packageManager": "pnpm@8.6.3",
   "description": "k8s playground with NaiveUI+Vue+NestJS+Electron,made by TypeScript",
   "main": "dist/main/index.js",
   "scripts": {
