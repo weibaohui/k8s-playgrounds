@@ -9,6 +9,7 @@ import { drawerServiceApiInjectionKey } from '@render/service/drawer-service/con
 
 export interface DrawerServiceApiInjection {
   showDrawer: (drawerProps: DrawerServiceProps, children: VNode) => void
+  close()
 }
 
 export class DrawerServiceProps {
@@ -28,6 +29,9 @@ export default defineComponent({
     const api: DrawerServiceApiInjection = {
       showDrawer(drawerProps: DrawerServiceProps, children: VNode) {
         create(drawerProps, children)
+      },
+      close() {
+        onClose()
       },
     }
     provide(drawerServiceApiInjectionKey, api)

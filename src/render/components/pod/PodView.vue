@@ -4,7 +4,7 @@ import PodActions from '@render/components/pod/PodActions.vue'
 import PodBasicInfoView from '@render/components/pod/PodBasicInfoView.vue'
 import PodEventsView from '@render/components/pod/PodEventsView.vue'
 import PodVolumesView from '@render/components/pod/PodVolumesView.vue'
-import { NH6, NText } from 'naive-ui'
+import { NH6, NMessageProvider, NText } from 'naive-ui'
 import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
@@ -13,7 +13,9 @@ const props = defineProps({
 </script>
 
 <template>
-  <PodActions :pod="props.pod" />
+  <NMessageProvider>
+    <PodActions :pod="props.pod" />
+  </NMessageProvider>
 
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">

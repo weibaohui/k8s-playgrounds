@@ -2,9 +2,10 @@
 import PodExecView from '@render/components/pod/PodExecView.vue'
 import PodLogView from '@render/components/pod/PodLogView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
+import { K8sService } from '@render/service/k8s/K8sService'
 import { DeleteRound, EditNoteRound, FormatAlignLeftRound, TerminalRound } from '@vicons/material'
 import type { ConcreteComponent } from '@vue/runtime-core'
-import { NButton, NButtonGroup, NIcon, NSpace, NTooltip } from 'naive-ui'
+import { NButton, NButtonGroup, NIcon, NSpace, NTooltip, useDialog, useMessage } from 'naive-ui'
 import { h } from 'vue'
 import { V1Pod } from '../../../model/V1Pod'
 
@@ -12,6 +13,8 @@ const props = defineProps({
   pod: V1Pod,
 })
 const drawer = useDrawerService()
+const dialog = useDialog()
+const message = useMessage()
 function showView(comp: ConcreteComponent, x: V1Pod) {
   drawer.showDrawer(
     {
@@ -20,6 +23,22 @@ function showView(comp: ConcreteComponent, x: V1Pod) {
     },
     h(comp, { pod: x }),
   )
+}
+
+async function deletePod(pod: V1Pod) {
+  dialog.warning({
+    title: '警告',
+    content: `你确定删除Pod：${pod.metadata.namespace}/${pod.metadata.name}吗?`,
+    positiveText: '删除',
+    negativeText: '放弃',
+    onPositiveClick: async () => {
+      await K8sService.podService.deletePods([`${pod.metadata.namespace}/${pod.metadata.name}`])
+      drawer.close()
+    },
+    onNegativeClick: () => {
+      message.error('放弃删除')
+    },
+  })
 }
 </script>
 
@@ -44,7 +63,7 @@ function showView(comp: ConcreteComponent, x: V1Pod) {
       </NTooltip>
       <NTooltip>
         <template #trigger>
-          <NButton @click="showPodExecView(props.pod)">
+          <NButton>
             <NIcon :component="EditNoteRound" />
           </NButton>
         </template>
@@ -52,7 +71,7 @@ function showView(comp: ConcreteComponent, x: V1Pod) {
       </NTooltip>
       <NTooltip>
         <template #trigger>
-          <NButton round @click="showPodExecView(props.pod)">
+          <NButton round @click="deletePod(props.pod)">
             <NIcon :component="DeleteRound" />
           </NButton>
         </template>
