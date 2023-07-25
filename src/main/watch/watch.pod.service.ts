@@ -57,7 +57,7 @@ export class WatchPodService {
       lastHeartBeatTime: moment().toISOString(),
     })
     setTimeout(() => {
-      pk.write(`kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash  || sh)"\r`)
+      pk.write(`clear;kubectl exec -i -t -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} -- sh -c "clear; (bash  || sh)"\r`)
     }, 1000)
     return this.execInstanceMap.get(key).pty
   }
@@ -79,7 +79,7 @@ export class WatchPodService {
     if (!podTerminal.logOptions.showAll && podTerminal.logOptions.sinceTimestamp)
       extCmd += ` --since-time='${podTerminal.logOptions.sinceTimestamp}' `
 
-    const cmd = `kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`
+    const cmd = `clear;kubectl logs -n ${podTerminal.ns} ${podTerminal.name} -c ${podTerminal.containerName} ${extCmd} \r`
     this.logInstanceMap.set(key, {
       pty: pk,
       lastHeartBeatTime: moment().toISOString(),
