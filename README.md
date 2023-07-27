@@ -47,37 +47,38 @@ public-hoist-pattern=*
 shamefully-hoist=true
 ```
 ## 功能列表
-|        分类 | 功能         | 	状态✅/☑️ |
-|----------:|:-----------|:--------|
-|       Pod | 列表         | ✅       |
-|       Pod | 列表-错误提示    | ✅       |
-|       Pod | 列表-批量删除    | ✅       |
-|       Pod | 列表-常用操作    | ✅       |
-|       Pod | 列表-错误提示    | ✅       |
-|       Pod | 列表-搜索过滤    | ✅       |
-|       Pod | 详情         | ✅       |
-|       Pod | 详情-Exec    | ✅       |
-|       Pod | 详情-Log     | ✅       |
-|       Pod | 详情-删除      | ✅       |
-|       Pod | 详情-事件      | ✅       |
-|       Pod | 详情-污点      | ✅       |
-|       Pod | 详情-注解      | ✅       |
-|       Pod | 详情-账户      | ✅       |
-|       Pod | 详情-状态      | ✅       |
-|       Pod | 详情-Volume  | ✅       |
-|       Pod | 详情-Env     | ✅       |
-|       Pod | 详情-主机      | ✅       |
-|     Event | 列表         | ✅       |
-|     Event | 列表-关联Pod   | ✅       |
-|     Event | 列表-关联Node  | ✅       |
-|     Event | 详情         | ✅       |
-| Namespace | 列表         | ✅       |
-| Namespace | 详情         | ✅       |
-| Namespace | 详情-关联Event | ✅       |
-|      Node | 列表         | ✅       |
-|      Node | 详情         | ✅       |
-|      Node | 详情-节点角色    | ✅       |
-|      Node | 详情-调度状态    | ✅       |
+|        分类 | 功能             | 	状态✅/☑️ |
+|----------:|:---------------|:--------|
+|       Pod | 列表             | ✅       |
+|       Pod | 列表-错误提示        | ✅       |
+|       Pod | 列表-批量删除        | ✅       |
+|       Pod | 列表-常用操作        | ✅       |
+|       Pod | 列表-错误提示        | ✅       |
+|       Pod | 列表-关键字搜索过滤     | ✅       |
+|       Pod | 列表-Namespace过滤 | ✅       |
+|       Pod | 详情             | ✅       |
+|       Pod | 详情-Exec        | ✅       |
+|       Pod | 详情-Log         | ✅       |
+|       Pod | 详情-删除          | ✅       |
+|       Pod | 详情-事件          | ✅       |
+|       Pod | 详情-污点          | ✅       |
+|       Pod | 详情-注解          | ✅       |
+|       Pod | 详情-账户          | ✅       |
+|       Pod | 详情-状态          | ✅       |
+|       Pod | 详情-Volume      | ✅       |
+|       Pod | 详情-Env         | ✅       |
+|       Pod | 详情-主机          | ✅       |
+|     Event | 列表             | ✅       |
+|     Event | 列表-关联Pod       | ✅       |
+|     Event | 列表-关联Node      | ✅       |
+|     Event | 详情             | ✅       |
+| Namespace | 列表             | ✅       |
+| Namespace | 详情             | ✅       |
+| Namespace | 详情-关联Event     | ✅       |
+|      Node | 列表             | ✅       |
+|      Node | 详情             | ✅       |
+|      Node | 详情-节点角色        | ✅       |
+|      Node | 详情-调度状态        | ✅       |
 ## 开发提示
  
 k8s model 生成
