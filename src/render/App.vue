@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import router from '@render/router'
 import DrawerServiceProvider from '@render/service/drawer-service/DrawerServiceProvider'
 import { Cube, Layers, PawOutline, Time } from '@vicons/ionicons5'
 import { Server } from '@vicons/fa'
@@ -102,6 +103,8 @@ const collapsed = ref(true)
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
+// 默认首屏跳转
+router.push('/pods')
 </script>
 
 <template>
