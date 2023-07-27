@@ -11,8 +11,8 @@ process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true'
 async function electronAppInit() {
   const isDev = !app.isPackaged
   app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin')
-      app.quit()
+    // if (process.platform !== 'darwin')
+    app.quit()
   })
 
   if (isDev) {
@@ -52,7 +52,7 @@ async function bootstrap() {
     await nestApp.listen()
   }
   catch (error) {
-    console.log(error)
+    console.log('bootstrap', error)
     app.quit()
   }
 }
