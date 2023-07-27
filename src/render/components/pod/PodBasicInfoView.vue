@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
+import NodeView from '@render/components/node/NodeView.vue'
+import { useDrawerService } from '@render/service/drawer-service/use-drawer'
+import { K8sService } from '@render/service/k8s/K8sService'
 import { ErrorCircle20Regular } from '@vicons/fluent'
 import { CheckmarkCircle } from '@vicons/ionicons5'
 import moment from 'moment/moment'
-import { NBadge, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'naive-ui'
-import { ref } from 'vue'
+import { NBadge, NButton, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'naive-ui'
+import { h, ref } from 'vue'
 import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
@@ -12,6 +15,7 @@ const props = defineProps({
 })
 const isExpended = ref(false)
 const expendedText = ref('Hide')
+const drawer = useDrawerService()
 
 function getShowText() {
   expendedText.value = isExpended.value ? 'Hide' : 'Show'
@@ -20,6 +24,15 @@ function getShowText() {
 
 function toggle() {
   isExpended.value = !isExpended.value
+}
+async function showNodeView(name: string) {
+  const x = await K8sService.nodeService.getNode(name)
+  drawer.showDrawer({
+    title: x.metadata.name,
+    width: 800,
+  },
+  h(NodeView, { node: x }),
+  )
 }
 </script>
 
@@ -79,7 +92,11 @@ function toggle() {
       </tr>
       <tr>
         <td>Node</td>
-        <td>{{ props.pod.spec.nodeName }}</td>
+        <td>
+          <NButton text @click="showNodeView(props.pod.spec.nodeName)">
+            {{ props.pod.spec.nodeName }}
+          </NButton>
+        </td>
       </tr>
       <tr>
         <td>Pod IP</td>

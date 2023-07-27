@@ -66,6 +66,7 @@ shamefully-hoist=true
 |       Pod | 详情-状态      | ✅       |
 |       Pod | 详情-Volume  | ✅       |
 |       Pod | 详情-Env     | ✅       |
+|       Pod | 详情-主机      | ✅       |
 |     Event | 列表         | ✅       |
 |     Event | 列表-关联Pod   | ✅       |
 |     Event | 列表-关联Node  | ✅       |
