@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import router from '@render/router'
 import DrawerServiceProvider from '@render/service/drawer-service/DrawerServiceProvider'
-import { Cube, Layers, PawOutline, Time } from '@vicons/ionicons5'
+import { Cube, Layers, Time } from '@vicons/ionicons5'
 import { Server } from '@vicons/fa'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'
@@ -82,20 +82,7 @@ const menuOptions: MenuOption[] = [
       },
     ],
   },
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: {
-            path: '/hello',
-          },
-        },
-        { default: () => 'Hello' },
-      ),
-    key: 'hear-the-wind-sing',
-    icon: renderIcon(PawOutline),
-  },
+
 ]
 
 const collapsed = ref(true)

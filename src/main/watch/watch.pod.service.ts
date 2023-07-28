@@ -94,7 +94,7 @@ export class WatchPodService {
     const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
 
     return pty.spawn(shell, [], {
-      name: 'xterm-color',
+      name: 'xterm-256color',
       cols: 80,
       rows: 30,
       env: process.env,
