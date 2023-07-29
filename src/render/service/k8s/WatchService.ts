@@ -13,15 +13,12 @@ export class WatchService {
       const wa = new WorkloadArray<T>()
       switch (data.type) {
         case 'MODIFIED':
-          console.log('MODIFIED', p)
           wa.Update(list.value, p)
           break
         case 'ADDED':
-          console.log('ADDED', p)
           wa.Add(list.value, p)
           break
         case 'DELETED':
-          console.log('DELETED', p)
           wa.Delete(list.value, p)
           break
       }
