@@ -81,6 +81,7 @@ shamefully-hoist=true
 |      Node | 详情             | ✅       |
 |      Node | 详情-节点角色        | ✅       |
 |      Node | 详情-调度状态        | ✅       |
+|      Node | 详情-cordon操作    | ✅       |
 ## 开发提示
  
 k8s model 生成

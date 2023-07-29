@@ -34,6 +34,11 @@ export class WatchController {
     return await this.watchService.cordonNode(name)
   }
 
+  @Get('/node/unCordon/:name')
+  async unCordonNode(@Param('name') name) {
+    return await this.watchService.unCordonNode(name)
+  }
+
   @Get('/pods/:ns')
   async podsByNs(@Param('ns') ns) {
     return await this.watchService.k8sPods(ns)

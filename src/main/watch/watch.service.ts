@@ -136,6 +136,20 @@ export class WatchService {
     return podResp.body
   }
 
+  async unCordonNode(name: string) {
+    const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
+    const podResp = await k8sApi.patchNode(name,
+      { spec: { unschedulable: null } }, 'true', undefined,
+      undefined, undefined, undefined,
+      {
+        headers: {
+          'Content-Type': 'application/strategic-merge-patch+json',
+          'Accept': 'application/json, */*',
+        },
+      })
+    return podResp.body
+  }
+
   async k8sNs() {
     const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
     const res = await k8sApi.listNamespace()

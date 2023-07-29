@@ -13,4 +13,8 @@ export class NodeService {
   async cordonNode(name: string): Promise<V1Node> {
     return await HttpClient.inst.get<V1Node>(`/watch/node/cordon/${name}`)
   }
+
+  async unCordonNode(name: string): Promise<V1Node> {
+    return await HttpClient.inst.get<V1Node>(`/watch/node/unCordon/${name}`)
+  }
 }
