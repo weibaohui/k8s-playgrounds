@@ -50,6 +50,7 @@ shamefully-hoist=true
 |        分类 | 功能             | 	状态✅/☑️ |
 |----------:|:---------------|:--------|
 |       Pod | 列表             | ✅       |
+|       Pod | 列表-状态自动更新      | ✅       |
 |       Pod | 列表-错误提示        | ✅       |
 |       Pod | 列表-批量删除        | ✅       |
 |       Pod | 列表-常用操作        | ✅       |
@@ -76,6 +77,7 @@ shamefully-hoist=true
 | Namespace | 详情             | ✅       |
 | Namespace | 详情-关联Event     | ✅       |
 |      Node | 列表             | ✅       |
+|      Node | 列表-状态自动更新      | ✅       |
 |      Node | 详情             | ✅       |
 |      Node | 详情-节点角色        | ✅       |
 |      Node | 详情-调度状态        | ✅       |
