@@ -7,6 +7,12 @@ import type { V1Node } from '../../../model/V1Node'
 import type { V1Pod } from '../../../model/V1Pod'
 
 export class WatchService {
+  /**
+   * 监控变化
+   * @param list
+   * @param type
+   * @param ns ,可选
+   */
   async watchChange<T extends V1Pod | V1Node | V1Event | V1Namespace>(list: Ref<T[]>, type: string, ns?: Ref<string>) {
     const socket = SocketIOService.instance.getSocket()
     console.log(`socket-io-${type}`, socket.active)
@@ -14,10 +20,9 @@ export class WatchService {
     socket.on(`events-${type}`, (data) => {
       // 处理接收到的数据
       const p: T = data.object as T
-      if (ns && ns.value && p.metadata.namespace !== ns.value) {
-        // console.log('跳过', selectedNs.value, item.metadata.namespace)
+      if (ns && ns.value && p.metadata.namespace !== ns.value)
         return
-      }
+
       const wa = new WorkloadArray<T>()
       switch (data.type) {
         case 'MODIFIED':

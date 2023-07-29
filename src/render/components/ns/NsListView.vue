@@ -23,7 +23,7 @@ async function showNsView(x: V1Namespace) {
 const columns = createColumns()
 const nsList = ref<V1Namespace[]>()
 
-function createColumns(): Array<DataTableColumns<V1Namespace>> {
+function createColumns(): DataTableColumns<V1Namespace> {
   return [
     {
       type: 'selection',
@@ -67,7 +67,6 @@ function createColumns(): Array<DataTableColumns<V1Namespace>> {
       title: 'status',
       key: 'status.phase',
     },
-
   ]
 }
 
@@ -75,7 +74,9 @@ async function getNsList() {
   nsList.value = await K8sService.namespaceService.getNamespaceList()
 }
 getNsList()
-K8sService.watchService.watchChange(nsList, 'ns')
+setTimeout(() => {
+  K8sService.watchService.watchChange(nsList, 'ns')
+}, 2000)
 </script>
 
 <template>
