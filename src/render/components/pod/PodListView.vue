@@ -234,7 +234,7 @@ function onNsChanged(ns: string) {
 getK8sPodList()
 setTimeout(
   () => {
-    K8sService.watchService.watchChange(podList, 'pod')
+    K8sService.watchService.watchChange(podList, 'pod', selectedNs)
   }, 2000)
 </script>
 

@@ -28,7 +28,6 @@ function createColumns(): Array<DataTableColumns<V1Namespace>> {
     {
       type: 'selection',
     },
-
     {
       title: 'Name',
       key: 'metadata.name',
@@ -76,6 +75,7 @@ async function getNsList() {
   nsList.value = await K8sService.namespaceService.getNamespaceList()
 }
 getNsList()
+K8sService.watchService.watchChange(nsList, 'ns')
 </script>
 
 <template>

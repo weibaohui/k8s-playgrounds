@@ -120,6 +120,9 @@ function onNsChanged(ns: string) {
   getEventList()
 }
 getEventList()
+setTimeout(() => {
+  K8sService.watchService.watchChange(eventList, 'event', selectedNs)
+}, 2000)
 </script>
 
 <template>

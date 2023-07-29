@@ -54,8 +54,9 @@ export class WatchService {
       // done callback is called if the watch terminates normally
       (err) => {
         // tslint:disable-next-line:no-console
-        this.logger.error(`watch.watch${resType}`, err)
+        this.logger.error(`watch-${resType}`, err)
       }).then(() => {
+      this.logger.log(`watching:${resType}`)
     })
   }
 
@@ -77,6 +78,9 @@ export class WatchService {
         break
       case 'node' || 'nodes' :
         resType = 'nodes'
+        break
+      case 'event' || 'events' :
+        resType = 'events'
         break
       default:
         resType = 'pods'

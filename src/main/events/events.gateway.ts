@@ -25,6 +25,7 @@ export class EventsGateway {
     private watchService: WatchService,
   ) {}
 
+  watched = false
   @WebSocketServer()
   server: Server
 
@@ -79,6 +80,10 @@ export class EventsGateway {
 
   private async startWatch() {
     return once(() => {
+      if (this.watched) {
+        this.logger.log('watch service is started')
+        return
+      }
       this.watchService.watch('pod', (d) => {
         return this.sendEvent('pod', d)
       })
@@ -88,6 +93,10 @@ export class EventsGateway {
       this.watchService.watch('node', (d) => {
         return this.sendEvent('node', d)
       })
+      this.watchService.watch('event', (d) => {
+        return this.sendEvent('event', d)
+      })
+      this.watched = true
     })()
   }
 }
