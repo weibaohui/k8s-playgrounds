@@ -119,6 +119,10 @@ function onNsChanged(ns: string) {
   selectedNs.value = ns
   getEventList()
 }
+
+function rowKey(row: V1Event) {
+  return `${row.metadata.namespace}/${row.metadata.name}`
+}
 getEventList()
 setTimeout(() => {
   K8sService.watchService.watchChange(eventList, 'event', selectedNs)
@@ -141,6 +145,7 @@ setTimeout(() => {
     :data="eventList"
     :pagination="false"
     :bordered="false"
+    :row-key="rowKey"
   />
 </template>
 

@@ -73,6 +73,10 @@ function createColumns(): DataTableColumns<V1Namespace> {
 async function getNsList() {
   nsList.value = await K8sService.namespaceService.getNamespaceList()
 }
+
+function rowKey(row: V1Namespace) {
+  return `${row.metadata.name}`
+}
 getNsList()
 setTimeout(() => {
   K8sService.watchService.watchChange(nsList, 'ns')
@@ -85,6 +89,7 @@ setTimeout(() => {
     :data="nsList"
     :pagination="false"
     :bordered="false"
+    :row-key="rowKey"
   />
 </template>
 

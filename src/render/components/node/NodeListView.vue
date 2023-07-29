@@ -106,6 +106,10 @@ async function getNodeList() {
   nodeList.value = await K8sService.nodeService.getNodeList()
 }
 
+function rowKey(row: V1Node) {
+  return `${row.metadata.name}`
+}
+
 getNodeList()
 setTimeout(() => {
   K8sService.watchService.watchChange(nodeList, 'node')
@@ -118,6 +122,7 @@ setTimeout(() => {
     :data="nodeList"
     :pagination="false"
     :bordered="false"
+    :row-key="rowKey"
   />
 </template>
 
