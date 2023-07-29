@@ -41,6 +41,7 @@ function createColumns(): DataTableColumns<V1Node> {
             onClick: () => {
               showNodeView(row)
             },
+
           },
           { default: () => (row as V1Node).metadata.name },
         )
@@ -104,7 +105,11 @@ function createColumns(): DataTableColumns<V1Node> {
 async function getNodeList() {
   nodeList.value = await K8sService.nodeService.getNodeList()
 }
+
 getNodeList()
+setTimeout(() => {
+  K8sService.watchService.watchChange(nodeList, 'node')
+}, 1000)
 </script>
 
 <template>

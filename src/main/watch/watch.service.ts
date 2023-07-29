@@ -17,15 +17,7 @@ export class WatchService {
 
   private kc = new k8s.KubeConfig()
 
-  async PodWatcher(cb?: (d: any) => void) {
-    this.watch('pod', cb)
-  }
-
-  async NsWatcher(cb?: (d: any) => void) {
-    this.watch('ns', cb)
-  }
-
-  private watch(resType: string, cb?: (d: any) => void) {
+  public watch(resType: string, cb?: (d: any) => void) {
     const watchAPI = this.getResourceWatchPath(resType)
     const kc = this.getKubeConfig()
     const watch = new k8s.Watch(kc)
@@ -62,7 +54,7 @@ export class WatchService {
       // done callback is called if the watch terminates normally
       (err) => {
         // tslint:disable-next-line:no-console
-        this.logger.error(err)
+        this.logger.error(`watch.watch${resType}`, err)
       }).then(() => {
     })
   }
@@ -82,6 +74,9 @@ export class WatchService {
         break
       case 'ns' || 'namespaces' || 'namespace':
         resType = 'namespaces'
+        break
+      case 'node' || 'nodes' :
+        resType = 'nodes'
         break
       default:
         resType = 'pods'
@@ -120,6 +115,20 @@ export class WatchService {
   async getNode(name: string) {
     const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
     const podResp = await k8sApi.readNode(name)
+    return podResp.body
+  }
+
+  async cordonNode(name: string) {
+    const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
+    const podResp = await k8sApi.patchNode(name,
+      { spec: { unschedulable: true } }, 'true', undefined,
+      undefined, undefined, undefined,
+      {
+        headers: {
+          'Content-Type': 'application/strategic-merge-patch+json',
+          'Accept': 'application/json, */*',
+        },
+      })
     return podResp.body
   }
 

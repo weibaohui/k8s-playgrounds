@@ -1,5 +1,4 @@
 import { TerminalData } from '@main/watch/watch.model'
-import { V1Pod } from '@kubernetes/client-node'
 import { WatchService } from '@main/watch/watch.service'
 import { Logger } from '@nestjs/common'
 import {
@@ -74,23 +73,20 @@ export class EventsGateway {
     return data
   }
 
-  private async sendPod(v1Pod: V1Pod) {
-    this.server.emit('events-pod', v1Pod)
-  }
-
-  private async sendLog(nsn: string, log: string) {
-    this.server.emit(`log:${nsn}`, log)
-  }
-
-  private async sendResource(obj: object) {
-    this.server.emit('events-res', obj)
+  private async sendEvent(resType: string, obj: object) {
+    this.server.emit(`events-${resType}`, obj)
   }
 
   private async startWatch() {
     return once(() => {
-      this.logger.debug('start pod watcher')
-      this.watchService.PodWatcher((d) => {
-        return this.sendPod(d)
+      this.watchService.watch('pod', (d) => {
+        return this.sendEvent('pod', d)
+      })
+      this.watchService.watch('ns', (d) => {
+        return this.sendEvent('ns', d)
+      })
+      this.watchService.watch('node', (d) => {
+        return this.sendEvent('node', d)
       })
     })()
   }

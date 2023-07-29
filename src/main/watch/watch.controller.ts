@@ -14,13 +14,6 @@ export class WatchController {
     private configService: ConfigService,
   ) {}
 
-  @Get('/init')
-  async watch() {
-    await this.watchService.PodWatcher()
-    await this.watchService.NsWatcher()
-    return { status: 'ok' }
-  }
-
   @Get('/pods')
   async pods() {
     return await this.watchService.k8sPods()
@@ -34,6 +27,11 @@ export class WatchController {
   @Get('/node/:name')
   async getNode(@Param('name') name) {
     return await this.watchService.getNode(name)
+  }
+
+  @Get('/node/cordon/:name')
+  async cordonNode(@Param('name') name) {
+    return await this.watchService.cordonNode(name)
   }
 
   @Get('/pods/:ns')
