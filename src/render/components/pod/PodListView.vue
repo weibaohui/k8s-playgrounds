@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { PodArray } from '@main/utils/podArray'
 import ContainerReadyCount from '@render/components/container/ContainerReadyCount.vue'
 import ContainerRestartCount from '@render/components/container/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/container/ContainerStatusIcon.vue'
@@ -14,7 +13,6 @@ import SearchFilter from '@render/components/common/SearchFilter.vue'
 import PodWarnIcon from '@render/components/pod/PodWarnIcon.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
-import { SocketIOService } from '@render/service/k8s/SocketIOService'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, NDataTable, NFormItemGi, NGrid, NText } from 'naive-ui'
@@ -215,33 +213,6 @@ async function getK8sPodList() {
   })
 }
 
-async function watchPodChange() {
-  const socket = SocketIOService.instance.getSocket()
-  socket.emit('watch-init', 'init')
-  console.log('socket-io', socket.active)
-  socket.on('events-pod', (data) => {
-    // 处理接收到的数据
-    const p: V1Pod = data.object as V1Pod
-    if (selectedNs.value != null && p.metadata.namespace !== selectedNs.value) {
-      // console.log('跳过', selectedNs.value, item.metadata.namespace)
-      return
-    }
-
-    const pa = new PodArray()
-    switch (data.type) {
-      case 'MODIFIED':
-        pa.UpdatePods(podList.value, p)
-        break
-      case 'ADDED':
-        pa.AddPods(podList.value, p)
-        break
-      case 'DELETED':
-        pa.DeletePods(podList.value, p)
-        break
-    }
-  })
-}
-
 function onTextChanged(text: string) {
   if (_.isEmpty(text)) {
     getK8sPodList()
@@ -263,8 +234,8 @@ function onNsChanged(ns: string) {
 getK8sPodList()
 setTimeout(
   () => {
-    watchPodChange()
-  }, 5000)
+    K8sService.watchService.watchChange(podList, 'pod')
+  }, 2000)
 </script>
 
 <template>

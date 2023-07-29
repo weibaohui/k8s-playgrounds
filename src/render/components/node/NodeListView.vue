@@ -109,7 +109,7 @@ async function getNodeList() {
 getNodeList()
 setTimeout(() => {
   K8sService.watchService.watchChange(nodeList, 'node')
-}, 1000)
+}, 2000)
 </script>
 
 <template>
