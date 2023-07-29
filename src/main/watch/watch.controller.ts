@@ -3,7 +3,7 @@ import {
   Body,
   Controller,
   Get,
-  Param, Post, StreamableFile,
+  Param, Post,
 } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 
@@ -16,47 +16,17 @@ export class WatchController {
 
   @Get('/pods')
   async pods() {
-    return await this.watchService.k8sPods()
-  }
-
-  @Get('/nodes')
-  async getNodes() {
-    return await this.watchService.getNodes()
-  }
-
-  @Get('/node/:name')
-  async getNode(@Param('name') name) {
-    return await this.watchService.getNode(name)
-  }
-
-  @Get('/node/cordon/:name')
-  async cordonNode(@Param('name') name) {
-    return await this.watchService.cordonNode(name)
-  }
-
-  @Get('/node/unCordon/:name')
-  async unCordonNode(@Param('name') name) {
-    return await this.watchService.unCordonNode(name)
+    return await this.watchService.podService.k8sPods()
   }
 
   @Get('/pods/:ns')
   async podsByNs(@Param('ns') ns) {
-    return await this.watchService.k8sPods(ns)
+    return await this.watchService.podService.k8sPods(ns)
   }
 
   @Get('/pod/:ns/:name')
   async getPodByNsName(@Param('ns') ns, @Param('name') name) {
-    return await this.watchService.getPod(ns, name)
-  }
-
-  @Get('/events/:ns')
-  async eventsByNs(@Param('ns') ns) {
-    return await this.watchService.events(ns)
-  }
-
-  @Get('/ns')
-  async ns() {
-    return await this.watchService.k8sNs()
+    return await this.watchService.podService.getPod(ns, name)
   }
 
   @Post('/pods/delete')
@@ -65,16 +35,38 @@ export class WatchController {
       const nsname = r.split('/')
       const ns = nsname[0]
       const name = nsname[1]
-      this.watchService.deletePods(name, ns)
+      this.watchService.podService.deletePods(name, ns)
     })
     return {}
   }
 
-  @Get('pods/log/file/:ns/:podName/:containerName')
-  getPodContainerLogs(@Param('ns') ns,
-                            @Param('podName') podName,
-  @Param('containerName') containerName): StreamableFile {
-    const file = this.watchService.podService.getPodContainerLogs(ns, podName, containerName)
-    return new StreamableFile(file)
+  @Get('/nodes')
+  async getNodes() {
+    return await this.watchService.nodeService.getNodes()
+  }
+
+  @Get('/node/:name')
+  async getNode(@Param('name') name) {
+    return await this.watchService.nodeService.getNode(name)
+  }
+
+  @Get('/node/cordon/:name')
+  async cordonNode(@Param('name') name) {
+    return await this.watchService.nodeService.cordonNode(name)
+  }
+
+  @Get('/node/unCordon/:name')
+  async unCordonNode(@Param('name') name) {
+    return await this.watchService.nodeService.unCordonNode(name)
+  }
+
+  @Get('/events/:ns')
+  async eventsByNs(@Param('ns') ns) {
+    return await this.watchService.eventService.events(ns)
+  }
+
+  @Get('/ns')
+  async ns() {
+    return await this.watchService.nsService.k8sNs()
   }
 }

@@ -1,6 +1,7 @@
 import os from 'node:os'
 import process from 'node:process'
 import { exec } from 'node:child_process'
+import { WatchKubectlService } from '@main/watch/watch.kubectl.service'
 import { ConfigService } from '@nestjs/config'
 import { TerminalData, TerminalInstance } from '@main/watch/watch.model'
 import { Injectable, Logger } from '@nestjs/common'
@@ -19,8 +20,8 @@ export class WatchPodService {
 
   constructor(
     private configService: ConfigService,
+    public kubectlService: WatchKubectlService,
   ) {
-    this.handleHeartBeat()
   }
 
   @Cron(CronExpression.EVERY_10_SECONDS)
@@ -128,5 +129,27 @@ export class WatchPodService {
     const cmd = `kubectl logs -n ${ns} ${podName} -c ${containerName} `
     const process = exec(cmd)
     return process.stdout
+  }
+
+  async k8sPods(ns?: string) {
+    const k8sApi = this.kubectlService.getK8sApi()
+    if (!ns || ns === 'null') {
+      const podAllResp = await k8sApi.listPodForAllNamespaces()
+      return podAllResp.body.items
+    }
+    const podResp = await k8sApi.listNamespacedPod(ns)
+    return podResp.body.items
+  }
+
+  async getPod(ns: string, name: string) {
+    const k8sApi = this.kubectlService.getK8sApi()
+    const podResp = await k8sApi.readNamespacedPod(name, ns)
+    return podResp.body
+  }
+
+  async deletePods(name: string, ns: string) {
+    const k8sApi = this.kubectlService.getK8sApi()
+    const r = await k8sApi.deleteNamespacedPod(name, ns)
+    return r.body
   }
 }
