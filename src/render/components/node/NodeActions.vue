@@ -2,6 +2,7 @@
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
 import { CaretForwardCircleOutline, PauseCircleOutline } from '@vicons/ionicons5'
+import { DeleteRound } from '@vicons/material'
 import type { ConcreteComponent } from '@vue/runtime-core'
 import { NButton, NButtonGroup, NIcon, NSpace, NTooltip, useDialog, useMessage } from 'naive-ui'
 import { V1Node } from '../../../model/V1Node'
@@ -35,6 +36,21 @@ async function unCordonNode(node: V1Node) {
   else
     message.warning('操作失败')
 }
+async function deleteNode(node: V1Node) {
+  dialog.warning({
+    title: '警告',
+    content: `你确定删除Node：${node.metadata.name}吗?`,
+    positiveText: '删除',
+    negativeText: '放弃',
+    onPositiveClick: async () => {
+      await K8sService.nodeService.deleteNode(node.metadata.name)
+      drawer.close()
+    },
+    onNegativeClick: () => {
+      message.error('放弃删除')
+    },
+  })
+}
 </script>
 
 <template>
@@ -55,6 +71,14 @@ async function unCordonNode(node: V1Node) {
           </NButton>
         </template>
         Cordon
+      </NTooltip>
+      <NTooltip>
+        <template #trigger>
+          <NButton round @click="deleteNode(props.node)">
+            <NIcon :component="DeleteRound" />
+          </NButton>
+        </template>
+        Delete
       </NTooltip>
     </NButtonGroup>
   </NSpace>

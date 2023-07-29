@@ -1,7 +1,7 @@
 import { WatchService } from '@main/watch/watch.service'
 import {
   Body,
-  Controller,
+  Controller, Delete,
   Get,
   Param, Post,
 } from '@nestjs/common'
@@ -48,6 +48,11 @@ export class WatchController {
   @Get('/node/:name')
   async getNode(@Param('name') name) {
     return await this.watchService.nodeService.getNode(name)
+  }
+
+  @Delete ('/node/:name')
+  async deleteNode(@Param('name') name) {
+    return await this.watchService.nodeService.deleteNode(name)
   }
 
   @Get('/node/cordon/:name')

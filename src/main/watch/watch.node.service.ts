@@ -11,14 +11,20 @@ export class WatchNodeService {
 
   async getNodes() {
     const k8sApi = this.kubectlService.getK8sApi()
-    const podResp = await k8sApi.listNode()
-    return podResp.body.items
+    const resp = await k8sApi.listNode()
+    return resp.body.items
   }
 
   async getNode(name: string) {
     const k8sApi = this.kubectlService.getK8sApi()
-    const podResp = await k8sApi.readNode(name)
-    return podResp.body
+    const resp = await k8sApi.readNode(name)
+    return resp.body
+  }
+
+  async deleteNode(name: string) {
+    const k8sApi = this.kubectlService.getK8sApi()
+    const resp = await k8sApi.deleteNode(name)
+    return resp.body
   }
 
   async cordonNode(name: string) {

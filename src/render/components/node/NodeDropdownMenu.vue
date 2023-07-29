@@ -32,6 +32,24 @@ async function cordonNode(node: V1Node) {
   else
     message.warning('操作失败')
 }
+async function deleteNode(node: V1Node) {
+  dialog.warning({
+    title: '警告',
+    content: `你确定删除Node：${node.metadata.name}吗?`,
+    positiveText: '删除',
+    negativeText: '放弃',
+    onPositiveClick: async () => {
+      const n = await K8sService.nodeService.deleteNode(node.metadata.name)
+      if (n.status === 'Success')
+        message.success('操作成功')
+      else
+        message.warning('操作失败')
+    },
+    onNegativeClick: () => {
+      message.error('放弃删除')
+    },
+  })
+}
 
 async function unCordonNode(node: V1Node) {
   const n = await K8sService.nodeService.unCordonNode(node.metadata.name)
@@ -51,6 +69,9 @@ function handleSelect(key: string) {
       break
     case 'UnCordon':
       unCordonNode(props.node)
+      break
+    case 'Delete':
+      deleteNode(props.node)
       break
     default:
       alert('尚未实现')
