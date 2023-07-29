@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { TimeAge } from '@main/utils/timeAge'
+import NodeDropdownMenu from '@render/components/node/NodeDropdownMenu.vue'
 import NodeReadyView from '@render/components/node/NodeReadyView.vue'
 import NodeRoleView from '@render/components/node/NodeRoleView.vue'
 import NodeView from '@render/components/node/NodeView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NDataTable, NSpace } from 'naive-ui'
+import { NButton, NDataTable, NMessageProvider, NSpace } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Node } from '../../../model/V1Node'
 
@@ -98,7 +99,17 @@ function createColumns(): DataTableColumns<V1Node> {
         )
       },
     },
-
+    {
+      title: 'Action',
+      key: 'Action',
+      render(row) {
+        return h(NodeDropdownMenu,
+          {
+            node: row as V1Node,
+          },
+        )
+      },
+    },
   ]
 }
 
@@ -117,13 +128,15 @@ setTimeout(() => {
 </script>
 
 <template>
-  <NDataTable
-    :columns="columns"
-    :data="nodeList"
-    :pagination="false"
-    :bordered="false"
-    :row-key="rowKey"
-  />
+  <NMessageProvider>
+    <NDataTable
+      :columns="columns"
+      :data="nodeList"
+      :pagination="false"
+      :bordered="false"
+      :row-key="rowKey"
+    />
+  </NMessageProvider>
 </template>
 
 <style scoped>
