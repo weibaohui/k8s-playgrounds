@@ -15,7 +15,7 @@ import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NDataTable, NFormItemGi, NGrid, NText } from 'naive-ui'
+import { NButton, NDataTable, NFormItemGi, NGrid, NMessageProvider, NText } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Pod } from '../../../model/V1Pod'
 
@@ -250,13 +250,14 @@ setTimeout(
     <NFormItemGi :span="1" />
   </NGrid>
   <FloatRemoveButton :items="checkedRowKeysRef" @on-clicked="onRemoveBtnClicked" />
-
-  <NDataTable
-    :columns="columns"
-    :data="podList"
-    :pagination="false"
-    :bordered="false"
-    :row-key="rowKey"
-    @update:checked-row-keys="handleCheck"
-  />
+  <NMessageProvider>
+    <NDataTable
+      :columns="columns"
+      :data="podList"
+      :pagination="false"
+      :bordered="false"
+      :row-key="rowKey"
+      @update:checked-row-keys="handleCheck"
+    />
+  </NMessageProvider>
 </template>

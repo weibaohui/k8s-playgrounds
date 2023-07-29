@@ -2,8 +2,9 @@
 import PodExecView from '@render/components/pod/PodExecView.vue'
 import PodLogView from '@render/components/pod/PodLogView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
+import { K8sService } from '@render/service/k8s/K8sService'
 import { DeleteRound, EditNoteRound, FormatAlignLeftRound, TerminalRound } from '@vicons/material'
-import { NButton, NDropdown, NIcon } from 'naive-ui'
+import { NButton, NDropdown, NIcon, useDialog, useMessage } from 'naive-ui'
 import type { Component } from 'vue'
 import { h } from 'vue'
 
@@ -12,6 +13,9 @@ import { V1Pod } from '../../../model/V1Pod'
 const props = defineProps({
   pod: V1Pod,
 })
+
+const dialog = useDialog()
+const message = useMessage()
 
 const drawer = useDrawerService()
 
@@ -40,6 +44,21 @@ function showPodLogView(x: V1Pod) {
     h(PodLogView, { pod: x }),
   )
 }
+async function deletePod(pod: V1Pod) {
+  dialog.warning({
+    title: '警告',
+    content: `你确定删除Pod：${pod.metadata.namespace}/${pod.metadata.name}吗?`,
+    positiveText: '删除',
+    negativeText: '放弃',
+    onPositiveClick: async () => {
+      await K8sService.podService.deletePods([`${pod.metadata.namespace}/${pod.metadata.name}`])
+      drawer.close()
+    },
+    onNegativeClick: () => {
+      message.error('放弃删除')
+    },
+  })
+}
 function handleSelect(key: string) {
   switch (key) {
     case 'Shell':
@@ -47,6 +66,9 @@ function handleSelect(key: string) {
       break
     case 'Log':
       showPodLogView(props.pod)
+      break
+    case 'Delete':
+      deletePod(props.pod)
       break
     default:
       alert('尚未实现')
