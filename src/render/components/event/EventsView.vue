@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { NBadge, NCollapse, NCollapseItem, NTable, NText } from 'naive-ui'
-import { ref } from 'vue'
 import moment from 'moment'
 import type { V1Event } from '../../../model/V1Event'
 
 const props = defineProps({
-  eventList: ref<Array<V1Event>>,
+  eventList: Array<V1Event>,
 })
 </script>
 
