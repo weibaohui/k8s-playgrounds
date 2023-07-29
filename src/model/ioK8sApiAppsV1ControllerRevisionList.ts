@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAppsV1ControllerRevision } from './ioK8sApiAppsV1ControllerRevision'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * ControllerRevisionList is a resource containing a list of ControllerRevision objects.
@@ -31,5 +31,5 @@ export interface IoK8sApiAppsV1ControllerRevisionList {
   /**
      * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * ContainerStateRunning is a running state of a container.
@@ -18,5 +18,5 @@ export interface V1ContainerStateRunning {
   /**
      * Time at which the container was last (re-)started
      */
-  startedAt?: IoK8sApimachineryPkgApisMetaV1Time
+  startedAt?: V1Time
 }

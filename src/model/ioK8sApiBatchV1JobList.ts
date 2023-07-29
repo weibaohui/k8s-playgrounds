@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiBatchV1Job } from './ioK8sApiBatchV1Job'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * JobList is a collection of jobs.
@@ -31,5 +31,5 @@ export interface IoK8sApiBatchV1JobList {
   /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

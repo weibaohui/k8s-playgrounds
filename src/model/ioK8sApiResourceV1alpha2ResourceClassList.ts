@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiResourceV1alpha2ResourceClass } from './ioK8sApiResourceV1alpha2ResourceClass'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * ResourceClassList is a collection of classes.
@@ -31,5 +31,5 @@ export interface IoK8sApiResourceV1alpha2ResourceClassList {
   /**
      * Standard list metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

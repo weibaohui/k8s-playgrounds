@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiNetworkingV1IngressClass } from './ioK8sApiNetworkingV1IngressClass'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * IngressClassList is a collection of IngressClasses.
@@ -31,5 +31,5 @@ export interface IoK8sApiNetworkingV1IngressClassList {
   /**
      * Standard list metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

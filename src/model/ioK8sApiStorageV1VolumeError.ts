@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * VolumeError captures an error encountered during a volume operation.
@@ -22,5 +22,5 @@ export interface IoK8sApiStorageV1VolumeError {
   /**
      * time represents the time the error was encountered.
      */
-  time?: IoK8sApimachineryPkgApisMetaV1Time
+  time?: V1Time
 }

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { V1ServiceAccount } from './V1ServiceAccount'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * ServiceAccountList is a list of ServiceAccount objects
@@ -31,5 +31,5 @@ export interface V1ServiceAccountList {
   /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

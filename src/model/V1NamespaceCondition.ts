@@ -9,13 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * NamespaceCondition contains details about state of namespace.
  */
 export interface V1NamespaceCondition {
-  lastTransitionTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastTransitionTime?: V1Time
   message?: string
   reason?: string
   /**

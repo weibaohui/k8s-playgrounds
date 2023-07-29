@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * CertificateSigningRequestCondition describes a condition of a CertificateSigningRequest object
@@ -18,11 +18,11 @@ export interface IoK8sApiCertificatesV1CertificateSigningRequestCondition {
   /**
      * lastTransitionTime is the time the condition last transitioned from one status to another. If unset, when a new condition type is added or an existing condition's status is changed, the server defaults this to the current time.
      */
-  lastTransitionTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastTransitionTime?: V1Time
   /**
      * lastUpdateTime is the time of the last update to this condition
      */
-  lastUpdateTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastUpdateTime?: V1Time
   /**
      * message contains a human readable message with details about the request state
      */

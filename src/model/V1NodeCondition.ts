@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * NodeCondition contains condition information for a node.
@@ -18,11 +18,11 @@ export interface V1NodeCondition {
   /**
      * Last time we got an update on a given condition.
      */
-  lastHeartbeatTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastHeartbeatTime?: V1Time
   /**
      * Last time the condition transit from one status to another.
      */
-  lastTransitionTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastTransitionTime?: V1Time
   /**
      * Human readable message indicating details about last transition.
      */

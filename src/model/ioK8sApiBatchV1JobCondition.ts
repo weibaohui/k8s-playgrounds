@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * JobCondition describes current state of a job.
@@ -18,11 +18,11 @@ export interface IoK8sApiBatchV1JobCondition {
   /**
      * Last time the condition was checked.
      */
-  lastProbeTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastProbeTime?: V1Time
   /**
      * Last time the condition transit from one status to another.
      */
-  lastTransitionTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastTransitionTime?: V1Time
   /**
      * Human readable message indicating details about last transition.
      */

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiCertificatesV1alpha1ClusterTrustBundle } from './ioK8sApiCertificatesV1alpha1ClusterTrustBundle'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * ClusterTrustBundleList is a collection of ClusterTrustBundle objects
@@ -31,5 +31,5 @@ export interface IoK8sApiCertificatesV1alpha1ClusterTrustBundleList {
   /**
      * metadata contains the list metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * FlowSchemaCondition describes conditions for a FlowSchema.
@@ -18,7 +18,7 @@ export interface IoK8sApiFlowcontrolV1beta3FlowSchemaCondition {
   /**
      * `lastTransitionTime` is the last time the condition transitioned from one status to another.
      */
-  lastTransitionTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastTransitionTime?: V1Time
   /**
      * `message` is a human-readable message indicating details about last transition.
      */

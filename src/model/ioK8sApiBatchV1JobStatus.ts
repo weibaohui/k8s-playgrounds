@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiBatchV1JobCondition } from './ioK8sApiBatchV1JobCondition'
 import type { IoK8sApiBatchV1UncountedTerminatedPods } from './ioK8sApiBatchV1UncountedTerminatedPods'
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * JobStatus represents the current state of a Job.
@@ -28,7 +28,7 @@ export interface IoK8sApiBatchV1JobStatus {
   /**
      * Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. The completion time is only set when the job finishes successfully.
      */
-  completionTime?: IoK8sApimachineryPkgApisMetaV1Time
+  completionTime?: V1Time
   /**
      * The latest available observations of an object's current state. When a Job fails, one of the conditions will have type \"Failed\" and status true. When a Job is suspended, one of the conditions will have type \"Suspended\" and status true; when the Job is resumed, the status of this condition will become false. When a Job is completed, one of the conditions will have type \"Complete\" and status true. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
      */
@@ -44,7 +44,7 @@ export interface IoK8sApiBatchV1JobStatus {
   /**
      * Represents time when the job controller started processing a job. When a Job is created in the suspended state, this field is not set until the first time it is resumed. This field is reset every time a Job is resumed from suspension. It is represented in RFC3339 form and is in UTC.
      */
-  startTime?: IoK8sApimachineryPkgApisMetaV1Time
+  startTime?: V1Time
   /**
      * The number of pods which reached phase Succeeded.
      */

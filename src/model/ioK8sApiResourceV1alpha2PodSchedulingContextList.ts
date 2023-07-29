@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiResourceV1alpha2PodSchedulingContext } from './ioK8sApiResourceV1alpha2PodSchedulingContext'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * PodSchedulingContextList is a collection of Pod scheduling objects.
@@ -31,5 +31,5 @@ export interface IoK8sApiResourceV1alpha2PodSchedulingContextList {
   /**
      * Standard list metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

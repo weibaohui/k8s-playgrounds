@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { V1ObjectReference } from './V1ObjectReference'
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * CronJobStatus represents the current state of a cron job.
@@ -23,9 +23,9 @@ export interface IoK8sApiBatchV1CronJobStatus {
   /**
      * Information when was the last time the job was successfully scheduled.
      */
-  lastScheduleTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastScheduleTime?: V1Time
   /**
      * Information when was the last time the job successfully completed.
      */
-  lastSuccessfulTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastSuccessfulTime?: V1Time
 }

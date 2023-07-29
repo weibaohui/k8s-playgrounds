@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiDiscoveryV1EndpointSlice } from './ioK8sApiDiscoveryV1EndpointSlice'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * EndpointSliceList represents a list of endpoint slices
@@ -31,5 +31,5 @@ export interface IoK8sApiDiscoveryV1EndpointSliceList {
   /**
      * Standard list metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

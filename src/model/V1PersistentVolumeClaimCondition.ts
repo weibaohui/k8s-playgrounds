@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * PersistentVolumeClaimCondition contains details about state of pvc
@@ -18,11 +18,11 @@ export interface V1PersistentVolumeClaimCondition {
   /**
      * lastProbeTime is the time we probed the condition.
      */
-  lastProbeTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastProbeTime?: V1Time
   /**
      * lastTransitionTime is the time the condition transitioned from one status to another.
      */
-  lastTransitionTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastTransitionTime?: V1Time
   /**
      * message is the human-readable message indicating details about last transition.
      */

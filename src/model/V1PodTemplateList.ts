@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { V1PodTemplate } from './V1PodTemplate'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * PodTemplateList is a list of PodTemplates.
@@ -31,5 +31,5 @@ export interface V1PodTemplateList {
   /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

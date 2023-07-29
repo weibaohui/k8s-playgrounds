@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAutoscalingV2HorizontalPodAutoscaler } from './ioK8sApiAutoscalingV2HorizontalPodAutoscaler'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * HorizontalPodAutoscalerList is a list of horizontal pod autoscaler objects.
@@ -31,5 +31,5 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerList {
   /**
      * metadata is the standard list metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

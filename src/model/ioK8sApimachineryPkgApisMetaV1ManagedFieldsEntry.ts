@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApimachineryPkgApisMetaV1FieldsV1 } from './ioK8sApimachineryPkgApisMetaV1FieldsV1'
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.
@@ -43,5 +43,5 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /**
      * Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.
      */
-  time?: IoK8sApimachineryPkgApisMetaV1Time
+  time?: V1Time
 }

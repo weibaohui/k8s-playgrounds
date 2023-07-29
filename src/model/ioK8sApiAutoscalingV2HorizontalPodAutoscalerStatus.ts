@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition } from './ioK8sApiAutoscalingV2HorizontalPodAutoscalerCondition'
 import type { IoK8sApiAutoscalingV2MetricStatus } from './ioK8sApiAutoscalingV2MetricStatus'
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.
@@ -36,7 +36,7 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus {
   /**
      * lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.
      */
-  lastScaleTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastScaleTime?: V1Time
   /**
      * observedGeneration is the most recent generation observed by this autoscaler.
      */

@@ -14,7 +14,7 @@ import type { V1ObjectReference } from './V1ObjectReference'
 import type { IoK8sApiEventsV1EventSeries } from './ioK8sApiEventsV1EventSeries'
 import type { IoK8sApimachineryPkgApisMetaV1MicroTime } from './ioK8sApimachineryPkgApisMetaV1MicroTime'
 import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * Event is a report of an event somewhere in the cluster. It generally denotes some state change in the system. Events have a limited retention time and triggers and messages may evolve with time.  Event consumers should not rely on the timing of an event with a given Reason reflecting a consistent underlying trigger, or the continued existence of events with that Reason.  Events should be treated as informative, best-effort, supplemental data.
@@ -35,11 +35,11 @@ export interface IoK8sApiEventsV1Event {
   /**
      * deprecatedFirstTimestamp is the deprecated field assuring backward compatibility with core.v1 Event type.
      */
-  deprecatedFirstTimestamp?: IoK8sApimachineryPkgApisMetaV1Time
+  deprecatedFirstTimestamp?: V1Time
   /**
      * deprecatedLastTimestamp is the deprecated field assuring backward compatibility with core.v1 Event type.
      */
-  deprecatedLastTimestamp?: IoK8sApimachineryPkgApisMetaV1Time
+  deprecatedLastTimestamp?: V1Time
   /**
      * deprecatedSource is the deprecated field assuring backward compatibility with core.v1 Event type.
      */

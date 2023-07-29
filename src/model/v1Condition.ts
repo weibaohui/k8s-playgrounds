@@ -9,16 +9,16 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * Condition contains details for one aspect of the current state of this API Resource.
  */
-export interface IoK8sApimachineryPkgApisMetaV1Condition {
+export interface V1Condition {
   /**
      * lastTransitionTime is the last time the condition transitioned from one status to another. This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.
      */
-  lastTransitionTime: IoK8sApimachineryPkgApisMetaV1Time
+  lastTransitionTime: V1Time
   /**
      * message is a human readable message indicating details about the transition. This may be an empty string.
      */

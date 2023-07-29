@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiApiserverinternalV1alpha1StorageVersion } from './ioK8sApiApiserverinternalV1alpha1StorageVersion'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * A list of StorageVersions.
@@ -31,5 +31,5 @@ export interface IoK8sApiApiserverinternalV1alpha1StorageVersionList {
   /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

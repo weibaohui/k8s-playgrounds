@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * TokenRequestStatus is the result of a token request.
@@ -18,7 +18,7 @@ export interface IoK8sApiAuthenticationV1TokenRequestStatus {
   /**
      * ExpirationTimestamp is the time of expiration of the returned token.
      */
-  expirationTimestamp: IoK8sApimachineryPkgApisMetaV1Time
+  expirationTimestamp: V1Time
   /**
      * Token is the opaque bearer token.
      */

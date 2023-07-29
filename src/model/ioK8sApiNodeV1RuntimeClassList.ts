@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiNodeV1RuntimeClass } from './ioK8sApiNodeV1RuntimeClass'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * RuntimeClassList is a list of RuntimeClass objects.
@@ -31,5 +31,5 @@ export interface IoK8sApiNodeV1RuntimeClassList {
   /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

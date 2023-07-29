@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiRbacV1RoleBinding } from './ioK8sApiRbacV1RoleBinding'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * RoleBindingList is a collection of RoleBindings
@@ -31,5 +31,5 @@ export interface IoK8sApiRbacV1RoleBindingList {
   /**
      * Standard object's metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

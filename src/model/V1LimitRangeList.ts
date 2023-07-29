@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { V1LimitRange } from './V1LimitRange'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * LimitRangeList is a list of LimitRange items.
@@ -31,5 +31,5 @@ export interface V1LimitRangeList {
   /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

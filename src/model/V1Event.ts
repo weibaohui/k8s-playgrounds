@@ -14,7 +14,7 @@ import type { V1EventSource } from './V1EventSource'
 import type { V1ObjectReference } from './V1ObjectReference'
 import type { IoK8sApimachineryPkgApisMetaV1MicroTime } from './ioK8sApimachineryPkgApisMetaV1MicroTime'
 import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * Event is a report of an event somewhere in the cluster.  Events have a limited retention time and triggers and messages may evolve with time.  Event consumers should not rely on the timing of an event with a given Reason reflecting a consistent underlying trigger, or the continued existence of events with that Reason.  Events should be treated as informative, best-effort, supplemental data.
@@ -39,7 +39,7 @@ export class V1Event {
   /**
      * The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)
      */
-  firstTimestamp?: IoK8sApimachineryPkgApisMetaV1Time
+  firstTimestamp?: V1Time
   /**
      * The object that this event is about.
      */
@@ -51,7 +51,7 @@ export class V1Event {
   /**
      * The time at which the most recent occurrence of this event was recorded.
      */
-  lastTimestamp?: IoK8sApimachineryPkgApisMetaV1Time
+  lastTimestamp?: V1Time
   /**
      * A human-readable description of the status of this operation.
      */

@@ -12,7 +12,7 @@
 import type { V1ContainerStatus } from './V1ContainerStatus'
 import type { V1PodCondition } from './V1PodCondition'
 import type { V1PodIP } from './V1PodIP'
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * PodStatus represents information about the status of a pod. Status may trail the actual state of a system, especially if the node that hosts the pod cannot contact the control plane.
@@ -81,5 +81,5 @@ export interface V1PodStatus {
   /**
      * RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod.
      */
-  startTime?: IoK8sApimachineryPkgApisMetaV1Time
+  startTime?: V1Time
 }

@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.
@@ -26,7 +26,7 @@ export interface V1Taint {
   /**
      * TimeAdded represents the time at which the taint was added. It is only written for NoExecute taints.
      */
-  timeAdded?: IoK8sApimachineryPkgApisMetaV1Time
+  timeAdded?: V1Time
   /**
      * The taint value corresponding to the taint key.
      */

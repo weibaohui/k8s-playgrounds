@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAdmissionregistrationV1alpha1TypeChecking } from './ioK8sApiAdmissionregistrationV1alpha1TypeChecking'
-import type { IoK8sApimachineryPkgApisMetaV1Condition } from './ioK8sApimachineryPkgApisMetaV1Condition'
+import type { V1Condition } from './v1Condition'
 
 /**
  * ValidatingAdmissionPolicyStatus represents the status of a ValidatingAdmissionPolicy.
@@ -19,7 +19,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyS
   /**
      * The conditions represent the latest available observations of a policy's current state.
      */
-  conditions?: Array<IoK8sApimachineryPkgApisMetaV1Condition>
+  conditions?: Array<V1Condition>
   /**
      * The generation observed by the controller.
      */

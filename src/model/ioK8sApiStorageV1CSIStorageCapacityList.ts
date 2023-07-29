@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiStorageV1CSIStorageCapacity } from './ioK8sApiStorageV1CSIStorageCapacity'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * CSIStorageCapacityList is a collection of CSIStorageCapacity objects.
@@ -31,5 +31,5 @@ export interface IoK8sApiStorageV1CSIStorageCapacityList {
   /**
      * Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

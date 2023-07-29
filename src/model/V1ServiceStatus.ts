@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { V1LoadBalancerStatus } from './V1LoadBalancerStatus'
-import type { IoK8sApimachineryPkgApisMetaV1Condition } from './ioK8sApimachineryPkgApisMetaV1Condition'
+import type { V1Condition } from './v1Condition'
 
 /**
  * ServiceStatus represents the current status of a service.
@@ -19,7 +19,7 @@ export interface V1ServiceStatus {
   /**
      * Current service state
      */
-  conditions?: Array<IoK8sApimachineryPkgApisMetaV1Condition>
+  conditions?: Array<V1Condition>
   /**
      * LoadBalancer contains the current status of the load-balancer, if one is present.
      */

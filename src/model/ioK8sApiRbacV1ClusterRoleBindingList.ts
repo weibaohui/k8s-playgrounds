@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiRbacV1ClusterRoleBinding } from './ioK8sApiRbacV1ClusterRoleBinding'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * ClusterRoleBindingList is a collection of ClusterRoleBindings
@@ -31,5 +31,5 @@ export interface IoK8sApiRbacV1ClusterRoleBindingList {
   /**
      * Standard object's metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

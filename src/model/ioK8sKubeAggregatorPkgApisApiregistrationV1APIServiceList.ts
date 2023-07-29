@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 import type { IoK8sKubeAggregatorPkgApisApiregistrationV1APIService } from './ioK8sKubeAggregatorPkgApisApiregistrationV1APIService'
 
 /**
@@ -31,5 +31,5 @@ export interface IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList {
   /**
      * Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * HorizontalPodAutoscalerCondition describes the state of a HorizontalPodAutoscaler at a certain point.
@@ -18,7 +18,7 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition {
   /**
      * lastTransitionTime is the last time the condition transitioned from one status to another
      */
-  lastTransitionTime?: IoK8sApimachineryPkgApisMetaV1Time
+  lastTransitionTime?: V1Time
   /**
      * message is a human-readable explanation containing details about the transition
      */

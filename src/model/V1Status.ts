@@ -9,13 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
-import type { IoK8sApimachineryPkgApisMetaV1StatusDetails } from './ioK8sApimachineryPkgApisMetaV1StatusDetails'
+import type { V1ListMeta } from './V1ListMeta'
+import type { V1StatusDetails } from './V1StatusDetails'
 
 /**
  * Status is a return value for calls that don't return other objects.
  */
-export interface IoK8sApimachineryPkgApisMetaV1Status {
+export class V1Status {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -27,7 +27,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /**
      * Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
      */
-  details?: IoK8sApimachineryPkgApisMetaV1StatusDetails
+  details?: V1StatusDetails
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
@@ -39,7 +39,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
   /**
      * A machine-readable description of why this operation is in the \"Failure\" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
      */

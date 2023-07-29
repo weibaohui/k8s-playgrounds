@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiFlowcontrolV1beta2PriorityLevelConfiguration } from './ioK8sApiFlowcontrolV1beta2PriorityLevelConfiguration'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * PriorityLevelConfigurationList is a list of PriorityLevelConfiguration objects.
@@ -31,5 +31,5 @@ export interface IoK8sApiFlowcontrolV1beta2PriorityLevelConfigurationList {
   /**
      * `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

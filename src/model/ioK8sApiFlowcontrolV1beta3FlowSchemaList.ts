@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiFlowcontrolV1beta3FlowSchema } from './ioK8sApiFlowcontrolV1beta3FlowSchema'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * FlowSchemaList is a list of FlowSchema objects.
@@ -31,5 +31,5 @@ export interface IoK8sApiFlowcontrolV1beta3FlowSchemaList {
   /**
      * `metadata` is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

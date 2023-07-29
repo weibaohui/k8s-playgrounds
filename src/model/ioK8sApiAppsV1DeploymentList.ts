@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAppsV1Deployment } from './ioK8sApiAppsV1Deployment'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * DeploymentList is a list of Deployments.
@@ -31,5 +31,5 @@ export interface IoK8sApiAppsV1DeploymentList {
   /**
      * Standard list metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

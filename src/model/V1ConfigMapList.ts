@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { V1ConfigMap } from './V1ConfigMap'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * ConfigMapList is a resource containing a list of ConfigMap objects.
@@ -31,5 +31,5 @@ export interface V1ConfigMapList {
   /**
      * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

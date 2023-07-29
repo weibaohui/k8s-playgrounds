@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiResourceV1alpha2ResourceClaimTemplate } from './ioK8sApiResourceV1alpha2ResourceClaimTemplate'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * ResourceClaimTemplateList is a collection of claim templates.
@@ -31,5 +31,5 @@ export interface IoK8sApiResourceV1alpha2ResourceClaimTemplateList {
   /**
      * Standard list metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

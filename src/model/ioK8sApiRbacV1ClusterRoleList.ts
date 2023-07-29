@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiRbacV1ClusterRole } from './ioK8sApiRbacV1ClusterRole'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * ClusterRoleList is a collection of ClusterRoles
@@ -31,5 +31,5 @@ export interface IoK8sApiRbacV1ClusterRoleList {
   /**
      * Standard object's metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

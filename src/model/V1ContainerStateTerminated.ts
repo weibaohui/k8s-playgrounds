@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1Time } from './ioK8sApimachineryPkgApisMetaV1Time'
+import type { V1Time } from './V1Time'
 
 /**
  * ContainerStateTerminated is a terminated state of a container.
@@ -26,7 +26,7 @@ export interface V1ContainerStateTerminated {
   /**
      * Time at which the container last terminated
      */
-  finishedAt?: IoK8sApimachineryPkgApisMetaV1Time
+  finishedAt?: V1Time
   /**
      * Message regarding the last termination of the container
      */
@@ -42,5 +42,5 @@ export interface V1ContainerStateTerminated {
   /**
      * Time at which previous execution of the container started
      */
-  startedAt?: IoK8sApimachineryPkgApisMetaV1Time
+  startedAt?: V1Time
 }

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiNetworkingV1alpha1IPAddress } from './ioK8sApiNetworkingV1alpha1IPAddress'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * IPAddressList contains a list of IPAddress.
@@ -31,5 +31,5 @@ export interface IoK8sApiNetworkingV1alpha1IPAddressList {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

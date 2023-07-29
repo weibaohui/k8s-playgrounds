@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyBinding } from './ioK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyBinding'
-import type { IoK8sApimachineryPkgApisMetaV1ListMeta } from './ioK8sApimachineryPkgApisMetaV1ListMeta'
+import type { V1ListMeta } from './V1ListMeta'
 
 /**
  * ValidatingAdmissionPolicyBindingList is a list of ValidatingAdmissionPolicyBinding.
@@ -31,5 +31,5 @@ export interface IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyB
   /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta
+  metadata?: V1ListMeta
 }

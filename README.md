@@ -87,3 +87,8 @@ shamefully-hoist=true
 k8s model 生成
  * 使用https://editor.swagger.io/ 生成client，选择typescript-angular
  * 将文件名称中的ioK8sApiCore替换掉，文件内的处理掉。这样用起来方便
+
+ | 前                                    | 后           |
+ |--------------------------------------|-------------|
+ | ioK8sApiCoreV1ConfigMap              | V1ConfigMap |
+ | IoK8sApimachineryPkgApisMetaV1Status | V1Status    |
