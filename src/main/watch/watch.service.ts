@@ -124,7 +124,7 @@ export class WatchService {
 
   async cordonNode(name: string) {
     const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
-    const podResp = await k8sApi.patchNode(name,
+    const resp = await k8sApi.patchNode(name,
       { spec: { unschedulable: true } }, 'true', undefined,
       undefined, undefined, undefined,
       {
@@ -133,12 +133,12 @@ export class WatchService {
           'Accept': 'application/json, */*',
         },
       })
-    return podResp.body
+    return resp.body
   }
 
   async unCordonNode(name: string) {
     const k8sApi = this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
-    const podResp = await k8sApi.patchNode(name,
+    const resp = await k8sApi.patchNode(name,
       { spec: { unschedulable: null } }, 'true', undefined,
       undefined, undefined, undefined,
       {
@@ -147,7 +147,7 @@ export class WatchService {
           'Accept': 'application/json, */*',
         },
       })
-    return podResp.body
+    return resp.body
   }
 
   async k8sNs() {
