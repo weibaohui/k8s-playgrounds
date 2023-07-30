@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MonacoView from '@render/components/common/MonacoView.vue'
 import PodExecView from '@render/components/pod/PodExecView.vue'
 import PodLogView from '@render/components/pod/PodLogView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
@@ -44,6 +45,15 @@ function showPodLogView(x: V1Pod) {
     h(PodLogView, { pod: x }),
   )
 }
+function showEditView(item: object, title: string) {
+  drawer.showDrawer(
+    {
+      title,
+      width: 1000,
+    },
+    h(MonacoView, { item }),
+  )
+}
 async function deletePod(pod: V1Pod) {
   dialog.warning({
     title: '警告',
@@ -69,6 +79,9 @@ function handleSelect(key: string) {
       break
     case 'Delete':
       deletePod(props.pod)
+      break
+    case 'Edit':
+      showEditView(props.pod, props.pod.metadata.name)
       break
     default:
       alert('尚未实现')

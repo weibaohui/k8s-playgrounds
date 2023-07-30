@@ -57,6 +57,7 @@ shamefully-hoist=true
 |       Pod | 列表-错误提示        | ✅       |
 |       Pod | 列表-关键字搜索过滤     | ✅       |
 |       Pod | 列表-Namespace过滤 | ✅       |
+|       Pod | 列表-查看yaml      | ✅       |
 |       Pod | 详情             | ✅       |
 |       Pod | 详情-Exec        | ✅       |
 |       Pod | 详情-Log         | ✅       |
@@ -69,6 +70,7 @@ shamefully-hoist=true
 |       Pod | 详情-Volume      | ✅       |
 |       Pod | 详情-Env         | ✅       |
 |       Pod | 详情-主机          | ✅       |
+|       Pod | 详情-查看yaml      | ✅       |
 |     Event | 列表             | ✅       |
 |     Event | 列表-关联Pod       | ✅       |
 |     Event | 列表-关联Node      | ✅       |

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import MonacoView from '@render/components/common/MonacoView.vue'
 import PodExecView from '@render/components/pod/PodExecView.vue'
 import PodLogView from '@render/components/pod/PodLogView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
@@ -22,6 +23,15 @@ function showView(comp: ConcreteComponent, x: V1Pod) {
       width: 1000,
     },
     h(comp, { pod: x }),
+  )
+}
+function showEditView(item: object, title: string) {
+  drawer.showDrawer(
+    {
+      title,
+      width: 1000,
+    },
+    h(MonacoView, { item }),
   )
 }
 
@@ -63,7 +73,7 @@ async function deletePod(pod: V1Pod) {
       </NTooltip>
       <NTooltip>
         <template #trigger>
-          <NButton>
+          <NButton @click="showEditView(props.pod, props.pod.metadata.name)">
             <NIcon :component="EditNoteRound" />
           </NButton>
         </template>

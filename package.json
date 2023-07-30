@@ -14,6 +14,7 @@
   "dependencies": {
     "@doubleshot/nest-electron": "^0.2.3",
     "@kubernetes/client-node": "^0.18.1",
+    "@liting-yes/vue-monaco-editor": "^0.2.5",
     "@nestjs/common": "^10.1.1",
     "@nestjs/config": "^3.0.0",
     "@nestjs/core": "^10.1.1",
@@ -23,9 +24,9 @@
     "@nestjs/schedule": "^3.0.1",
     "@nestjs/websockets": "^10.1.1",
     "@types/lodash": "^4.14.195",
-    "dayjs": "^1.11.9",
     "file-saver": "^2.0.5",
     "moment": "^2.29.4",
+    "monaco-editor-vue3": "^0.1.6",
     "naive-ui": "^2.34.4",
     "node-pty": "^1.0.0",
     "reflect-metadata": "^0.1.13",
@@ -33,7 +34,8 @@
     "vue": "^3.3.4",
     "vue-router": "^4.2.4",
     "xterm": "^5.2.1",
-    "xterm-addon-fit": "^0.7.0"
+    "xterm-addon-fit": "^0.7.0",
+    "yaml": "^2.3.1"
   },
   "devDependencies": {
     "@lightwing/eslint-config": "^0.0.18",
