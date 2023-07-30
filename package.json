@@ -26,7 +26,6 @@
     "@types/lodash": "^4.14.195",
     "file-saver": "^2.0.5",
     "moment": "^2.29.4",
-    "monaco-editor-vue3": "^0.1.6",
     "naive-ui": "^2.34.4",
     "node-pty": "^1.0.0",
     "reflect-metadata": "^0.1.13",
