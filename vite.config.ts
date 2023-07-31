@@ -2,6 +2,7 @@ import { join } from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { VitePluginDoubleshot } from 'vite-plugin-doubleshot'
+import viteCompression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,6 +24,9 @@ export default defineConfig({
           outDir: 'dist/preload',
         },
       },
+    }),
+    viteCompression({
+      threshold: 10240,
     }),
   ],
   resolve: {
