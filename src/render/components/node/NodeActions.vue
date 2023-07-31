@@ -3,7 +3,6 @@ import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
 import { PauseCircleRegular, PlayCircleRegular, Trash } from '@vicons/fa'
 
-import type { ConcreteComponent } from '@vue/runtime-core'
 import { NButton, NButtonGroup, NIcon, NSpace, NTooltip, useDialog, useMessage } from 'naive-ui'
 import { V1Node } from '../../../model/V1Node'
 
@@ -13,15 +12,6 @@ const props = defineProps({
 const drawer = useDrawerService()
 const dialog = useDialog()
 const message = useMessage()
-function showView(comp: ConcreteComponent, x: V1Node) {
-  // drawer.showDrawer(
-  //   {
-  //     title: x.metadata.name,
-  //     width: 1000,
-  //   },
-  //   h(comp, { pod: x }),
-  // )
-}
 async function cordonNode(node: V1Node) {
   const n = await K8sService.nodeService.cordonNode(node.metadata.name)
   if (n.spec.unschedulable)

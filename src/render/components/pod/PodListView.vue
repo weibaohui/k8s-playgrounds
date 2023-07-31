@@ -14,6 +14,7 @@ import SearchFilter from '@render/components/common/SearchFilter.vue'
 import PodWarnIcon from '@render/components/pod/PodWarnIcon.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
+import { DrawerHelper } from '@render/service/page/DrawerHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, NDataTable, NFormItemGi, NGrid, NMessageProvider, NText } from 'naive-ui'
@@ -21,27 +22,6 @@ import { h, ref } from 'vue'
 import type { V1Pod } from '../../../model/V1Pod'
 
 const drawer = useDrawerService()
-
-function showPodView(x: V1Pod) {
-  drawer.showDrawer(
-    {
-      title: x.metadata.name,
-      width: 800,
-    },
-    h(PodView, { pod: x }),
-  )
-}
-
-async function showNodeView(x: V1Pod) {
-  drawer.showDrawer(
-    {
-      title: x.spec.nodeName,
-      width: 800,
-    },
-    h(NodeView, { node: await K8sService.nodeService.getNode(x.spec.nodeName) }),
-  )
-}
-
 const columns = createColumns()
 const podList = ref<V1Pod[]>()
 const selectedNs = ref('default')
@@ -80,7 +60,10 @@ function createColumns(): DataTableColumns<V1Pod> {
           {
             text: true,
             onClick: () => {
-              showPodView(row)
+              DrawerHelper
+                .instance
+                .drawer(drawer)
+                .show(row.metadata.name, PodView, { pod: row })
             },
           },
           [
@@ -136,8 +119,11 @@ function createColumns(): DataTableColumns<V1Pod> {
           NButton,
           {
             text: true,
-            onClick: () => {
-              showNodeView(row)
+            onClick: async () => {
+              DrawerHelper
+                .instance
+                .drawer(drawer)
+                .show(row.spec.nodeName, NodeView, { node: await K8sService.nodeService.getNode(row.spec.nodeName) })
             },
           },
           { default: () => (row as V1Pod).spec.nodeName },

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import EventView from '@render/components/event/EventView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
+import { DrawerHelper } from '@render/service/page/DrawerHelper'
 import { NText } from 'naive-ui'
 import _ from 'lodash'
-import { h } from 'vue'
 
 import { V1Event } from '../../../model/V1Event'
 
@@ -15,12 +15,10 @@ const props = defineProps({
 const drawer = useDrawerService()
 
 async function showEventView(x: V1Event) {
-  drawer.showDrawer({
-    title: x.metadata.name,
-    width: 800,
-  },
-  h(EventView, { event: x }),
-  )
+  DrawerHelper
+    .instance
+    .drawer(drawer)
+    .show(x.metadata.name, EventView, { event: x })
 }
 </script>
 

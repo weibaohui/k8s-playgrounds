@@ -7,21 +7,13 @@ import NodeRoleView from '@render/components/node/NodeRoleView.vue'
 import NodeView from '@render/components/node/NodeView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
+import { DrawerHelper } from '@render/service/page/DrawerHelper'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, NDataTable, NMessageProvider, NSpace } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Node } from '../../../model/V1Node'
 
 const drawer = useDrawerService()
-
-async function showNodeView(x: V1Node) {
-  drawer.showDrawer({
-    title: x.metadata.name,
-    width: 800,
-  },
-  h(NodeView, { node: x }),
-  )
-}
 
 const columns = createColumns()
 const nodeList = ref<V1Node[]>()
@@ -41,7 +33,10 @@ function createColumns(): DataTableColumns<V1Node> {
           {
             text: true,
             onClick: () => {
-              showNodeView(row)
+              DrawerHelper
+                .instance
+                .drawer(drawer)
+                .show(row.metadata.name, NodeView, { node: row })
             },
 
           },

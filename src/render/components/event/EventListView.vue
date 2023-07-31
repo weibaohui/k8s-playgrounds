@@ -5,7 +5,6 @@ import EventInvolvedClickAction from '@render/components/event/EventInvolvedClic
 import EventLastSeen from '@render/components/event/EventLastSeen.vue'
 import EventMessageView from '@render/components/event/EventMessageView.vue'
 import NsSelect from '@render/components/ns/NsSelect.vue'
-import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
@@ -15,7 +14,6 @@ import type { V1Event } from '../../../model/V1Event'
 import type { V1Namespace } from '../../../model/V1Namespace'
 import type { V1Pod } from '../../../model/V1Pod'
 
-const drawer = useDrawerService()
 const nsSelectRef = ref<InstanceType<typeof NsSelect>>()
 const selectedNs = ref('default')
 

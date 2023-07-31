@@ -5,21 +5,13 @@ import NsLabelsView from '@render/components/ns/NsLabelsView.vue'
 import NsView from '@render/components/ns/NsView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
+import { DrawerHelper } from '@render/service/page/DrawerHelper'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, NDataTable, NSpace } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Namespace } from '../../../model/V1Namespace'
 
 const drawer = useDrawerService()
-
-async function showNsView(x: V1Namespace) {
-  drawer.showDrawer({
-    title: x.metadata.name,
-    width: 800,
-  },
-  h(NsView, { ns: x }),
-  )
-}
 
 const columns = createColumns()
 const nsList = ref<V1Namespace[]>()
@@ -38,7 +30,10 @@ function createColumns(): DataTableColumns<V1Namespace> {
           {
             text: true,
             onClick: () => {
-              showNsView(row)
+              DrawerHelper
+                .instance
+                .drawer(drawer)
+                .show(row.metadata.name, NsView, { ns: row })
             },
           },
           { default: () => (row as V1Namespace).metadata.name },

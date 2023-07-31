@@ -4,6 +4,7 @@ import PodExecView from '@render/components/pod/PodExecView.vue'
 import PodLogView from '@render/components/pod/PodLogView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
+import { DrawerHelper } from '@render/service/page/DrawerHelper'
 import { Edit, StickyNoteRegular, Terminal, Trash } from '@vicons/fa'
 import { NButton, NDropdown, NIcon, useDialog, useMessage } from 'naive-ui'
 import type { Component } from 'vue'
@@ -17,7 +18,6 @@ const props = defineProps({
 
 const dialog = useDialog()
 const message = useMessage()
-
 const drawer = useDrawerService()
 
 function renderIcon(icon: Component) {
@@ -26,33 +26,6 @@ function renderIcon(icon: Component) {
       default: () => h(icon),
     })
   }
-}
-function showPodExecView(x: V1Pod) {
-  drawer.showDrawer(
-    {
-      title: x.metadata.name,
-      width: 1000,
-    },
-    h(PodExecView, { pod: x }),
-  )
-}
-function showPodLogView(x: V1Pod) {
-  drawer.showDrawer(
-    {
-      title: x.metadata.name,
-      width: 1000,
-    },
-    h(PodLogView, { pod: x }),
-  )
-}
-function showEditView(item: object, title: string) {
-  drawer.showDrawer(
-    {
-      title,
-      width: 1000,
-    },
-    h(MonacoView, { item }),
-  )
 }
 async function deletePod(pod: V1Pod) {
   dialog.warning({
@@ -72,16 +45,25 @@ async function deletePod(pod: V1Pod) {
 function handleSelect(key: string) {
   switch (key) {
     case 'Shell':
-      showPodExecView(props.pod)
+      DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(props.pod.metadata.name, PodExecView, { pod: props.pod })
       break
     case 'Log':
-      showPodLogView(props.pod)
+      DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(props.pod.metadata.name, PodLogView, { pod: props.pod })
       break
     case 'Delete':
       deletePod(props.pod)
       break
     case 'Edit':
-      showEditView(props.pod, props.pod.metadata.name)
+      DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(props.pod.metadata.name, MonacoView, { item: props.pod })
       break
     default:
       alert('尚未实现')

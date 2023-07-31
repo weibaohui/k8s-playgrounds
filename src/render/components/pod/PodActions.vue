@@ -4,11 +4,10 @@ import PodExecView from '@render/components/pod/PodExecView.vue'
 import PodLogView from '@render/components/pod/PodLogView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
+import { DrawerHelper } from '@render/service/page/DrawerHelper'
 import { Edit, StickyNoteRegular, Terminal, Trash } from '@vicons/fa'
 
-import type { ConcreteComponent } from '@vue/runtime-core'
 import { NButton, NButtonGroup, NIcon, NSpace, NTooltip, useDialog, useMessage } from 'naive-ui'
-import { h } from 'vue'
 import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
@@ -17,24 +16,6 @@ const props = defineProps({
 const drawer = useDrawerService()
 const dialog = useDialog()
 const message = useMessage()
-function showView(comp: ConcreteComponent, x: V1Pod) {
-  drawer.showDrawer(
-    {
-      title: x.metadata.name,
-      width: 1000,
-    },
-    h(comp, { pod: x }),
-  )
-}
-function showEditView(item: object, title: string) {
-  drawer.showDrawer(
-    {
-      title,
-      width: 1000,
-    },
-    h(MonacoView, { item }),
-  )
-}
 
 async function deletePod(pod: V1Pod) {
   dialog.warning({
@@ -58,7 +39,12 @@ async function deletePod(pod: V1Pod) {
     <NButtonGroup>
       <NTooltip>
         <template #trigger>
-          <NButton type="default" @click="showView(PodExecView, props.pod)">
+          <NButton
+            @click="DrawerHelper
+              .instance
+              .drawer(drawer)
+              .show(props.pod.metadata.name, PodExecView, { pod: props.pod })"
+          >
             <NIcon :component="Terminal" />
           </NButton>
         </template>
@@ -66,7 +52,12 @@ async function deletePod(pod: V1Pod) {
       </NTooltip>
       <NTooltip>
         <template #trigger>
-          <NButton @click="showView(PodLogView, props.pod)">
+          <NButton
+            @click="DrawerHelper
+              .instance
+              .drawer(drawer)
+              .show(props.pod.metadata.name, PodLogView, { pod: props.pod })"
+          >
             <NIcon :component="StickyNoteRegular" />
           </NButton>
         </template>
@@ -74,7 +65,14 @@ async function deletePod(pod: V1Pod) {
       </NTooltip>
       <NTooltip>
         <template #trigger>
-          <NButton @click="showEditView(props.pod, props.pod.metadata.name)">
+          <NButton
+            @click="
+              DrawerHelper
+                .instance
+                .drawer(drawer)
+                .show(props.pod.metadata.name, MonacoView, { item: props.pod })
+            "
+          >
             <NIcon :component="Edit" />
           </NButton>
         </template>

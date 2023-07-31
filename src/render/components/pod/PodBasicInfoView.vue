@@ -3,10 +3,11 @@ import ContainerStatusText from '@render/components/container/ContainerStatusTex
 import NodeView from '@render/components/node/NodeView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
+import { DrawerHelper } from '@render/service/page/DrawerHelper'
 import { CheckCircle, ExclamationCircle } from '@vicons/fa'
 import moment from 'moment/moment'
 import { NBadge, NButton, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'naive-ui'
-import { h, ref } from 'vue'
+import { ref } from 'vue'
 import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
@@ -25,13 +26,10 @@ function toggle() {
   isExpended.value = !isExpended.value
 }
 async function showNodeView(name: string) {
-  const x = await K8sService.nodeService.getNode(name)
-  drawer.showDrawer({
-    title: x.metadata.name,
-    width: 800,
-  },
-  h(NodeView, { node: x }),
-  )
+  DrawerHelper
+    .instance
+    .drawer(drawer)
+    .show(name, NodeView, { node: await K8sService.nodeService.getNode(name) })
 }
 </script>
 

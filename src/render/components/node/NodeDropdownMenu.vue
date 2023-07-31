@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
 import { PauseCircleRegular, PlayCircleRegular, Terminal, Trash } from '@vicons/fa'
 
@@ -14,8 +13,6 @@ const props = defineProps({
 
 const dialog = useDialog()
 const message = useMessage()
-
-const drawer = useDrawerService()
 
 function renderIcon(icon: Component) {
   return () => {
