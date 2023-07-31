@@ -21,7 +21,17 @@ export class DrawerHelper {
     this._drawer.showDrawer(
       {
         title,
-        width: 1000,
+        width: '50%',
+      },
+      h(comp, compProps),
+    )
+  }
+
+  showWider(title, comp: ConcreteComponent, compProps?: object) {
+    this._drawer.showDrawer(
+      {
+        title,
+        width: '80%',
       },
       h(comp, compProps),
     )

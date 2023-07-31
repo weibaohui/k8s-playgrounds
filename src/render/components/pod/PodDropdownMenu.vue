@@ -48,13 +48,13 @@ function handleSelect(key: string) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(props.pod.metadata.name, PodExecView, { pod: props.pod })
+        .showWider(props.pod.metadata.name, PodExecView, { pod: props.pod })
       break
     case 'Log':
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(props.pod.metadata.name, PodLogView, { pod: props.pod })
+        .showWider(props.pod.metadata.name, PodLogView, { pod: props.pod })
       break
     case 'Delete':
       deletePod(props.pod)
@@ -63,7 +63,7 @@ function handleSelect(key: string) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(props.pod.metadata.name, MonacoView, { item: props.pod })
+        .showWider(props.pod.metadata.name, MonacoView, { item: props.pod })
       break
     default:
       alert('尚未实现')

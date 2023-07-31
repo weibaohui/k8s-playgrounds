@@ -43,7 +43,7 @@ async function deletePod(pod: V1Pod) {
             @click="DrawerHelper
               .instance
               .drawer(drawer)
-              .show(props.pod.metadata.name, PodExecView, { pod: props.pod })"
+              .showWider(props.pod.metadata.name, PodExecView, { pod: props.pod })"
           >
             <NIcon :component="Terminal" />
           </NButton>
@@ -56,7 +56,7 @@ async function deletePod(pod: V1Pod) {
             @click="DrawerHelper
               .instance
               .drawer(drawer)
-              .show(props.pod.metadata.name, PodLogView, { pod: props.pod })"
+              .showWider(props.pod.metadata.name, PodLogView, { pod: props.pod })"
           >
             <NIcon :component="StickyNoteRegular" />
           </NButton>
@@ -66,12 +66,10 @@ async function deletePod(pod: V1Pod) {
       <NTooltip>
         <template #trigger>
           <NButton
-            @click="
-              DrawerHelper
-                .instance
-                .drawer(drawer)
-                .show(props.pod.metadata.name, MonacoView, { item: props.pod })
-            "
+            @click="DrawerHelper
+              .instance
+              .drawer(drawer)
+              .showWider(props.pod.metadata.name, MonacoView, { item: props.pod })"
           >
             <NIcon :component="Edit" />
           </NButton>
