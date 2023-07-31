@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
-import { CaretForwardCircleOutline, PauseCircleOutline } from '@vicons/ionicons5'
-import { DeleteRound, FormatAlignLeftRound } from '@vicons/material'
+import { PauseCircleRegular, PlayCircleRegular, Terminal, Trash } from '@vicons/fa'
+
 import { NButton, NDropdown, NIcon, useDialog, useMessage } from 'naive-ui'
 import type { Component } from 'vue'
 import { h } from 'vue'
@@ -83,14 +83,14 @@ function getCordonOption() {
     return {
       label: 'UnCordon',
       key: 'UnCordon',
-      icon: renderIcon(CaretForwardCircleOutline),
+      icon: renderIcon(PlayCircleRegular),
     }
   }
   else {
     return {
       label: 'Cordon',
       key: 'Cordon',
-      icon: renderIcon(PauseCircleOutline),
+      icon: renderIcon(PauseCircleRegular),
     }
   }
 }
@@ -101,13 +101,13 @@ function options() {
     {
       label: 'Shell',
       key: 'Shell',
-      icon: renderIcon(FormatAlignLeftRound),
+      icon: renderIcon(Terminal),
     },
 
     {
       label: 'Delete',
       key: 'Delete',
-      icon: renderIcon(DeleteRound),
+      icon: renderIcon(Trash),
     },
   ]
 }

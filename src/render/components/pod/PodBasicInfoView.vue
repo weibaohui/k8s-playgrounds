@@ -3,8 +3,7 @@ import ContainerStatusText from '@render/components/container/ContainerStatusTex
 import NodeView from '@render/components/node/NodeView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
-import { ErrorCircle20Regular } from '@vicons/fluent'
-import { CheckmarkCircle } from '@vicons/ionicons5'
+import { CheckCircle, ExclamationCircle } from '@vicons/fa'
 import moment from 'moment/moment'
 import { NBadge, NButton, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'naive-ui'
 import { h, ref } from 'vue'
@@ -141,13 +140,13 @@ async function showNodeView(name: string) {
             <NTag v-if="c.status === 'True'" type="success">
               {{ c.type }}
               <template #icon>
-                <NIcon :component="CheckmarkCircle" />
+                <NIcon :component="CheckCircle" />
               </template>
             </NTag>
             <NTag v-else type="error">
               {{ c.type }}
               <template #icon>
-                <NIcon :component="ErrorCircle20Regular" />
+                <NIcon :component="ExclamationCircle" />
               </template>
             </NTag>
           </span>

@@ -4,7 +4,7 @@ import PodExecView from '@render/components/pod/PodExecView.vue'
 import PodLogView from '@render/components/pod/PodLogView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
-import { DeleteRound, EditNoteRound, FormatAlignLeftRound, TerminalRound } from '@vicons/material'
+import { Edit, StickyNoteRegular, Terminal, Trash } from '@vicons/fa'
 import { NButton, NDropdown, NIcon, useDialog, useMessage } from 'naive-ui'
 import type { Component } from 'vue'
 import { h } from 'vue'
@@ -91,22 +91,22 @@ const options = [
   {
     label: 'Shell',
     key: 'Shell',
-    icon: renderIcon(TerminalRound),
+    icon: renderIcon(Terminal),
   },
   {
     label: 'Log',
     key: 'Log',
-    icon: renderIcon(FormatAlignLeftRound),
+    icon: renderIcon(StickyNoteRegular),
   },
   {
     label: 'Edit',
     key: 'Edit',
-    icon: renderIcon(EditNoteRound),
+    icon: renderIcon(Edit),
   },
   {
     label: 'Delete',
     key: 'Delete',
-    icon: renderIcon(DeleteRound),
+    icon: renderIcon(Trash),
   },
 ]
 </script>

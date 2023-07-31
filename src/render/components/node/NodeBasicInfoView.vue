@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import NodeRoleView from '@render/components/node/NodeRoleView.vue'
-import { ErrorCircle20Regular } from '@vicons/fluent'
-import { CheckmarkCircle } from '@vicons/ionicons5'
+import { CheckCircle, ExclamationCircle } from '@vicons/fa'
+
 import { NBadge, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
 import moment from 'moment/moment'
@@ -132,13 +132,13 @@ function toggle() {
           <NTag v-if="props.node.spec.unschedulable" type="error">
             Unschedulable
             <template #icon>
-              <NIcon :component="ErrorCircle20Regular" />
+              <NIcon :component="ExclamationCircle" />
             </template>
           </NTag>
           <NTag v-else type="success">
             Schedulable
             <template #icon>
-              <NIcon :component="CheckmarkCircle" />
+              <NIcon :component="CheckCircle" />
             </template>
           </NTag>
         </td>
@@ -150,17 +150,20 @@ function toggle() {
             <NTag v-if="c.status === 'True' && c.type === 'Ready'" type="success">
               {{ c.type }}
               <template #icon>
-                <NIcon :component="CheckmarkCircle" />
+                <NIcon :component="CheckCircle" />
               </template>
             </NTag>
             <NTag v-else-if="c.status === 'False' && c.type.endsWith('Pressure') " type="success">
               {{ c.type }}
               <template #icon>
-                <NIcon :component="CheckmarkCircle" />
+                <NIcon :component="CheckCircle" />
               </template>
             </NTag>
             <NTag v-else type="error">
               {{ c.type }}
+              <template #icon>
+                <NIcon :component="ExclamationCircle" />
+              </template>
             </NTag>
           </span>
         </td>

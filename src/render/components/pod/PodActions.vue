@@ -4,7 +4,8 @@ import PodExecView from '@render/components/pod/PodExecView.vue'
 import PodLogView from '@render/components/pod/PodLogView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
-import { DeleteRound, EditNoteRound, FormatAlignLeftRound, TerminalRound } from '@vicons/material'
+import { Edit, StickyNoteRegular, Terminal, Trash } from '@vicons/fa'
+
 import type { ConcreteComponent } from '@vue/runtime-core'
 import { NButton, NButtonGroup, NIcon, NSpace, NTooltip, useDialog, useMessage } from 'naive-ui'
 import { h } from 'vue'
@@ -58,7 +59,7 @@ async function deletePod(pod: V1Pod) {
       <NTooltip>
         <template #trigger>
           <NButton type="default" @click="showView(PodExecView, props.pod)">
-            <NIcon :component="TerminalRound" />
+            <NIcon :component="Terminal" />
           </NButton>
         </template>
         Exec
@@ -66,7 +67,7 @@ async function deletePod(pod: V1Pod) {
       <NTooltip>
         <template #trigger>
           <NButton @click="showView(PodLogView, props.pod)">
-            <NIcon :component="FormatAlignLeftRound" />
+            <NIcon :component="StickyNoteRegular" />
           </NButton>
         </template>
         Log
@@ -74,7 +75,7 @@ async function deletePod(pod: V1Pod) {
       <NTooltip>
         <template #trigger>
           <NButton @click="showEditView(props.pod, props.pod.metadata.name)">
-            <NIcon :component="EditNoteRound" />
+            <NIcon :component="Edit" />
           </NButton>
         </template>
         Edit
@@ -82,7 +83,7 @@ async function deletePod(pod: V1Pod) {
       <NTooltip>
         <template #trigger>
           <NButton round @click="deletePod(props.pod)">
-            <NIcon :component="DeleteRound" />
+            <NIcon :component="Trash" />
           </NButton>
         </template>
         Delete

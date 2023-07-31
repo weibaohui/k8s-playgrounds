@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { K8sService } from '@render/service/k8s/K8sService'
-import { WarningSharp } from '@vicons/ionicons5'
+import { ExclamationTriangle } from '@vicons/fa'
 import { NCard, NIcon, NText, NTooltip } from 'naive-ui'
 import { ref } from 'vue'
 import { V1Pod } from '../../../model/V1Pod'
@@ -21,7 +21,7 @@ getPodEventsList()
 <template>
   <NTooltip v-if="message" trigger="hover">
     <template #trigger>
-      <NIcon size="20" :component="WarningSharp" color="#F3CD4E" />
+      <NIcon size="20" :component="ExclamationTriangle" color="#F3CD4E" />
     </template>
     <NCard :title="props.pod.status.phase " size="small">
       <NText type="warning">

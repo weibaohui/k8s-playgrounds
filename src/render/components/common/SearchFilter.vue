@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { TrashBinOutline } from '@vicons/ionicons5'
-import { NIcon, NInput, NInputGroup } from 'naive-ui'
+import { NInput, NInputGroup } from 'naive-ui'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -16,11 +15,7 @@ function onTextChanged() {
 
 <template>
   <NInputGroup>
-    <NInput v-model:value="searchText" round clearable :placeholder="props.placeholder" @input="onTextChanged">
-      <template #clear-icon>
-        <NIcon :component="TrashBinOutline" />
-      </template>
-    </NInput>
+    <NInput v-model:value="searchText" round clearable :placeholder="props.placeholder" @input="onTextChanged" />
   </NInputGroup>
 </template>
 

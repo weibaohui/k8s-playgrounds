@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Delete28Regular } from '@vicons/fluent'
 import { NBadge, NButton, NIcon } from 'naive-ui'
+import { Trash } from '@vicons/fa'
 
 const props = defineProps({
   items: Array<any>,
@@ -16,7 +16,7 @@ function onClicked() {
     <NBadge :value="items.length" :max="9">
       <NButton color="#FADC19" circle @click="onClicked">
         <template #icon>
-          <NIcon color="red" :component="Delete28Regular" />
+          <NIcon color="red" :component="Trash" />
         </template>
       </NButton>
     </NBadge>

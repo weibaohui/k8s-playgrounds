@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import router from '@render/router'
 import DrawerServiceProvider from '@render/service/drawer-service/DrawerServiceProvider'
-import { Cube, Layers, Time } from '@vicons/ionicons5'
-import { Server } from '@vicons/fa'
+import { Clock, Cube, LayerGroup, Server } from '@vicons/fa'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'
 import { RouterLink } from 'vue-router'
@@ -46,7 +45,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Namespace' },
       ),
     key: 'go-to-ns',
-    icon: renderIcon(Layers),
+    icon: renderIcon(LayerGroup),
   }, {
     label: () =>
       h(
@@ -59,7 +58,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'Events' },
       ),
     key: 'go-to-events',
-    icon: renderIcon(Time),
+    icon: renderIcon(Clock),
   },
 
   {
