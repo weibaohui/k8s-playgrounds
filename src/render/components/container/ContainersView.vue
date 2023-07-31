@@ -74,9 +74,7 @@ function getContainerStatusByName(name) {
               <NTag v-else type="error">
                 rw
               </NTag>
-              <NTag>
-                <NIcon :component="ArrowsAltH" />
-              </NTag>
+              <NIcon :component="ArrowsAltH" />
               <NTag type="success">
                 {{ p.name }}
               </NTag>
