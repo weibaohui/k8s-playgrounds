@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { TimeAge } from '@main/utils/timeAge'
+import { TimerUtils } from '@main/utils/TimerUtils'
 import NsLabelsView from '@render/components/ns/NsLabelsView.vue'
 import NsView from '@render/components/ns/NsView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
@@ -78,9 +79,7 @@ function rowKey(row: V1Namespace) {
   return `${row.metadata.name}`
 }
 getNsList()
-setTimeout(() => {
-  K8sService.watchService.watchChange(nsList, 'ns')
-}, 2000)
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(nsList, 'ns'))
 </script>
 
 <template>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { TimerUtils } from '@main/utils/TimerUtils'
 import SearchFilter from '@render/components/common/SearchFilter.vue'
 import EventInvolvedClickAction from '@render/components/event/EventInvolvedClickAction.vue'
 import EventLastSeen from '@render/components/event/EventLastSeen.vue'
@@ -124,9 +125,7 @@ function rowKey(row: V1Event) {
   return `${row.metadata.namespace}/${row.metadata.name}`
 }
 getEventList()
-setTimeout(() => {
-  K8sService.watchService.watchChange(eventList, 'event', selectedNs)
-}, 2000)
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(eventList, 'event', selectedNs))
 </script>
 
 <template>

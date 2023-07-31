@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { TimerUtils } from '@main/utils/TimerUtils'
 import { TerminalData } from '@main/watch/watch.model'
 import { SocketIOService } from '@render/service/k8s/SocketIOService'
 import { debounce } from 'lodash'
@@ -63,9 +64,7 @@ function initTerm() {
   term.value.clear()
   term.value.loadAddon(fitAddon)
   // 不能初始化的时候fit,需要等terminal准备就绪,可以设置延时操作
-  setTimeout(() => {
-    fitAddon.fit()
-  }, 5)
+  TimerUtils.delay(() => fitAddon.fit(), 500)
 }
 function isWsOpen() {
   return terminalSocket.value.active
@@ -135,14 +134,10 @@ function onContainerChanged() {
   sendInitCommand()
 }
 function sendHeartBeat() {
-  return setInterval(() => {
-    sendCommand('HeartBeat')
-  }, 20 * 1000)
+  return TimerUtils.everyTwentySeconds(() => sendCommand('HeartBeat'))
 }
 function sendInitCommand() {
-  setTimeout(() => {
-    sendCommand('clear')
-  }, 500)
+  TimerUtils.delay(() => sendCommand('clear'), 500)
 }
 let heartBeatInstId: number
 onMounted(() => {

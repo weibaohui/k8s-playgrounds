@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { TimerUtils } from '@main/utils/TimerUtils'
 import ContainerReadyCount from '@render/components/container/ContainerReadyCount.vue'
 import ContainerRestartCount from '@render/components/container/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/container/ContainerStatusIcon.vue'
@@ -232,10 +233,7 @@ function onNsChanged(ns: string) {
 }
 
 getK8sPodList()
-setTimeout(
-  () => {
-    K8sService.watchService.watchChange(podList, 'pod', selectedNs)
-  }, 2000)
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(podList, 'pod', selectedNs))
 </script>
 
 <template>

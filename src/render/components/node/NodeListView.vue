@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { TimeAge } from '@main/utils/timeAge'
+import { TimerUtils } from '@main/utils/TimerUtils'
 import NodeDropdownMenu from '@render/components/node/NodeDropdownMenu.vue'
 import NodeReadyView from '@render/components/node/NodeReadyView.vue'
 import NodeRoleView from '@render/components/node/NodeRoleView.vue'
@@ -122,9 +123,7 @@ function rowKey(row: V1Node) {
 }
 
 getNodeList()
-setTimeout(() => {
-  K8sService.watchService.watchChange(nodeList, 'node')
-}, 2000)
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(nodeList, 'node'))
 </script>
 
 <template>
