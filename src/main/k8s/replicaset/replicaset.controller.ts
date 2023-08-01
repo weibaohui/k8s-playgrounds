@@ -1,4 +1,4 @@
-import { WatchService } from '@main/watch/watch.service'
+import { K8sService } from '@main/k8s/k8s.service'
 import {
   Controller,
   Get,
@@ -6,14 +6,14 @@ import {
 } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 
-@Controller('watch/replicaset')
-export class WatchReplicasetController {
+@Controller('k8s/replicaset')
+export class ReplicasetController {
   constructor(
-    private watchService: WatchService,
+    private watchService: K8sService,
     private configService: ConfigService,
   ) {}
 
-  @Get('/')
+  @Get('/list')
   async list() {
     return await this.watchService.replicasetService.getReplicaSets()
   }

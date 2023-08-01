@@ -4,22 +4,22 @@ import type { V1Status } from '../../../model/V1Status'
 
 export class NodeService {
   async getNodeList(): Promise<V1Node[]> {
-    return await HttpClient.inst.get<V1Node[]>('/watch/nodes')
+    return await HttpClient.inst.get<V1Node[]>('/k8s/node/list')
   }
 
   async getNode(name: string): Promise<V1Node> {
-    return await HttpClient.inst.get<V1Node>(`/watch/node/${name}`)
+    return await HttpClient.inst.get<V1Node>(`/k8s/node/${name}`)
   }
 
   async deleteNode(name: string): Promise<V1Status> {
-    return await HttpClient.inst.del<V1Status>(`/watch/node/${name}`)
+    return await HttpClient.inst.del<V1Status>(`/k8s/node/${name}`)
   }
 
   async cordonNode(name: string): Promise<V1Node> {
-    return await HttpClient.inst.get<V1Node>(`/watch/node/cordon/${name}`)
+    return await HttpClient.inst.get<V1Node>(`/k8s/node/cordon/${name}`)
   }
 
   async unCordonNode(name: string): Promise<V1Node> {
-    return await HttpClient.inst.get<V1Node>(`/watch/node/unCordon/${name}`)
+    return await HttpClient.inst.get<V1Node>(`/k8s/node/unCordon/${name}`)
   }
 }

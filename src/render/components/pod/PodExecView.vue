@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { TimerUtils } from '@main/utils/TimerUtils'
-import { TerminalData } from '@main/watch/watch.model'
+import { TerminalData } from '@main/model/watch.model'
 import { SocketIOService } from '@render/service/k8s/SocketIOService'
 import { debounce } from 'lodash'
 import moment from 'moment/moment'

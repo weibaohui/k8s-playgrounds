@@ -1,29 +1,29 @@
-import { WatchEventService } from '@main/watch/watch.event.service'
-import { WatchNodeService } from '@main/watch/watch.node.service'
-import { WatchKubectlService } from '@main/watch/watch.kubectl.service'
-import { WatchNsService } from '@main/watch/watch.ns.service'
-import { WatchPodService } from '@main/watch/watch.pod.service'
+import { EventService } from '@main/k8s/event/event.service'
+import { NodeService } from '@main/k8s/node/node.service'
+import { ClientService } from '@main/k8s/client/client.service'
+import { NsService } from '@main/k8s/ns/ns.service'
+import { PodService } from '@main/k8s/pod/pod.service'
 import * as k8s from '@kubernetes/client-node'
-import { WatchReplicasetService } from '@main/watch/watch.replicaset.service'
+import { ReplicasetService } from '@main/k8s/replicaset/replicaset.service'
 import { Injectable, Logger } from '@nestjs/common'
 
 @Injectable()
-export class WatchService {
-  private readonly logger = new Logger(WatchService.name)
+export class K8sService {
+  private readonly logger = new Logger(K8sService.name)
 
   constructor(
-    public podService: WatchPodService,
-    public nodeService: WatchNodeService,
-    public nsService: WatchNsService,
-    public eventService: WatchEventService,
-    public kubectlService: WatchKubectlService,
-    public replicasetService: WatchReplicasetService,
+    public podService: PodService,
+    public nodeService: NodeService,
+    public nsService: NsService,
+    public eventService: EventService,
+    public clientService: ClientService,
+    public replicasetService: ReplicasetService,
   ) {
   }
 
   public watch(resType: string, cb?: (d: any) => void) {
     const watchAPI = this.getResourceWatchPath(resType)
-    const kc = this.kubectlService.getKubeConfig()
+    const kc = this.clientService.getKubeConfig()
     const watch = new k8s.Watch(kc)
     watch.watch(`${watchAPI}`,
       // optional query parameters can go here.

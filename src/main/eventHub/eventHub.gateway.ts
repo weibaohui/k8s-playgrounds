@@ -1,5 +1,5 @@
-import { TerminalData } from '@main/watch/watch.model'
-import { WatchService } from '@main/watch/watch.service'
+import { TerminalData } from '@main/model/watch.model'
+import { K8sService } from '@main/k8s/k8s.service'
 import { Logger } from '@nestjs/common'
 import {
   ConnectedSocket,
@@ -18,11 +18,11 @@ import { Server } from 'socket.io'
     origin: '*',
   },
 })
-export class EventsGateway {
-  private readonly logger = new Logger(EventsGateway.name)
+export class EventHubGateway {
+  private readonly logger = new Logger(EventHubGateway.name)
 
   constructor(
-    private watchService: WatchService,
+    private k8sService: K8sService,
   ) {}
 
   watched = false
@@ -38,10 +38,10 @@ export class EventsGateway {
   @SubscribeMessage('terminal')
   async terminal(@MessageBody() podTerminal: TerminalData): Promise<any> {
     if (podTerminal.command === 'HeartBeat') {
-      await this.watchService.podService.handlePodExecHeartBeat(podTerminal)
+      await this.k8sService.podService.handlePodExecHeartBeat(podTerminal)
       return
     }
-    const pk = this.watchService.podService.getExecPodPty(podTerminal, (r) => {
+    const pk = this.k8sService.podService.getExecPodPty(podTerminal, (r) => {
       podTerminal.data = r
       this.server.emit('terminal', podTerminal)
     })
@@ -51,17 +51,17 @@ export class EventsGateway {
 
   @SubscribeMessage('terminal-resize')
   async terminalResize(@MessageBody() podTerminal: TerminalData): Promise<any> {
-    this.watchService.podService.resizeKubectlPty(podTerminal)
+    this.k8sService.podService.resizeKubectlPty(podTerminal)
   }
 
   @SubscribeMessage('terminal-log')
   async terminalLog(@MessageBody() podTerminal: TerminalData): Promise<any> {
     if (podTerminal.command === 'HeartBeat') {
-      await this.watchService.podService.handlePodLogHeartBeat(podTerminal)
+      await this.k8sService.podService.handlePodLogHeartBeat(podTerminal)
       return
     }
 
-    await this.watchService.podService.getLogPodPty(podTerminal, (r) => {
+    await this.k8sService.podService.getLogPodPty(podTerminal, (r) => {
       podTerminal.data = r
       this.server.emit('terminal-log', podTerminal)
     })
@@ -84,16 +84,16 @@ export class EventsGateway {
         this.logger.log('watch service is started')
         return
       }
-      this.watchService.watch('pod', (d) => {
+      this.k8sService.watch('pod', (d) => {
         return this.sendEvent('pod', d)
       })
-      this.watchService.watch('ns', (d) => {
+      this.k8sService.watch('ns', (d) => {
         return this.sendEvent('ns', d)
       })
-      this.watchService.watch('node', (d) => {
+      this.k8sService.watch('node', (d) => {
         return this.sendEvent('node', d)
       })
-      this.watchService.watch('event', (d) => {
+      this.k8sService.watch('event', (d) => {
         return this.sendEvent('event', d)
       })
       this.watched = true

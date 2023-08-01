@@ -3,8 +3,8 @@ import * as k8s from '@kubernetes/client-node'
 import { Injectable, Logger } from '@nestjs/common'
 
 @Injectable()
-export class WatchKubectlService {
-  private readonly logger = new Logger(WatchKubectlService.name)
+export class ClientService {
+  private readonly logger = new Logger(ClientService.name)
   private kc = new k8s.KubeConfig()
 
   public getKubeConfig() {

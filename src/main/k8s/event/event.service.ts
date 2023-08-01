@@ -1,12 +1,12 @@
-import { WatchKubectlService } from '@main/watch/watch.kubectl.service'
+import { ClientService } from '@main/k8s/client/client.service'
 import { Injectable, Logger } from '@nestjs/common'
 
 @Injectable()
-export class WatchEventService {
-  private readonly logger = new Logger(WatchEventService.name)
+export class EventService {
+  private readonly logger = new Logger(EventService.name)
 
   constructor(
-    public kubectlService: WatchKubectlService,
+    public kubectlService: ClientService,
   ) {}
 
   async events(ns?: string) {

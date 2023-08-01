@@ -1,9 +1,9 @@
 import os from 'node:os'
 import process from 'node:process'
 import { exec } from 'node:child_process'
-import { WatchKubectlService } from '@main/watch/watch.kubectl.service'
+import { ClientService } from '@main/k8s/client/client.service'
 import { ConfigService } from '@nestjs/config'
-import { TerminalData, TerminalInstance } from '@main/watch/watch.model'
+import { TerminalData, TerminalInstance } from '@main/model/watch.model'
 import { Injectable, Logger } from '@nestjs/common'
 import moment from 'moment/moment'
 import * as pty from 'node-pty'
@@ -11,8 +11,8 @@ import { IPty } from 'node-pty'
 import { Cron, CronExpression } from '@nestjs/schedule'
 
 @Injectable()
-export class WatchPodService {
-  private readonly logger = new Logger(WatchPodService.name)
+export class PodService {
+  private readonly logger = new Logger(PodService.name)
 
   private execPtyMap = new Map<string, IPty>()
   private logInstanceMap = new Map<string, TerminalInstance>()
@@ -20,7 +20,7 @@ export class WatchPodService {
 
   constructor(
     private configService: ConfigService,
-    public kubectlService: WatchKubectlService,
+    public kubectlService: ClientService,
   ) {
   }
 

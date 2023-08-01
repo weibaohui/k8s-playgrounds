@@ -5,7 +5,7 @@ import type { V1Pod } from '../../../model/V1Pod'
 
 export class EventService {
   async getEventsList(ns?: string) {
-    return await HttpClient.inst.get<V1Event[]>(`/watch/events/${ns}`)
+    return await HttpClient.inst.get<V1Event[]>(`/k8s/event/${ns}`)
   }
 
   async getPodEventsList(pod: V1Pod) {

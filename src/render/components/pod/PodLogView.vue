@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { TimerUtils } from '@main/utils/TimerUtils'
-import { TerminalData } from '@main/watch/watch.model'
+import { TerminalData } from '@main/model/watch.model'
 import { K8sService } from '@render/service/k8s/K8sService'
 import { SocketIOService } from '@render/service/k8s/SocketIOService'
 import { saveAs } from 'file-saver'
