@@ -1,11 +1,8 @@
-import os from 'node:os'
-import process from 'node:process'
 import { exec } from 'node:child_process'
 import { ClientService } from '@main/k8s/client/client.service'
 import { TerminalData, TerminalInstance } from '@main/model/watch.model'
 import { Injectable, Logger } from '@nestjs/common'
 import moment from 'moment/moment'
-import * as pty from 'node-pty'
 import { IPty } from 'node-pty'
 import { Cron, CronExpression } from '@nestjs/schedule'
 
@@ -19,8 +16,7 @@ export class PodService {
 
   constructor(
     public clientService: ClientService,
-  ) {
-  }
+  ) {}
 
   @Cron(CronExpression.EVERY_10_SECONDS)
   handleHeartBeat() {
@@ -47,7 +43,7 @@ export class PodService {
     if (this.execInstanceMap.has(key))
       return this.execInstanceMap.get(key).pty
 
-    const pk = this.getNodePty()
+    const pk = this.clientService.getNodePty()
     pk.onData((d) => {
       cb(d.toString())
     })
@@ -66,7 +62,7 @@ export class PodService {
     if (this.logInstanceMap.has(key))
       this.logInstanceMap.get(key).pty.kill()
 
-    const pk = this.getNodePty()
+    const pk = this.clientService.getNodePty()
     pk.onData((d) => {
       cb(d.toString())
     })
@@ -87,18 +83,6 @@ export class PodService {
       pk.write(cmd)
     }, 1000)
     return this.logInstanceMap.get(key).pty
-  }
-
-  private getNodePty() {
-    const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
-
-    return pty.spawn(shell, [], {
-      name: 'xterm-256color',
-      cols: 80,
-      rows: 30,
-      env: process.env,
-      cwd: process.cwd(),
-    })
   }
 
   resizeKubectlPty(podTerminal: TerminalData, cb?: () => void) {

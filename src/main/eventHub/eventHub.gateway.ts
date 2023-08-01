@@ -67,6 +67,16 @@ export class EventHubGateway {
     })
   }
 
+  @SubscribeMessage('drain-node')
+  async drainNode(@MessageBody() nodeName: string): Promise<any> {
+    await this.k8sService.clientService.execKubectlDrainNode(nodeName, (r) => {
+      this.server.emit('drain-node', {
+        nodeName,
+        data: r,
+      })
+    })
+  }
+
   @SubscribeMessage('watch-init')
   async watchInit(@MessageBody() data: string): Promise<string> {
     this.logger.debug('watchInit')

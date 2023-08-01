@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import NodeDrainView from '@render/components/node/NodeDrainView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
-import { PauseCircleRegular, PlayCircleRegular, Trash } from '@vicons/fa'
+import { DrawerHelper } from '@render/service/page/DrawerHelper'
+import { FireExtinguisher, PauseCircleRegular, PlayCircleRegular, Trash } from '@vicons/fa'
 
 import { NButton, NButtonGroup, NIcon, NSpace, NTooltip, useDialog, useMessage } from 'naive-ui'
 import { V1Node } from '../../../model/V1Node'
@@ -43,6 +45,12 @@ async function deleteNode(node: V1Node) {
     },
   })
 }
+async function drainNode(node: V1Node) {
+  DrawerHelper
+    .instance
+    .drawer(drawer)
+    .showWider(node.metadata.name, NodeDrainView, { node })
+}
 </script>
 
 <template>
@@ -63,6 +71,14 @@ async function deleteNode(node: V1Node) {
           </NButton>
         </template>
         UnCordon
+      </NTooltip>
+      <NTooltip>
+        <template #trigger>
+          <NButton round @click="drainNode(props.node)">
+            <NIcon :component="FireExtinguisher" />
+          </NButton>
+        </template>
+        Drain
       </NTooltip>
       <NTooltip>
         <template #trigger>

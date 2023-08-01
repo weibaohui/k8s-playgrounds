@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import NodeDrainView from '@render/components/node/NodeDrainView.vue'
+import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
-import { PauseCircleRegular, PlayCircleRegular, Terminal, Trash } from '@vicons/fa'
+import { DrawerHelper } from '@render/service/page/DrawerHelper'
+import { FireExtinguisher, PauseCircleRegular, PlayCircleRegular, Terminal, Trash } from '@vicons/fa'
 
 import { NButton, NDropdown, NIcon, useDialog, useMessage } from 'naive-ui'
 import type { Component } from 'vue'
@@ -10,7 +13,7 @@ import { V1Node } from '../../../model/V1Node'
 const props = defineProps({
   node: V1Node,
 })
-
+const drawer = useDrawerService()
 const dialog = useDialog()
 const message = useMessage()
 
@@ -55,7 +58,12 @@ async function unCordonNode(node: V1Node) {
   else
     message.warning('操作失败')
 }
-
+async function drainNode(node: V1Node) {
+  DrawerHelper
+    .instance
+    .drawer(drawer)
+    .showWider(node.metadata.name, NodeDrainView, { node })
+}
 function handleSelect(key: string) {
   switch (key) {
     case 'Shell':
@@ -69,6 +77,9 @@ function handleSelect(key: string) {
       break
     case 'Delete':
       deleteNode(props.node)
+      break
+    case 'Drain':
+      drainNode(props.node)
       break
     default:
       alert('尚未实现')
@@ -100,7 +111,11 @@ function options() {
       key: 'Shell',
       icon: renderIcon(Terminal),
     },
-
+    {
+      label: 'Drain',
+      key: 'Drain',
+      icon: renderIcon(FireExtinguisher),
+    },
     {
       label: 'Delete',
       key: 'Delete',
