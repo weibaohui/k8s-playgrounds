@@ -4,21 +4,20 @@ import { WatchKubectlService } from '@main/watch/watch.kubectl.service'
 import { WatchNsService } from '@main/watch/watch.ns.service'
 import { WatchPodService } from '@main/watch/watch.pod.service'
 import * as k8s from '@kubernetes/client-node'
+import { WatchReplicasetService } from '@main/watch/watch.replicaset.service'
 import { Injectable, Logger } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
 
 @Injectable()
 export class WatchService {
   private readonly logger = new Logger(WatchService.name)
 
   constructor(
-    private configService: ConfigService,
     public podService: WatchPodService,
     public nodeService: WatchNodeService,
     public nsService: WatchNsService,
     public eventService: WatchEventService,
     public kubectlService: WatchKubectlService,
-
+    public replicasetService: WatchReplicasetService,
   ) {
   }
 

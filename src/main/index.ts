@@ -1,5 +1,5 @@
 import process from 'node:process'
-import { CatsModule } from '@main/cats/cats.module'
+import { PlaygroundModule } from '@main/playground.module'
 import { NestFactory } from '@nestjs/core'
 import { app } from 'electron'
 import type { MicroserviceOptions } from '@nestjs/microservices'
@@ -43,7 +43,7 @@ async function bootstrap() {
       },
     )
     const nestApp2 = await NestFactory.create(
-      CatsModule, {
+      PlaygroundModule, {
         logger: ['error', 'warn', 'debug', 'log'],
       },
     )
