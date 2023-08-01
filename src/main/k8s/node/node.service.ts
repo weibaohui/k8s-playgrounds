@@ -6,29 +6,29 @@ export class NodeService {
   private readonly logger = new Logger(NodeService.name)
 
   constructor(
-    public kubectlService: ClientService,
+    public clientService: ClientService,
   ) {}
 
   async getNodes() {
-    const k8sApi = this.kubectlService.getK8sApi()
+    const k8sApi = this.clientService.getK8sApi()
     const resp = await k8sApi.listNode()
     return resp.body.items
   }
 
   async getNode(name: string) {
-    const k8sApi = this.kubectlService.getK8sApi()
+    const k8sApi = this.clientService.getK8sApi()
     const resp = await k8sApi.readNode(name)
     return resp.body
   }
 
   async deleteNode(name: string) {
-    const k8sApi = this.kubectlService.getK8sApi()
+    const k8sApi = this.clientService.getK8sApi()
     const resp = await k8sApi.deleteNode(name)
     return resp.body
   }
 
   async cordonNode(name: string) {
-    const k8sApi = this.kubectlService.getK8sApi()
+    const k8sApi = this.clientService.getK8sApi()
     const resp = await k8sApi.patchNode(name,
       { spec: { unschedulable: true } }, 'true', undefined,
       undefined, undefined, undefined,
@@ -42,7 +42,7 @@ export class NodeService {
   }
 
   async unCordonNode(name: string) {
-    const k8sApi = this.kubectlService.getK8sApi()
+    const k8sApi = this.clientService.getK8sApi()
     const resp = await k8sApi.patchNode(name,
       { spec: { unschedulable: null } }, 'true', undefined,
       undefined, undefined, undefined,

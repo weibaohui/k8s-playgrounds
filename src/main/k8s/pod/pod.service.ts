@@ -2,7 +2,6 @@ import os from 'node:os'
 import process from 'node:process'
 import { exec } from 'node:child_process'
 import { ClientService } from '@main/k8s/client/client.service'
-import { ConfigService } from '@nestjs/config'
 import { TerminalData, TerminalInstance } from '@main/model/watch.model'
 import { Injectable, Logger } from '@nestjs/common'
 import moment from 'moment/moment'
@@ -19,8 +18,7 @@ export class PodService {
   private execInstanceMap = new Map<string, TerminalInstance>()
 
   constructor(
-    private configService: ConfigService,
-    public kubectlService: ClientService,
+    public clientService: ClientService,
   ) {
   }
 
@@ -132,7 +130,7 @@ export class PodService {
   }
 
   async k8sPods(ns?: string) {
-    const k8sApi = this.kubectlService.getK8sApi()
+    const k8sApi = this.clientService.getK8sApi()
     if (!ns || ns === 'null') {
       const podAllResp = await k8sApi.listPodForAllNamespaces()
       return podAllResp.body.items
@@ -142,13 +140,13 @@ export class PodService {
   }
 
   async getPod(ns: string, name: string) {
-    const k8sApi = this.kubectlService.getK8sApi()
+    const k8sApi = this.clientService.getK8sApi()
     const podResp = await k8sApi.readNamespacedPod(name, ns)
     return podResp.body
   }
 
   async deletePods(name: string, ns: string) {
-    const k8sApi = this.kubectlService.getK8sApi()
+    const k8sApi = this.clientService.getK8sApi()
     const r = await k8sApi.deleteNamespacedPod(name, ns)
     return r.body
   }

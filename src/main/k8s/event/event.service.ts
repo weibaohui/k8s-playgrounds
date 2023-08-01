@@ -6,11 +6,11 @@ export class EventService {
   private readonly logger = new Logger(EventService.name)
 
   constructor(
-    public kubectlService: ClientService,
+    public clientService: ClientService,
   ) {}
 
   async events(ns?: string) {
-    const k8sApi = this.kubectlService.getK8sApi()
+    const k8sApi = this.clientService.getK8sApi()
     if (!ns || ns === 'null' || ns === 'undefined') {
       const eventsAll = await k8sApi.listEventForAllNamespaces()
       return eventsAll.body.items

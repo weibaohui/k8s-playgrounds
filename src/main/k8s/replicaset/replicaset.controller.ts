@@ -4,22 +4,20 @@ import {
   Get,
   Param,
 } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
 
 @Controller('k8s/replicaset')
 export class ReplicasetController {
   constructor(
-    private watchService: K8sService,
-    private configService: ConfigService,
+    private k8sService: K8sService,
   ) {}
 
   @Get('/list')
   async list() {
-    return await this.watchService.replicasetService.getReplicaSets()
+    return await this.k8sService.replicasetService.getReplicaSets()
   }
 
   @Get('/:ns')
   async listByNs(@Param('ns') ns) {
-    return await this.watchService.replicasetService.getReplicaSets(ns)
+    return await this.k8sService.replicasetService.getReplicaSets(ns)
   }
 }

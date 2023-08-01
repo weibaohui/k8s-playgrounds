@@ -6,11 +6,11 @@ export class NsService {
   private readonly logger = new Logger(NsService.name)
 
   constructor(
-    public kubectlService: ClientService,
+    public clientService: ClientService,
   ) {}
 
   async k8sNs() {
-    const k8sApi = this.kubectlService.getK8sApi()
+    const k8sApi = this.clientService.getK8sApi()
     const res = await k8sApi.listNamespace()
     return res.body.items
   }

@@ -7,11 +7,11 @@ import {
 @Controller('k8s/ns')
 export class NsController {
   constructor(
-    private watchService: K8sService,
+    private k8sService: K8sService,
   ) {}
 
   @Get('/list')
   async ns() {
-    return await this.watchService.nsService.k8sNs()
+    return await this.k8sService.nsService.k8sNs()
   }
 }

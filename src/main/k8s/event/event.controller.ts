@@ -8,11 +8,11 @@ import {
 @Controller('k8s/event')
 export class EventController {
   constructor(
-    private watchService: K8sService,
+    private k8sService: K8sService,
   ) {}
 
   @Get('/:ns')
   async eventsByNs(@Param('ns') ns) {
-    return await this.watchService.eventService.events(ns)
+    return await this.k8sService.eventService.events(ns)
   }
 }
