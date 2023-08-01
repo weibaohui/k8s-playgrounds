@@ -17,6 +17,10 @@ export class WatchKubectlService {
     return this.getCoreV1Api()
   }
 
+  public getAppsV1Api() {
+    return this.getKubeConfig().makeApiClient(k8s.AppsV1Api)
+  }
+
   public getCoreV1Api() {
     return this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
   }
