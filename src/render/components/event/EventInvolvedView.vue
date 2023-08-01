@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import EventInvolvedClickAction from '@render/components/event/EventInvolvedClickAction.vue'
 import { NTable } from 'naive-ui'
 import { V1Event } from '../../../model/V1Event'
 
@@ -14,15 +15,13 @@ const props = defineProps({
         <td class="left">
           Name
         </td>
-        <td>{{ props.event.involvedObject.name }}</td>
+        <td>
+          <EventInvolvedClickAction :event="props.event" />
+        </td>
       </tr>
       <tr>
         <td>Namespace</td>
         <td>{{ props.event.involvedObject.namespace }}</td>
-      </tr>
-      <tr>
-        <td>kind</td>
-        <td>{{ props.event.involvedObject.kind }}</td>
       </tr>
       <tr>
         <td>fieldPath</td>

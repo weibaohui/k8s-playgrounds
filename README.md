@@ -75,6 +75,7 @@ shamefully-hoist=true
 |     Event | 列表-关联Pod       | ✅       |
 |     Event | 列表-关联Node      | ✅       |
 |     Event | 详情             | ✅       |
+|     Event | 详情-查看关联对象      | ✅       |
 | Namespace | 列表             | ✅       |
 | Namespace | 详情             | ✅       |
 | Namespace | 详情-关联Event     | ✅       |
