@@ -6,8 +6,8 @@ import ContainerRestartCount from '@render/components/container/ContainerRestart
 import ContainerStatusIcon from '@render/components/container/ContainerStatusIcon.vue'
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
 import NodeView from '@render/components/node/NodeView.vue'
+import Actions from '@render/components/pod/Actions.vue'
 import PodAge from '@render/components/pod/PodAge.vue'
-import PodDropdownMenu from '@render/components/pod/PodDropdownMenu.vue'
 import PodView from '@render/components/pod/PodView.vue'
 import PodWarnIcon from '@render/components/pod/PodWarnIcon.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
@@ -23,7 +23,6 @@ const drawer = useDrawerService()
 const itemList = ref<V1Pod[]>()
 const selectedNs = ref('default')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
-
 function createColumns(): DataTableColumns<V1Pod> {
   return [
     {
@@ -156,9 +155,10 @@ function createColumns(): DataTableColumns<V1Pod> {
       title: 'Action',
       key: 'Action',
       render(row) {
-        return h(PodDropdownMenu,
+        return h(Actions,
           {
             pod: row as V1Pod,
+            isDropdown: true,
           },
         )
       },
@@ -194,6 +194,7 @@ function onTextChanged(text: string) {
   }
   itemList.value = itemList.value.filter(r => r.metadata.name.includes(text))
 }
+
 getItemList()
 TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, 'pod', selectedNs))
 </script>
