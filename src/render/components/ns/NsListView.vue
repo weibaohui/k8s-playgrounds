@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TimeAge } from '@main/utils/timeAge'
 import { TimerUtils } from '@main/utils/TimerUtils'
-import WorkloadListView from '@render/components/common/WorkloadListView.vue'
+import WorkloadListView from '@render/components/common/ResourceListView.vue'
 import NsLabelsView from '@render/components/ns/NsLabelsView.vue'
 import NsView from '@render/components/ns/NsView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'

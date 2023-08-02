@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { TimerUtils } from '@main/utils/TimerUtils'
-import WorkloadListView from '@render/components/common/WorkloadListView.vue'
+import WorkloadListView from '@render/components/common/ResourceListView.vue'
 import ContainerReadyCount from '@render/components/container/ContainerReadyCount.vue'
 import ContainerRestartCount from '@render/components/container/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@render/components/container/ContainerStatusIcon.vue'

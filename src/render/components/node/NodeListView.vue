@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TimeAge } from '@main/utils/timeAge'
 import { TimerUtils } from '@main/utils/TimerUtils'
-import WorkloadListView from '@render/components/common/WorkloadListView.vue'
+import WorkloadListView from '@render/components/common/ResourceListView.vue'
 import NodeDropdownMenu from '@render/components/node/NodeDropdownMenu.vue'
 import NodeReadyView from '@render/components/node/NodeReadyView.vue'
 import NodeRoleView from '@render/components/node/NodeRoleView.vue'

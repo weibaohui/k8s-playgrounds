@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { TimerUtils } from '@main/utils/TimerUtils'
-import WorkloadListView from '@render/components/common/WorkloadListView.vue'
+import WorkloadListView from '@render/components/common/ResourceListView.vue'
 import EventInvolvedClickAction from '@render/components/event/EventInvolvedClickAction.vue'
 import EventLastSeen from '@render/components/event/EventLastSeen.vue'
 import EventMessageView from '@render/components/event/EventMessageView.vue'
