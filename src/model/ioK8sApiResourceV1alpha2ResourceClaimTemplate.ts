@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiResourceV1alpha2ResourceClaimTemplateSpec } from './ioK8sApiResourceV1alpha2ResourceClaimTemplateSpec'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * ResourceClaimTemplate is used to produce ResourceClaim objects.
@@ -27,7 +27,7 @@ export interface IoK8sApiResourceV1alpha2ResourceClaimTemplate {
   /**
      * Standard object metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Describes the ResourceClaim that is to be generated.  This field is immutable. A ResourceClaim will get created by the control plane for a Pod when needed and then not get updated anymore.
      */

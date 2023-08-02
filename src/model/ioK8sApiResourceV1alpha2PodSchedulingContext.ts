@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiResourceV1alpha2PodSchedulingContextSpec } from './ioK8sApiResourceV1alpha2PodSchedulingContextSpec'
 import type { IoK8sApiResourceV1alpha2PodSchedulingContextStatus } from './ioK8sApiResourceV1alpha2PodSchedulingContextStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * PodSchedulingContext objects hold information that is needed to schedule a Pod with ResourceClaims that use \"WaitForFirstConsumer\" allocation mode.  This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
@@ -28,7 +28,7 @@ export interface IoK8sApiResourceV1alpha2PodSchedulingContext {
   /**
      * Standard object metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Spec describes where resources for the Pod are needed.
      */

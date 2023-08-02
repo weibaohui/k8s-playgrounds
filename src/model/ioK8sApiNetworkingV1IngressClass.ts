@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiNetworkingV1IngressClassSpec } from './ioK8sApiNetworkingV1IngressClassSpec'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * IngressClass represents the class of the Ingress, referenced by the Ingress Spec. The `ingressclass.kubernetes.io/is-default-class` annotation can be used to indicate that an IngressClass should be considered default. When a single IngressClass resource has this annotation set to true, new Ingress resources without a class specified will be assigned this default class.
@@ -27,7 +27,7 @@ export interface IoK8sApiNetworkingV1IngressClass {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */

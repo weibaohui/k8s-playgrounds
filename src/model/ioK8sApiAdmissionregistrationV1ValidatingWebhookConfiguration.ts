@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAdmissionregistrationV1ValidatingWebhook } from './ioK8sApiAdmissionregistrationV1ValidatingWebhook'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * ValidatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and object without changing it.
@@ -27,7 +27,7 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration {
   /**
      * Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Webhooks is a list of webhooks and the affected resources and operations.
      */

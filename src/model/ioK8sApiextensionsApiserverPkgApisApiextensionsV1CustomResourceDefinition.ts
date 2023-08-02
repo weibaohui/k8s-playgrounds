@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec } from './ioK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec'
 import type { IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus } from './ioK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * CustomResourceDefinition represents a resource that should be exposed on the API server.  Its name MUST be in the format <.spec.name>.<.spec.group>.
@@ -28,7 +28,7 @@ export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResource
   /**
      * Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * spec describes how the user wants the resources to appear
      */

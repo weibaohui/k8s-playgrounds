@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiResourceV1alpha2ResourceClaimSpec } from './ioK8sApiResourceV1alpha2ResourceClaimSpec'
 import type { IoK8sApiResourceV1alpha2ResourceClaimStatus } from './ioK8sApiResourceV1alpha2ResourceClaimStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * ResourceClaim describes which resources are needed by a resource consumer. Its status tracks whether the resource has been allocated and what the resulting attributes are.  This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
@@ -28,7 +28,7 @@ export interface IoK8sApiResourceV1alpha2ResourceClaim {
   /**
      * Standard object metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Spec describes the desired attributes of a resource that then needs to be allocated. It can only be set once when creating the ResourceClaim.
      */

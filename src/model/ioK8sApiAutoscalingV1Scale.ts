@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAutoscalingV1ScaleSpec } from './ioK8sApiAutoscalingV1ScaleSpec'
 import type { IoK8sApiAutoscalingV1ScaleStatus } from './ioK8sApiAutoscalingV1ScaleStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * Scale represents a scaling request for a resource.
@@ -28,7 +28,7 @@ export interface IoK8sApiAutoscalingV1Scale {
   /**
      * Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * spec defines the behavior of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
      */

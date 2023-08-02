@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiRbacV1RoleRef } from './ioK8sApiRbacV1RoleRef'
 import type { IoK8sApiRbacV1Subject } from './ioK8sApiRbacV1Subject'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * RoleBinding references a role, but does not contain it.  It can reference a Role in the same namespace or a ClusterRole in the global namespace. It adds who information via Subjects and namespace information by which namespace it exists in.  RoleBindings in a given namespace only have effect in that namespace.
@@ -28,7 +28,7 @@ export interface IoK8sApiRbacV1RoleBinding {
   /**
      * Standard object's metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.
      */

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApimachineryPkgApisMetaV1DeleteOptions } from './ioK8sApimachineryPkgApisMetaV1DeleteOptions'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * Eviction evicts a pod from its node subject to certain policies and safety constraints. This is a subresource of Pod.  A request to cause such an eviction is created by POSTing to .../pods/<pod name>/evictions.
@@ -31,5 +31,5 @@ export interface IoK8sApiPolicyV1Eviction {
   /**
      * ObjectMeta describes the pod that is being evicted.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
 }

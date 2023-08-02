@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiBatchV1CronJobSpec } from './ioK8sApiBatchV1CronJobSpec'
 import type { IoK8sApiBatchV1CronJobStatus } from './ioK8sApiBatchV1CronJobStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * CronJob represents the configuration of a single cron job.
@@ -28,7 +28,7 @@ export interface IoK8sApiBatchV1CronJob {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */

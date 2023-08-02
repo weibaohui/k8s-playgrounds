@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAuthorizationV1SubjectAccessReviewSpec } from './ioK8sApiAuthorizationV1SubjectAccessReviewSpec'
 import type { IoK8sApiAuthorizationV1SubjectAccessReviewStatus } from './ioK8sApiAuthorizationV1SubjectAccessReviewStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * LocalSubjectAccessReview checks whether or not a user or group can perform an action in a given namespace. Having a namespace scoped resource makes it much easier to grant namespace scoped policy that includes permissions checking.
@@ -28,7 +28,7 @@ export interface IoK8sApiAuthorizationV1LocalSubjectAccessReview {
   /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.
      */

@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAppsV1DaemonSetSpec } from './ioK8sApiAppsV1DaemonSetSpec'
 import type { IoK8sApiAppsV1DaemonSetStatus } from './ioK8sApiAppsV1DaemonSetStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * DaemonSet represents the configuration of a daemon set.
@@ -28,7 +28,7 @@ export interface IoK8sApiAppsV1DaemonSet {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */

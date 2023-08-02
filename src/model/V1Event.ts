@@ -13,7 +13,7 @@ import type { V1EventSeries } from './V1EventSeries'
 import type { V1EventSource } from './V1EventSource'
 import type { V1ObjectReference } from './V1ObjectReference'
 import type { IoK8sApimachineryPkgApisMetaV1MicroTime } from './ioK8sApimachineryPkgApisMetaV1MicroTime'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 import type { V1Time } from './V1Time'
 
 /**
@@ -59,7 +59,7 @@ export class V1Event {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata: V1ObjectMeta
   /**
      * This should be a short, machine understandable string that gives the reason for the transition into the object's current status.
      */

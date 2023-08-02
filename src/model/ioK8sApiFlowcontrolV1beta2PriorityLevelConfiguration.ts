@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiFlowcontrolV1beta2PriorityLevelConfigurationSpec } from './ioK8sApiFlowcontrolV1beta2PriorityLevelConfigurationSpec'
 import type { IoK8sApiFlowcontrolV1beta2PriorityLevelConfigurationStatus } from './ioK8sApiFlowcontrolV1beta2PriorityLevelConfigurationStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * PriorityLevelConfiguration represents the configuration of a priority level.
@@ -28,7 +28,7 @@ export interface IoK8sApiFlowcontrolV1beta2PriorityLevelConfiguration {
   /**
      * `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * `spec` is the specification of the desired behavior of a \"request-priority\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */

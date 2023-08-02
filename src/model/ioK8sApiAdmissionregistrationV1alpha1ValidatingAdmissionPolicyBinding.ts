@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyBindingSpec } from './ioK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyBindingSpec'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * ValidatingAdmissionPolicyBinding binds the ValidatingAdmissionPolicy with paramerized resources. ValidatingAdmissionPolicyBinding and parameter CRDs together define how cluster administrators configure policies for clusters.
@@ -27,7 +27,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyB
   /**
      * Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Specification of the desired behavior of the ValidatingAdmissionPolicyBinding.
      */

@@ -13,7 +13,7 @@ import type { V1EventSource } from './V1EventSource'
 import type { V1ObjectReference } from './V1ObjectReference'
 import type { IoK8sApiEventsV1EventSeries } from './ioK8sApiEventsV1EventSeries'
 import type { IoK8sApimachineryPkgApisMetaV1MicroTime } from './ioK8sApimachineryPkgApisMetaV1MicroTime'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 import type { V1Time } from './V1Time'
 
 /**
@@ -55,7 +55,7 @@ export interface IoK8sApiEventsV1Event {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * note is a human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
      */

@@ -11,7 +11,7 @@
  */
 import type { V1PersistentVolumeClaimSpec } from './V1PersistentVolumeClaimSpec'
 import type { V1PersistentVolumeClaimStatus } from './V1PersistentVolumeClaimStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * PersistentVolumeClaim is a user's request for and claim to a persistent volume
@@ -28,7 +28,7 @@ export interface V1PersistentVolumeClaim {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
      */

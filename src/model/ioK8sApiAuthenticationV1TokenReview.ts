@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAuthenticationV1TokenReviewSpec } from './ioK8sApiAuthenticationV1TokenReviewSpec'
 import type { IoK8sApiAuthenticationV1TokenReviewStatus } from './ioK8sApiAuthenticationV1TokenReviewStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * TokenReview attempts to authenticate a token to a known user. Note: TokenReview requests may be cached by the webhook token authenticator plugin in the kube-apiserver.
@@ -28,7 +28,7 @@ export interface IoK8sApiAuthenticationV1TokenReview {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Spec holds information about the request being evaluated
      */

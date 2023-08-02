@@ -6,11 +6,11 @@ import _ from 'lodash'
 import { NDataTable, NFormItemGi, NGrid, NMessageProvider } from 'naive-ui'
 import type { TableColumns } from 'naive-ui/es/data-table/src/interface'
 import { ref } from 'vue'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from '../../../model/ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from '../../../model/V1ObjectMeta'
 
 const props = defineProps({
   columns: Array<TableColumns<any>>,
-  itemList: Array<any | IoK8sApimachineryPkgApisMetaV1ObjectMeta>,
+  itemList: Array<any | V1ObjectMeta>,
   showNsSelect: Boolean,
 })
 const emit = defineEmits(['onNsChanged', 'onRemoveBtnClicked', 'onTextChanged'])
@@ -32,7 +32,7 @@ function handleCheck(keys: string[]) {
   })
 }
 
-function rowKey(row: any | IoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+function rowKey(row: any | V1ObjectMeta) {
   return `${row.metadata.namespace}/${row.metadata.name}`
 }
 

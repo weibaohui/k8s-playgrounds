@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiPolicyV1PodDisruptionBudgetSpec } from './ioK8sApiPolicyV1PodDisruptionBudgetSpec'
 import type { IoK8sApiPolicyV1PodDisruptionBudgetStatus } from './ioK8sApiPolicyV1PodDisruptionBudgetStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * PodDisruptionBudget is an object to define the max disruption that can be caused to a collection of pods
@@ -28,7 +28,7 @@ export interface IoK8sApiPolicyV1PodDisruptionBudget {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Specification of the desired behavior of the PodDisruptionBudget.
      */

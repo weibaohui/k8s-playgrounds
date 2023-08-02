@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiApiserverinternalV1alpha1StorageVersionSpec } from './ioK8sApiApiserverinternalV1alpha1StorageVersionSpec'
 import type { IoK8sApiApiserverinternalV1alpha1StorageVersionStatus } from './ioK8sApiApiserverinternalV1alpha1StorageVersionStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * Storage version of a specific resource.
@@ -28,7 +28,7 @@ export interface IoK8sApiApiserverinternalV1alpha1StorageVersion {
   /**
      * The name is <group>.<resource>.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Spec is an empty spec. It is here to comply with Kubernetes API style.
      */

@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec } from './ioK8sApiAuthorizationV1SelfSubjectRulesReviewSpec'
 import type { IoK8sApiAuthorizationV1SubjectRulesReviewStatus } from './ioK8sApiAuthorizationV1SubjectRulesReviewStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * SelfSubjectRulesReview enumerates the set of actions the current user can perform within a namespace. The returned list of actions may be incomplete depending on the server's authorization mode, and any errors experienced during the evaluation. SelfSubjectRulesReview should be used by UIs to show/hide actions, or to quickly let an end user reason about their permissions. It should NOT Be used by external systems to drive authorization decisions as this raises confused deputy, cache lifetime/revocation, and correctness concerns. SubjectAccessReview, and LocalAccessReview are the correct way to defer authorization decisions to the API server.
@@ -28,7 +28,7 @@ export interface IoK8sApiAuthorizationV1SelfSubjectRulesReview {
   /**
      * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Spec holds information about the request being evaluated.
      */

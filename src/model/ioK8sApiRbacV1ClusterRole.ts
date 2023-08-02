@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiRbacV1AggregationRule } from './ioK8sApiRbacV1AggregationRule'
 import type { IoK8sApiRbacV1PolicyRule } from './ioK8sApiRbacV1PolicyRule'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding.
@@ -32,7 +32,7 @@ export interface IoK8sApiRbacV1ClusterRole {
   /**
      * Standard object's metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Rules holds all the PolicyRules for this ClusterRole
      */

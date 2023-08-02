@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiNetworkingV1NetworkPolicySpec } from './ioK8sApiNetworkingV1NetworkPolicySpec'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * NetworkPolicy describes what network traffic is allowed for a set of Pods
@@ -27,7 +27,7 @@ export interface IoK8sApiNetworkingV1NetworkPolicy {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * spec represents the specification of the desired behavior for this NetworkPolicy.
      */

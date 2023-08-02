@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiCoordinationV1LeaseSpec } from './ioK8sApiCoordinationV1LeaseSpec'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * Lease defines a lease concept.
@@ -27,7 +27,7 @@ export interface IoK8sApiCoordinationV1Lease {
   /**
      * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */

@@ -11,7 +11,7 @@
  */
 import type { V1NamespaceSpec } from './V1NamespaceSpec'
 import type { V1NamespaceStatus } from './V1NamespaceStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * Namespace provides a scope for Names. Use of multiple namespaces is optional.
@@ -28,7 +28,7 @@ export class V1Namespace {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Spec defines the behavior of the Namespace. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */

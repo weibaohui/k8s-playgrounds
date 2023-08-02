@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 import type { IoK8sApimachineryPkgRuntimeRawExtension } from './ioK8sApimachineryPkgRuntimeRawExtension'
 
 /**
@@ -31,7 +31,7 @@ export interface IoK8sApiAppsV1ControllerRevision {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Revision indicates the revision of the state represented by Data.
      */

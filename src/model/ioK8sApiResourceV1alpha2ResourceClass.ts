@@ -11,7 +11,7 @@
  */
 import type { V1NodeSelector } from './V1NodeSelector'
 import type { IoK8sApiResourceV1alpha2ResourceClassParametersReference } from './ioK8sApiResourceV1alpha2ResourceClassParametersReference'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * ResourceClass is used by administrators to influence how resources are allocated.  This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
@@ -32,7 +32,7 @@ export interface IoK8sApiResourceV1alpha2ResourceClass {
   /**
      * Standard object metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * ParametersRef references an arbitrary separate object that may hold parameters that will be used by the driver when allocating a resource that uses this class. A dynamic resource driver can distinguish between parameters stored here and and those stored in ResourceClaimSpec.
      */

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiRbacV1PolicyRule } from './ioK8sApiRbacV1PolicyRule'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.
@@ -27,7 +27,7 @@ export interface IoK8sApiRbacV1Role {
   /**
      * Standard object's metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Rules holds all the PolicyRules for this Role
      */

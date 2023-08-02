@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiBatchV1JobSpec } from './ioK8sApiBatchV1JobSpec'
 import type { IoK8sApiBatchV1JobStatus } from './ioK8sApiBatchV1JobStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * Job represents the configuration of a single job.
@@ -28,7 +28,7 @@ export interface IoK8sApiBatchV1Job {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */

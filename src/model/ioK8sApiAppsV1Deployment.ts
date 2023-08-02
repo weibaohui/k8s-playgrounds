@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAppsV1DeploymentSpec } from './ioK8sApiAppsV1DeploymentSpec'
 import type { IoK8sApiAppsV1DeploymentStatus } from './ioK8sApiAppsV1DeploymentStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * Deployment enables declarative updates for Pods and ReplicaSets.
@@ -28,7 +28,7 @@ export interface IoK8sApiAppsV1Deployment {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Specification of the desired behavior of the Deployment.
      */

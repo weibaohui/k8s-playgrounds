@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec } from './ioK8sApiAutoscalingV1HorizontalPodAutoscalerSpec'
 import type { IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus } from './ioK8sApiAutoscalingV1HorizontalPodAutoscalerStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * configuration of a horizontal pod autoscaler.
@@ -28,7 +28,7 @@ export interface IoK8sApiAutoscalingV1HorizontalPodAutoscaler {
   /**
      * Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * spec defines the behaviour of autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
      */

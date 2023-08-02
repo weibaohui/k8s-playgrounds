@@ -96,3 +96,4 @@ k8s model 生成
  |--------------------------------------|-------------|
  | ioK8sApiCoreV1ConfigMap              | V1ConfigMap |
  | IoK8sApimachineryPkgApisMetaV1Status | V1Status    |
+ 

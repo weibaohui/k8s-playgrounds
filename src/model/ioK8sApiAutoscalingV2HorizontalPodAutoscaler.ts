@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec } from './ioK8sApiAutoscalingV2HorizontalPodAutoscalerSpec'
 import type { IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus } from './ioK8sApiAutoscalingV2HorizontalPodAutoscalerStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * HorizontalPodAutoscaler is the configuration for a horizontal pod autoscaler, which automatically manages the replica count of any resource implementing the scale subresource based on the metrics specified.
@@ -28,7 +28,7 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscaler {
   /**
      * metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
      */

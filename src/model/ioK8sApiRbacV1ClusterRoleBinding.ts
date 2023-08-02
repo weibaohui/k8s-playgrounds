@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiRbacV1RoleRef } from './ioK8sApiRbacV1RoleRef'
 import type { IoK8sApiRbacV1Subject } from './ioK8sApiRbacV1Subject'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole in the global namespace, and adds who information via Subject.
@@ -28,7 +28,7 @@ export interface IoK8sApiRbacV1ClusterRoleBinding {
   /**
      * Standard object's metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.
      */

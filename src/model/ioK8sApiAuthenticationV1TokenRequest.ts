@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAuthenticationV1TokenRequestSpec } from './ioK8sApiAuthenticationV1TokenRequestSpec'
 import type { IoK8sApiAuthenticationV1TokenRequestStatus } from './ioK8sApiAuthenticationV1TokenRequestStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * TokenRequest requests a token for a given service account.
@@ -28,7 +28,7 @@ export interface IoK8sApiAuthenticationV1TokenRequest {
   /**
      * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Spec holds information about the request being evaluated
      */

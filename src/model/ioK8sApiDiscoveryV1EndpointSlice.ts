@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiDiscoveryV1Endpoint } from './ioK8sApiDiscoveryV1Endpoint'
 import type { IoK8sApiDiscoveryV1EndpointPort } from './ioK8sApiDiscoveryV1EndpointPort'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * EndpointSlice represents a subset of the endpoints that implement a service. For a given service there may be multiple EndpointSlice objects, selected by labels, which must be joined to produce the full set of endpoints.
@@ -36,7 +36,7 @@ export interface IoK8sApiDiscoveryV1EndpointSlice {
   /**
      * Standard object's metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * ports specifies the list of network ports exposed by each endpoint in this slice. Each port must have a unique name. When ports is empty, it indicates that there are no defined ports. When a port is defined with a nil port value, it indicates \"all ports\". Each slice may include a maximum of 100 ports.
      */

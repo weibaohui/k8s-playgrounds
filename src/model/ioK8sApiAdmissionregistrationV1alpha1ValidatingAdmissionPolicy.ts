@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicySpec } from './ioK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicySpec'
 import type { IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyStatus } from './ioK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * ValidatingAdmissionPolicy describes the definition of an admission validation policy that accepts or rejects an object without changing it.
@@ -28,7 +28,7 @@ export interface IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicy 
   /**
      * Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * Specification of the desired behavior of the ValidatingAdmissionPolicy.
      */

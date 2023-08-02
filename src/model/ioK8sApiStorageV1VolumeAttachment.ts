@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiStorageV1VolumeAttachmentSpec } from './ioK8sApiStorageV1VolumeAttachmentSpec'
 import type { IoK8sApiStorageV1VolumeAttachmentStatus } from './ioK8sApiStorageV1VolumeAttachmentStatus'
-import type { IoK8sApimachineryPkgApisMetaV1ObjectMeta } from './ioK8sApimachineryPkgApisMetaV1ObjectMeta'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * VolumeAttachment captures the intent to attach or detach the specified volume to/from the specified node.  VolumeAttachment objects are non-namespaced.
@@ -28,7 +28,7 @@ export interface IoK8sApiStorageV1VolumeAttachment {
   /**
      * Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: IoK8sApimachineryPkgApisMetaV1ObjectMeta
+  metadata?: V1ObjectMeta
   /**
      * spec represents specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
      */
