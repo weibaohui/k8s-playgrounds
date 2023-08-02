@@ -4,17 +4,14 @@ import { NSelect } from 'naive-ui'
 import type { SelectOption } from 'naive-ui'
 import { ref } from 'vue'
 
-const props = defineProps({
-  ns: String,
-})
+const props = defineProps({})
 
 // 定义调用方法
 const emit = defineEmits(['onNsChanged', 'update'])
-
 const selectedNs = ref('default')
 const options = ref<SelectOption[]>()
 
-async function getK8sNsList2() {
+async function getK8sNsList() {
   const ns = await K8sService.namespaceService.getNamespaceList()
   options.value = ns.map((r) => {
     return {
@@ -30,7 +27,7 @@ function onNsChanged() {
 function setNsSelected(ns: string) {
   selectedNs.value = ns
 }
-getK8sNsList2()
+getK8sNsList()
 
 // 导出，父组件可调用
 defineExpose({ setNsSelected })

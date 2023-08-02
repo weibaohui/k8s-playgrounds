@@ -19,11 +19,11 @@ export default createRouter({
     {
       path: '/pods',
       component: PodListView,
-    }, {
+    },
+    {
       path: '/events',
       component: EventListView,
     },
-
     {
       path: '/hello',
       component: HelloWorld,

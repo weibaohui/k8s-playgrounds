@@ -1,24 +1,23 @@
 <script setup lang="ts">
 import { TimerUtils } from '@main/utils/TimerUtils'
-import SearchFilter from '@render/components/common/SearchFilter.vue'
+import WorkloadListView from '@render/components/common/WorkloadListView.vue'
 import EventInvolvedClickAction from '@render/components/event/EventInvolvedClickAction.vue'
 import EventLastSeen from '@render/components/event/EventLastSeen.vue'
 import EventMessageView from '@render/components/event/EventMessageView.vue'
-import NsSelect from '@render/components/ns/NsSelect.vue'
+import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NDataTable, NFormItemGi, NGrid, NSpace } from 'naive-ui'
+import { NButton, NSpace } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Event } from '../../../model/V1Event'
 import type { V1Namespace } from '../../../model/V1Namespace'
 import type { V1Pod } from '../../../model/V1Pod'
 
-const nsSelectRef = ref<InstanceType<typeof NsSelect>>()
+const drawer = useDrawerService()
+const itemList = ref<V1Event[]>()
 const selectedNs = ref('default')
-
-const columns = createColumns()
-const eventList = ref<V1Event[]>()
+const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
 
 function createColumns(): DataTableColumns<V1Namespace> {
   return [
@@ -48,8 +47,8 @@ function createColumns(): DataTableColumns<V1Namespace> {
             text: true,
             onClick: () => {
               selectedNs.value = (row as V1Pod).metadata.namespace
-              getEventList()
-              nsSelectRef.value.setNsSelected(selectedNs.value)
+              getItemList()
+              workloadListViewRef.value.setNsSelected(selectedNs.value)
             },
           },
           { default: () => (row as V1Pod).metadata.namespace },
@@ -102,47 +101,38 @@ function createColumns(): DataTableColumns<V1Namespace> {
   ]
 }
 
-async function getEventList() {
-  eventList.value = await K8sService.eventService.getEventsList(selectedNs.value)
+async function getItemList() {
+  itemList.value = await K8sService.eventService.getEventsList(selectedNs.value)
 }
 
-function onTextChanged(text: string) {
-  if (_.isEmpty(text)) {
-    getEventList()
-    return
-  }
-  eventList.value = eventList.value.filter(r => r.message.includes(text))
+async function onRemoveBtnClicked(keys: string[]) {
+  await K8sService.podService.deletePods(keys)
 }
 
 function onNsChanged(ns: string) {
   selectedNs.value = ns
-  getEventList()
+  getItemList()
 }
-
-function rowKey(row: V1Event) {
-  return `${row.metadata.namespace}/${row.metadata.name}`
+function onTextChanged(text: string) {
+  if (_.isEmpty(text)) {
+    getItemList()
+    return
+  }
+  itemList.value = itemList.value.filter(r => r.message.includes(text))
 }
-getEventList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(eventList, 'event', selectedNs))
+getItemList()
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, 'event', selectedNs))
 </script>
 
 <template>
-  <NGrid :cols="24" :x-gap="24">
-    <NFormItemGi :span="1" />
-    <NFormItemGi :span="11">
-      <NsSelect ref="nsSelectRef" @on-ns-changed="onNsChanged" />
-    </NFormItemGi>
-    <NFormItemGi :span="11">
-      <SearchFilter placeholder="搜索Message" @on-text-changed="onTextChanged" />
-    </NFormItemGi>
-    <NFormItemGi :span="1" />
-  </NGrid>
-  <NDataTable
-    :columns="columns"
-    :data="eventList"
-    :pagination="false"
-    :bordered="false"
-    :row-key="rowKey"
+  <WorkloadListView
+    ref="workloadListViewRef"
+    :columns="createColumns()"
+    :item-list="itemList"
+    :show-ns-select="true"
+    @on-ns-changed="onNsChanged"
+    @on-remove-btn-clicked="onRemoveBtnClicked"
+    @on-text-changed="onTextChanged"
   />
 </template>
 

@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import { TimeAge } from '@main/utils/timeAge'
 import { TimerUtils } from '@main/utils/TimerUtils'
+import WorkloadListView from '@render/components/common/WorkloadListView.vue'
 import NsLabelsView from '@render/components/ns/NsLabelsView.vue'
 import NsView from '@render/components/ns/NsView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
 import { DrawerHelper } from '@render/service/page/DrawerHelper'
+import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NDataTable, NSpace } from 'naive-ui'
+import { NButton, NSpace } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Namespace } from '../../../model/V1Namespace'
 
 const drawer = useDrawerService()
 
-const columns = createColumns()
-const nsList = ref<V1Namespace[]>()
+const itemList = ref<V1Namespace[]>()
+
+const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
 
 function createColumns(): DataTableColumns<V1Namespace> {
   return [
@@ -66,24 +69,34 @@ function createColumns(): DataTableColumns<V1Namespace> {
   ]
 }
 
-async function getNsList() {
-  nsList.value = await K8sService.namespaceService.getNamespaceList()
+async function getItemList() {
+  itemList.value = await K8sService.namespaceService.getNamespaceList()
 }
 
-function rowKey(row: V1Namespace) {
-  return `${row.metadata.name}`
+async function onRemoveBtnClicked(keys: string[]) {
+  await K8sService.podService.deletePods(keys)
 }
-getNsList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(nsList, 'ns'))
+
+function onTextChanged(text: string) {
+  if (_.isEmpty(text)) {
+    getItemList()
+    return
+  }
+  itemList.value = itemList.value.filter(r => r.metadata.name.includes(text))
+}
+
+getItemList()
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, 'ns'))
 </script>
 
 <template>
-  <NDataTable
-    :columns="columns"
-    :data="nsList"
-    :pagination="false"
-    :bordered="false"
-    :row-key="rowKey"
+  <WorkloadListView
+    ref="workloadListViewRef"
+    :columns="createColumns()"
+    :item-list="itemList"
+    :show-ns-select="false"
+    @on-remove-btn-clicked="onRemoveBtnClicked"
+    @on-text-changed="onTextChanged"
   />
 </template>
 
