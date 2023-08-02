@@ -11,7 +11,7 @@ const props = defineProps({
 const eventList = ref<V1Event[]>()
 
 async function getPodEventsList() {
-  eventList.value = await K8sService.eventService.getPodEventsList(props.pod)
+  eventList.value = await K8sService.eventService.getPodEventList(props.pod)
 }
 getPodEventsList()
 </script>

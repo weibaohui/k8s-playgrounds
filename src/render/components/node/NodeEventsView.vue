@@ -11,7 +11,7 @@ const props = defineProps({
 const eventList = ref<V1Event[]>()
 
 async function getNodeEventsList() {
-  eventList.value = await K8sService.eventService.getNodeEventsList(props.node)
+  eventList.value = await K8sService.eventService.getNodeEventList(props.node)
 }
 getNodeEventsList()
 </script>

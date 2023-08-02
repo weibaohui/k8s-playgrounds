@@ -102,7 +102,7 @@ function createColumns(): DataTableColumns<V1Namespace> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.eventService.getEventsList(selectedNs.value)
+  itemList.value = await K8sService.eventService.getEventList(selectedNs.value)
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
