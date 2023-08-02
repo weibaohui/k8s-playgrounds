@@ -12,6 +12,6 @@ export class NsController {
 
   @Get('/list')
   async ns() {
-    return await this.k8sService.nsService.k8sNs()
+    return await this.k8sService.nsService.getNsList()
   }
 }
