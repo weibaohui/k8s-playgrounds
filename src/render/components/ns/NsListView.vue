@@ -74,7 +74,6 @@ async function getItemList() {
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
-  await K8sService.podService.deletePods(keys)
 }
 
 function onTextChanged(text: string) {
