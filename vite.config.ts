@@ -1,8 +1,8 @@
 import { join } from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { VitePluginDoubleshot } from 'vite-plugin-doubleshot'
 import viteCompression from 'vite-plugin-compression'
+import { VitePluginDoubleshot } from 'vite-plugin-doubleshot'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,6 +17,13 @@ export default defineConfig({
       external: ['electron'],
       electron: {
         build: {
+          cliOptions: {
+            x64: true,
+            arm64: true,
+            mac: ['zip'],
+            linux: ['rpm'],
+            win: ['7z'],
+          },
           config: './electron-builder.config.js',
         },
         preload: {
