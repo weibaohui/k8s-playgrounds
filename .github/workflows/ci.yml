@@ -53,7 +53,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           cache: pnpm
-      - name: InstallDep
+      - name: MacInstallDep
         run: if [ "$(uname)" == "Darwin" ];then brew install rpm;fi
 
       - name: Install
