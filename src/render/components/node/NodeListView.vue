@@ -2,7 +2,7 @@
 import { TimeAge } from '@main/utils/timeAge'
 import { TimerUtils } from '@main/utils/TimerUtils'
 import WorkloadListView from '@render/components/common/ResourceListView.vue'
-import NodeDropdownMenu from '@render/components/node/NodeDropdownMenu.vue'
+import NodeActionView from '@render/components/node/NodeActionView.vue'
 import NodeReadyView from '@render/components/node/NodeReadyView.vue'
 import NodeRoleView from '@render/components/node/NodeRoleView.vue'
 import NodeView from '@render/components/node/NodeView.vue'
@@ -100,9 +100,10 @@ function createColumns(): DataTableColumns<V1Node> {
       title: 'Action',
       key: 'Action',
       render(row) {
-        return h(NodeDropdownMenu,
+        return h(NodeActionView,
           {
             node: row as V1Node,
+            isDropdown: true,
           },
         )
       },

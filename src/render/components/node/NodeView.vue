@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NodeActions from '@render/components/node/NodeActions.vue'
+import NodeActionView from '@render/components/node/NodeActionView.vue'
 import NodeEventsView from '@render/components/node/NodeEventsView.vue'
 import NodeBasicInfoView from '@render/components/node/NodeBasicInfoView.vue'
 import NodeResourceView from '@render/components/node/NodeResourceView.vue'
@@ -9,15 +9,11 @@ import { V1Node } from '../../../model/V1Node'
 const props = defineProps({
   node: V1Node,
 })
-const emit = defineEmits(['onNodeSpecChanged'])
-async function onNodeSpecChanged(n: V1Node) {
-  emit('onNodeSpecChanged', n)
-}
 </script>
 
 <template>
   <NMessageProvider>
-    <NodeActions :node="props.node" />
+    <NodeActionView :node="props.node" :is-dropdown="false" />
   </NMessageProvider>
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">

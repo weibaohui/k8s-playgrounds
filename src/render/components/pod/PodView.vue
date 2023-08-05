@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import ContainersView from '@render/components/container/ContainersView.vue'
-import Actions from '@render/components/pod/Actions.vue'
+import PodActionView from '@render/components/pod/PodActionView.vue'
 import PodBasicInfoView from '@render/components/pod/PodBasicInfoView.vue'
-import PodEventsView from '@render/components/pod/PodEventsView.vue'
-import PodVolumesView from '@render/components/pod/PodVolumesView.vue'
+import PodEventsView from '@render/components/pod/PodEventView.vue'
+import PodVolumesView from '@render/components/pod/PodVolumeView.vue'
 import { NH6, NMessageProvider, NText } from 'naive-ui'
 import { V1Pod } from '../../../model/V1Pod'
 
@@ -14,7 +14,7 @@ const props = defineProps({
 
 <template>
   <NMessageProvider>
-    <Actions :is-dropdown="false" :pod="props.pod" />
+    <PodActionView :is-dropdown="false" :pod="props.pod" />
   </NMessageProvider>
 
   <NH6 prefix="bar" align-text type="success">

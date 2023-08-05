@@ -6,8 +6,8 @@ import ContainerRestartCount from '@render/components/container/ContainerRestart
 import ContainerStatusIcon from '@render/components/container/ContainerStatusIcon.vue'
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
 import NodeView from '@render/components/node/NodeView.vue'
-import Actions from '@render/components/pod/Actions.vue'
-import PodAge from '@render/components/pod/PodAge.vue'
+import PodActionView from '@render/components/pod/PodActionView.vue'
+import PodAge from '@render/components/pod/PodAgeView.vue'
 import PodView from '@render/components/pod/PodView.vue'
 import PodWarnIcon from '@render/components/pod/PodWarnIcon.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
@@ -155,7 +155,7 @@ function createColumns(): DataTableColumns<V1Pod> {
       title: 'Action',
       key: 'Action',
       render(row) {
-        return h(Actions,
+        return h(PodActionView,
           {
             pod: row as V1Pod,
             isDropdown: true,
