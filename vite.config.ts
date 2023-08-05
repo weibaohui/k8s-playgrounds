@@ -21,7 +21,7 @@ export default defineConfig({
             x64: true,
             arm64: true,
             mac: ['zip'],
-            linux: ['tar.gz'],
+            // linux: ['tar.gz'],
             win: ['7z'],
           },
           config: './electron-builder.config.js',
