@@ -16,7 +16,7 @@ import type { V1Time } from './V1Time'
 /**
  * ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
  */
-export interface V1ObjectMeta {
+export class V1ObjectMeta {
   /**
      * Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
      */

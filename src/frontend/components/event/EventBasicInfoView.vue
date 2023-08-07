@@ -2,6 +2,7 @@
 import { NTable } from 'naive-ui'
 import moment from 'moment/moment'
 import { V1Event } from '../../../backend/k8s/model/V1Event'
+import ResourceMetadataView from '../common/ResourceMetadataView.vue'
 
 const props = defineProps({
   event: V1Event,
@@ -9,27 +10,13 @@ const props = defineProps({
 </script>
 
 <template>
+  <ResourceMetadataView :item="props.event.metadata" />
   <NTable :single-line="false">
     <tbody>
       <tr>
         <td class="left">
-          Created
+          Message
         </td>
-        <td>
-          {{ moment(event.metadata.creationTimestamp).format('yyyy-MM-DD H:mm:s Z') }}
-          {{ moment(event.metadata.creationTimestamp).fromNow() }}
-        </td>
-      </tr>
-      <tr>
-        <td>Name</td>
-        <td>{{ props.event.metadata.name }}</td>
-      </tr>
-      <tr>
-        <td>Namespace</td>
-        <td>{{ props.event.metadata.namespace }}</td>
-      </tr>
-      <tr>
-        <td>Message</td>
         <td>{{ props.event.message }}</td>
       </tr>
       <tr>

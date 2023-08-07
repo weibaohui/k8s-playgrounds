@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { CheckCircle, ExclamationCircle } from '@vicons/fa'
-import moment from 'moment/moment'
-import { NBadge, NButton, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'naive-ui'
+import { NBadge, NButton, NCollapse, NCollapseItem, NIcon, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
 import ContainerStatusText from '../../components/container/ContainerStatusText.vue'
 import NodeView from '../../components/node/NodeView.vue'
@@ -9,6 +8,7 @@ import { useDrawerService } from '../../service/drawer-service/use-drawer'
 import { K8sService } from '../../service/k8s/K8sService'
 import { DrawerHelper } from '../../service/page/DrawerHelper'
 import { V1Pod } from '../../../backend/k8s/model/V1Pod'
+import ResourceMetadataView from '../common/ResourceMetadataView.vue'
 
 const props = defineProps({
   pod: V1Pod,
@@ -34,55 +34,13 @@ async function showNodeView(name: string) {
 </script>
 
 <template>
+  <ResourceMetadataView :item="props.pod.metadata" />
   <NTable :single-line="false">
     <tbody>
       <tr>
         <td class="left">
-          Created
+          Status
         </td>
-        <td>
-          {{ moment(pod.status.startTime).format('yyyy-MM-DD H:mm:s Z') }}
-          {{ moment(pod.status.startTime).fromNow() }}
-        </td>
-      </tr>
-      <tr>
-        <td>Name</td>
-        <td>{{ props.pod.metadata.name }}</td>
-      </tr>
-      <tr>
-        <td>Namespace</td>
-        <td>{{ props.pod.metadata.namespace }}</td>
-      </tr>
-      <tr v-if="props.pod.metadata.labels">
-        <td>Labels</td>
-        <td>
-          <NSpace v-for="(v, k) in props.pod.metadata.labels" :key="k">
-            <NTag>
-              {{ k }}={{ v }}
-            </NTag>
-          </NSpace>
-        </td>
-      </tr>
-      <tr v-if="props.pod.metadata.annotations">
-        <td>Annotations</td>
-        <td>
-          <NSpace v-for="(v, k) in props.pod.metadata.annotations" :key="k">
-            <NTag v-if="!k.endsWith('last-applied-configuration')">
-              {{ k }}={{ v }}
-            </NTag>
-          </NSpace>
-        </td>
-      </tr>
-      <tr v-if="props.pod.metadata.ownerReferences">
-        <td>Controlled By</td>
-        <td>
-          <span v-for="r in props.pod.metadata.ownerReferences" :key="r.uid">
-            {{ r.kind }} {{ r.name }}
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td>Status</td>
         <td>
           <ContainerStatusText :pod="props.pod" />
         </td>

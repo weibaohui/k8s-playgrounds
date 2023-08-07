@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { CheckCircle, ExclamationCircle } from '@vicons/fa'
 
-import { NBadge, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'naive-ui'
+import { NBadge, NCollapse, NCollapseItem, NIcon, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
-import moment from 'moment/moment'
 import NodeRoleView from '../../components/node/NodeRoleView.vue'
 import { V1Node } from '../../../backend/k8s/model/V1Node'
+import ResourceMetadataView from '../common/ResourceMetadataView.vue'
 
 const props = defineProps({
   node: V1Node,
@@ -24,46 +24,16 @@ function toggle() {
 </script>
 
 <template>
+  <ResourceMetadataView :item="props.node.metadata" />
+
   <NTable :single-line="false">
     <tbody>
       <tr>
         <td class="left">
-          Created
+          Role
         </td>
-        <td>
-          {{ moment(node.metadata.creationTimestamp).format('yyyy-MM-DD H:mm:s Z') }}
-          {{ moment(node.metadata.creationTimestamp).fromNow() }}
-        </td>
-      </tr>
-      <tr>
-        <td>Name</td>
-        <td>{{ props.node.metadata.name }}</td>
-      </tr>
-      <tr>
-        <td>Role</td>
         <td>
           <NodeRoleView :node="node" />
-        </td>
-      </tr>
-
-      <tr v-if="props.node.metadata.labels">
-        <td>Labels</td>
-        <td>
-          <NSpace v-for="(v, k) in props.node.metadata.labels" :key="k">
-            <NTag>
-              {{ k }}={{ v }}
-            </NTag>
-          </NSpace>
-        </td>
-      </tr>
-      <tr v-if="props.node.metadata.annotations">
-        <td>Annotations</td>
-        <td>
-          <NSpace v-for="(v, k) in props.node.metadata.annotations" :key="k">
-            <NTag v-if="!k.endsWith('last-applied-configuration')">
-              {{ k }}={{ v }}
-            </NTag>
-          </NSpace>
         </td>
       </tr>
       <tr>
