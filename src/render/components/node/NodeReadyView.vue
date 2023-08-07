@@ -11,7 +11,7 @@ const props = defineProps({
   <NTag v-if="props.node.spec.unschedulable" type="error">
     SchedulingDisable
   </NTag>
-  <NTag v-if="node.status.conditions.filter(r => r.type === 'Ready').pop().status === 'True'" type="success">
+  <NTag v-if="node.status && node.status.conditions && node.status.conditions.filter(r => r.type === 'Ready').pop().status === 'True'" type="success">
     Ready
   </NTag>
   <NTag v-else type="error">
