@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { TimerUtils } from '@main/utils/TimerUtils'
+import ResourceAgeView from '@render/components/common/ResourceAgeView.vue'
 import WorkloadListView from '@render/components/common/ResourceListView.vue'
 import NodeActionView from '@render/components/node/NodeActionView.vue'
-import NodeAgeView from '@render/components/node/NodeAgeView.vue'
 import NodeReadyView from '@render/components/node/NodeReadyView.vue'
 import NodeRoleView from '@render/components/node/NodeRoleView.vue'
 import NodeView from '@render/components/node/NodeView.vue'
@@ -85,14 +85,14 @@ function createColumns(): DataTableColumns<V1Node> {
         )
       },
     },
-
     {
       title: 'Age',
       key: 'age',
       render(row) {
-        return h(
-          NodeAgeView,
-          { node: row },
+        return h(ResourceAgeView,
+          {
+            item: row,
+          },
         )
       },
     },

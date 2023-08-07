@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { TimeAge } from '@main/utils/timeAge'
 import { TimerUtils } from '@main/utils/TimerUtils'
+import ResourceAgeView from '@render/components/common/ResourceAgeView.vue'
 import WorkloadListView from '@render/components/common/ResourceListView.vue'
 import NsActionView from '@render/components/ns/NsActionView.vue'
 import NsLabelsView from '@render/components/ns/NsLabelsView.vue'
@@ -10,7 +10,7 @@ import { K8sService } from '@render/service/k8s/K8sService'
 import { DrawerHelper } from '@render/service/page/DrawerHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NSpace } from 'naive-ui'
+import { NButton } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Namespace } from '../../../model/V1Namespace'
 
@@ -54,18 +54,19 @@ function createColumns(): DataTableColumns<V1Namespace> {
       },
     },
     {
+      title: 'status',
+      key: 'status.phase',
+    },
+    {
       title: 'Age',
       key: 'age',
       render(row) {
-        return h(
-          NSpace,
-          () => TimeAge.getK8sAge((row as V1Namespace).metadata.creationTimestamp),
+        return h(ResourceAgeView,
+          {
+            item: row,
+          },
         )
       },
-    },
-    {
-      title: 'status',
-      key: 'status.phase',
     },
     {
       title: 'Action',

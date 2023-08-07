@@ -5,10 +5,10 @@ import { ref } from 'vue'
 import { V1Pod } from '../../../model/V1Pod'
 
 const props = defineProps({
-  pod: V1Pod,
+  item: V1Pod,
 })
 const age = ref('')
-TimerUtils.everySecond(() => age.value = TimeAge.getK8sAge(props.pod.metadata.creationTimestamp))
+TimerUtils.everySecond(() => age.value = TimeAge.getK8sAge(props.item.metadata.creationTimestamp))
 </script>
 
 <template>

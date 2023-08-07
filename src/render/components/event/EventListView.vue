@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { TimerUtils } from '@main/utils/TimerUtils'
+import ResourceAgeView from '@render/components/common/ResourceAgeView.vue'
 import WorkloadListView from '@render/components/common/ResourceListView.vue'
 import EventActionView from '@render/components/event/EventActionView.vue'
 import EventInvolvedClickAction from '@render/components/event/EventInvolvedClickAction.vue'
-import EventLastSeen from '@render/components/event/EventLastSeen.vue'
 import EventMessageView from '@render/components/event/EventMessageView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
@@ -87,13 +87,12 @@ function createColumns(): DataTableColumns<V1Namespace> {
       key: 'count',
     },
     {
-      title: 'LastSeen',
-      key: 'LastSeen',
+      title: 'Age',
+      key: 'age',
       render(row) {
-        return h(
-          EventLastSeen,
+        return h(ResourceAgeView,
           {
-            event: row as V1Event,
+            item: row,
           },
         )
       },

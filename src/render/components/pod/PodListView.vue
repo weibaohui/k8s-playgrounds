@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { TimerUtils } from '@main/utils/TimerUtils'
+import ResourceAgeView from '@render/components/common/ResourceAgeView.vue'
 import WorkloadListView from '@render/components/common/ResourceListView.vue'
 import ContainerReadyCount from '@render/components/container/ContainerReadyCount.vue'
 import ContainerRestartCount from '@render/components/container/ContainerRestartCount.vue'
@@ -7,7 +8,6 @@ import ContainerStatusIcon from '@render/components/container/ContainerStatusIco
 import ContainerStatusText from '@render/components/container/ContainerStatusText.vue'
 import NodeView from '@render/components/node/NodeView.vue'
 import PodActionView from '@render/components/pod/PodActionView.vue'
-import PodAge from '@render/components/pod/PodAgeView.vue'
 import PodView from '@render/components/pod/PodView.vue'
 import PodWarnIcon from '@render/components/pod/PodWarnIcon.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
@@ -125,17 +125,7 @@ function createColumns(): DataTableColumns<V1Pod> {
         )
       },
     },
-    {
-      title: 'Age',
-      key: 'age',
-      render(row) {
-        return h(PodAge,
-          {
-            pod: row as V1Pod,
-          },
-        )
-      },
-    },
+
     {
       title: 'QoS',
       key: 'status.qosClass',
@@ -147,6 +137,17 @@ function createColumns(): DataTableColumns<V1Pod> {
         return h(ContainerStatusIcon,
           {
             pod: row as V1Pod,
+          },
+        )
+      },
+    },
+    {
+      title: 'Age',
+      key: 'age',
+      render(row) {
+        return h(ResourceAgeView,
+          {
+            item: row,
           },
         )
       },
