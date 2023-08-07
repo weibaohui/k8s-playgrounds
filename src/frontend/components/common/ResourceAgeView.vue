@@ -8,12 +8,12 @@ const props = defineProps({
   item: V1Pod,
 })
 const age = ref('')
-let heartBeatInstId: number
+let intervalId: number
 onMounted(() => {
-  heartBeatInstId = TimerUtils.everySecond(() => age.value = TimeAge.getK8sAge(props.item.metadata.creationTimestamp))
+  intervalId = TimerUtils.everySecond(() => age.value = TimeAge.getK8sAge(props.item.metadata.creationTimestamp))
 })
 onBeforeUnmount(() => {
-  clearInterval(heartBeatInstId)
+  clearInterval(intervalId)
 })
 </script>
 
