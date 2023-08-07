@@ -6,7 +6,7 @@ import { VitePluginDoubleshot } from 'vite-plugin-doubleshot'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  root: join(__dirname, 'src/front'),
+  root: join(__dirname, 'src/frontend'),
   plugins: [
     vue(),
     VitePluginDoubleshot({
@@ -38,13 +38,13 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@render': join(__dirname, 'src/render'),
-      '@main': join(__dirname, 'src/main'),
+      '@frontend': join(__dirname, 'src/frontend'),
+      '@backend': join(__dirname, 'src/backend'),
     },
   },
   base: './',
   build: {
-    outDir: join(__dirname, 'dist/render'),
+    outDir: join(__dirname, 'dist/frontend'),
     emptyOutDir: true,
   },
 })

@@ -11,7 +11,7 @@ const config = {
   files: [
     'dist/backend/**/*',
     'dist/preload/**/*',
-    'dist/front/**/*',
+    'dist/frontend/**/*',
   ],
 }
 
