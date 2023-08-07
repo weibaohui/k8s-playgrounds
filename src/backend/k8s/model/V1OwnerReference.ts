@@ -13,7 +13,7 @@
 /**
  * OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.
  */
-export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
+export class V1OwnerReference {
   /**
      * API version of the referent.
      */

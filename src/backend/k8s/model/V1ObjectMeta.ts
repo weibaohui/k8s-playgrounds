@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry } from './ioK8sApimachineryPkgApisMetaV1ManagedFieldsEntry'
-import type { IoK8sApimachineryPkgApisMetaV1OwnerReference } from './ioK8sApimachineryPkgApisMetaV1OwnerReference'
+import type { V1OwnerReference } from './V1OwnerReference'
 import type { V1Time } from './V1Time'
 
 /**
@@ -64,7 +64,7 @@ export class V1ObjectMeta {
   /**
      * List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.
      */
-  ownerReferences?: Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>
+  ownerReferences?: Array<V1OwnerReference>
   /**
      * An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.  Populated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
      */
