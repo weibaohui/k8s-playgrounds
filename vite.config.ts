@@ -6,14 +6,14 @@ import { VitePluginDoubleshot } from 'vite-plugin-doubleshot'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  root: join(__dirname, 'src/render'),
+  root: join(__dirname, 'src/front'),
   plugins: [
     vue(),
     VitePluginDoubleshot({
       type: 'electron',
-      main: 'dist/main/index.js',
-      entry: 'src/main/index.ts',
-      outDir: 'dist/main',
+      main: 'dist/backend/index.js',
+      entry: 'src/backend/index.ts',
+      outDir: 'dist/backend',
       external: ['electron'],
       electron: {
         build: {

@@ -9,9 +9,9 @@ const config = {
   publish: null,
   npmRebuild: false,
   files: [
-    'dist/main/**/*',
+    'dist/backend/**/*',
     'dist/preload/**/*',
-    'dist/render/**/*',
+    'dist/front/**/*',
   ],
 }
 
