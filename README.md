@@ -76,9 +76,11 @@ shamefully-hoist=true
 |     Event | 列表-关联Node      | ✅       |
 |     Event | 详情             | ✅       |
 |     Event | 详情-查看关联对象      | ✅       |
+|     Event | 详情-查看yaml      | ✅       |
 | Namespace | 列表             | ✅       |
 | Namespace | 详情             | ✅       |
 | Namespace | 详情-关联Event     | ✅       |
+| Namespace | 详情-查看yaml      | ✅       |
 |      Node | 列表             | ✅       |
 |      Node | 列表-状态自动更新      | ✅       |
 |      Node | 详情             | ✅       |
@@ -86,6 +88,8 @@ shamefully-hoist=true
 |      Node | 详情-调度状态        | ✅       |
 |      Node | 详情-cordon操作    | ✅       |
 |      Node | 详情-drain驱逐操作   | ✅       |
+|      Node | 详情-查看yaml      | ✅       |
+
 ## 开发提示
  
 k8s model 生成
