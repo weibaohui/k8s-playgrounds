@@ -5,4 +5,8 @@ export class NamespaceService {
   async getNamespaceList() {
     return await HttpClient.inst.get<V1Namespace[]>('/k8s/ns/list')
   }
+
+  async deleteNamespaces(nsList: string[]) {
+    await HttpClient.inst.post('/k8s/ns/delete/', nsList)
+  }
 }

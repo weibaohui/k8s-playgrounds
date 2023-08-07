@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import NsActionView from '@render/components/ns/NsActionView.vue'
 import NsBasicInfoView from '@render/components/ns/NsBasicInfoView.vue'
 import NsEventsView from '@render/components/ns/NsEventsView.vue'
-import { NH6, NText } from 'naive-ui'
+import { NH6, NMessageProvider, NText } from 'naive-ui'
 import { V1Namespace } from '../../../model/V1Namespace'
 
 const props = defineProps({
@@ -10,6 +11,9 @@ const props = defineProps({
 </script>
 
 <template>
+  <NMessageProvider>
+    <NsActionView :is-dropdown="false" :ns="props.ns" />
+  </NMessageProvider>
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
       Basic Info

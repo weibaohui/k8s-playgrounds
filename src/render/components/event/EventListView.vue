@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { TimerUtils } from '@main/utils/TimerUtils'
 import WorkloadListView from '@render/components/common/ResourceListView.vue'
+import EventActionView from '@render/components/event/EventActionView.vue'
 import EventInvolvedClickAction from '@render/components/event/EventInvolvedClickAction.vue'
 import EventLastSeen from '@render/components/event/EventLastSeen.vue'
 import EventMessageView from '@render/components/event/EventMessageView.vue'
@@ -97,7 +98,18 @@ function createColumns(): DataTableColumns<V1Namespace> {
         )
       },
     },
-
+    {
+      title: 'Action',
+      key: 'Action',
+      render(row) {
+        return h(EventActionView,
+          {
+            event: row as V1Event,
+            isDropdown: true,
+          },
+        )
+      },
+    },
   ]
 }
 

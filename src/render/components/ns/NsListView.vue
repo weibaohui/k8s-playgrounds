@@ -2,6 +2,7 @@
 import { TimeAge } from '@main/utils/timeAge'
 import { TimerUtils } from '@main/utils/TimerUtils'
 import WorkloadListView from '@render/components/common/ResourceListView.vue'
+import NsActionView from '@render/components/ns/NsActionView.vue'
 import NsLabelsView from '@render/components/ns/NsLabelsView.vue'
 import NsView from '@render/components/ns/NsView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
@@ -65,6 +66,18 @@ function createColumns(): DataTableColumns<V1Namespace> {
     {
       title: 'status',
       key: 'status.phase',
+    },
+    {
+      title: 'Action',
+      key: 'Action',
+      render(row) {
+        return h(NsActionView,
+          {
+            ns: row as V1Namespace,
+            isDropdown: true,
+          },
+        )
+      },
     },
   ]
 }

@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type { ActionMenuOption } from '@main/model/actionMenu'
+import MonacoView from '@render/components/common/MonacoView.vue'
 import MultipleMenuActionView from '@render/components/common/MultipleMenuActionView.vue'
 import NodeDrainView from '@render/components/node/NodeDrainView.vue'
 import { useDrawerService } from '@render/service/drawer-service/use-drawer'
 import { K8sService } from '@render/service/k8s/K8sService'
 import { DrawerHelper } from '@render/service/page/DrawerHelper'
-import { FireExtinguisher, PauseCircleRegular, PlayCircleRegular, Trash } from '@vicons/fa'
+import { Edit, FireExtinguisher, PauseCircleRegular, PlayCircleRegular, Trash } from '@vicons/fa'
 
 import { useDialog, useMessage } from 'naive-ui'
 import { V1Node } from '../../../model/V1Node'
@@ -61,6 +62,15 @@ function getOptions(): ActionMenuOption[] {
           .drawer(drawer)
           .showWider(props.node.metadata.name, NodeDrainView, { node: props.node })
       },
+    },
+    {
+      label: 'Edit',
+      key: 'Edit',
+      icon: Edit,
+      action: () => DrawerHelper
+        .instance
+        .drawer(drawer)
+        .showWider(props.node.metadata.name, MonacoView, { item: props.node }),
     },
     {
       label: 'Delete',
