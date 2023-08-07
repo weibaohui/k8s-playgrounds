@@ -5,7 +5,7 @@ import PodActionView from '../../components/pod/PodActionView.vue'
 import PodBasicInfoView from '../../components/pod/PodBasicInfoView.vue'
 import PodEventsView from '../../components/pod/PodEventView.vue'
 import PodVolumesView from '../../components/pod/PodVolumeView.vue'
-import { V1Pod } from '../../../model/V1Pod'
+import { V1Pod } from '../../../backend/k8s/model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,

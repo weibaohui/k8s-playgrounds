@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NTag } from 'naive-ui'
-import { V1Namespace } from '../../../model/V1Namespace'
+import { V1Namespace } from '../../../backend/k8s/model/V1Namespace'
 
 const props = defineProps({
   ns: V1Namespace,

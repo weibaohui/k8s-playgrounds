@@ -3,7 +3,7 @@ import { NTable } from 'naive-ui'
 import VolumeConfigMapView from '../../../components/volume/projected/ProjectedVolumeConfigMapView.vue'
 import VolumeDownwardAPIView from '../../../components/volume/projected/ProjectedVolumeDownwardAPIView.vue'
 import VolumeServiceAccountView from '../../../components/volume/projected/ProjectedVolumeServiceAccountView.vue'
-import { V1Volume } from '../../../../model/V1Volume'
+import { V1Volume } from '../../../../backend/k8s/model/V1Volume'
 
 const props = defineProps({
   v: V1Volume,

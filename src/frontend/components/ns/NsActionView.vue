@@ -7,7 +7,7 @@ import MultipleMenuActionView from '../../components/common/MultipleMenuActionVi
 import { useDrawerService } from '../../service/drawer-service/use-drawer'
 import { K8sService } from '../../service/k8s/K8sService'
 import { DrawerHelper } from '../../service/page/DrawerHelper'
-import { V1Namespace } from '../../../model/V1Namespace'
+import { V1Namespace } from '../../../backend/k8s/model/V1Namespace'
 
 const props = defineProps({
   ns: V1Namespace,

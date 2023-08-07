@@ -3,7 +3,7 @@ import { NH6, NMessageProvider, NText } from 'naive-ui'
 import EventActionView from '../../components/event/EventActionView.vue'
 import EventBasicInfoView from '../../components/event/EventBasicInfoView.vue'
 import EventInvolvedView from '../../components/event/EventInvolvedView.vue'
-import { V1Event } from '../../../model/V1Event'
+import { V1Event } from '../../../backend/k8s/model/V1Event'
 
 const props = defineProps({
   event: V1Event,

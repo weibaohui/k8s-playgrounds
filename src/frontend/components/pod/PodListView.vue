@@ -17,7 +17,7 @@ import PodWarnIcon from '../../components/pod/PodWarnIcon.vue'
 import { useDrawerService } from '../../service/drawer-service/use-drawer'
 import { K8sService } from '../../service/k8s/K8sService'
 import { DrawerHelper } from '../../service/page/DrawerHelper'
-import type { V1Pod } from '../../../model/V1Pod'
+import type { V1Pod } from '../../../backend/k8s/model/V1Pod'
 
 const drawer = useDrawerService()
 const itemList = ref<V1Pod[]>()

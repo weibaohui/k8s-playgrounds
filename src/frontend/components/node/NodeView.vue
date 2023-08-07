@@ -4,7 +4,7 @@ import NodeActionView from '../../components/node/NodeActionView.vue'
 import NodeEventsView from '../../components/node/NodeEventsView.vue'
 import NodeBasicInfoView from '../../components/node/NodeBasicInfoView.vue'
 import NodeResourceView from '../../components/node/NodeResourceView.vue'
-import { V1Node } from '../../../model/V1Node'
+import { V1Node } from '../../../backend/k8s/model/V1Node'
 
 const props = defineProps({
   node: V1Node,

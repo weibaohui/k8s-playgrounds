@@ -1,6 +1,6 @@
 import { HttpClient } from '../../../backend/utils/axios/HttpClient'
-import type { V1Node } from '../../../model/V1Node'
-import type { V1Status } from '../../../model/V1Status'
+import type { V1Node } from '../../../backend/k8s/model/V1Node'
+import type { V1Status } from '../../../backend/k8s/model/V1Status'
 
 export class NodeService {
   async getNodeList(): Promise<V1Node[]> {

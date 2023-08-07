@@ -1,5 +1,5 @@
 import { HttpClient } from '../../../backend/utils/axios/HttpClient'
-import type { V1Pod } from '../../../model/V1Pod'
+import type { V1Pod } from '../../../backend/k8s/model/V1Pod'
 
 export class PodService {
   async getPodList(ns: string): Promise<V1Pod[]> {

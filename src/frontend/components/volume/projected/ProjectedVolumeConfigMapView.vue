@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NAlert, NDivider } from 'naive-ui'
-import { V1VolumeProjection } from '../../../../model/V1VolumeProjection'
+import { V1VolumeProjection } from '../../../../backend/k8s/model/V1VolumeProjection'
 
 const props = defineProps({
   x: V1VolumeProjection,

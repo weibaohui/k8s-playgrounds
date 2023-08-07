@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { NTable } from 'naive-ui'
 import EventInvolvedClickAction from '../../components/event/EventInvolvedClickAction.vue'
-import { V1Event } from '../../../model/V1Event'
+import { V1Event } from '../../../backend/k8s/model/V1Event'
 
 const props = defineProps({
   event: V1Event,

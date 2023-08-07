@@ -11,9 +11,9 @@ import EventInvolvedClickAction from '../../components/event/EventInvolvedClickA
 import EventMessageView from '../../components/event/EventMessageView.vue'
 import { useDrawerService } from '../../service/drawer-service/use-drawer'
 import { K8sService } from '../../service/k8s/K8sService'
-import type { V1Event } from '../../../model/V1Event'
-import type { V1Namespace } from '../../../model/V1Namespace'
-import type { V1Pod } from '../../../model/V1Pod'
+import type { V1Event } from '../../../backend/k8s/model/V1Event'
+import type { V1Namespace } from '../../../backend/k8s/model/V1Namespace'
+import type { V1Pod } from '../../../backend/k8s/model/V1Pod'
 
 const drawer = useDrawerService()
 const itemList = ref<V1Event[]>()

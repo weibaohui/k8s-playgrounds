@@ -1,7 +1,7 @@
-import type { V1Event } from '../../model/V1Event'
-import type { V1Namespace } from '../../model/V1Namespace'
-import type { V1Node } from '../../model/V1Node'
-import type { V1Pod } from '../../model/V1Pod'
+import type { V1Event } from '../k8s/model/V1Event'
+import type { V1Namespace } from '../k8s/model/V1Namespace'
+import type { V1Node } from '../k8s/model/V1Node'
+import type { V1Pod } from '../k8s/model/V1Pod'
 
 export class WorkloadArray<T extends V1Pod | V1Node | V1Event | V1Namespace> {
   Add(list: Array<T>, item: T) {

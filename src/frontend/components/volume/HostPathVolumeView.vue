@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NTable } from 'naive-ui'
-import { V1Volume } from '../../../model/V1Volume'
+import { V1Volume } from '../../../backend/k8s/model/V1Volume'
 
 const props = defineProps({
   v: V1Volume,

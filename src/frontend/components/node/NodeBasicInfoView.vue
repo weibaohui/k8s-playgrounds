@@ -5,7 +5,7 @@ import { NBadge, NCollapse, NCollapseItem, NIcon, NSpace, NTable, NTag } from 'n
 import { ref } from 'vue'
 import moment from 'moment/moment'
 import NodeRoleView from '../../components/node/NodeRoleView.vue'
-import { V1Node } from '../../../model/V1Node'
+import { V1Node } from '../../../backend/k8s/model/V1Node'
 
 const props = defineProps({
   node: V1Node,

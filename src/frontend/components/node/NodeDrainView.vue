@@ -6,7 +6,7 @@ import { FitAddon } from 'xterm-addon-fit'
 import { TimerUtils } from '../../../backend/utils/TimerUtils'
 import { SocketIOService } from '../../service/k8s/SocketIOService'
 import 'xterm/css/xterm.css'
-import { V1Node } from '../../../model/V1Node'
+import { V1Node } from '../../../backend/k8s/model/V1Node'
 
 const props = defineProps({
   node: V1Node,

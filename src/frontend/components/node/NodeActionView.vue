@@ -9,7 +9,7 @@ import { useDrawerService } from '../../service/drawer-service/use-drawer'
 import { K8sService } from '../../service/k8s/K8sService'
 import { DrawerHelper } from '../../service/page/DrawerHelper'
 
-import { V1Node } from '../../../model/V1Node'
+import { V1Node } from '../../../backend/k8s/model/V1Node'
 
 const props = defineProps({
   node: V1Node,

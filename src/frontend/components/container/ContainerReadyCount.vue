@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { TimerUtils } from '../../../backend/utils/TimerUtils'
-import { V1Pod } from '../../../model/V1Pod'
+import { V1Pod } from '../../../backend/k8s/model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { NSpace, NTable, NTag } from 'naive-ui'
 import moment from 'moment/moment'
-import { V1Namespace } from '../../../model/V1Namespace'
+import { V1Namespace } from '../../../backend/k8s/model/V1Namespace'
 
 const props = defineProps({
   ns: V1Namespace,

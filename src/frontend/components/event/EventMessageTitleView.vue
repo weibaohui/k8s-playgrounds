@@ -5,7 +5,7 @@ import EventView from '../../components/event/EventView.vue'
 import { useDrawerService } from '../../service/drawer-service/use-drawer'
 import { DrawerHelper } from '../../service/page/DrawerHelper'
 
-import { V1Event } from '../../../model/V1Event'
+import { V1Event } from '../../../backend/k8s/model/V1Event'
 
 const props = defineProps({
   event: V1Event,
