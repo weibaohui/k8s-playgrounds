@@ -8,7 +8,7 @@ const props = defineProps({
   pod: V1Pod,
 })
 const age = ref('')
-TimerUtils.everySecond(() => age.value = TimeAge.getK8sAge(props.pod.status.startTime))
+TimerUtils.everySecond(() => age.value = TimeAge.getK8sAge(props.pod.metadata.creationTimestamp))
 </script>
 
 <template>
