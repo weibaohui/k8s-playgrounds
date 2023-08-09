@@ -2,9 +2,9 @@ import {
   Body,
   Controller,
   Get,
-  Param, Post,
+  Param, Post, StreamableFile,
 } from '@nestjs/common'
-import { K8sService } from '../../k8s/k8s.service'
+import { K8sService } from '@backend/k8s/k8s.service'
 
 @Controller('k8s/pod')
 export class PodController {
@@ -36,5 +36,13 @@ export class PodController {
       this.k8sService.podService.deletePods(name, ns)
     })
     return {}
+  }
+
+  @Get('/log/file/:ns/:podName/:containerName')
+  getPodContainerLogs(@Param('ns') ns,
+                      @Param('podName') podName,
+                      @Param('containerName') containerName): StreamableFile {
+    const file = this.k8sService.podService.getPodContainerLogs(ns, podName, containerName)
+    return new StreamableFile(file)
   }
 }
