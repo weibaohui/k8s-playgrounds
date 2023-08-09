@@ -1,7 +1,7 @@
-import { HttpClient } from '../../../backend/utils/axios/HttpClient'
-import type { V1Event } from '../../../backend/k8s/model/V1Event'
-import type { V1Node } from '../../../backend/k8s/model/V1Node'
-import type { V1Pod } from '../../../backend/k8s/model/V1Pod'
+import { HttpClient } from '@backend/utils/axios/HttpClient'
+import type { V1Event } from '@backend/k8s/model/V1Event'
+import type { V1Node } from '@backend/k8s/model/V1Node'
+import type { V1Pod } from '@backend/k8s/model/V1Pod'
 
 export class EventService {
   async getEventList(ns?: string) {

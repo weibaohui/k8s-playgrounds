@@ -1,6 +1,6 @@
 import type { ConcreteComponent } from '@vue/runtime-core'
 import { h } from 'vue'
-import type { DrawerServiceApiInjection } from '../../service/drawer-service/DrawerServiceProvider'
+import type { DrawerServiceApiInjection } from '@frontend/service/drawer-service/DrawerServiceProvider'
 
 export class DrawerHelper {
   private _drawer: DrawerServiceApiInjection

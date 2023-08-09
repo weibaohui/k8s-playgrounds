@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common'
-import { ClientService } from '../../k8s/client/client.service'
+import { ClientService } from '@backend/k8s/client/client.service'
 
 @Injectable()
 export class NodeService {

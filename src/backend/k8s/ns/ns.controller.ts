@@ -2,7 +2,7 @@ import {
   Controller,
   Get,
 } from '@nestjs/common'
-import { K8sService } from '../../k8s/k8s.service'
+import { K8sService } from '@backend/k8s/k8s.service'
 
 @Controller('k8s/ns')
 export class NsController {

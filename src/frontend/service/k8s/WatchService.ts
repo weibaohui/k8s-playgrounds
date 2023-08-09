@@ -1,10 +1,10 @@
 import type { Ref } from 'vue'
-import { WorkloadArray } from '../../../backend/utils/WorkloadArray'
-import { SocketIOService } from '../../service/k8s/SocketIOService'
-import type { V1Event } from '../../../backend/k8s/model/V1Event'
-import type { V1Namespace } from '../../../backend/k8s/model/V1Namespace'
-import type { V1Node } from '../../../backend/k8s/model/V1Node'
-import type { V1Pod } from '../../../backend/k8s/model/V1Pod'
+import { WorkloadArray } from '@backend/utils/WorkloadArray'
+import type { V1Event } from '@backend/k8s/model/V1Event'
+import type { V1Namespace } from '@backend/k8s/model/V1Namespace'
+import type { V1Node } from '@backend/k8s/model/V1Node'
+import type { V1Pod } from '@backend/k8s/model/V1Pod'
+import { SocketIOService } from '@frontend/service/k8s/SocketIOService'
 
 export class WatchService {
   /**

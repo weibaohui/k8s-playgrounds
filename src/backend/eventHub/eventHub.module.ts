@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
-import { EventHubGateway } from '../eventHub/eventHub.gateway'
-import { K8sModule } from '../k8s/k8s.module'
+import { K8sModule } from '@backend/k8s/k8s.module'
+import { EventHubGateway } from '@backend/eventHub/eventHub.gateway'
 
 @Module({
   imports: [K8sModule],

@@ -1,11 +1,11 @@
 import * as k8s from '@kubernetes/client-node'
 import { Injectable, Logger } from '@nestjs/common'
-import { EventService } from '../k8s/event/event.service'
-import { NodeService } from '../k8s/node/node.service'
-import { ClientService } from '../k8s/client/client.service'
-import { NsService } from '../k8s/ns/ns.service'
-import { PodService } from '../k8s/pod/pod.service'
-import { ReplicasetService } from '../k8s/replicaset/replicaset.service'
+import { ReplicasetService } from './replicaset/replicaset.service'
+import { EventService } from './event/event.service'
+import { NodeService } from './node/node.service'
+import { ClientService } from './client/client.service'
+import { NsService } from './ns/ns.service'
+import { PodService } from './pod/pod.service'
 
 @Injectable()
 export class K8sService {

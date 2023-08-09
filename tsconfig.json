@@ -22,11 +22,11 @@
       "./src/preload"
     ],
     "paths": {
-      "@render/*": [
-        "src/render/*"
+      "@frontend/*": [
+        "src/frontend/*"
       ],
-      "@main/*": [
-        "src/main/*"
+      "@backend/*": [
+        "src/backend/*"
       ]
     }
   },

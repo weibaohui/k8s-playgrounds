@@ -3,8 +3,8 @@ import { Injectable, Logger } from '@nestjs/common'
 import moment from 'moment/moment'
 import { IPty } from 'node-pty'
 import { Cron, CronExpression } from '@nestjs/schedule'
-import { TerminalData, TerminalInstance } from '../../model/watch.model'
-import { ClientService } from '../../k8s/client/client.service'
+import { TerminalData, TerminalInstance } from '@backend/model/watch.model'
+import { ClientService } from '@backend/k8s/client/client.service'
 
 @Injectable()
 export class PodService {
