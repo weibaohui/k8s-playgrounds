@@ -79,6 +79,19 @@ const menuOptions: MenuOption[] = [
           ),
         key: 'go-to-pods',
       },
+      {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/replicaSets',
+              },
+            },
+            { default: () => 'ReplicaSet' },
+          ),
+        key: 'go-to-replicaSets',
+      },
     ],
   },
 
