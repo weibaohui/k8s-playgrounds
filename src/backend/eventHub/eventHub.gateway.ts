@@ -106,6 +106,9 @@ export class EventHubGateway {
       this.k8sService.watch('event', (d) => {
         return this.sendEvent('event', d)
       })
+      this.k8sService.watch('replicasets', (d) => {
+        return this.sendEvent('replicasets', d)
+      })
       this.watched = true
     })()
   }

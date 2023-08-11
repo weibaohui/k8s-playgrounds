@@ -26,36 +26,12 @@ export class K8sService {
     const kc = this.clientService.getKubeConfig()
     const watch = new k8s.Watch(kc)
     watch.watch(`${watchAPI}`,
-      // optional query parameters can go here.
       {
         allowWatchBookmarks: true,
       },
-      // callback is called for each received object.
       (type, apiObj, watchObj) => {
         cb(watchObj)
-        // if (type === 'ADDED') {
-        //   // tslint:disable-next-line:no-console
-        //   // console.log('new object:')
-        // }
-        // else if (type === 'MODIFIED') {
-        //   // tslint:disable-next-line:no-console
-        //   // console.log('changed object:')
-        // }
-        // else if (type === 'DELETED') {
-        //   // tslint:disable-next-line:no-console
-        //   // console.log('deleted object:')
-        // }
-        // else if (type === 'BOOKMARK') {
-        //   // tslint:disable-next-line:no-console
-        //   // console.log(`bookmark: ${watchObj.metadata.resourceVersion}`)
-        // }
-        // else {
-        //   // tslint:disable-next-line:no-console
-        //   // console.log(`unknown type: ${type}`)
-        // }
-        // this.eventsGateway.sendPod(watchObj)
       },
-      // done callback is called if the watch terminates normally
       (err) => {
         // tslint:disable-next-line:no-console
         this.logger.error(`watch-${resType}`, err)
@@ -70,25 +46,29 @@ export class K8sService {
      * @param resType
      */
   private getResourceWatchPath(resType: string) {
+    let watchPath = ''
     switch (resType) {
       case 'pod' || 'pods' :
-        resType = 'pods'
+        watchPath = '/api/v1/pods'
         break
       case 'deploy' || 'deployments' || 'deployment':
-        resType = 'deployments'
+        watchPath = '/api/v1/deployments'
         break
       case 'ns' || 'namespaces' || 'namespace':
-        resType = 'namespaces'
+        watchPath = '/api/v1/namespaces'
         break
       case 'node' || 'nodes' :
-        resType = 'nodes'
+        watchPath = '/api/v1/nodes'
         break
       case 'event' || 'events' :
-        resType = 'events'
+        watchPath = '/api/v1/events'
+        break
+      case 'rs' || 'replicaset' || 'replicasets' :
+        watchPath = '/apis/apps/v1/replicasets'
         break
       default:
-        resType = 'pods'
+        watchPath = '/api/v1/pods'
     }
-    return `/api/v1/${resType}`
+    return watchPath
   }
 }

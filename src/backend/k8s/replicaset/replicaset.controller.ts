@@ -23,7 +23,7 @@ export class ReplicasetController {
   }
 
   @Post('/delete')
-  async delPods(@Body() nsn: Array<string>) {
+  async delReplicaSet(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]

@@ -11,7 +11,7 @@ export class WatchService {
   /**
    * 监控变化
    * @param list
-   * @param type
+   * @param type todo 作为枚举值，可选值为Kind
    * @param ns ,可选
    */
   async watchChange<T extends V1Pod | V1Node | V1Event | V1Namespace | V1ReplicaSet>(list: Ref<T[]>, type: string, ns?: Ref<string>) {
@@ -21,6 +21,9 @@ export class WatchService {
     socket.on(`events-${type}`, (data) => {
       // 处理接收到的数据
       const p: T = data.object as T
+      if (p.kind.toLowerCase() !== type.toLowerCase())
+        return
+
       if (ns && ns.value && p.metadata.namespace !== ns.value)
         return
 
