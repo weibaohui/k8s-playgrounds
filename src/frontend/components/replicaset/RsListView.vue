@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
+import { TimerUtils } from '@backend/utils/TimerUtils'
 import RsActionView from '@frontend/components/replicaset/RsActionView.vue'
 import RsView from '@frontend/components/replicaset/RsView.vue'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton } from 'naive-ui'
 import { h, ref } from 'vue'
-import { TimerUtils } from '@backend/utils/TimerUtils'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
@@ -124,8 +124,9 @@ function onTextChanged(text: string) {
   itemList.value = itemList.value.filter(r => r.metadata.name.includes(text))
 }
 
-getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, 'replicaset', selectedNs))
+TimerUtils.everyTwoSeconds(() => {
+  getItemList()
+})
 </script>
 
 <template>
