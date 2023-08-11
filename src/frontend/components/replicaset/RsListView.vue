@@ -123,7 +123,7 @@ function onTextChanged(text: string) {
   }
   itemList.value = itemList.value.filter(r => r.metadata.name.includes(text))
 }
-
+getItemList()
 TimerUtils.everyTwoSeconds(() => {
   getItemList()
 })
