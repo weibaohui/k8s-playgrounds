@@ -9,27 +9,27 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1Deployment } from './ioK8sApiAppsV1Deployment'
+import type { V1StatefulSet } from './v1StatefulSet'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**
- * DeploymentList is a list of Deployments.
+ * StatefulSetList is a collection of StatefulSets.
  */
-export interface IoK8sApiAppsV1DeploymentList {
+export interface V1StatefulSetList {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
   apiVersion?: string
   /**
-     * Items is the list of Deployments.
+     * Items is the list of stateful sets.
      */
-  items: Array<IoK8sApiAppsV1Deployment>
+  items: Array<V1StatefulSet>
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
   kind?: string
   /**
-     * Standard list metadata.
+     * Standard list's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
   metadata?: V1ListMeta
 }

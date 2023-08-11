@@ -1,9 +1,10 @@
+import type { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
 import type { V1Event } from '../k8s/model/V1Event'
 import type { V1Namespace } from '../k8s/model/V1Namespace'
 import type { V1Node } from '../k8s/model/V1Node'
 import type { V1Pod } from '../k8s/model/V1Pod'
 
-export class WorkloadArray<T extends V1Pod | V1Node | V1Event | V1Namespace> {
+export class WorkloadArray<T extends V1Pod | V1Node | V1Event | V1Namespace | V1ReplicaSet> {
   Add(list: Array<T>, item: T) {
     const index = list.findIndex(r => r.metadata.name === item.metadata.name)
     if (index === -1) {

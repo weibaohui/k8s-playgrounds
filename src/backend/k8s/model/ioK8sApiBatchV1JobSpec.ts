@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiBatchV1PodFailurePolicy } from './ioK8sApiBatchV1PodFailurePolicy'
 import type { V1PodTemplateSpec } from './V1PodTemplateSpec'
-import type { IoK8sApimachineryPkgApisMetaV1LabelSelector } from './ioK8sApimachineryPkgApisMetaV1LabelSelector'
+import type { V1LabelSelector } from './v1LabelSelector'
 
 /**
  * JobSpec describes how the job execution will look like.
@@ -48,7 +48,7 @@ export interface IoK8sApiBatchV1JobSpec {
   /**
      * A label query over pods that should match the pod count. Normally, the system sets this field for you. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
      */
-  selector?: IoK8sApimachineryPkgApisMetaV1LabelSelector
+  selector?: V1LabelSelector
   /**
      * suspend specifies whether the Job controller should create Pods or not. If a Job is created with suspend set to true, no Pods are created by the Job controller. If a Job is suspended after creation (i.e. the flag goes from false to true), the Job controller will delete all active Pods associated with this Job. Users must design their workload to gracefully handle this. Suspending a Job will reset the StartTime field of the Job, effectively resetting the ActiveDeadlineSeconds timer too. Defaults to false.
      */

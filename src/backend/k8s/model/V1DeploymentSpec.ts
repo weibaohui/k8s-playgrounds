@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1DeploymentStrategy } from './ioK8sApiAppsV1DeploymentStrategy'
+import type { V1DeploymentStrategy } from './v1DeploymentStrategy'
 import type { V1PodTemplateSpec } from './V1PodTemplateSpec'
-import type { IoK8sApimachineryPkgApisMetaV1LabelSelector } from './ioK8sApimachineryPkgApisMetaV1LabelSelector'
+import type { V1LabelSelector } from './v1LabelSelector'
 
 /**
  * DeploymentSpec is the specification of the desired behavior of the Deployment.
  */
-export interface IoK8sApiAppsV1DeploymentSpec {
+export interface V1DeploymentSpec {
   /**
      * Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
      */
@@ -40,11 +40,11 @@ export interface IoK8sApiAppsV1DeploymentSpec {
   /**
      * Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment. It must match the pod template's labels.
      */
-  selector: IoK8sApimachineryPkgApisMetaV1LabelSelector
+  selector: V1LabelSelector
   /**
      * The deployment strategy to use to replace existing pods with new ones.
      */
-  strategy?: IoK8sApiAppsV1DeploymentStrategy
+  strategy?: V1DeploymentStrategy
   /**
      * Template describes the pods that will be created. The only allowed template.spec.restartPolicy value is \"Always\".
      */

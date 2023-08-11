@@ -9,27 +9,27 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1ControllerRevision } from './ioK8sApiAppsV1ControllerRevision'
+import type { V1ReplicaSet } from './V1ReplicaSet'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**
- * ControllerRevisionList is a resource containing a list of ControllerRevision objects.
+ * ReplicaSetList is a collection of ReplicaSets.
  */
-export interface IoK8sApiAppsV1ControllerRevisionList {
+export interface V1ReplicaSetList {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
   apiVersion?: string
   /**
-     * Items is the list of ControllerRevisions
+     * List of ReplicaSets. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller
      */
-  items: Array<IoK8sApiAppsV1ControllerRevision>
+  items: Array<V1ReplicaSet>
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
   kind?: string
   /**
-     * More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+     * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
   metadata?: V1ListMeta
 }

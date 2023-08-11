@@ -9,12 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1DaemonSetCondition } from './ioK8sApiAppsV1DaemonSetCondition'
+import type { V1DaemonSetCondition } from './v1DaemonSetCondition'
 
 /**
  * DaemonSetStatus represents the current status of a daemon set.
  */
-export interface IoK8sApiAppsV1DaemonSetStatus {
+export interface V1DaemonSetStatus {
   /**
      * Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.
      */
@@ -22,7 +22,7 @@ export interface IoK8sApiAppsV1DaemonSetStatus {
   /**
      * Represents the latest available observations of a DaemonSet's current state.
      */
-  conditions?: Array<IoK8sApiAppsV1DaemonSetCondition>
+  conditions?: Array<V1DaemonSetCondition>
   /**
      * The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
      */

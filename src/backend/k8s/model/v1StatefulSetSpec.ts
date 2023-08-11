@@ -14,12 +14,12 @@ import type { IoK8sApiAppsV1StatefulSetPersistentVolumeClaimRetentionPolicy } fr
 import type { IoK8sApiAppsV1StatefulSetUpdateStrategy } from './ioK8sApiAppsV1StatefulSetUpdateStrategy'
 import type { V1PersistentVolumeClaim } from './V1PersistentVolumeClaim'
 import type { V1PodTemplateSpec } from './V1PodTemplateSpec'
-import type { IoK8sApimachineryPkgApisMetaV1LabelSelector } from './ioK8sApimachineryPkgApisMetaV1LabelSelector'
+import type { V1LabelSelector } from './v1LabelSelector'
 
 /**
  * A StatefulSetSpec is the specification of a StatefulSet.
  */
-export interface IoK8sApiAppsV1StatefulSetSpec {
+export interface V1StatefulSetSpec {
   /**
      * Minimum number of seconds for which a newly created pod should be ready without any of its container crashing for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
      */
@@ -47,7 +47,7 @@ export interface IoK8sApiAppsV1StatefulSetSpec {
   /**
      * selector is a label query over pods that should match the replica count. It must match the pod template's labels. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
      */
-  selector: IoK8sApimachineryPkgApisMetaV1LabelSelector
+  selector: V1LabelSelector
   /**
      * serviceName is the name of the service that governs this StatefulSet. This service must exist before the StatefulSet, and is responsible for the network identity of the set. Pods get DNS/hostnames that follow the pattern: pod-specific-string.serviceName.default.svc.cluster.local where \"pod-specific-string\" is managed by the StatefulSet controller.
      */

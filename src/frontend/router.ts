@@ -1,9 +1,9 @@
+import RsListView from '@frontend/components/replicaset/RsListView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import EventListView from './components/event/EventListView.vue'
-import HelloWorld from './components/HelloWorld.vue'
-import NodeListView from './components/node/NodeListView.vue'
-import NsListView from './components/ns/NsListView.vue'
-import PodListView from './components/pod/PodListView.vue'
+import EventListView from '@frontend/components/event/EventListView.vue'
+import NodeListView from '@frontend/components/node/NodeListView.vue'
+import NsListView from '@frontend/components/ns/NsListView.vue'
+import PodListView from '@frontend/components/pod/PodListView.vue'
 
 export default createRouter({
   history: createWebHistory(),
@@ -25,8 +25,8 @@ export default createRouter({
       component: EventListView,
     },
     {
-      path: '/hello',
-      component: HelloWorld,
+      path: '/replicaSets',
+      component: RsListView,
     },
   ],
 })

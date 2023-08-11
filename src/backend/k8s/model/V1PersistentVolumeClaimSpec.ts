@@ -12,7 +12,7 @@
 import type { V1ResourceRequirements } from './V1ResourceRequirements'
 import type { V1TypedLocalObjectReference } from './V1TypedLocalObjectReference'
 import type { V1TypedObjectReference } from './V1TypedObjectReference'
-import type { IoK8sApimachineryPkgApisMetaV1LabelSelector } from './ioK8sApimachineryPkgApisMetaV1LabelSelector'
+import type { V1LabelSelector } from './v1LabelSelector'
 
 /**
  * PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes
@@ -37,7 +37,7 @@ export interface V1PersistentVolumeClaimSpec {
   /**
      * selector is a label query over volumes to consider for binding.
      */
-  selector?: IoK8sApimachineryPkgApisMetaV1LabelSelector
+  selector?: V1LabelSelector
   /**
      * storageClassName is the name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
      */

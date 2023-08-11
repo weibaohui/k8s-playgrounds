@@ -1,3 +1,4 @@
+import type { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
 import type { Ref } from 'vue'
 import { WorkloadArray } from '@backend/utils/WorkloadArray'
 import type { V1Event } from '@backend/k8s/model/V1Event'
@@ -13,7 +14,7 @@ export class WatchService {
    * @param type
    * @param ns ,可选
    */
-  async watchChange<T extends V1Pod | V1Node | V1Event | V1Namespace>(list: Ref<T[]>, type: string, ns?: Ref<string>) {
+  async watchChange<T extends V1Pod | V1Node | V1Event | V1Namespace | V1ReplicaSet>(list: Ref<T[]>, type: string, ns?: Ref<string>) {
     const socket = SocketIOService.instance.getSocket()
     console.log(`socket-io-${type}`, socket.active)
     socket.emit('watch-init', 'start')

@@ -9,27 +9,32 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1ReplicaSet } from './ioK8sApiAppsV1ReplicaSet'
-import type { V1ListMeta } from './V1ListMeta'
+import type { V1StatefulSetSpec } from './v1StatefulSetSpec'
+import type { IoK8sApiAppsV1StatefulSetStatus } from './ioK8sApiAppsV1StatefulSetStatus'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
- * ReplicaSetList is a collection of ReplicaSets.
+ * StatefulSet represents a set of pods with consistent identities. Identities are defined as:   - Network: A single stable DNS and hostname.   - Storage: As many VolumeClaims as requested.  The StatefulSet guarantees that a given network identity will always map to the same storage identity.
  */
-export interface IoK8sApiAppsV1ReplicaSetList {
+export interface V1StatefulSet {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
   apiVersion?: string
   /**
-     * List of ReplicaSets. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller
-     */
-  items: Array<IoK8sApiAppsV1ReplicaSet>
-  /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
   kind?: string
   /**
-     * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+     * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: V1ListMeta
+  metadata?: V1ObjectMeta
+  /**
+     * Spec defines the desired identities of pods in this set.
+     */
+  spec?: V1StatefulSetSpec
+  /**
+     * Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.
+     */
+  status?: IoK8sApiAppsV1StatefulSetStatus
 }

@@ -47,48 +47,51 @@ public-hoist-pattern=*
 shamefully-hoist=true
 ```
 ## 功能列表
-|        分类 | 功能             | 	状态✅/☑️ |
-|----------:|:---------------|:--------|
-|       Pod | 列表             | ✅       |
-|       Pod | 列表-状态自动更新      | ✅       |
-|       Pod | 列表-错误提示        | ✅       |
-|       Pod | 列表-批量删除        | ✅       |
-|       Pod | 列表-常用操作        | ✅       |
-|       Pod | 列表-错误提示        | ✅       |
-|       Pod | 列表-关键字搜索过滤     | ✅       |
-|       Pod | 列表-Namespace过滤 | ✅       |
-|       Pod | 列表-查看yaml      | ✅       |
-|       Pod | 详情             | ✅       |
-|       Pod | 详情-Exec        | ✅       |
-|       Pod | 详情-Log         | ✅       |
-|       Pod | 详情-删除          | ✅       |
-|       Pod | 详情-事件          | ✅       |
-|       Pod | 详情-污点          | ✅       |
-|       Pod | 详情-注解          | ✅       |
-|       Pod | 详情-账户          | ✅       |
-|       Pod | 详情-状态          | ✅       |
-|       Pod | 详情-Volume      | ✅       |
-|       Pod | 详情-Env         | ✅       |
-|       Pod | 详情-主机          | ✅       |
-|       Pod | 详情-查看yaml      | ✅       |
-|     Event | 列表             | ✅       |
-|     Event | 列表-关联Pod       | ✅       |
-|     Event | 列表-关联Node      | ✅       |
-|     Event | 详情             | ✅       |
-|     Event | 详情-查看关联对象      | ✅       |
-|     Event | 详情-查看yaml      | ✅       |
-| Namespace | 列表             | ✅       |
-| Namespace | 详情             | ✅       |
-| Namespace | 详情-关联Event     | ✅       |
-| Namespace | 详情-查看yaml      | ✅       |
-|      Node | 列表             | ✅       |
-|      Node | 列表-状态自动更新      | ✅       |
-|      Node | 详情             | ✅       |
-|      Node | 详情-节点角色        | ✅       |
-|      Node | 详情-调度状态        | ✅       |
-|      Node | 详情-cordon操作    | ✅       |
-|      Node | 详情-drain驱逐操作   | ✅       |
-|      Node | 详情-查看yaml      | ✅       |
+|         分类 | 功能             | 	状态✅/☑️ |
+|-----------:|:---------------|:--------|
+|        Pod | 列表             | ✅       |
+|        Pod | 列表-状态自动更新      | ✅       |
+|        Pod | 列表-错误提示        | ✅       |
+|        Pod | 列表-批量删除        | ✅       |
+|        Pod | 列表-常用操作        | ✅       |
+|        Pod | 列表-错误提示        | ✅       |
+|        Pod | 列表-关键字搜索过滤     | ✅       |
+|        Pod | 列表-Namespace过滤 | ✅       |
+|        Pod | 列表-查看yaml      | ✅       |
+|        Pod | 详情             | ✅       |
+|        Pod | 详情-Exec        | ✅       |
+|        Pod | 详情-Log         | ✅       |
+|        Pod | 详情-删除          | ✅       |
+|        Pod | 详情-事件          | ✅       |
+|        Pod | 详情-污点          | ✅       |
+|        Pod | 详情-注解          | ✅       |
+|        Pod | 详情-账户          | ✅       |
+|        Pod | 详情-状态          | ✅       |
+|        Pod | 详情-Volume      | ✅       |
+|        Pod | 详情-Env         | ✅       |
+|        Pod | 详情-主机          | ✅       |
+|        Pod | 详情-查看yaml      | ✅       |
+|      Event | 列表             | ✅       |
+|      Event | 列表-关联Pod       | ✅       |
+|      Event | 列表-关联Node      | ✅       |
+|      Event | 详情             | ✅       |
+|      Event | 详情-查看关联对象      | ✅       |
+|      Event | 详情-查看yaml      | ✅       |
+|  Namespace | 列表             | ✅       |
+|  Namespace | 详情             | ✅       |
+|  Namespace | 详情-关联Event     | ✅       |
+|  Namespace | 详情-查看yaml      | ✅       |
+|       Node | 列表             | ✅       |
+|       Node | 列表-状态自动更新      | ✅       |
+|       Node | 详情             | ✅       |
+|       Node | 详情-节点角色        | ✅       |
+|       Node | 详情-调度状态        | ✅       |
+|       Node | 详情-cordon操作    | ✅       |
+|       Node | 详情-drain驱逐操作   | ✅       |
+|       Node | 详情-查看yaml      | ✅       |
+| ReplicaSet | 列表             | ✅       |
+| ReplicaSet | 详情             | ✅       |
+| ReplicaSet | 详情-查看yaml      | ✅       |
 
 ## 开发提示
  
@@ -96,10 +99,11 @@ k8s model 生成
  * 使用https://editor.swagger.io/ 生成client，选择typescript-angular
  * 将文件名称中的ioK8sApiCore替换掉，文件内的处理掉。这样用起来方便
 
- | 前                                    | 后           |
- |--------------------------------------|-------------|
- | ioK8sApiCoreV1ConfigMap              | V1ConfigMap |
- | IoK8sApimachineryPkgApisMetaV1Status | V1Status    |
+ | 前                                    | 后            |
+ |--------------------------------------|--------------|
+ | ioK8sApiCoreV1ConfigMap              | V1ConfigMap  |
+ | IoK8sApimachineryPkgApisMetaV1Status | V1Status     |
+ | ioK8sApiAppsV1ReplicaSet             | V1ReplicaSet |
 
 
 ## Demo

@@ -9,12 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1ReplicaSetCondition } from './ioK8sApiAppsV1ReplicaSetCondition'
+import type { V1ReplicaSetCondition } from './V1ReplicaSetCondition'
 
 /**
  * ReplicaSetStatus represents the current status of a ReplicaSet.
  */
-export interface IoK8sApiAppsV1ReplicaSetStatus {
+export interface V1ReplicaSetStatus {
   /**
      * The number of available replicas (ready for at least minReadySeconds) for this replica set.
      */
@@ -22,7 +22,7 @@ export interface IoK8sApiAppsV1ReplicaSetStatus {
   /**
      * Represents the latest available observations of a replica set's current state.
      */
-  conditions?: Array<IoK8sApiAppsV1ReplicaSetCondition>
+  conditions?: Array<V1ReplicaSetCondition>
   /**
      * The number of pods that have labels matching the labels of the pod template of the replicaset.
      */

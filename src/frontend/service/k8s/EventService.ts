@@ -1,3 +1,4 @@
+import type { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
 import { HttpClient } from '@backend/utils/axios/HttpClient'
 import type { V1Event } from '@backend/k8s/model/V1Event'
 import type { V1Node } from '@backend/k8s/model/V1Node'
@@ -16,6 +17,13 @@ export class EventService {
     const list = await this.getEventList(pod.metadata.namespace)
     return list.filter((r) => {
       return r.involvedObject.namespace === pod.metadata.namespace && r.involvedObject.name === pod.metadata.name
+    })
+  }
+
+  async getReplicasetEventList(rs: V1ReplicaSet) {
+    const list = await this.getEventList(rs.metadata.namespace)
+    return list.filter((r) => {
+      return r.involvedObject.namespace === rs.metadata.namespace && r.involvedObject.name === rs.metadata.name
     })
   }
 

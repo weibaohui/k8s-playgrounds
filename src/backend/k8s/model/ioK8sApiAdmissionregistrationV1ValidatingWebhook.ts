@@ -12,7 +12,7 @@
 import type { IoK8sApiAdmissionregistrationV1MatchCondition } from './ioK8sApiAdmissionregistrationV1MatchCondition'
 import type { IoK8sApiAdmissionregistrationV1RuleWithOperations } from './ioK8sApiAdmissionregistrationV1RuleWithOperations'
 import type { IoK8sApiAdmissionregistrationV1WebhookClientConfig } from './ioK8sApiAdmissionregistrationV1WebhookClientConfig'
-import type { IoK8sApimachineryPkgApisMetaV1LabelSelector } from './ioK8sApimachineryPkgApisMetaV1LabelSelector'
+import type { V1LabelSelector } from './v1LabelSelector'
 
 /**
  * ValidatingWebhook describes an admission webhook and the resources and operations it applies to.
@@ -45,11 +45,11 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingWebhook {
   /**
      * NamespaceSelector decides whether to run the webhook on an object based on whether the namespace for that object matches the selector. If the object itself is a namespace, the matching is performed on object.metadata.labels. If the object is another cluster scoped resource, it never skips the webhook.  For example, to run the webhook on any objects whose namespace is not associated with \"runlevel\" of \"0\" or \"1\";  you will set the selector as follows: \"namespaceSelector\": {   \"matchExpressions\": [     {       \"key\": \"runlevel\",       \"operator\": \"NotIn\",       \"values\": [         \"0\",         \"1\"       ]     }   ] }  If instead you want to only run the webhook on any objects whose namespace is associated with the \"environment\" of \"prod\" or \"staging\"; you will set the selector as follows: \"namespaceSelector\": {   \"matchExpressions\": [     {       \"key\": \"environment\",       \"operator\": \"In\",       \"values\": [         \"prod\",         \"staging\"       ]     }   ] }  See https://kubernetes.io/docs/concepts/overview/working-with-objects/labels for more examples of label selectors.  Default to the empty LabelSelector, which matches everything.
      */
-  namespaceSelector?: IoK8sApimachineryPkgApisMetaV1LabelSelector
+  namespaceSelector?: V1LabelSelector
   /**
      * ObjectSelector decides whether to run the webhook based on if the object has matching labels. objectSelector is evaluated against both the oldObject and newObject that would be sent to the webhook, and is considered to match if either object matches the selector. A null object (oldObject in the case of create, or newObject in the case of delete) or an object that cannot have labels (like a DeploymentRollback or a PodProxyOptions object) is not considered to match. Use the object selector only if the webhook is opt-in, because end users may skip the admission webhook by setting the labels. Default to the empty LabelSelector, which matches everything.
      */
-  objectSelector?: IoK8sApimachineryPkgApisMetaV1LabelSelector
+  objectSelector?: V1LabelSelector
   /**
      * Rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.
      */

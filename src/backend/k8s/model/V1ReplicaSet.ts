@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1DaemonSetSpec } from './ioK8sApiAppsV1DaemonSetSpec'
-import type { IoK8sApiAppsV1DaemonSetStatus } from './ioK8sApiAppsV1DaemonSetStatus'
+import type { V1ReplicaSetSpec } from './V1ReplicaSetSpec'
+import type { V1ReplicaSetStatus } from './V1ReplicaSetStatus'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
- * DaemonSet represents the configuration of a daemon set.
+ * ReplicaSet ensures that a specified number of pod replicas are running at any given time.
  */
-export interface IoK8sApiAppsV1DaemonSet {
+export class V1ReplicaSet {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -26,15 +26,15 @@ export interface IoK8sApiAppsV1DaemonSet {
      */
   kind?: string
   /**
-     * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+     * If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
   metadata?: V1ObjectMeta
   /**
-     * The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+     * Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-  spec?: IoK8sApiAppsV1DaemonSetSpec
+  spec?: V1ReplicaSetSpec
   /**
-     * The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+     * Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-  status?: IoK8sApiAppsV1DaemonSetStatus
+  status?: V1ReplicaSetStatus
 }

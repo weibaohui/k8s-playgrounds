@@ -9,27 +9,32 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1DaemonSet } from './ioK8sApiAppsV1DaemonSet'
-import type { V1ListMeta } from './V1ListMeta'
+import type { V1DeploymentSpec } from './V1DeploymentSpec'
+import type { V1DeploymentStatus } from './V1DeploymentStatus'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
- * DaemonSetList is a collection of daemon sets.
+ * Deployment enables declarative updates for Pods and ReplicaSets.
  */
-export interface IoK8sApiAppsV1DaemonSetList {
+export interface V1Deployment {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
   apiVersion?: string
   /**
-     * A list of daemon sets.
-     */
-  items: Array<IoK8sApiAppsV1DaemonSet>
-  /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
   kind?: string
   /**
-     * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+     * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: V1ListMeta
+  metadata?: V1ObjectMeta
+  /**
+     * Specification of the desired behavior of the Deployment.
+     */
+  spec?: V1DeploymentSpec
+  /**
+     * Most recently observed status of the Deployment.
+     */
+  status?: V1DeploymentStatus
 }

@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApisMetaV1LabelSelector } from './ioK8sApimachineryPkgApisMetaV1LabelSelector'
+import type { V1LabelSelector } from './v1LabelSelector'
 
 /**
  * MetricIdentifier defines the name and optionally selector for a metric
@@ -22,5 +22,5 @@ export interface IoK8sApiAutoscalingV2MetricIdentifier {
   /**
      * selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
      */
-  selector?: IoK8sApimachineryPkgApisMetaV1LabelSelector
+  selector?: V1LabelSelector
 }

@@ -9,18 +9,21 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1DeploymentSpec } from './ioK8sApiAppsV1DeploymentSpec'
-import type { IoK8sApiAppsV1DeploymentStatus } from './ioK8sApiAppsV1DeploymentStatus'
 import type { V1ObjectMeta } from './V1ObjectMeta'
+import type { IoK8sApimachineryPkgRuntimeRawExtension } from './ioK8sApimachineryPkgRuntimeRawExtension'
 
 /**
- * Deployment enables declarative updates for Pods and ReplicaSets.
+ * ControllerRevision implements an immutable snapshot of state data. Clients are responsible for serializing and deserializing the objects that contain their internal state. Once a ControllerRevision has been successfully created, it can not be updated. The API Server will fail validation of all requests that attempt to mutate the Data field. ControllerRevisions may, however, be deleted. Note that, due to its use by both the DaemonSet and StatefulSet controllers for update and rollback, this object is beta. However, it may be subject to name and representation changes in future releases, and clients should not depend on its stability. It is primarily for internal use by controllers.
  */
-export interface IoK8sApiAppsV1Deployment {
+export interface V1ControllerRevision {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
   apiVersion?: string
+  /**
+     * Data is the serialized representation of the state.
+     */
+  data?: IoK8sApimachineryPkgRuntimeRawExtension
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
@@ -30,11 +33,7 @@ export interface IoK8sApiAppsV1Deployment {
      */
   metadata?: V1ObjectMeta
   /**
-     * Specification of the desired behavior of the Deployment.
+     * Revision indicates the revision of the state represented by Data.
      */
-  spec?: IoK8sApiAppsV1DeploymentSpec
-  /**
-     * Most recently observed status of the Deployment.
-     */
-  status?: IoK8sApiAppsV1DeploymentStatus
+  revision: number
 }

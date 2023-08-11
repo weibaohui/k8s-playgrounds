@@ -9,16 +9,16 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1RollingUpdateDeployment } from './ioK8sApiAppsV1RollingUpdateDeployment'
+import type { V1RollingUpdateDeployment } from './v1RollingUpdateDeployment'
 
 /**
  * DeploymentStrategy describes how to replace existing pods with new ones.
  */
-export interface IoK8sApiAppsV1DeploymentStrategy {
+export interface V1DeploymentStrategy {
   /**
      * Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
      */
-  rollingUpdate?: IoK8sApiAppsV1RollingUpdateDeployment
+  rollingUpdate?: V1RollingUpdateDeployment
   /**
      * Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate.
      */

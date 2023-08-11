@@ -14,7 +14,7 @@ import type { IoK8sApiAppsV1DeploymentCondition } from './ioK8sApiAppsV1Deployme
 /**
  * DeploymentStatus is the most recently observed status of the Deployment.
  */
-export interface IoK8sApiAppsV1DeploymentStatus {
+export interface V1DeploymentStatus {
   /**
      * Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.
      */
