@@ -3,16 +3,16 @@ import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton } from 'naive-ui'
 import { h, ref } from 'vue'
-import { TimerUtils } from '../../../backend/utils/TimerUtils'
-import ResourceAgeView from '../../components/common/ResourceAgeView.vue'
-import WorkloadListView from '../../components/common/ResourceListView.vue'
-import NsActionView from '../../components/ns/NsActionView.vue'
-import NsLabelsView from '../../components/ns/NsLabelsView.vue'
-import NsView from '../../components/ns/NsView.vue'
-import { useDrawerService } from '../../service/drawer-service/use-drawer'
-import { K8sService } from '../../service/k8s/K8sService'
-import { DrawerHelper } from '../../service/page/DrawerHelper'
-import type { V1Namespace } from '../../../backend/k8s/model/V1Namespace'
+import { TimerUtils } from '@backend/utils/TimerUtils'
+import ResourceAgeView from '@frontend/components/common/ResourceAgeView.vue'
+import WorkloadListView from '@frontend/components/common/ResourceListView.vue'
+import NsActionView from '@frontend/components/ns/NsActionView.vue'
+import NsLabelsView from '@frontend/components/ns/NsLabelsView.vue'
+import NsView from '@frontend/components/ns/NsView.vue'
+import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
+import { K8sService } from '@frontend/service/k8s/K8sService'
+import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
+import type { V1Namespace } from '@backend/k8s/model/V1Namespace'
 
 const drawer = useDrawerService()
 
@@ -40,7 +40,7 @@ function createColumns(): DataTableColumns<V1Namespace> {
                 .show(row.metadata.name, NsView, { ns: row })
             },
           },
-          { default: () => (row as V1Namespace).metadata.name },
+          { default: () => row.metadata.name },
         )
       },
     },
@@ -74,7 +74,7 @@ function createColumns(): DataTableColumns<V1Namespace> {
       render(row) {
         return h(NsActionView,
           {
-            ns: row as V1Namespace,
+            ns: row,
             isDropdown: true,
           },
         )
