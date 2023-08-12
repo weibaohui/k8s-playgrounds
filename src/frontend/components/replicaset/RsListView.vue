@@ -120,7 +120,8 @@ function onNsChanged(ns: string) {
 }
 function onTextChanged(text: string) {
   searchText.value = text
-  itemList.value = itemList.value.filter(r => r.metadata.name.includes(text))
+  if (!_.isEmpty(searchText.value))
+    itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
 getItemList()
 TimerUtils.everyTwoSeconds(() => {
