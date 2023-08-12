@@ -16,7 +16,7 @@ import WorkloadListView from '@frontend/components/common/ResourceListView.vue'
 const drawer = useDrawerService()
 const selectedNs = ref('default')
 const itemList = ref<V1ReplicaSet[]>()
-
+const searchText = ref('')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
 
 function createColumns(): DataTableColumns<V1ReplicaSet> {
@@ -107,6 +107,8 @@ function createColumns(): DataTableColumns<V1ReplicaSet> {
 
 async function getItemList() {
   itemList.value = await K8sService.replicasetService.getReplicaSetList(selectedNs.value)
+  if (!_.isEmpty(searchText.value))
+    itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
@@ -117,10 +119,7 @@ function onNsChanged(ns: string) {
   getItemList()
 }
 function onTextChanged(text: string) {
-  if (_.isEmpty(text)) {
-    getItemList()
-    return
-  }
+  searchText.value = text
   itemList.value = itemList.value.filter(r => r.metadata.name.includes(text))
 }
 getItemList()
