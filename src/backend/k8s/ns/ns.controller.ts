@@ -1,6 +1,7 @@
 import {
+  Body,
   Controller,
-  Get,
+  Get, Post,
 } from '@nestjs/common'
 import { K8sService } from '@backend/k8s/k8s.service'
 
@@ -13,5 +14,15 @@ export class NsController {
   @Get('/list')
   async ns() {
     return await this.k8sService.nsService.getNsList()
+  }
+
+  @Post('/delete')
+  async delNs(@Body() nsn: Array<string>) {
+    nsn.forEach((r) => {
+      const nsname = r.split('/')
+      const name = nsname[1]
+      this.k8sService.nsService.deleteNs(name)
+    })
+    return {}
   }
 }

@@ -1,3 +1,4 @@
+import { WatchService } from '@backend/k8s/watch/watch.service'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { ScheduleModule } from '@nestjs/schedule'
@@ -16,9 +17,13 @@ import { ReplicasetController } from '@backend/k8s/replicaset/replicaset.control
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), ScheduleModule.forRoot()],
-  controllers: [EventController, NodeController, NsController, PodController, ReplicasetController],
+  controllers: [
+    EventController, NodeController, NsController,
+    PodController, ReplicasetController],
   providers: [
-    K8sService, PodService, NsService, NodeService, EventService, ClientService, ReplicasetService,
+    K8sService, PodService, NsService,
+    NodeService, EventService, ClientService,
+    ReplicasetService, WatchService,
   ],
   exports: [K8sService],
 })

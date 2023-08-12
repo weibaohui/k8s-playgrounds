@@ -1,3 +1,4 @@
+import { ResType } from '@backend/k8s/watch/watch.model'
 import { Logger } from '@nestjs/common'
 import {
   ConnectedSocket,
@@ -84,7 +85,7 @@ export class EventHubGateway {
     return data
   }
 
-  private async sendEvent(resType: string, obj: object) {
+  private async sendEvent(resType: ResType, obj: object) {
     this.server.emit(`events-${resType}`, obj)
   }
 
@@ -94,17 +95,17 @@ export class EventHubGateway {
         this.logger.log('watch service is started')
         return
       }
-      this.k8sService.watch('pod', (d) => {
-        return this.sendEvent('pod', d)
+      this.k8sService.watchService.watch(ResType.Pods, (d) => {
+        return this.sendEvent(ResType.Pods, d)
       })
-      this.k8sService.watch('ns', (d) => {
-        return this.sendEvent('ns', d)
+      this.k8sService.watchService.watch(ResType.Namespaces, (d) => {
+        return this.sendEvent(ResType.Namespaces, d)
       })
-      this.k8sService.watch('node', (d) => {
-        return this.sendEvent('node', d)
+      this.k8sService.watchService.watch(ResType.Nodes, (d) => {
+        return this.sendEvent(ResType.Nodes, d)
       })
-      this.k8sService.watch('event', (d) => {
-        return this.sendEvent('event', d)
+      this.k8sService.watchService.watch(ResType.Events, (d) => {
+        return this.sendEvent(ResType.Events, d)
       })
       this.watched = true
     })()

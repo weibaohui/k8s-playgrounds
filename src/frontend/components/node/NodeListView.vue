@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ResType } from '@backend/k8s/watch/watch.model'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, NSpace } from 'naive-ui'
@@ -127,7 +128,7 @@ function onTextChanged(text: string) {
 }
 
 getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, 'node'))
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Nodes))
 </script>
 
 <template>

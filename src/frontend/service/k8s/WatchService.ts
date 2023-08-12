@@ -1,4 +1,5 @@
 import type { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
+import type { ResType } from '@backend/k8s/watch/watch.model'
 import type { Ref } from 'vue'
 import { WorkloadArray } from '@backend/utils/WorkloadArray'
 import type { V1Event } from '@backend/k8s/model/V1Event'
@@ -11,17 +12,17 @@ export class WatchService {
   /**
    * 监控变化
    * @param list
-   * @param type todo 作为枚举值，可选值为Kind
+   * @param type
    * @param ns ,可选
    */
-  async watchChange<T extends V1Pod | V1Node | V1Event | V1Namespace | V1ReplicaSet>(list: Ref<T[]>, type: string, ns?: Ref<string>) {
+  async watchChange<T extends V1Pod | V1Node | V1Event | V1Namespace | V1ReplicaSet>(list: Ref<T[]>, type: ResType, ns?: Ref<string>) {
     const socket = SocketIOService.instance.getSocket()
     console.log(`socket-io-${type}`, socket.active)
     socket.emit('watch-init', 'start')
     socket.on(`events-${type}`, (data) => {
       // 处理接收到的数据
       const p: T = data.object as T
-      if (p.kind.toLowerCase() !== type.toLowerCase())
+      if (!type.toLowerCase().startsWith(p.kind.toLowerCase()))
         return
 
       if (ns && ns.value && p.metadata.namespace !== ns.value)

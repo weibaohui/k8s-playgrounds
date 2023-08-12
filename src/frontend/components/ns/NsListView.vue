@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ResType } from '@backend/k8s/watch/watch.model'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton } from 'naive-ui'
@@ -88,6 +89,8 @@ async function getItemList() {
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
+  console.log(keys)
+  await K8sService.namespaceService.deleteNamespaces(keys)
 }
 
 function onTextChanged(text: string) {
@@ -99,7 +102,7 @@ function onTextChanged(text: string) {
 }
 
 getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, 'ns'))
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Namespaces))
 </script>
 
 <template>
