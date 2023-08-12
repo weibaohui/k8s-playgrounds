@@ -1,3 +1,4 @@
+import { DeploymentService } from '@frontend/service/k8s/DeploymentService'
 import { EventService } from '@frontend/service/k8s/EventService'
 import { NamespaceService } from '@frontend/service/k8s/NamespaceService'
 import { NodeService } from '@frontend/service/k8s/NodeService'
@@ -12,4 +13,5 @@ export class K8sService {
   static eventService = new EventService()
   static namespaceService = new NamespaceService()
   static replicasetService = new ReplicaSetService()
+  static deploymentService: DeploymentService = new DeploymentService()
 }

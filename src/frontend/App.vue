@@ -85,10 +85,22 @@ const menuOptions: MenuOption[] = [
             RouterLink,
             {
               to: {
+                path: '/deployments',
+              },
+            },
+            { default: () => 'Deployments' },
+          ),
+        key: 'go-to-deployments',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
                 path: '/replicaSets',
               },
             },
-            { default: () => 'ReplicaSet' },
+            { default: () => 'ReplicaSets' },
           ),
         key: 'go-to-replicaSets',
       },

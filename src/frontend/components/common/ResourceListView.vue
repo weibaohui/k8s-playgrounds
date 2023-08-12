@@ -11,6 +11,7 @@ const props = defineProps({
   columns: Array<TableColumns<any>>,
   itemList: Array<any>,
   showNsSelect: Boolean,
+  name: String,
 })
 const emit = defineEmits(['onNsChanged', 'onRemoveBtnClicked', 'onTextChanged'])
 
@@ -58,10 +59,17 @@ defineExpose({ setNsSelected })
 <template>
   <NGrid :cols="24" :x-gap="24">
     <NFormItemGi :span="1" />
-    <NFormItemGi :span="11">
+    <NFormItemGi :span="5">
+      {{ props.name }}
+    </NFormItemGi>
+    <NFormItemGi :span="2">
+      {{ itemList && itemList.length ? itemList.length : 0 }}项
+    </NFormItemGi>
+    <NFormItemGi :span="5" />
+    <NFormItemGi :span="5">
       <NsSelect v-if="showNsSelect" ref="nsSelectRef" @on-ns-changed="onNsChanged" />
     </NFormItemGi>
-    <NFormItemGi :span="11">
+    <NFormItemGi :span="5">
       <SearchFilter @on-text-changed="onTextChanged" />
     </NFormItemGi>
     <NFormItemGi :span="1" />

@@ -1,3 +1,4 @@
+import DeployListView from '@frontend/components/deployment/DeployListView.vue'
 import RsListView from '@frontend/components/replicaset/RsListView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import EventListView from '@frontend/components/event/EventListView.vue'
@@ -23,6 +24,10 @@ export default createRouter({
     {
       path: '/events',
       component: EventListView,
+    },
+    {
+      path: '/deployments',
+      component: DeployListView,
     },
     {
       path: '/replicaSets',
