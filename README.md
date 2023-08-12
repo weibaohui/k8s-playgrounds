@@ -92,7 +92,15 @@ shamefully-hoist=true
 | ReplicaSet | 列表             | ✅       |
 | ReplicaSet | 详情             | ✅       |
 | ReplicaSet | 详情-查看yaml      | ✅       |
-
+| Deployment | 列表             | ✅       |
+| Deployment | 列表-重启          | ✅       |
+| Deployment | 列表-删除          | ✅       |
+| Deployment | 列表-查看yaml      | ✅       |
+| Deployment | 列表-状态          | ✅       |
+| Deployment | 详情             | ✅       |
+| Deployment | 详情-重启          | ✅       |
+| Deployment | 详情-删除          | ✅       |
+| Deployment | 详情-查看yaml      | ✅       |
 ## 开发提示
  
 k8s model 生成
