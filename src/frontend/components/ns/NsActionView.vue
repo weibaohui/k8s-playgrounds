@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { Edit, Trash } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
-import type { ActionMenuOption } from '../../../backend/model/actionMenu'
-import MonacoView from '../../components/common/MonacoView.vue'
-import MultipleMenuActionView from '../../components/common/MultipleMenuActionView.vue'
-import { useDrawerService } from '../../service/drawer-service/use-drawer'
-import { K8sService } from '../../service/k8s/K8sService'
-import { DrawerHelper } from '../../service/page/DrawerHelper'
-import { V1Namespace } from '../../../backend/k8s/model/V1Namespace'
+import type { ActionMenuOption } from '@backend/model/actionMenu'
+import MonacoView from '@frontend/components/common/MonacoView.vue'
+import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'
+import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
+import { K8sService } from '@frontend/service/k8s/K8sService'
+import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
+import { V1Namespace } from '@backend/k8s/model/V1Namespace'
 
 const props = defineProps({
   ns: V1Namespace,

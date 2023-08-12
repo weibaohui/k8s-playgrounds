@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import moment from 'moment/moment'
 import { NSpace, NTable, NTag } from 'naive-ui'
-import { V1ObjectMeta } from '../../../backend/k8s/model/V1ObjectMeta'
+import { V1ObjectMeta } from '@backend/k8s/model/V1ObjectMeta'
 
 const props = defineProps({
   item: V1ObjectMeta,

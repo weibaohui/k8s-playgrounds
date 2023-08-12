@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NText, NTooltip } from 'naive-ui'
-import { V1ContainerState } from '../../../backend/k8s/model/V1ContainerState'
+import { V1ContainerState } from '@backend/k8s/model/V1ContainerState'
 
 const props = defineProps({
   pod: V1ContainerState,

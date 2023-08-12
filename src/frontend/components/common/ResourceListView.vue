@@ -3,9 +3,9 @@ import _ from 'lodash'
 import { NDataTable, NFormItemGi, NGrid, NMessageProvider } from 'naive-ui'
 import type { TableColumns } from 'naive-ui/es/data-table/src/interface'
 import { ref } from 'vue'
-import SearchFilter from '../../components/common/SearchFilter.vue'
-import FloatRemoveButton from '../../components/common/FloatRemoveButton.vue'
-import NsSelect from '../../components/ns/NsSelect.vue'
+import SearchFilter from '@frontend/components/common/SearchFilter.vue'
+import FloatRemoveButton from '@frontend/components/common/FloatRemoveButton.vue'
+import NsSelect from '@frontend/components/ns/NsSelect.vue'
 
 const props = defineProps({
   columns: Array<TableColumns<any>>,

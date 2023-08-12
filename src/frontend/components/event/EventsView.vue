@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { NBadge, NCollapse, NCollapseItem, NTable, NText } from 'naive-ui'
 import moment from 'moment'
-import type { V1Event } from '../../../backend/k8s/model/V1Event'
+import type { V1Event } from '@backend/k8s/model/V1Event'
 
 const props = defineProps({
   eventList: Array<V1Event>,

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { Edit, StickyNoteRegular, Terminal, Trash } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
-import type { ActionMenuOption } from '../../../backend/model/actionMenu'
-import MonacoView from '../../components/common/MonacoView.vue'
-import MultipleMenuActionView from '../../components/common/MultipleMenuActionView.vue'
-import PodExecView from '../../components/pod/PodExecView.vue'
-import PodLogView from '../../components/pod/PodLogView.vue'
-import { useDrawerService } from '../../service/drawer-service/use-drawer'
-import { K8sService } from '../../service/k8s/K8sService'
-import { DrawerHelper } from '../../service/page/DrawerHelper'
+import type { ActionMenuOption } from '@backend/model/actionMenu'
+import MonacoView from '@frontend/components/common/MonacoView.vue'
+import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'
+import PodExecView from '@frontend/components/pod/PodExecView.vue'
+import PodLogView from '@frontend/components/pod/PodLogView.vue'
+import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
+import { K8sService } from '@frontend/service/k8s/K8sService'
+import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
 
-import { V1Pod } from '../../../backend/k8s/model/V1Pod'
+import { V1Pod } from '@backend/k8s/model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,

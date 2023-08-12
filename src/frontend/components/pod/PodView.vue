@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { NH6, NMessageProvider, NText } from 'naive-ui'
-import ContainersView from '../../components/container/ContainersView.vue'
-import PodActionView from '../../components/pod/PodActionView.vue'
-import PodBasicInfoView from '../../components/pod/PodBasicInfoView.vue'
-import PodEventsView from '../../components/pod/PodEventView.vue'
-import PodVolumesView from '../../components/pod/PodVolumeView.vue'
-import { V1Pod } from '../../../backend/k8s/model/V1Pod'
+import ContainersView from '@frontend/components/container/ContainersView.vue'
+import PodActionView from '@frontend/components/pod/PodActionView.vue'
+import PodBasicInfoView from '@frontend/components/pod/PodBasicInfoView.vue'
+import PodEventsView from '@frontend/components/pod/PodEventView.vue'
+import PodVolumesView from '@frontend/components/pod/PodVolumeView.vue'
+import { V1Pod } from '@backend/k8s/model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,

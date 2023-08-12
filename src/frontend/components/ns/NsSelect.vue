@@ -2,7 +2,7 @@
 import { NSelect } from 'naive-ui'
 import type { SelectOption } from 'naive-ui'
 import { ref } from 'vue'
-import { K8sService } from '../../service/k8s/K8sService'
+import { K8sService } from '@frontend/service/k8s/K8sService'
 
 const props = defineProps({})
 

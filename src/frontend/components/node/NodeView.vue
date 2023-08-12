@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { NH6, NMessageProvider, NText } from 'naive-ui'
-import NodeActionView from '../../components/node/NodeActionView.vue'
-import NodeEventsView from '../../components/node/NodeEventsView.vue'
-import NodeBasicInfoView from '../../components/node/NodeBasicInfoView.vue'
-import NodeResourceView from '../../components/node/NodeResourceView.vue'
-import { V1Node } from '../../../backend/k8s/model/V1Node'
+import NodeActionView from '@frontend/components/node/NodeActionView.vue'
+import NodeEventsView from '@frontend/components/node/NodeEventsView.vue'
+import NodeBasicInfoView from '@frontend/components/node/NodeBasicInfoView.vue'
+import NodeResourceView from '@frontend/components/node/NodeResourceView.vue'
+import { V1Node } from '@backend/k8s/model/V1Node'
 
 const props = defineProps({
   node: V1Node,

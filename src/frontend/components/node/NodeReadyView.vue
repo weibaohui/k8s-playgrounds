@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NTag } from 'naive-ui'
-import { V1Node } from '../../../backend/k8s/model/V1Node'
+import { V1Node } from '@backend/k8s/model/V1Node'
 
 const props = defineProps({
   node: V1Node,

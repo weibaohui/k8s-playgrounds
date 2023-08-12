@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { Server } from '@vicons/fa'
 import { NDivider, NIcon } from 'naive-ui'
-import ConfigMapVolumeView from '../../components/volume/ConfigMapVolumeView.vue'
-import HostPathVolumeView from '../../components/volume/HostPathVolumeView.vue'
-import ProjectedVolumeView from '../../components/volume/projected/ProjectedVolumeView.vue'
+import ConfigMapVolumeView from '@frontend/components/volume/ConfigMapVolumeView.vue'
+import HostPathVolumeView from '@frontend/components/volume/HostPathVolumeView.vue'
+import ProjectedVolumeView from '@frontend/components/volume/projected/ProjectedVolumeView.vue'
 
-import { V1Pod } from '../../../backend/k8s/model/V1Pod'
+import { V1Pod } from '@backend/k8s/model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,

@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { Edit, FireExtinguisher, PauseCircleRegular, PlayCircleRegular, Trash } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
-import type { ActionMenuOption } from '../../../backend/model/actionMenu'
-import MonacoView from '../../components/common/MonacoView.vue'
-import MultipleMenuActionView from '../../components/common/MultipleMenuActionView.vue'
-import NodeDrainView from '../../components/node/NodeDrainView.vue'
-import { useDrawerService } from '../../service/drawer-service/use-drawer'
-import { K8sService } from '../../service/k8s/K8sService'
-import { DrawerHelper } from '../../service/page/DrawerHelper'
-
-import { V1Node } from '../../../backend/k8s/model/V1Node'
+import type { ActionMenuOption } from '@backend/model/actionMenu'
+import { V1Node } from '@backend/k8s/model/V1Node'
+import MonacoView from '@frontend/components/common/MonacoView.vue'
+import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'
+import NodeDrainView from '@frontend/components/node/NodeDrainView.vue'
+import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
+import { K8sService } from '@frontend/service/k8s/K8sService'
+import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
 
 const props = defineProps({
   node: V1Node,

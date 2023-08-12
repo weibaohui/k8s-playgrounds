@@ -6,11 +6,11 @@ import { NSelect } from 'naive-ui'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
-import { TerminalData } from '../../../backend/model/watch.model'
-import { TimerUtils } from '../../../backend/utils/TimerUtils'
-import { SocketIOService } from '../../service/k8s/SocketIOService'
+import { TerminalData } from '@backend/model/watch.model'
+import { TimerUtils } from '@backend/utils/TimerUtils'
+import { SocketIOService } from '@frontend/service/k8s/SocketIOService'
 import 'xterm/css/xterm.css'
-import { V1Pod } from '../../../backend/k8s/model/V1Pod'
+import { V1Pod } from '@backend/k8s/model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,

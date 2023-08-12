@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { NSpace, NTable, NTag } from 'naive-ui'
-import { V1Namespace } from '../../../backend/k8s/model/V1Namespace'
-import ResourceMetadataView from '../common/ResourceMetadataView.vue'
+import { V1Namespace } from '@backend/k8s/model/V1Namespace'
+import ResourceMetadataView from '@frontend/common/ResourceMetadataView.vue'
 
 const props = defineProps({
   ns: V1Namespace,

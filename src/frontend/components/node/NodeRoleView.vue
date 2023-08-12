@@ -2,7 +2,7 @@
 import { NTag } from 'naive-ui'
 import { ref } from 'vue'
 import _ from 'lodash'
-import { V1Node } from '../../../backend/k8s/model/V1Node'
+import { V1Node } from '@backend/k8s/model/V1Node'
 
 const props = defineProps({
   node: V1Node,

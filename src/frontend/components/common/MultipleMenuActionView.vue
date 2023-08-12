@@ -2,7 +2,7 @@
 import { NButton, NButtonGroup, NDropdown, NIcon, NSpace } from 'naive-ui'
 import type { Component } from 'vue'
 import { h } from 'vue'
-import type { ActionMenuOption } from '../../../backend/model/actionMenu'
+import type { ActionMenuOption } from '@backend/model/actionMenu'
 
 const props = defineProps({
   isDropdown: Boolean,

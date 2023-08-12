@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { NH6, NMessageProvider, NText } from 'naive-ui'
-import NsActionView from '../../components/ns/NsActionView.vue'
-import NsBasicInfoView from '../../components/ns/NsBasicInfoView.vue'
-import NsEventsView from '../../components/ns/NsEventsView.vue'
-import { V1Namespace } from '../../../backend/k8s/model/V1Namespace'
+import NsActionView from '@frontend/components/ns/NsActionView.vue'
+import NsBasicInfoView from '@frontend/components/ns/NsBasicInfoView.vue'
+import NsEventsView from '@frontend/components/ns/NsEventsView.vue'
+import { V1Namespace } from '@backend/k8s/model/V1Namespace'
 
 const props = defineProps({
   ns: V1Namespace,

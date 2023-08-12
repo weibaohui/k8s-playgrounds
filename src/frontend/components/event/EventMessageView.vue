@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { NCard, NTooltip } from 'naive-ui'
-import EventMessageTitleView from '../../components/event/EventMessageTitleView.vue'
-import { V1Event } from '../../../backend/k8s/model/V1Event'
+import { V1Event } from '@backend/k8s/model/V1Event'
+import EventMessageTitleView from '@frontend/components/event/EventMessageTitleView.vue'
 
 const props = defineProps({
   event: V1Event,

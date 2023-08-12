@@ -2,13 +2,13 @@
 import { CheckCircle, ExclamationCircle } from '@vicons/fa'
 import { NBadge, NButton, NCollapse, NCollapseItem, NIcon, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
-import ContainerStatusText from '../../components/container/ContainerStatusText.vue'
-import NodeView from '../../components/node/NodeView.vue'
-import { useDrawerService } from '../../service/drawer-service/use-drawer'
-import { K8sService } from '../../service/k8s/K8sService'
-import { DrawerHelper } from '../../service/page/DrawerHelper'
-import { V1Pod } from '../../../backend/k8s/model/V1Pod'
-import ResourceMetadataView from '../common/ResourceMetadataView.vue'
+import ContainerStatusText from '@frontend/components/container/ContainerStatusText.vue'
+import NodeView from '@frontend/components/node/NodeView.vue'
+import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
+import { K8sService } from '@frontend/service/k8s/K8sService'
+import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
+import { V1Pod } from '@backend/k8s/model/V1Pod'
+import ResourceMetadataView from '@frontend/common/ResourceMetadataView.vue'
 
 const props = defineProps({
   pod: V1Pod,

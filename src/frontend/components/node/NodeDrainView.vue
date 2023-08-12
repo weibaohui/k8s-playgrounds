@@ -3,10 +3,10 @@ import { debounce } from 'lodash'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { Terminal } from 'xterm'
 import { FitAddon } from 'xterm-addon-fit'
-import { TimerUtils } from '../../../backend/utils/TimerUtils'
-import { SocketIOService } from '../../service/k8s/SocketIOService'
+import { TimerUtils } from '@backend/utils/TimerUtils'
+import { SocketIOService } from '@frontend/service/k8s/SocketIOService'
+import { V1Node } from '@backend/k8s/model/V1Node'
 import 'xterm/css/xterm.css'
-import { V1Node } from '../../../backend/k8s/model/V1Node'
 
 const props = defineProps({
   node: V1Node,

@@ -2,8 +2,8 @@
 import { ExclamationTriangle } from '@vicons/fa'
 import { NCard, NIcon, NText, NTooltip } from 'naive-ui'
 import { ref } from 'vue'
-import { K8sService } from '../../service/k8s/K8sService'
-import { V1Pod } from '../../../backend/k8s/model/V1Pod'
+import { K8sService } from '@frontend/service/k8s/K8sService'
+import { V1Pod } from '@backend/k8s/model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,

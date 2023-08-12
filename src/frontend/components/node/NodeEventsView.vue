@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import EventsView from '../../components/event/EventsView.vue'
-import { K8sService } from '../../service/k8s/K8sService'
-import type { V1Event } from '../../../backend/k8s/model/V1Event'
-import { V1Node } from '../../../backend/k8s/model/V1Node'
+import EventsView from '@frontend/components/event/EventsView.vue'
+import { K8sService } from '@frontend/service/k8s/K8sService'
+import type { V1Event } from '@backend/k8s/model/V1Event'
+import { V1Node } from '@backend/k8s/model/V1Node'
 
 const props = defineProps({
   node: V1Node,

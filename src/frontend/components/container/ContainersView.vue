@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ArrowsAltH, Docker } from '@vicons/fa'
 import { NDivider, NIcon, NTable, NTag, NText } from 'naive-ui'
-import ContainerProbeView from '../../components/container/ContainerProbeView.vue'
-import ContainerState from '../../components/container/ContainerState.vue'
-import { V1Pod } from '../../../backend/k8s/model/V1Pod'
+import ContainerProbeView from '@frontend/components/container/ContainerProbeView.vue'
+import ContainerState from '@frontend/components/container/ContainerState.vue'
+import { V1Pod } from '@backend/k8s/model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,
