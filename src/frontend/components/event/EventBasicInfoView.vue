@@ -2,7 +2,7 @@
 import { NTable } from 'naive-ui'
 import moment from 'moment/moment'
 import { V1Event } from '@backend/k8s/model/V1Event'
-import ResourceMetadataView from '@frontend/common/ResourceMetadataView.vue'
+import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 
 const props = defineProps({
   event: V1Event,

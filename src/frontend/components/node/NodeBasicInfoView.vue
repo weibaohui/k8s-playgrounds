@@ -5,7 +5,7 @@ import { NBadge, NCollapse, NCollapseItem, NIcon, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
 import NodeRoleView from '@frontend/components/node/NodeRoleView.vue'
 import { V1Node } from '@backend/k8s/model/V1Node'
-import ResourceMetadataView from '@frontend/common/ResourceMetadataView.vue'
+import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 
 const props = defineProps({
   node: V1Node,

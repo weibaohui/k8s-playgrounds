@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import { CheckCircle, ExclamationCircle } from '@vicons/fa'
 import { NBadge, NButton, NCollapse, NCollapseItem, NIcon, NTable, NTag } from 'naive-ui'
 import { ref } from 'vue'
@@ -8,7 +9,6 @@ import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
 import { V1Pod } from '@backend/k8s/model/V1Pod'
-import ResourceMetadataView from '@frontend/common/ResourceMetadataView.vue'
 
 const props = defineProps({
   pod: V1Pod,
