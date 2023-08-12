@@ -95,18 +95,12 @@ export class EventHubGateway {
         this.logger.log('watch service is started')
         return
       }
-      this.k8sService.watchService.watch(ResType.Pods, (d) => {
-        return this.sendEvent(ResType.Pods, d)
-      })
-      this.k8sService.watchService.watch(ResType.Namespaces, (d) => {
-        return this.sendEvent(ResType.Namespaces, d)
-      })
-      this.k8sService.watchService.watch(ResType.Nodes, (d) => {
-        return this.sendEvent(ResType.Nodes, d)
-      })
-      this.k8sService.watchService.watch(ResType.Events, (d) => {
-        return this.sendEvent(ResType.Events, d)
-      })
+      // 枚举遍历监控的资源
+      for (const key in ResType) {
+        this.k8sService.watchService.watch(ResType[key], (d) => {
+          return this.sendEvent(ResType[key], d)
+        })
+      }
       this.watched = true
     })()
   }

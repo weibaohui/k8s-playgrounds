@@ -42,7 +42,7 @@ export class WatchService {
         watchPath = '/api/v1/pods'
         break
       case ResType.Deployments:
-        watchPath = '/api/v1/deployments'
+        watchPath = '/apis/apps/v1/deployments'
         break
       case ResType.Namespaces:
         watchPath = '/api/v1/namespaces'
