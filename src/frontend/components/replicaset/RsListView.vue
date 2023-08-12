@@ -112,6 +112,7 @@ async function getItemList() {
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
+  await K8sService.replicasetService.delete(keys)
 }
 
 function onNsChanged(ns: string) {
