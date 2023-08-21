@@ -6,7 +6,7 @@ export class ReplicaSetService {
     return await HttpClient.inst.get<V1ReplicaSet[]>(`/k8s/replicaset/${ns}`)
   }
 
-  async delete(rsNames: string[]) {
+  async deleteReplicaSets(rsNames: string[]) {
     await HttpClient.inst.post('/k8s/replicaset/delete/', rsNames)
   }
 }

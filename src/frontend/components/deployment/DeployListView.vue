@@ -5,9 +5,10 @@ import ResourceAgeView from '@frontend/components/common/ResourceAgeView.vue'
 import DeployActionView from '@frontend/components/deployment/DeployActionView.vue'
 import DeployConditionView from '@frontend/components/deployment/DeployConditionView.vue'
 import DeployView from '@frontend/components/deployment/DeployView.vue'
+import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NText } from 'naive-ui'
+import { NButton, NText, useDialog } from 'naive-ui'
 import { h, ref } from 'vue'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
@@ -17,6 +18,7 @@ import WorkloadListView from '@frontend/components/common/ResourceListView.vue'
 import PodWarnIcon from '@frontend/components/pod/PodWarnIcon.vue'
 
 const drawer = useDrawerService()
+const dialog = useDialog()
 const itemList = ref<V1Deployment[]>()
 const selectedNs = ref('default')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
@@ -121,7 +123,9 @@ async function getItemList() {
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
-  await K8sService.deploymentService.deleteDeployments(keys)
+  DialogHelper.instance.Dialog(dialog).Confirm('删除', async () => {
+    await K8sService.deploymentService.deleteDeployments(keys)
+  })
 }
 
 function onNsChanged(ns: string) {

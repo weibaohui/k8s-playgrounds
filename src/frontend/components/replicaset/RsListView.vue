@@ -3,9 +3,10 @@ import type { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import RsActionView from '@frontend/components/replicaset/RsActionView.vue'
 import RsView from '@frontend/components/replicaset/RsView.vue'
+import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton } from 'naive-ui'
+import { NButton, useDialog } from 'naive-ui'
 import { h, ref } from 'vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
@@ -14,6 +15,8 @@ import ResourceAgeView from '@frontend/components/common/ResourceAgeView.vue'
 import WorkloadListView from '@frontend/components/common/ResourceListView.vue'
 
 const drawer = useDrawerService()
+const dialog = useDialog()
+
 const selectedNs = ref('default')
 const itemList = ref<V1ReplicaSet[]>()
 const searchText = ref('')
@@ -112,18 +115,22 @@ async function getItemList() {
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
-  await K8sService.replicasetService.delete(keys)
+  DialogHelper.instance.Dialog(dialog).Confirm('删除', async () => {
+    await K8sService.replicasetService.deleteReplicaSets(keys)
+  })
 }
 
 function onNsChanged(ns: string) {
   selectedNs.value = ns
   getItemList()
 }
+
 function onTextChanged(text: string) {
   searchText.value = text
   if (!_.isEmpty(searchText.value))
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
+
 getItemList()
 TimerUtils.everyTwoSeconds(() => {
   getItemList()

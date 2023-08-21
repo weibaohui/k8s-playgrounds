@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ResType } from '@backend/k8s/watch/watch.model'
+import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NSpace } from 'naive-ui'
+import { NButton, NSpace, useDialog } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Event } from '@backend/k8s/model/V1Event'
 import type { V1Namespace } from '@backend/k8s/model/V1Namespace'
@@ -17,6 +18,7 @@ import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 
 const drawer = useDrawerService()
+const dialog = useDialog()
 const itemList = ref<V1Event[]>()
 const selectedNs = ref('default')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
@@ -118,7 +120,9 @@ async function getItemList() {
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
-  await K8sService.eventService.deleteEvents(keys)
+  DialogHelper.instance.Dialog(dialog).Confirm('删除', async () => {
+    await K8sService.eventService.deleteEvents(keys)
+  })
 }
 
 function onNsChanged(ns: string) {

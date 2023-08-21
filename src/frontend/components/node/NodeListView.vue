@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ResType } from '@backend/k8s/watch/watch.model'
+import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NSpace } from 'naive-ui'
+import { NButton, NSpace, useDialog } from 'naive-ui'
 import { h, ref } from 'vue'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import ResourceAgeView from '@frontend/components/common/ResourceAgeView.vue'
@@ -17,6 +18,7 @@ import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
 import type { V1Node } from '@backend/k8s/model/V1Node'
 
 const drawer = useDrawerService()
+const dialog = useDialog()
 
 const itemList = ref<V1Node[]>()
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
@@ -117,6 +119,11 @@ async function getItemList() {
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
+  DialogHelper.instance.Dialog(dialog).Confirm('删除', async () => {
+    keys.forEach((n) => {
+      K8sService.nodeService.deleteNode(n)
+    })
+  })
 }
 
 function onTextChanged(text: string) {
