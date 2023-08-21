@@ -3,11 +3,11 @@ import { HttpClient } from '@backend/utils/axios/HttpClient'
 
 export class DeploymentService {
   async getDeploymentList(ns: string): Promise<V1Deployment[]> {
-    return await HttpClient.inst.get<V1Deployment[]>(`/k8s/deployment/${ns}`)
+    return await HttpClient.inst.get<V1Deployment[]>(`/k8s/deployment/ns/${ns}`)
   }
 
   async getDeployment(ns: string, name: string): Promise<V1Deployment> {
-    return await HttpClient.inst.get<V1Deployment>(`/k8s/deployment/${ns}/${name}`)
+    return await HttpClient.inst.get<V1Deployment>(`/k8s/deployment/ns/${ns}/name/${name}`)
   }
 
   async restartDeployment(ns: string, name: string): Promise<V1Deployment> {

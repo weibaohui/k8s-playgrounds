@@ -20,13 +20,13 @@ async function openDrawer() {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(name, PodView, { pod: await K8sService.podService.getPod(ns, name) })
+        .show(`Pod:${name}`, PodView, { pod: await K8sService.podService.getPod(ns, name) })
       break
     case 'Node':
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(name, NodeView, { node: await K8sService.nodeService.getNode(name) })
+        .show(`Node:${name}`, NodeView, { node: await K8sService.nodeService.getNode(name) })
       break
     default:
       alert(`${kind}尚未实现`)

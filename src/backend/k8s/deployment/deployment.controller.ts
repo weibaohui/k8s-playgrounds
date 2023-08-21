@@ -17,7 +17,7 @@ export class DeploymentController {
     return await this.k8sService.deploymentService.getDeployments()
   }
 
-  @Get('/:ns')
+  @Get('/ns/:ns')
   async listByNs(@Param('ns') ns) {
     return await this.k8sService.deploymentService.getDeployments(ns)
   }
@@ -36,5 +36,10 @@ export class DeploymentController {
   @Get('/restart/:ns/:name')
   async restartDeployment(@Param('ns') ns, @Param('name') name) {
     return await this.k8sService.deploymentService.restartDeployment(ns, name)
+  }
+
+  @Get('/ns/:ns/name/:name')
+  async getByNsName(@Param('ns') ns, @Param('name') name) {
+    return await this.k8sService.deploymentService.getDeploymentByName(ns, name)
   }
 }

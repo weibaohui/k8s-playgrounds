@@ -40,7 +40,7 @@ function createColumns(): DataTableColumns<V1Node> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(row.metadata.name, NodeView, { node: row })
+                .show(`Node:${row.metadata.name}`, NodeView, { node: row })
             },
 
           },

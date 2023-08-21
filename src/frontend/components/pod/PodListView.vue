@@ -62,7 +62,7 @@ function createColumns(): DataTableColumns<V1Pod> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(row.metadata.name, PodView, { pod: row })
+                .show(`Pod:${row.metadata.name}`, PodView, { pod: row })
             },
           },
           [
@@ -122,7 +122,7 @@ function createColumns(): DataTableColumns<V1Pod> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(row.spec.nodeName, NodeView, { node: await K8sService.nodeService.getNode(row.spec.nodeName) })
+                .show(`Node:${row.spec.nodeName}`, NodeView, { node: await K8sService.nodeService.getNode(row.spec.nodeName) })
             },
           },
           { default: () => (row as V1Pod).spec.nodeName },

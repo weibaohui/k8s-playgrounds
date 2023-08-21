@@ -26,6 +26,12 @@ export class DeploymentService {
     return r.body
   }
 
+  async getDeploymentByName(ns: string, name: string) {
+    const k8sApi = this.clientService.getAppsV1Api()
+    const podResp = await k8sApi.readNamespacedDeployment(name, ns)
+    return podResp.body
+  }
+
   async restartDeployment(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const resp = await k8sApi.patchNamespacedDeployment(name, ns,

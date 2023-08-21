@@ -3,7 +3,11 @@ import { HttpClient } from '@backend/utils/axios/HttpClient'
 
 export class ReplicaSetService {
   async getReplicaSetList(ns?: string): Promise<V1ReplicaSet[]> {
-    return await HttpClient.inst.get<V1ReplicaSet[]>(`/k8s/replicaset/${ns}`)
+    return await HttpClient.inst.get<V1ReplicaSet[]>(`/k8s/replicaset/ns/${ns}`)
+  }
+
+  async getReplicaSet(ns: string, name: string): Promise<V1ReplicaSet> {
+    return await HttpClient.inst.get<V1ReplicaSet>(`/k8s/replicaset/ns/${ns}/name/${name}`)
   }
 
   async deleteReplicaSets(rsNames: string[]) {

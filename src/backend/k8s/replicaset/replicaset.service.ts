@@ -19,6 +19,12 @@ export class ReplicasetService {
     return podResp.body.items
   }
 
+  async getReplicaSetByName(ns: string, name: string) {
+    const k8sApi = this.clientService.getAppsV1Api()
+    const podResp = await k8sApi.readNamespacedReplicaSet(name, ns)
+    return podResp.body
+  }
+
   async deleteReplicaSet(name: string, ns: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const r = await k8sApi.deleteNamespacedReplicaSet(name, ns)

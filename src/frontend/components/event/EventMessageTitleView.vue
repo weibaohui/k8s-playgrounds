@@ -17,7 +17,7 @@ async function showEventView(x: V1Event) {
   DrawerHelper
     .instance
     .drawer(drawer)
-    .show(x.metadata.name, EventView, { event: x })
+    .show(`Event:${x.metadata.name}`, EventView, { event: x })
 }
 </script>
 

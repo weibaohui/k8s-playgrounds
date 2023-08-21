@@ -29,7 +29,7 @@ async function showNodeView(name: string) {
   DrawerHelper
     .instance
     .drawer(drawer)
-    .show(name, NodeView, { node: await K8sService.nodeService.getNode(name) })
+    .show(`Node:${name}`, NodeView, { node: await K8sService.nodeService.getNode(name) })
 }
 </script>
 

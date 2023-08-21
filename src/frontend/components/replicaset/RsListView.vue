@@ -39,7 +39,7 @@ function createColumns(): DataTableColumns<V1ReplicaSet> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(row.metadata.name, RsView, { rs: row })
+                .show(`ReplicaSet:${row.metadata.name}`, RsView, { rs: row })
             },
           },
           { default: () => row.metadata.name },
