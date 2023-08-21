@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ResType } from '@backend/k8s/watch/watch.model'
+import ControlledByView from '@frontend/components/common/ControlledByView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
@@ -35,25 +36,25 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'Namespace',
       key: 'metadata.namespace',
-      render(row) {
+      render(row: V1Pod) {
         return h(
           NButton,
           {
             text: true,
             onClick: () => {
-              selectedNs.value = (row as V1Pod).metadata.namespace
+              selectedNs.value = row.metadata.namespace
               workloadListViewRef.value.setNsSelected(selectedNs.value)
               getItemList()
             },
           },
-          { default: () => (row as V1Pod).metadata.namespace },
+          { default: () => row.metadata.namespace },
         )
       },
     },
     {
       title: 'Name',
       key: 'metadata.name',
-      render(row) {
+      render(row: V1Pod) {
         return h(
           NButton,
           {
@@ -66,8 +67,8 @@ function createColumns(): DataTableColumns<V1Pod> {
             },
           },
           [
-            h(NText, (row as V1Pod).metadata.name),
-            h(PodWarnIcon, { pod: row as V1Pod }),
+            h(NText, row.metadata.name),
+            h(PodWarnIcon, { pod: row }),
           ],
         )
       },
@@ -75,10 +76,10 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'Ready',
       key: 'Ready',
-      render(row) {
+      render(row: V1Pod) {
         return h(ContainerReadyCount,
           {
-            pod: row as V1Pod,
+            pod: row,
           },
         )
       },
@@ -86,10 +87,22 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'Restarts',
       key: 'Restarts',
-      render(row) {
+      render(row: V1Pod) {
         return h(ContainerRestartCount,
           {
-            pod: row as V1Pod,
+            pod: row,
+          },
+        )
+      },
+    },
+    {
+      title: 'ControlledBy',
+      key: 'ControlledBy',
+      render(row: V1Pod) {
+        return h(ControlledByView,
+          {
+            item: row.metadata,
+            simple: true,
           },
         )
       },
@@ -97,10 +110,10 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'Status',
       key: 'status.phase',
-      render(row) {
+      render(row: V1Pod) {
         return h(ContainerStatusText,
           {
-            pod: row as V1Pod,
+            pod: row,
           },
         )
       },
@@ -113,7 +126,7 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'Node',
       key: 'spec.nodeName',
-      render(row) {
+      render(row: V1Pod) {
         return h(
           NButton,
           {
@@ -125,7 +138,7 @@ function createColumns(): DataTableColumns<V1Pod> {
                 .show(`Node:${row.spec.nodeName}`, NodeView, { node: await K8sService.nodeService.getNode(row.spec.nodeName) })
             },
           },
-          { default: () => (row as V1Pod).spec.nodeName },
+          { default: () => row.spec.nodeName },
         )
       },
     },
@@ -137,10 +150,10 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'Containers',
       key: 'Containers',
-      render(row) {
+      render(row: V1Pod) {
         return h(ContainerStatusIcon,
           {
-            pod: row as V1Pod,
+            pod: row,
           },
         )
       },
@@ -148,7 +161,7 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'Age',
       key: 'age',
-      render(row) {
+      render(row: V1Pod) {
         return h(ResourceAgeView,
           {
             item: row,
