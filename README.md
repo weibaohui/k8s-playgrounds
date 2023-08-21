@@ -12,13 +12,13 @@
 - In the project folder: 
   ```bash
   # install dependencies
-  yarn # npm install
+  pnpm install # npm install
 
   # run in developer mode
-  yarn dev # npm run dev
+  pnpm dev # npm run dev
 
   # build
-  yarn build # npm run build
+  pnpm build # npm run build
   ```
 
 ## Note for PNPM
