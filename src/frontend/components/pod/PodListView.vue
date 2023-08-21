@@ -225,6 +225,7 @@ TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, R
     :columns="createColumns()"
     :item-list="itemList"
     :show-ns-select="true"
+    name="Pods"
     @on-ns-changed="onNsChanged"
     @on-remove-btn-clicked="onRemoveBtnClicked"
     @on-text-changed="onTextChanged"

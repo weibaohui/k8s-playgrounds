@@ -143,6 +143,7 @@ TimerUtils.everyTwoSeconds(() => {
     :columns="createColumns()"
     :item-list="itemList"
     :show-ns-select="true"
+    name="Replica Sets"
     @on-remove-btn-clicked="onRemoveBtnClicked"
     @on-text-changed="onTextChanged"
     @on-ns-changed="onNsChanged"

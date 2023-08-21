@@ -113,6 +113,7 @@ TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, R
     :columns="createColumns()"
     :item-list="itemList"
     :show-ns-select="false"
+    name="Namespaces"
     @on-remove-btn-clicked="onRemoveBtnClicked"
     @on-text-changed="onTextChanged"
   />
