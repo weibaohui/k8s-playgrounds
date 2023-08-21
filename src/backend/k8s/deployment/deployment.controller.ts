@@ -33,9 +33,14 @@ export class DeploymentController {
     return {}
   }
 
-  @Get('/restart/:ns/:name')
+  @Get('/restart/ns/:ns/name/:name')
   async restartDeployment(@Param('ns') ns, @Param('name') name) {
     return await this.k8sService.deploymentService.restartDeployment(ns, name)
+  }
+
+  @Post('/scale/ns/:ns/name/:name/replicas/:replicas')
+  async scaleDeployment(@Param('ns') ns, @Param('name') name, @Param('replicas') replicas) {
+    return await this.k8sService.deploymentService.scaleDeployment(ns, name, replicas)
   }
 
   @Get('/ns/:ns/name/:name')

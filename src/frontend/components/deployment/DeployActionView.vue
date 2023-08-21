@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { V1Deployment } from '@backend/k8s/model/V1Deployment'
+import DeployScaleView from '@frontend/components/deployment/DeployScaleView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
-import { Edit, RedoAlt, Trash } from '@vicons/fa'
+import { Edit, ExpandArrowsAlt, RedoAlt, Trash } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import MonacoView from '@frontend/components/common/MonacoView.vue'
@@ -20,6 +21,15 @@ const message = useMessage()
 const drawer = useDrawerService()
 function getOptions(): ActionMenuOption[] {
   return [
+    {
+      label: 'Scale',
+      key: 'Scale',
+      icon: ExpandArrowsAlt,
+      action: async () => DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(`Scale Deployment:${props.deploy.metadata.name}`, DeployScaleView, { deploy: props.deploy }),
+    },
     {
       label: 'Restart',
       key: 'Restart',

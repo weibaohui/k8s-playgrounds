@@ -56,4 +56,22 @@ export class DeploymentService {
       })
     return resp.body
   }
+
+  async scaleDeployment(ns: string, name: string, replicas: string) {
+    const k8sApi = this.clientService.getAppsV1Api()
+    const resp = await k8sApi.patchNamespacedDeploymentScale(name, ns,
+      {
+        spec: {
+          replicas: Number.parseInt(replicas),
+        },
+      }, 'true', undefined,
+      undefined, undefined, undefined,
+      {
+        headers: {
+          'Content-Type': 'application/merge-patch+json',
+          'Accept': 'application/json, */*',
+        },
+      })
+    return resp.body
+  }
 }

@@ -11,8 +11,8 @@ import {
   NLayout,
   NLayoutSider,
   NMenu,
-  NSpace,
-  darkTheme,
+  NNotificationProvider,
+  NSpace, darkTheme,
 } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import DrawerServiceProvider from './service/drawer-service/DrawerServiceProvider'
@@ -140,11 +140,13 @@ router.push('/pods')
           />
         </NLayoutSider>
         <NLayout>
-          <NDialogProvider>
-            <DrawerServiceProvider>
-              <RouterView />
-            </DrawerServiceProvider>
-          </NDialogProvider>
+          <NNotificationProvider :max="4">
+            <NDialogProvider>
+              <DrawerServiceProvider>
+                <RouterView />
+              </DrawerServiceProvider>
+            </NDialogProvider>
+          </NNotificationProvider>
         </NLayout>
       </NLayout>
     </NSpace>
