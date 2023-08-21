@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Edit } from '@vicons/fa'
+import { K8sService } from '@frontend/service/k8s/K8sService'
+import { DialogHelper } from '@frontend/service/page/DialogHelper'
+import { Edit, Trash } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import { V1Event } from '@backend/k8s/model/V1Event'
@@ -26,6 +28,17 @@ function getOptions(): ActionMenuOption[] {
         .instance
         .drawer(drawer)
         .showWider(props.event.metadata.name, MonacoView, { item: props.event }),
+    },
+
+    {
+      label: 'Delete',
+      key: 'Delete',
+      icon: Trash,
+      action: () =>
+        DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `${props.event.metadata.namespace}/${props.event.metadata.name}`, async () => {
+          await K8sService.eventService.deleteEvents([`${props.event.metadata.namespace}/${props.event.metadata.name}`])
+          drawer.close()
+        }),
     },
   ]
 }

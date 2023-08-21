@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { ResType } from '@backend/k8s/watch/watch.model'
+import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NText } from 'naive-ui'
+import { NButton, NText, useDialog } from 'naive-ui'
 import { h, ref } from 'vue'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import type { V1Pod } from '@backend/k8s/model/V1Pod'
@@ -21,6 +22,8 @@ import PodView from '@frontend/components/pod/PodView.vue'
 import PodWarnIcon from '@frontend/components/pod/PodWarnIcon.vue'
 
 const drawer = useDrawerService()
+const dialog = useDialog()
+
 const itemList = ref<V1Pod[]>()
 const selectedNs = ref('default')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
@@ -182,7 +185,9 @@ async function getItemList() {
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
-  await K8sService.podService.deletePods(keys)
+  DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
+    await K8sService.podService.deletePods(keys)
+  })
 }
 
 function onNsChanged(ns: string) {

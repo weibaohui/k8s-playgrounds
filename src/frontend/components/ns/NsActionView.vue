@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Trash } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
@@ -32,20 +33,13 @@ function getOptions(): ActionMenuOption[] {
       label: 'Delete',
       key: 'Delete',
       icon: Trash,
-      action: () => dialog.warning({
-        title: '警告',
-        content: `你确定删除Namespace：${props.ns.metadata.name}吗?`,
-        positiveText: '删除',
-        negativeText: '放弃',
-        onPositiveClick: async () => {
+      action: () =>
+        DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `Namespace：${props.ns.metadata.name}`, async () => {
           await K8sService.namespaceService.deleteNamespaces([`${props.ns.metadata.namespace}`])
           drawer.close()
-        },
-        onNegativeClick: () => {
-          message.error('放弃删除')
-        },
-      }),
+        }),
     },
+
   ]
 }
 </script>

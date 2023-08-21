@@ -123,7 +123,7 @@ async function getItemList() {
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
-  DialogHelper.instance.Dialog(dialog).Confirm('删除', async () => {
+  DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
     await K8sService.deploymentService.deleteDeployments(keys)
   })
 }
