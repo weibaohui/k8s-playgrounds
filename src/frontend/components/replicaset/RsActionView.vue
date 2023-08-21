@@ -38,7 +38,7 @@ function getOptions(): ActionMenuOption[] {
         positiveText: '删除',
         negativeText: '放弃',
         onPositiveClick: async () => {
-          await K8sService.replicasetService.delete([`${props.rs.metadata.namespace}/${props.rs.metadata.name}`])
+          await K8sService.replicasetService.deleteReplicaSets([`${props.rs.metadata.namespace}/${props.rs.metadata.name}`])
           drawer.close()
         },
         onNegativeClick: () => {
