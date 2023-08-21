@@ -16,7 +16,6 @@ const props = defineProps({
   <NMessageProvider>
     <PodActionView :is-dropdown="false" :pod="props.pod" />
   </NMessageProvider>
-
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
       Basic Info
