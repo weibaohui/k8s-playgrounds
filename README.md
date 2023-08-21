@@ -7,19 +7,6 @@
 使用Vue、TypeScript、Electron技术打造的k8s playground客户端。
 框架上使用了NaiveUI+NestJS。
 使用ChatGPT进行智能化加持，做使用简单、智能的k8s 管理UI。
-
-## Features
-
-- 🔨 资源管理：Node、Pod、Deployment.
-<br>
-
-- 🛻 命令执行：Pod Exec.
-<br>
-
-- 🪟 日志查看：Pod Log.
-<br>
-
-
 ## How to use
 
 - In the project folder: 
