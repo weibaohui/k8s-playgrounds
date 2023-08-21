@@ -20,7 +20,7 @@ export class DeploymentService {
     return podResp.body.items
   }
 
-  async deleteDeployments(ns: string, name: string) {
+  async deleteDeployment(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const r = await k8sApi.deleteNamespacedDeployment(name, ns)
     return r.body

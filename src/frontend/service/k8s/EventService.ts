@@ -10,6 +10,10 @@ export class EventService {
     return await HttpClient.inst.get<V1Event[]>(`/k8s/event/${ns}`)
   }
 
+  async deleteEvents(nsName: string[]) {
+    await HttpClient.inst.post('/k8s/event/delete/', nsName)
+  }
+
   async getEventListWithFieldSelector(ns?: string, selector?: string) {
     return await HttpClient.inst.get<V1Event[]>(`/k8s/event/${ns}/${selector}`)
   }

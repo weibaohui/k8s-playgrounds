@@ -118,7 +118,7 @@ async function getItemList() {
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
-
+  await K8sService.eventService.deleteEvents(keys)
 }
 
 function onNsChanged(ns: string) {

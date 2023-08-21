@@ -18,4 +18,10 @@ export class EventService {
     const events = await k8sApi.listNamespacedEvent(ns, undefined, undefined, undefined, fieldSelector)
     return events.body.items
   }
+
+  async deleteEvent(ns: string, name: string) {
+    const k8sApi = this.clientService.getCoreV1Api()
+    const r = await k8sApi.deleteNamespacedEvent(name, ns)
+    return r.body
+  }
 }

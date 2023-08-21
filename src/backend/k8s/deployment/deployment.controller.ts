@@ -23,12 +23,12 @@ export class DeploymentController {
   }
 
   @Post('/delete')
-  async delReplicaSet(@Body() nsn: Array<string>) {
+  async delDeployment(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]
       const name = nsname[1]
-      this.k8sService.deploymentService.deleteDeployments(ns, name)
+      this.k8sService.deploymentService.deleteDeployment(ns, name)
     })
     return {}
   }
