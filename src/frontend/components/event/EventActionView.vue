@@ -2,7 +2,7 @@
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Trash } from '@vicons/fa'
-import { useDialog, useMessage } from 'naive-ui'
+import { useDialog } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import { V1Event } from '@backend/k8s/model/V1Event'
 import MonacoView from '@frontend/components/common/MonacoView.vue'
@@ -16,7 +16,6 @@ const props = defineProps({
 })
 
 const dialog = useDialog()
-const message = useMessage()
 const drawer = useDrawerService()
 function getOptions(): ActionMenuOption[] {
   return [

@@ -14,10 +14,8 @@ import WorkloadListView from '@frontend/components/common/ResourceListView.vue'
 import EventActionView from '@frontend/components/event/EventActionView.vue'
 import EventInvolvedClickAction from '@frontend/components/event/EventInvolvedClickAction.vue'
 import EventMessageView from '@frontend/components/event/EventMessageView.vue'
-import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 
-const drawer = useDrawerService()
 const dialog = useDialog()
 const itemList = ref<V1Event[]>()
 const selectedNs = ref('default')

@@ -4,14 +4,12 @@ import ResourceMetadataView from '@frontend/components/common/ResourceMetadataVi
 import DeployConditionView from '@frontend/components/deployment/DeployConditionView.vue'
 import { NBadge, NCollapse, NCollapseItem, NTable } from 'naive-ui'
 import { ref } from 'vue'
-import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 
 const props = defineProps({
   deploy: V1Deployment,
 })
 const isExpended = ref(false)
 const expendedText = ref('Hide')
-const drawer = useDrawerService()
 
 function getShowText() {
   expendedText.value = isExpended.value ? 'Hide' : 'Show'

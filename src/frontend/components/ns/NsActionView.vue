@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Trash } from '@vicons/fa'
-import { useDialog, useMessage } from 'naive-ui'
+import { useDialog } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import MonacoView from '@frontend/components/common/MonacoView.vue'
 import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'
@@ -16,7 +16,6 @@ const props = defineProps({
 })
 
 const dialog = useDialog()
-const message = useMessage()
 const drawer = useDrawerService()
 function getOptions(): ActionMenuOption[] {
   return [

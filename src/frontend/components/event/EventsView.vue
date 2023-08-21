@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
   <NCollapse>
-    <NCollapseItem v-for="x in eventList" :key="x.metadata.name">
+    <NCollapseItem v-for="x in props.eventList" :key="x.metadata.name">
       <NTable>
         <tr>
           <td class="left">
