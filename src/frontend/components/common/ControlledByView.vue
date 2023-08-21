@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { V1OwnerReference } from '@backend/k8s/model/V1OwnerReference'
 import DeployView from '@frontend/components/deployment/DeployView.vue'
+import NodeView from '@frontend/components/node/NodeView.vue'
 import RsView from '@frontend/components/replicaset/RsView.vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
@@ -29,6 +30,14 @@ async function showView(ns: string, item: V1OwnerReference) {
         .drawer(drawer)
         .show(`Deployment:${item.name}`, DeployView, { deploy: await K8sService.deploymentService.getDeployment(ns, item.name) })
       break
+    case 'Node':
+      DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(`Node:${item.name}`, NodeView, { node: await K8sService.nodeService.getNode(item.name) })
+      break
+    default:
+      alert('未实现')
   }
 }
 </script>
