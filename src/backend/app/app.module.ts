@@ -24,9 +24,9 @@ import { AppService } from './app.service'
           win.destroy()
         })
         const URL = isDev
-        // eslint-disable-next-line n/prefer-global/process
+
           ? process.env.DS_RENDERER_URL
-          : `file://${join(app.getAppPath(), 'dist/render/index.html')}`
+          : `file://${join(app.getAppPath(), 'dist/frontend/index.html')}`
 
         win.loadURL(URL)
 
