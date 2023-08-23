@@ -17,7 +17,7 @@
   # run in developer mode
   pnpm dev # npm run dev , ui display will be blank or error , please run pnpm gen command 
   pnpm gen # gen http client for call backend apis  
-
+  # if  command not found , run this : `npm install openapi-typescript-codegen -g`
   # build
   pnpm build # npm run build
   ```
@@ -92,8 +92,9 @@ shamefully-hoist=true
 | Deployment | 详情-查看yaml      | ✅       |
 | Deployment | 详情-Scale       | ✅       |
 ## 开发提示
- 
-k8s model 生成
+### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成
+ * 安装 ：npm install openapi-typescript-codegen -g
+### k8s model 生成
  * 使用https://editor.swagger.io/ 生成client，选择typescript-angular
  * 将文件名称中的ioK8sApiCore替换掉，文件内的处理掉。这样用起来方便
 
