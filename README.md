@@ -15,7 +15,8 @@
   pnpm install # npm install
 
   # run in developer mode
-  pnpm dev # npm run dev
+  pnpm dev # npm run dev , ui display will be blank or error , please run pnpm gen command 
+  pnpm gen # gen http client for call backend apis  
 
   # build
   pnpm build # npm run build

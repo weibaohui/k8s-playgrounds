@@ -13,17 +13,17 @@ export class ReplicasetController {
   ) {}
 
   @Get('/list')
-  async list() {
+  async getReplicaSets() {
     return await this.k8sService.replicasetService.getReplicaSets()
   }
 
   @Get('/ns/:ns')
-  async listByNs(@Param('ns') ns: string) {
+  async getReplicaSetsByNs(@Param('ns') ns: string) {
     return await this.k8sService.replicasetService.getReplicaSets(ns)
   }
 
   @Post('/delete')
-  async delReplicaSet(@Body() nsn: Array<string>) {
+  async deleteReplicaSet(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]
@@ -34,7 +34,7 @@ export class ReplicasetController {
   }
 
   @Get('/ns/:ns/name/:name')
-  async getByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+  async getReplicaSetByNsName(@Param('ns') ns: string, @Param('name') name: string) {
     return await this.k8sService.replicasetService.getReplicaSetByName(ns, name)
   }
 }

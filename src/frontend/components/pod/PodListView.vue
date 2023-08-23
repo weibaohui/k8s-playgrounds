@@ -1,16 +1,8 @@
 <script lang="ts" setup>
-import { ResType } from '@backend/k8s/watch/watch.model'
-import ControlledByView from '@frontend/components/common/ControlledByView.vue'
-import { DialogHelper } from '@frontend/service/page/DialogHelper'
-import _ from 'lodash'
-import type { DataTableColumns } from 'naive-ui'
-import { NButton, NText, useDialog } from 'naive-ui'
-import { h, ref } from 'vue'
-import { TimerUtils } from '@backend/utils/TimerUtils'
 import type { V1Pod } from '@backend/k8s/model/V1Pod'
-import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
-import { K8sService } from '@frontend/service/k8s/K8sService'
-import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
+import { ResType } from '@backend/k8s/watch/watch.model'
+import { TimerUtils } from '@backend/utils/TimerUtils'
+import ControlledByView from '@frontend/components/common/ControlledByView.vue'
 import ResourceAgeView from '@frontend/components/common/ResourceAgeView.vue'
 import WorkloadListView from '@frontend/components/common/ResourceListView.vue'
 import ContainerReadyCount from '@frontend/components/container/ContainerReadyCount.vue'
@@ -21,6 +13,14 @@ import NodeView from '@frontend/components/node/NodeView.vue'
 import PodActionView from '@frontend/components/pod/PodActionView.vue'
 import PodView from '@frontend/components/pod/PodView.vue'
 import PodWarnIcon from '@frontend/components/pod/PodWarnIcon.vue'
+import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
+import { K8sService } from '@frontend/service/k8s/K8sService'
+import { DialogHelper } from '@frontend/service/page/DialogHelper'
+import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
+import _ from 'lodash'
+import type { DataTableColumns } from 'naive-ui'
+import { NButton, NText, useDialog } from 'naive-ui'
+import { h, ref } from 'vue'
 
 const drawer = useDrawerService()
 const dialog = useDialog()
@@ -185,7 +185,8 @@ function createColumns(): DataTableColumns<V1Pod> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.podService.getPodList(selectedNs.value)
+  itemList.value = await K8sService.playService.podControllerGetPodListByNs({ ns: selectedNs.value })
+  // itemList.value = await K8sService.podService.getPodList(selectedNs.value)
   itemList.value.sort((a, b) => {
     if (a.status.startTime > b.status.startTime)
       return -1

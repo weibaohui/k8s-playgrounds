@@ -12,12 +12,12 @@ export class NsController {
   ) {}
 
   @Get('/list')
-  async ns() {
+  async getNamespaceList() {
     return await this.k8sService.nsService.getNsList()
   }
 
   @Post('/delete')
-  async delNs(@Body() nsn: Array<string>) {
+  async deleteNs(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const name = nsname[1]

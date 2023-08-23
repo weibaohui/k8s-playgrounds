@@ -9,12 +9,12 @@ export class PodController {
   ) {}
 
   @Get('/list')
-  async pods(): Promise<V1Pod[]> {
+  async getPodList(): Promise<V1Pod[]> {
     return await this.k8sService.podService.k8sPods()
   }
 
   @Get('/:ns')
-  async podsByNs(@Param('ns') ns: string): Promise<V1Pod[]> {
+  async getPodListByNs(@Param('ns') ns: string): Promise<V1Pod[]> {
     return await this.k8sService.podService.k8sPods(ns)
   }
 
@@ -24,7 +24,7 @@ export class PodController {
   }
 
   @Post('/delete')
-  async delPods(@Body() nsn: Array<string>): Promise<string> {
+  async deletePods(@Body() nsn: Array<string>): Promise<string> {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]

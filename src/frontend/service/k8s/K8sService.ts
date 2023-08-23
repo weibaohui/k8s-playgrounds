@@ -1,3 +1,4 @@
+import { Play } from '@frontend/generated'
 import { DeploymentService } from '@frontend/service/k8s/DeploymentService'
 import { EventService } from '@frontend/service/k8s/EventService'
 import { NamespaceService } from '@frontend/service/k8s/NamespaceService'
@@ -14,4 +15,6 @@ export class K8sService {
   static namespaceService = new NamespaceService()
   static replicasetService = new ReplicaSetService()
   static deploymentService: DeploymentService = new DeploymentService()
+
+  static playService = new Play({ BASE: 'http://127.0.0.1:3007' }).default
 }

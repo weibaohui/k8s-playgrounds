@@ -1,4 +1,3 @@
-import * as fs from 'node:fs'
 import process from 'node:process'
 import { NestFactory } from '@nestjs/core'
 import { app } from 'electron'
@@ -57,9 +56,8 @@ async function bootstrap() {
       .addTag('k8s-playgrounds')
       .build()
     const document = SwaggerModule.createDocument(nestApp2, options)
-    fs.writeFileSync('./swagger-spec.json', JSON.stringify(document))
+    // fs.writeFileSync('./swagger-spec.json', JSON.stringify(document))
     SwaggerModule.setup('api', nestApp2, document)
-
     await nestApp2.listen(3007)
     await nestApp.listen()
   }

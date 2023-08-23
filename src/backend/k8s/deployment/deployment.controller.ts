@@ -13,17 +13,17 @@ export class DeploymentController {
   ) {}
 
   @Get('/list')
-  async list() {
+  async getDeploymentList() {
     return await this.k8sService.deploymentService.getDeployments()
   }
 
   @Get('/ns/:ns')
-  async listByNs(@Param('ns') ns: string) {
+  async getDeploymentListByNs(@Param('ns') ns: string) {
     return await this.k8sService.deploymentService.getDeployments(ns)
   }
 
   @Post('/delete')
-  async delDeployment(@Body() nsn: Array<string>) {
+  async deleteDeployment(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]

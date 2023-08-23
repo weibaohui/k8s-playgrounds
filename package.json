@@ -10,7 +10,8 @@
     "build": "rimraf dist && vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "postinstall": "electron-builder install-app-deps"
+    "postinstall": "electron-builder install-app-deps",
+    "gen": "openapi --input http://127.0.0.1:3007/api-json --output ./src/frontend/generated --useOptions --name=Play"
   },
   "dependencies": {
     "@doubleshot/nest-electron": "^0.2.4",

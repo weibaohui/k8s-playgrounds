@@ -13,12 +13,12 @@ export class EventController {
   ) {}
 
   @Get('/:ns')
-  async eventsByNs(@Param('ns') ns: string) {
+  async getEventListByNs(@Param('ns') ns: string) {
     return await this.k8sService.eventService.events(ns)
   }
 
   @Get('/:ns/:selector')
-  async eventsByNsSelector(@Param('ns') ns: string, @Param('selector') selector: string) {
+  async getEventListByNsSelector(@Param('ns') ns: string, @Param('selector') selector: string) {
     return await this.k8sService.eventService.events(ns, selector)
   }
 

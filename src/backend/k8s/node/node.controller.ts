@@ -12,7 +12,7 @@ export class NodeController {
   ) {}
 
   @Get('/list')
-  async getNodes() {
+  async getNodeList() {
     return await this.k8sService.nodeService.getNodes()
   }
 
