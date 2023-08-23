@@ -17,22 +17,22 @@ export class NodeController {
   }
 
   @Get('/:name')
-  async getNode(@Param('name') name) {
+  async getNode(@Param('name') name: string) {
     return await this.k8sService.nodeService.getNode(name)
   }
 
   @Delete ('/:name')
-  async deleteNode(@Param('name') name) {
+  async deleteNode(@Param('name') name: string) {
     return await this.k8sService.nodeService.deleteNode(name)
   }
 
   @Get('/cordon/:name')
-  async cordonNode(@Param('name') name) {
+  async cordonNode(@Param('name') name: string) {
     return await this.k8sService.nodeService.cordonNode(name)
   }
 
   @Get('/unCordon/:name')
-  async unCordonNode(@Param('name') name) {
+  async unCordonNode(@Param('name') name: string) {
     return await this.k8sService.nodeService.unCordonNode(name)
   }
 }

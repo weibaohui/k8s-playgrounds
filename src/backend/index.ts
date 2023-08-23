@@ -1,8 +1,10 @@
+import * as fs from 'node:fs'
 import process from 'node:process'
 import { NestFactory } from '@nestjs/core'
 import { app } from 'electron'
 import type { MicroserviceOptions } from '@nestjs/microservices'
 import { ElectronIpcTransport } from '@doubleshot/nest-electron'
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { PlaygroundModule } from './playground.module'
 import { AppModule } from './app/app.module'
 
@@ -48,6 +50,16 @@ async function bootstrap() {
       },
     )
     nestApp2.enableCors()
+    const options = new DocumentBuilder()
+      .setTitle('k8s-playgrounds')
+      .setDescription('The  API description')
+      .setVersion('1.0')
+      .addTag('k8s-playgrounds')
+      .build()
+    const document = SwaggerModule.createDocument(nestApp2, options)
+    fs.writeFileSync('./swagger-spec.json', JSON.stringify(document))
+    SwaggerModule.setup('api', nestApp2, document)
+
     await nestApp2.listen(3007)
     await nestApp.listen()
   }

@@ -18,7 +18,7 @@ export class ReplicasetController {
   }
 
   @Get('/ns/:ns')
-  async listByNs(@Param('ns') ns) {
+  async listByNs(@Param('ns') ns: string) {
     return await this.k8sService.replicasetService.getReplicaSets(ns)
   }
 
@@ -34,7 +34,7 @@ export class ReplicasetController {
   }
 
   @Get('/ns/:ns/name/:name')
-  async getByNsName(@Param('ns') ns, @Param('name') name) {
+  async getByNsName(@Param('ns') ns: string, @Param('name') name: string) {
     return await this.k8sService.replicasetService.getReplicaSetByName(ns, name)
   }
 }
