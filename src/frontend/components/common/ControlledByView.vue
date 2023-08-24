@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { V1OwnerReference } from '@backend/k8s/model/V1OwnerReference'
+import DsView from '@frontend/components/daemonset/DsView.vue'
 import DeployView from '@frontend/components/deployment/DeployView.vue'
 import NodeView from '@frontend/components/node/NodeView.vue'
 import RsView from '@frontend/components/replicaset/RsView.vue'
@@ -22,7 +23,7 @@ async function showView(ns: string, item: V1OwnerReference) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`ReplicaSet:${item.name}`, RsView, { ds: await K8sService.playService.replicasetControllerGetReplicaSetByNsName({ ns, name: item.name }) })
+        .show(`ReplicaSet:${item.name}`, RsView, { rs: await K8sService.playService.replicasetControllerGetReplicaSetByNsName({ ns, name: item.name }) })
       break
     case 'Deployment':
       DrawerHelper
@@ -35,6 +36,12 @@ async function showView(ns: string, item: V1OwnerReference) {
         .instance
         .drawer(drawer)
         .show(`Node:${item.name}`, NodeView, { node: await K8sService.playService.nodeControllerGetNode({ name: item.name }) })
+      break
+    case 'DaemonSet':
+      DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(`DaemonSet:${item.name}`, DsView, { ds: await K8sService.playService.daemonSetControllerGetDaemonSetByNsName({ ns, name: item.name }) })
       break
     default:
       alert('未实现')
