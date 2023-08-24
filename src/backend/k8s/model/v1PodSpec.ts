@@ -28,7 +28,7 @@ import type { IoK8sApimachineryPkgApiResourceQuantity } from './ioK8sApimachiner
 /**
  * PodSpec is a description of a pod.
  */
-export interface V1PodSpec {
+export class V1PodSpec {
   /**
      * Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.
      */

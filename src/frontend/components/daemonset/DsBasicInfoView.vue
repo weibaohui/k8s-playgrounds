@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { V1DaemonSet } from '@backend/k8s/model/V1DaemonSet'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import PodSpecView from '@frontend/components/pod/PodSpecView.vue'
 import { NTable } from 'naive-ui'
 
 const props = defineProps({
@@ -10,6 +11,8 @@ const props = defineProps({
 
 <template>
   <ResourceMetadataView :item="props.ds.metadata" />
+  <PodSpecView :spec="props.ds.spec.template.spec" />
+
   <NTable :single-line="false">
     <tbody>
       <tr>
