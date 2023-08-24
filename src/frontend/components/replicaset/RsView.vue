@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
+import { SelectorUtils } from '@backend/utils/SelectorUtils'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import RsActionView from '@frontend/components/replicaset/RsActionView.vue'
 import RsBasicInfoView from '@frontend/components/replicaset/RsBasicInfoView.vue'
+import { K8sService } from '@frontend/service/k8s/K8sService'
 import { NH6, NMessageProvider, NText } from 'naive-ui'
 
 const props = defineProps({
   rs: V1ReplicaSet,
 })
+const selector = SelectorUtils.getSelector(props.rs.spec.selector)
+const pods = await K8sService.playService.podControllerGetPodsByLabelSelector({ selector })
+console.log('podControllerGetPodsByLabelSelector', pods)
 </script>
 
 <template>

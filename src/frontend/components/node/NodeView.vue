@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
+import { K8sService } from '@frontend/service/k8s/K8sService'
 import { NH6, NMessageProvider, NText } from 'naive-ui'
 import NodeActionView from '@frontend/components/node/NodeActionView.vue'
 import NodeBasicInfoView from '@frontend/components/node/NodeBasicInfoView.vue'
@@ -9,6 +10,8 @@ import { V1Node } from '@backend/k8s/model/V1Node'
 const props = defineProps({
   node: V1Node,
 })
+const pods = await K8sService.playService.podControllerGetPodListByNodeName({ name: props.node.metadata.name })
+console.log('node', pods)
 </script>
 
 <template>

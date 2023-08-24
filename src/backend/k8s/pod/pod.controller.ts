@@ -18,9 +18,19 @@ export class PodController {
     return await this.k8sService.podService.k8sPods(ns)
   }
 
-  @Get('/:ns/:name')
+  @Get('/ns/:ns/name/:name')
   async getPodByNsName(@Param('ns') ns: string, @Param('name') name: string): Promise<V1Pod> {
     return await this.k8sService.podService.getPod(ns, name)
+  }
+
+  @Get('/node/:name')
+  async getPodListByNodeName(@Param('name') name: string) {
+    return await this.k8sService.podService.getPodsByNodeName(name)
+  }
+
+  @Get('/LabelSelector/:selector')
+  async getPodsByLabelSelector(@Param('selector') selector: string) {
+    return await this.k8sService.podService.getPodsByLabelSelector(selector)
   }
 
   @Post('/delete')

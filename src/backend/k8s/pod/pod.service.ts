@@ -129,6 +129,23 @@ export class PodService {
     return podResp.body
   }
 
+  async getPodsByNodeName(nodeName: string) {
+    const selector = `spec.nodeName=${nodeName}`
+    return this.getPodsByFieldSelector(selector)
+  }
+
+  async getPodsByLabelSelector(selector: string) {
+    const k8sApi = this.clientService.getK8sApi()
+    const podResp = await k8sApi.listPodForAllNamespaces(undefined, undefined, undefined, selector)
+    return podResp.body.items
+  }
+
+  async getPodsByFieldSelector(selector: string) {
+    const k8sApi = this.clientService.getK8sApi()
+    const podResp = await k8sApi.listPodForAllNamespaces(undefined, undefined, selector)
+    return podResp.body.items
+  }
+
   async deletePods(name: string, ns: string) {
     const k8sApi = this.clientService.getK8sApi()
     const r = await k8sApi.deleteNamespacedPod(name, ns)
