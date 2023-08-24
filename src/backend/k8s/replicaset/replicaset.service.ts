@@ -15,14 +15,14 @@ export class ReplicasetService {
       const res = await k8sApi.listReplicaSetForAllNamespaces()
       return res.body.items
     }
-    const podResp = await k8sApi.listNamespacedReplicaSet(ns)
-    return podResp.body.items
+    const resp = await k8sApi.listNamespacedReplicaSet(ns)
+    return resp.body.items
   }
 
   async getReplicaSetByName(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
-    const podResp = await k8sApi.readNamespacedReplicaSet(name, ns)
-    return podResp.body
+    const resp = await k8sApi.readNamespacedReplicaSet(name, ns)
+    return resp.body
   }
 
   async deleteReplicaSet(name: string, ns: string) {

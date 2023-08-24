@@ -16,8 +16,8 @@ export class DeploymentService {
       const res = await k8sApi.listDeploymentForAllNamespaces()
       return res.body.items
     }
-    const podResp = await k8sApi.listNamespacedDeployment(ns)
-    return podResp.body.items
+    const resp = await k8sApi.listNamespacedDeployment(ns)
+    return resp.body.items
   }
 
   async deleteDeployment(ns: string, name: string) {
@@ -28,8 +28,8 @@ export class DeploymentService {
 
   async getDeploymentByName(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
-    const podResp = await k8sApi.readNamespacedDeployment(name, ns)
-    return podResp.body
+    const resp = await k8sApi.readNamespacedDeployment(name, ns)
+    return resp.body
   }
 
   async restartDeployment(ns: string, name: string) {
