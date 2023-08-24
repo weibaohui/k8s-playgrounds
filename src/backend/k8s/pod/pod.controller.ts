@@ -35,7 +35,7 @@ export class PodController {
   }
 
   @Get('/log/file/:ns/:podName/:containerName')
-  getPodContainerLogs(@Param('ns') ns: string,
+  getPodContainerLogsUrl(@Param('ns') ns: string,
                       @Param('podName') podName: string,
                       @Param('containerName') containerName: string): StreamableFile {
     const file = this.k8sService.podService.getPodContainerLogs(ns, podName, containerName)
