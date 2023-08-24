@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
+import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import RsActionView from '@frontend/components/replicaset/RsActionView.vue'
 import RsBasicInfoView from '@frontend/components/replicaset/RsBasicInfoView.vue'
-import RsEventsView from '@frontend/components/replicaset/RsEventsView.vue'
 import { NH6, NMessageProvider, NText } from 'naive-ui'
 
 const props = defineProps({
@@ -25,7 +25,7 @@ const props = defineProps({
       Events
     </NText>
   </NH6>
-  <RsEventsView :rs="rs" />
+  <InvolvedEventView :item="props.rs.metadata" />
 </template>
 
 <style scoped>

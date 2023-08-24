@@ -1,20 +1,23 @@
 <script setup lang="ts">
+import { V1ObjectMeta } from '@backend/k8s/model/V1ObjectMeta'
 import EventsView from '@frontend/components/event/EventsView.vue'
 import { ref } from 'vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import type { V1Event } from '@backend/k8s/model/V1Event'
-import { V1Pod } from '@backend/k8s/model/V1Pod'
 
 const props = defineProps({
-  pod: V1Pod,
+  item: V1ObjectMeta,
 })
 const eventList = ref<V1Event[]>()
 
-async function getPodEventsList() {
-  eventList.value = await K8sService.eventService.getPodEventList(props.pod)
+async function getEventsList() {
+  eventList.value = await K8sService.playService.eventControllerGetInvolvedEventListByNsName({
+    ns: props.item.namespace,
+    name: props.item.name,
+  })
 }
 
-getPodEventsList()
+getEventsList()
 </script>
 
 <template>

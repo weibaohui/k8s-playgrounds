@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { V1Deployment } from '@backend/k8s/model/V1Deployment'
+import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import DeployActionView from '@frontend/components/deployment/DeployActionView.vue'
 import DeployBasicInfoView from '@frontend/components/deployment/DeployBasicInfoView.vue'
-import DeployEventsView from '@frontend/components/deployment/DeployEventsView.vue'
 import { NH6, NMessageProvider, NText } from 'naive-ui'
 
 const props = defineProps({
@@ -26,5 +26,5 @@ const props = defineProps({
       Events
     </NText>
   </NH6>
-  <DeployEventsView :deploy="props.deploy" />
+  <InvolvedEventView :item="props.deploy.metadata" />
 </template>

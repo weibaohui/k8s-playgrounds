@@ -17,9 +17,10 @@ export class EventController {
     return await this.k8sService.eventService.events(ns)
   }
 
-  @Get('/:ns/:selector')
-  async getEventListByNsSelector(@Param('ns') ns: string, @Param('selector') selector: string) {
-    return await this.k8sService.eventService.events(ns, selector)
+  @Get('/ns/:ns/name/:name')
+  async getInvolvedEventListByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+    const fieldSelector = `involvedObject.name=${name},involvedObject.namespace=${ns}`
+    return await this.k8sService.eventService.events(ns, fieldSelector)
   }
 
   @Post('/delete')

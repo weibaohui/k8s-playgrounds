@@ -1,3 +1,4 @@
+import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
 import { Injectable, Logger } from '@nestjs/common'
@@ -20,5 +21,6 @@ export class K8sService {
     public clientService: ClientService,
     public replicasetService: ReplicasetService,
     public deploymentService: DeploymentService,
+    public daemonSetService: DaemonSetService,
     public watchService: WatchService) {}
 }

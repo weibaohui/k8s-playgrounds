@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import { NH6, NMessageProvider, NText } from 'naive-ui'
 import NsActionView from '@frontend/components/ns/NsActionView.vue'
 import NsBasicInfoView from '@frontend/components/ns/NsBasicInfoView.vue'
-import NsEventsView from '@frontend/components/ns/NsEventsView.vue'
 import { V1Namespace } from '@backend/k8s/model/V1Namespace'
 
 const props = defineProps({
@@ -25,7 +25,7 @@ const props = defineProps({
       Events
     </NText>
   </NH6>
-  <NsEventsView :ns="ns" />
+  <InvolvedEventView :item="props.ns.metadata" />
 </template>
 
 <style scoped>

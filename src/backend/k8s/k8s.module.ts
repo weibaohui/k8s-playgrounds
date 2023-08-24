@@ -1,3 +1,5 @@
+import { DaemonSetController } from '@backend/k8s/daemonset/daemonset.controller'
+import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
 import { DeploymentController } from '@backend/k8s/deployment/deployment.controller'
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
@@ -21,12 +23,14 @@ import { ReplicasetController } from '@backend/k8s/replicaset/replicaset.control
   imports: [ConfigModule.forRoot({ isGlobal: true }), ScheduleModule.forRoot()],
   controllers: [
     EventController, NodeController, NsController,
-    PodController, ReplicasetController, DeploymentController],
+    PodController, ReplicasetController, DeploymentController,
+    DaemonSetController,
+  ],
   providers: [
     K8sService, PodService, NsService,
     NodeService, EventService, ClientService,
     ReplicasetService, WatchService,
-    DeploymentService,
+    DeploymentService, DaemonSetService,
   ],
   exports: [K8sService],
 })
