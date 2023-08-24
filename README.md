@@ -78,8 +78,11 @@ shamefully-hoist=true
 |       Node | 详情-drain驱逐操作   | ✅       |
 |       Node | 详情-查看yaml      | ✅       |
 | ReplicaSet | 列表             | ✅       |
+| ReplicaSet | 列表-查看yaml      | ✅       |
+| ReplicaSet | 列表-删除          | ✅       |
 | ReplicaSet | 详情             | ✅       |
 | ReplicaSet | 详情-查看yaml      | ✅       |
+| ReplicaSet | 详情-删除          | ✅       |
 | Deployment | 列表             | ✅       |
 | Deployment | 列表-重启          | ✅       |
 | Deployment | 列表-删除          | ✅       |
@@ -91,6 +94,12 @@ shamefully-hoist=true
 | Deployment | 详情-删除          | ✅       |
 | Deployment | 详情-查看yaml      | ✅       |
 | Deployment | 详情-Scale       | ✅       |
+|  DaemonSet | 列表             | ✅       |
+|  DaemonSet | 列表-查看yaml      | ✅       |
+|  DaemonSet | 列表-删除          | ✅       |
+|  DaemonSet | 详情             | ✅       |
+|  DaemonSet | 详情-查看yaml      | ✅       |
+|  DaemonSet | 详情-删除          | ✅       |
 ## 开发提示
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成
  * 安装 ：npm install openapi-typescript-codegen -g
