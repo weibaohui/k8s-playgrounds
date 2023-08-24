@@ -30,7 +30,7 @@ function getOptions(): ActionMenuOption[] {
       icon: PauseCircleRegular,
       show: !isUnSchedulable(),
       action: async () => {
-        const n = await K8sService.nodeService.cordonNode(props.node.metadata.name)
+        const n = await K8sService.playService.nodeControllerCordonNode({ name: props.node.metadata.name })
         if (n.spec.unschedulable)
           message.success('操作成功')
         else
@@ -44,7 +44,7 @@ function getOptions(): ActionMenuOption[] {
       icon: PlayCircleRegular,
       show: isUnSchedulable(),
       action: async () => {
-        const n = await K8sService.nodeService.unCordonNode(props.node.metadata.name)
+        const n = await K8sService.playService.nodeControllerUnCordonNode({ name: props.node.metadata.name })
         if (n.spec === null || n.spec === undefined || n.spec.unschedulable === null || n.spec.unschedulable === undefined || n.spec.unschedulable === false)
           message.success('操作成功')
         else
@@ -78,7 +78,7 @@ function getOptions(): ActionMenuOption[] {
       icon: Trash,
       action: () =>
         DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `Node：${props.node.metadata.name}`, async () => {
-          await K8sService.nodeService.deleteNode(props.node.metadata.name)
+          await K8sService.playService.nodeControllerDeleteNode({ name: props.node.metadata.name })
           drawer.close()
         }),
     },

@@ -22,19 +22,19 @@ async function showView(ns: string, item: V1OwnerReference) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`ReplicaSet:${item.name}`, RsView, { rs: await K8sService.replicasetService.getReplicaSet(ns, item.name) })
+        .show(`ReplicaSet:${item.name}`, RsView, { rs: await K8sService.playService.replicasetControllerGetReplicaSetByNsName({ ns, name: item.name }) })
       break
     case 'Deployment':
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`Deployment:${item.name}`, DeployView, { deploy: await K8sService.deploymentService.getDeployment(ns, item.name) })
+        .show(`Deployment:${item.name}`, DeployView, { deploy: await K8sService.playService.deploymentControllerGetDeploymentByNsName({ ns, name: item.name }) })
       break
     case 'Node':
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`Node:${item.name}`, NodeView, { node: await K8sService.nodeService.getNode(item.name) })
+        .show(`Node:${item.name}`, NodeView, { node: await K8sService.playService.nodeControllerGetNode({ name: item.name }) })
       break
     default:
       alert('未实现')

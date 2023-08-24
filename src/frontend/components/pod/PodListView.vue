@@ -135,7 +135,7 @@ function createColumns(): DataTableColumns<V1Pod> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`Node:${row.spec.nodeName}`, NodeView, { node: await K8sService.nodeService.getNode(row.spec.nodeName) })
+                .show(`Node:${row.spec.nodeName}`, NodeView, { node: await K8sService.playService.nodeControllerGetNode({ name: row.spec.nodeName }) })
             },
           },
           { default: () => row.spec.nodeName },
@@ -200,7 +200,7 @@ async function getItemList() {
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.podService.deletePods(keys)
+    await K8sService.playService.podControllerDeletePods({ requestBody: keys })
   })
 }
 

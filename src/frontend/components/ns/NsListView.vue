@@ -86,12 +86,12 @@ function createColumns(): DataTableColumns<V1Namespace> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.namespaceService.getNamespaceList()
+  itemList.value = await K8sService.playService.nsControllerGetNamespaceList()
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.namespaceService.deleteNamespaces(keys)
+    await K8sService.playService.nsControllerDeleteNs({ requestBody: keys })
   })
 }
 

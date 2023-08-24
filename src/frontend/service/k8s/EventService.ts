@@ -1,21 +1,12 @@
 import type { V1Deployment } from '@backend/k8s/model/V1Deployment'
 import type { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
-import { HttpClient } from '@backend/utils/axios/HttpClient'
-import type { V1Event } from '@backend/k8s/model/V1Event'
 import type { V1Node } from '@backend/k8s/model/V1Node'
 import type { V1Pod } from '@backend/k8s/model/V1Pod'
+import { K8sService } from '@frontend/service/k8s/K8sService'
 
 export class EventService {
   async getEventList(ns?: string) {
-    return await HttpClient.inst.get<V1Event[]>(`/k8s/event/${ns}`)
-  }
-
-  async deleteEvents(nsName: string[]) {
-    await HttpClient.inst.post('/k8s/event/delete/', nsName)
-  }
-
-  async getEventListWithFieldSelector(ns?: string, selector?: string) {
-    return await HttpClient.inst.get<V1Event[]>(`/k8s/event/${ns}/${selector}`)
+    return K8sService.playService.eventControllerGetEventListByNs({ ns })
   }
 
   async getPodEventList(pod: V1Pod) {

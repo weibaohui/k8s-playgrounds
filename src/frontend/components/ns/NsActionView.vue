@@ -34,7 +34,7 @@ function getOptions(): ActionMenuOption[] {
       icon: Trash,
       action: () =>
         DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `Namespace：${props.ns.metadata.name}`, async () => {
-          await K8sService.namespaceService.deleteNamespaces([`${props.ns.metadata.namespace}`])
+          await K8sService.playService.nsControllerDeleteNs({ requestBody: [`${props.ns.metadata.namespace}`] })
           drawer.close()
         }),
     },

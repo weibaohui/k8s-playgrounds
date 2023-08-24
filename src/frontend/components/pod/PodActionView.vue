@@ -55,7 +55,7 @@ function getOptions(): ActionMenuOption[] {
       icon: Trash,
       action: () =>
         DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `Pod：${props.pod.metadata.namespace}/${props.pod.metadata.name}`, async () => {
-          await K8sService.podService.deletePods([`${props.pod.metadata.namespace}/${props.pod.metadata.name}`])
+          await K8sService.playService.podControllerDeletePods({ requestBody: [`${props.pod.metadata.namespace}/${props.pod.metadata.name}`] })
           drawer.close()
         }),
     },

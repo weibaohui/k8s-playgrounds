@@ -126,14 +126,18 @@ function onContainerChanged() {
   // console.log('onContainerChanged', selectedContainerName.value)
   sendInitCommand()
 }
-function handleDownloadSelect(key: string) {
+async function handleDownloadSelect(key: string) {
   console.log(key)
   const x = new TerminalData()
   x.ns = props.pod.metadata.namespace
   x.name = props.pod.metadata.name
   x.containerName = selectedContainerName.value
   if (key === 'all') {
-    const url = K8sService.podService.getPodContainerLogsDownloadURL(x.ns, x.name, x.containerName)
+    const url = await K8sService.playService.podControllerGetPodContainerLogs({
+      ns: x.ns,
+      podName: x.name,
+      containerName: x.containerName,
+    })
     const link = document.createElement('a')
     link.style.display = 'none'
     link.href = url

@@ -28,11 +28,12 @@ function cancel() {
   drawer.close()
 }
 async function scale() {
-  const ret = await K8sService.deploymentService.scaleDeployment(
-    props.deploy.metadata.namespace,
-    props.deploy.metadata.name,
-    replicas.value,
-  )
+  const ret = await K8sService.playService.deploymentControllerScaleDeployment(
+    {
+      ns: props.deploy.metadata.namespace,
+      name: props.deploy.metadata.name,
+      replicas: `${replicas.value}`,
+    })
   notification.success({
     title: '应用成功',
     content: `副本数已设置为:${ret.spec.replicas ? ret.spec.replicas : 0}`,

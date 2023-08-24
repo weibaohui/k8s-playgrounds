@@ -119,12 +119,12 @@ function createColumns(): DataTableColumns<V1Deployment> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.deploymentService.getDeploymentList(selectedNs.value)
+  itemList.value = await K8sService.playService.deploymentControllerGetDeploymentListByNs({ ns: selectedNs.value })
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.deploymentService.deleteDeployments(keys)
+    await K8sService.playService.deploymentControllerDeleteDeployment({ requestBody: keys })
   })
 }
 

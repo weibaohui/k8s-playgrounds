@@ -44,7 +44,7 @@ export class DeploymentController {
   }
 
   @Get('/ns/:ns/name/:name')
-  async getByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+  async getDeploymentByNsName(@Param('ns') ns: string, @Param('name') name: string) {
     return await this.k8sService.deploymentService.getDeploymentByName(ns, name)
   }
 }

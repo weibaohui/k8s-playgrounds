@@ -35,7 +35,7 @@ function getOptions(): ActionMenuOption[] {
       key: 'Restart',
       icon: RedoAlt,
       action: async () => {
-        await K8sService.deploymentService.restartDeployment(props.deploy.metadata.namespace, props.deploy.metadata.name)
+        await K8sService.playService.deploymentControllerRestartDeployment({ ns: props.deploy.metadata.namespace, name: props.deploy.metadata.name })
         message.success('重启成功')
       },
     },
@@ -55,7 +55,7 @@ function getOptions(): ActionMenuOption[] {
       icon: Trash,
       action: () =>
         DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `${props.deploy.metadata.namespace}/${props.deploy.metadata.name}`, async () => {
-          await K8sService.deploymentService.deleteDeployments([`${props.deploy.metadata.namespace}/${props.deploy.metadata.name}`])
+          await K8sService.playService.deploymentControllerDeleteDeployment({ requestBody: [`${props.deploy.metadata.namespace}/${props.deploy.metadata.name}`] })
           drawer.close()
         }),
     },

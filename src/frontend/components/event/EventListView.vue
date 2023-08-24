@@ -114,12 +114,12 @@ function createColumns(): DataTableColumns<V1Namespace> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.eventService.getEventList(selectedNs.value)
+  itemList.value = await K8sService.playService.eventControllerGetEventListByNs({ ns: selectedNs.value })
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.eventService.deleteEvents(keys)
+    await K8sService.playService.eventControllerDeleteEvents({ requestBody: keys })
   })
 }
 

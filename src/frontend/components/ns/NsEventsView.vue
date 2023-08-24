@@ -11,7 +11,7 @@ const props = defineProps({
 const eventList = ref<V1Event[]>()
 
 async function getEventsList() {
-  eventList.value = await K8sService.eventService.getEventList(props.ns.metadata.name)
+  eventList.value = await K8sService.playService.eventControllerGetEventListByNs({ ns: props.ns.metadata.name })
 }
 getEventsList()
 </script>
