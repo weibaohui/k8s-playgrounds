@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
+import { V1DaemonSet } from '@backend/k8s/model/V1DaemonSet'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
-import { Edit, Trash } from '@vicons/fa'
-import { useDialog } from 'naive-ui'
+import { Edit, RedoAlt, Trash } from '@vicons/fa'
+import { useDialog, useMessage } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import MonacoView from '@frontend/components/common/MonacoView.vue'
 import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'
@@ -11,14 +11,25 @@ import { K8sService } from '@frontend/service/k8s/K8sService'
 import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
 
 const props = defineProps({
-  rs: V1ReplicaSet,
+  ds: V1DaemonSet,
   isDropdown: Boolean,
 })
 
 const dialog = useDialog()
 const drawer = useDrawerService()
+const message = useMessage()
+
 function getOptions(): ActionMenuOption[] {
   return [
+    {
+      label: 'Restart',
+      key: 'Restart',
+      icon: RedoAlt,
+      action: async () => {
+        await K8sService.playService.daemonSetControllerRestartDaemonSet({ ns: props.ds.metadata.namespace, name: props.ds.metadata.name })
+        message.success('重启成功')
+      },
+    },
     {
       label: 'Edit',
       key: 'Edit',
@@ -26,15 +37,15 @@ function getOptions(): ActionMenuOption[] {
       action: () => DrawerHelper
         .instance
         .drawer(drawer)
-        .showWider(props.rs.metadata.name, MonacoView, { item: props.rs }),
+        .showWider(props.ds.metadata.name, MonacoView, { item: props.ds }),
     },
     {
       label: 'Delete',
       key: 'Delete',
       icon: Trash,
       action: () =>
-        DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `${props.rs.metadata.namespace}/${props.rs.metadata.name}`, async () => {
-          await K8sService.playService.replicasetControllerDeleteReplicaSet({ requestBody: [`${props.rs.metadata.namespace}/${props.rs.metadata.name}`] })
+        DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `${props.ds.metadata.namespace}/${props.ds.metadata.name}`, async () => {
+          await K8sService.playService.daemonSetControllerDeleteDaemonSet({ requestBody: [`${props.ds.metadata.namespace}/${props.ds.metadata.name}`] })
           drawer.close()
         }),
     },

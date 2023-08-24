@@ -5,4 +5,5 @@ export enum ResType {
   Nodes = 'nodes',
   Replicasets = 'replicasets',
   Events = 'events',
+  Daemontsets = 'daemonsets',
 }

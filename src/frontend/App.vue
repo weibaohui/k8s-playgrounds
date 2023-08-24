@@ -104,6 +104,19 @@ const menuOptions: MenuOption[] = [
           ),
         key: 'go-to-replicaSets',
       },
+      {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/daemonSets',
+              },
+            },
+            { default: () => 'DaemonSets' },
+          ),
+        key: 'go-to-daemonSets',
+      },
     ],
   },
 

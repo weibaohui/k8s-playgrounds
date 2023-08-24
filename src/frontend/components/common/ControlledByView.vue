@@ -22,7 +22,7 @@ async function showView(ns: string, item: V1OwnerReference) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`ReplicaSet:${item.name}`, RsView, { rs: await K8sService.playService.replicasetControllerGetReplicaSetByNsName({ ns, name: item.name }) })
+        .show(`ReplicaSet:${item.name}`, RsView, { ds: await K8sService.playService.replicasetControllerGetReplicaSetByNsName({ ns, name: item.name }) })
       break
     case 'Deployment':
       DrawerHelper
