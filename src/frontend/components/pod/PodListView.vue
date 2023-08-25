@@ -121,7 +121,7 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'IP',
       key: 'status.podIP',
-
+      minWidth: '100',
     },
     {
       title: 'Node',
@@ -146,6 +146,7 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'QoS',
       key: 'status.qosClass',
+      minWidth: '100',
     },
     {
       title: 'Containers',
@@ -161,6 +162,7 @@ function createColumns(): DataTableColumns<V1Pod> {
     {
       title: 'Age',
       key: 'age',
+      minWidth: '80',
       render(row: V1Pod) {
         return h(ResourceAgeView,
           {
