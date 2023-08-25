@@ -56,6 +56,9 @@ export class WatchService {
       case ResType.Replicasets:
         watchPath = '/apis/apps/v1/replicasets'
         break
+      case ResType.Daemontsets:
+        watchPath = '/apis/apps/v1/daemonsets'
+        break
       default:
         watchPath = '/api/v1/pods'
     }
