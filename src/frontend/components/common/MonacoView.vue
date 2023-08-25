@@ -7,10 +7,9 @@ const props = defineProps({
   item: Object,
 })
 const options: monaco.editor.IEditorOptions = {
+  language: 'yaml',
   theme: 'vs-dark',
-  autoDetectHighContrast: true,
-  automaticLayout: true,
-  wordWrap: 'wordWrapColumn',
+  fontSize: 16,
 }
 
 const code = ref('')
