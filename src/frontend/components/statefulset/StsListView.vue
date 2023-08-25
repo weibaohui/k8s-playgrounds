@@ -67,7 +67,7 @@ function createColumns(): DataTableColumns<V1StatefulSet> {
     },
     {
       title: 'Desire',
-      key: 'status.replicas',
+      key: 'spec.replicas',
     },
     {
       title: 'Current',

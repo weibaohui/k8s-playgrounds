@@ -30,4 +30,22 @@ export class StatefulSetService {
     const r = await k8sApi.deleteNamespacedStatefulSet(name, ns)
     return r.body
   }
+
+  async scaleStatefulSet(ns: string, name: string, replicas: number) {
+    const k8sApi = this.clientService.getAppsV1Api()
+    const resp = await k8sApi.patchNamespacedStatefulSetScale(name, ns,
+      {
+        spec: {
+          replicas: Number.parseInt(`${replicas}`),
+        },
+      }, 'true', undefined,
+      undefined, undefined, undefined,
+      {
+        headers: {
+          'Content-Type': 'application/merge-patch+json',
+          'Accept': 'application/json, */*',
+        },
+      })
+    return resp.body
+  }
 }

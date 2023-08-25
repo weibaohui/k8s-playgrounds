@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { V1StatefulSet } from '@backend/k8s/model/v1StatefulSet'
+import StsScaleView from '@frontend/components/statefulset/StsScaleView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
-import { Edit, Trash } from '@vicons/fa'
+import { Edit, ExpandArrowsAlt, Trash } from '@vicons/fa'
 import { useDialog } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import MonacoView from '@frontend/components/common/MonacoView.vue'
@@ -19,6 +20,15 @@ const dialog = useDialog()
 const drawer = useDrawerService()
 function getOptions(): ActionMenuOption[] {
   return [
+    {
+      label: 'Scale',
+      key: 'Scale',
+      icon: ExpandArrowsAlt,
+      action: async () => DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(`Scale StatefulSet:${props.sts.metadata.name}`, StsScaleView, { sts: props.sts }),
+    },
     {
       label: 'Edit',
       key: 'Edit',
