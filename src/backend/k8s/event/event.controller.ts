@@ -23,6 +23,12 @@ export class EventController {
     return await this.k8sService.eventService.events(ns, fieldSelector)
   }
 
+  @Get('/warning/ns/:ns/name/:name')
+  async getInvolvedWarningEventListByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+    const fieldSelector = `type=Warning,involvedObject.name=${name},involvedObject.namespace=${ns}`
+    return await this.k8sService.eventService.events(ns, fieldSelector)
+  }
+
   @Post('/delete')
   async deleteEvents(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ControlledByView from '@frontend/components/common/ControlledByView.vue'
+import ResourceWarnIcon from '@frontend/components/common/ResourceWarnIcon.vue'
 import moment from 'moment/moment'
 import { NSpace, NTable, NTag } from 'naive-ui'
 import { V1ObjectMeta } from '@backend/k8s/model/V1ObjectMeta'
@@ -23,7 +24,10 @@ const props = defineProps({
       </tr>
       <tr v-if="props.item.name">
         <td>Name</td>
-        <td>{{ props.item.name }}</td>
+        <td>
+          {{ props.item.name }}
+          <ResourceWarnIcon :item="item" />
+        </td>
       </tr>
       <tr v-if="props.item.namespace">
         <td>Namespace</td>
