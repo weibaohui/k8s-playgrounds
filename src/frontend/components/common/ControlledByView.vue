@@ -48,7 +48,7 @@ async function showView(ns: string, item: V1OwnerReference) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`ReplicationController:${item.name}`, RcView, { rc: await K8sService.playService.daemonSetControllerGetDaemonSetByNsName({ ns, name: item.name }) })
+        .show(`ReplicationController:${item.name}`, RcView, { rc: await K8sService.playService.replicationControllerGetReplicationByNsName({ ns, name: item.name }) })
       break
     default:
       alert('未实现')
