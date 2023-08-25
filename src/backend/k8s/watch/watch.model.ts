@@ -6,4 +6,5 @@ export enum ResType {
   Replicasets = 'replicasets',
   Events = 'events',
   Daemontsets = 'daemonsets',
+  ReplicationControllers = 'replicationcontrollers',
 }

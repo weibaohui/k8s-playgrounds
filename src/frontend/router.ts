@@ -1,5 +1,6 @@
 import DsListView from '@frontend/components/daemonset/DsListView.vue'
 import DeployListView from '@frontend/components/deployment/DeployListView.vue'
+import RcListView from '@frontend/components/replicacontroller/RcListView.vue'
 import RsListView from '@frontend/components/replicaset/RsListView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import EventListView from '@frontend/components/event/EventListView.vue'
@@ -33,6 +34,10 @@ export default createRouter({
     {
       path: '/replicaSets',
       component: RsListView,
+    },
+    {
+      path: '/replicationControllers',
+      component: RcListView,
     },
     {
       path: '/daemonSets',

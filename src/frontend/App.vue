@@ -103,6 +103,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'ReplicaSets' },
           ),
         key: 'go-to-replicaSets',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/replicationControllers',
+              },
+            },
+            { default: () => 'ReplicationControllers' },
+          ),
+        key: 'go-to-replicationControllers',
       },
       {
         label: () =>
@@ -127,6 +139,7 @@ const collapsed = ref(true)
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
+
 // 默认首屏跳转
 router.push('/pods')
 </script>

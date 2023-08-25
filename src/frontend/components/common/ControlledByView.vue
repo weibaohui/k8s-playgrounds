@@ -3,6 +3,7 @@ import type { V1OwnerReference } from '@backend/k8s/model/V1OwnerReference'
 import DsView from '@frontend/components/daemonset/DsView.vue'
 import DeployView from '@frontend/components/deployment/DeployView.vue'
 import NodeView from '@frontend/components/node/NodeView.vue'
+import RcView from '@frontend/components/replicacontroller/RcView.vue'
 import RsView from '@frontend/components/replicaset/RsView.vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
@@ -42,6 +43,12 @@ async function showView(ns: string, item: V1OwnerReference) {
         .instance
         .drawer(drawer)
         .show(`DaemonSet:${item.name}`, DsView, { ds: await K8sService.playService.daemonSetControllerGetDaemonSetByNsName({ ns, name: item.name }) })
+      break
+    case 'ReplicationController':
+      DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(`ReplicationController:${item.name}`, RcView, { rc: await K8sService.playService.daemonSetControllerGetDaemonSetByNsName({ ns, name: item.name }) })
       break
     default:
       alert('未实现')
