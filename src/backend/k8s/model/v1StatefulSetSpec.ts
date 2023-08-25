@@ -9,9 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1StatefulSetOrdinals } from './ioK8sApiAppsV1StatefulSetOrdinals'
-import type { IoK8sApiAppsV1StatefulSetPersistentVolumeClaimRetentionPolicy } from './ioK8sApiAppsV1StatefulSetPersistentVolumeClaimRetentionPolicy'
-import type { IoK8sApiAppsV1StatefulSetUpdateStrategy } from './ioK8sApiAppsV1StatefulSetUpdateStrategy'
+import type { V1StatefulSetOrdinals } from './v1StatefulSetOrdinals'
+import type { V1StatefulSetPersistentVolumeClaimRetentionPolicy } from './v1StatefulSetPersistentVolumeClaimRetentionPolicy'
+import type { V1StatefulSetUpdateStrategy } from './v1StatefulSetUpdateStrategy'
 import type { V1PersistentVolumeClaim } from './V1PersistentVolumeClaim'
 import type { V1PodTemplateSpec } from './V1PodTemplateSpec'
 import type { V1LabelSelector } from './v1LabelSelector'
@@ -19,7 +19,7 @@ import type { V1LabelSelector } from './v1LabelSelector'
 /**
  * A StatefulSetSpec is the specification of a StatefulSet.
  */
-export interface V1StatefulSetSpec {
+export class V1StatefulSetSpec {
   /**
      * Minimum number of seconds for which a newly created pod should be ready without any of its container crashing for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
      */
@@ -27,11 +27,11 @@ export interface V1StatefulSetSpec {
   /**
      * ordinals controls the numbering of replica indices in a StatefulSet. The default ordinals behavior assigns a \"0\" index to the first replica and increments the index by one for each additional replica requested. Using the ordinals field requires the StatefulSetStartOrdinal feature gate to be enabled, which is beta.
      */
-  ordinals?: IoK8sApiAppsV1StatefulSetOrdinals
+  ordinals?: V1StatefulSetOrdinals
   /**
      * persistentVolumeClaimRetentionPolicy describes the lifecycle of persistent volume claims created from volumeClaimTemplates. By default, all persistent volume claims are created as needed and retained until manually deleted. This policy allows the lifecycle to be altered, for example by deleting persistent volume claims when their stateful set is deleted, or when their pod is scaled down. This requires the StatefulSetAutoDeletePVC feature gate to be enabled, which is alpha.  +optional
      */
-  persistentVolumeClaimRetentionPolicy?: IoK8sApiAppsV1StatefulSetPersistentVolumeClaimRetentionPolicy
+  persistentVolumeClaimRetentionPolicy?: V1StatefulSetPersistentVolumeClaimRetentionPolicy
   /**
      * podManagementPolicy controls how pods are created during initial scale up, when replacing pods on nodes, or when scaling down. The default policy is `OrderedReady`, where pods are created in increasing order (pod-0, then pod-1, etc) and the controller will wait until each pod is ready before continuing. When scaling down, the pods are removed in the opposite order. The alternative policy is `Parallel` which will create pods in parallel to match the desired scale without waiting, and on scale down will delete all pods at once.
      */
@@ -59,7 +59,7 @@ export interface V1StatefulSetSpec {
   /**
      * updateStrategy indicates the StatefulSetUpdateStrategy that will be employed to update Pods in the StatefulSet when a revision is made to Template.
      */
-  updateStrategy?: IoK8sApiAppsV1StatefulSetUpdateStrategy
+  updateStrategy?: V1StatefulSetUpdateStrategy
   /**
      * volumeClaimTemplates is a list of claims that pods are allowed to reference. The StatefulSet controller is responsible for mapping network identities to claims in a way that maintains the identity of a pod. Every claim in this list must have at least one matching (by name) volumeMount in one container in the template. A claim in this list takes precedence over any volumes in the template, with the same name.
      */

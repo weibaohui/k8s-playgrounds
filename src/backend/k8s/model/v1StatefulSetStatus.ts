@@ -9,12 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1StatefulSetCondition } from './ioK8sApiAppsV1StatefulSetCondition'
+import type { V1StatefulSetCondition } from './v1StatefulSetCondition'
 
 /**
  * StatefulSetStatus represents the current state of a StatefulSet.
  */
-export interface IoK8sApiAppsV1StatefulSetStatus {
+export class V1StatefulSetStatus {
   /**
      * Total number of available pods (ready for at least minReadySeconds) targeted by this statefulset.
      */
@@ -26,7 +26,7 @@ export interface IoK8sApiAppsV1StatefulSetStatus {
   /**
      * Represents the latest available observations of a statefulset's current state.
      */
-  conditions?: Array<IoK8sApiAppsV1StatefulSetCondition>
+  conditions?: Array<V1StatefulSetCondition>
   /**
      * currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.
      */

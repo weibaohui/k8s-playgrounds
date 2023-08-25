@@ -4,6 +4,8 @@ import { DeploymentController } from '@backend/k8s/deployment/deployment.control
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
 import { ReplicationController } from '@backend/k8s/replicationController/replication.controller'
 import { ReplicationControllerService } from '@backend/k8s/replicationController/replication.service'
+import { StatefulSetController } from '@backend/k8s/statefulset/statefulset.controller'
+import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
@@ -26,14 +28,14 @@ import { ReplicasetController } from '@backend/k8s/replicaset/replicaset.control
   controllers: [
     EventController, NodeController, NsController,
     PodController, ReplicasetController, DeploymentController,
-    DaemonSetController, ReplicationController,
+    DaemonSetController, ReplicationController, StatefulSetController,
   ],
   providers: [
     K8sService, PodService, NsService,
     NodeService, EventService, ClientService,
     ReplicasetService, WatchService,
     DeploymentService, DaemonSetService,
-    ReplicationControllerService,
+    ReplicationControllerService, StatefulSetService,
   ],
   exports: [K8sService],
 })

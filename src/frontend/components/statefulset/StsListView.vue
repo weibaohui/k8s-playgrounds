@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { V1ReplicationController } from '@backend/k8s/model/V1ReplicationController'
+import type { V1StatefulSet } from '@backend/k8s/model/V1StatefulSet'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
-import RcActionView from '@frontend/components/replicacontroller/RcActionView.vue'
-import RcView from '@frontend/components/replicacontroller/RcView.vue'
+import StsActionView from '@frontend/components/statefulset/StsActionView.vue'
+import StsView from '@frontend/components/statefulset/StsView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
@@ -19,11 +19,11 @@ const drawer = useDrawerService()
 const dialog = useDialog()
 
 const selectedNs = ref('default')
-const itemList = ref<V1ReplicationController[]>()
+const itemList = ref<V1StatefulSet[]>()
 const searchText = ref('')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
 
-function createColumns(): DataTableColumns<V1ReplicationController> {
+function createColumns(): DataTableColumns<V1StatefulSet> {
   return [
     {
       type: 'selection',
@@ -31,7 +31,7 @@ function createColumns(): DataTableColumns<V1ReplicationController> {
     {
       title: 'Name',
       key: 'metadata.name',
-      render(row: V1ReplicationController) {
+      render(row: V1StatefulSet) {
         return h(
           NButton,
           {
@@ -40,7 +40,7 @@ function createColumns(): DataTableColumns<V1ReplicationController> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`ReplicationController:${row.metadata.name}`, RcView, { rc: row })
+                .show(`StatefulSet:${row.metadata.name}`, StsView, { sts: row })
             },
           },
           { default: () => row.metadata.name },
@@ -50,7 +50,7 @@ function createColumns(): DataTableColumns<V1ReplicationController> {
     {
       title: 'Namespace',
       key: 'metadata.namespace',
-      render(row: V1ReplicationController) {
+      render(row: V1StatefulSet) {
         return h(
           NButton,
           {
@@ -72,14 +72,14 @@ function createColumns(): DataTableColumns<V1ReplicationController> {
     {
       title: 'Current',
       key: 'status.availableReplicas',
-      render(row: V1ReplicationController) {
+      render(row: V1StatefulSet) {
         return row.status.availableReplicas ? row.status.availableReplicas : 0
       },
     },
     {
       title: 'Ready',
       key: 'status.readyReplicas',
-      render(row: V1ReplicationController) {
+      render(row: V1StatefulSet) {
         return row.status.readyReplicas ? row.status.readyReplicas : 0
       },
     },
@@ -97,10 +97,10 @@ function createColumns(): DataTableColumns<V1ReplicationController> {
     {
       title: 'Action',
       key: 'Action',
-      render(row: V1ReplicationController) {
-        return h(RcActionView,
+      render(row: V1StatefulSet) {
+        return h(StsActionView,
           {
-            rc: row,
+            sts: row,
             isDropdown: true,
           },
         )
@@ -110,14 +110,14 @@ function createColumns(): DataTableColumns<V1ReplicationController> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.playService.replicationControllerGetReplicationsByNs({ ns: selectedNs.value })
+  itemList.value = await K8sService.playService.statefulSetControllerGetStatefulSetsByNs({ ns: selectedNs.value })
   if (!_.isEmpty(searchText.value))
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.playService.replicationControllerDeleteReplication({ requestBody: keys })
+    await K8sService.playService.statefulSetControllerDeleteStatefulSet({ requestBody: keys })
   })
 }
 
@@ -134,7 +134,7 @@ function onTextChanged(text: string) {
 
 getItemList()
 
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.ReplicationControllers, selectedNs))
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.StatefulSets, selectedNs))
 </script>
 
 <template>
@@ -143,7 +143,7 @@ TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, R
     :columns="createColumns()"
     :item-list="itemList"
     :show-ns-select="true"
-    name="Replication Controller"
+    name="Stateful Sets"
     @on-remove-btn-clicked="onRemoveBtnClicked"
     @on-text-changed="onTextChanged"
     @on-ns-changed="onNsChanged"

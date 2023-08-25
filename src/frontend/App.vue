@@ -128,6 +128,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'DaemonSets' },
           ),
         key: 'go-to-daemonSets',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/statefulSets',
+              },
+            },
+            { default: () => 'StatefulSets' },
+          ),
+        key: 'go-to-statefulSets',
       },
     ],
   },

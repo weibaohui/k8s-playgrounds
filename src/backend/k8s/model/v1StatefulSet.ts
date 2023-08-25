@@ -10,13 +10,13 @@
  * Do not edit the class manually.
  */
 import type { V1StatefulSetSpec } from './v1StatefulSetSpec'
-import type { IoK8sApiAppsV1StatefulSetStatus } from './ioK8sApiAppsV1StatefulSetStatus'
+import type { V1StatefulSetStatus } from './v1StatefulSetStatus'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * StatefulSet represents a set of pods with consistent identities. Identities are defined as:   - Network: A single stable DNS and hostname.   - Storage: As many VolumeClaims as requested.  The StatefulSet guarantees that a given network identity will always map to the same storage identity.
  */
-export interface V1StatefulSet {
+export class V1StatefulSet {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -36,5 +36,5 @@ export interface V1StatefulSet {
   /**
      * Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.
      */
-  status?: IoK8sApiAppsV1StatefulSetStatus
+  status?: V1StatefulSetStatus
 }

@@ -1,11 +1,13 @@
 import type { V1Deployment } from '@backend/k8s/model/V1Deployment'
 import type { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
+import type { V1ReplicationController } from '@backend/k8s/model/V1ReplicationController'
+import type { V1StatefulSet } from '@backend/k8s/model/v1StatefulSet'
 import type { V1Event } from '../k8s/model/V1Event'
 import type { V1Namespace } from '../k8s/model/V1Namespace'
 import type { V1Node } from '../k8s/model/V1Node'
 import type { V1Pod } from '../k8s/model/V1Pod'
 
-export class WorkloadArray<T extends V1Pod | V1Node | V1Event | V1Namespace | V1ReplicaSet | V1Deployment> {
+export class WorkloadArray<T extends V1Pod | V1Node | V1Event | V1Namespace | V1ReplicaSet | V1Deployment | V1ReplicationController | V1StatefulSet> {
   Add(list: Array<T>, item: T) {
     const index = list.findIndex(r => r.metadata.name === item.metadata.name)
     if (index === -1) {
