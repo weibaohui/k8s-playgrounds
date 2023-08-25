@@ -3,8 +3,10 @@ import type { V1OwnerReference } from '@backend/k8s/model/V1OwnerReference'
 import DsView from '@frontend/components/daemonset/DsView.vue'
 import DeployView from '@frontend/components/deployment/DeployView.vue'
 import NodeView from '@frontend/components/node/NodeView.vue'
+import PodView from '@frontend/components/pod/PodView.vue'
 import RcView from '@frontend/components/replicacontroller/RcView.vue'
 import RsView from '@frontend/components/replicaset/RsView.vue'
+import StsView from '@frontend/components/statefulset/StsView.vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
@@ -50,8 +52,20 @@ async function showView(ns: string, item: V1OwnerReference) {
         .drawer(drawer)
         .show(`ReplicationController:${item.name}`, RcView, { rc: await K8sService.playService.replicationControllerGetReplicationByNsName({ ns, name: item.name }) })
       break
+    case 'StatefulSet':
+      DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(`StatefulSet:${item.name}`, StsView, { sts: await K8sService.playService.statefulSetControllerGetStatefulSetByNsName({ ns, name: item.name }) })
+      break
+    case 'Pod':
+      DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(`Pod:${item.name}`, PodView, { pod: await K8sService.playService.podControllerGetPodByNsName({ ns, name: item.name }) })
+      break
     default:
-      alert('未实现')
+      alert(`未实现${item.kind}`)
   }
 }
 </script>

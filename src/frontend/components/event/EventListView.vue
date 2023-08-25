@@ -60,10 +60,8 @@ function createColumns(): DataTableColumns<V1Namespace> {
     {
       title: 'Involved',
       key: 'Involved',
-      width: 200,
-      ellipsis: {
-        tooltip: true,
-      },
+      minWidth: 200,
+
       render(row) {
         return h(
           EventInvolvedClickAction,

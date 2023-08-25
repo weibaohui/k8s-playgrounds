@@ -1,43 +1,29 @@
 <script setup lang="ts">
-import { NButton } from 'naive-ui'
-import NodeView from '@frontend/components/node/NodeView.vue'
-import PodView from '@frontend/components/pod/PodView.vue'
-import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
-import { K8sService } from '@frontend/service/k8s/K8sService'
-import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
+import { V1ObjectMeta } from '@backend/k8s/model/V1ObjectMeta'
+import { V1OwnerReference } from '@backend/k8s/model/V1OwnerReference'
+import ControlledByView from '@frontend/components/common/ControlledByView.vue'
 import { V1Event } from '@backend/k8s/model/V1Event'
 
 const props = defineProps({
   event: V1Event,
 })
-const drawer = useDrawerService()
-async function openDrawer() {
+function getFakeV1ObjectMeta() {
   const ns = props.event.involvedObject.namespace
   const name = props.event.involvedObject.name
   const kind = props.event.involvedObject.kind
-  switch (kind) {
-    case 'Pod':
-      DrawerHelper
-        .instance
-        .drawer(drawer)
-        .show(`Pod:${name}`, PodView, { pod: await K8sService.playService.podControllerGetPodByNsName({ ns, name }) })
-      break
-    case 'Node':
-      DrawerHelper
-        .instance
-        .drawer(drawer)
-        .show(`Node:${name}`, NodeView, { node: await K8sService.playService.nodeControllerGetNode({ name }) })
-      break
-    default:
-      alert(`${kind}尚未实现`)
-  }
+
+  const om = new V1ObjectMeta()
+  const own = new V1OwnerReference()
+  own.name = name
+  own.kind = kind
+  om.namespace = ns
+  om.ownerReferences = [own]
+  return om
 }
 </script>
 
 <template>
-  <NButton text @click="openDrawer">
-    {{ event.involvedObject.kind }}:{{ event.involvedObject.name }}
-  </NButton>
+  <ControlledByView :item="getFakeV1ObjectMeta()" :simple="false" />
 </template>
 
 <style scoped>
