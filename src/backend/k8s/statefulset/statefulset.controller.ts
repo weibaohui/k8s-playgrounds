@@ -42,4 +42,9 @@ export class StatefulSetController {
   async scaleStatefulSet(@Param('ns') ns: string, @Param('name') name: string, @Param('replicas') replicas: number) {
     return await this.k8sService.statefulSetService.scaleStatefulSet(ns, name, replicas)
   }
+
+  @Get('/restart/ns/:ns/name/:name')
+  async restartStatefulSet(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.statefulSetService.restartStatefulSet(ns, name)
+  }
 }

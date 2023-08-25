@@ -2,8 +2,8 @@
 import { V1StatefulSet } from '@backend/k8s/model/v1StatefulSet'
 import StsScaleView from '@frontend/components/statefulset/StsScaleView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
-import { Edit, ExpandArrowsAlt, Trash } from '@vicons/fa'
-import { useDialog } from 'naive-ui'
+import { Edit, ExpandArrowsAlt, RedoAlt, Trash } from '@vicons/fa'
+import { useDialog, useMessage } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import MonacoView from '@frontend/components/common/MonacoView.vue'
 import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'
@@ -18,6 +18,8 @@ const props = defineProps({
 
 const dialog = useDialog()
 const drawer = useDrawerService()
+const message = useMessage()
+
 function getOptions(): ActionMenuOption[] {
   return [
     {
@@ -28,6 +30,15 @@ function getOptions(): ActionMenuOption[] {
         .instance
         .drawer(drawer)
         .show(`Scale StatefulSet:${props.sts.metadata.name}`, StsScaleView, { sts: props.sts }),
+    },
+    {
+      label: 'Restart',
+      key: 'Restart',
+      icon: RedoAlt,
+      action: async () => {
+        await K8sService.playService.statefulSetControllerRestartStatefulSet({ ns: props.sts.metadata.namespace, name: props.sts.metadata.name })
+        message.success('重启成功')
+      },
     },
     {
       label: 'Edit',

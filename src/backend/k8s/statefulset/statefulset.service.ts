@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { ClientService } from '@backend/k8s/client/client.service'
+import moment from 'moment/moment'
 
 @Injectable()
 export class StatefulSetService {
@@ -43,6 +44,31 @@ export class StatefulSetService {
       {
         headers: {
           'Content-Type': 'application/merge-patch+json',
+          'Accept': 'application/json, */*',
+        },
+      })
+    return resp.body
+  }
+
+  async restartStatefulSet(ns: string, name: string) {
+    const k8sApi = this.clientService.getAppsV1Api()
+    const resp = await k8sApi.patchNamespacedStatefulSet(name, ns,
+      {
+        spec: {
+          template: {
+            metadata: {
+              annotations: {
+                'kubectl.kubernetes.io/restartedAt': moment(),
+                'kubectl.kubernetes.io/origin': 'k8s-playgrounds',
+              },
+            },
+          },
+        },
+      }, 'true', undefined,
+      undefined, undefined, undefined,
+      {
+        headers: {
+          'Content-Type': 'application/strategic-merge-patch+json',
           'Accept': 'application/json, */*',
         },
       })
