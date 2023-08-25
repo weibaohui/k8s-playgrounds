@@ -56,11 +56,14 @@ export class WatchService {
       case ResType.ReplicationControllers:
         watchPath = '/api/v1/replicationcontrollers'
         break
-      case ResType.Replicasets:
+      case ResType.ReplicaSets:
         watchPath = '/apis/apps/v1/replicasets'
         break
-      case ResType.Daemontsets:
+      case ResType.DaemonSets:
         watchPath = '/apis/apps/v1/daemonsets'
+        break
+      case ResType.StatefulSets:
+        watchPath = '/apis/apps/v1/statefulsets'
         break
       default:
         watchPath = '/api/v1/pods'

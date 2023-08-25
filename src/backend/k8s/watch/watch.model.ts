@@ -3,8 +3,9 @@ export enum ResType {
   Namespaces = 'namespaces',
   Deployments = 'deployments',
   Nodes = 'nodes',
-  Replicasets = 'replicasets',
+  ReplicaSets = 'replicasets',
   Events = 'events',
-  Daemontsets = 'daemonsets',
+  DaemonSets = 'daemonsets',
+  StatefulSets = 'statefulsets',
   ReplicationControllers = 'replicationcontrollers',
 }
