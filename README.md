@@ -109,6 +109,17 @@ shamefully-hoist=true
 | ReplicationController | 详情-删除          | ✅       |
 | ReplicationController | 详情-查看yaml      | ✅       |
 | ReplicationController | 详情-Scale       | ✅       |
+|           StatefulSet | 列表             | ✅       |
+|           StatefulSet | 列表-重启          | ✅       |
+|           StatefulSet | 列表-删除          | ✅       |
+|           StatefulSet | 列表-查看yaml      | ✅       |
+|           StatefulSet | 列表-状态          | ✅       |
+|           StatefulSet | 列表-Scale       | ✅       |
+|           StatefulSet | 详情             | ✅       |
+|           StatefulSet | 详情-重启          | ✅       |
+|           StatefulSet | 详情-删除          | ✅       |
+|           StatefulSet | 详情-查看yaml      | ✅       |
+|           StatefulSet | 详情-Scale       | ✅       |
 ## 开发提示
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成
  * 安装 ：npm install openapi-typescript-codegen -g
