@@ -12,6 +12,7 @@ const props = defineProps({
   itemList: Array<any>,
   showNsSelect: Boolean,
   name: String,
+  hideHeader: Boolean,
 })
 const emit = defineEmits(['onNsChanged', 'onRemoveBtnClicked', 'onTextChanged'])
 
@@ -57,7 +58,7 @@ defineExpose({ setNsSelected })
 </script>
 
 <template>
-  <NGrid :cols="24" :x-gap="24">
+  <NGrid v-if="hideHeader === false" :cols="24" :x-gap="24">
     <NFormItemGi :span="1" />
     <NFormItemGi :span="5">
       {{ props.name }}
