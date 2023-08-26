@@ -9,7 +9,7 @@ export class EventService {
     public clientService: ClientService,
   ) {}
 
-  async events(ns?: string, fieldSelector?: string) {
+  async List(ns?: string, fieldSelector?: string) {
     const k8sApi = this.clientService.getK8sApi()
     if (!ns || ns === 'null' || ns === 'undefined') {
       const eventsAll = await k8sApi.listEventForAllNamespaces(undefined, undefined, fieldSelector)

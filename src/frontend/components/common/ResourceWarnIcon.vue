@@ -16,7 +16,7 @@ async function getEventsList() {
   if (props.skip)
     return
 
-  events.value = await K8sService.playService.eventControllerGetInvolvedWarningEventListByNsName({
+  events.value = await K8sService.playService.eventControllerListInvolvedWarningEvenByNsName({
     ns: props.item.namespace,
     name: props.item.name,
   })

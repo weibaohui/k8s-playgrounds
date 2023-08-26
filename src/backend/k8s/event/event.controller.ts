@@ -13,24 +13,24 @@ export class EventController {
   ) {}
 
   @Get('/:ns')
-  async getEventListByNs(@Param('ns') ns: string) {
-    return await this.k8sService.eventService.events(ns)
+  async ListByNs(@Param('ns') ns: string) {
+    return await this.k8sService.eventService.List(ns)
   }
 
   @Get('/ns/:ns/name/:name')
-  async getInvolvedEventListByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+  async ListInvolvedEventByNsName(@Param('ns') ns: string, @Param('name') name: string) {
     const fieldSelector = `involvedObject.name=${name},involvedObject.namespace=${ns}`
-    return await this.k8sService.eventService.events(ns, fieldSelector)
+    return await this.k8sService.eventService.List(ns, fieldSelector)
   }
 
   @Get('/warning/ns/:ns/name/:name')
-  async getInvolvedWarningEventListByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+  async ListInvolvedWarningEvenByNsName(@Param('ns') ns: string, @Param('name') name: string) {
     const fieldSelector = `type=Warning,involvedObject.name=${name},involvedObject.namespace=${ns}`
-    return await this.k8sService.eventService.events(ns, fieldSelector)
+    return await this.k8sService.eventService.List(ns, fieldSelector)
   }
 
   @Post('/delete')
-  async deleteEvents(@Body() nsn: Array<string>) {
+  async Delete(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]
