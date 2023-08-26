@@ -13,28 +13,28 @@ export class ReplicationController {
   ) {}
 
   @Get('/list')
-  async list() {
-    return await this.k8sService.replicationControllerService.getReplicationControllers()
+  async List() {
+    return await this.k8sService.replicationControllerService.List()
   }
 
   @Get('/list/ns/:ns')
-  async listByNs(@Param('ns') ns: string) {
-    return await this.k8sService.replicationControllerService.getReplicationControllers(ns)
+  async ListByNs(@Param('ns') ns: string) {
+    return await this.k8sService.replicationControllerService.List(ns)
   }
 
   @Post('/delete')
-  async delete(@Body() nsn: Array<string>) {
+  async Delete(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]
       const name = nsname[1]
-      this.k8sService.replicationControllerService.deleteReplicationController(name, ns)
+      this.k8sService.replicationControllerService.Delete(name, ns)
     })
     return {}
   }
 
   @Get('/ns/:ns/name/:name')
-  async getOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
-    return await this.k8sService.replicationControllerService.getReplicationControllerByName(ns, name)
+  async GetOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.replicationControllerService.GetOneByNsName(ns, name)
   }
 }
