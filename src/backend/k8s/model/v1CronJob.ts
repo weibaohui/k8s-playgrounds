@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiBatchV1CronJobSpec } from './ioK8sApiBatchV1CronJobSpec'
-import type { IoK8sApiBatchV1CronJobStatus } from './ioK8sApiBatchV1CronJobStatus'
+import type { V1CronJobSpec } from './v1CronJobSpec'
+import type { V1CronJobStatus } from './v1CronJobStatus'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * CronJob represents the configuration of a single cron job.
  */
-export interface IoK8sApiBatchV1CronJob {
+export interface V1CronJob {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -32,9 +32,9 @@ export interface IoK8sApiBatchV1CronJob {
   /**
      * Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-  spec?: IoK8sApiBatchV1CronJobSpec
+  spec?: V1CronJobSpec
   /**
      * Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-  status?: IoK8sApiBatchV1CronJobStatus
+  status?: V1CronJobStatus
 }

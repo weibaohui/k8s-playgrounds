@@ -9,12 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiBatchV1JobTemplateSpec } from './ioK8sApiBatchV1JobTemplateSpec'
+import type { V1JobTemplateSpec } from './v1JobTemplateSpec'
 
 /**
  * CronJobSpec describes how the job execution will look like and when it will actually run.
  */
-export interface IoK8sApiBatchV1CronJobSpec {
+export interface V1CronJobSpec {
   /**
      * Specifies how to treat concurrent executions of a Job. Valid values are:  - \"Allow\" (default): allows CronJobs to run concurrently; - \"Forbid\": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - \"Replace\": cancels currently running job and replaces it with a new one
      */
@@ -26,7 +26,7 @@ export interface IoK8sApiBatchV1CronJobSpec {
   /**
      * Specifies the job that will be created when executing a CronJob.
      */
-  jobTemplate: IoK8sApiBatchV1JobTemplateSpec
+  jobTemplate: V1JobTemplateSpec
   /**
      * The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
      */

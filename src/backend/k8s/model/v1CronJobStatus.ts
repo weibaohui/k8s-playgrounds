@@ -15,7 +15,7 @@ import type { V1Time } from './V1Time'
 /**
  * CronJobStatus represents the current state of a cron job.
  */
-export interface IoK8sApiBatchV1CronJobStatus {
+export interface V1CronJobStatus {
   /**
      * A list of pointers to currently running jobs.
      */
