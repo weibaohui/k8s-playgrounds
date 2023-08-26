@@ -23,7 +23,7 @@ async function showNodeView(name: string) {
   DrawerHelper
     .instance
     .drawer(drawer)
-    .show(`Node:${name}`, NodeView, { node: await K8sService.playService.nodeControllerGetNode({ name }) })
+    .show(`Node:${name}`, NodeView, { node: await K8sService.playService.nodeControllerGetOneByName({ name }) })
 }
 function toggle() {
   isExpended.value = !isExpended.value

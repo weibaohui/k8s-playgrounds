@@ -9,25 +9,25 @@ export class NodeService {
     public clientService: ClientService,
   ) {}
 
-  async getNodes() {
+  async List() {
     const k8sApi = this.clientService.getK8sApi()
     const resp = await k8sApi.listNode()
     return resp.body.items
   }
 
-  async getNode(name: string) {
+  async GetOneByName(name: string) {
     const k8sApi = this.clientService.getK8sApi()
     const resp = await k8sApi.readNode(name)
     return resp.body
   }
 
-  async deleteNode(name: string) {
+  async Delete(name: string) {
     const k8sApi = this.clientService.getK8sApi()
     const resp = await k8sApi.deleteNode(name)
     return resp.body
   }
 
-  async cordonNode(name: string) {
+  async Cordon(name: string) {
     const k8sApi = this.clientService.getK8sApi()
     const resp = await k8sApi.patchNode(name,
       { spec: { unschedulable: true } }, 'true', undefined,
@@ -41,7 +41,7 @@ export class NodeService {
     return resp.body
   }
 
-  async unCordonNode(name: string) {
+  async UnCordon(name: string) {
     const k8sApi = this.clientService.getK8sApi()
     const resp = await k8sApi.patchNode(name,
       { spec: { unschedulable: null } }, 'true', undefined,

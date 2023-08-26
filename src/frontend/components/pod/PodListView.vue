@@ -135,7 +135,7 @@ function createColumns(): DataTableColumns<V1Pod> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`Node:${row.spec.nodeName}`, NodeView, { node: await K8sService.playService.nodeControllerGetNode({ name: row.spec.nodeName }) })
+                .show(`Node:${row.spec.nodeName}`, NodeView, { node: await K8sService.playService.nodeControllerGetOneByName({ name: row.spec.nodeName }) })
             },
           },
           { default: () => row.spec.nodeName },

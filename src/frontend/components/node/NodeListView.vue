@@ -115,13 +115,13 @@ function createColumns(): DataTableColumns<V1Node> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.playService.nodeControllerGetNodeList()
+  itemList.value = await K8sService.playService.nodeControllerList()
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
     for (const name of keys)
-      await K8sService.playService.nodeControllerDeleteNode({ name })
+      await K8sService.playService.nodeControllerDelete({ name })
   })
 }
 

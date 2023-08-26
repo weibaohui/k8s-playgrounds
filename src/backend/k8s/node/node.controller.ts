@@ -1,7 +1,7 @@
 import {
-  Controller, Delete,
+  Controller,
   Get,
-  Param,
+  Param, Post,
 } from '@nestjs/common'
 import { K8sService } from '@backend/k8s/k8s.service'
 
@@ -12,27 +12,27 @@ export class NodeController {
   ) {}
 
   @Get('/list')
-  async getNodeList() {
-    return await this.k8sService.nodeService.getNodes()
+  async List() {
+    return await this.k8sService.nodeService.List()
   }
 
   @Get('/:name')
-  async getNode(@Param('name') name: string) {
-    return await this.k8sService.nodeService.getNode(name)
+  async GetOneByName(@Param('name') name: string) {
+    return await this.k8sService.nodeService.GetOneByName(name)
   }
 
-  @Delete ('/:name')
-  async deleteNode(@Param('name') name: string) {
-    return await this.k8sService.nodeService.deleteNode(name)
+  @Post('/delete/:name')
+  async Delete(@Param('name') name: string) {
+    return await this.k8sService.nodeService.Delete(name)
   }
 
   @Get('/cordon/:name')
-  async cordonNode(@Param('name') name: string) {
-    return await this.k8sService.nodeService.cordonNode(name)
+  async Cordon(@Param('name') name: string) {
+    return await this.k8sService.nodeService.Cordon(name)
   }
 
   @Get('/unCordon/:name')
-  async unCordonNode(@Param('name') name: string) {
-    return await this.k8sService.nodeService.unCordonNode(name)
+  async UnCordon(@Param('name') name: string) {
+    return await this.k8sService.nodeService.UnCordon(name)
   }
 }
