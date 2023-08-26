@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { V1LabelSelector } from '@backend/k8s/model/v1LabelSelector'
 import type { V1Pod } from '@backend/k8s/model/V1Pod'
 import { V1ReplicationController } from '@backend/k8s/model/V1ReplicationController'
 import { SelectorUtils } from '@backend/utils/SelectorUtils'
@@ -17,7 +16,7 @@ const props = defineProps({
 
 const podList = ref<V1Pod[]>()
 async function getPods() {
-  const selector = SelectorUtils.getSelector(props.rc.spec.selector as V1LabelSelector)
+  const selector = SelectorUtils.getSelector({ matchLabels: props.rc.spec.selector })
   podList.value = await K8sService.playService.podControllerGetPodsByLabelSelector({ selector })
 }
 getPods()
@@ -36,7 +35,7 @@ getPods()
 
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
-      Pods
+      Pods (filter by label )
     </NText>
   </NH6>
   <PodListMiniView :item-list="podList" />
