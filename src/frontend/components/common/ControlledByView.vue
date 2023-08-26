@@ -56,7 +56,7 @@ async function showView(ns: string, item: V1OwnerReference) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`StatefulSet:${item.name}`, StsView, { sts: await K8sService.playService.statefulSetControllerGetStatefulSetByNsName({ ns, name: item.name }) })
+        .show(`StatefulSet:${item.name}`, StsView, { sts: await K8sService.playService.statefulSetControllerGetOneByNsName({ ns, name: item.name }) })
       break
     case 'Pod':
       DrawerHelper

@@ -13,34 +13,34 @@ export class StatefulSetController {
   ) {}
 
   @Get('/list')
-  async getStatefulSets() {
-    return await this.k8sService.statefulSetService.getStatefulSets()
+  async List() {
+    return await this.k8sService.statefulSetService.List()
   }
 
   @Get('/ns/:ns')
-  async getStatefulSetsByNs(@Param('ns') ns: string) {
-    return await this.k8sService.statefulSetService.getStatefulSets(ns)
+  async ListByNs(@Param('ns') ns: string) {
+    return await this.k8sService.statefulSetService.List(ns)
   }
 
   @Post('/delete')
-  async deleteStatefulSet(@Body() nsn: Array<string>) {
+  async Delete(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]
       const name = nsname[1]
-      this.k8sService.statefulSetService.deleteStatefulSet(name, ns)
+      this.k8sService.statefulSetService.Delete(name, ns)
     })
     return {}
   }
 
   @Get('/ns/:ns/name/:name')
-  async getStatefulSetByNsName(@Param('ns') ns: string, @Param('name') name: string) {
-    return await this.k8sService.statefulSetService.getStatefulSetByName(ns, name)
+  async GetOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.statefulSetService.GetOneByNsName(ns, name)
   }
 
   @Post('/scale/ns/:ns/name/:name/replicas/:replicas')
-  async scaleStatefulSet(@Param('ns') ns: string, @Param('name') name: string, @Param('replicas') replicas: number) {
-    return await this.k8sService.statefulSetService.scaleStatefulSet(ns, name, replicas)
+  async Scale(@Param('ns') ns: string, @Param('name') name: string, @Param('replicas') replicas: number) {
+    return await this.k8sService.statefulSetService.Scale(ns, name, replicas)
   }
 
   @Get('/restart/ns/:ns/name/:name')

@@ -55,7 +55,7 @@ function getOptions(): ActionMenuOption[] {
       icon: Trash,
       action: () =>
         DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `${props.sts.metadata.namespace}/${props.sts.metadata.name}`, async () => {
-          await K8sService.playService.statefulSetControllerDeleteStatefulSet({ requestBody: [`${props.sts.metadata.namespace}/${props.sts.metadata.name}`] })
+          await K8sService.playService.statefulSetControllerDelete({ requestBody: [`${props.sts.metadata.namespace}/${props.sts.metadata.name}`] })
           drawer.close()
         }),
     },

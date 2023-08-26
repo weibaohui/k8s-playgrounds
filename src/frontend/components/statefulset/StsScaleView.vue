@@ -28,7 +28,7 @@ function cancel() {
   drawer.close()
 }
 async function scale() {
-  const ret = await K8sService.playService.statefulSetControllerScaleStatefulSet(
+  const ret = await K8sService.playService.statefulSetControllerScale(
     {
       ns: props.sts.metadata.namespace,
       name: props.sts.metadata.name,
