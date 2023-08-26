@@ -133,7 +133,7 @@ async function handleDownloadSelect(key: string) {
   x.name = props.pod.metadata.name
   x.containerName = selectedContainerName.value
   if (key === 'all') {
-    const url = await K8sService.playService.podControllerGetPodContainerLogsUrl({
+    const url = await K8sService.playService.podControllerGetContainerLogsUrl({
       ns: x.ns,
       podName: x.name,
       containerName: x.containerName,

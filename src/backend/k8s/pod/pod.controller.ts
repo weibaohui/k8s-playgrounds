@@ -1,8 +1,8 @@
 import { K8sService } from '@backend/k8s/k8s.service'
 import { V1Pod } from '@kubernetes/client-node'
-import { Body, Controller, Get, Param, Post, StreamableFile } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post, Req, Request, StreamableFile } from '@nestjs/common'
 
-@Controller('k8s/pod')
+@Controller('k8s/Pod')
 export class PodController {
   constructor(
     private k8sService: K8sService,
@@ -50,5 +50,14 @@ export class PodController {
                       @Param('containerName') containerName: string): StreamableFile {
     const file = this.k8sService.podService.GetContainerLogs(ns, podName, containerName)
     return new StreamableFile(file)
+  }
+
+  @Get('/log/url/:ns/:podName/:containerName')
+  GetContainerLogsUrl(@Param('ns') ns: string,
+                   @Param('podName') podName: string,
+                   @Param('containerName') containerName: string, @Req() request: Request): string {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    return `http://${request.headers.host}/k8s/Pod/log/file/${ns}/${podName}/${containerName}`
   }
 }
