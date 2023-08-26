@@ -1,32 +1,36 @@
 <script setup lang="ts">
-import { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
+import { V1Job } from '@backend/k8s/model/v1Job'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import { NTable } from 'naive-ui'
 
 const props = defineProps({
-  rs: V1ReplicaSet,
+  job: V1Job,
 })
 </script>
 
 <template>
-  <ResourceMetadataView :item="props.rs.metadata" />
+  <ResourceMetadataView :item="props.job.metadata" />
   <NTable :single-line="false">
     <tbody>
       <tr>
         <td class="left">
-          replicas
+          ready
         </td>
-        <td>{{ props.rs.status.replicas }}</td>
+        <td>{{ props.job.status.ready ? props.job.status.ready : 0 }}</td>
       </tr>
       <tr>
         <td>
-          availableReplicas
+          failed
         </td>
-        <td>{{ props.rs.status.availableReplicas ? props.rs.status.availableReplicas : 0 }}</td>
+        <td>{{ props.job.status.failed ? props.job.status.failed : 0 }}</td>
       </tr>
       <tr>
-        <td>readyReplicas</td>
-        <td>{{ props.rs.status.readyReplicas ? props.rs.status.readyReplicas : 0 }}</td>
+        <td>active</td>
+        <td>{{ props.job.status.active ? props.job.status.active : 0 }}</td>
+      </tr>
+      <tr>
+        <td>active</td>
+        <td>{{ props.job.status.succeeded ? props.job.status.succeeded : 0 }}</td>
       </tr>
     </tbody>
   </NTable>

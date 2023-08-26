@@ -26,15 +26,15 @@ function getOptions(): ActionMenuOption[] {
       action: () => DrawerHelper
         .instance
         .drawer(drawer)
-        .showWider(props.rs.metadata.name, MonacoView, { item: props.rs }),
+        .showWider(props.job.metadata.name, MonacoView, { item: props.job }),
     },
     {
       label: 'Delete',
       key: 'Delete',
       icon: Trash,
       action: () =>
-        DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `${props.rs.metadata.namespace}/${props.rs.metadata.name}`, async () => {
-          await K8sService.playService.ReplicaSetControllerDelete({ requestBody: [`${props.rs.metadata.namespace}/${props.rs.metadata.name}`] })
+        DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `${props.job.metadata.namespace}/${props.job.metadata.name}`, async () => {
+          await K8sService.playService.ReplicaSetControllerDelete({ requestBody: [`${props.job.metadata.namespace}/${props.job.metadata.name}`] })
           drawer.close()
         }),
     },

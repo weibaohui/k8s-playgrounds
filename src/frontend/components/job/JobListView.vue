@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
+import type { V1Job } from '@backend/k8s/model/V1Job'
 import { TimerUtils } from '@backend/utils/TimerUtils'
-import RsActionView from '@frontend/components/replicaset/RsActionView.vue'
-import RsView from '@frontend/components/replicaset/RsView.vue'
+import JobActionView from '@frontend/components/job/JobActionView.vue'
+import JobView from '@frontend/components/job/JobView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
@@ -18,11 +18,11 @@ const drawer = useDrawerService()
 const dialog = useDialog()
 
 const selectedNs = ref('default')
-const itemList = ref<V1ReplicaSet[]>()
+const itemList = ref<V1Job[]>()
 const searchText = ref('')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
 
-function createColumns(): DataTableColumns<V1ReplicaSet> {
+function createColumns(): DataTableColumns<V1Job> {
   return [
     {
       type: 'selection',
@@ -30,7 +30,7 @@ function createColumns(): DataTableColumns<V1ReplicaSet> {
     {
       title: 'Name',
       key: 'metadata.name',
-      render(row: V1ReplicaSet) {
+      render(row: V1Job) {
         return h(
           NButton,
           {
@@ -39,7 +39,7 @@ function createColumns(): DataTableColumns<V1ReplicaSet> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`ReplicaSet:${row.metadata.name}`, RsView, { rs: row })
+                .show(`Job:${row.metadata.name}`, JobView, { job: row })
             },
           },
           { default: () => row.metadata.name },
@@ -49,7 +49,7 @@ function createColumns(): DataTableColumns<V1ReplicaSet> {
     {
       title: 'Namespace',
       key: 'metadata.namespace',
-      render(row: V1ReplicaSet) {
+      render(row: V1Job) {
         return h(
           NButton,
           {
@@ -65,21 +65,10 @@ function createColumns(): DataTableColumns<V1ReplicaSet> {
       },
     },
     {
-      title: 'Desire',
-      key: 'status.replicas',
-    },
-    {
-      title: 'Current',
-      key: 'status.availableReplicas',
-      render(row: V1ReplicaSet) {
-        return row.status.availableReplicas ? row.status.availableReplicas : 0
-      },
-    },
-    {
-      title: 'Ready',
-      key: 'status.readyReplicas',
-      render(row: V1ReplicaSet) {
-        return row.status.readyReplicas ? row.status.readyReplicas : 0
+      title: 'completions',
+      key: 'status.succeeded',
+      render(row: V1Job) {
+        return `${row.status.succeeded}/${row.spec.completions}`
       },
     },
     {
@@ -96,10 +85,10 @@ function createColumns(): DataTableColumns<V1ReplicaSet> {
     {
       title: 'Action',
       key: 'Action',
-      render(row: V1ReplicaSet) {
-        return h(RsActionView,
+      render(row: V1Job) {
+        return h(JobActionView,
           {
-            rs: row,
+            job: row,
             isDropdown: true,
           },
         )
@@ -109,7 +98,7 @@ function createColumns(): DataTableColumns<V1ReplicaSet> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.playService.ReplicaSetControllerListByNs({ ns: selectedNs.value })
+  itemList.value = await K8sService.playService.jobControllerListByNs({ ns: selectedNs.value })
   if (!_.isEmpty(searchText.value))
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
