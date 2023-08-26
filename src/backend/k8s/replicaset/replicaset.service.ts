@@ -9,7 +9,7 @@ export class ReplicasetService {
     public clientService: ClientService,
   ) {}
 
-  async getReplicaSets(ns?: string) {
+  async List(ns?: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     if (!ns || ns === 'null') {
       const res = await k8sApi.listReplicaSetForAllNamespaces()
@@ -19,13 +19,13 @@ export class ReplicasetService {
     return resp.body.items
   }
 
-  async getReplicaSetByName(ns: string, name: string) {
+  async GetOneByNsName(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const resp = await k8sApi.readNamespacedReplicaSet(name, ns)
     return resp.body
   }
 
-  async deleteReplicaSet(name: string, ns: string) {
+  async Delete(name: string, ns: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const r = await k8sApi.deleteNamespacedReplicaSet(name, ns)
     return r.body

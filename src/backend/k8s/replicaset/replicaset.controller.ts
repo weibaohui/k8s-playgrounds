@@ -13,28 +13,28 @@ export class ReplicasetController {
   ) {}
 
   @Get('/list')
-  async getReplicaSets() {
-    return await this.k8sService.replicasetService.getReplicaSets()
+  async List() {
+    return await this.k8sService.replicasetService.List()
   }
 
   @Get('/ns/:ns')
-  async getReplicaSetsByNs(@Param('ns') ns: string) {
-    return await this.k8sService.replicasetService.getReplicaSets(ns)
+  async ListByNs(@Param('ns') ns: string) {
+    return await this.k8sService.replicasetService.List(ns)
   }
 
   @Post('/delete')
-  async deleteReplicaSet(@Body() nsn: Array<string>) {
+  async Delete(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]
       const name = nsname[1]
-      this.k8sService.replicasetService.deleteReplicaSet(name, ns)
+      this.k8sService.replicasetService.Delete(name, ns)
     })
     return {}
   }
 
   @Get('/ns/:ns/name/:name')
-  async getReplicaSetByNsName(@Param('ns') ns: string, @Param('name') name: string) {
-    return await this.k8sService.replicasetService.getReplicaSetByName(ns, name)
+  async GetOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.replicasetService.GetOneByNsName(ns, name)
   }
 }

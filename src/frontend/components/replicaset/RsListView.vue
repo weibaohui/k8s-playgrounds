@@ -109,14 +109,14 @@ function createColumns(): DataTableColumns<V1ReplicaSet> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.playService.replicasetControllerGetReplicaSetsByNs({ ns: selectedNs.value })
+  itemList.value = await K8sService.playService.replicasetControllerListByNs({ ns: selectedNs.value })
   if (!_.isEmpty(searchText.value))
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.playService.replicasetControllerDeleteReplicaSet({ requestBody: keys })
+    await K8sService.playService.replicasetControllerDelete({ requestBody: keys })
   })
 }
 
