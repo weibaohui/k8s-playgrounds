@@ -15,7 +15,7 @@ const props = defineProps({
 })
 const podList = ref<V1Pod[]>()
 async function getPodsByNodeName() {
-  podList.value = await K8sService.playService.podControllerGetPodListByNodeName({ name: props.node.metadata.name })
+  podList.value = await K8sService.playService.podControllerListByNodeName({ name: props.node.metadata.name })
 }
 getPodsByNodeName()
 </script>

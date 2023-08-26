@@ -187,8 +187,7 @@ function createColumns(): DataTableColumns<V1Pod> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.playService.podControllerGetPodListByNs({ ns: selectedNs.value })
-  // itemList.value = await K8sService.podService.getPodList(selectedNs.value)
+  itemList.value = await K8sService.playService.podControllerListByNs({ ns: selectedNs.value })
   itemList.value.sort((a, b) => {
     if (a.status.startTime > b.status.startTime)
       return -1
@@ -202,7 +201,7 @@ async function getItemList() {
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.playService.podControllerDeletePods({ requestBody: keys })
+    await K8sService.playService.podControllerDelete({ requestBody: keys })
   })
 }
 

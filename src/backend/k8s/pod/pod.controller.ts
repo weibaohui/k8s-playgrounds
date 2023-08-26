@@ -9,46 +9,46 @@ export class PodController {
   ) {}
 
   @Get('/list')
-  async getPodList(): Promise<V1Pod[]> {
-    return await this.k8sService.podService.k8sPods()
+  async List(): Promise<V1Pod[]> {
+    return await this.k8sService.podService.List()
   }
 
-  @Get('/:ns')
-  async getPodListByNs(@Param('ns') ns: string): Promise<V1Pod[]> {
-    return await this.k8sService.podService.k8sPods(ns)
+  @Get('/list/ns/:ns')
+  async ListByNs(@Param('ns') ns: string): Promise<V1Pod[]> {
+    return await this.k8sService.podService.List(ns)
   }
 
   @Get('/ns/:ns/name/:name')
-  async getPodByNsName(@Param('ns') ns: string, @Param('name') name: string): Promise<V1Pod> {
-    return await this.k8sService.podService.getPod(ns, name)
+  async GetOneByNsName(@Param('ns') ns: string, @Param('name') name: string): Promise<V1Pod> {
+    return await this.k8sService.podService.GetOne(ns, name)
   }
 
-  @Get('/node/:name')
-  async getPodListByNodeName(@Param('name') name: string) {
-    return await this.k8sService.podService.getPodsByNodeName(name)
+  @Get('/list/node/:name')
+  async ListByNodeName(@Param('name') name: string) {
+    return await this.k8sService.podService.ListByNodeName(name)
   }
 
-  @Get('/LabelSelector/:selector')
-  async getPodsByLabelSelector(@Param('selector') selector: string) {
-    return await this.k8sService.podService.getPodsByLabelSelector(selector)
+  @Get('/list/LabelSelector/:selector')
+  async ListByLabelSelector(@Param('selector') selector: string) {
+    return await this.k8sService.podService.ListByLabelSelector(selector)
   }
 
   @Post('/delete')
-  async deletePods(@Body() nsn: Array<string>): Promise<string> {
+  async Delete(@Body() nsn: Array<string>): Promise<string> {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]
       const name = nsname[1]
-      this.k8sService.podService.deletePods(name, ns)
+      this.k8sService.podService.Delete(name, ns)
     })
     return 'ok'
   }
 
   @Get('/log/file/:ns/:podName/:containerName')
-  getPodContainerLogsUrl(@Param('ns') ns: string,
+  GetContainerLogs(@Param('ns') ns: string,
                       @Param('podName') podName: string,
                       @Param('containerName') containerName: string): StreamableFile {
-    const file = this.k8sService.podService.getPodContainerLogs(ns, podName, containerName)
+    const file = this.k8sService.podService.GetContainerLogs(ns, podName, containerName)
     return new StreamableFile(file)
   }
 }

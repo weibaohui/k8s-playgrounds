@@ -17,7 +17,7 @@ const props = defineProps({
 const podList = ref<V1Pod[]>()
 async function getPods() {
   const selector = SelectorUtils.getSelector(props.deploy.spec.selector)
-  podList.value = await K8sService.playService.podControllerGetPodsByLabelSelector({ selector })
+  podList.value = await K8sService.playService.podControllerListByLabelSelector({ selector })
 }
 getPods()
 </script>

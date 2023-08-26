@@ -62,7 +62,7 @@ async function showView(ns: string, item: V1OwnerReference) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`Pod:${item.name}`, PodView, { pod: await K8sService.playService.podControllerGetPodByNsName({ ns, name: item.name }) })
+        .show(`Pod:${item.name}`, PodView, { pod: await K8sService.playService.podControllerGetOneByNsName({ ns, name: item.name }) })
       break
     default:
       alert(`未实现${item.kind}`)

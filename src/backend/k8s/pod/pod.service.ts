@@ -106,14 +106,14 @@ export class PodService {
       this.execInstanceMap.get(key).lastHeartBeatTime = moment().toISOString()
   }
 
-  getPodContainerLogs(ns: string, podName: string, containerName: string) {
+  GetContainerLogs(ns: string, podName: string, containerName: string) {
     console.log(ns, podName, containerName)
     const cmd = `kubectl logs -n ${ns} ${podName} -c ${containerName} `
     const process = exec(cmd)
     return process.stdout
   }
 
-  async k8sPods(ns?: string) {
+  async List(ns?: string) {
     const k8sApi = this.clientService.getK8sApi()
     if (!ns || ns === 'null') {
       const podAllResp = await k8sApi.listPodForAllNamespaces()
@@ -123,18 +123,18 @@ export class PodService {
     return podResp.body.items
   }
 
-  async getPod(ns: string, name: string) {
+  async GetOne(ns: string, name: string) {
     const k8sApi = this.clientService.getK8sApi()
     const podResp = await k8sApi.readNamespacedPod(name, ns)
     return podResp.body
   }
 
-  async getPodsByNodeName(nodeName: string) {
+  async ListByNodeName(nodeName: string) {
     const selector = `spec.nodeName=${nodeName}`
     return this.getPodsByFieldSelector(selector)
   }
 
-  async getPodsByLabelSelector(selector: string) {
+  async ListByLabelSelector(selector: string) {
     const k8sApi = this.clientService.getK8sApi()
     const podResp = await k8sApi.listPodForAllNamespaces(undefined, undefined, undefined, selector)
     return podResp.body.items
@@ -146,7 +146,7 @@ export class PodService {
     return podResp.body.items
   }
 
-  async deletePods(name: string, ns: string) {
+  async Delete(name: string, ns: string) {
     const k8sApi = this.clientService.getK8sApi()
     const r = await k8sApi.deleteNamespacedPod(name, ns)
     return r.body
