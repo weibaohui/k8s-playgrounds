@@ -152,6 +152,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'Jobs' },
           ),
         key: 'go-to-jobs',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/cronJobs',
+              },
+            },
+            { default: () => 'CronJobs' },
+          ),
+        key: 'go-to-cronJobs',
       },
     ],
   },

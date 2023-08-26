@@ -29,7 +29,7 @@ const props = defineProps({
         <td>{{ props.job.status.active ? props.job.status.active : 0 }}</td>
       </tr>
       <tr>
-        <td>active</td>
+        <td>succeeded</td>
         <td>{{ props.job.status.succeeded ? props.job.status.succeeded : 0 }}</td>
       </tr>
     </tbody>

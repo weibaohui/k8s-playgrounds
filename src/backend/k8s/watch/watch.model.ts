@@ -9,4 +9,5 @@ export enum ResType {
   StatefulSets = 'statefulsets',
   ReplicationControllers = 'replicationcontrollers',
   Jobs = 'jobs',
+  CronJobs = 'cronjobs',
 }

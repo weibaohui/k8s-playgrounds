@@ -1,15 +1,14 @@
- 
 # ⚡k8s playground
 
- 
- 
 ## Introduce
+
 使用Vue、TypeScript、Electron技术打造的k8s playground客户端。
 框架上使用了NaiveUI+NestJS。
 使用ChatGPT进行智能化加持，做使用简单、智能的k8s 管理UI。
+
 ## How to use
 
-- In the project folder: 
+- In the project folder:
   ```bash
   # install dependencies
   pnpm install # npm install
@@ -24,17 +23,24 @@
 
 ## Note for PNPM
 
-In order to use with `pnpm`, you'll need to adjust your `.npmrc` to use any one the following approaches in order for your dependencies to be bundled correctly (ref: [#6389](https://github.com/electron-userland/electron-builder/issues/6289#issuecomment-1042620422)):
+In order to use with `pnpm`, you'll need to adjust your `.npmrc` to use any one the following approaches in order for
+your dependencies to be bundled correctly (
+ref: [#6389](https://github.com/electron-userland/electron-builder/issues/6289#issuecomment-1042620422)):
+
 ```
 node-linker=hoisted
 ```
+
 ```
 public-hoist-pattern=*
 ```
+
 ```
 shamefully-hoist=true
 ```
+
 ## 功能列表
+
 |                    分类 | 功能             | 	状态✅/☑️ |
 |----------------------:|:---------------|:--------|
 |                   Pod | 列表             | ✅       |
@@ -120,21 +126,42 @@ shamefully-hoist=true
 |           StatefulSet | 详情-删除          | ✅       |
 |           StatefulSet | 详情-查看yaml      | ✅       |
 |           StatefulSet | 详情-Scale       | ✅       |
+|               CronJob | 列表             | ✅       |
+|               CronJob | 列表-查看yaml      | ✅       |
+|               CronJob | 列表-暂停/恢复       | ✅       |
+|               CronJob | 列表-删除          | ✅       |
+|               CronJob | 列表-手动执行        | ✅       |
+|               CronJob | 详情             | ✅       |
+|               CronJob | 详情-查看yaml      | ✅       |
+|               CronJob | 详情-暂停/恢复       | ✅       |
+|               CronJob | 详情-删除          | ✅       |
+|               CronJob | 详情-手动执行        | ✅       |
+|                   Job | 列表             | ✅       |
+|                   Job | 列表-查看yaml      | ✅       |
+|                   Job | 列表-删除          | ✅       |
+|                   Job | 详情             | ✅       |
+|                   Job | 详情-查看yaml      | ✅       |
+|                   Job | 详情-删除          | ✅       |
+
 ## 开发提示
+
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成
- * 安装 ：npm install openapi-typescript-codegen -g
+
+* 安装 ：npm install openapi-typescript-codegen -g
+
 ### k8s model 生成
- * 使用https://editor.swagger.io/ 生成client，选择typescript-angular
- * 将文件名称中的ioK8sApiCore替换掉，文件内的处理掉。这样用起来方便
 
- | 前                                    | 后            |
+* 使用https://editor.swagger.io/ 生成client，选择typescript-angular
+* 将文件名称中的ioK8sApiCore替换掉，文件内的处理掉。这样用起来方便
+
+| 前                                    | 后            |
  |--------------------------------------|--------------|
- | ioK8sApiCoreV1ConfigMap              | V1ConfigMap  |
- | IoK8sApimachineryPkgApisMetaV1Status | V1Status     |
- | ioK8sApiAppsV1ReplicaSet             | V1ReplicaSet |
- | IoK8sApiBatchV1Job                   | V1Job        |
-
+| ioK8sApiCoreV1ConfigMap              | V1ConfigMap  |
+| IoK8sApimachineryPkgApisMetaV1Status | V1Status     |
+| ioK8sApiAppsV1ReplicaSet             | V1ReplicaSet |
+| IoK8sApiBatchV1Job                   | V1Job        |
 
 ## Demo
+
 <img src="doc/demo.gif">
 
