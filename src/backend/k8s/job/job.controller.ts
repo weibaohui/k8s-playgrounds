@@ -14,12 +14,12 @@ export class JobController {
 
   @Get('/list')
   async List() {
-    return await this.k8sService.replicasetService.List()
+    return await this.k8sService.jobService.List()
   }
 
   @Get('/ns/:ns')
   async ListByNs(@Param('ns') ns: string) {
-    return await this.k8sService.replicasetService.List(ns)
+    return await this.k8sService.jobService.List(ns)
   }
 
   @Post('/delete')
@@ -28,13 +28,13 @@ export class JobController {
       const nsname = r.split('/')
       const ns = nsname[0]
       const name = nsname[1]
-      this.k8sService.replicasetService.Delete(name, ns)
+      this.k8sService.jobService.Delete(name, ns)
     })
     return {}
   }
 
   @Get('/ns/:ns/name/:name')
   async GetOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
-    return await this.k8sService.replicasetService.GetOneByNsName(ns, name)
+    return await this.k8sService.jobService.GetOneByNsName(ns, name)
   }
 }

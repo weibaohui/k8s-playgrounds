@@ -2,6 +2,8 @@ import { DaemonSetController } from '@backend/k8s/daemonset/daemonset.controller
 import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
 import { DeploymentController } from '@backend/k8s/deployment/deployment.controller'
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
+import { JobController } from '@backend/k8s/job/job.controller'
+import { JobService } from '@backend/k8s/job/job.service'
 import { ReplicaSetService } from '@backend/k8s/replicaset/replicaset.service'
 import { ReplicationController } from '@backend/k8s/replicationController/replication.controller'
 import { ReplicationControllerService } from '@backend/k8s/replicationController/replication.service'
@@ -29,6 +31,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     EventController, NodeController, NsController,
     PodController, ReplicaSetController, DeploymentController,
     DaemonSetController, ReplicationController, StatefulSetController,
+    JobController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -36,6 +39,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     ReplicaSetService, WatchService,
     DeploymentService, DaemonSetService,
     ReplicationControllerService, StatefulSetService,
+    JobService,
   ],
   exports: [K8sService],
 })

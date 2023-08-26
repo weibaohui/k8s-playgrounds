@@ -1,5 +1,6 @@
 import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
+import { JobService } from '@backend/k8s/job/job.service'
 import { ReplicaSetService } from '@backend/k8s/replicaset/replicaset.service'
 import { ReplicationControllerService } from '@backend/k8s/replicationController/replication.service'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
@@ -26,5 +27,6 @@ export class K8sService {
     public deploymentService: DeploymentService,
     public daemonSetService: DaemonSetService,
     public statefulSetService: StatefulSetService,
+    public jobService: JobService,
     public watchService: WatchService) {}
 }

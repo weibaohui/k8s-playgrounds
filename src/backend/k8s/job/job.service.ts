@@ -10,24 +10,24 @@ export class JobService {
   ) {}
 
   async List(ns?: string) {
-    const k8sApi = this.clientService.getAppsV1Api()
+    const k8sApi = this.clientService.getBatchV1Api()
     if (!ns || ns === 'null') {
-      const res = await k8sApi.listReplicaSetForAllNamespaces()
+      const res = await k8sApi.listJobForAllNamespaces()
       return res.body.items
     }
-    const resp = await k8sApi.listNamespacedReplicaSet(ns)
+    const resp = await k8sApi.listNamespacedJob(ns)
     return resp.body.items
   }
 
   async GetOneByNsName(ns: string, name: string) {
-    const k8sApi = this.clientService.getAppsV1Api()
-    const resp = await k8sApi.readNamespacedReplicaSet(name, ns)
+    const k8sApi = this.clientService.getBatchV1Api()
+    const resp = await k8sApi.readNamespacedJob(name, ns)
     return resp.body
   }
 
   async Delete(name: string, ns: string) {
-    const k8sApi = this.clientService.getAppsV1Api()
-    const r = await k8sApi.deleteNamespacedReplicaSet(name, ns)
+    const k8sApi = this.clientService.getBatchV1Api()
+    const r = await k8sApi.deleteNamespacedJob(name, ns)
     return r.body
   }
 }
