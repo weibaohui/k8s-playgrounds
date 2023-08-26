@@ -2,8 +2,8 @@ import { Injectable, Logger } from '@nestjs/common'
 import { ClientService } from '@backend/k8s/client/client.service'
 
 @Injectable()
-export class ReplicasetService {
-  private readonly logger = new Logger(ReplicasetService.name)
+export class ReplicaSetService {
+  private readonly logger = new Logger(ReplicaSetService.name)
 
   constructor(
     public clientService: ClientService,

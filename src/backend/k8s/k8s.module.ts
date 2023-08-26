@@ -2,6 +2,7 @@ import { DaemonSetController } from '@backend/k8s/daemonset/daemonset.controller
 import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
 import { DeploymentController } from '@backend/k8s/deployment/deployment.controller'
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
+import { ReplicaSetService } from '@backend/k8s/replicaset/replicaset.service'
 import { ReplicationController } from '@backend/k8s/replicationController/replication.controller'
 import { ReplicationControllerService } from '@backend/k8s/replicationController/replication.service'
 import { StatefulSetController } from '@backend/k8s/statefulset/statefulset.controller'
@@ -10,7 +11,6 @@ import { WatchService } from '@backend/k8s/watch/watch.service'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { ScheduleModule } from '@nestjs/schedule'
-import { ReplicasetService } from '@backend/k8s/replicaset/replicaset.service'
 import { K8sService } from '@backend/k8s/k8s.service'
 import { EventController } from '@backend/k8s/event/event.controller'
 import { EventService } from '@backend/k8s/event/event.service'
@@ -21,19 +21,19 @@ import { NsController } from '@backend/k8s/ns/ns.controller'
 import { NsService } from '@backend/k8s/ns/ns.service'
 import { PodController } from '@backend/k8s/pod/pod.controller'
 import { PodService } from '@backend/k8s/pod/pod.service'
-import { ReplicasetController } from '@backend/k8s/replicaset/replicaset.controller'
+import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.controller'
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), ScheduleModule.forRoot()],
   controllers: [
     EventController, NodeController, NsController,
-    PodController, ReplicasetController, DeploymentController,
+    PodController, ReplicaSetController, DeploymentController,
     DaemonSetController, ReplicationController, StatefulSetController,
   ],
   providers: [
     K8sService, PodService, NsService,
     NodeService, EventService, ClientService,
-    ReplicasetService, WatchService,
+    ReplicaSetService, WatchService,
     DeploymentService, DaemonSetService,
     ReplicationControllerService, StatefulSetService,
   ],
