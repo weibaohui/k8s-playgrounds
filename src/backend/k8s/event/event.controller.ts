@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common'
 import { K8sService } from '@backend/k8s/k8s.service'
 
-@Controller('k8s/event')
+@Controller('k8s/Event')
 export class EventController {
   constructor(
     private k8sService: K8sService,

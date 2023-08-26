@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common'
 import { K8sService } from '@backend/k8s/k8s.service'
 
-@Controller('k8s/deployment')
+@Controller('k8s/Deployment')
 export class DeploymentController {
   constructor(
     private k8sService: K8sService,
