@@ -13,17 +13,17 @@ export class ReplicationController {
   ) {}
 
   @Get('/list')
-  async getReplicaSets() {
+  async list() {
     return await this.k8sService.replicationControllerService.getReplicationControllers()
   }
 
-  @Get('/ns/:ns')
-  async getReplicationsByNs(@Param('ns') ns: string) {
+  @Get('/list/ns/:ns')
+  async listByNs(@Param('ns') ns: string) {
     return await this.k8sService.replicationControllerService.getReplicationControllers(ns)
   }
 
   @Post('/delete')
-  async deleteReplication(@Body() nsn: Array<string>) {
+  async delete(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]
@@ -34,7 +34,7 @@ export class ReplicationController {
   }
 
   @Get('/ns/:ns/name/:name')
-  async getReplicationByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+  async getOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
     return await this.k8sService.replicationControllerService.getReplicationControllerByName(ns, name)
   }
 }

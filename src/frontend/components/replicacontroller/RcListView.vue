@@ -110,14 +110,14 @@ function createColumns(): DataTableColumns<V1ReplicationController> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.playService.replicationControllerGetReplicationsByNs({ ns: selectedNs.value })
+  itemList.value = await K8sService.playService.replicationControllerListByNs({ ns: selectedNs.value })
   if (!_.isEmpty(searchText.value))
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.playService.replicationControllerDeleteReplication({ requestBody: keys })
+    await K8sService.playService.replicationControllerDelete({ requestBody: keys })
   })
 }
 
