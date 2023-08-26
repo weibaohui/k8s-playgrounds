@@ -50,7 +50,7 @@ export class StatefulSetService {
     return resp.body
   }
 
-  async restartStatefulSet(ns: string, name: string) {
+  async Restart(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const resp = await k8sApi.patchNamespacedStatefulSet(name, ns,
       {

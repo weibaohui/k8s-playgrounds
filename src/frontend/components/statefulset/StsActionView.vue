@@ -36,7 +36,7 @@ function getOptions(): ActionMenuOption[] {
       key: 'Restart',
       icon: RedoAlt,
       action: async () => {
-        await K8sService.playService.statefulSetControllerRestartStatefulSet({ ns: props.sts.metadata.namespace, name: props.sts.metadata.name })
+        await K8sService.playService.statefulSetControllerRestart({ ns: props.sts.metadata.namespace, name: props.sts.metadata.name })
         message.success('重启成功')
       },
     },

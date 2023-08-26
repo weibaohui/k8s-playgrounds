@@ -44,7 +44,7 @@ export class StatefulSetController {
   }
 
   @Get('/restart/ns/:ns/name/:name')
-  async restartStatefulSet(@Param('ns') ns: string, @Param('name') name: string) {
-    return await this.k8sService.statefulSetService.restartStatefulSet(ns, name)
+  async Restart(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.statefulSetService.Restart(ns, name)
   }
 }
