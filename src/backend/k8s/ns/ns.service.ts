@@ -9,13 +9,13 @@ export class NsService {
     public clientService: ClientService,
   ) {}
 
-  async getNsList() {
+  async List() {
     const k8sApi = this.clientService.getK8sApi()
     const res = await k8sApi.listNamespace()
     return res.body.items
   }
 
-  async deleteNs(name: string) {
+  async Delete(name: string) {
     const k8sApi = this.clientService.getK8sApi()
     const res = await k8sApi.deleteNamespace(name)
     return res.body

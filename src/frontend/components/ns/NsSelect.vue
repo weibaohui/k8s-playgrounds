@@ -12,7 +12,7 @@ const selectedNs = ref('default')
 const options = ref<SelectOption[]>()
 
 async function getK8sNsList() {
-  const ns = await K8sService.playService.nsControllerGetNamespaceList()
+  const ns = await K8sService.playService.nsControllerList()
   options.value = ns.map((r) => {
     return {
       label: r.metadata.name,
