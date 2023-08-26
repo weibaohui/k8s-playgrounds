@@ -1,5 +1,6 @@
 import DsListView from '@frontend/components/daemonset/DsListView.vue'
 import DeployListView from '@frontend/components/deployment/DeployListView.vue'
+import JobListView from '@frontend/components/job/JobListView.vue'
 import RcListView from '@frontend/components/replicacontroller/RcListView.vue'
 import RsListView from '@frontend/components/replicaset/RsListView.vue'
 import StsListView from '@frontend/components/statefulset/StsListView.vue'
@@ -47,6 +48,10 @@ export default createRouter({
     {
       path: '/statefulSets',
       component: StsListView,
+    },
+    {
+      path: '/jobs',
+      component: JobListView,
     },
   ],
 })

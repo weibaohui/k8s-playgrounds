@@ -8,4 +8,5 @@ export enum ResType {
   DaemonSets = 'daemonsets',
   StatefulSets = 'statefulsets',
   ReplicationControllers = 'replicationcontrollers',
+  Jobs = 'jobs',
 }

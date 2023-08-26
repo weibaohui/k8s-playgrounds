@@ -140,6 +140,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'StatefulSets' },
           ),
         key: 'go-to-statefulSets',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/jobs',
+              },
+            },
+            { default: () => 'Jobs' },
+          ),
+        key: 'go-to-jobs',
       },
     ],
   },

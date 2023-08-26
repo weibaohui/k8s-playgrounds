@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { V1Job } from '@backend/k8s/model/V1Job'
+import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import JobActionView from '@frontend/components/job/JobActionView.vue'
 import JobView from '@frontend/components/job/JobView.vue'
@@ -68,7 +69,7 @@ function createColumns(): DataTableColumns<V1Job> {
       title: 'completions',
       key: 'status.succeeded',
       render(row: V1Job) {
-        return `${row.status.succeeded}/${row.spec.completions}`
+        return `${row.status.succeeded ? row.status.succeeded : 0}/${row.spec.completions}`
       },
     },
     {
@@ -105,7 +106,7 @@ async function getItemList() {
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.playService.ReplicaSetControllerDelete({ requestBody: keys })
+    await K8sService.playService.jobControllerDelete({ requestBody: keys })
   })
 }
 
@@ -121,9 +122,7 @@ function onTextChanged(text: string) {
 }
 
 getItemList()
-TimerUtils.everyTwoSeconds(() => {
-  getItemList()
-})
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Jobs, selectedNs))
 </script>
 
 <template>

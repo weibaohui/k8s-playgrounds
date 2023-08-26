@@ -34,7 +34,7 @@ function getOptions(): ActionMenuOption[] {
       icon: Trash,
       action: () =>
         DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `${props.job.metadata.namespace}/${props.job.metadata.name}`, async () => {
-          await K8sService.playService.ReplicaSetControllerDelete({ requestBody: [`${props.job.metadata.namespace}/${props.job.metadata.name}`] })
+          await K8sService.playService.jobControllerDelete({ requestBody: [`${props.job.metadata.namespace}/${props.job.metadata.name}`] })
           drawer.close()
         }),
     },

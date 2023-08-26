@@ -65,6 +65,9 @@ export class WatchService {
       case ResType.StatefulSets:
         watchPath = '/apis/apps/v1/statefulsets'
         break
+      case ResType.Jobs:
+        watchPath = '/apis/batch/v1/jobs'
+        break
       default:
         watchPath = '/api/v1/pods'
     }
