@@ -9,27 +9,32 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiBatchV1Job } from './ioK8sApiBatchV1Job'
-import type { V1ListMeta } from './V1ListMeta'
+import type { V1JobSpec } from './v1JobSpec'
+import type { V1JobStatus } from './v1JobStatus'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
- * JobList is a collection of jobs.
+ * Job represents the configuration of a single job.
  */
-export interface IoK8sApiBatchV1JobList {
+export class V1Job {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
   apiVersion?: string
   /**
-     * items is the list of Jobs.
-     */
-  items: Array<IoK8sApiBatchV1Job>
-  /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
   kind?: string
   /**
-     * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+     * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
-  metadata?: V1ListMeta
+  metadata?: V1ObjectMeta
+  /**
+     * Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+     */
+  spec?: V1JobSpec
+  /**
+     * Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+     */
+  status?: V1JobStatus
 }

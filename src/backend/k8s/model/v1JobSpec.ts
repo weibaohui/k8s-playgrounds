@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiBatchV1PodFailurePolicy } from './ioK8sApiBatchV1PodFailurePolicy'
+import type { V1PodFailurePolicy } from './v1PodFailurePolicy'
 import type { V1PodTemplateSpec } from './V1PodTemplateSpec'
 import type { V1LabelSelector } from './v1LabelSelector'
 
 /**
  * JobSpec describes how the job execution will look like.
  */
-export interface IoK8sApiBatchV1JobSpec {
+export interface V1JobSpec {
   /**
      * Specifies the duration in seconds relative to the startTime that the job may be continuously active before the system tries to terminate it; value must be positive integer. If a Job is suspended (at creation or through an update), this timer will effectively be stopped and reset when the Job is resumed again.
      */
@@ -44,7 +44,7 @@ export interface IoK8sApiBatchV1JobSpec {
   /**
      * Specifies the policy of handling failed pods. In particular, it allows to specify the set of actions and conditions which need to be satisfied to take the associated action. If empty, the default behaviour applies - the counter of failed pods, represented by the jobs's .status.failed field, is incremented and it is checked against the backoffLimit. This field cannot be used in combination with restartPolicy=OnFailure.  This field is beta-level. It can be used when the `JobPodFailurePolicy` feature gate is enabled (enabled by default).
      */
-  podFailurePolicy?: IoK8sApiBatchV1PodFailurePolicy
+  podFailurePolicy?: V1PodFailurePolicy
   /**
      * A label query over pods that should match the pod count. Normally, the system sets this field for you. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
      */

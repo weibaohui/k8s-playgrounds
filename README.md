@@ -132,6 +132,7 @@ shamefully-hoist=true
  | ioK8sApiCoreV1ConfigMap              | V1ConfigMap  |
  | IoK8sApimachineryPkgApisMetaV1Status | V1Status     |
  | ioK8sApiAppsV1ReplicaSet             | V1ReplicaSet |
+ | IoK8sApiBatchV1Job                   | V1Job        |
 
 
 ## Demo

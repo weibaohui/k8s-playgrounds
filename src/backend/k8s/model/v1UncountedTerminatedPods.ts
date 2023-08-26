@@ -13,7 +13,7 @@
 /**
  * UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.
  */
-export interface IoK8sApiBatchV1UncountedTerminatedPods {
+export interface V1UncountedTerminatedPods {
   /**
      * failed holds UIDs of failed Pods.
      */

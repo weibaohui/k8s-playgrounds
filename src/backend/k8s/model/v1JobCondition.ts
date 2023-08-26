@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * JobCondition describes current state of a job.
  */
-export interface IoK8sApiBatchV1JobCondition {
+export interface V1JobCondition {
   /**
      * Last time the condition was checked.
      */

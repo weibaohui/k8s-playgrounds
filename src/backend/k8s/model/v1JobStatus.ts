@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiBatchV1JobCondition } from './ioK8sApiBatchV1JobCondition'
-import type { IoK8sApiBatchV1UncountedTerminatedPods } from './ioK8sApiBatchV1UncountedTerminatedPods'
+import type { V1JobCondition } from './v1JobCondition'
+import type { V1UncountedTerminatedPods } from './v1UncountedTerminatedPods'
 import type { V1Time } from './V1Time'
 
 /**
  * JobStatus represents the current state of a Job.
  */
-export interface IoK8sApiBatchV1JobStatus {
+export interface V1JobStatus {
   /**
      * The number of pending and running pods.
      */
@@ -32,7 +32,7 @@ export interface IoK8sApiBatchV1JobStatus {
   /**
      * The latest available observations of an object's current state. When a Job fails, one of the conditions will have type \"Failed\" and status true. When a Job is suspended, one of the conditions will have type \"Suspended\" and status true; when the Job is resumed, the status of this condition will become false. When a Job is completed, one of the conditions will have type \"Complete\" and status true. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
      */
-  conditions?: Array<IoK8sApiBatchV1JobCondition>
+  conditions?: Array<V1JobCondition>
   /**
      * The number of pods which reached phase Failed.
      */
@@ -52,5 +52,5 @@ export interface IoK8sApiBatchV1JobStatus {
   /**
      * uncountedTerminatedPods holds the UIDs of Pods that have terminated but the job controller hasn't yet accounted for in the status counters.  The job controller creates pods with a finalizer. When a pod terminates (succeeded or failed), the controller does three steps to account for it in the job status:  1. Add the pod UID to the arrays in this field. 2. Remove the pod finalizer. 3. Remove the pod UID from the arrays while increasing the corresponding     counter.  Old jobs might not be tracked using this field, in which case the field remains null.
      */
-  uncountedTerminatedPods?: IoK8sApiBatchV1UncountedTerminatedPods
+  uncountedTerminatedPods?: V1UncountedTerminatedPods
 }
