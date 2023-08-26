@@ -10,7 +10,7 @@ export class DeploymentService {
     public clientService: ClientService,
   ) {}
 
-  async getDeployments(ns?: string) {
+  async List(ns?: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     if (!ns || ns === 'null') {
       const res = await k8sApi.listDeploymentForAllNamespaces()
@@ -20,19 +20,19 @@ export class DeploymentService {
     return resp.body.items
   }
 
-  async deleteDeployment(ns: string, name: string) {
+  async Delete(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const r = await k8sApi.deleteNamespacedDeployment(name, ns)
     return r.body
   }
 
-  async getDeploymentByName(ns: string, name: string) {
+  async GetOneByNsName(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const resp = await k8sApi.readNamespacedDeployment(name, ns)
     return resp.body
   }
 
-  async restartDeployment(ns: string, name: string) {
+  async Restart(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const resp = await k8sApi.patchNamespacedDeployment(name, ns,
       {
@@ -57,7 +57,7 @@ export class DeploymentService {
     return resp.body
   }
 
-  async scaleDeployment(ns: string, name: string, replicas: string) {
+  async Scale(ns: string, name: string, replicas: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const resp = await k8sApi.patchNamespacedDeploymentScale(name, ns,
       {

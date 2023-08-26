@@ -32,7 +32,7 @@ async function showView(ns: string, item: V1OwnerReference) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`Deployment:${item.name}`, DeployView, { deploy: await K8sService.playService.deploymentControllerGetDeploymentByNsName({ ns, name: item.name }) })
+        .show(`Deployment:${item.name}`, DeployView, { deploy: await K8sService.playService.deploymentControllerGetOneByNsName({ ns, name: item.name }) })
       break
     case 'Node':
       DrawerHelper

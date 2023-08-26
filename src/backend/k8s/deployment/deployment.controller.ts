@@ -13,38 +13,38 @@ export class DeploymentController {
   ) {}
 
   @Get('/list')
-  async getDeploymentList() {
-    return await this.k8sService.deploymentService.getDeployments()
+  async List() {
+    return await this.k8sService.deploymentService.List()
   }
 
-  @Get('/ns/:ns')
-  async getDeploymentListByNs(@Param('ns') ns: string) {
-    return await this.k8sService.deploymentService.getDeployments(ns)
+  @Get('/list/ns/:ns')
+  async ListByNs(@Param('ns') ns: string) {
+    return await this.k8sService.deploymentService.List(ns)
   }
 
   @Post('/delete')
-  async deleteDeployment(@Body() nsn: Array<string>) {
+  async Delete(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]
       const name = nsname[1]
-      this.k8sService.deploymentService.deleteDeployment(ns, name)
+      this.k8sService.deploymentService.Delete(ns, name)
     })
     return {}
   }
 
   @Get('/restart/ns/:ns/name/:name')
-  async restartDeployment(@Param('ns') ns: string, @Param('name') name: string) {
-    return await this.k8sService.deploymentService.restartDeployment(ns, name)
+  async Restart(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.deploymentService.Restart(ns, name)
   }
 
   @Post('/scale/ns/:ns/name/:name/replicas/:replicas')
-  async scaleDeployment(@Param('ns') ns: string, @Param('name') name: string, @Param('replicas') replicas: string) {
-    return await this.k8sService.deploymentService.scaleDeployment(ns, name, replicas)
+  async Scale(@Param('ns') ns: string, @Param('name') name: string, @Param('replicas') replicas: string) {
+    return await this.k8sService.deploymentService.Scale(ns, name, replicas)
   }
 
   @Get('/ns/:ns/name/:name')
-  async getDeploymentByNsName(@Param('ns') ns: string, @Param('name') name: string) {
-    return await this.k8sService.deploymentService.getDeploymentByName(ns, name)
+  async GetOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.deploymentService.GetOneByNsName(ns, name)
   }
 }

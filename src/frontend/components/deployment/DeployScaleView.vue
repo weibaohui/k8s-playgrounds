@@ -28,7 +28,7 @@ function cancel() {
   drawer.close()
 }
 async function scale() {
-  const ret = await K8sService.playService.deploymentControllerScaleDeployment(
+  const ret = await K8sService.playService.deploymentControllerScale(
     {
       ns: props.deploy.metadata.namespace,
       name: props.deploy.metadata.name,
