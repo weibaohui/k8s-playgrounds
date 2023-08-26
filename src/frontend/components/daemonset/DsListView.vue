@@ -117,14 +117,14 @@ function createColumns(): DataTableColumns<V1DaemonSet> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.playService.daemonSetControllerGetDaemonSetListByNs({ ns: selectedNs.value })
+  itemList.value = await K8sService.playService.daemonSetControllerListByNs({ ns: selectedNs.value })
   if (!_.isEmpty(searchText.value))
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.playService.daemonSetControllerDeleteDaemonSet({ requestBody: keys })
+    await K8sService.playService.daemonSetControllerDelete({ requestBody: keys })
   })
 }
 

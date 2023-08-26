@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common'
 import { K8sService } from '@backend/k8s/k8s.service'
 
-@Controller('k8s/daemonset')
+@Controller('k8s/DaemonSet')
 export class DaemonSetController {
   private readonly logger = new Logger(DaemonSetController.name)
 
@@ -15,33 +15,33 @@ export class DaemonSetController {
   ) {}
 
   @Get('/list')
-  async getDaemonSetList() {
-    return await this.k8sService.daemonSetService.getDaemonSets()
+  async List() {
+    return await this.k8sService.daemonSetService.List()
   }
 
-  @Get('/ns/:ns')
-  async getDaemonSetListByNs(@Param('ns') ns: string) {
-    return await this.k8sService.daemonSetService.getDaemonSets(ns)
+  @Get('/list/ns/:ns')
+  async ListByNs(@Param('ns') ns: string) {
+    return await this.k8sService.daemonSetService.List(ns)
   }
 
   @Post('/delete')
-  async deleteDaemonSet(@Body() nsn: Array<string>) {
+  async Delete(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
       const nsname = r.split('/')
       const ns = nsname[0]
       const name = nsname[1]
-      this.k8sService.daemonSetService.deleteDaemonSet(ns, name)
+      this.k8sService.daemonSetService.Delete(ns, name)
     })
     return {}
   }
 
   @Get('/restart/ns/:ns/name/:name')
-  async restartDaemonSet(@Param('ns') ns: string, @Param('name') name: string) {
-    return await this.k8sService.daemonSetService.restartDaemonSet(ns, name)
+  async Restart(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.daemonSetService.Restart(ns, name)
   }
 
   @Get('/ns/:ns/name/:name')
-  async getDaemonSetByNsName(@Param('ns') ns: string, @Param('name') name: string) {
-    return await this.k8sService.daemonSetService.getDaemonSetByName(ns, name)
+  async GetOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.daemonSetService.GetOneByNsName(ns, name)
   }
 }

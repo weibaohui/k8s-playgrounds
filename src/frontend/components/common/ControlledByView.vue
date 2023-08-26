@@ -44,7 +44,7 @@ async function showView(ns: string, item: V1OwnerReference) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`DaemonSet:${item.name}`, DsView, { ds: await K8sService.playService.daemonSetControllerGetDaemonSetByNsName({ ns, name: item.name }) })
+        .show(`DaemonSet:${item.name}`, DsView, { ds: await K8sService.playService.daemonSetControllerGetOneByNsName({ ns, name: item.name }) })
       break
     case 'ReplicationController':
       DrawerHelper

@@ -26,7 +26,7 @@ function getOptions(): ActionMenuOption[] {
       key: 'Restart',
       icon: RedoAlt,
       action: async () => {
-        await K8sService.playService.daemonSetControllerRestartDaemonSet({ ns: props.ds.metadata.namespace, name: props.ds.metadata.name })
+        await K8sService.playService.daemonSetControllerRestart({ ns: props.ds.metadata.namespace, name: props.ds.metadata.name })
         message.success('重启成功')
       },
     },
@@ -45,7 +45,7 @@ function getOptions(): ActionMenuOption[] {
       icon: Trash,
       action: () =>
         DialogHelper.instance.dialog(dialog).confirmWithTarget('删除', `${props.ds.metadata.namespace}/${props.ds.metadata.name}`, async () => {
-          await K8sService.playService.daemonSetControllerDeleteDaemonSet({ requestBody: [`${props.ds.metadata.namespace}/${props.ds.metadata.name}`] })
+          await K8sService.playService.daemonSetControllerDelete({ requestBody: [`${props.ds.metadata.namespace}/${props.ds.metadata.name}`] })
           drawer.close()
         }),
     },

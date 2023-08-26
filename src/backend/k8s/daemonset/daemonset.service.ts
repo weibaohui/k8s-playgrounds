@@ -10,7 +10,7 @@ export class DaemonSetService {
     public clientService: ClientService,
   ) {}
 
-  async getDaemonSets(ns?: string) {
+  async List(ns?: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     if (!ns || ns === 'null') {
       const res = await k8sApi.listDaemonSetForAllNamespaces()
@@ -20,19 +20,19 @@ export class DaemonSetService {
     return resp.body.items
   }
 
-  async deleteDaemonSet(ns: string, name: string) {
+  async Delete(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const r = await k8sApi.deleteNamespacedDaemonSet(name, ns)
     return r.body
   }
 
-  async getDaemonSetByName(ns: string, name: string) {
+  async GetOneByNsName(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const resp = await k8sApi.readNamespacedDaemonSet(name, ns)
     return resp.body
   }
 
-  async restartDaemonSet(ns: string, name: string) {
+  async Restart(ns: string, name: string) {
     const k8sApi = this.clientService.getAppsV1Api()
     const resp = await k8sApi.patchNamespacedDaemonSet(name, ns,
       {
