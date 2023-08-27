@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import ContainerStatusIcon from '@frontend/components/container/ContainerStatusIcon.vue'
 import { ArrowsAltH, Docker } from '@vicons/fa'
-import { NDivider, NIcon, NTable, NTag, NText } from 'naive-ui'
+import { NDivider, NIcon, NSpace, NTable, NTag, NText } from 'naive-ui'
 import ContainerProbeView from '@frontend/components/container/ContainerProbeView.vue'
 import ContainerState from '@frontend/components/container/ContainerState.vue'
 import { V1Pod } from '@backend/k8s/model/V1Pod'
@@ -18,7 +19,7 @@ function getContainerStatusByName(name) {
     <NDivider title-placement="left">
       <NIcon v-if="getContainerStatusByName(t.name).ready" :component="Docker" color="green" size="20" />
       <NIcon v-else :component="Docker" color="red" size="20" />
-      {{ t.name }}
+      &nbsp;&nbsp;{{ t.name }}
     </NDivider>
     <NTable :single-line="false">
       <tbody>
@@ -27,7 +28,8 @@ function getContainerStatusByName(name) {
             Status
           </td>
           <td>
-            <ContainerState :pod="getContainerStatusByName(t.name).state" />
+            <ContainerStatusIcon :container-name="t.name" :pod="props.pod" />
+            <ContainerState :state="getContainerStatusByName(t.name).state" />
             <NText v-if="getContainerStatusByName(t.name).ready" type="success">
               ready
             </NText>
