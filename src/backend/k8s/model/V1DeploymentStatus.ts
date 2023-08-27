@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAppsV1DeploymentCondition } from './ioK8sApiAppsV1DeploymentCondition'
+import type { V1DeploymentCondition } from './v1DeploymentCondition'
 
 /**
  * DeploymentStatus is the most recently observed status of the Deployment.
@@ -26,7 +26,7 @@ export interface V1DeploymentStatus {
   /**
      * Represents the latest available observations of a deployment's current state.
      */
-  conditions?: Array<IoK8sApiAppsV1DeploymentCondition>
+  conditions?: Array<V1DeploymentCondition>
   /**
      * The generation observed by the deployment controller.
      */

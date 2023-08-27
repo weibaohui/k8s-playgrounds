@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * DeploymentCondition describes the state of a deployment at a certain point.
  */
-export interface IoK8sApiAppsV1DeploymentCondition {
+export class V1DeploymentCondition {
   /**
      * Last time the condition transitioned from one status to another.
      */
