@@ -83,6 +83,7 @@ defineExpose({ setNsSelected })
       :pagination="false"
       :bordered="false"
       :row-key="rowKey"
+      :scroll-x="1300"
       @update:checked-row-keys="handleCheck"
     />
   </NMessageProvider>
