@@ -14,13 +14,25 @@ const props = defineProps({
     <tbody>
       <tr>
         <td class="left">
-          active
+          当前活跃
         </td>
-        <td>{{ props.cj.status.active ? props.cj.status.active : 0 }}</td>
+        <td>{{ props.cj.status.active ? props.cj.status.active : 'null' }}</td>
       </tr>
       <tr>
         <td>suspend</td>
         <td>{{ props.cj.spec.suspend }}</td>
+      </tr>
+      <tr>
+        <td>并发执行</td>
+        <td>{{ props.cj.spec.concurrencyPolicy }}</td>
+      </tr>
+      <tr>
+        <td>成功历史</td>
+        <td>{{ props.cj.spec.successfulJobsHistoryLimit }}</td>
+      </tr>
+      <tr>
+        <td>失败历史</td>
+        <td>{{ props.cj.spec.failedJobsHistoryLimit }}</td>
       </tr>
     </tbody>
   </NTable>
