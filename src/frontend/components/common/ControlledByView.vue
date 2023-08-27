@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { V1OwnerReference } from '@backend/k8s/model/V1OwnerReference'
+import CronJobView from '@frontend/components/cronjob/CronJobView.vue'
 import DsView from '@frontend/components/daemonset/DsView.vue'
 import DeployView from '@frontend/components/deployment/DeployView.vue'
+import JobView from '@frontend/components/job/JobView.vue'
 import NodeView from '@frontend/components/node/NodeView.vue'
 import PodView from '@frontend/components/pod/PodView.vue'
 import RcView from '@frontend/components/replicacontroller/RcView.vue'
@@ -26,7 +28,7 @@ async function showView(ns: string, item: V1OwnerReference) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`ReplicaSet:${item.name}`, RsView, { rs: await K8sService.playService.ReplicaSetControllerGetOneByNsName({ ns, name: item.name }) })
+        .show(`ReplicaSet:${item.name}`, RsView, { rs: await K8sService.playService.replicaSetControllerGetOneByNsName({ ns, name: item.name }) })
       break
     case 'Deployment':
       DrawerHelper
@@ -38,7 +40,7 @@ async function showView(ns: string, item: V1OwnerReference) {
       DrawerHelper
         .instance
         .drawer(drawer)
-        .show(`Node:${item.name}`, NodeView, { node: await K8sService.playService.nodeControllerGetNode({ name: item.name }) })
+        .show(`Node:${item.name}`, NodeView, { node: await K8sService.playService.nodeControllerGetOneByName({ name: item.name }) })
       break
     case 'DaemonSet':
       DrawerHelper
@@ -64,6 +66,18 @@ async function showView(ns: string, item: V1OwnerReference) {
         .drawer(drawer)
         .show(`Pod:${item.name}`, PodView, { pod: await K8sService.playService.podControllerGetOneByNsName({ ns, name: item.name }) })
       break
+    case 'Job':
+      DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(`Job:${item.name}`, JobView, { job: await K8sService.playService.jobControllerGetOneByNsName({ ns, name: item.name }) })
+      break
+    case 'CronJob':
+      DrawerHelper
+        .instance
+        .drawer(drawer)
+        .show(`CronJob:${item.name}`, CronJobView, { cj: await K8sService.playService.cronJobControllerGetOneByNsName({ ns, name: item.name }) })
+      break
     default:
       alert(`未实现${item.kind}`)
   }
@@ -72,7 +86,6 @@ async function showView(ns: string, item: V1OwnerReference) {
 
 <template>
   <span v-for="r in props.item.ownerReferences" :key="r.uid">
-
     <NTooltip v-if="simple" trigger="hover">
       <template #trigger>
         <NButton text type="success" @click="showView(props.item.namespace, r)">
