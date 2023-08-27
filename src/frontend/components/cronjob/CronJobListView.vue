@@ -2,8 +2,8 @@
 import type { V1CronJob } from '@backend/k8s/model/V1CronJob'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
+import CronJobActionView from '@frontend/components/cronjob/CronJobActionView.vue'
 import CronJobView from '@frontend/components/cronjob/CronJobView.vue'
-import JobActionView from '@frontend/components/job/JobActionView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import moment from 'moment'
@@ -106,9 +106,9 @@ function createColumns(): DataTableColumns<V1CronJob> {
       title: 'Action',
       key: 'Action',
       render(row: V1CronJob) {
-        return h(JobActionView,
+        return h(CronJobActionView,
           {
-            job: row,
+            cj: row,
             isDropdown: true,
           },
         )
