@@ -26,6 +26,18 @@ function isSuspended() {
 function getOptions(): ActionMenuOption[] {
   return [
     {
+      label: 'Trigger',
+      key: 'Trigger',
+      icon: Edit,
+      action: () => {
+        K8sService.playService.cronJobControllerTrigger({
+          ns: props.cj.metadata.namespace,
+          name: props.cj.metadata.name,
+        })
+        message.success('Job创建成功')
+      },
+    },
+    {
       label: 'Suspend',
       key: 'Suspend',
       icon: PauseCircleRegular,

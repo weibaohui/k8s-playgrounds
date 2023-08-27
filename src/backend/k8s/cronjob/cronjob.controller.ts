@@ -47,4 +47,9 @@ export class CronJobController {
   async Resume(@Param('ns') ns: string, @Param('name') name: string) {
     return await this.k8sService.cronJobService.Resume(ns, name)
   }
+
+  @Post('/trigger/ns/:ns/name/:name')
+  async Trigger(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.cronJobService.Trigger(ns, name)
+  }
 }
