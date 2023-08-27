@@ -37,4 +37,14 @@ export class CronJobController {
   async GetOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
     return await this.k8sService.cronJobService.GetOneByNsName(ns, name)
   }
+
+  @Post('/suspend/ns/:ns/name/:name')
+  async Suspend(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.cronJobService.Suspend(ns, name)
+  }
+
+  @Post('/resume/ns/:ns/name/:name')
+  async Resume(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.cronJobService.Resume(ns, name)
+  }
 }

@@ -30,4 +30,30 @@ export class CronJobService {
     const r = await k8sApi.deleteNamespacedCronJob(name, ns)
     return r.body
   }
+
+  async Suspend(ns: string, name: string) {
+    return this.setSuspendStatus(ns, name, true)
+  }
+
+  async Resume(ns: string, name: string) {
+    return this.setSuspendStatus(ns, name, false)
+  }
+
+  async setSuspendStatus(ns: string, name: string, status: boolean) {
+    const k8sApi = this.clientService.getBatchV1Api()
+    const resp = await k8sApi.patchNamespacedCronJob(name, ns,
+      {
+        spec: {
+          suspend: status,
+        },
+      }, 'true', undefined,
+      undefined, undefined, undefined,
+      {
+        headers: {
+          'Content-Type': 'application/strategic-merge-patch+json',
+          'Accept': 'application/json, */*',
+        },
+      })
+    return resp.body
+  }
 }
