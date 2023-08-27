@@ -5,7 +5,6 @@ export class SelectorUtils {
     let selector = ''
     for (const k in src.matchLabels) {
       const v = src.matchLabels[k]
-      console.log(k, v)
       selector += `${k}=${v},`
     }
     if (selector.endsWith(','))

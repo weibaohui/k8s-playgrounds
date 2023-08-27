@@ -23,59 +23,44 @@ const props = defineProps({
 const drawer = useDrawerService()
 
 async function showView(ns: string, item: V1OwnerReference) {
+  const drawerInstance = DrawerHelper
+    .instance
+    .drawer(drawer)
   switch (item.kind) {
     case 'ReplicaSet':
-      DrawerHelper
-        .instance
-        .drawer(drawer)
-        .show(`ReplicaSet:${item.name}`, RsView, { rs: await K8sService.playService.replicaSetControllerGetOneByNsName({ ns, name: item.name }) })
+      drawerInstance
+        .show(`${item.kind}:${item.name}`, RsView, { rs: await K8sService.playService.replicaSetControllerGetOneByNsName({ ns, name: item.name }) })
       break
     case 'Deployment':
-      DrawerHelper
-        .instance
-        .drawer(drawer)
-        .show(`Deployment:${item.name}`, DeployView, { deploy: await K8sService.playService.deploymentControllerGetOneByNsName({ ns, name: item.name }) })
+      drawerInstance
+        .show(`${item.kind}:${item.name}`, DeployView, { deploy: await K8sService.playService.deploymentControllerGetOneByNsName({ ns, name: item.name }) })
       break
     case 'Node':
-      DrawerHelper
-        .instance
-        .drawer(drawer)
-        .show(`Node:${item.name}`, NodeView, { node: await K8sService.playService.nodeControllerGetOneByName({ name: item.name }) })
+      drawerInstance
+        .show(`${item.kind}:${item.name}`, NodeView, { node: await K8sService.playService.nodeControllerGetOneByName({ name: item.name }) })
       break
     case 'DaemonSet':
-      DrawerHelper
-        .instance
-        .drawer(drawer)
-        .show(`DaemonSet:${item.name}`, DsView, { ds: await K8sService.playService.daemonSetControllerGetOneByNsName({ ns, name: item.name }) })
+      drawerInstance
+        .show(`${item.kind}:${item.name}`, DsView, { ds: await K8sService.playService.daemonSetControllerGetOneByNsName({ ns, name: item.name }) })
       break
     case 'ReplicationController':
-      DrawerHelper
-        .instance
-        .drawer(drawer)
-        .show(`ReplicationController:${item.name}`, RcView, { rc: await K8sService.playService.replicationControllerGetOneByNsName({ ns, name: item.name }) })
+      drawerInstance
+        .show(`${item.kind}:${item.name}`, RcView, { rc: await K8sService.playService.replicationControllerGetOneByNsName({ ns, name: item.name }) })
       break
     case 'StatefulSet':
-      DrawerHelper
-        .instance
-        .drawer(drawer)
-        .show(`StatefulSet:${item.name}`, StsView, { sts: await K8sService.playService.statefulSetControllerGetOneByNsName({ ns, name: item.name }) })
+      drawerInstance
+        .show(`${item.kind}:${item.name}`, StsView, { sts: await K8sService.playService.statefulSetControllerGetOneByNsName({ ns, name: item.name }) })
       break
     case 'Pod':
-      DrawerHelper
-        .instance
-        .drawer(drawer)
+      drawerInstance
         .show(`Pod:${item.name}`, PodView, { pod: await K8sService.playService.podControllerGetOneByNsName({ ns, name: item.name }) })
       break
     case 'Job':
-      DrawerHelper
-        .instance
-        .drawer(drawer)
+      drawerInstance
         .show(`Job:${item.name}`, JobView, { job: await K8sService.playService.jobControllerGetOneByNsName({ ns, name: item.name }) })
       break
     case 'CronJob':
-      DrawerHelper
-        .instance
-        .drawer(drawer)
+      drawerInstance
         .show(`CronJob:${item.name}`, CronJobView, { cj: await K8sService.playService.cronJobControllerGetOneByNsName({ ns, name: item.name }) })
       break
     default:

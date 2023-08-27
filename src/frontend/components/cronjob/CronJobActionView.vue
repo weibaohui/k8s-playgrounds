@@ -7,7 +7,7 @@ import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
-import { Edit, PauseCircleRegular, PlayCircleRegular, Trash } from '@vicons/fa'
+import { Edit, LocationArrow, PauseCircleRegular, PlayCircleRegular, Trash } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
 
 const props = defineProps({
@@ -28,7 +28,7 @@ function getOptions(): ActionMenuOption[] {
     {
       label: 'Trigger',
       key: 'Trigger',
-      icon: Edit,
+      icon: LocationArrow,
       action: () => {
         K8sService.playService.cronJobControllerTrigger({
           ns: props.cj.metadata.namespace,
