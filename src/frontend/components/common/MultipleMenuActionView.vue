@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NButton, NButtonGroup, NDropdown, NIcon, NSpace } from 'naive-ui'
+import { NButton, NButtonGroup, NDropdown, NIcon, NSpace, NTooltip } from 'naive-ui'
 import type { Component } from 'vue'
 import { h } from 'vue'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
@@ -43,11 +43,16 @@ function makeMenuList() {
   </NDropdown>
   <NSpace v-else>
     <NButtonGroup size="small">
-      <NButton v-for="op in makeMenuList()" :key="op.key" round @click="handleSelect(op.key)">
-        <template #icon>
-          <NIcon size="small" :component="op.icon" />
+      <NTooltip v-for="op in makeMenuList()" :key="op.key" trigger="hover">
+        <template #trigger>
+          <NButton round @click="handleSelect(op.key)">
+            <template #icon>
+              <NIcon size="small" :component="op.icon" />
+            </template>
+          </NButton>
         </template>
-      </NButton>
+        {{ op.label }}
+      </NTooltip>
     </NButtonGroup>
   </NSpace>
 </template>
