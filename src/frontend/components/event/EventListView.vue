@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ResType } from '@backend/k8s/watch/watch.model'
+import { TimeAge } from '@backend/utils/timeAge'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, NSpace, useDialog } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Event } from '@backend/k8s/model/V1Event'
-import type { V1Namespace } from '@backend/k8s/model/V1Namespace'
 import type { V1Pod } from '@backend/k8s/model/V1Pod'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import ResourceAgeView from '@frontend/components/common/ResourceAgeView.vue'
@@ -21,7 +21,7 @@ const itemList = ref<V1Event[]>()
 const selectedNs = ref('default')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
 
-function createColumns(): DataTableColumns<V1Namespace> {
+function createColumns(): DataTableColumns<V1Event> {
   return [
     {
       type: 'selection',
@@ -35,8 +35,8 @@ function createColumns(): DataTableColumns<V1Namespace> {
       title: 'Message',
       key: 'message',
       width: 300,
-      render(row) {
-        return h(EventMessageView, { event: row as V1Event })
+      render(row: V1Event) {
+        return h(EventMessageView, { event: row })
       },
     },
     {
@@ -62,11 +62,11 @@ function createColumns(): DataTableColumns<V1Namespace> {
       key: 'Involved',
       minWidth: 200,
 
-      render(row) {
+      render(row: V1Event) {
         return h(
           EventInvolvedClickAction,
           {
-            event: row as V1Event,
+            event: row,
           },
         )
       },
@@ -74,10 +74,10 @@ function createColumns(): DataTableColumns<V1Namespace> {
     {
       title: 'Source',
       key: 'Source',
-      render(row) {
+      render(row: V1Event) {
         return h(
           NSpace,
-          () => `${(row as V1Event).source.component} ${(row as V1Event).source.host}`,
+          () => `${row.source.component} ${row.source.host}`,
         )
       },
     },
@@ -88,6 +88,7 @@ function createColumns(): DataTableColumns<V1Namespace> {
     {
       title: 'Age',
       key: 'age',
+      minWidth: '100px',
       render(row) {
         return h(ResourceAgeView,
           {
@@ -97,12 +98,20 @@ function createColumns(): DataTableColumns<V1Namespace> {
       },
     },
     {
+      title: 'LastSeen',
+      key: 'lastSeen',
+      minWidth: '120px',
+      render(row: V1Event) {
+        return TimeAge.getK8sAge(row.lastTimestamp)
+      },
+    },
+    {
       title: 'Action',
       key: 'Action',
-      render(row) {
+      render(row: V1Event) {
         return h(EventActionView,
           {
-            event: row as V1Event,
+            event: row,
             isDropdown: true,
           },
         )
@@ -125,6 +134,7 @@ function onNsChanged(ns: string) {
   selectedNs.value = ns
   getItemList()
 }
+
 function onTextChanged(text: string) {
   if (_.isEmpty(text)) {
     getItemList()
@@ -132,6 +142,7 @@ function onTextChanged(text: string) {
   }
   itemList.value = itemList.value.filter(r => r.message.includes(text))
 }
+
 getItemList()
 TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Events, selectedNs))
 </script>
