@@ -2,6 +2,7 @@
 import type { V1Job } from '@backend/k8s/model/V1Job'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
+import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import JobActionView from '@frontend/components/job/JobActionView.vue'
 import JobView from '@frontend/components/job/JobView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
@@ -70,6 +71,17 @@ function createColumns(): DataTableColumns<V1Job> {
       key: 'status.succeeded',
       render(row: V1Job) {
         return `${row.status.succeeded ? row.status.succeeded : 0}/${row.spec.completions}`
+      },
+    },
+    {
+      title: 'Conditions',
+      key: 'Conditions',
+      render(row: V1Job) {
+        return h(ResourceConditionView,
+          {
+            items: row.status.conditions,
+          },
+        )
       },
     },
     {

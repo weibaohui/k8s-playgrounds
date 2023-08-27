@@ -2,8 +2,8 @@
 import type { V1Deployment } from '@backend/k8s/model/V1Deployment'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import ResourceAgeView from '@frontend/components/common/ResourceAgeView.vue'
+import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import DeployActionView from '@frontend/components/deployment/DeployActionView.vue'
-import DeployConditionView from '@frontend/components/deployment/DeployConditionView.vue'
 import DeployView from '@frontend/components/deployment/DeployView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
@@ -96,9 +96,9 @@ function createColumns(): DataTableColumns<V1Deployment> {
       title: 'Conditions',
       key: 'Conditions',
       render(row: V1Deployment) {
-        return h(DeployConditionView,
+        return h(ResourceConditionView,
           {
-            deploy: row,
+            items: row.status.conditions,
           },
         )
       },

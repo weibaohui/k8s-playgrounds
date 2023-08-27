@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { V1Deployment } from '@backend/k8s/model/V1Deployment'
+import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
-import DeployConditionView from '@frontend/components/deployment/DeployConditionView.vue'
 import { NBadge, NCollapse, NCollapseItem, NTable } from 'naive-ui'
 import { ref } from 'vue'
 
@@ -52,7 +52,7 @@ ${props.deploy.status.unavailableReplicas ? props.deploy.status.unavailableRepli
       </tr>
       <tr>
         <td>Conditions</td>
-        <td><DeployConditionView :deploy="props.deploy" /></td>
+        <td><ResourceConditionView :items="props.deploy.status.conditions" /></td>
       </tr>
       <tr v-if="props.deploy.spec.template.spec.tolerations && props.deploy.spec.template.spec.tolerations.length">
         <td>Tolerations</td>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import PodSpecView from '@frontend/components/pod/PodSpecView.vue'
-import { CheckCircle, ExclamationCircle } from '@vicons/fa'
-import { NIcon, NTable, NTag } from 'naive-ui'
+import { NTable, NTag } from 'naive-ui'
 import ContainerStatusText from '@frontend/components/container/ContainerStatusText.vue'
 import { V1Pod } from '@backend/k8s/model/V1Pod'
 
@@ -42,22 +42,7 @@ const props = defineProps({
       </tr>
       <tr>
         <td>Conditions</td>
-        <td>
-          <span v-for="c in props.pod.status.conditions" :key="c.type" style="margin-left: 5px">
-            <NTag v-if="c.status === 'True'" type="success">
-              {{ c.type }}
-              <template #icon>
-                <NIcon :component="CheckCircle" />
-              </template>
-            </NTag>
-            <NTag v-else type="error">
-              {{ c.type }}
-              <template #icon>
-                <NIcon :component="ExclamationCircle" />
-              </template>
-            </NTag>
-          </span>
-        </td>
+        <td><ResourceConditionView :items="props.pod.status.conditions" /></td>
       </tr>
     </tbody>
   </NTable>

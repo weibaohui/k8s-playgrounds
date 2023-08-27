@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { V1Job } from '@backend/k8s/model/v1Job'
+import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import { NTable } from 'naive-ui'
 
@@ -31,6 +32,10 @@ const props = defineProps({
       <tr>
         <td>succeeded</td>
         <td>{{ props.job.status.succeeded ? props.job.status.succeeded : 0 }}</td>
+      </tr>
+      <tr>
+        <td>Conditions</td>
+        <td><ResourceConditionView :items="props.job.status.conditions" /></td>
       </tr>
     </tbody>
   </NTable>

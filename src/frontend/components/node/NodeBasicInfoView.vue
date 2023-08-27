@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import { CheckCircle, ExclamationCircle } from '@vicons/fa'
 
 import { NBadge, NCollapse, NCollapseItem, NIcon, NTable, NTag } from 'naive-ui'
@@ -115,30 +116,8 @@ function toggle() {
       </tr>
       <tr>
         <td>Conditions</td>
-        <td>
-          <span v-for="c in props.node.status.conditions" :key="c.type" style="margin-left: 5px">
-            <NTag v-if="c.status === 'True' && c.type === 'Ready'" type="success">
-              {{ c.type }}
-              <template #icon>
-                <NIcon :component="CheckCircle" />
-              </template>
-            </NTag>
-            <NTag v-else-if="c.status === 'False' && c.type.endsWith('Pressure') " type="success">
-              {{ c.type }}
-              <template #icon>
-                <NIcon :component="CheckCircle" />
-              </template>
-            </NTag>
-            <NTag v-else type="error">
-              {{ c.type }}
-              <template #icon>
-                <NIcon :component="ExclamationCircle" />
-              </template>
-            </NTag>
-          </span>
-        </td>
+        <td><ResourceConditionView :items="props.node.status.conditions" /></td>
       </tr>
-
       <tr v-if="props.node.spec.taints?.length">
         <td>taints</td>
         <td>
