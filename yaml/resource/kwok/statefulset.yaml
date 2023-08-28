@@ -20,7 +20,7 @@ spec:
   selector:
     matchLabels:
       app: nginx
-  serviceName: "nginx"
+  serviceName: nginx
   replicas: 3
   minReadySeconds: 10
   template:
