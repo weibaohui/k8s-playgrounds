@@ -102,7 +102,7 @@ function createColumns(): DataTableColumns<V1Pod> {
     ref="workloadListViewRef"
     :columns="createColumns()"
     :item-list="props.podList"
-    :hide-header="true"
+    :mini-style="true"
     :show-ns-select="false"
     name="Pods"
   />

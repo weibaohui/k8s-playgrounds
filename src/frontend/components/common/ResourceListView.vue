@@ -12,7 +12,7 @@ const props = defineProps({
   itemList: Array<any>,
   showNsSelect: Boolean,
   name: String,
-  hideHeader: Boolean,
+  miniStyle: Boolean,
 })
 const emit = defineEmits(['onNsChanged', 'onRemoveBtnClicked', 'onTextChanged'])
 
@@ -58,7 +58,7 @@ defineExpose({ setNsSelected })
 </script>
 
 <template>
-  <NGrid v-if="hideHeader === false" :cols="24" :x-gap="24">
+  <NGrid v-if="!miniStyle" :cols="24" :x-gap="24">
     <NFormItemGi :span="1" />
     <NFormItemGi :span="5">
       {{ props.name }}
@@ -83,7 +83,7 @@ defineExpose({ setNsSelected })
       :pagination="false"
       :bordered="false"
       :row-key="rowKey"
-      :scroll-x="1300"
+      :scroll-x="props.miniStyle ? 500 : 1300"
       @update:checked-row-keys="handleCheck"
     />
   </NMessageProvider>
