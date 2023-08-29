@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <NCollapse>
+  <NCollapse v-if="eventList && eventList.length > 0">
     <NCollapseItem v-for="x in props.eventList" :key="x.metadata.name">
       <NTable>
         <tr>
@@ -56,4 +56,7 @@ const props = defineProps({
       </template>
     </NCollapseItem>
   </NCollapse>
+  <span v-else>
+    No Events Found
+  </span>
 </template>
