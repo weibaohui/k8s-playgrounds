@@ -1,3 +1,4 @@
+import { ConfigMapService } from '@backend/k8s/configmap/configmap.service'
 import { CronJobService } from '@backend/k8s/cronjob/cronjob.service'
 import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
@@ -30,5 +31,6 @@ export class K8sService {
     public statefulSetService: StatefulSetService,
     public jobService: JobService,
     public cronJobService: CronJobService,
+    public configMapService: ConfigMapService,
     public watchService: WatchService) {}
 }

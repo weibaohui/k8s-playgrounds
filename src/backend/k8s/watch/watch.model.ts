@@ -10,4 +10,5 @@ export enum ResType {
   ReplicationControllers = 'replicationcontrollers',
   Jobs = 'jobs',
   CronJobs = 'cronjobs',
+  ConfigMaps = 'configmaps',
 }

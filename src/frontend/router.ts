@@ -1,3 +1,4 @@
+import CmListView from '@frontend/components/configmap/CmListView.vue'
 import CronJobListView from '@frontend/components/cronjob/CronJobListView.vue'
 import DsListView from '@frontend/components/daemonset/DsListView.vue'
 import DeployListView from '@frontend/components/deployment/DeployListView.vue'
@@ -57,6 +58,10 @@ export default createRouter({
     {
       path: '/cronJobs',
       component: CronJobListView,
+    },
+    {
+      path: '/configMaps',
+      component: CmListView,
     },
   ],
 })

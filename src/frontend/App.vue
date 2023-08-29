@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Clock, Cube, LayerGroup, Server } from '@vicons/fa'
+import { Clock, Cube, LayerGroup, ListAlt, Server } from '@vicons/fa'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'
 import { RouterLink } from 'vue-router'
@@ -167,7 +167,26 @@ const menuOptions: MenuOption[] = [
       },
     ],
   },
-
+  {
+    label: 'Config',
+    key: 'Config',
+    icon: renderIcon(ListAlt),
+    children: [
+      {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/configMaps',
+              },
+            },
+            { default: () => 'ConfigMaps' },
+          ),
+        key: 'go-to-configMaps',
+      },
+    ],
+  },
 ]
 
 const collapsed = ref(true)

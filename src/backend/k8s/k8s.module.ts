@@ -1,3 +1,5 @@
+import { ConfigmapController } from '@backend/k8s/configmap/configmap.controller'
+import { ConfigMapService } from '@backend/k8s/configmap/configmap.service'
 import { CronJobController } from '@backend/k8s/cronjob/cronjob.controller'
 import { CronJobService } from '@backend/k8s/cronjob/cronjob.service'
 import { DaemonSetController } from '@backend/k8s/daemonset/daemonset.controller'
@@ -33,7 +35,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     EventController, NodeController, NsController,
     PodController, ReplicaSetController, DeploymentController,
     DaemonSetController, ReplicationController, StatefulSetController,
-    JobController, CronJobController,
+    JobController, CronJobController, ConfigmapController,
 
   ],
   providers: [
@@ -42,7 +44,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     ReplicaSetService, WatchService,
     DeploymentService, DaemonSetService,
     ReplicationControllerService, StatefulSetService,
-    JobService, CronJobService,
+    JobService, CronJobService, ConfigMapService,
   ],
   exports: [K8sService],
 })
