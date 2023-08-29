@@ -4,8 +4,6 @@ import type { SelectOption } from 'naive-ui'
 import { ref } from 'vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 
-const props = defineProps({})
-
 // 定义调用方法
 const emit = defineEmits(['onNsChanged', 'update'])
 const selectedNs = ref('default')

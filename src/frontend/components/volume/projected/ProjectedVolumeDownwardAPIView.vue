@@ -12,7 +12,7 @@ const props = defineProps({
     Downward API
   </NDivider>
   <NAlert type="success" :show-icon="false">
-    <div v-for="d in x.downwardAPI.items" :key="d.path">
+    <div v-for="d in props.x.downwardAPI.items" :key="d.path">
       <div v-if="d.fieldRef">
         {{ d.path }} -> {{ d.mode }} {{ d.fieldRef.apiVersion }}/{{ d.fieldRef.fieldPath }}
       </div>

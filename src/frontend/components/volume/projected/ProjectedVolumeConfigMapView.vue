@@ -12,7 +12,7 @@ const props = defineProps({
     ConfigMap
   </NDivider>
   <NAlert type="success" :show-icon="false">
-    Name:{{ x.configMap.name }}
-    <br>Items:{{ x.configMap.items.map(r => `${r.key}->${r.path}`).join() }}
+    Name:{{ props.x.configMap.name }}
+    <br>Items:{{ props.x.configMap.items.map(r => `${r.key}->${r.path}`).join() }}
   </NAlert>
 </template>

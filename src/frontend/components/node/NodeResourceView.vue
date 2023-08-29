@@ -20,10 +20,10 @@ const props = defineProps({
           cpu
         </td>
         <td>
-          {{ node.status.capacity.cpu }}
+          {{ props.node.status.capacity.cpu }}
         </td>
         <td>
-          {{ node.status.allocatable.cpu }}
+          {{ props.node.status.allocatable.cpu }}
         </td>
       </tr>
       <tr>
@@ -31,20 +31,20 @@ const props = defineProps({
           ephemeral-storage
         </td>
         <td>
-          {{ node.status.capacity['ephemeral-storage'] }}
+          {{ props.node.status.capacity['ephemeral-storage'] }}
         </td>
         <td>
-          {{ node.status.allocatable['ephemeral-storage'] }}
+          {{ props.node.status.allocatable['ephemeral-storage'] }}
         </td>
       </tr><tr>
         <td>
           hugepages-1Gi
         </td>
         <td>
-          {{ node.status.capacity['hugepages-1Gi'] }}
+          {{ props.node.status.capacity['hugepages-1Gi'] }}
         </td>
         <td>
-          {{ node.status.allocatable['hugepages-1Gi'] }}
+          {{ props.node.status.allocatable['hugepages-1Gi'] }}
         </td>
       </tr>
       <tr>
@@ -52,10 +52,10 @@ const props = defineProps({
           hugepages-2Mi
         </td>
         <td>
-          {{ node.status.capacity['hugepages-2Mi'] }}
+          {{ props.node.status.capacity['hugepages-2Mi'] }}
         </td>
         <td>
-          {{ node.status.allocatable['hugepages-2Mi'] }}
+          {{ props.node.status.allocatable['hugepages-2Mi'] }}
         </td>
       </tr>
       <tr>
@@ -63,10 +63,10 @@ const props = defineProps({
           hugepages-32Mi
         </td>
         <td>
-          {{ node.status.capacity['hugepages-32Mi'] }}
+          {{ props.node.status.capacity['hugepages-32Mi'] }}
         </td>
         <td>
-          {{ node.status.allocatable['hugepages-32Mi'] }}
+          {{ props.node.status.allocatable['hugepages-32Mi'] }}
         </td>
       </tr>
       <tr>
@@ -74,10 +74,10 @@ const props = defineProps({
           hugepages-64Ki
         </td>
         <td>
-          {{ node.status.capacity['hugepages-64Ki'] }}
+          {{ props.node.status.capacity['hugepages-64Ki'] }}
         </td>
         <td>
-          {{ node.status.allocatable['hugepages-64Ki'] }}
+          {{ props.node.status.allocatable['hugepages-64Ki'] }}
         </td>
       </tr>
       <tr>
@@ -85,10 +85,10 @@ const props = defineProps({
           memory
         </td>
         <td>
-          {{ node.status.capacity.memory }}
+          {{ props.node.status.capacity.memory }}
         </td>
         <td>
-          {{ node.status.allocatable.memory }}
+          {{ props.node.status.allocatable.memory }}
         </td>
       </tr>
       <tr>
@@ -96,10 +96,10 @@ const props = defineProps({
           pods
         </td>
         <td>
-          {{ node.status.capacity.pods }}
+          {{ props.node.status.capacity.pods }}
         </td>
         <td>
-          {{ node.status.allocatable.pods }}
+          {{ props.node.status.allocatable.pods }}
         </td>
       </tr>
     </tbody>

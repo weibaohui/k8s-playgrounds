@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <NText v-if="state.running" type="success">
+  <NText v-if="props.state.running" type="success">
     running
   </NText>
   <NText v-else-if="state.terminated" type="error">
