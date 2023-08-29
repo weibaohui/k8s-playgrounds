@@ -2,7 +2,7 @@
 import ControlledByView from '@frontend/components/common/ControlledByView.vue'
 import ResourceWarnIcon from '@frontend/components/common/ResourceWarnIcon.vue'
 import moment from 'moment/moment'
-import { NSpace, NTable, NTag } from 'naive-ui'
+import { NList, NSpace, NTable } from 'naive-ui'
 import { V1ObjectMeta } from '@backend/k8s/model/V1ObjectMeta'
 
 const props = defineProps({
@@ -36,21 +36,25 @@ const props = defineProps({
       <tr v-if="props.item.labels">
         <td>Labels</td>
         <td>
-          <NSpace v-for="(v, k) in props.item.labels" :key="k">
-            <NTag>
-              {{ k }}={{ v }}
-            </NTag>
-          </NSpace>
+          <NList>
+            <NListItem v-for="(v, k) in props.item.labels" :key="k">
+              <NSpace :wrap="true" class="words">
+                {{ k }}={{ v }}
+              </NSpace>
+            </NListItem>
+          </NList>
         </td>
       </tr>
       <tr v-if="props.item.annotations">
         <td>Annotations</td>
         <td>
-          <NSpace v-for="(v, k) in props.item.annotations" :key="k">
-            <NTag v-if="!k.endsWith('last-applied-configuration')">
-              {{ k }}={{ v }}
-            </NTag>
-          </NSpace>
+          <NList>
+            <NListItem v-for="(v, k) in props.item.annotations" :key="k">
+              <NSpace :wrap="true" class="words">
+                {{ k }}={{ v }}
+              </NSpace>
+            </NListItem>
+          </NList>
         </td>
       </tr>
       <tr v-if="props.item.ownerReferences">
@@ -66,5 +70,8 @@ const props = defineProps({
 <style scoped>
 .left {
   width: 120px;
+}
+.words{
+  max-width: 100%;
 }
 </style>
