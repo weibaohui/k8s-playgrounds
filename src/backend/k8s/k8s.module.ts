@@ -11,6 +11,8 @@ import { JobService } from '@backend/k8s/job/job.service'
 import { ReplicaSetService } from '@backend/k8s/replicaset/replicaset.service'
 import { ReplicationController } from '@backend/k8s/replicationController/replication.controller'
 import { ReplicationControllerService } from '@backend/k8s/replicationController/replication.service'
+import { SecretController } from '@backend/k8s/secret/secret.controller'
+import { SecretService } from '@backend/k8s/secret/secret.service'
 import { StatefulSetController } from '@backend/k8s/statefulset/statefulset.controller'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
@@ -36,7 +38,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     PodController, ReplicaSetController, DeploymentController,
     DaemonSetController, ReplicationController, StatefulSetController,
     JobController, CronJobController, ConfigmapController,
-
+    SecretController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -45,6 +47,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     DeploymentService, DaemonSetService,
     ReplicationControllerService, StatefulSetService,
     JobService, CronJobService, ConfigMapService,
+    SecretService,
   ],
   exports: [K8sService],
 })

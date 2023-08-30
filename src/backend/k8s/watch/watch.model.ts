@@ -11,4 +11,5 @@ export enum ResType {
   Jobs = 'jobs',
   CronJobs = 'cronjobs',
   ConfigMaps = 'configmaps',
+  Secrets = 'secrets',
 }

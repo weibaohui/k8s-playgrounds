@@ -185,6 +185,19 @@ const menuOptions: MenuOption[] = [
           ),
         key: 'go-to-configMaps',
       },
+      {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/secrets',
+              },
+            },
+            { default: () => 'Secrets' },
+          ),
+        key: 'go-to-secrets',
+      },
     ],
   },
 ]

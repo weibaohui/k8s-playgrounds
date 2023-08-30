@@ -53,6 +53,9 @@ export class WatchService {
       case ResType.ConfigMaps:
         watchPath = '/api/v1/configmaps'
         break
+      case ResType.Secrets:
+        watchPath = '/api/v1/secrets'
+        break
       case ResType.ReplicationControllers:
         watchPath = '/api/v1/replicationcontrollers'
         break

@@ -5,6 +5,7 @@ import DeployListView from '@frontend/components/deployment/DeployListView.vue'
 import JobListView from '@frontend/components/job/JobListView.vue'
 import RcListView from '@frontend/components/replicacontroller/RcListView.vue'
 import RsListView from '@frontend/components/replicaset/RsListView.vue'
+import SecretListView from '@frontend/components/secret/SecretListView.vue'
 import StsListView from '@frontend/components/statefulset/StsListView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import EventListView from '@frontend/components/event/EventListView.vue'
@@ -62,6 +63,10 @@ export default createRouter({
     {
       path: '/configMaps',
       component: CmListView,
+    },
+    {
+      path: '/secrets',
+      component: SecretListView,
     },
   ],
 })
