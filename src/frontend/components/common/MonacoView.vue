@@ -51,7 +51,7 @@ function onSaveBtnClicked() {
       Save
     </NButton>
   </NButtonGroup>
-  <NHr />
+  <NHr v-if="props.showToolbar === true" />
   <div ref="monacoEditorRef" class="vue-monaco-editor" />
 </template>
 
@@ -61,5 +61,7 @@ function onSaveBtnClicked() {
   height: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  resize: vertical;
+  overflow: auto;
 }
 </style>

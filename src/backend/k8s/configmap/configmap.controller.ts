@@ -1,3 +1,4 @@
+import { JsonDataWrap } from '@backend/model/JsonDataWrap'
 import {
   Body,
   Controller,
@@ -36,7 +37,7 @@ export class ConfigmapController {
   }
 
   @Post('/update/ns/:ns/name/:name/key/:key')
-  async UpdateConfigMap(@Body() data: string, @Param('ns') ns: string, @Param('name') name: string, @Param('key') key: string) {
+  async UpdateConfigMap(@Body() data: JsonDataWrap<string>, @Param('ns') ns: string, @Param('name') name: string, @Param('key') key: string) {
     return await this.k8sService.configMapService.Update(ns, name, key, data)
   }
 

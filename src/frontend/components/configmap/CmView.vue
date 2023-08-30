@@ -21,7 +21,12 @@ const props = defineProps({
     </NText>
   </NH6>
   <CmBasicInfoView :cm="props.cm" />
-
+  <NH6 prefix="bar" align-text type="success">
+    <NText type="success">
+      Events
+    </NText>
+  </NH6>
+  <InvolvedEventView :item="props.cm.metadata" />
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
       Data
@@ -30,12 +35,6 @@ const props = defineProps({
   <NMessageProvider>
     <CmDataEditView :cm="props.cm" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.cm.metadata" />
 </template>
 
 <style scoped>

@@ -1,3 +1,4 @@
+import { JsonDataWrap } from '@backend/model/JsonDataWrap'
 import { Injectable, Logger } from '@nestjs/common'
 import { ClientService } from '@backend/k8s/client/client.service'
 
@@ -31,10 +32,8 @@ export class ConfigMapService {
     return resp.body
   }
 
-  async Update(ns: string, name: string, key: string, data: string) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    const x = decodeURIComponent(atob(data.data))
+  async Update(ns: string, name: string, key: string, data: JsonDataWrap<string>) {
+    const x = data.data
     const k8sApi = this.clientService.getCoreV1Api()
     const cm = await this.GetOneByNsName(ns, name)
     cm.data[key] = x
