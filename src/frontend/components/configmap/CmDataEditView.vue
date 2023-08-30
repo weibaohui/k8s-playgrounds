@@ -11,7 +11,7 @@ const props = defineProps({
 const message = useMessage()
 
 async function onSaveBtnClicked(key: string, data: string) {
-  const cm = await K8sService.playService.configmapControllerUpdateConfigMap({
+  const cm = await K8sService.playService.configmapControllerUpdate({
     ns: props.cm.metadata.namespace,
     name: props.cm.metadata.name,
     key,
