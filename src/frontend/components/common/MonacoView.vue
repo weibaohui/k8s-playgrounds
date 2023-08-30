@@ -7,6 +7,7 @@ import YAML from 'yaml'
 const props = defineProps({
   item: Object,
   showToolbar: Boolean,
+  itemKey: String,
 })
 const emit = defineEmits(['onSaveBtnClicked'])
 const monacoEditorRef = ref()
@@ -35,12 +36,12 @@ onMounted(() => {
     language: 'yaml',
     theme: 'vs-dark',
     fontSize: 16,
-    value: YAML.stringify(props.item),
+    value: typeof props.item === 'string' ? props.item : YAML.stringify(props.item),
   })
 })
 
 function onSaveBtnClicked() {
-  emit('onSaveBtnClicked', toRaw(editor.value).getValue())
+  emit('onSaveBtnClicked', props.itemKey, toRaw(editor.value).getValue())
 }
 </script>
 

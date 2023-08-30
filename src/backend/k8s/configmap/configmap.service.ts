@@ -30,4 +30,14 @@ export class ConfigMapService {
     const resp = await k8sApi.readNamespacedConfigMap(name, ns)
     return resp.body
   }
+
+  async Update(ns: string, name: string, key: string, data: string) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    const x = decodeURIComponent(atob(data.data))
+    const k8sApi = this.clientService.getCoreV1Api()
+    const cm = await this.GetOneByNsName(ns, name)
+    cm.data[key] = x
+    return await k8sApi.replaceNamespacedConfigMap(name, ns, cm)
+  }
 }

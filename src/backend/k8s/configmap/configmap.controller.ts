@@ -35,6 +35,11 @@ export class ConfigmapController {
     return {}
   }
 
+  @Post('/update/ns/:ns/name/:name/key/:key')
+  async UpdateConfigMap(@Body() data: string, @Param('ns') ns: string, @Param('name') name: string, @Param('key') key: string) {
+    return await this.k8sService.configMapService.Update(ns, name, key, data)
+  }
+
   @Get('/ns/:ns/name/:name')
   async GetOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
     return await this.k8sService.configMapService.GetOneByNsName(ns, name)

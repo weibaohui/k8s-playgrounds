@@ -10,7 +10,6 @@ const props = defineProps({
 
 <template>
   <ResourceMetadataView :item="props.cm.metadata" />
-
   <NTable :single-line="false">
     <tbody>
       <tr>
@@ -21,9 +20,6 @@ const props = defineProps({
       </tr>
     </tbody>
   </NTable>
-  <span v-for="(v, k) in props.cm.data" :key="k">
-    {{ k }}={{ v }}
-  </span>
 </template>
 
 <style scoped>
