@@ -197,6 +197,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'Secrets' },
           ),
         key: 'go-to-secrets',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/priorityClasses',
+              },
+            },
+            { default: () => 'PriorityClasses' },
+          ),
+        key: 'go-to-priorityClasses',
       },
     ],
   },
