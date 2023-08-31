@@ -156,6 +156,12 @@ shamefully-hoist=true
 |                Secret | 详情-查看yaml      | ✅       |
 |                Secret | 详情-删除          | ✅       |
 |                Secret | 详情-更新配置项       | ✅       |
+|         PriorityClass | 列表             | ✅       |
+|         PriorityClass | 列表-查看yaml      | ✅       |
+|         PriorityClass | 列表-删除          | ✅       |
+|         PriorityClass | 详情             | ✅       |
+|         PriorityClass | 详情-查看yaml      | ✅       |
+|         PriorityClass | 详情-删除          | ✅       |
 ## 开发提示
 
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成
