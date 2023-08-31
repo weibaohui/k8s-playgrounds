@@ -14,7 +14,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * PriorityClass defines mapping from a priority class name to the priority integer value. The value can be any valid integer.
  */
-export interface IoK8sApiSchedulingV1PriorityClass {
+export class V1PriorityClass {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

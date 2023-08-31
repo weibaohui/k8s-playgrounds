@@ -167,12 +167,13 @@ shamefully-hoist=true
 * 使用https://editor.swagger.io/ 生成client，选择typescript-angular
 * 将文件名称中的ioK8sApiCore替换掉，文件内的处理掉。这样用起来方便
 
-| 前                                    | 后            |
- |--------------------------------------|--------------|
-| ioK8sApiCoreV1ConfigMap              | V1ConfigMap  |
-| IoK8sApimachineryPkgApisMetaV1Status | V1Status     |
-| ioK8sApiAppsV1ReplicaSet             | V1ReplicaSet |
-| IoK8sApiBatchV1Job                   | V1Job        |
+| 前                                    | 后               |
+ |--------------------------------------|-----------------|
+| ioK8sApiCoreV1ConfigMap              | V1ConfigMap     |
+| IoK8sApimachineryPkgApisMetaV1Status | V1Status        |
+| ioK8sApiAppsV1ReplicaSet             | V1ReplicaSet    |
+| IoK8sApiBatchV1Job                   | V1Job           |
+| IoK8sApiSchedulingV1PriorityClass    | V1PriorityClass |
 
 ## Demo
 

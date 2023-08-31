@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiSchedulingV1PriorityClass } from './ioK8sApiSchedulingV1PriorityClass'
+import type { V1PriorityClass } from './v1PriorityClass'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**
@@ -23,7 +23,7 @@ export interface IoK8sApiSchedulingV1PriorityClassList {
   /**
      * items is the list of PriorityClasses
      */
-  items: Array<IoK8sApiSchedulingV1PriorityClass>
+  items: Array<V1PriorityClass>
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
