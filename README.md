@@ -142,7 +142,20 @@ shamefully-hoist=true
 |                   Job | 详情             | ✅       |
 |                   Job | 详情-查看yaml      | ✅       |
 |                   Job | 详情-删除          | ✅       |
-
+|             ConfigMap | 列表             | ✅       |
+|             ConfigMap | 列表-查看yaml      | ✅       |
+|             ConfigMap | 列表-删除          | ✅       |
+|             ConfigMap | 详情             | ✅       |
+|             ConfigMap | 详情-查看yaml      | ✅       |
+|             ConfigMap | 详情-删除          | ✅       |
+|             ConfigMap | 详情-更新配置项       | ✅       |
+|                Secret | 列表             | ✅       |
+|                Secret | 列表-查看yaml      | ✅       |
+|                Secret | 列表-删除          | ✅       |
+|                Secret | 详情             | ✅       |
+|                Secret | 详情-查看yaml      | ✅       |
+|                Secret | 详情-删除          | ✅       |
+|                Secret | 详情-更新配置项       | ✅       |
 ## 开发提示
 
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成
