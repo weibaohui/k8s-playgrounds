@@ -14,9 +14,9 @@ const props = defineProps({
     <tbody>
       <tr>
         <td class="left">
-          immutable
+          type
         </td>
-        <td>{{ props.secret.immutable }}</td>
+        <td>{{ props.secret.type }}</td>
       </tr>
     </tbody>
   </NTable>
