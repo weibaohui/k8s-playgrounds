@@ -3,7 +3,7 @@ import { V1Secret } from '@backend/k8s/model/V1Secret'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import SecretActionView from '@frontend/components/secret/SecretActionView.vue'
 import SecretBasicInfoView from '@frontend/components/secret/SecretBasicInfoView.vue'
-import SecretDataEditView from '@frontend/components/secret/SecretDataEditView.vue'
+import SecretDataListView from '@frontend/components/secret/SecretDataListView.vue'
 import { NH6, NMessageProvider, NText } from 'naive-ui'
 
 const props = defineProps({
@@ -33,7 +33,7 @@ const props = defineProps({
     </NText>
   </NH6>
   <NMessageProvider>
-    <SecretDataEditView :secret="props.secret" />
+    <SecretDataListView :secret="props.secret" />
   </NMessageProvider>
 </template>
 

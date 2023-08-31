@@ -34,9 +34,10 @@ export class SecretService {
 
   async Update(ns: string, name: string, key: string, data: JsonDataWrap<string>) {
     const x = data.data
+    console.log(x)
     const k8sApi = this.clientService.getCoreV1Api()
     const secret = await this.GetOneByNsName(ns, name)
-    secret.data[key] = atob(x)
+    secret.data[key] = x
     return await k8sApi.replaceNamespacedSecret(name, ns, secret)
   }
 }

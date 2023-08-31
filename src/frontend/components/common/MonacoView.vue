@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ResType } from '@backend/k8s/watch/watch.model'
 import { NButton, NButtonGroup, NHr } from 'naive-ui'
 import { onMounted, ref, toRaw } from 'vue'
 import * as monaco from 'monaco-editor'
@@ -9,11 +8,9 @@ const props = defineProps({
   item: Object,
   showToolbar: Boolean,
   itemKey: String,
-  itemType: String,
 })
 const emit = defineEmits(['onSaveBtnClicked'])
 const monacoEditorRef = ref()
-const decodeed = ref(props.itemType === ResType.Secrets)
 const editor = ref<monaco.editor.IStandaloneCodeEditor>()
 onMounted(() => {
   editor.value = monaco.editor.create(monacoEditorRef.value, {
@@ -46,26 +43,12 @@ onMounted(() => {
 function onSaveBtnClicked() {
   emit('onSaveBtnClicked', props.itemKey, toRaw(editor.value).getValue())
 }
-function onDecodeBtnClicked() {
-  const editorRef = toRaw(editor.value)
-  if (decodeed.value === false) {
-    editorRef.setValue(btoa(editorRef.getValue()))
-    decodeed.value = true
-  }
-  else {
-    editorRef.setValue(atob(editorRef.getValue()))
-    decodeed.value = false
-  }
-}
 </script>
 
 <template>
   <NButtonGroup v-if="props.showToolbar === true">
     <NButton type="success" @click="onSaveBtnClicked">
       Save
-    </NButton>
-    <NButton type="success" @click="onDecodeBtnClicked">
-      加/解密
     </NButton>
   </NButtonGroup>
   <NHr v-if="props.showToolbar === true" />
