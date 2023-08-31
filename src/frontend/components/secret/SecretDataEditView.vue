@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { V1Secret } from '@backend/k8s/model/V1Secret'
+import { ResType } from '@backend/k8s/watch/watch.model'
 import { YamlUtils } from '@backend/utils/yamlUtils'
 import MonacoView from '@frontend/components/common/MonacoView.vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
@@ -26,7 +27,7 @@ async function onSaveBtnClicked(key: string, data: string) {
     <NDivider title-placement="left">
       {{ k }}
     </NDivider>
-    <MonacoView :item="YamlUtils.removeScalar(v)" :item-key="k" :show-toolbar="true" @on-save-btn-clicked="onSaveBtnClicked" />
+    <MonacoView :item-type="ResType.Secrets" :item="YamlUtils.removeScalar(v)" :item-key="k" :show-toolbar="true" @on-save-btn-clicked="onSaveBtnClicked" />
   </div>
 </template>
 
