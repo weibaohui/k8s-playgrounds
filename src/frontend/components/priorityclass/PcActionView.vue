@@ -35,6 +35,8 @@ function getOptions(): ActionMenuOption[] {
           message.success('设置成功')
         else
           message.error('设置失败')
+
+        drawer.close()
       },
     },
     {
@@ -48,6 +50,8 @@ function getOptions(): ActionMenuOption[] {
           message.success('设置成功')
         else
           message.error('设置失败')
+
+        drawer.close()
       },
     },
     {
