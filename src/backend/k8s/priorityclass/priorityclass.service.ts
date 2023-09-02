@@ -12,7 +12,7 @@ export class PriorityClassService {
 
   async List() {
     const k8sApi = this.clientService.getObjectApi()
-    const res = await k8sApi.list('scheduling.k8s.io/v1', 'PriorityClass')
+    const res = await k8sApi.list<V1PriorityClass>('scheduling.k8s.io/v1', 'PriorityClass')
     return res.body.items
   }
 
@@ -42,5 +42,21 @@ export class PriorityClassService {
       },
     )
     return resp.body
+  }
+
+  async SetDefault(name: string) {
+    const k8sApi = this.clientService.getObjectApi()
+    const pc = await this.GetOneByName(name)
+    pc.globalDefault = true
+    const r = await k8sApi.patch<V1PriorityClass>(pc)
+    return r.body
+  }
+
+  async CancelDefault(name: string) {
+    const k8sApi = this.clientService.getObjectApi()
+    const pc = await this.GetOneByName(name)
+    pc.globalDefault = false
+    const r = await k8sApi.patch<V1PriorityClass>(pc)
+    return r.body
   }
 }

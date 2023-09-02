@@ -51,8 +51,11 @@ function createColumns(): DataTableColumns<V1PriorityClass> {
       key: 'value',
     },
     {
-      title: 'globalDefault',
+      title: 'GlobalDefault',
       key: 'globalDefault',
+      render(row: V1PriorityClass) {
+        return row.globalDefault ? 'true' : 'false'
+      },
     },
     {
       title: 'Age',
