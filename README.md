@@ -166,6 +166,12 @@ shamefully-hoist=true
 |         PriorityClass | 详情-删除          | ✅       |
 |         PriorityClass | 详情-全局默认        | ✅       |
 |         PriorityClass | 详情-取消全局        | ✅       |
+|         ResourceQuota | 列表             | ✅       |
+|         ResourceQuota | 列表-查看yaml      | ✅       |
+|         ResourceQuota | 列表-删除          | ✅       |
+|         ResourceQuota | 详情             | ✅       |
+|         ResourceQuota | 详情-查看yaml      | ✅       |
+|         ResourceQuota | 详情-删除          | ✅       |
 ## 开发提示
 
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成
