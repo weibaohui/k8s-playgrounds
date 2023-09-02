@@ -77,6 +77,9 @@ export class WatchService {
       case ResType.CronJobs:
         watchPath = '/apis/batch/v1/cronjobs'
         break
+      case ResType.PriorityClasses:
+        watchPath = '/apis/scheduling.k8s.io/v1/priorityclasses'
+        break
       default:
         watchPath = '/api/v1/pods'
     }

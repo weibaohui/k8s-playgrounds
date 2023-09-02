@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { V1PriorityClass } from '@backend/k8s/model/v1PriorityClass'
+import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import PcActionView from '@frontend/components/priorityclass/PcActionView.vue'
 import PcView from '@frontend/components/priorityclass/PcView.vue'
@@ -102,9 +103,7 @@ function onTextChanged(text: string) {
 }
 
 getItemList()
-TimerUtils.everyTwoSeconds(() => {
-  getItemList()
-})
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.PriorityClasses))
 </script>
 
 <template>
