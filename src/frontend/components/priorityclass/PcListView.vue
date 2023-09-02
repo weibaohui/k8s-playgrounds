@@ -103,7 +103,7 @@ function onTextChanged(text: string) {
 }
 
 getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.PriorityClasses))
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.PriorityClass))
 </script>
 
 <template>

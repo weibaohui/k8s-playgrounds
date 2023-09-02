@@ -38,46 +38,46 @@ export class WatchService {
   private getResourceWatchPath(resType: ResType) {
     let watchPath = ''
     switch (resType) {
-      case ResType.Pods:
+      case ResType.Pod:
         watchPath = '/api/v1/pods'
         break
-      case ResType.Namespaces:
+      case ResType.Namespace:
         watchPath = '/api/v1/namespaces'
         break
-      case ResType.Nodes :
+      case ResType.Node :
         watchPath = '/api/v1/nodes'
         break
-      case ResType.Events:
+      case ResType.Event:
         watchPath = '/api/v1/events'
         break
-      case ResType.ConfigMaps:
+      case ResType.ConfigMap:
         watchPath = '/api/v1/configmaps'
         break
-      case ResType.Secrets:
+      case ResType.Secret:
         watchPath = '/api/v1/secrets'
         break
-      case ResType.ReplicationControllers:
+      case ResType.ReplicationController:
         watchPath = '/api/v1/replicationcontrollers'
         break
-      case ResType.Deployments:
+      case ResType.Deployment:
         watchPath = '/apis/apps/v1/deployments'
         break
-      case ResType.ReplicaSets:
+      case ResType.ReplicaSet:
         watchPath = '/apis/apps/v1/replicasets'
         break
-      case ResType.DaemonSets:
+      case ResType.DaemonSet:
         watchPath = '/apis/apps/v1/daemonsets'
         break
-      case ResType.StatefulSets:
+      case ResType.StatefulSet:
         watchPath = '/apis/apps/v1/statefulsets'
         break
-      case ResType.Jobs:
+      case ResType.Job:
         watchPath = '/apis/batch/v1/jobs'
         break
-      case ResType.CronJobs:
+      case ResType.CronJob:
         watchPath = '/apis/batch/v1/cronjobs'
         break
-      case ResType.PriorityClasses:
+      case ResType.PriorityClass:
         watchPath = '/apis/scheduling.k8s.io/v1/priorityclasses'
         break
       default:

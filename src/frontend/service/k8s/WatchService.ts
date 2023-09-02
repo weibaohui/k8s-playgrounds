@@ -27,7 +27,7 @@ export class WatchService {
     socket.on(`events-${type}`, (data) => {
       // 处理接收到的数据
       const p: T = data.object as T
-      if (!type.toLowerCase().startsWith(p.kind.toLowerCase()))
+      if (!type.toString().startsWith(p.kind))
         return
 
       if (ns && ns.value && p.metadata.namespace !== ns.value)

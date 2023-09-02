@@ -134,7 +134,7 @@ function onTextChanged(text: string) {
 
 getItemList()
 
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.StatefulSets, selectedNs))
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.StatefulSet, selectedNs))
 </script>
 
 <template>
