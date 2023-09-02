@@ -512,7 +512,7 @@ export * from './ioK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReferen
 export * from './ioK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule'
 export * from './ioK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig'
 export * from './ioK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion'
-export * from './ioK8sApimachineryPkgApiResourceQuantity'
+export * from './resourceQuantity'
 export * from './ioK8sApimachineryPkgApisMetaV1APIGroup'
 export * from './ioK8sApimachineryPkgApisMetaV1APIGroupList'
 export * from './ioK8sApimachineryPkgApisMetaV1APIResource'

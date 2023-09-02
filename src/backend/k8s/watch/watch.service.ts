@@ -59,6 +59,9 @@ export class WatchService {
       case ResType.ReplicationController:
         watchPath = '/api/v1/replicationcontrollers'
         break
+      case ResType.ResourceQuota:
+        watchPath = '/api/v1/resourcequotas'
+        break
       case ResType.Deployment:
         watchPath = '/apis/apps/v1/deployments'
         break

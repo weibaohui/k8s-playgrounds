@@ -33,7 +33,7 @@ import type { V1ScaleIOPersistentVolumeSource } from './V1ScaleIOPersistentVolum
 import type { V1StorageOSPersistentVolumeSource } from './V1StorageOSPersistentVolumeSource'
 import type { V1VolumeNodeAffinity } from './V1VolumeNodeAffinity'
 import type { V1VsphereVirtualDiskVolumeSource } from './V1VsphereVirtualDiskVolumeSource'
-import type { IoK8sApimachineryPkgApiResourceQuantity } from './ioK8sApimachineryPkgApiResourceQuantity'
+import type { ResourceQuantity } from './resourceQuantity'
 
 /**
  * PersistentVolumeSpec is the specification of a persistent volume.
@@ -58,7 +58,7 @@ export interface V1PersistentVolumeSpec {
   /**
      * capacity is the description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
      */
-  capacity?: { [key: string]: IoK8sApimachineryPkgApiResourceQuantity }
+  capacity?: { [key: string]: ResourceQuantity }
   /**
      * cephFS represents a Ceph FS mount on the host that shares a pod's lifetime
      */

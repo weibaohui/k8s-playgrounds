@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { V1PersistentVolumeClaimCondition } from './V1PersistentVolumeClaimCondition'
-import type { IoK8sApimachineryPkgApiResourceQuantity } from './ioK8sApimachineryPkgApiResourceQuantity'
+import type { ResourceQuantity } from './resourceQuantity'
 
 /**
  * PersistentVolumeClaimStatus is the current status of a persistent volume claim.
@@ -23,11 +23,11 @@ export interface V1PersistentVolumeClaimStatus {
   /**
      * allocatedResources is the storage resource within AllocatedResources tracks the capacity allocated to a PVC. It may be larger than the actual capacity when a volume expansion operation is requested. For storage quota, the larger value from allocatedResources and PVC.spec.resources is used. If allocatedResources is not set, PVC.spec.resources alone is used for quota calculation. If a volume expansion capacity request is lowered, allocatedResources is only lowered if there are no expansion operations in progress and if the actual volume capacity is equal or lower than the requested capacity. This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
      */
-  allocatedResources?: { [key: string]: IoK8sApimachineryPkgApiResourceQuantity }
+  allocatedResources?: { [key: string]: ResourceQuantity }
   /**
      * capacity represents the actual resources of the underlying volume.
      */
-  capacity?: { [key: string]: IoK8sApimachineryPkgApiResourceQuantity }
+  capacity?: { [key: string]: ResourceQuantity }
   /**
      * conditions is the current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to 'ResizeStarted'.
      */

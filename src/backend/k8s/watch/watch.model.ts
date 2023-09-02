@@ -13,4 +13,5 @@ export enum ResType {
   ConfigMap = 'ConfigMap',
   Secret = 'Secret',
   PriorityClass = 'PriorityClass',
+  ResourceQuota = 'ResourceQuota',
 }

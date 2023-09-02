@@ -6,6 +6,7 @@ import JobListView from '@frontend/components/job/JobListView.vue'
 import PcListView from '@frontend/components/priorityclass/PcListView.vue'
 import RcListView from '@frontend/components/replicacontroller/RcListView.vue'
 import RsListView from '@frontend/components/replicaset/RsListView.vue'
+import QuotaListView from '@frontend/components/resourcequota/QuotaListView.vue'
 import SecretListView from '@frontend/components/secret/SecretListView.vue'
 import StsListView from '@frontend/components/statefulset/StsListView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -72,6 +73,9 @@ export default createRouter({
     {
       path: '/priorityClasses',
       component: PcListView,
+    }, {
+      path: '/resourceQuotas',
+      component: QuotaListView,
     },
   ],
 })

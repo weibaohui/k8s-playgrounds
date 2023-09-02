@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApiResourceQuantity } from './ioK8sApimachineryPkgApiResourceQuantity'
+import type { ResourceQuantity } from './resourceQuantity'
 
 /**
  * MetricValueStatus holds the current value for a metric
@@ -22,9 +22,9 @@ export interface IoK8sApiAutoscalingV2MetricValueStatus {
   /**
      * averageValue is the current value of the average of the metric across all relevant pods (as a quantity)
      */
-  averageValue?: IoK8sApimachineryPkgApiResourceQuantity
+  averageValue?: ResourceQuantity
   /**
      * value is the current value of the metric (as a quantity).
      */
-  value?: IoK8sApimachineryPkgApiResourceQuantity
+  value?: ResourceQuantity
 }

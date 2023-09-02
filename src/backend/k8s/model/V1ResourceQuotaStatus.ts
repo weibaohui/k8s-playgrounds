@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApiResourceQuantity } from './ioK8sApimachineryPkgApiResourceQuantity'
+import type { ResourceQuantity } from './resourceQuantity'
 
 /**
  * ResourceQuotaStatus defines the enforced hard limits and observed use.
@@ -18,9 +18,9 @@ export interface V1ResourceQuotaStatus {
   /**
      * Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
      */
-  hard?: { [key: string]: IoK8sApimachineryPkgApiResourceQuantity }
+  hard?: { [key: string]: ResourceQuantity }
   /**
      * Used is the current observed total usage of the resource in the namespace.
      */
-  used?: { [key: string]: IoK8sApimachineryPkgApiResourceQuantity }
+  used?: { [key: string]: ResourceQuantity }
 }

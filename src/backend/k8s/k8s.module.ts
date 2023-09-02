@@ -13,6 +13,8 @@ import { PriorityClassService } from '@backend/k8s/priorityclass/priorityclass.s
 import { ReplicaSetService } from '@backend/k8s/replicaset/replicaset.service'
 import { ReplicationController } from '@backend/k8s/replicationController/replication.controller'
 import { ReplicationControllerService } from '@backend/k8s/replicationController/replication.service'
+import { ResourceQuotaController } from '@backend/k8s/resourcequota/resourcequota.controller'
+import { ResourceQuotaService } from '@backend/k8s/resourcequota/resourcequota.service'
 import { SecretController } from '@backend/k8s/secret/secret.controller'
 import { SecretService } from '@backend/k8s/secret/secret.service'
 import { StatefulSetController } from '@backend/k8s/statefulset/statefulset.controller'
@@ -40,7 +42,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     PodController, ReplicaSetController, DeploymentController,
     DaemonSetController, ReplicationController, StatefulSetController,
     JobController, CronJobController, ConfigmapController,
-    SecretController, PriorityClassController,
+    SecretController, PriorityClassController, ResourceQuotaController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -49,7 +51,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     DeploymentService, DaemonSetService,
     ReplicationControllerService, StatefulSetService,
     JobService, CronJobService, ConfigMapService,
-    SecretService, PriorityClassService,
+    SecretService, PriorityClassService, ResourceQuotaService,
   ],
   exports: [K8sService],
 })

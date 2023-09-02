@@ -23,7 +23,7 @@ import type { V1PodSecurityContext } from './V1PodSecurityContext'
 import type { V1Toleration } from './V1Toleration'
 import type { V1TopologySpreadConstraint } from './V1TopologySpreadConstraint'
 import type { V1Volume } from './V1Volume'
-import type { IoK8sApimachineryPkgApiResourceQuantity } from './ioK8sApimachineryPkgApiResourceQuantity'
+import type { ResourceQuantity } from './resourceQuantity'
 
 /**
  * PodSpec is a description of a pod.
@@ -108,7 +108,7 @@ export class V1PodSpec {
   /**
      * Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. This field will be autopopulated at admission time by the RuntimeClass admission controller. If the RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests. The RuntimeClass admission controller will reject Pod create requests which have the overhead already set. If RuntimeClass is configured and selected in the PodSpec, Overhead will be set to the value defined in the corresponding RuntimeClass, otherwise it will remain unset and treated as zero. More info: https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md
      */
-  overhead?: { [key: string]: IoK8sApimachineryPkgApiResourceQuantity }
+  overhead?: { [key: string]: ResourceQuantity }
   /**
      * PreemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset.
      */

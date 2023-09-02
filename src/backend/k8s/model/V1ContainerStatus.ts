@@ -11,7 +11,7 @@
  */
 import type { V1ContainerState } from './V1ContainerState'
 import type { V1ResourceRequirements } from './V1ResourceRequirements'
-import type { IoK8sApimachineryPkgApiResourceQuantity } from './ioK8sApimachineryPkgApiResourceQuantity'
+import type { ResourceQuantity } from './resourceQuantity'
 
 /**
  * ContainerStatus contains details for the current status of this container.
@@ -20,7 +20,7 @@ export interface V1ContainerStatus {
   /**
      * AllocatedResources represents the compute resources allocated for this container by the node. Kubelet sets this value to Container.Resources.Requests upon successful pod admission and after successfully admitting desired pod resize.
      */
-  allocatedResources?: { [key: string]: IoK8sApimachineryPkgApiResourceQuantity }
+  allocatedResources?: { [key: string]: ResourceQuantity }
   /**
      * ContainerID is the ID of the container in the format '<type>://<container_id>'. Where type is a container runtime identifier, returned from Version call of CRI API (for example \"containerd\").
      */

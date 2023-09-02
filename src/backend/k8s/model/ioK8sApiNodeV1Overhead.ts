@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApiResourceQuantity } from './ioK8sApimachineryPkgApiResourceQuantity'
+import type { ResourceQuantity } from './resourceQuantity'
 
 /**
  * Overhead structure represents the resource overhead associated with running a pod.
@@ -18,5 +18,5 @@ export interface IoK8sApiNodeV1Overhead {
   /**
      * podFixed represents the fixed resource overhead associated with running a pod.
      */
-  podFixed?: { [key: string]: IoK8sApimachineryPkgApiResourceQuantity }
+  podFixed?: { [key: string]: ResourceQuantity }
 }

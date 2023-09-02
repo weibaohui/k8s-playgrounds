@@ -6,6 +6,7 @@ import { JobService } from '@backend/k8s/job/job.service'
 import { PriorityClassService } from '@backend/k8s/priorityclass/priorityclass.service'
 import { ReplicaSetService } from '@backend/k8s/replicaset/replicaset.service'
 import { ReplicationControllerService } from '@backend/k8s/replicationController/replication.service'
+import { ResourceQuotaService } from '@backend/k8s/resourcequota/resourcequota.service'
 import { SecretService } from '@backend/k8s/secret/secret.service'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
@@ -37,5 +38,6 @@ export class K8sService {
     public secretService: SecretService,
     public watchService: WatchService,
     public priorityClassService: PriorityClassService,
+    public resourceQuotaService: ResourceQuotaService,
   ) {}
 }

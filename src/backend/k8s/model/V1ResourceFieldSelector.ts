@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApiResourceQuantity } from './ioK8sApimachineryPkgApiResourceQuantity'
+import type { ResourceQuantity } from './resourceQuantity'
 
 /**
  * ResourceFieldSelector represents container resources (cpu, memory) and their output format
@@ -22,7 +22,7 @@ export interface V1ResourceFieldSelector {
   /**
      * Specifies the output format of the exposed resources, defaults to \"1\"
      */
-  divisor?: IoK8sApimachineryPkgApiResourceQuantity
+  divisor?: ResourceQuantity
   /**
      * Required: resource to select
      */

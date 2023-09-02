@@ -77,6 +77,11 @@ export class K8sService {
           ns,
           name,
         })
+      case ResType.ResourceQuota:
+        return K8sService.playService.resourceQuotaControllerGetOneByNsName({
+          ns,
+          name,
+        })
       case ResType.Namespace:
         return K8sService.playService.nsControllerGetOneByName({
           name,

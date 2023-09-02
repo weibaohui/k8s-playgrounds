@@ -16,7 +16,7 @@ import type { V1NodeCondition } from './V1NodeCondition'
 import type { V1NodeConfigStatus } from './V1NodeConfigStatus'
 import type { V1NodeDaemonEndpoints } from './V1NodeDaemonEndpoints'
 import type { V1NodeSystemInfo } from './V1NodeSystemInfo'
-import type { IoK8sApimachineryPkgApiResourceQuantity } from './ioK8sApimachineryPkgApiResourceQuantity'
+import type { ResourceQuantity } from './resourceQuantity'
 
 /**
  * NodeStatus is information about the current status of a node.
@@ -29,11 +29,11 @@ export interface V1NodeStatus {
   /**
      * Allocatable represents the resources of a node that are available for scheduling. Defaults to Capacity.
      */
-  allocatable?: { [key: string]: IoK8sApimachineryPkgApiResourceQuantity }
+  allocatable?: { [key: string]: ResourceQuantity }
   /**
      * Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
      */
-  capacity?: { [key: string]: IoK8sApimachineryPkgApiResourceQuantity }
+  capacity?: { [key: string]: ResourceQuantity }
   /**
      * Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/concepts/nodes/node/#condition
      */

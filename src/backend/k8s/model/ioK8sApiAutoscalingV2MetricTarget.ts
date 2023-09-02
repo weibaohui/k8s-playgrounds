@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgApiResourceQuantity } from './ioK8sApimachineryPkgApiResourceQuantity'
+import type { ResourceQuantity } from './resourceQuantity'
 
 /**
  * MetricTarget defines the target value, average value, or average utilization of a specific metric
@@ -22,7 +22,7 @@ export interface IoK8sApiAutoscalingV2MetricTarget {
   /**
      * averageValue is the target value of the average of the metric across all relevant pods (as a quantity)
      */
-  averageValue?: IoK8sApimachineryPkgApiResourceQuantity
+  averageValue?: ResourceQuantity
   /**
      * type represents whether the metric type is Utilization, Value, or AverageValue
      */
@@ -30,5 +30,5 @@ export interface IoK8sApiAutoscalingV2MetricTarget {
   /**
      * value is the target value of the metric (as a quantity).
      */
-  value?: IoK8sApimachineryPkgApiResourceQuantity
+  value?: ResourceQuantity
 }

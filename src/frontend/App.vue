@@ -209,6 +209,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'PriorityClasses' },
           ),
         key: 'go-to-priorityClasses',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/resourceQuotas',
+              },
+            },
+            { default: () => 'ResourceQuotas' },
+          ),
+        key: 'go-to-resourceQuotas',
       },
     ],
   },
