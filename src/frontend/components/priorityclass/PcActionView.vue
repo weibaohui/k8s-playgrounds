@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { V1PriorityClass } from '@backend/k8s/model/v1PriorityClass'
+import { ResType } from '@backend/k8s/watch/watch.model'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Lock, LockOpen, Trash } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
@@ -53,10 +54,17 @@ function getOptions(): ActionMenuOption[] {
       label: 'Edit',
       key: 'Edit',
       icon: Edit,
-      action: () => DrawerHelper
-        .instance
-        .drawer(drawer)
-        .showWider(props.pc.metadata.name, MonacoView, { item: props.pc }),
+      action: async () => {
+        const resource = await K8sService.getResource({
+          resType: ResType.PriorityClass,
+          ns: props.pc.metadata.namespace,
+          name: props.pc.metadata.name,
+        })
+        DrawerHelper
+          .instance
+          .drawer(drawer)
+          .showWider(props.pc.metadata.name, MonacoView, { item: resource })
+      },
     },
     {
       label: 'Delete',

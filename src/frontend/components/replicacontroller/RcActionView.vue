@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { V1ReplicationController } from '@backend/k8s/model/V1ReplicationController'
+import { ResType } from '@backend/k8s/watch/watch.model'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Trash } from '@vicons/fa'
 import { useDialog } from 'naive-ui'
@@ -23,10 +24,17 @@ function getOptions(): ActionMenuOption[] {
       label: 'Edit',
       key: 'Edit',
       icon: Edit,
-      action: () => DrawerHelper
-        .instance
-        .drawer(drawer)
-        .showWider(props.rc.metadata.name, MonacoView, { item: props.rc }),
+      action: async () => {
+        const resource = await K8sService.getResource({
+          resType: ResType.ReplicationController,
+          ns: props.rc.metadata.namespace,
+          name: props.rc.metadata.name,
+        })
+        DrawerHelper
+          .instance
+          .drawer(drawer)
+          .showWider(props.rc.metadata.name, MonacoView, { item: resource })
+      },
     },
     {
       label: 'Delete',

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { V1DaemonSet } from '@backend/k8s/model/V1DaemonSet'
+import { ResType } from '@backend/k8s/watch/watch.model'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, RedoAlt, Trash } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
@@ -34,11 +35,19 @@ function getOptions(): ActionMenuOption[] {
       label: 'Edit',
       key: 'Edit',
       icon: Edit,
-      action: () => DrawerHelper
-        .instance
-        .drawer(drawer)
-        .showWider(props.ds.metadata.name, MonacoView, { item: props.ds }),
+      action: async () => {
+        const resource = await K8sService.getResource({
+          resType: ResType.DaemonSet,
+          ns: props.ds.metadata.namespace,
+          name: props.ds.metadata.name,
+        })
+        DrawerHelper
+          .instance
+          .drawer(drawer)
+          .showWider(props.ds.metadata.name, MonacoView, { item: resource })
+      },
     },
+
     {
       label: 'Delete',
       key: 'Delete',

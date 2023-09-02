@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { V1Deployment } from '@backend/k8s/model/V1Deployment'
+import { ResType } from '@backend/k8s/watch/watch.model'
 import DeployScaleView from '@frontend/components/deployment/DeployScaleView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, ExpandArrowsAlt, RedoAlt, Trash } from '@vicons/fa'
@@ -39,15 +40,21 @@ function getOptions(): ActionMenuOption[] {
         message.success('重启成功')
       },
     },
-
     {
       label: 'Edit',
       key: 'Edit',
       icon: Edit,
-      action: () => DrawerHelper
-        .instance
-        .drawer(drawer)
-        .showWider(props.deploy.metadata.name, MonacoView, { item: props.deploy }),
+      action: async () => {
+        const resource = await K8sService.getResource({
+          resType: ResType.Deployment,
+          ns: props.deploy.metadata.namespace,
+          name: props.deploy.metadata.name,
+        })
+        DrawerHelper
+          .instance
+          .drawer(drawer)
+          .showWider(props.deploy.metadata.name, MonacoView, { item: resource })
+      },
     },
     {
       label: 'Delete',

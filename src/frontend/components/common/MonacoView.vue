@@ -12,6 +12,7 @@ const props = defineProps({
 const emit = defineEmits(['onSaveBtnClicked'])
 const monacoEditorRef = ref()
 const editor = ref<monaco.editor.IStandaloneCodeEditor>()
+
 onMounted(() => {
   editor.value = monaco.editor.create(monacoEditorRef.value, {
     automaticLayout: true,

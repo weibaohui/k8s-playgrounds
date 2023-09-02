@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { V1StatefulSet } from '@backend/k8s/model/v1StatefulSet'
+import { ResType } from '@backend/k8s/watch/watch.model'
 import StsScaleView from '@frontend/components/statefulset/StsScaleView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, ExpandArrowsAlt, RedoAlt, Trash } from '@vicons/fa'
@@ -44,10 +45,17 @@ function getOptions(): ActionMenuOption[] {
       label: 'Edit',
       key: 'Edit',
       icon: Edit,
-      action: () => DrawerHelper
-        .instance
-        .drawer(drawer)
-        .showWider(props.sts.metadata.name, MonacoView, { item: props.sts }),
+      action: async () => {
+        const resource = await K8sService.getResource({
+          resType: ResType.StatefulSet,
+          ns: props.sts.metadata.namespace,
+          name: props.sts.metadata.name,
+        })
+        DrawerHelper
+          .instance
+          .drawer(drawer)
+          .showWider(props.sts.metadata.name, MonacoView, { item: resource })
+      },
     },
     {
       label: 'Delete',

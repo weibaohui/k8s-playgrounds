@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { V1Secret } from '@backend/k8s/model/V1Secret'
+import { ResType } from '@backend/k8s/watch/watch.model'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Trash } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
@@ -21,15 +22,21 @@ const message = useMessage()
 
 function getOptions(): ActionMenuOption[] {
   return [
-
     {
       label: 'Edit',
       key: 'Edit',
       icon: Edit,
-      action: () => DrawerHelper
-        .instance
-        .drawer(drawer)
-        .showWider(props.secret.metadata.name, MonacoView, { item: props.secret }),
+      action: async () => {
+        const resource = await K8sService.getResource({
+          resType: ResType.Secret,
+          ns: props.secret.metadata.namespace,
+          name: props.secret.metadata.name,
+        })
+        DrawerHelper
+          .instance
+          .drawer(drawer)
+          .showWider(props.secret.metadata.name, MonacoView, { item: resource })
+      },
     },
     {
       label: 'Delete',

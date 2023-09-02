@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ResType } from '@backend/k8s/watch/watch.model'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Trash } from '@vicons/fa'
@@ -23,12 +24,18 @@ function getOptions(): ActionMenuOption[] {
       label: 'Edit',
       key: 'Edit',
       icon: Edit,
-      action: () => DrawerHelper
-        .instance
-        .drawer(drawer)
-        .showWider(props.event.metadata.name, MonacoView, { item: props.event }),
+      action: async () => {
+        const resource = await K8sService.getResource({
+          resType: ResType.Event,
+          ns: props.event.metadata.namespace,
+          name: props.event.metadata.name,
+        })
+        DrawerHelper
+          .instance
+          .drawer(drawer)
+          .showWider(props.event.metadata.name, MonacoView, { item: resource })
+      },
     },
-
     {
       label: 'Delete',
       key: 'Delete',

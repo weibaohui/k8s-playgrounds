@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { V1CronJob } from '@backend/k8s/model/v1CronJob'
+import { ResType } from '@backend/k8s/watch/watch.model'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import MonacoView from '@frontend/components/common/MonacoView.vue'
 import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'
@@ -77,10 +78,17 @@ function getOptions(): ActionMenuOption[] {
       label: 'Edit',
       key: 'Edit',
       icon: Edit,
-      action: () => DrawerHelper
-        .instance
-        .drawer(drawer)
-        .showWider(props.cj.metadata.name, MonacoView, { item: props.cj }),
+      action: async () => {
+        const resource = await K8sService.getResource({
+          resType: ResType.CronJob,
+          ns: props.cj.metadata.namespace,
+          name: props.cj.metadata.name,
+        })
+        DrawerHelper
+          .instance
+          .drawer(drawer)
+          .showWider(props.cj.metadata.name, MonacoView, { item: resource })
+      },
     },
     {
       label: 'Delete',
