@@ -24,4 +24,10 @@ export class EventService {
     const r = await k8sApi.deleteNamespacedEvent(name, ns)
     return r.body
   }
+
+  async GetOneByNsName(ns: string, name: string) {
+    const k8sApi = this.clientService.getCoreV1Api()
+    const resp = await k8sApi.readNamespacedEvent(name, ns)
+    return resp.body
+  }
 }

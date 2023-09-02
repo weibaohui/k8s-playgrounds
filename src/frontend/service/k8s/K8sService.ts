@@ -16,53 +16,71 @@ export class K8sService {
     name: string
   }) {
     switch (resType) {
-      case 'ReplicaSet':
+      case ResType.ReplicaSet:
         return K8sService.playService.replicaSetControllerGetOneByNsName({
           ns,
           name,
         })
-      case 'Deployment':
+      case ResType.Deployment:
         return K8sService.playService.deploymentControllerGetOneByNsName({
           ns,
           name,
         })
-      case 'Node':
+      case ResType.Node:
         return K8sService.playService.nodeControllerGetOneByName({ name })
-      case 'DaemonSet':
+      case ResType.DaemonSet:
         return K8sService.playService.daemonSetControllerGetOneByNsName({
           ns,
           name,
         })
-      case 'ReplicationController':
+      case ResType.ReplicationController:
         return K8sService.playService.replicationControllerGetOneByNsName({
           ns,
           name,
         })
-      case 'StatefulSet':
+      case ResType.StatefulSet:
         return K8sService.playService.statefulSetControllerGetOneByNsName({
           ns,
           name,
         })
-      case 'Pod':
+      case ResType.Pod:
         return K8sService.playService.podControllerGetOneByNsName({
           ns,
           name,
         })
-      case 'Job':
+      case ResType.Job:
         return K8sService.playService.jobControllerGetOneByNsName({
           ns,
           name,
         })
-      case 'CronJob':
+      case ResType.CronJob:
         return K8sService.playService.cronJobControllerGetOneByNsName({
           ns,
           name,
         })
       case ResType.ConfigMap:
+        return K8sService.playService.configmapControllerGetOneByNsName({
+          ns,
+          name,
+        })
       case ResType.Secret:
+        return K8sService.playService.secretControllerGetOneByNsName({
+          ns,
+          name,
+        })
       case ResType.PriorityClass:
+        return K8sService.playService.priorityClassControllerGetOneByName({
+          name,
+        })
       case ResType.Event:
+        return K8sService.playService.eventControllerGetOneByNsName({
+          ns,
+          name,
+        })
       case ResType.Namespace:
+        return K8sService.playService.nsControllerGetOneByName({
+          name,
+        })
     }
   }
 }

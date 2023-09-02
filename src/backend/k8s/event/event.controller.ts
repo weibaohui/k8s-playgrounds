@@ -17,6 +17,11 @@ export class EventController {
     return await this.k8sService.eventService.List(ns)
   }
 
+  @Get('/ns/:ns/name/:name')
+  async GetOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.eventService.GetOneByNsName(ns, name)
+  }
+
   @Get('/list/ns/:ns/name/:name')
   async ListInvolvedEventByNsName(@Param('ns') ns: string, @Param('name') name: string) {
     const fieldSelector = `involvedObject.name=${name},involvedObject.namespace=${ns}`

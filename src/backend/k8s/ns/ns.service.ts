@@ -20,4 +20,10 @@ export class NsService {
     const res = await k8sApi.deleteNamespace(name)
     return res.body
   }
+
+  async GetOneByName(name: string) {
+    const k8sApi = this.clientService.getK8sApi()
+    const resp = await k8sApi.readNamespace(name)
+    return resp.body
+  }
 }

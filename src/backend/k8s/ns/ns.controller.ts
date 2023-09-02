@@ -1,7 +1,7 @@
 import {
   Body,
   Controller,
-  Get, Post,
+  Get, Param, Post,
 } from '@nestjs/common'
 import { K8sService } from '@backend/k8s/k8s.service'
 
@@ -24,5 +24,10 @@ export class NsController {
       this.k8sService.nsService.Delete(name)
     })
     return {}
+  }
+
+  @Get('/:name')
+  async GetOneByName(@Param('name') name: string) {
+    return await this.k8sService.nsService.GetOneByName(name)
   }
 }
