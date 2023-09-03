@@ -221,6 +221,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'ResourceQuotas' },
           ),
         key: 'go-to-resourceQuotas',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/limitRanges',
+              },
+            },
+            { default: () => 'LimitRanges' },
+          ),
+        key: 'go-to-limitRanges',
       },
     ],
   },

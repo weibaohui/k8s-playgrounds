@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { V1ResourceQuota } from '@backend/k8s/model/V1ResourceQuota'
+import type { V1LimitRange } from '@backend/k8s/model/V1LimitRange'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
-import QuotaActionView from '@frontend/components/resourcequota/QuotaActionView.vue'
-import QuotaView from '@frontend/components/resourcequota/QuotaView.vue'
+import LimitsActionView from '@frontend/components/limitrange/LimitsActionView.vue'
+import LimitsView from '@frontend/components/limitrange/LimitsView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
@@ -19,11 +19,11 @@ const drawer = useDrawerService()
 const dialog = useDialog()
 
 const selectedNs = ref('default')
-const itemList = ref<V1ResourceQuota[]>()
+const itemList = ref<V1LimitRange[]>()
 const searchText = ref('')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
 
-function createColumns(): DataTableColumns<V1ResourceQuota> {
+function createColumns(): DataTableColumns<V1LimitRange> {
   return [
     {
       type: 'selection',
@@ -31,7 +31,7 @@ function createColumns(): DataTableColumns<V1ResourceQuota> {
     {
       title: 'Name',
       key: 'metadata.name',
-      render(row: V1ResourceQuota) {
+      render(row: V1LimitRange) {
         return h(
           NButton,
           {
@@ -40,7 +40,7 @@ function createColumns(): DataTableColumns<V1ResourceQuota> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`${row.kind}:${row.metadata.name}`, QuotaView, { quota: row })
+                .show(`${row.kind}:${row.metadata.name}`, LimitsView, { limits: row })
             },
           },
           { default: () => row.metadata.name },
@@ -50,7 +50,7 @@ function createColumns(): DataTableColumns<V1ResourceQuota> {
     {
       title: 'Namespace',
       key: 'metadata.namespace',
-      render(row: V1ResourceQuota) {
+      render(row: V1LimitRange) {
         return h(
           NButton,
           {
@@ -79,10 +79,10 @@ function createColumns(): DataTableColumns<V1ResourceQuota> {
     {
       title: 'Action',
       key: 'Action',
-      render(row: V1ResourceQuota) {
-        return h(QuotaActionView,
+      render(row: V1LimitRange) {
+        return h(LimitsActionView,
           {
-            quota: row,
+            limits: row,
             isDropdown: true,
           },
         )
@@ -92,14 +92,14 @@ function createColumns(): DataTableColumns<V1ResourceQuota> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.playService.resourceQuotaControllerListByNs({ ns: selectedNs.value })
+  itemList.value = await K8sService.playService.limitRangeControllerListByNs({ ns: selectedNs.value })
   if (!_.isEmpty(searchText.value))
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.playService.resourceQuotaControllerDelete({ requestBody: keys })
+    await K8sService.playService.limitRangeControllerDelete({ requestBody: keys })
   })
 }
 
@@ -115,7 +115,7 @@ function onTextChanged(text: string) {
 }
 
 getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.ResourceQuota, selectedNs))
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.LimitRange, selectedNs))
 </script>
 
 <template>
@@ -124,7 +124,7 @@ TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, R
     :columns="createColumns()"
     :item-list="itemList"
     :show-ns-select="true"
-    name="Resource Quotas"
+    name="Limit Ranges"
     @on-remove-btn-clicked="onRemoveBtnClicked"
     @on-text-changed="onTextChanged"
     @on-ns-changed="onNsChanged"

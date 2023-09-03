@@ -14,4 +14,5 @@ export enum ResType {
   Secret = 'Secret',
   PriorityClass = 'PriorityClass',
   ResourceQuota = 'ResourceQuota',
+  LimitRange = 'LimitRange',
 }

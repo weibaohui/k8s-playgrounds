@@ -8,6 +8,8 @@ import { DeploymentController } from '@backend/k8s/deployment/deployment.control
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
 import { JobController } from '@backend/k8s/job/job.controller'
 import { JobService } from '@backend/k8s/job/job.service'
+import { LimitRangeController } from '@backend/k8s/limitrange/limitrange.controller'
+import { LimitRangeService } from '@backend/k8s/limitrange/limitrange.service'
 import { PriorityClassController } from '@backend/k8s/priorityclass/priorityclass.controller'
 import { PriorityClassService } from '@backend/k8s/priorityclass/priorityclass.service'
 import { ReplicaSetService } from '@backend/k8s/replicaset/replicaset.service'
@@ -43,6 +45,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     DaemonSetController, ReplicationController, StatefulSetController,
     JobController, CronJobController, ConfigmapController,
     SecretController, PriorityClassController, ResourceQuotaController,
+    LimitRangeController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -52,6 +55,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     ReplicationControllerService, StatefulSetService,
     JobService, CronJobService, ConfigMapService,
     SecretService, PriorityClassService, ResourceQuotaService,
+    LimitRangeService,
   ],
   exports: [K8sService],
 })

@@ -3,6 +3,7 @@ import CronJobListView from '@frontend/components/cronjob/CronJobListView.vue'
 import DsListView from '@frontend/components/daemonset/DsListView.vue'
 import DeployListView from '@frontend/components/deployment/DeployListView.vue'
 import JobListView from '@frontend/components/job/JobListView.vue'
+import LimitsListView from '@frontend/components/limitrange/LimitsListView.vue'
 import PcListView from '@frontend/components/priorityclass/PcListView.vue'
 import RcListView from '@frontend/components/replicacontroller/RcListView.vue'
 import RsListView from '@frontend/components/replicaset/RsListView.vue'
@@ -76,6 +77,9 @@ export default createRouter({
     }, {
       path: '/resourceQuotas',
       component: QuotaListView,
+    }, {
+      path: '/limitRanges',
+      component: LimitsListView,
     },
   ],
 })

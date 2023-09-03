@@ -62,6 +62,9 @@ export class WatchService {
       case ResType.ResourceQuota:
         watchPath = '/api/v1/resourcequotas'
         break
+      case ResType.LimitRange:
+        watchPath = '/api/v1/limitranges'
+        break
       case ResType.Deployment:
         watchPath = '/apis/apps/v1/deployments'
         break
