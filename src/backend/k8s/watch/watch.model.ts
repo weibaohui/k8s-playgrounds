@@ -15,4 +15,5 @@ export enum ResType {
   PriorityClass = 'PriorityClass',
   ResourceQuota = 'ResourceQuota',
   LimitRange = 'LimitRange',
+  HorizontalPodAutoscaler = 'HorizontalPodAutoscaler',
 }

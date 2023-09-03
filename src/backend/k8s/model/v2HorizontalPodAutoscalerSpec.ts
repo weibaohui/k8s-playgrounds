@@ -10,17 +10,17 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAutoscalingV2CrossVersionObjectReference } from './ioK8sApiAutoscalingV2CrossVersionObjectReference'
-import type { IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior } from './ioK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior'
+import type { V2HorizontalPodAutoscalerBehavior } from './v2HorizontalPodAutoscalerBehavior'
 import type { IoK8sApiAutoscalingV2MetricSpec } from './ioK8sApiAutoscalingV2MetricSpec'
 
 /**
  * HorizontalPodAutoscalerSpec describes the desired functionality of the HorizontalPodAutoscaler.
  */
-export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec {
+export class V2HorizontalPodAutoscalerSpec {
   /**
      * behavior configures the scaling behavior of the target in both Up and Down directions (scaleUp and scaleDown fields respectively). If not set, the default HPAScalingRules for scale up and scale down are used.
      */
-  behavior?: IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior
+  behavior?: V2HorizontalPodAutoscalerBehavior
   /**
      * maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.
      */

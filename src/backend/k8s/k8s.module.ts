@@ -6,6 +6,10 @@ import { DaemonSetController } from '@backend/k8s/daemonset/daemonset.controller
 import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
 import { DeploymentController } from '@backend/k8s/deployment/deployment.controller'
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
+import {
+  HorizontalPodAutoscalerController,
+} from '@backend/k8s/horizontalpodautoscaler/HorizontalPodAutoscaler.controller'
+import { HorizontalPodAutoscalerService } from '@backend/k8s/horizontalpodautoscaler/HorizontalPodAutoscaler.service'
 import { JobController } from '@backend/k8s/job/job.controller'
 import { JobService } from '@backend/k8s/job/job.service'
 import { LimitRangeController } from '@backend/k8s/limitrange/limitrange.controller'
@@ -45,7 +49,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     DaemonSetController, ReplicationController, StatefulSetController,
     JobController, CronJobController, ConfigmapController,
     SecretController, PriorityClassController, ResourceQuotaController,
-    LimitRangeController,
+    LimitRangeController, HorizontalPodAutoscalerController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -55,7 +59,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     ReplicationControllerService, StatefulSetService,
     JobService, CronJobService, ConfigMapService,
     SecretService, PriorityClassService, ResourceQuotaService,
-    LimitRangeService,
+    LimitRangeService, HorizontalPodAutoscalerService,
   ],
   exports: [K8sService],
 })

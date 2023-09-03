@@ -233,6 +233,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'LimitRanges' },
           ),
         key: 'go-to-limitRanges',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/horizontalPodAutoscaler',
+              },
+            },
+            { default: () => 'HorizontalPodAutoscaler' },
+          ),
+        key: 'go-to-horizontalPodAutoscaler',
       },
     ],
   },

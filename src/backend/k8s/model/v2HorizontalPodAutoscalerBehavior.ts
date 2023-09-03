@@ -14,7 +14,7 @@ import type { IoK8sApiAutoscalingV2HPAScalingRules } from './ioK8sApiAutoscaling
 /**
  * HorizontalPodAutoscalerBehavior configures the scaling behavior of the target in both Up and Down directions (scaleUp and scaleDown fields respectively).
  */
-export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior {
+export interface V2HorizontalPodAutoscalerBehavior {
   /**
      * scaleDown is scaling policy for scaling Down. If not set, the default value is to allow to scale down to minReplicas pods, with a 300 second stabilization window (i.e., the highest recommendation for the last 300sec is used).
      */

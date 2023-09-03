@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAutoscalingV2HorizontalPodAutoscaler } from './ioK8sApiAutoscalingV2HorizontalPodAutoscaler'
+import type { V2HorizontalPodAutoscaler } from './v2HorizontalPodAutoscaler'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**
@@ -23,7 +23,7 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerList {
   /**
      * items is the list of horizontal pod autoscaler objects.
      */
-  items: Array<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>
+  items: Array<V2HorizontalPodAutoscaler>
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */

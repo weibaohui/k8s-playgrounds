@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec } from './ioK8sApiAutoscalingV2HorizontalPodAutoscalerSpec'
-import type { IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus } from './ioK8sApiAutoscalingV2HorizontalPodAutoscalerStatus'
+import type { V2HorizontalPodAutoscalerSpec } from './v2HorizontalPodAutoscalerSpec'
+import type { V2HorizontalPodAutoscalerStatus } from './v2HorizontalPodAutoscalerStatus'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * HorizontalPodAutoscaler is the configuration for a horizontal pod autoscaler, which automatically manages the replica count of any resource implementing the scale subresource based on the metrics specified.
  */
-export interface IoK8sApiAutoscalingV2HorizontalPodAutoscaler {
+export class V2HorizontalPodAutoscaler {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -32,9 +32,9 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscaler {
   /**
      * spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
      */
-  spec?: IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec
+  spec?: V2HorizontalPodAutoscalerSpec
   /**
      * status is the current information about the autoscaler.
      */
-  status?: IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus
+  status?: V2HorizontalPodAutoscalerStatus
 }

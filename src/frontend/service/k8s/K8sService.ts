@@ -91,6 +91,11 @@ export class K8sService {
           ns,
           name,
         })
+      case ResType.HorizontalPodAutoscaler:
+        return K8sService.playService.horizontalPodAutoscalerControllerGetOneByNsName({
+          ns,
+          name,
+        })
     }
   }
 }

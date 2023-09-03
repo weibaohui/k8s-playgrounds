@@ -27,6 +27,10 @@ export class ClientService {
     return this.getKubeConfig().makeApiClient(k8s.CoreV1Api)
   }
 
+  public getAutoScalingV2Api() {
+    return this.getKubeConfig().makeApiClient(k8s.AutoscalingV2Api)
+  }
+
   public getBatchV1Api() {
     return this.getKubeConfig().makeApiClient(k8s.BatchV1Api)
   }
