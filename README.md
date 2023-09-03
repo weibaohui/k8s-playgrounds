@@ -172,6 +172,12 @@ shamefully-hoist=true
 |         ResourceQuota | 详情             | ✅       |
 |         ResourceQuota | 详情-查看yaml      | ✅       |
 |         ResourceQuota | 详情-删除          | ✅       |
+|            LimitRange | 列表             | ✅       |
+|            LimitRange | 列表-查看yaml      | ✅       |
+|            LimitRange | 列表-删除          | ✅       |
+|            LimitRange | 详情             | ✅       |
+|            LimitRange | 详情-查看yaml      | ✅       |
+|            LimitRange | 详情-删除          | ✅       |
 ## 开发提示
 
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成
