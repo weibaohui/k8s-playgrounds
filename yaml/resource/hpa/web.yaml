@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-web
+spec:
+  selector:
+    matchLabels:
+      run: nginx-web
+  template:
+    metadata:
+      labels:
+        run: nginx-web
+    spec:
+      containers:
+        - name: nginx-web
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-web
+  labels:
+    run: nginx-web
+spec:
+  ports:
+    - port: 80
+  selector:
+    run: nginx-web
