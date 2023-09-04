@@ -5,7 +5,6 @@ import { Edit, FireExtinguisher, PauseCircleRegular, PlayCircleRegular, Trash } 
 import { useDialog, useMessage } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import { V1Node } from '@backend/k8s/model/V1Node'
-import MonacoView from '@frontend/components/common/MonacoView.vue'
 import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'
 import NodeDrainView from '@frontend/components/node/NodeDrainView.vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
@@ -69,15 +68,11 @@ function getOptions(): ActionMenuOption[] {
       key: 'Edit',
       icon: Edit,
       action: async () => {
-        const resource = await K8sService.getResource({
+        await DrawerHelper.instance.drawer(drawer).showResourceEditor({
           resType: ResType.Node,
           ns: props.node.metadata.namespace,
           name: props.node.metadata.name,
         })
-        DrawerHelper
-          .instance
-          .drawer(drawer)
-          .showWider(props.node.metadata.name, MonacoView, { item: resource })
       },
     },
     {
