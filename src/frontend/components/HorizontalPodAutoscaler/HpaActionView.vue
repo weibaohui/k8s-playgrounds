@@ -5,7 +5,6 @@ import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Trash } from '@vicons/fa'
 import { useDialog } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
-import MonacoView from '@frontend/components/common/MonacoView.vue'
 import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
@@ -25,15 +24,11 @@ function getOptions(): ActionMenuOption[] {
       key: 'Edit',
       icon: Edit,
       action: async () => {
-        const resource = await K8sService.getResource({
+        await DrawerHelper.instance.drawer(drawer).showResourceEditor({
           resType: ResType.HorizontalPodAutoscaler,
           ns: props.hpa.metadata.namespace,
           name: props.hpa.metadata.name,
         })
-        DrawerHelper
-          .instance
-          .drawer(drawer)
-          .showWider(props.hpa.metadata.name, MonacoView, { item: resource })
       },
     },
     {

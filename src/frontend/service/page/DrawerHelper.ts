@@ -1,3 +1,6 @@
+import type { ResType } from '@backend/k8s/watch/watch.model'
+import MonacoView from '@frontend/components/common/MonacoView.vue'
+import { K8sService } from '@frontend/service/k8s/K8sService'
 import type { ConcreteComponent } from '@vue/runtime-core'
 import { h } from 'vue'
 import type { DrawerServiceApiInjection } from '@frontend/service/drawer-service/DrawerServiceProvider'
@@ -35,5 +38,23 @@ export class DrawerHelper {
       },
       h(comp, compProps),
     )
+  }
+
+  async showResourceEditor({
+    resType,
+                             ns,
+                             name,
+  }: {
+    resType: ResType
+    ns: string
+    name: string
+  }) {
+    const resource = await K8sService.getResource({
+      resType,
+      ns,
+      name,
+    })
+    this
+      .showWider(`${resource.kind}:${name}`, MonacoView, { item: resource })
   }
 }

@@ -3,7 +3,6 @@ import type { V2HorizontalPodAutoscaler } from '@backend/k8s/model/V2HorizontalP
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import HpaActionView from '@frontend/components/HorizontalPodAutoscaler/HpaActionView.vue'
-import HpaView from '@frontend/components/HorizontalPodAutoscaler/HpaView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
@@ -36,11 +35,12 @@ function createColumns(): DataTableColumns<V2HorizontalPodAutoscaler> {
           NButton,
           {
             text: true,
-            onClick: () => {
-              DrawerHelper
-                .instance
-                .drawer(drawer)
-                .show(`${row.kind}:${row.metadata.name}`, HpaView, { hpa: row })
+            onClick: async () => {
+              await DrawerHelper.instance.drawer(drawer).showResourceEditor({
+                resType: ResType.HorizontalPodAutoscaler,
+                ns: row.metadata.namespace,
+                name: row.metadata.name,
+              })
             },
           },
           { default: () => row.metadata.name },
