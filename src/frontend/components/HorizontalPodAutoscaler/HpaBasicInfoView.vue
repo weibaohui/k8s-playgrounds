@@ -3,6 +3,7 @@ import { V1ObjectMeta } from '@backend/k8s/model/V1ObjectMeta'
 import { V1OwnerReference } from '@backend/k8s/model/V1OwnerReference'
 import { V2HorizontalPodAutoscaler } from '@backend/k8s/model/v2HorizontalPodAutoscaler'
 import ControlledByView from '@frontend/components/common/ControlledByView.vue'
+import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import { NTable } from 'naive-ui'
 
@@ -26,31 +27,29 @@ function getFakeV1ObjectMeta() {
     <tbody>
       <tr>
         <td class="left">
-          behavior
-        </td>
-        <td>{{ props.hpa.spec.behavior }}</td>
-      </tr>
-      <tr>
-        <td>
-          maxReplicas
+          Max Pods
         </td>
         <td>{{ props.hpa.spec.maxReplicas }}</td>
       </tr>
       <tr>
         <td>
-          minReplicas
+          Min Pods
         </td>
         <td>{{ props.hpa.spec.minReplicas }}</td>
       </tr>
       <tr>
         <td>
-          metrics
+          Replicas
         </td>
-        <td>{{ props.hpa.spec.metrics }}</td>
+        <td>{{ props.hpa.status.currentReplicas }}</td>
+      </tr>
+      <tr>
+        <td>Conditions</td>
+        <td><ResourceConditionView :items="props.hpa.status.conditions" /></td>
       </tr>
       <tr>
         <td>
-          scaleTargetRef
+          Reference
         </td>
         <td>
           <ControlledByView :item="getFakeV1ObjectMeta()" :simple="false" />

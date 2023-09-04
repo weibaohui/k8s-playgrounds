@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAutoscalingV2CrossVersionObjectReference } from './ioK8sApiAutoscalingV2CrossVersionObjectReference'
 import type { IoK8sApiAutoscalingV2MetricIdentifier } from './ioK8sApiAutoscalingV2MetricIdentifier'
-import type { IoK8sApiAutoscalingV2MetricTarget } from './ioK8sApiAutoscalingV2MetricTarget'
+import type { V2MetricTarget } from './v2MetricTarget'
 
 /**
  * ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).
@@ -28,5 +28,5 @@ export interface IoK8sApiAutoscalingV2ObjectMetricSource {
   /**
      * target specifies the target value for the given metric
      */
-  target: IoK8sApiAutoscalingV2MetricTarget
+  target: V2MetricTarget
 }

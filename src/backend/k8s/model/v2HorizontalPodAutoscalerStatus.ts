@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition } from './ioK8sApiAutoscalingV2HorizontalPodAutoscalerCondition'
-import type { IoK8sApiAutoscalingV2MetricStatus } from './ioK8sApiAutoscalingV2MetricStatus'
+import type { V2HorizontalPodAutoscalerCondition } from './v2HorizontalPodAutoscalerCondition'
+import type { V2MetricStatus } from './v2MetricStatus'
 import type { V1Time } from './V1Time'
 
 /**
@@ -20,11 +20,11 @@ export interface V2HorizontalPodAutoscalerStatus {
   /**
      * conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.
      */
-  conditions?: Array<IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition>
+  conditions?: Array<V2HorizontalPodAutoscalerCondition>
   /**
      * currentMetrics is the last read state of the metrics used by this autoscaler.
      */
-  currentMetrics?: Array<IoK8sApiAutoscalingV2MetricStatus>
+  currentMetrics?: Array<V2MetricStatus>
   /**
      * currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.
      */

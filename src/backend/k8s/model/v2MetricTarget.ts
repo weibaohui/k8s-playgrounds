@@ -14,7 +14,7 @@ import type { ResourceQuantity } from './resourceQuantity'
 /**
  * MetricTarget defines the target value, average value, or average utilization of a specific metric
  */
-export interface IoK8sApiAutoscalingV2MetricTarget {
+export interface V2MetricTarget {
   /**
      * averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type
      */

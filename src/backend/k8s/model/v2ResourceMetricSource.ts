@@ -9,12 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAutoscalingV2MetricTarget } from './ioK8sApiAutoscalingV2MetricTarget'
+import type { V2MetricTarget } from './v2MetricTarget'
 
 /**
  * ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.  Only one \"target\" type should be set.
  */
-export interface IoK8sApiAutoscalingV2ResourceMetricSource {
+export interface V2ResourceMetricSource {
   /**
      * name is the name of the resource in question.
      */
@@ -22,5 +22,5 @@ export interface IoK8sApiAutoscalingV2ResourceMetricSource {
   /**
      * target specifies the target value for the given metric
      */
-  target: IoK8sApiAutoscalingV2MetricTarget
+  target: V2MetricTarget
 }

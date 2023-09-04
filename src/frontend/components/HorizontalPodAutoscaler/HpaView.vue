@@ -3,6 +3,7 @@ import { V2HorizontalPodAutoscaler } from '@backend/k8s/model/v2HorizontalPodAut
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import HpaActionView from '@frontend/components/HorizontalPodAutoscaler/HpaActionView.vue'
 import HpaBasicInfoView from '@frontend/components/HorizontalPodAutoscaler/HpaBasicInfoView.vue'
+import HpaMetricsView from '@frontend/components/HorizontalPodAutoscaler/HpaMetricsView.vue'
 import { NH6, NMessageProvider, NText } from 'naive-ui'
 
 const props = defineProps({
@@ -20,6 +21,12 @@ const props = defineProps({
     </NText>
   </NH6>
   <HpaBasicInfoView :hpa="props.hpa" />
+  <NH6 prefix="bar" align-text type="success">
+    <NText type="success">
+      Metrics
+    </NText>
+  </NH6>
+  <HpaMetricsView :hpa="props.hpa" />
 
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">

@@ -13,12 +13,12 @@ import type { IoK8sApiAutoscalingV2ContainerResourceMetricSource } from './ioK8s
 import type { IoK8sApiAutoscalingV2ExternalMetricSource } from './ioK8sApiAutoscalingV2ExternalMetricSource'
 import type { IoK8sApiAutoscalingV2ObjectMetricSource } from './ioK8sApiAutoscalingV2ObjectMetricSource'
 import type { IoK8sApiAutoscalingV2PodsMetricSource } from './ioK8sApiAutoscalingV2PodsMetricSource'
-import type { IoK8sApiAutoscalingV2ResourceMetricSource } from './ioK8sApiAutoscalingV2ResourceMetricSource'
+import type { V2ResourceMetricSource } from './v2ResourceMetricSource'
 
 /**
  * MetricSpec specifies how to scale based on a single metric (only `type` and one other matching field should be set at once).
  */
-export interface IoK8sApiAutoscalingV2MetricSpec {
+export interface V2MetricSpec {
   /**
      * containerResource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source. This is an alpha feature and can be enabled by the HPAContainerMetrics feature flag.
      */
@@ -38,7 +38,7 @@ export interface IoK8sApiAutoscalingV2MetricSpec {
   /**
      * resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.
      */
-  resource?: IoK8sApiAutoscalingV2ResourceMetricSource
+  resource?: V2ResourceMetricSource
   /**
      * type is the type of metric source.  It should be one of \"ContainerResource\", \"External\", \"Object\", \"Pods\" or \"Resource\", each mapping to a matching field in the object. Note: \"ContainerResource\" type is available on when the feature-gate HPAContainerMetrics is enabled
      */
