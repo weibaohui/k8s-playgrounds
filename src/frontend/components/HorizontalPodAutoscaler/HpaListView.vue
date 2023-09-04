@@ -2,6 +2,7 @@
 import type { V2HorizontalPodAutoscaler } from '@backend/k8s/model/V2HorizontalPodAutoscaler'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
+import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import HpaActionView from '@frontend/components/HorizontalPodAutoscaler/HpaActionView.vue'
 import HpaView from '@frontend/components/HorizontalPodAutoscaler/HpaView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
@@ -62,6 +63,37 @@ function createColumns(): DataTableColumns<V2HorizontalPodAutoscaler> {
             },
           },
           { default: () => row.metadata.namespace },
+        )
+      },
+    },
+    {
+      title: 'Min Pods',
+      key: 'minPods',
+      render(row: V2HorizontalPodAutoscaler) {
+        return row.spec.minReplicas ? row.spec.minReplicas : 0
+      },
+    },
+    {
+      title: 'Max Pods',
+      key: 'maxPods',
+      render(row: V2HorizontalPodAutoscaler) {
+        return row.spec.maxReplicas ? row.spec.maxReplicas : 0
+      },
+    },
+    {
+      title: 'Current Pods',
+      key: 'currentPods',
+      render(row: V2HorizontalPodAutoscaler) {
+        return row.status.currentReplicas ? row.status.currentReplicas : 0
+      },
+    },
+    {
+      title: 'status',
+      key: 'status',
+      render(row: V2HorizontalPodAutoscaler) {
+        return h(
+          ResourceConditionView,
+          { items: (row.status.conditions) },
         )
       },
     },
