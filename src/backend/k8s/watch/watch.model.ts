@@ -16,4 +16,5 @@ export enum ResType {
   ResourceQuota = 'ResourceQuota',
   LimitRange = 'LimitRange',
   HorizontalPodAutoscaler = 'HorizontalPodAutoscaler',
+  PodDisruptionBudget = 'PodDisruptionBudget',
 }

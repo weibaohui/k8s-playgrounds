@@ -242,9 +242,21 @@ const menuOptions: MenuOption[] = [
                 path: '/horizontalPodAutoscaler',
               },
             },
-            { default: () => 'HorizontalPodAutoscaler' },
+            { default: () => 'HorizontalPodAutoscalers' },
           ),
         key: 'go-to-horizontalPodAutoscaler',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/podDisruptionBudgets',
+              },
+            },
+            { default: () => 'PodDisruptionBudgets' },
+          ),
+        key: 'go-to-podDisruptionBudgets',
       },
     ],
   },

@@ -5,6 +5,7 @@ import DeployListView from '@frontend/components/deployment/DeployListView.vue'
 import HpaListView from '@frontend/components/HorizontalPodAutoscaler/HpaListView.vue'
 import JobListView from '@frontend/components/job/JobListView.vue'
 import LimitsListView from '@frontend/components/limitrange/LimitsListView.vue'
+import PdbListView from '@frontend/components/PodDisruptionBudget/PdbListView.vue'
 import PcListView from '@frontend/components/priorityclass/PcListView.vue'
 import RcListView from '@frontend/components/replicacontroller/RcListView.vue'
 import RsListView from '@frontend/components/replicaset/RsListView.vue'
@@ -81,6 +82,9 @@ export default createRouter({
     }, {
       path: '/limitRanges',
       component: LimitsListView,
+    }, {
+      path: '/podDisruptionBudgets',
+      component: PdbListView,
     },
     {
       path: '/horizontalPodAutoscaler',

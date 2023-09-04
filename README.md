@@ -186,6 +186,12 @@ shamefully-hoist=true
 | HorizontalPodAutoscaler | 详情-查看指标        | ✅       |
 | HorizontalPodAutoscaler | 详情-查看状态        | ✅       |
 | HorizontalPodAutoscaler | 详情-删除          | ✅       |
+|     PodDisruptionBudget | 列表             | ✅       |
+|     PodDisruptionBudget | 列表-查看yaml      | ✅       |
+|     PodDisruptionBudget | 列表-删除          | ✅       |
+|     PodDisruptionBudget | 详情             | ✅       |
+|     PodDisruptionBudget | 详情-查看yaml      | ✅       |
+|     PodDisruptionBudget | 详情-删除          | ✅       |
 ## 开发提示
 
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成
@@ -205,6 +211,7 @@ shamefully-hoist=true
 | IoK8sApiBatchV1Job                           | V1Job                     |
 | IoK8sApiSchedulingV1PriorityClass            | V1PriorityClass           |
 | IoK8sApiAutoscalingV2HorizontalPodAutoscaler | V2HorizontalPodAutoscaler |
+| IoK8sApiPolicyV1PodDisruptionBudgetSpec      | V1PodDisruptionBudgetSpec |
 
 ## Demo
 

@@ -96,6 +96,11 @@ export class K8sService {
           ns,
           name,
         })
+      case ResType.PodDisruptionBudget:
+        return K8sService.playService.podDisruptionBudgetControllerGetOneByNsName({
+          ns,
+          name,
+        })
     }
   }
 }

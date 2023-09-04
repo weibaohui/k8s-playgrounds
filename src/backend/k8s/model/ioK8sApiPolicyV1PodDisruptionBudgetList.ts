@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiPolicyV1PodDisruptionBudget } from './ioK8sApiPolicyV1PodDisruptionBudget'
+import type { V1PodDisruptionBudget } from './v1PodDisruptionBudget'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**
@@ -23,7 +23,7 @@ export interface IoK8sApiPolicyV1PodDisruptionBudgetList {
   /**
      * Items is a list of PodDisruptionBudgets
      */
-  items: Array<IoK8sApiPolicyV1PodDisruptionBudget>
+  items: Array<V1PodDisruptionBudget>
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
