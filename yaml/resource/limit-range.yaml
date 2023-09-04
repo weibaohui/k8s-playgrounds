@@ -9,7 +9,7 @@ spec:
       defaultRequest: # 此处定义默认请求值
         cpu: 500m
       max: # max 和 min 定义限制范围
-        cpu: "1"
+        cpu: '1'
       min:
         cpu: 100m
       type: Container
@@ -25,7 +25,7 @@ spec:
       defaultRequest: # 此处定义默认请求值
         cpu: 500m
       max: # max 和 min 定义限制范围
-        cpu: "1"
+        cpu: '1'
       min:
         cpu: 100m
       type: Container

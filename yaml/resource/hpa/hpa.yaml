@@ -40,7 +40,7 @@ spec:
           name: queue_messages_ready
           selector:
             matchLabels:
-              queue: "worker_tasks"
+              queue: worker_tasks
         target:
           type: AverageValue
           averageValue: '30'
