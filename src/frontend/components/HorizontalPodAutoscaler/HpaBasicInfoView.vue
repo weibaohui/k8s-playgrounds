@@ -1,11 +1,23 @@
 <script setup lang="ts">
+import { V1ObjectMeta } from '@backend/k8s/model/V1ObjectMeta'
+import { V1OwnerReference } from '@backend/k8s/model/V1OwnerReference'
 import { V2HorizontalPodAutoscaler } from '@backend/k8s/model/v2HorizontalPodAutoscaler'
+import ControlledByView from '@frontend/components/common/ControlledByView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import { NTable } from 'naive-ui'
 
 const props = defineProps({
   hpa: V2HorizontalPodAutoscaler,
 })
+function getFakeV1ObjectMeta() {
+  const om = new V1ObjectMeta()
+  const own = new V1OwnerReference()
+  own.name = props.hpa.spec.scaleTargetRef.name
+  own.kind = props.hpa.spec.scaleTargetRef.kind
+  om.namespace = props.hpa.metadata.namespace
+  om.ownerReferences = [own]
+  return om
+}
 </script>
 
 <template>
@@ -40,7 +52,9 @@ const props = defineProps({
         <td>
           scaleTargetRef
         </td>
-        <td>{{ props.hpa.spec.scaleTargetRef }}</td>
+        <td>
+          <ControlledByView :item="getFakeV1ObjectMeta()" :simple="false" />
+        </td>
       </tr>
     </tbody>
   </NTable>
