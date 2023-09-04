@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAutoscalingV2ContainerResourceMetricStatus } from './ioK8sApiAutoscalingV2ContainerResourceMetricStatus'
-import type { IoK8sApiAutoscalingV2ExternalMetricStatus } from './ioK8sApiAutoscalingV2ExternalMetricStatus'
+import type { V2ExternalMetricStatus } from './v2ExternalMetricStatus'
 import type { IoK8sApiAutoscalingV2ObjectMetricStatus } from './ioK8sApiAutoscalingV2ObjectMetricStatus'
 import type { IoK8sApiAutoscalingV2PodsMetricStatus } from './ioK8sApiAutoscalingV2PodsMetricStatus'
 import type { IoK8sApiAutoscalingV2ResourceMetricStatus } from './ioK8sApiAutoscalingV2ResourceMetricStatus'
@@ -26,7 +26,7 @@ export interface V2MetricStatus {
   /**
      * external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).
      */
-  external?: IoK8sApiAutoscalingV2ExternalMetricStatus
+  external?: V2ExternalMetricStatus
   /**
      * object refers to a metric describing a single kubernetes object (for example, hits-per-second on an Ingress object).
      */

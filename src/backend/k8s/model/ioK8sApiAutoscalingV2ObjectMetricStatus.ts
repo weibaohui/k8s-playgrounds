@@ -10,8 +10,8 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAutoscalingV2CrossVersionObjectReference } from './ioK8sApiAutoscalingV2CrossVersionObjectReference'
-import type { IoK8sApiAutoscalingV2MetricIdentifier } from './ioK8sApiAutoscalingV2MetricIdentifier'
-import type { IoK8sApiAutoscalingV2MetricValueStatus } from './ioK8sApiAutoscalingV2MetricValueStatus'
+import type { V2MetricIdentifier } from './v2MetricIdentifier'
+import type { V2MetricValueStatus } from './v2MetricValueStatus'
 
 /**
  * ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).
@@ -20,7 +20,7 @@ export interface IoK8sApiAutoscalingV2ObjectMetricStatus {
   /**
      * current contains the current value for the given metric
      */
-  current: IoK8sApiAutoscalingV2MetricValueStatus
+  current: V2MetricValueStatus
   /**
      * DescribedObject specifies the descriptions of a object,such as kind,name apiVersion
      */
@@ -28,5 +28,5 @@ export interface IoK8sApiAutoscalingV2ObjectMetricStatus {
   /**
      * metric identifies the target metric by name and selector
      */
-  metric: IoK8sApiAutoscalingV2MetricIdentifier
+  metric: V2MetricIdentifier
 }

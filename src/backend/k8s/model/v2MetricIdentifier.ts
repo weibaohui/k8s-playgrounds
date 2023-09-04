@@ -14,7 +14,7 @@ import type { V1LabelSelector } from './v1LabelSelector'
 /**
  * MetricIdentifier defines the name and optionally selector for a metric
  */
-export interface IoK8sApiAutoscalingV2MetricIdentifier {
+export interface V2MetricIdentifier {
   /**
      * name is the name of the given metric
      */

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAutoscalingV2CrossVersionObjectReference } from './ioK8sApiAutoscalingV2CrossVersionObjectReference'
-import type { IoK8sApiAutoscalingV2MetricIdentifier } from './ioK8sApiAutoscalingV2MetricIdentifier'
+import type { V2MetricIdentifier } from './v2MetricIdentifier'
 import type { V2MetricTarget } from './v2MetricTarget'
 
 /**
@@ -24,7 +24,7 @@ export interface IoK8sApiAutoscalingV2ObjectMetricSource {
   /**
      * metric identifies the target metric by name and selector
      */
-  metric: IoK8sApiAutoscalingV2MetricIdentifier
+  metric: V2MetricIdentifier
   /**
      * target specifies the target value for the given metric
      */

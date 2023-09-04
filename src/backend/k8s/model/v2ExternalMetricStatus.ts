@@ -9,19 +9,19 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAutoscalingV2MetricIdentifier } from './ioK8sApiAutoscalingV2MetricIdentifier'
-import type { IoK8sApiAutoscalingV2MetricValueStatus } from './ioK8sApiAutoscalingV2MetricValueStatus'
+import type { V2MetricIdentifier } from './v2MetricIdentifier'
+import type { V2MetricValueStatus } from './v2MetricValueStatus'
 
 /**
  * ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.
  */
-export interface IoK8sApiAutoscalingV2ExternalMetricStatus {
+export interface V2ExternalMetricStatus {
   /**
      * current contains the current value for the given metric
      */
-  current: IoK8sApiAutoscalingV2MetricValueStatus
+  current: V2MetricValueStatus
   /**
      * metric identifies the target metric by name and selector
      */
-  metric: IoK8sApiAutoscalingV2MetricIdentifier
+  metric: V2MetricIdentifier
 }
