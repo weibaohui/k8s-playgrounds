@@ -41,7 +41,7 @@ function createColumns(): DataTableColumns<V1Secret> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`Secret:${row.metadata.name}`, SecretView, { secret: row })
+                .show(`${ResType.Secret}:${row.metadata.name}`, SecretView, { secret: row })
             },
           },
           { default: () => row.metadata.name },

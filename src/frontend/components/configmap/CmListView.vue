@@ -41,7 +41,7 @@ function createColumns(): DataTableColumns<V1ConfigMap> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`ConfigMap:${row.metadata.name}`, CmView, { cm: row })
+                .show(`${ResType.ConfigMap}:${row.metadata.name}`, CmView, { cm: row })
             },
           },
           { default: () => row.metadata.name },

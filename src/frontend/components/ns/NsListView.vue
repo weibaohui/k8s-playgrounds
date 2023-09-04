@@ -39,7 +39,7 @@ function createColumns(): DataTableColumns<V1Namespace> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`Namespace:${row.metadata.name}`, NsView, { ns: row })
+                .show(`${ResType.Namespace}:${row.metadata.name}`, NsView, { ns: row })
             },
           },
           { default: () => row.metadata.name },

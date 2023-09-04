@@ -57,7 +57,7 @@ function createColumns(): DataTableColumns<V1Deployment> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`Deployment:${row.metadata.name}`, DeployView, { deploy: row })
+                .show(`${ResType.Deployment}:${row.metadata.name}`, DeployView, { deploy: row })
             },
           },
           [

@@ -39,7 +39,7 @@ function createColumns(): DataTableColumns<V1PriorityClass> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`PriorityClass:${row.metadata.name}`, PcView, { pc: row })
+                .show(`${ResType.PriorityClass}:${row.metadata.name}`, PcView, { pc: row })
             },
           },
           { default: () => row.metadata.name },

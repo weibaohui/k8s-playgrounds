@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ResType } from '@backend/k8s/watch/watch.model'
 import { NText } from 'naive-ui'
 import _ from 'lodash'
 import EventView from '@frontend/components/event/EventView.vue'
@@ -17,7 +18,7 @@ async function showEventView(x: V1Event) {
   DrawerHelper
     .instance
     .drawer(drawer)
-    .show(`Event:${x.metadata.name}`, EventView, { event: x })
+    .show(`${ResType.Event}:${x.metadata.name}`, EventView, { event: x })
 }
 </script>
 

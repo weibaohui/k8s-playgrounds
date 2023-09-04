@@ -40,7 +40,7 @@ function createColumns(): DataTableColumns<V1StatefulSet> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`StatefulSet:${row.metadata.name}`, StsView, { sts: row })
+                .show(`${ResType.StatefulSet}:${row.metadata.name}`, StsView, { sts: row })
             },
           },
           { default: () => row.metadata.name },

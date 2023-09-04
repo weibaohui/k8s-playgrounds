@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
+import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import RsActionView from '@frontend/components/replicaset/RsActionView.vue'
 import RsView from '@frontend/components/replicaset/RsView.vue'
@@ -39,7 +40,7 @@ function createColumns(): DataTableColumns<V1ReplicaSet> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`ReplicaSet:${row.metadata.name}`, RsView, { rs: row })
+                .show(`${ResType.ReplicaSet}:${row.metadata.name}`, RsView, { rs: row })
             },
           },
           { default: () => row.metadata.name },

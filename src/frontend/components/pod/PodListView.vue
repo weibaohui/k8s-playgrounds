@@ -63,7 +63,7 @@ function createColumns(): DataTableColumns<V1Pod> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`Pod:${row.metadata.name}`, PodView, { pod: row })
+                .show(`${ResType.Pod}:${row.metadata.name}`, PodView, { pod: row })
             },
           },
           [

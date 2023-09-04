@@ -40,7 +40,7 @@ function createColumns(): DataTableColumns<V1DaemonSet> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`DaemonSet:${row.metadata.name}`, DsView, { ds: row })
+                .show(`${ResType.DaemonSet}:${row.metadata.name}`, DsView, { ds: row })
             },
           },
           { default: () => row.metadata.name },

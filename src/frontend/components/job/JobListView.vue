@@ -41,7 +41,7 @@ function createColumns(): DataTableColumns<V1Job> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`Job:${row.metadata.name}`, JobView, { job: row })
+                .show(`${ResType.Job}:${row.metadata.name}`, JobView, { job: row })
             },
           },
           { default: () => row.metadata.name },

@@ -40,7 +40,7 @@ function createColumns(): DataTableColumns<V1ReplicationController> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`ReplicationController:${row.metadata.name}`, RcView, { rc: row })
+                .show(`${ResType.ReplicationController}:${row.metadata.name}`, RcView, { rc: row })
             },
           },
           { default: () => row.metadata.name },

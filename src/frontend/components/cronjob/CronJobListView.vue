@@ -41,7 +41,7 @@ function createColumns(): DataTableColumns<V1CronJob> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`CronJob:${row.metadata.name}`, CronJobView, { cj: row })
+                .show(`${ResType.CronJob}:${row.metadata.name}`, CronJobView, { cj: row })
             },
           },
           { default: () => row.metadata.name },
