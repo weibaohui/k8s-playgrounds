@@ -2,7 +2,7 @@
 import { V1PriorityClass } from '@backend/k8s/model/v1PriorityClass'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
-import { Edit, Lock, LockOpen, Trash } from '@vicons/fa'
+import { Edit, Lock, Trash } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'
@@ -18,38 +18,16 @@ const props = defineProps({
 const dialog = useDialog()
 const drawer = useDrawerService()
 const message = useMessage()
-function isDefault() {
-  return !(props.pc.globalDefault === undefined)
-}
+
 function getOptions(): ActionMenuOption[] {
   return [
     {
       label: 'SetDefault',
       key: 'SetDefault',
       icon: Lock,
-      show: !isDefault(),
       action: async () => {
-        const item = await K8sService.playService.priorityClassControllerSetDefault({ name: props.pc.metadata.name })
-        if (item.globalDefault === true)
-          message.success('设置成功')
-        else
-          message.error('设置失败')
-
-        drawer.close()
-      },
-    },
-    {
-      label: 'CancelDefault',
-      key: 'CancelDefault',
-      icon: LockOpen,
-      show: isDefault(),
-      action: async () => {
-        const item: V1PriorityClass = await K8sService.playService.priorityClassControllerCancelDefault({ name: props.pc.metadata.name })
-        if (item.globalDefault === undefined)
-          message.success('设置成功')
-        else
-          message.error('设置失败')
-
+        await K8sService.playService.priorityClassControllerSetUniqueDefault({ name: props.pc.metadata.name })
+        message.success('设置成功')
         drawer.close()
       },
     },

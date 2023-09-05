@@ -34,13 +34,8 @@ export class PriorityClassController {
     return await this.k8sService.priorityClassService.GetOneByName(name)
   }
 
-  @Post('/SetDefault/name/:name')
-  async SetDefault(@Param('name') name: string) {
-    return await this.k8sService.priorityClassService.SetDefault(name)
-  }
-
-  @Post('/CancelDefault/name/:name')
-  async CancelDefault(@Param('name') name: string) {
-    return await this.k8sService.priorityClassService.CancelDefault(name)
+  @Get('/SetUniqueDefault/name/:name')
+  async SetUniqueDefault(@Param('name') name: string) {
+    return await this.k8sService.priorityClassService.SetUniqueDefault(name)
   }
 }

@@ -59,4 +59,13 @@ export class PriorityClassService {
     const r = await k8sApi.patch<V1PriorityClass>(pc)
     return r.body
   }
+
+  async SetUniqueDefault(name: string) {
+    const list = await this.List()
+    for (const r1 of list.filter(r => r.metadata.name !== name))
+      await this.CancelDefault(r1.metadata.name)
+
+    for (const r1 of list.filter(r => r.metadata.name === name))
+      await this.SetDefault(r1.metadata.name)
+  }
 }
