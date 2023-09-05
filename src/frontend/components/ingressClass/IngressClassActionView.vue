@@ -2,8 +2,8 @@
 import { V1IngressClass } from '@backend/k8s/model/v1IngressClass'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
-import { Edit, Trash } from '@vicons/fa'
-import { useDialog } from 'naive-ui'
+import { Edit, Lock, Trash } from '@vicons/fa'
+import { useDialog, useMessage } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
@@ -14,11 +14,21 @@ const props = defineProps({
   ingressClass: V1IngressClass,
   isDropdown: Boolean,
 })
-
+const message = useMessage()
 const dialog = useDialog()
 const drawer = useDrawerService()
 function getOptions(): ActionMenuOption[] {
   return [
+    {
+      label: 'SetDefault',
+      key: 'SetDefault',
+      icon: Lock,
+      action: async () => {
+        await K8sService.playService.ingressClassControllerSetUniqueDefault({ name: props.ingressClass.metadata.name })
+        message.success('设置成功')
+        drawer.close()
+      },
+    },
     {
       label: 'Edit',
       key: 'Edit',

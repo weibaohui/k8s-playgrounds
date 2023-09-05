@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ResType } from '@backend/k8s/watch/watch.model'
 import IngressClassActionView from '@frontend/components/ingressClass/IngressClassActionView.vue'
+import IngressClassIsDefaultView from '@frontend/components/ingressClass/IngressClassIsDefaultView.vue'
 import IngressClassView from '@frontend/components/ingressClass/IngressClassView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
@@ -42,6 +43,17 @@ function createColumns(): DataTableColumns<V1IngressClass> {
             },
           },
           { default: () => row.metadata.name },
+        )
+      },
+    },
+    {
+      title: 'Default',
+      key: 'Default',
+      render(row: V1IngressClass) {
+        return h(IngressClassIsDefaultView,
+          {
+            ingressClass: row,
+          },
         )
       },
     },

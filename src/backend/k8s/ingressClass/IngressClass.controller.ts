@@ -31,4 +31,9 @@ export class IngressClassController {
   async GetOneByName(@Param('name') name: string) {
     return await this.k8sService.ingressClassService.GetOneByName(name)
   }
+
+  @Get('/SetUniqueDefault/name/:name')
+  async SetUniqueDefault(@Param('name') name: string) {
+    return await this.k8sService.ingressClassService.SetUniqueDefault(name)
+  }
 }
