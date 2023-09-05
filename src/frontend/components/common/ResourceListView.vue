@@ -13,6 +13,12 @@ const props = defineProps({
   showNsSelect: Boolean,
   name: String,
   miniStyle: Boolean,
+  onRowClick: {
+    type: Function,
+    default: (row: any) => {
+      return Function
+    },
+  },
 })
 const emit = defineEmits(['onNsChanged', 'onRemoveBtnClicked', 'onTextChanged'])
 
@@ -36,7 +42,14 @@ function handleCheck(keys: string[]) {
 function rowKey(row: any) {
   return `${row.metadata.namespace}/${row.metadata.name}`
 }
-
+function rowProps(row: any) {
+  return {
+    style: 'cursor: pointer;',
+    onClick: async () => {
+      props.onRowClick(row)
+    },
+  }
+}
 function onTextChanged(text: string) {
   emit('onTextChanged', text)
 }
@@ -84,6 +97,7 @@ defineExpose({ setNsSelected })
       :bordered="false"
       :row-key="rowKey"
       :scroll-x="props.miniStyle ? 500 : 1300"
+      :row-props="rowProps"
       @update:checked-row-keys="handleCheck"
     />
   </NMessageProvider>
