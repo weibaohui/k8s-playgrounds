@@ -3,6 +3,7 @@ import { V1Endpoints } from '@backend/k8s/model/V1Endpoints'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import EpActionView from '@frontend/components/endpoint/EpActionView.vue'
 import EpBasicInfoView from '@frontend/components/endpoint/EpBasicInfoView.vue'
+import EpSubsetView from '@frontend/components/endpoint/EpSubsetView.vue'
 import { NH6, NMessageProvider, NText } from 'naive-ui'
 
 const props = defineProps({
@@ -20,6 +21,13 @@ const props = defineProps({
     </NText>
   </NH6>
   <EpBasicInfoView :ep="props.ep" />
+
+  <NH6 prefix="bar" align-text type="success">
+    <NText type="success">
+      Subsets
+    </NText>
+  </NH6>
+  <EpSubsetView v-for="subset in props.ep.subsets" :key="subset" :subset="subset" />
 
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">
