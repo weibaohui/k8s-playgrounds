@@ -13,7 +13,7 @@
 /**
  * Selects a key from a ConfigMap.
  */
-export interface V1ConfigMapKeySelector {
+export class V1ConfigMapKeySelector {
   /**
      * The key to select.
      */

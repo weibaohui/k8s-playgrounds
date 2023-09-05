@@ -13,7 +13,7 @@
 /**
  * APIResource specifies the name of a resource and whether it is namespaced.
  */
-export interface IoK8sApimachineryPkgApisMetaV1APIResource {
+export class IoK8sApimachineryPkgApisMetaV1APIResource {
   /**
      * categories is a list of the grouped resources this resource belongs to (e.g. 'all')
      */

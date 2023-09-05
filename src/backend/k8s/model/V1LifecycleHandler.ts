@@ -16,7 +16,7 @@ import type { V1TCPSocketAction } from './V1TCPSocketAction'
 /**
  * LifecycleHandler defines a specific action that should be taken in a lifecycle hook. One and only one of the fields, except TCPSocket must be specified.
  */
-export interface V1LifecycleHandler {
+export class V1LifecycleHandler {
   /**
      * Exec specifies the action to take.
      */

@@ -14,7 +14,7 @@ import type { V1ScopedResourceSelectorRequirement } from './V1ScopedResourceSele
 /**
  * A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements.
  */
-export interface V1ScopeSelector {
+export class V1ScopeSelector {
   /**
      * A list of scope selector requirements by scope of the resources.
      */

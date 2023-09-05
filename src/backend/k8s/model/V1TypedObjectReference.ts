@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface V1TypedObjectReference {
+export class V1TypedObjectReference {
   /**
      * APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
      */

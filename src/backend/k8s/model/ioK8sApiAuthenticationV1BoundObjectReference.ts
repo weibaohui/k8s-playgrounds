@@ -13,7 +13,7 @@
 /**
  * BoundObjectReference is a reference to an object that a token is bound to.
  */
-export interface IoK8sApiAuthenticationV1BoundObjectReference {
+export class IoK8sApiAuthenticationV1BoundObjectReference {
   /**
      * API version of the referent.
      */

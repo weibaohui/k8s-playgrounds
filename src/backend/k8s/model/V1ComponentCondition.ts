@@ -13,7 +13,7 @@
 /**
  * Information about the condition of a component.
  */
-export interface V1ComponentCondition {
+export class V1ComponentCondition {
   /**
      * Condition error code for a component. For example, a health check error code.
      */

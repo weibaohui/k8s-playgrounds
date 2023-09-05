@@ -15,7 +15,7 @@ import type { V2MetricTarget } from './v2MetricTarget'
 /**
  * PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.
  */
-export interface IoK8sApiAutoscalingV2PodsMetricSource {
+export class IoK8sApiAutoscalingV2PodsMetricSource {
   /**
      * metric identifies the target metric by name and selector
      */

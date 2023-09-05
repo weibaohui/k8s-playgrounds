@@ -17,7 +17,7 @@ import type { V1Time } from './V1Time'
 /**
  * PodStatus represents information about the status of a pod. Status may trail the actual state of a system, especially if the node that hosts the pod cannot contact the control plane.
  */
-export interface V1PodStatus {
+export class V1PodStatus {
   /**
      * Current service state of pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
      */

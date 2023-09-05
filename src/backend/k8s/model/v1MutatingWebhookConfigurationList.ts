@@ -9,27 +9,27 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1Ingress } from './v1Ingress'
+import type { V1MutatingWebhookConfiguration } from './v1MutatingWebhookConfiguration'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**
- * IngressList is a collection of Ingress.
+ * MutatingWebhookConfigurationList is a list of MutatingWebhookConfiguration.
  */
-export interface IoK8sApiNetworkingV1IngressList {
+export class V1MutatingWebhookConfigurationList {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
   apiVersion?: string
   /**
-     * items is the list of Ingress.
+     * List of MutatingWebhookConfiguration.
      */
-  items: Array<V1Ingress>
+  items: Array<V1MutatingWebhookConfiguration>
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
   kind?: string
   /**
-     * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+     * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
   metadata?: V1ListMeta
 }

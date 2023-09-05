@@ -14,7 +14,7 @@ import type { V1LocalObjectReference } from './V1LocalObjectReference'
 /**
  * Represents a source location of a volume to mount, managed by an external CSI driver
  */
-export interface V1CSIVolumeSource {
+export class V1CSIVolumeSource {
   /**
      * driver is the name of the CSI driver that handles this volume. Consult with your admin for the correct name as registered in the cluster.
      */

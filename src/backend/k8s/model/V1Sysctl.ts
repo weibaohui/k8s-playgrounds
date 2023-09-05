@@ -13,7 +13,7 @@
 /**
  * Sysctl defines a kernel parameter to be set
  */
-export interface V1Sysctl {
+export class V1Sysctl {
   /**
      * Name of a property to set
      */

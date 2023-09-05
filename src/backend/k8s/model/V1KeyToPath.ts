@@ -13,7 +13,7 @@
 /**
  * Maps a string key to a path within a volume.
  */
-export interface V1KeyToPath {
+export class V1KeyToPath {
   /**
      * key is the key to project.
      */

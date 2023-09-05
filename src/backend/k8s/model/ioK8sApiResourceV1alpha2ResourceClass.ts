@@ -16,7 +16,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * ResourceClass is used by administrators to influence how resources are allocated.  This is an alpha type and requires enabling the DynamicResourceAllocation feature gate.
  */
-export interface IoK8sApiResourceV1alpha2ResourceClass {
+export class IoK8sApiResourceV1alpha2ResourceClass {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

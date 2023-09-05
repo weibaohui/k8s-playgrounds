@@ -13,7 +13,7 @@
 /**
  * TokenRequest contains parameters of a service account token.
  */
-export interface IoK8sApiStorageV1TokenRequest {
+export class IoK8sApiStorageV1TokenRequest {
   /**
      * audience is the intended audience of the token in \"TokenRequestSpec\". It will default to the audiences of kube apiserver.
      */

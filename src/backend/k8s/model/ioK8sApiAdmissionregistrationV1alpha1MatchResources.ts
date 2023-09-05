@@ -15,7 +15,7 @@ import type { V1LabelSelector } from './v1LabelSelector'
 /**
  * MatchResources decides whether to run the admission control policy on an object based on whether it meets the match criteria. The exclude rules take precedence over include rules (if a resource matches both, it is excluded)
  */
-export interface IoK8sApiAdmissionregistrationV1alpha1MatchResources {
+export class IoK8sApiAdmissionregistrationV1alpha1MatchResources {
   /**
      * ExcludeResourceRules describes what operations on what resources/subresources the ValidatingAdmissionPolicy should not care about. The exclude rules take precedence over include rules (if a resource matches both, it is excluded)
      */

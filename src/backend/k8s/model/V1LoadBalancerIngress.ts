@@ -14,7 +14,7 @@ import type { V1PortStatus } from './V1PortStatus'
 /**
  * LoadBalancerIngress represents the status of a load-balancer ingress point: traffic intended for the service should be sent to an ingress point.
  */
-export interface V1LoadBalancerIngress {
+export class V1LoadBalancerIngress {
   /**
      * Hostname is set for load-balancer ingress points that are DNS based (typically AWS load-balancers)
      */

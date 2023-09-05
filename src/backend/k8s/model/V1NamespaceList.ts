@@ -15,7 +15,7 @@ import type { V1ListMeta } from './V1ListMeta'
 /**
  * NamespaceList is a list of Namespaces.
  */
-export interface V1NamespaceList {
+export class V1NamespaceList {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

@@ -14,7 +14,7 @@ import type { IoK8sApiNetworkingV1alpha1ParentReference } from './ioK8sApiNetwor
 /**
  * IPAddressSpec describe the attributes in an IP Address.
  */
-export interface IoK8sApiNetworkingV1alpha1IPAddressSpec {
+export class IoK8sApiNetworkingV1alpha1IPAddressSpec {
   /**
      * ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.
      */

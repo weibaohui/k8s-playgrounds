@@ -14,7 +14,7 @@ import type { IoK8sApiAppsV1RollingUpdateStatefulSetStrategy } from './ioK8sApiA
 /**
  * StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to perform updates. It includes any additional parameters necessary to perform the update for the indicated strategy.
  */
-export interface V1StatefulSetUpdateStrategy {
+export class V1StatefulSetUpdateStrategy {
   /**
      * RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.
      */

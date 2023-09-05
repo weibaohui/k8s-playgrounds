@@ -13,7 +13,7 @@
 /**
  * ContainerPort represents a network port in a single container.
  */
-export interface V1ContainerPort {
+export class V1ContainerPort {
   /**
      * Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.
      */

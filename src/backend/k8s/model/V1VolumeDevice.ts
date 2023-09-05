@@ -13,7 +13,7 @@
 /**
  * volumeDevice describes a mapping of a raw block device within a container.
  */
-export interface V1VolumeDevice {
+export class V1VolumeDevice {
   /**
      * devicePath is the path inside of the container that the device will be mapped to.
      */

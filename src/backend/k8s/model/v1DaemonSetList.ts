@@ -15,7 +15,7 @@ import type { V1ListMeta } from './V1ListMeta'
 /**
  * DaemonSetList is a collection of daemon sets.
  */
-export interface V1DaemonSetList {
+export class V1DaemonSetList {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

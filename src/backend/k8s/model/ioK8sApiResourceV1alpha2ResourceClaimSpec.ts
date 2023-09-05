@@ -14,7 +14,7 @@ import type { IoK8sApiResourceV1alpha2ResourceClaimParametersReference } from '.
 /**
  * ResourceClaimSpec defines how a resource is to be allocated.
  */
-export interface IoK8sApiResourceV1alpha2ResourceClaimSpec {
+export class IoK8sApiResourceV1alpha2ResourceClaimSpec {
   /**
      * Allocation can start immediately or when a Pod wants to use the resource. \"WaitForFirstConsumer\" is the default.
      */

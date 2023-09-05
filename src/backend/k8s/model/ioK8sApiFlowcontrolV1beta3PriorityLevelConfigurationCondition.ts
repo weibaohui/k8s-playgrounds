@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * PriorityLevelConfigurationCondition defines the condition of priority level.
  */
-export interface IoK8sApiFlowcontrolV1beta3PriorityLevelConfigurationCondition {
+export class IoK8sApiFlowcontrolV1beta3PriorityLevelConfigurationCondition {
   /**
      * `lastTransitionTime` is the last time the condition transitioned from one status to another.
      */

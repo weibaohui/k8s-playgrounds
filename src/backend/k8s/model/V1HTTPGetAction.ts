@@ -15,7 +15,7 @@ import type { IoK8sApimachineryPkgUtilIntstrIntOrString } from './ioK8sApimachin
 /**
  * HTTPGetAction describes an action based on HTTP Get requests.
  */
-export interface V1HTTPGetAction {
+export class V1HTTPGetAction {
   /**
      * Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.
      */

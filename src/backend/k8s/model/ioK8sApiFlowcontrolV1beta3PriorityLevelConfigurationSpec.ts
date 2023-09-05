@@ -14,7 +14,7 @@ import type { IoK8sApiFlowcontrolV1beta3LimitedPriorityLevelConfiguration } from
 /**
  * PriorityLevelConfigurationSpec specifies the configuration of a priority level.
  */
-export interface IoK8sApiFlowcontrolV1beta3PriorityLevelConfigurationSpec {
+export class IoK8sApiFlowcontrolV1beta3PriorityLevelConfigurationSpec {
   /**
      * `limited` specifies how requests are handled for a Limited priority level. This field must be non-empty if and only if `type` is `\"Limited\"`.
      */

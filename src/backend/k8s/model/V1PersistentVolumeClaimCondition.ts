@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * PersistentVolumeClaimCondition contains details about state of pvc
  */
-export interface V1PersistentVolumeClaimCondition {
+export class V1PersistentVolumeClaimCondition {
   /**
      * lastProbeTime is the time we probed the condition.
      */

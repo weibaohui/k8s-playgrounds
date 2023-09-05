@@ -14,7 +14,7 @@ import type { V1LocalObjectReference } from './V1LocalObjectReference'
 /**
  * Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.
  */
-export interface V1CephFSVolumeSource {
+export class V1CephFSVolumeSource {
   /**
      * monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
      */

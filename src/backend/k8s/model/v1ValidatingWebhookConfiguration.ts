@@ -9,13 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAdmissionregistrationV1ValidatingWebhook } from './ioK8sApiAdmissionregistrationV1ValidatingWebhook'
+import type { V1ValidatingWebhook } from './v1ValidatingWebhook'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * ValidatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and object without changing it.
  */
-export interface IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration {
+export class V1ValidatingWebhookConfiguration {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -31,5 +31,5 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration {
   /**
      * Webhooks is a list of webhooks and the affected resources and operations.
      */
-  webhooks?: Array<IoK8sApiAdmissionregistrationV1ValidatingWebhook>
+  webhooks?: Array<V1ValidatingWebhook>
 }

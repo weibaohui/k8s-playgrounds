@@ -13,7 +13,7 @@
 /**
  * PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.
  */
-export interface IoK8sApiRbacV1PolicyRule {
+export class IoK8sApiRbacV1PolicyRule {
   /**
      * APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. \"\" represents the core API group and \"*\" represents all API groups.
      */

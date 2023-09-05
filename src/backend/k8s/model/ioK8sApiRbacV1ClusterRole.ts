@@ -16,7 +16,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding.
  */
-export interface IoK8sApiRbacV1ClusterRole {
+export class IoK8sApiRbacV1ClusterRole {
   /**
      * AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
      */

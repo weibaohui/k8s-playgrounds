@@ -15,7 +15,7 @@ import type { V1ListMeta } from './V1ListMeta'
 /**
  * ClusterTrustBundleList is a collection of ClusterTrustBundle objects
  */
-export interface IoK8sApiCertificatesV1alpha1ClusterTrustBundleList {
+export class IoK8sApiCertificatesV1alpha1ClusterTrustBundleList {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

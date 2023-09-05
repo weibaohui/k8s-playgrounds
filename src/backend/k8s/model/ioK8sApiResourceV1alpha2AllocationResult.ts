@@ -15,7 +15,7 @@ import type { IoK8sApiResourceV1alpha2ResourceHandle } from './ioK8sApiResourceV
 /**
  * AllocationResult contains attributes of an allocated resource.
  */
-export interface IoK8sApiResourceV1alpha2AllocationResult {
+export class IoK8sApiResourceV1alpha2AllocationResult {
   /**
      * This field will get set by the resource driver after it has allocated the resource to inform the scheduler where it can schedule Pods using the ResourceClaim.  Setting this field is optional. If null, the resource is available everywhere.
      */

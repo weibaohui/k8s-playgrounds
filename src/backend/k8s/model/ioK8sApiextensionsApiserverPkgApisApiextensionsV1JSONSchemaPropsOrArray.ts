@@ -13,5 +13,5 @@
 /**
  * JSONSchemaPropsOrArray represents a value that can either be a JSONSchemaProps or an array of JSONSchemaProps. Mainly here for serialization purposes.
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray {
 }

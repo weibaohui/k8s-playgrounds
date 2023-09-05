@@ -13,7 +13,7 @@
 /**
  * EventSource contains information for an event.
  */
-export interface V1EventSource {
+export class V1EventSource {
   /**
      * Component from which the event is generated.
      */

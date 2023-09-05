@@ -13,7 +13,7 @@
 /**
  * HTTPHeader describes a custom header to be used in HTTP probes
  */
-export interface V1HTTPHeader {
+export class V1HTTPHeader {
   /**
      * The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.
      */

@@ -14,7 +14,7 @@ import type { IoK8sApiFlowcontrolV1beta3PriorityLevelConfigurationCondition } fr
 /**
  * PriorityLevelConfigurationStatus represents the current state of a \"request-priority\".
  */
-export interface IoK8sApiFlowcontrolV1beta3PriorityLevelConfigurationStatus {
+export class IoK8sApiFlowcontrolV1beta3PriorityLevelConfigurationStatus {
   /**
      * `conditions` is the current state of \"request-priority\".
      */

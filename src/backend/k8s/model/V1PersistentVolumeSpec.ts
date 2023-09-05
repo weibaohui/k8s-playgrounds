@@ -38,7 +38,7 @@ import type { ResourceQuantity } from './resourceQuantity'
 /**
  * PersistentVolumeSpec is the specification of a persistent volume.
  */
-export interface V1PersistentVolumeSpec {
+export class V1PersistentVolumeSpec {
   /**
      * accessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes
      */

@@ -13,7 +13,7 @@
 /**
  * Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling.
  */
-export interface V1NFSVolumeSource {
+export class V1NFSVolumeSource {
   /**
      * path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
      */

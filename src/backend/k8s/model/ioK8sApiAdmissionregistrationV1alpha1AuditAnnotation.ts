@@ -13,7 +13,7 @@
 /**
  * AuditAnnotation describes how to produce an audit annotation for an API request.
  */
-export interface IoK8sApiAdmissionregistrationV1alpha1AuditAnnotation {
+export class IoK8sApiAdmissionregistrationV1alpha1AuditAnnotation {
   /**
      * key specifies the audit annotation key. The audit annotation keys of a ValidatingAdmissionPolicy must be unique. The key must be a qualified name ([A-Za-z0-9][-A-Za-z0-9_.]*) no more than 63 bytes in length.  The key is combined with the resource name of the ValidatingAdmissionPolicy to construct an audit annotation key: \"{ValidatingAdmissionPolicy name}/{key}\".  If an admission webhook uses the same resource name as this ValidatingAdmissionPolicy and the same audit annotation key, the annotation key will be identical. In this case, the first annotation written with the key will be included in the audit event and all subsequent annotations with the same key will be discarded.  Required.
      */

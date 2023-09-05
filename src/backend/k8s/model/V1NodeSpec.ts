@@ -15,7 +15,7 @@ import type { V1Taint } from './V1Taint'
 /**
  * NodeSpec describes the attributes that a node is created with.
  */
-export interface V1NodeSpec {
+export class V1NodeSpec {
   /**
      * Deprecated: Previously used to specify the source of the node's configuration for the DynamicKubeletConfig feature. This feature is removed.
      */

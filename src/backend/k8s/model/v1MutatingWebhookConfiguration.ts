@@ -9,27 +9,27 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration } from './ioK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration'
-import type { V1ListMeta } from './V1ListMeta'
+import type { V1MutatingWebhook } from './v1MutatingWebhook'
+import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
- * ValidatingWebhookConfigurationList is a list of ValidatingWebhookConfiguration.
+ * MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and may change the object.
  */
-export interface IoK8sApiAdmissionregistrationV1ValidatingWebhookConfigurationList {
+export class V1MutatingWebhookConfiguration {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
   apiVersion?: string
   /**
-     * List of ValidatingWebhookConfiguration.
-     */
-  items: Array<IoK8sApiAdmissionregistrationV1ValidatingWebhookConfiguration>
-  /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
   kind?: string
   /**
-     * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+     * Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
      */
-  metadata?: V1ListMeta
+  metadata?: V1ObjectMeta
+  /**
+     * Webhooks is a list of webhooks and the affected resources and operations.
+     */
+  webhooks?: Array<V1MutatingWebhook>
 }

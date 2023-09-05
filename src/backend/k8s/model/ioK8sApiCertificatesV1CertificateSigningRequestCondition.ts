@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * CertificateSigningRequestCondition describes a condition of a CertificateSigningRequest object
  */
-export interface IoK8sApiCertificatesV1CertificateSigningRequestCondition {
+export class IoK8sApiCertificatesV1CertificateSigningRequestCondition {
   /**
      * lastTransitionTime is the time the condition last transitioned from one status to another. If unset, when a new condition type is added or an existing condition's status is changed, the server defaults this to the current time.
      */

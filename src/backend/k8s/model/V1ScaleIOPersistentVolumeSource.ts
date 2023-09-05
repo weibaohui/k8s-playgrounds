@@ -14,7 +14,7 @@ import type { V1SecretReference } from './V1SecretReference'
 /**
  * ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume
  */
-export interface V1ScaleIOPersistentVolumeSource {
+export class V1ScaleIOPersistentVolumeSource {
   /**
      * fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\"
      */

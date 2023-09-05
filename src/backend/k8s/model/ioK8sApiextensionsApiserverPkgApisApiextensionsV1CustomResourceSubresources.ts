@@ -15,7 +15,7 @@ import type { IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSub
 /**
  * CustomResourceSubresources defines the status and scale subresources for CustomResources.
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources {
   /**
      * scale indicates the custom resource should serve a `/scale` subresource that returns an `autoscaling/v1` Scale object.
      */

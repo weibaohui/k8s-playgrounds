@@ -16,7 +16,7 @@ import type { IoK8sApiFlowcontrolV1beta2PriorityLevelConfigurationReference } fr
 /**
  * FlowSchemaSpec describes how the FlowSchema's specification looks like.
  */
-export interface IoK8sApiFlowcontrolV1beta2FlowSchemaSpec {
+export class IoK8sApiFlowcontrolV1beta2FlowSchemaSpec {
   /**
      * `distinguisherMethod` defines how to compute the flow distinguisher for requests that match this schema. `nil` specifies that the distinguisher is disabled and thus will always be the empty string.
      */

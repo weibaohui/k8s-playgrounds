@@ -16,7 +16,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * Storage version of a specific resource.
  */
-export interface IoK8sApiApiserverinternalV1alpha1StorageVersion {
+export class IoK8sApiApiserverinternalV1alpha1StorageVersion {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

@@ -14,7 +14,7 @@ import type { IoK8sApiStorageV1VolumeAttachmentSource } from './ioK8sApiStorageV
 /**
  * VolumeAttachmentSpec is the specification of a VolumeAttachment request.
  */
-export interface IoK8sApiStorageV1VolumeAttachmentSpec {
+export class IoK8sApiStorageV1VolumeAttachmentSpec {
   /**
      * attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().
      */

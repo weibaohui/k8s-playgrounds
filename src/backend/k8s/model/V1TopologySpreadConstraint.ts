@@ -14,7 +14,7 @@ import type { V1LabelSelector } from './v1LabelSelector'
 /**
  * TopologySpreadConstraint specifies how to spread matching pods among the given topology.
  */
-export interface V1TopologySpreadConstraint {
+export class V1TopologySpreadConstraint {
   /**
      * LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.
      */

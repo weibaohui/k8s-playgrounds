@@ -13,7 +13,7 @@
 /**
  * PodFailurePolicyOnExitCodesRequirement describes the requirement for handling a failed pod based on its container exit codes. In particular, it lookups the .state.terminated.exitCode for each app container and init container status, represented by the .status.containerStatuses and .status.initContainerStatuses fields in the Pod status, respectively. Containers completed with success (exit code 0) are excluded from the requirement check.
  */
-export interface IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirement {
+export class IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirement {
   /**
      * Restricts the check for exit codes to the container with the specified name. When null, the rule applies to all containers. When specified, it should match one the container or initContainer names in the pod template.
      */

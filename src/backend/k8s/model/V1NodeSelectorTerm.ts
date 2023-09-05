@@ -14,7 +14,7 @@ import type { V1NodeSelectorRequirement } from './V1NodeSelectorRequirement'
 /**
  * A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
  */
-export interface V1NodeSelectorTerm {
+export class V1NodeSelectorTerm {
   /**
      * A list of node selector requirements by node's labels.
      */

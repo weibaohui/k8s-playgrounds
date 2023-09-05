@@ -15,7 +15,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * CSIDriver captures information about a Container Storage Interface (CSI) volume driver deployed on the cluster. Kubernetes attach detach controller uses this object to determine whether attach is required. Kubelet uses this object to determine whether pod information needs to be passed on mount. CSIDriver objects are non-namespaced.
  */
-export interface IoK8sApiStorageV1CSIDriver {
+export class IoK8sApiStorageV1CSIDriver {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

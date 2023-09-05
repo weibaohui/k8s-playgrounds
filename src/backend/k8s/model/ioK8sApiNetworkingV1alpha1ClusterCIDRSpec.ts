@@ -14,7 +14,7 @@ import type { V1NodeSelector } from './V1NodeSelector'
 /**
  * ClusterCIDRSpec defines the desired state of ClusterCIDR.
  */
-export interface IoK8sApiNetworkingV1alpha1ClusterCIDRSpec {
+export class IoK8sApiNetworkingV1alpha1ClusterCIDRSpec {
   /**
      * ipv4 defines an IPv4 IP block in CIDR notation(e.g. \"10.0.0.0/8\"). At least one of ipv4 and ipv6 must be specified. This field is immutable.
      */

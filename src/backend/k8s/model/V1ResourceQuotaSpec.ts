@@ -15,7 +15,7 @@ import type { ResourceQuantity } from './resourceQuantity'
 /**
  * ResourceQuotaSpec defines the desired hard limits to enforce for Quota.
  */
-export interface V1ResourceQuotaSpec {
+export class V1ResourceQuotaSpec {
   /**
      * hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
      */

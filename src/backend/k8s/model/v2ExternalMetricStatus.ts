@@ -15,7 +15,7 @@ import type { V2MetricValueStatus } from './v2MetricValueStatus'
 /**
  * ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.
  */
-export interface V2ExternalMetricStatus {
+export class V2ExternalMetricStatus {
   /**
      * current contains the current value for the given metric
      */

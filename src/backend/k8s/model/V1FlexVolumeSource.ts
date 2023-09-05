@@ -14,7 +14,7 @@ import type { V1LocalObjectReference } from './V1LocalObjectReference'
 /**
  * FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
  */
-export interface V1FlexVolumeSource {
+export class V1FlexVolumeSource {
   /**
      * driver is the name of the driver to use for this volume.
      */

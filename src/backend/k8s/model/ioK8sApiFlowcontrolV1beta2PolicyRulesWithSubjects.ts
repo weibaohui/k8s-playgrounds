@@ -16,7 +16,7 @@ import type { IoK8sApiFlowcontrolV1beta2Subject } from './ioK8sApiFlowcontrolV1b
 /**
  * PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test considers the subject making the request, the verb being requested, and the resource to be acted upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member of subjects matches the request and (b) at least one member of resourceRules or nonResourceRules matches the request.
  */
-export interface IoK8sApiFlowcontrolV1beta2PolicyRulesWithSubjects {
+export class IoK8sApiFlowcontrolV1beta2PolicyRulesWithSubjects {
   /**
      * `nonResourceRules` is a list of NonResourcePolicyRules that identify matching requests according to their verb and the target non-resource URL.
      */

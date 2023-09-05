@@ -13,7 +13,7 @@
 /**
  * ResourceAttributes includes the authorization attributes available for resource requests to the Authorizer interface
  */
-export interface IoK8sApiAuthorizationV1ResourceAttributes {
+export class IoK8sApiAuthorizationV1ResourceAttributes {
   /**
      * Group is the API Group of the Resource.  \"*\" means all.
      */

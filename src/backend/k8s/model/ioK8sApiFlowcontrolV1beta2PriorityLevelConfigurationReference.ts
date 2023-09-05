@@ -13,7 +13,7 @@
 /**
  * PriorityLevelConfigurationReference contains information that points to the \"request-priority\" being used.
  */
-export interface IoK8sApiFlowcontrolV1beta2PriorityLevelConfigurationReference {
+export class IoK8sApiFlowcontrolV1beta2PriorityLevelConfigurationReference {
   /**
      * `name` is the name of the priority level configuration being referenced Required.
      */

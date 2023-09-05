@@ -14,7 +14,7 @@ import type { IoK8sApimachineryPkgApisMetaV1MicroTime } from './ioK8sApimachiner
 /**
  * LeaseSpec is a specification of a Lease.
  */
-export interface IoK8sApiCoordinationV1LeaseSpec {
+export class IoK8sApiCoordinationV1LeaseSpec {
   /**
      * acquireTime is a time when the current lease was acquired.
      */

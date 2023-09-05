@@ -15,7 +15,7 @@ import type { V1ListMeta } from './V1ListMeta'
 /**
  * ReplicationControllerList is a collection of replication controllers.
  */
-export interface V1ReplicationControllerList {
+export class V1ReplicationControllerList {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

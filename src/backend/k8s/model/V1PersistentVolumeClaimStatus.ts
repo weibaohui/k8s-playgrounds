@@ -15,7 +15,7 @@ import type { ResourceQuantity } from './resourceQuantity'
 /**
  * PersistentVolumeClaimStatus is the current status of a persistent volume claim.
  */
-export interface V1PersistentVolumeClaimStatus {
+export class V1PersistentVolumeClaimStatus {
   /**
      * accessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
      */

@@ -15,7 +15,7 @@ import type { V2MetricValueStatus } from './v2MetricValueStatus'
 /**
  * PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).
  */
-export interface IoK8sApiAutoscalingV2PodsMetricStatus {
+export class IoK8sApiAutoscalingV2PodsMetricStatus {
   /**
      * current contains the current value for the given metric
      */

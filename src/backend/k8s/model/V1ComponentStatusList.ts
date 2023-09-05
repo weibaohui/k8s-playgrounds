@@ -15,7 +15,7 @@ import type { V1ListMeta } from './V1ListMeta'
 /**
  * Status of all the conditions for the component as a list of ComponentStatus objects. Deprecated: This API is deprecated in v1.19+
  */
-export interface V1ComponentStatusList {
+export class V1ComponentStatusList {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

@@ -14,7 +14,7 @@ import type { IoK8sApimachineryPkgUtilIntstrIntOrString } from './ioK8sApimachin
 /**
  * TCPSocketAction describes an action based on opening a socket
  */
-export interface V1TCPSocketAction {
+export class V1TCPSocketAction {
   /**
      * Optional: Host name to connect to, defaults to the pod IP.
      */

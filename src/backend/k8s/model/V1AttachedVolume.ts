@@ -13,7 +13,7 @@
 /**
  * AttachedVolume describes a volume attached to a node
  */
-export interface V1AttachedVolume {
+export class V1AttachedVolume {
   /**
      * DevicePath represents the device path where the volume should be available
      */

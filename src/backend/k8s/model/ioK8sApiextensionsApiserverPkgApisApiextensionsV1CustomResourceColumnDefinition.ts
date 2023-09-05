@@ -13,7 +13,7 @@
 /**
  * CustomResourceColumnDefinition specifies a column for server side printing.
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition {
   /**
      * description is a human readable description of this column.
      */

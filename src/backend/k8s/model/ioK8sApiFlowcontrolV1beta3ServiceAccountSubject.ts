@@ -13,7 +13,7 @@
 /**
  * ServiceAccountSubject holds detailed information for service-account-kind subject.
  */
-export interface IoK8sApiFlowcontrolV1beta3ServiceAccountSubject {
+export class IoK8sApiFlowcontrolV1beta3ServiceAccountSubject {
   /**
      * `name` is the name of matching ServiceAccount objects, or \"*\" to match regardless of name. Required.
      */

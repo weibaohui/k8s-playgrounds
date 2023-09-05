@@ -13,7 +13,7 @@
 /**
  * UserSubject holds detailed information for user-kind subject.
  */
-export interface IoK8sApiFlowcontrolV1beta2UserSubject {
+export class IoK8sApiFlowcontrolV1beta2UserSubject {
   /**
      * `name` is the username that matches, or \"*\" to match all usernames. Required.
      */

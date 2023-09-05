@@ -14,7 +14,7 @@ import type { V1LocalObjectReference } from './V1LocalObjectReference'
 /**
  * Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.
  */
-export interface V1ISCSIVolumeSource {
+export class V1ISCSIVolumeSource {
   /**
      * chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication
      */

@@ -13,7 +13,7 @@
 /**
  * PersistentVolumeStatus is the current status of a persistent volume.
  */
-export interface V1PersistentVolumeStatus {
+export class V1PersistentVolumeStatus {
   /**
      * message is a human-readable message indicating details about why the volume is in this state.
      */

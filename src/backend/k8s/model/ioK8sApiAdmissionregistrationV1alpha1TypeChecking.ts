@@ -14,7 +14,7 @@ import type { IoK8sApiAdmissionregistrationV1alpha1ExpressionWarning } from './i
 /**
  * TypeChecking contains results of type checking the expressions in the ValidatingAdmissionPolicy
  */
-export interface IoK8sApiAdmissionregistrationV1alpha1TypeChecking {
+export class IoK8sApiAdmissionregistrationV1alpha1TypeChecking {
   /**
      * The type checking warnings for each expression.
      */

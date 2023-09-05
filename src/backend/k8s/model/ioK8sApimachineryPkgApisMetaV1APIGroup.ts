@@ -15,7 +15,7 @@ import type { IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR } from './
 /**
  * APIGroup contains the name, the supported versions, and the preferred version of a group.
  */
-export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
+export class IoK8sApimachineryPkgApisMetaV1APIGroup {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

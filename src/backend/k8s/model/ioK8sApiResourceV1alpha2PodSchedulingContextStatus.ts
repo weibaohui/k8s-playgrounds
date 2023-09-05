@@ -14,7 +14,7 @@ import type { IoK8sApiResourceV1alpha2ResourceClaimSchedulingStatus } from './io
 /**
  * PodSchedulingContextStatus describes where resources for the Pod can be allocated.
  */
-export interface IoK8sApiResourceV1alpha2PodSchedulingContextStatus {
+export class IoK8sApiResourceV1alpha2PodSchedulingContextStatus {
   /**
      * ResourceClaims describes resource availability for each pod.spec.resourceClaim entry where the corresponding ResourceClaim uses \"WaitForFirstConsumer\" allocation mode.
      */

@@ -14,7 +14,7 @@ import type { V1ClientIPConfig } from './V1ClientIPConfig'
 /**
  * SessionAffinityConfig represents the configurations of session affinity.
  */
-export interface V1SessionAffinityConfig {
+export class V1SessionAffinityConfig {
   /**
      * clientIP contains the configurations of Client IP based session affinity.
      */

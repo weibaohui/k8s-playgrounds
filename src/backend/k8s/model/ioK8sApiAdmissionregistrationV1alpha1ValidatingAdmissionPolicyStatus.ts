@@ -15,7 +15,7 @@ import type { V1Condition } from './v1Condition'
 /**
  * ValidatingAdmissionPolicyStatus represents the status of a ValidatingAdmissionPolicy.
  */
-export interface IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyStatus {
+export class IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyStatus {
   /**
      * The conditions represent the latest available observations of a policy's current state.
      */

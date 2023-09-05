@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * ReplicaSetCondition describes the state of a replica set at a certain point.
  */
-export interface V1ReplicaSetCondition {
+export class V1ReplicaSetCondition {
   /**
      * The last time the condition transitioned from one status to another.
      */

@@ -13,7 +13,7 @@
 /**
  * CustomResourceDefinitionNames indicates the names to serve this CustomResourceDefinition
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
   /**
      * categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is published in API discovery documents, and used by clients to support invocations like `kubectl get all`.
      */

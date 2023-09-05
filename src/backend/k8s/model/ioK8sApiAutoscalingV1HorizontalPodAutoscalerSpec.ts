@@ -14,7 +14,7 @@ import type { IoK8sApiAutoscalingV1CrossVersionObjectReference } from './ioK8sAp
 /**
  * specification of a horizontal pod autoscaler.
  */
-export interface IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec {
+export class IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec {
   /**
      * maxReplicas is the upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas.
      */

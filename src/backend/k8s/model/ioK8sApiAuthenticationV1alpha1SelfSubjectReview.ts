@@ -15,7 +15,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * SelfSubjectReview contains the user information that the kube-apiserver has about the user making this request. When using impersonation, users will receive the user info of the user being impersonated.  If impersonation or request header authentication is used, any extra keys will have their case ignored and returned as lowercase.
  */
-export interface IoK8sApiAuthenticationV1alpha1SelfSubjectReview {
+export class IoK8sApiAuthenticationV1alpha1SelfSubjectReview {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

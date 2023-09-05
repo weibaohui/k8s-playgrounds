@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * TokenRequestStatus is the result of a token request.
  */
-export interface IoK8sApiAuthenticationV1TokenRequestStatus {
+export class IoK8sApiAuthenticationV1TokenRequestStatus {
   /**
      * ExpirationTimestamp is the time of expiration of the returned token.
      */

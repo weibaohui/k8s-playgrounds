@@ -13,7 +13,7 @@
 /**
  * ServiceReference holds a reference to Service.legacy.k8s.io
  */
-export interface IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference {
+export class IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference {
   /**
      * Name is the name of the service
      */

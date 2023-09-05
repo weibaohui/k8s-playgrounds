@@ -13,5 +13,5 @@
 /**
  * Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.
  */
-export interface IoK8sApimachineryPkgApisMetaV1Patch {
+export class IoK8sApimachineryPkgApisMetaV1Patch {
 }

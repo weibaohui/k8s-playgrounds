@@ -13,7 +13,7 @@
 /**
  * Adds and removes POSIX capabilities from running containers.
  */
-export interface V1Capabilities {
+export class V1Capabilities {
   /**
      * Added capabilities
      */

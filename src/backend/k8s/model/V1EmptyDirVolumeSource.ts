@@ -14,7 +14,7 @@ import type { ResourceQuantity } from './resourceQuantity'
 /**
  * Represents an empty directory for a pod. Empty directory volumes support ownership management and SELinux relabeling.
  */
-export interface V1EmptyDirVolumeSource {
+export class V1EmptyDirVolumeSource {
   /**
      * medium represents what type of storage medium should back this directory. The default is \"\" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
      */

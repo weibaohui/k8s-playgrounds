@@ -14,7 +14,7 @@ import type { V1SecretReference } from './V1SecretReference'
 /**
  * ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.
  */
-export interface V1ISCSIPersistentVolumeSource {
+export class V1ISCSIPersistentVolumeSource {
   /**
      * chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication
      */

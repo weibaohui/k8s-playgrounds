@@ -15,7 +15,7 @@ import type { V1SecretEnvSource } from './V1SecretEnvSource'
 /**
  * EnvFromSource represents the source of a set of ConfigMaps
  */
-export interface V1EnvFromSource {
+export class V1EnvFromSource {
   /**
      * The ConfigMap to select from
      */

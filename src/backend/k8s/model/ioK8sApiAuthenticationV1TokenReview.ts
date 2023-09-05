@@ -16,7 +16,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * TokenReview attempts to authenticate a token to a known user. Note: TokenReview requests may be cached by the webhook token authenticator plugin in the kube-apiserver.
  */
-export interface IoK8sApiAuthenticationV1TokenReview {
+export class IoK8sApiAuthenticationV1TokenReview {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * HorizontalPodAutoscalerCondition describes the state of a HorizontalPodAutoscaler at a certain point.
  */
-export interface V2HorizontalPodAutoscalerCondition {
+export class V2HorizontalPodAutoscalerCondition {
   /**
      * lastTransitionTime is the last time the condition transitioned from one status to another
      */

@@ -13,7 +13,7 @@
 /**
  * Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do not support ownership management or SELinux relabeling.
  */
-export interface V1QuobyteVolumeSource {
+export class V1QuobyteVolumeSource {
   /**
      * group to map volume access to Default is no group
      */

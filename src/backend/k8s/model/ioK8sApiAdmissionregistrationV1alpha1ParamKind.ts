@@ -13,7 +13,7 @@
 /**
  * ParamKind is a tuple of Group Kind and Version.
  */
-export interface IoK8sApiAdmissionregistrationV1alpha1ParamKind {
+export class IoK8sApiAdmissionregistrationV1alpha1ParamKind {
   /**
      * APIVersion is the API group version the resources belong to. In format of \"group/version\". Required.
      */

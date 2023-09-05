@@ -17,7 +17,7 @@ import type { V1SecretKeySelector } from './V1SecretKeySelector'
 /**
  * EnvVarSource represents a source for the value of an EnvVar.
  */
-export interface V1EnvVarSource {
+export class V1EnvVarSource {
   /**
      * Selects a key of a ConfigMap.
      */

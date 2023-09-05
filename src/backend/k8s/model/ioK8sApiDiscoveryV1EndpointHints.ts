@@ -14,7 +14,7 @@ import type { IoK8sApiDiscoveryV1ForZone } from './ioK8sApiDiscoveryV1ForZone'
 /**
  * EndpointHints provides hints describing how an endpoint should be consumed.
  */
-export interface IoK8sApiDiscoveryV1EndpointHints {
+export class IoK8sApiDiscoveryV1EndpointHints {
   /**
      * forZones indicates the zone(s) this endpoint should be consumed by to enable topology aware routing.
      */

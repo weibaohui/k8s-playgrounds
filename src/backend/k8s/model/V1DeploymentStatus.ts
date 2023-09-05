@@ -14,7 +14,7 @@ import type { V1DeploymentCondition } from './v1DeploymentCondition'
 /**
  * DeploymentStatus is the most recently observed status of the Deployment.
  */
-export interface V1DeploymentStatus {
+export class V1DeploymentStatus {
   /**
      * Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.
      */

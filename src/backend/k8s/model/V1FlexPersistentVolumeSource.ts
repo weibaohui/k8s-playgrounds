@@ -14,7 +14,7 @@ import type { V1SecretReference } from './V1SecretReference'
 /**
  * FlexPersistentVolumeSource represents a generic persistent volume resource that is provisioned/attached using an exec based plugin.
  */
-export interface V1FlexPersistentVolumeSource {
+export class V1FlexPersistentVolumeSource {
   /**
      * driver is the name of the driver to use for this volume.
      */

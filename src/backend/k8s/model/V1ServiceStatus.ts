@@ -15,7 +15,7 @@ import type { V1Condition } from './v1Condition'
 /**
  * ServiceStatus represents the current status of a service.
  */
-export interface V1ServiceStatus {
+export class V1ServiceStatus {
   /**
      * Current service state
      */

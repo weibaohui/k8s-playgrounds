@@ -16,7 +16,7 @@ import type { IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceVal
 /**
  * CustomResourceDefinitionVersion describes a version for CRD.
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion {
   /**
      * additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used.
      */

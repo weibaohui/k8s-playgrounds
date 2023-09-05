@@ -14,7 +14,7 @@ import type { V1ReplicationControllerCondition } from './V1ReplicationController
 /**
  * ReplicationControllerStatus represents the current status of a replication controller.
  */
-export interface V1ReplicationControllerStatus {
+export class V1ReplicationControllerStatus {
   /**
      * The number of available replicas (ready for at least minReadySeconds) for this replication controller.
      */

@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * ContainerStateTerminated is a terminated state of a container.
  */
-export interface V1ContainerStateTerminated {
+export class V1ContainerStateTerminated {
   /**
      * Container's ID in the format '<type>://<container_id>'
      */

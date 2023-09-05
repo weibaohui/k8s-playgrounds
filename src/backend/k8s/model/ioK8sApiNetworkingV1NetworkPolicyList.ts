@@ -15,7 +15,7 @@ import type { V1ListMeta } from './V1ListMeta'
 /**
  * NetworkPolicyList is a list of NetworkPolicy objects.
  */
-export interface IoK8sApiNetworkingV1NetworkPolicyList {
+export class IoK8sApiNetworkingV1NetworkPolicyList {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

@@ -14,7 +14,7 @@ import type { IoK8sApiFlowcontrolV1beta2FlowSchemaCondition } from './ioK8sApiFl
 /**
  * FlowSchemaStatus represents the current state of a FlowSchema.
  */
-export interface IoK8sApiFlowcontrolV1beta2FlowSchemaStatus {
+export class IoK8sApiFlowcontrolV1beta2FlowSchemaStatus {
   /**
      * `conditions` is a list of the current states of FlowSchema.
      */

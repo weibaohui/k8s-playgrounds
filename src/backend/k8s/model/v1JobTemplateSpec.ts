@@ -15,7 +15,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * JobTemplateSpec describes the data a Job should have when created from a template
  */
-export interface V1JobTemplateSpec {
+export class V1JobTemplateSpec {
   /**
      * Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */

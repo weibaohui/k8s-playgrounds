@@ -15,7 +15,7 @@ import type { IoK8sApiResourceV1alpha2ResourceClaimConsumerReference } from './i
 /**
  * ResourceClaimStatus tracks whether the resource has been allocated and what the resulting attributes are.
  */
-export interface IoK8sApiResourceV1alpha2ResourceClaimStatus {
+export class IoK8sApiResourceV1alpha2ResourceClaimStatus {
   /**
      * Allocation is set by the resource driver once a resource or set of resources has been allocated successfully. If this is not specified, the resources have not been allocated yet.
      */

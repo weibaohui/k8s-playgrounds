@@ -13,7 +13,7 @@
 /**
  * ResourceClassParametersReference contains enough information to let you locate the parameters for a ResourceClass.
  */
-export interface IoK8sApiResourceV1alpha2ResourceClassParametersReference {
+export class IoK8sApiResourceV1alpha2ResourceClassParametersReference {
   /**
      * APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.
      */

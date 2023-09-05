@@ -13,5 +13,5 @@
 /**
  * JSONSchemaPropsOrStringArray represents a JSONSchemaProps or a string array.
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrStringArray {
 }

@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * NodeCondition contains condition information for a node.
  */
-export interface V1NodeCondition {
+export class V1NodeCondition {
   /**
      * Last time we got an update on a given condition.
      */

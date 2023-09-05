@@ -13,7 +13,7 @@
 /**
  * ParamRef references a parameter resource
  */
-export interface IoK8sApiAdmissionregistrationV1alpha1ParamRef {
+export class IoK8sApiAdmissionregistrationV1alpha1ParamRef {
   /**
      * Name of the resource being referenced.
      */

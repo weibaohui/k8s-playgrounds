@@ -9,27 +9,27 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyBinding } from './ioK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyBinding'
+import type { V1Ingress } from './v1Ingress'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**
- * ValidatingAdmissionPolicyBindingList is a list of ValidatingAdmissionPolicyBinding.
+ * IngressList is a collection of Ingress.
  */
-export class IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyBindingList {
+export class V1IngressList {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
   apiVersion?: string
   /**
-     * List of PolicyBinding.
+     * items is the list of Ingress.
      */
-  items?: Array<IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyBinding>
+  items: Array<V1Ingress>
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */
   kind?: string
   /**
-     * Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+     * Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
      */
   metadata?: V1ListMeta
 }

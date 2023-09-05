@@ -13,7 +13,7 @@
 /**
  * The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.
  */
-export interface V1Toleration {
+export class V1Toleration {
   /**
      * Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
      */

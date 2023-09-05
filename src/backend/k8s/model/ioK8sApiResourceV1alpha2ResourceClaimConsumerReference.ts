@@ -13,7 +13,7 @@
 /**
  * ResourceClaimConsumerReference contains enough information to let you locate the consumer of a ResourceClaim. The user must be a resource in the same namespace as the ResourceClaim.
  */
-export interface IoK8sApiResourceV1alpha2ResourceClaimConsumerReference {
+export class IoK8sApiResourceV1alpha2ResourceClaimConsumerReference {
   /**
      * APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.
      */

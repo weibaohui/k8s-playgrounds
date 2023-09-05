@@ -13,7 +13,7 @@
 /**
  * HPAScalingPolicy is a single policy which must hold true for a specified past interval.
  */
-export interface IoK8sApiAutoscalingV2HPAScalingPolicy {
+export class IoK8sApiAutoscalingV2HPAScalingPolicy {
   /**
      * periodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min).
      */

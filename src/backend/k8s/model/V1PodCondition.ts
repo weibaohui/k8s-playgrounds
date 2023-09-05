@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * PodCondition contains details for the current condition of this pod.
  */
-export interface V1PodCondition {
+export class V1PodCondition {
   /**
      * Last time we probed the condition.
      */

@@ -10,14 +10,14 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAdmissionregistrationV1MatchCondition } from './ioK8sApiAdmissionregistrationV1MatchCondition'
-import type { IoK8sApiAdmissionregistrationV1RuleWithOperations } from './ioK8sApiAdmissionregistrationV1RuleWithOperations'
+import type { IoK8sApiAdmissionregistration } from './ioK8sApiAdmissionregistration'
 import type { IoK8sApiAdmissionregistrationV1WebhookClientConfig } from './ioK8sApiAdmissionregistrationV1WebhookClientConfig'
 import type { V1LabelSelector } from './v1LabelSelector'
 
 /**
  * ValidatingWebhook describes an admission webhook and the resources and operations it applies to.
  */
-export interface IoK8sApiAdmissionregistrationV1ValidatingWebhook {
+export class V1ValidatingWebhook {
   /**
      * AdmissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy.
      */
@@ -53,7 +53,7 @@ export interface IoK8sApiAdmissionregistrationV1ValidatingWebhook {
   /**
      * Rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.
      */
-  rules?: Array<IoK8sApiAdmissionregistrationV1RuleWithOperations>
+  rules?: Array<IoK8sApiAdmissionregistration>
   /**
      * SideEffects states whether this webhook has side effects. Acceptable values are: None, NoneOnDryRun (webhooks created via v1beta1 may also specify Some or Unknown). Webhooks with side effects MUST implement a reconciliation system, since a request may be rejected by a future step in the admission chain and the side effects therefore need to be undone. Requests with the dryRun attribute will be auto-rejected if they match a webhook with sideEffects == Unknown or Some.
      */

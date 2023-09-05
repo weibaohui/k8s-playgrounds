@@ -16,7 +16,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * ValidatingAdmissionPolicy describes the definition of an admission validation policy that accepts or rejects an object without changing it.
  */
-export interface IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicy {
+export class IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicy {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

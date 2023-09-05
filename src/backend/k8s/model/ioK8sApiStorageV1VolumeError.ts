@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * VolumeError captures an error encountered during a volume operation.
  */
-export interface IoK8sApiStorageV1VolumeError {
+export class IoK8sApiStorageV1VolumeError {
   /**
      * message represents the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
      */

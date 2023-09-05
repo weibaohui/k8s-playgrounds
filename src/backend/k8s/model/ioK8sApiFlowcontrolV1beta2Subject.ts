@@ -16,7 +16,7 @@ import type { IoK8sApiFlowcontrolV1beta2UserSubject } from './ioK8sApiFlowcontro
 /**
  * Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.
  */
-export interface IoK8sApiFlowcontrolV1beta2Subject {
+export class IoK8sApiFlowcontrolV1beta2Subject {
   /**
      * `group` matches based on user group name.
      */

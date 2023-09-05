@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * Describes the state of the storageVersion at a certain point.
  */
-export interface IoK8sApiApiserverinternalV1alpha1StorageVersionCondition {
+export class IoK8sApiApiserverinternalV1alpha1StorageVersionCondition {
   /**
      * Last time the condition transitioned from one status to another.
      */

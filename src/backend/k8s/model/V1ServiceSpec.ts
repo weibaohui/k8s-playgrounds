@@ -15,7 +15,7 @@ import type { V1SessionAffinityConfig } from './V1SessionAffinityConfig'
 /**
  * ServiceSpec describes the attributes that a user creates on a service.
  */
-export interface V1ServiceSpec {
+export class V1ServiceSpec {
   /**
      * allocateLoadBalancerNodePorts defines if NodePorts will be automatically allocated for services with type LoadBalancer.  Default is \"true\". It may be set to \"false\" if the cluster load-balancer does not rely on NodePorts.  If the caller requests specific NodePorts (by specifying a value), those requests will be respected, regardless of this field. This field may only be set for services with type LoadBalancer and will be cleared if the type is changed to any other type.
      */

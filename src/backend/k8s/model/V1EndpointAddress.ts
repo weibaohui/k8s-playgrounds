@@ -14,7 +14,7 @@ import type { V1ObjectReference } from './V1ObjectReference'
 /**
  * EndpointAddress is a tuple that describes single IP address.
  */
-export interface V1EndpointAddress {
+export class V1EndpointAddress {
   /**
      * The Hostname of this endpoint
      */

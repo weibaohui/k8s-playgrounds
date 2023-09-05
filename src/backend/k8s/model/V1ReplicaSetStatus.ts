@@ -14,7 +14,7 @@ import type { V1ReplicaSetCondition } from './V1ReplicaSetCondition'
 /**
  * ReplicaSetStatus represents the current status of a ReplicaSet.
  */
-export interface V1ReplicaSetStatus {
+export class V1ReplicaSetStatus {
   /**
      * The number of available replicas (ready for at least minReadySeconds) for this replica set.
      */

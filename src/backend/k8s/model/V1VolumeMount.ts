@@ -13,7 +13,7 @@
 /**
  * VolumeMount describes a mounting of a Volume within a container.
  */
-export interface V1VolumeMount {
+export class V1VolumeMount {
   /**
      * Path within the container at which the volume should be mounted.  Must not contain ':'.
      */

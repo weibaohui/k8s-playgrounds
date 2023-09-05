@@ -14,7 +14,7 @@ import type { ResourceQuantity } from './resourceQuantity'
 /**
  * ResourceFieldSelector represents container resources (cpu, memory) and their output format
  */
-export interface V1ResourceFieldSelector {
+export class V1ResourceFieldSelector {
   /**
      * Container name: required for volumes, optional for env vars
      */

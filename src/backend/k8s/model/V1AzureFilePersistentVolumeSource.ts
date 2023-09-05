@@ -13,7 +13,7 @@
 /**
  * AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
  */
-export interface V1AzureFilePersistentVolumeSource {
+export class V1AzureFilePersistentVolumeSource {
   /**
      * readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
      */

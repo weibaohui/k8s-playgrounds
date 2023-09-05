@@ -16,7 +16,7 @@ import type { ResourceQuantity } from './resourceQuantity'
 /**
  * ContainerStatus contains details for the current status of this container.
  */
-export interface V1ContainerStatus {
+export class V1ContainerStatus {
   /**
      * AllocatedResources represents the compute resources allocated for this container by the node. Kubelet sets this value to Container.Resources.Requests upon successful pod admission and after successfully admitting desired pod resize.
      */

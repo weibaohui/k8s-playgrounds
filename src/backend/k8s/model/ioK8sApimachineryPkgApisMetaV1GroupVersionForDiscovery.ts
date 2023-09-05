@@ -13,7 +13,7 @@
 /**
  * GroupVersion contains the \"group/version\" and \"version\" string of a version. It is made a struct to keep extensibility.
  */
-export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
+export class IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /**
      * groupVersion specifies the API group and version in the form \"group/version\"
      */

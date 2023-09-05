@@ -9,12 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiNetworkingV1IngressPortStatus } from './ioK8sApiNetworkingV1IngressPortStatus'
+import type { V1IngressPortStatus } from './v1IngressPortStatus'
 
 /**
  * IngressLoadBalancerIngress represents the status of a load-balancer ingress point.
  */
-export interface IoK8sApiNetworkingV1IngressLoadBalancerIngress {
+export class IoK8sApiNetworkingV1IngressLoadBalancerIngress {
   /**
      * hostname is set for load-balancer ingress points that are DNS based.
      */
@@ -26,5 +26,5 @@ export interface IoK8sApiNetworkingV1IngressLoadBalancerIngress {
   /**
      * ports provides information about the ports exposed by this LoadBalancer.
      */
-  ports?: Array<IoK8sApiNetworkingV1IngressPortStatus>
+  ports?: Array<V1IngressPortStatus>
 }

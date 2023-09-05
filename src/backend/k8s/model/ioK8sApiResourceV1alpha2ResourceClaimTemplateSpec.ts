@@ -15,7 +15,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * ResourceClaimTemplateSpec contains the metadata and fields for a ResourceClaim.
  */
-export interface IoK8sApiResourceV1alpha2ResourceClaimTemplateSpec {
+export class IoK8sApiResourceV1alpha2ResourceClaimTemplateSpec {
   /**
      * ObjectMeta may contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
      */

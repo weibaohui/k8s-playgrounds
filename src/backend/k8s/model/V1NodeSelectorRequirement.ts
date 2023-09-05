@@ -13,7 +13,7 @@
 /**
  * A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
  */
-export interface V1NodeSelectorRequirement {
+export class V1NodeSelectorRequirement {
   /**
      * The label key that the selector applies to.
      */

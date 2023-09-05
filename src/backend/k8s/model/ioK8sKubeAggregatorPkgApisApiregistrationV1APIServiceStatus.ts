@@ -14,7 +14,7 @@ import type { IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition } f
 /**
  * APIServiceStatus contains derived information about an API server
  */
-export interface IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus {
+export class IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus {
   /**
      * Current service state of apiService.
      */

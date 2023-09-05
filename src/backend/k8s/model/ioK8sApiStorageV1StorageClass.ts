@@ -15,7 +15,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.  StorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.
  */
-export interface IoK8sApiStorageV1StorageClass {
+export class IoK8sApiStorageV1StorageClass {
   /**
      * allowVolumeExpansion shows whether the storage class allow volume expand.
      */

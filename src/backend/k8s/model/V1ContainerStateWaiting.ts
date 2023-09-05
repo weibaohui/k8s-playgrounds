@@ -13,7 +13,7 @@
 /**
  * ContainerStateWaiting is a waiting state of a container.
  */
-export interface V1ContainerStateWaiting {
+export class V1ContainerStateWaiting {
   /**
      * Message regarding why the container is not yet running.
      */

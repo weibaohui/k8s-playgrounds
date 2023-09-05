@@ -13,7 +13,7 @@
 /**
  * ServiceBackendPort is the service port being referenced.
  */
-export interface IoK8sApiNetworkingV1ServiceBackendPort {
+export class IoK8sApiNetworkingV1ServiceBackendPort {
   /**
      * name is the name of the port on the Service. This is a mutually exclusive setting with \"Number\".
      */

@@ -13,7 +13,7 @@
 /**
  * ParentReference describes a reference to a parent object.
  */
-export interface IoK8sApiNetworkingV1alpha1ParentReference {
+export class IoK8sApiNetworkingV1alpha1ParentReference {
   /**
      * Group is the group of the object being referenced.
      */

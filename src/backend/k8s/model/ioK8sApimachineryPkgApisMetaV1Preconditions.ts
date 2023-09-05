@@ -13,7 +13,7 @@
 /**
  * Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.
  */
-export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
+export class IoK8sApimachineryPkgApisMetaV1Preconditions {
   /**
      * Specifies the target ResourceVersion
      */

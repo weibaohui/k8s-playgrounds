@@ -13,7 +13,7 @@
 /**
  * SubjectAccessReviewStatus
  */
-export interface IoK8sApiAuthorizationV1SubjectAccessReviewStatus {
+export class IoK8sApiAuthorizationV1SubjectAccessReviewStatus {
   /**
      * Allowed is required. True if the action would be allowed, false otherwise.
      */

@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * StatefulSetCondition describes the state of a statefulset at a certain point.
  */
-export interface V1StatefulSetCondition {
+export class V1StatefulSetCondition {
   /**
      * Last time the condition transitioned from one status to another.
      */

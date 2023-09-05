@@ -233,6 +233,7 @@ shamefully-hoist=true
 | IoK8sApiSchedulingV1PriorityClass            | V1PriorityClass           |
 | IoK8sApiAutoscalingV2HorizontalPodAutoscaler | V2HorizontalPodAutoscaler |
 | IoK8sApiPolicyV1PodDisruptionBudgetSpec      | V1PodDisruptionBudgetSpec |
+| IoK8sApiAdmissionregistrationV1MutatingWebhook      | V1MutatingWebhook |
 
 ## Demo
 

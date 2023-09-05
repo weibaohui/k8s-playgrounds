@@ -13,5 +13,5 @@
 /**
  * StorageVersionSpec is an empty spec.
  */
-export interface IoK8sApiApiserverinternalV1alpha1StorageVersionSpec {
+export class IoK8sApiApiserverinternalV1alpha1StorageVersionSpec {
 }

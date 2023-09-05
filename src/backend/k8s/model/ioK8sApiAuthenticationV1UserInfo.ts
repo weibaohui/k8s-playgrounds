@@ -13,7 +13,7 @@
 /**
  * UserInfo holds the information about the user needed to implement the user.Info interface.
  */
-export interface IoK8sApiAuthenticationV1UserInfo {
+export class IoK8sApiAuthenticationV1UserInfo {
   /**
      * Any additional information provided by the authenticator.
      */

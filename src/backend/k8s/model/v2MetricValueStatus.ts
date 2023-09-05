@@ -14,7 +14,7 @@ import type { ResourceQuantity } from './resourceQuantity'
 /**
  * MetricValueStatus holds the current value for a metric
  */
-export interface V2MetricValueStatus {
+export class V2MetricValueStatus {
   /**
      * currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
      */

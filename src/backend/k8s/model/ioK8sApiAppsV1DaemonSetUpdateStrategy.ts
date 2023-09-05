@@ -14,7 +14,7 @@ import type { IoK8sApiAppsV1RollingUpdateDaemonSet } from './ioK8sApiAppsV1Rolli
 /**
  * DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.
  */
-export interface IoK8sApiAppsV1DaemonSetUpdateStrategy {
+export class IoK8sApiAppsV1DaemonSetUpdateStrategy {
   /**
      * Rolling update config params. Present only if type = \"RollingUpdate\".
      */

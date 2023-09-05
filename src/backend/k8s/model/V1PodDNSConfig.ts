@@ -14,7 +14,7 @@ import type { V1PodDNSConfigOption } from './V1PodDNSConfigOption'
 /**
  * PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy.
  */
-export interface V1PodDNSConfig {
+export class V1PodDNSConfig {
   /**
      * A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
      */

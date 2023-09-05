@@ -13,7 +13,7 @@
 /**
  * ResourceClaimSchedulingStatus contains information about one particular ResourceClaim with \"WaitForFirstConsumer\" allocation mode.
  */
-export interface IoK8sApiResourceV1alpha2ResourceClaimSchedulingStatus {
+export class IoK8sApiResourceV1alpha2ResourceClaimSchedulingStatus {
   /**
      * Name matches the pod.spec.resourceClaims[*].Name field.
      */

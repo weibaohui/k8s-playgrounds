@@ -14,7 +14,7 @@ import type { IoK8sApimachineryPkgUtilIntstrIntOrString } from './ioK8sApimachin
 /**
  * NetworkPolicyPort describes a port to allow traffic on
  */
-export interface IoK8sApiNetworkingV1NetworkPolicyPort {
+export class V1NetworkPolicyPort {
   /**
      * endPort indicates that the range of ports from port to endPort if set, inclusive, should be allowed by the policy. This field cannot be defined if the port field is not defined or if the port field is defined as a named (string) port. The endPort must be equal or greater than port.
      */

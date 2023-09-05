@@ -13,7 +13,7 @@
 /**
  * ServiceReference holds a reference to Service.legacy.k8s.io
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference {
   /**
      * name is the name of the service. Required
      */

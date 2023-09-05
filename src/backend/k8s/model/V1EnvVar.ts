@@ -14,7 +14,7 @@ import type { V1EnvVarSource } from './V1EnvVarSource'
 /**
  * EnvVar represents an environment variable present in a Container.
  */
-export interface V1EnvVar {
+export class V1EnvVar {
   /**
      * Name of the environment variable. Must be a C_IDENTIFIER.
      */

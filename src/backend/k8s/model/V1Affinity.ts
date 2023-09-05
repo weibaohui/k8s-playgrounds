@@ -16,7 +16,7 @@ import type { V1PodAntiAffinity } from './V1PodAntiAffinity'
 /**
  * Affinity is a group of affinity scheduling rules.
  */
-export interface V1Affinity {
+export class V1Affinity {
   /**
      * Describes node affinity scheduling rules for the pod.
      */

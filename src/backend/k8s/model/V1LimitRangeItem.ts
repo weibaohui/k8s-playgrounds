@@ -14,7 +14,7 @@ import type { ResourceQuantity } from './resourceQuantity'
 /**
  * LimitRangeItem defines a min/max usage limit for any resource that matches on kind.
  */
-export interface V1LimitRangeItem {
+export class V1LimitRangeItem {
   /**
      * Default resource requirement limit value by resource name if resource limit is omitted.
      */

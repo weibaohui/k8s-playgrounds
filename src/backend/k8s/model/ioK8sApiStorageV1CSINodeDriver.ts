@@ -14,7 +14,7 @@ import type { IoK8sApiStorageV1VolumeNodeResources } from './ioK8sApiStorageV1Vo
 /**
  * CSINodeDriver holds information about the specification of one CSI driver installed on a node
  */
-export interface IoK8sApiStorageV1CSINodeDriver {
+export class IoK8sApiStorageV1CSINodeDriver {
   /**
      * allocatable represents the volume resources of a node that are available for scheduling. This field is beta.
      */

@@ -13,5 +13,5 @@
 /**
  * JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults to true for the boolean property.
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
 }

@@ -14,7 +14,7 @@ import type { IoK8sApiAdmissionregistrationV1ServiceReference } from './ioK8sApi
 /**
  * WebhookClientConfig contains the information to make a TLS connection with the webhook
  */
-export interface IoK8sApiAdmissionregistrationV1WebhookClientConfig {
+export class IoK8sApiAdmissionregistrationV1WebhookClientConfig {
   /**
      * `caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.
      */

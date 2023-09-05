@@ -13,7 +13,7 @@
 /**
  * ScaleStatus represents the current status of a scale subresource.
  */
-export interface IoK8sApiAutoscalingV1ScaleStatus {
+export class IoK8sApiAutoscalingV1ScaleStatus {
   /**
      * replicas is the actual number of observed instances of the scaled object.
      */

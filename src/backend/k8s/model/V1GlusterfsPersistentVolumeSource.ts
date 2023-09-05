@@ -13,7 +13,7 @@
 /**
  * Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.
  */
-export interface V1GlusterfsPersistentVolumeSource {
+export class V1GlusterfsPersistentVolumeSource {
   /**
      * endpoints is the endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
      */

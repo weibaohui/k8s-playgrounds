@@ -19,7 +19,7 @@ import type { IoK8sApiextensionsApiserverPkgApisApiextensionsV1ValidationRule } 
 /**
  * JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
   ref?: string
   schema?: string
   additionalItems?: IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 
-export interface V1GRPCAction {
+export class V1GRPCAction {
   /**
      * Port number of the gRPC service. Number must be in the range 1 to 65535.
      */

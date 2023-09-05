@@ -15,7 +15,7 @@ import type { V1LabelSelector } from './v1LabelSelector'
 /**
  * NetworkPolicyPeer describes a peer to allow traffic to/from. Only certain combinations of fields are allowed
  */
-export interface IoK8sApiNetworkingV1NetworkPolicyPeer {
+export class V1NetworkPolicyPeer {
   /**
      * ipBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.
      */

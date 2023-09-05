@@ -14,7 +14,7 @@ import type { IoK8sApiStorageV1VolumeError } from './ioK8sApiStorageV1VolumeErro
 /**
  * VolumeAttachmentStatus is the status of a VolumeAttachment request.
  */
-export interface IoK8sApiStorageV1VolumeAttachmentStatus {
+export class IoK8sApiStorageV1VolumeAttachmentStatus {
   /**
      * attachError represents the last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.
      */

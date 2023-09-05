@@ -13,7 +13,7 @@
 /**
  * AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
  */
-export interface V1AzureDiskVolumeSource {
+export class V1AzureDiskVolumeSource {
   /**
      * cachingMode is the Host Caching mode: None, Read Only, Read Write.
      */

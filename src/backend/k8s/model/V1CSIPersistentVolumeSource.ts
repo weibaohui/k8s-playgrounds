@@ -14,7 +14,7 @@ import type { V1SecretReference } from './V1SecretReference'
 /**
  * Represents storage that is managed by an external CSI volume driver (Beta feature)
  */
-export interface V1CSIPersistentVolumeSource {
+export class V1CSIPersistentVolumeSource {
   /**
      * controllerExpandSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerExpandVolume call. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.
      */

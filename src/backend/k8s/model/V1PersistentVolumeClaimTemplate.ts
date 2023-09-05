@@ -15,7 +15,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * PersistentVolumeClaimTemplate is used to produce PersistentVolumeClaim objects as part of an EphemeralVolumeSource.
  */
-export interface V1PersistentVolumeClaimTemplate {
+export class V1PersistentVolumeClaimTemplate {
   /**
      * May contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
      */

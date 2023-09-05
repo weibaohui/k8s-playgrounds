@@ -14,7 +14,7 @@ import type { IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference } from
 /**
  * APIServiceSpec contains information for locating and communicating with a server. Only https is supported, though you are able to disable certificate verification.
  */
-export interface IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec {
+export class IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec {
   /**
      * CABundle is a PEM encoded CA bundle which will be used to validate an API server's serving certificate. If unspecified, system trust roots on the apiserver are used.
      */

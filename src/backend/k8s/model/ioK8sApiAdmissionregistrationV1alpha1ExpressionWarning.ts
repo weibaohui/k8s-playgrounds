@@ -13,7 +13,7 @@
 /**
  * ExpressionWarning is a warning information that targets a specific expression.
  */
-export interface IoK8sApiAdmissionregistrationV1alpha1ExpressionWarning {
+export class IoK8sApiAdmissionregistrationV1alpha1ExpressionWarning {
   /**
      * The path to the field that refers the expression. For example, the reference to the expression of the first item of validations is \"spec.validations[0].expression\"
      */

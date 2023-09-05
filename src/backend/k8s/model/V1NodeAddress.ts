@@ -13,7 +13,7 @@
 /**
  * NodeAddress contains information for the node's address.
  */
-export interface V1NodeAddress {
+export class V1NodeAddress {
   /**
      * The node address.
      */

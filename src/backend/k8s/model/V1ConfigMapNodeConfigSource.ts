@@ -13,7 +13,7 @@
 /**
  * ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node. This API is deprecated since 1.22: https://git.k8s.io/enhancements/keps/sig-node/281-dynamic-kubelet-configuration
  */
-export interface V1ConfigMapNodeConfigSource {
+export class V1ConfigMapNodeConfigSource {
   /**
      * KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.
      */

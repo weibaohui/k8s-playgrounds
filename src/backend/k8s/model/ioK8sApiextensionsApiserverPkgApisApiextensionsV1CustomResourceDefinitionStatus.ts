@@ -15,7 +15,7 @@ import type { IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDef
 /**
  * CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus {
   /**
      * acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.
      */

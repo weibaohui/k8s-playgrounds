@@ -16,7 +16,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * TokenRequest requests a token for a given service account.
  */
-export interface IoK8sApiAuthenticationV1TokenRequest {
+export class IoK8sApiAuthenticationV1TokenRequest {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

@@ -16,7 +16,7 @@ import type { V1Time } from './V1Time'
 /**
  * HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.
  */
-export interface V2HorizontalPodAutoscalerStatus {
+export class V2HorizontalPodAutoscalerStatus {
   /**
      * conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.
      */

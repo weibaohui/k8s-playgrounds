@@ -14,7 +14,7 @@ import type { IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference 
 /**
  * WebhookClientConfig contains the information to make a TLS connection with the webhook.
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig {
   /**
      * caBundle is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.
      */

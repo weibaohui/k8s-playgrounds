@@ -16,7 +16,7 @@ import type { IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDef
 /**
  * CustomResourceDefinitionSpec describes how a user wants their resource to appear
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec {
   /**
      * conversion defines conversion settings for the CRD.
      */

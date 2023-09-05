@@ -14,7 +14,7 @@ import type { IoK8sApiFlowcontrolV1beta2QueuingConfiguration } from './ioK8sApiF
 /**
  * LimitResponse defines how to handle requests that can not be executed right now.
  */
-export interface IoK8sApiFlowcontrolV1beta2LimitResponse {
+export class IoK8sApiFlowcontrolV1beta2LimitResponse {
   /**
      * `queuing` holds the configuration parameters for queuing. This field may be non-empty only if `type` is `\"Queue\"`.
      */

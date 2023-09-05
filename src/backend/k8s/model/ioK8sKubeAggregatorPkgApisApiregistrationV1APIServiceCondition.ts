@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * APIServiceCondition describes the state of an APIService at a particular point
  */
-export interface IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition {
+export class IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition {
   /**
      * Last time the condition transitioned from one status to another.
      */

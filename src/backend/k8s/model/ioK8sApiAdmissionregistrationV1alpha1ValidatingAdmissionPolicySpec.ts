@@ -18,7 +18,7 @@ import type { IoK8sApiAdmissionregistrationV1alpha1Validation } from './ioK8sApi
 /**
  * ValidatingAdmissionPolicySpec is the specification of the desired behavior of the AdmissionPolicy.
  */
-export interface IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicySpec {
+export class IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicySpec {
   /**
      * auditAnnotations contains CEL expressions which are used to produce audit annotations for the audit event of the API request. validations and auditAnnotations may not both be empty; a least one of validations or auditAnnotations is required.
      */

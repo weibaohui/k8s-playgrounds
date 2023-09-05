@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * NamespaceCondition contains details about state of namespace.
  */
-export interface V1NamespaceCondition {
+export class V1NamespaceCondition {
   lastTransitionTime?: V1Time
   message?: string
   reason?: string

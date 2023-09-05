@@ -14,7 +14,7 @@ import type { V1DaemonSetCondition } from './v1DaemonSetCondition'
 /**
  * DaemonSetStatus represents the current status of a daemon set.
  */
-export interface V1DaemonSetStatus {
+export class V1DaemonSetStatus {
   /**
      * Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.
      */

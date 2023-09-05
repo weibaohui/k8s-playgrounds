@@ -16,7 +16,7 @@ import type { V2MetricTarget } from './v2MetricTarget'
 /**
  * ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).
  */
-export interface IoK8sApiAutoscalingV2ObjectMetricSource {
+export class IoK8sApiAutoscalingV2ObjectMetricSource {
   /**
      * describedObject specifies the descriptions of a object,such as kind,name apiVersion
      */

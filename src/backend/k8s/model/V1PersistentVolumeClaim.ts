@@ -16,7 +16,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * PersistentVolumeClaim is a user's request for and claim to a persistent volume
  */
-export interface V1PersistentVolumeClaim {
+export class V1PersistentVolumeClaim {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

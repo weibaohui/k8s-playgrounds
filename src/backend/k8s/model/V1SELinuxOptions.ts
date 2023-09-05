@@ -13,7 +13,7 @@
 /**
  * SELinuxOptions are the labels to be applied to the container
  */
-export interface V1SELinuxOptions {
+export class V1SELinuxOptions {
   /**
      * Level is SELinux level label that applies to the container.
      */

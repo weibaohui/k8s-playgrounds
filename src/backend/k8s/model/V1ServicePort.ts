@@ -14,7 +14,7 @@ import type { IoK8sApimachineryPkgUtilIntstrIntOrString } from './ioK8sApimachin
 /**
  * ServicePort contains information on service's port.
  */
-export interface V1ServicePort {
+export class V1ServicePort {
   /**
      * The application protocol for this port. This field follows standard Kubernetes label syntax. Un-prefixed names are reserved for IANA standard service names (as per RFC-6335 and https://www.iana.org/assignments/service-names). Non-standard protocols should use prefixed names such as mycompany.com/my-custom-protocol.
      */

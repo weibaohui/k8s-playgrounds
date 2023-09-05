@@ -13,7 +13,7 @@
 /**
  * NamedRuleWithOperations is a tuple of Operations and Resources with ResourceNames.
  */
-export interface IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations {
+export class IoK8sApiAdmissionregistrationV1alpha1NamedRuleWithOperations {
   /**
      * APIGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required.
      */

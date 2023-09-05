@@ -15,7 +15,7 @@ import type { IoK8sApimachineryPkgUtilIntstrIntOrString } from './ioK8sApimachin
 /**
  * PodDisruptionBudgetSpec is a description of a PodDisruptionBudget.
  */
-export interface V1PodDisruptionBudgetSpec {
+export class V1PodDisruptionBudgetSpec {
   /**
      * An eviction is allowed if at most \"maxUnavailable\" pods selected by \"selector\" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with \"minAvailable\".
      */

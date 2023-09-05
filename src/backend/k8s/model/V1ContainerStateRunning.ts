@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * ContainerStateRunning is a running state of a container.
  */
-export interface V1ContainerStateRunning {
+export class V1ContainerStateRunning {
   /**
      * Time at which the container was last (re-)started
      */

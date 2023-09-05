@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiNetworkingV1HTTPIngressPath } from './ioK8sApiNetworkingV1HTTPIngressPath'
+import type { V1HTTPIngressPath } from './v1HTTPIngressPath'
 
 /**
  * HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http://<host>/<path>?<searchpart> -> backend where where parts of the url correspond to RFC 3986, this resource will be used to match against everything after the last '/' and before the first '?' or '#'.
  */
-export interface V1HTTPIngressRuleValue {
+export class V1HTTPIngressRuleValue {
   /**
      * paths is a collection of paths that map requests to backends.
      */
-  paths: Array<IoK8sApiNetworkingV1HTTPIngressPath>
+  paths: Array<V1HTTPIngressPath>
 }

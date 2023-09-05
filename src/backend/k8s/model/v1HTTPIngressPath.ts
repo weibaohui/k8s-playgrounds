@@ -14,7 +14,7 @@ import type { V1IngressBackend } from './v1IngressBackend'
 /**
  * HTTPIngressPath associates a path with a backend. Incoming urls matching the path are forwarded to the backend.
  */
-export interface IoK8sApiNetworkingV1HTTPIngressPath {
+export class V1HTTPIngressPath {
   /**
      * backend defines the referenced service endpoint to which the traffic will be forwarded to.
      */

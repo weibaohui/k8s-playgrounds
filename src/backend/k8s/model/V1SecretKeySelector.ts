@@ -13,7 +13,7 @@
 /**
  * SecretKeySelector selects a key of a Secret.
  */
-export interface V1SecretKeySelector {
+export class V1SecretKeySelector {
   /**
      * The key of the secret to select from.  Must be a valid secret key.
      */

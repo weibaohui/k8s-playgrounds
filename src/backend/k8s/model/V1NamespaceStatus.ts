@@ -14,7 +14,7 @@ import type { V1NamespaceCondition } from './V1NamespaceCondition'
 /**
  * NamespaceStatus is information about the current status of a Namespace.
  */
-export interface V1NamespaceStatus {
+export class V1NamespaceStatus {
   /**
      * Represents the latest available observations of a namespace's current state.
      */

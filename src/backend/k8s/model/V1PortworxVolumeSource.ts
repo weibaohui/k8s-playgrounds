@@ -13,7 +13,7 @@
 /**
  * PortworxVolumeSource represents a Portworx volume resource.
  */
-export interface V1PortworxVolumeSource {
+export class V1PortworxVolumeSource {
   /**
      * fSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\". Implicitly inferred to be \"ext4\" if unspecified.
      */

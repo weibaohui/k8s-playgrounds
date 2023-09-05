@@ -16,7 +16,7 @@ import type { V1LabelSelector } from './v1LabelSelector'
 /**
  * DeploymentSpec is the specification of the desired behavior of the Deployment.
  */
-export interface V1DeploymentSpec {
+export class V1DeploymentSpec {
   /**
      * Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
      */

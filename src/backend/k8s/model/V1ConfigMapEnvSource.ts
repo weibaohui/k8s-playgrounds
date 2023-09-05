@@ -13,7 +13,7 @@
 /**
  * ConfigMapEnvSource selects a ConfigMap to populate the environment variables with.  The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
  */
-export interface V1ConfigMapEnvSource {
+export class V1ConfigMapEnvSource {
   /**
      * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      */

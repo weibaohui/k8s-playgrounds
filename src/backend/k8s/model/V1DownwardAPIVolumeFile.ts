@@ -15,7 +15,7 @@ import type { V1ResourceFieldSelector } from './V1ResourceFieldSelector'
 /**
  * DownwardAPIVolumeFile represents information to create the file containing the pod field
  */
-export interface V1DownwardAPIVolumeFile {
+export class V1DownwardAPIVolumeFile {
   /**
      * Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.
      */

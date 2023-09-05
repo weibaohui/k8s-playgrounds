@@ -13,7 +13,7 @@
 /**
  * CrossVersionObjectReference contains enough information to let you identify the referred resource.
  */
-export interface IoK8sApiAutoscalingV2CrossVersionObjectReference {
+export class IoK8sApiAutoscalingV2CrossVersionObjectReference {
   /**
      * apiVersion is the API version of the referent
      */

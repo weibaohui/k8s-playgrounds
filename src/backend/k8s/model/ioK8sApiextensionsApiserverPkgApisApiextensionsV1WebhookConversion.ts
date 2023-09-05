@@ -14,7 +14,7 @@ import type { IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConf
 /**
  * WebhookConversion describes how to call a conversion webhook
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion {
   /**
      * clientConfig is the instructions for how to call the webhook if strategy is `Webhook`.
      */

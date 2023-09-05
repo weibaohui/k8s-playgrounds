@@ -14,7 +14,7 @@ import type { V1LocalObjectReference } from './V1LocalObjectReference'
 /**
  * Represents a StorageOS persistent volume resource.
  */
-export interface V1StorageOSVolumeSource {
+export class V1StorageOSVolumeSource {
   /**
      * fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.
      */

@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * FlowSchemaCondition describes conditions for a FlowSchema.
  */
-export interface IoK8sApiFlowcontrolV1beta2FlowSchemaCondition {
+export class IoK8sApiFlowcontrolV1beta2FlowSchemaCondition {
   /**
      * `lastTransitionTime` is the last time the condition transitioned from one status to another.
      */

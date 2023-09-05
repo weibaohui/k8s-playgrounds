@@ -13,7 +13,7 @@
 /**
  * A scoped-resource selector requirement is a selector that contains values, a scope name, and an operator that relates the scope name and values.
  */
-export interface V1ScopedResourceSelectorRequirement {
+export class V1ScopedResourceSelectorRequirement {
   /**
      * Represents a scope's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist.
      */

@@ -16,7 +16,7 @@ import type { V1Time } from './V1Time'
 /**
  * JobStatus represents the current state of a Job.
  */
-export interface V1JobStatus {
+export class V1JobStatus {
   /**
      * The number of pending and running pods.
      */

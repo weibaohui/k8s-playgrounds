@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * ReplicationControllerCondition describes the state of a replication controller at a certain point.
  */
-export interface V1ReplicationControllerCondition {
+export class V1ReplicationControllerCondition {
   /**
      * The last time the condition transitioned from one status to another.
      */

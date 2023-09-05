@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * DaemonSetCondition describes the state of a DaemonSet at a certain point.
  */
-export interface V1DaemonSetCondition {
+export class V1DaemonSetCondition {
   /**
      * Last time the condition transitioned from one status to another.
      */

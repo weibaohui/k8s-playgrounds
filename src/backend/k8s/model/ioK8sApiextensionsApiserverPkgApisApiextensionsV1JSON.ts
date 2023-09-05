@@ -13,5 +13,5 @@
 /**
  * JSON represents any valid JSON value. These types are supported: bool, int64, float64, string, []interface{}, map[string]interface{} and nil.
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
 }

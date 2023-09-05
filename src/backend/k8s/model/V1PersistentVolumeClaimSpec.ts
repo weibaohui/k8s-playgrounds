@@ -17,7 +17,7 @@ import type { V1LabelSelector } from './v1LabelSelector'
 /**
  * PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes
  */
-export interface V1PersistentVolumeClaimSpec {
+export class V1PersistentVolumeClaimSpec {
   /**
      * accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
      */

@@ -14,7 +14,7 @@ import type { V1LocalObjectReference } from './V1LocalObjectReference'
 /**
  * ScaleIOVolumeSource represents a persistent ScaleIO volume
  */
-export interface V1ScaleIOVolumeSource {
+export class V1ScaleIOVolumeSource {
   /**
      * fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\".
      */

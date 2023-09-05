@@ -13,7 +13,7 @@
 /**
  * RuleWithOperations is a tuple of Operations and Resources. It is recommended to make sure that all the tuple expansions are valid.
  */
-export interface IoK8sApiAdmissionregistrationV1RuleWithOperations {
+export class IoK8sApiAdmissionregistration {
   /**
      * APIGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required.
      */

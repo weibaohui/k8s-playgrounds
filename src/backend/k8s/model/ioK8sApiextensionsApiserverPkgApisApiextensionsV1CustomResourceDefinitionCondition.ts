@@ -14,7 +14,7 @@ import type { V1Time } from './V1Time'
 /**
  * CustomResourceDefinitionCondition contains details for the current condition of this pod.
  */
-export interface IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition {
+export class IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition {
   /**
      * lastTransitionTime last time the condition transitioned from one status to another.
      */

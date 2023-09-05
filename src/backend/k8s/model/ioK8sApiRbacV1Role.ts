@@ -15,7 +15,7 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
 /**
  * Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.
  */
-export interface IoK8sApiRbacV1Role {
+export class IoK8sApiRbacV1Role {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */

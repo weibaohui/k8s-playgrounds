@@ -16,7 +16,7 @@ import type { V2MetricValueStatus } from './v2MetricValueStatus'
 /**
  * ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).
  */
-export interface IoK8sApiAutoscalingV2ObjectMetricStatus {
+export class IoK8sApiAutoscalingV2ObjectMetricStatus {
   /**
      * current contains the current value for the given metric
      */

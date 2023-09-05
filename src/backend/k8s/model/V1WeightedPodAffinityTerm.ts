@@ -14,7 +14,7 @@ import type { V1PodAffinityTerm } from './V1PodAffinityTerm'
 /**
  * The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
  */
-export interface V1WeightedPodAffinityTerm {
+export class V1WeightedPodAffinityTerm {
   /**
      * Required. A pod affinity term, associated with the corresponding weight.
      */

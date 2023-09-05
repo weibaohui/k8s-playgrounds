@@ -13,7 +13,7 @@
 /**
  * NodeSystemInfo is a set of ids/uuids to uniquely identify the node.
  */
-export interface V1NodeSystemInfo {
+export class V1NodeSystemInfo {
   /**
      * The Architecture reported by the node
      */

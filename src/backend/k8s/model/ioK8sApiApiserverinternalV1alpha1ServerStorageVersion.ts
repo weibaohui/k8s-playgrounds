@@ -13,7 +13,7 @@
 /**
  * An API server instance reports the version it can decode and the version it encodes objects to when persisting objects in the backend.
  */
-export interface IoK8sApiApiserverinternalV1alpha1ServerStorageVersion {
+export class IoK8sApiApiserverinternalV1alpha1ServerStorageVersion {
   /**
      * The ID of the reporting API server.
      */

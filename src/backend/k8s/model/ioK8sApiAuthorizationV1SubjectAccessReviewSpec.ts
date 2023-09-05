@@ -15,7 +15,7 @@ import type { IoK8sApiAuthorizationV1ResourceAttributes } from './ioK8sApiAuthor
 /**
  * SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set
  */
-export interface IoK8sApiAuthorizationV1SubjectAccessReviewSpec {
+export class IoK8sApiAuthorizationV1SubjectAccessReviewSpec {
   /**
      * Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here.
      */

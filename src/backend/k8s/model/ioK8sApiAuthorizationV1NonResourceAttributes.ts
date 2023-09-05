@@ -13,7 +13,7 @@
 /**
  * NonResourceAttributes includes the authorization attributes available for non-resource requests to the Authorizer interface
  */
-export interface IoK8sApiAuthorizationV1NonResourceAttributes {
+export class IoK8sApiAuthorizationV1NonResourceAttributes {
   /**
      * Path is the URL path of the request
      */

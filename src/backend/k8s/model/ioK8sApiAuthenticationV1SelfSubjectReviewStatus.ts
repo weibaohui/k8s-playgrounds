@@ -14,7 +14,7 @@ import type { IoK8sApiAuthenticationV1UserInfo } from './ioK8sApiAuthenticationV
 /**
  * SelfSubjectReviewStatus is filled by the kube-apiserver and sent back to a user.
  */
-export interface IoK8sApiAuthenticationV1SelfSubjectReviewStatus {
+export class IoK8sApiAuthenticationV1SelfSubjectReviewStatus {
   /**
      * User attributes of the user making this request.
      */
