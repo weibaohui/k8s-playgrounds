@@ -86,6 +86,10 @@ export class K8sService {
         return K8sService.playService.nsControllerGetOneByName({
           name,
         })
+      case ResType.IngressClass:
+        return K8sService.playService.ingressClassControllerGetOneByName({
+          name,
+        })
       case ResType.LimitRange:
         return K8sService.playService.limitRangeControllerGetOneByNsName({
           ns,

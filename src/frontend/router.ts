@@ -5,6 +5,7 @@ import DeployListView from '@frontend/components/deployment/DeployListView.vue'
 import EpListView from '@frontend/components/endpoint/EpListView.vue'
 import HpaListView from '@frontend/components/HorizontalPodAutoscaler/HpaListView.vue'
 import IngListView from '@frontend/components/ingress/IngListView.vue'
+import IngressClassListView from '@frontend/components/ingressClass/IngressClassListView.vue'
 import JobListView from '@frontend/components/job/JobListView.vue'
 import LimitsListView from '@frontend/components/limitrange/LimitsListView.vue'
 import PdbListView from '@frontend/components/PodDisruptionBudget/PdbListView.vue'
@@ -103,6 +104,9 @@ export default createRouter({
     }, {
       path: '/ingresses',
       component: IngListView,
+    }, {
+      path: '/ingressClasses',
+      component: IngressClassListView,
     },
   ],
 })

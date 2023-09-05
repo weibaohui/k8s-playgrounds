@@ -301,6 +301,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'Ingresses' },
           ),
         key: 'go-to-ingresses',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/ingressClasses',
+              },
+            },
+            { default: () => 'IngressClasses' },
+          ),
+        key: 'go-to-ingressClasses',
       },
     ],
   },

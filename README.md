@@ -213,6 +213,12 @@ shamefully-hoist=true
 |                 Ingress | 详情             | ✅       |
 |                 Ingress | 详情-查看yaml      | ✅       |
 |                 Ingress | 详情-删除          | ✅       |
+|            IngressClass | 列表             | ✅       |
+|            IngressClass | 列表-查看yaml      | ✅       |
+|            IngressClass | 列表-删除          | ✅       |
+|            IngressClass | 详情             | ✅       |
+|            IngressClass | 详情-查看yaml      | ✅       |
+|            IngressClass | 详情-删除          | ✅       |
 ## 开发提示
 
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成

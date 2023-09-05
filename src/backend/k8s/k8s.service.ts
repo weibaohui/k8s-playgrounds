@@ -5,6 +5,7 @@ import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
 import { EndpointService } from '@backend/k8s/endpoint/Endpoint.service'
 import { HorizontalPodAutoscalerService } from '@backend/k8s/horizontalpodautoscaler/HorizontalPodAutoscaler.service'
 import { IngressService } from '@backend/k8s/ingress/ingress.service'
+import { IngressClassService } from '@backend/k8s/ingressClass/IngressClass.service'
 import { JobService } from '@backend/k8s/job/job.service'
 import { LimitRangeService } from '@backend/k8s/limitrange/limitrange.service'
 import { PodDisruptionBudgetService } from '@backend/k8s/PodDisruptionBudget/PodDisruptionBudget.service'
@@ -51,5 +52,6 @@ export class K8sService {
     public endpointService: EndpointService,
     public networkSvcService: NetworkSvcService,
     public ingressService: IngressService,
+    public ingressClassService: IngressClassService,
   ) {}
 }
