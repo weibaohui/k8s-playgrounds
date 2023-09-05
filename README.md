@@ -160,12 +160,10 @@ shamefully-hoist=true
 |           PriorityClass | 列表-查看yaml      | ✅       |
 |           PriorityClass | 列表-删除          | ✅       |
 |           PriorityClass | 列表-全局默认        | ✅       |
-|           PriorityClass | 列表-取消全局        | ✅       |
 |           PriorityClass | 详情             | ✅       |
 |           PriorityClass | 详情-查看yaml      | ✅       |
 |           PriorityClass | 详情-删除          | ✅       |
 |           PriorityClass | 详情-全局默认        | ✅       |
-|           PriorityClass | 详情-取消全局        | ✅       |
 |           ResourceQuota | 列表             | ✅       |
 |           ResourceQuota | 列表-查看yaml      | ✅       |
 |           ResourceQuota | 列表-删除          | ✅       |
@@ -215,9 +213,11 @@ shamefully-hoist=true
 |                 Ingress | 详情-删除          | ✅       |
 |            IngressClass | 列表             | ✅       |
 |            IngressClass | 列表-查看yaml      | ✅       |
+|            IngressClass | 列表-设置默认        | ✅       |
 |            IngressClass | 列表-删除          | ✅       |
 |            IngressClass | 详情             | ✅       |
 |            IngressClass | 详情-查看yaml      | ✅       |
+|            IngressClass | 详情-设置默认        | ✅       |
 |            IngressClass | 详情-删除          | ✅       |
 ## 开发提示
 
