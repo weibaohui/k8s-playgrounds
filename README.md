@@ -207,6 +207,12 @@ shamefully-hoist=true
 |                 Service | 详情             | ✅       |
 |                 Service | 详情-查看yaml      | ✅       |
 |                 Service | 详情-删除          | ✅       |
+|                 Ingress | 列表             | ✅       |
+|                 Ingress | 列表-查看yaml      | ✅       |
+|                 Ingress | 列表-删除          | ✅       |
+|                 Ingress | 详情             | ✅       |
+|                 Ingress | 详情-查看yaml      | ✅       |
+|                 Ingress | 详情-删除          | ✅       |
 ## 开发提示
 
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成
