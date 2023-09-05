@@ -14,9 +14,35 @@ const props = defineProps({
     <tbody>
       <tr>
         <td class="left">
-          ipFamilies
+          Type
         </td>
-        <td>{{ props.svc.spec.ipFamilies }}</td>
+        <td>{{ props.svc.spec.type }}</td>
+      </tr>
+      <tr>
+        <td>
+          Session Affinity
+        </td>
+        <td>{{ props.svc.spec.sessionAffinity }}{{ props.svc.spec.sessionAffinityConfig }}</td>
+      </tr>
+      <tr v-if="props.svc.spec.externalName">
+        <td>
+          External Name
+        </td>
+        <td>{{ props.svc.spec.externalName }}</td>
+      </tr>
+      <tr v-if="props.svc.spec.externalTrafficPolicy">
+        <td>
+          TrafficPolicy
+          (External)
+        </td>
+        <td>{{ props.svc.spec.externalTrafficPolicy }}</td>
+      </tr>
+      <tr v-if="props.svc.spec.internalTrafficPolicy">
+        <td>
+          TrafficPolicy
+          (Internal)
+        </td>
+        <td>{{ props.svc.spec.internalTrafficPolicy }}</td>
       </tr>
     </tbody>
   </NTable>

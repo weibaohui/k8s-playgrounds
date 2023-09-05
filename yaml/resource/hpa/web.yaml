@@ -43,3 +43,35 @@ spec:
       targetPort: https-web-svc
   selector:
     run: nginx-web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-web-noderport
+  labels:
+    run: nginx-web
+spec:
+  ports:
+    - name: http-web-svc
+      protocol: TCP
+      port: 80
+      targetPort: http-web-svc
+    - name: https-web-svc
+      protocol: TCP
+      port: 443
+      targetPort: https-web-svc
+  type: NodePort
+  selector:
+    run: nginx-web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-web-externalname
+  labels:
+    run: nginx-web
+spec:
+  type: ExternalName
+  externalName: my.nginx.example.com
+  selector:
+    run: nginx-web

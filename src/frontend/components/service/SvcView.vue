@@ -3,6 +3,8 @@ import { V1Service } from '@backend/k8s/model/V1Service'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import SvcActionView from '@frontend/components/service/SvcActionView.vue'
 import SvcBasicInfoView from '@frontend/components/service/SvcBasicInfoView.vue'
+import SvcConnectView from '@frontend/components/service/SvcConnectView.vue'
+import SvcEndpointListView from '@frontend/components/service/SvcEndpointListView.vue'
 import { NH6, NMessageProvider, NText } from 'naive-ui'
 
 const props = defineProps({
@@ -20,6 +22,19 @@ const props = defineProps({
     </NText>
   </NH6>
   <SvcBasicInfoView :svc="props.svc" />
+  <NH6 prefix="bar" align-text type="success">
+    <NText type="success">
+      Connect Info
+    </NText>
+  </NH6>
+  <SvcConnectView :svc="props.svc" />
+
+  <NH6 prefix="bar" align-text type="success">
+    <NText type="success">
+      Endpoints
+    </NText>
+  </NH6>
+  <SvcEndpointListView :svc="props.svc" />
 
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">

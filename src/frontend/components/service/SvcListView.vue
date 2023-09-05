@@ -66,6 +66,43 @@ function createColumns(): DataTableColumns<V1Service> {
       },
     },
     {
+      title: 'Type',
+      key: 'type',
+      render(row: V1Service) {
+        return row.spec.type
+      },
+    },
+    {
+      title: 'ClusterIP',
+      key: 'ClusterIP',
+      render(row: V1Service) {
+        return row.spec.clusterIP
+      },
+    },
+    {
+      title: 'Ports',
+      key: 'Ports',
+      render(row: V1Service) {
+        return row.spec.ports?.map((r) => {
+          if (r.nodePort)
+            return `${r.port}:${r.nodePort}/${r.protocol}`
+          if (r.port.toString() === r.targetPort.toString())
+            return `${r.port}/${r.protocol}`
+          return `${r.port}:${r.targetPort}/${r.protocol}`
+        }).join(', ')
+      },
+    },
+    {
+      title: 'ExternalIP',
+      key: 'ExternalIP',
+      render(row: V1Service) {
+        return row.status.loadBalancer?.ingress?.map((r) => {
+          return r.ip ? r.ip : r.hostname
+        },
+        ).join(',')
+      },
+    },
+    {
       title: 'Age',
       key: 'age',
       render(row) {

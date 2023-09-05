@@ -8,7 +8,7 @@ const props = defineProps({
 })
 function getIps() {
   const ips = new Array<string>()
-  props.ep.subsets.filter(r => r.addresses !== undefined)
+  props.ep.subsets?.filter(r => r.addresses !== undefined)
     .forEach((subset) => {
       subset.ports.forEach((p) => {
         subset.addresses.forEach((ip) => {

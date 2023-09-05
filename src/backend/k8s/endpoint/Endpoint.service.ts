@@ -19,6 +19,13 @@ export class EndpointService {
     return resp.body.items
   }
 
+  async ListByNsName(ns: string, name: string) {
+    const k8sApi = this.clientService.getCoreV1Api()
+    const selector = `metadata.name=${name},metadata.namespace=${ns}`
+    const resp = await k8sApi.listNamespacedEndpoints(ns, undefined, undefined, undefined, selector)
+    return resp.body.items
+  }
+
   async GetOneByNsName(ns: string, name: string) {
     const k8sApi = this.clientService.getCoreV1Api()
     const resp = await k8sApi.readNamespacedEndpoints(name, ns)

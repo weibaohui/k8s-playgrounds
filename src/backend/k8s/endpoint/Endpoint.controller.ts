@@ -22,6 +22,11 @@ export class EndpointController {
     return await this.k8sService.endpointService.List(ns)
   }
 
+  @Get('/list/ns/:ns/name/:name')
+  async ListByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+    return await this.k8sService.endpointService.ListByNsName(ns, name)
+  }
+
   @Post('/delete')
   async Delete(@Body() nsn: Array<string>) {
     nsn.forEach((r) => {
