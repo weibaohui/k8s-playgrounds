@@ -7,7 +7,6 @@ const props = defineProps({
   ingressClass: V1IngressClass,
 })
 function isDefault() {
-  console.log(props.ingressClass.metadata.annotations['ingressclass.kubernetes.io/is-default-class'])
   return props.ingressClass.metadata.annotations['ingressclass.kubernetes.io/is-default-class'] === 'true'
 }
 </script>
