@@ -2,6 +2,7 @@ import CmListView from '@frontend/components/configmap/CmListView.vue'
 import CronJobListView from '@frontend/components/cronjob/CronJobListView.vue'
 import DsListView from '@frontend/components/daemonset/DsListView.vue'
 import DeployListView from '@frontend/components/deployment/DeployListView.vue'
+import EpListView from '@frontend/components/endpoint/EpListView.vue'
 import HpaListView from '@frontend/components/HorizontalPodAutoscaler/HpaListView.vue'
 import JobListView from '@frontend/components/job/JobListView.vue'
 import LimitsListView from '@frontend/components/limitrange/LimitsListView.vue'
@@ -89,6 +90,10 @@ export default createRouter({
     {
       path: '/horizontalPodAutoscaler',
       component: HpaListView,
+    },
+    {
+      path: '/endpoints',
+      component: EpListView,
     },
   ],
 })

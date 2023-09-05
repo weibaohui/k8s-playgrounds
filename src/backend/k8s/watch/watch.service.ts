@@ -83,6 +83,9 @@ export class WatchService {
       case ResType.CronJob:
         watchPath = '/apis/batch/v1/cronjobs'
         break
+      case ResType.Endpoint:
+        watchPath = '/apis/batch/v1/endpoints'
+        break
       case ResType.PodDisruptionBudget:
         watchPath = '/apis/policy/v1/poddisruptionbudgets'
         break

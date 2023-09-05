@@ -260,6 +260,26 @@ const menuOptions: MenuOption[] = [
       },
     ],
   },
+  {
+    label: 'Network',
+    key: 'Network',
+    icon: renderIcon(ListAlt),
+    children: [
+      {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/endpoints',
+              },
+            },
+            { default: () => 'Endpoints' },
+          ),
+        key: 'go-to-endpoints',
+      },
+    ],
+  },
 ]
 
 const collapsed = ref(true)

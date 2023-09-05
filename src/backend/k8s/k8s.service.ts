@@ -2,6 +2,7 @@ import { ConfigMapService } from '@backend/k8s/configmap/configmap.service'
 import { CronJobService } from '@backend/k8s/cronjob/cronjob.service'
 import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
+import { EndpointService } from '@backend/k8s/endpoint/Endpoint.service'
 import { HorizontalPodAutoscalerService } from '@backend/k8s/horizontalpodautoscaler/HorizontalPodAutoscaler.service'
 import { JobService } from '@backend/k8s/job/job.service'
 import { LimitRangeService } from '@backend/k8s/limitrange/limitrange.service'
@@ -45,5 +46,6 @@ export class K8sService {
     public limitRangeService: LimitRangeService,
     public horizontalPodAutoscalerService: HorizontalPodAutoscalerService,
     public podDisruptionBudgetService: PodDisruptionBudgetService,
+    public endpointService: EndpointService,
   ) {}
 }

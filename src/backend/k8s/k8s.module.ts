@@ -6,6 +6,8 @@ import { DaemonSetController } from '@backend/k8s/daemonset/daemonset.controller
 import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
 import { DeploymentController } from '@backend/k8s/deployment/deployment.controller'
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
+import { EndpointController } from '@backend/k8s/endpoint/Endpoint.controller'
+import { EndpointService } from '@backend/k8s/endpoint/Endpoint.service'
 import {
   HorizontalPodAutoscalerController,
 } from '@backend/k8s/horizontalpodautoscaler/HorizontalPodAutoscaler.controller'
@@ -52,6 +54,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     JobController, CronJobController, ConfigmapController,
     SecretController, PriorityClassController, ResourceQuotaController,
     LimitRangeController, HorizontalPodAutoscalerController, PodDisruptionBudgetController,
+    EndpointController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -62,6 +65,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     JobService, CronJobService, ConfigMapService,
     SecretService, PriorityClassService, ResourceQuotaService,
     LimitRangeService, HorizontalPodAutoscalerService, PodDisruptionBudgetService,
+    EndpointService,
   ],
   exports: [K8sService],
 })

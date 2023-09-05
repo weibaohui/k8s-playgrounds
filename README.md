@@ -192,6 +192,12 @@ shamefully-hoist=true
 |     PodDisruptionBudget | 详情             | ✅       |
 |     PodDisruptionBudget | 详情-查看yaml      | ✅       |
 |     PodDisruptionBudget | 详情-删除          | ✅       |
+|                Endpoint | 列表             | ✅       |
+|                Endpoint | 列表-查看yaml      | ✅       |
+|                Endpoint | 列表-删除          | ✅       |
+|                Endpoint | 详情             | ✅       |
+|                Endpoint | 详情-查看yaml      | ✅       |
+|                Endpoint | 详情-删除          | ✅       |
 ## 开发提示
 
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成

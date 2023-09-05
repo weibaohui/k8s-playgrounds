@@ -101,6 +101,11 @@ export class K8sService {
           ns,
           name,
         })
+      case ResType.Endpoint:
+        return K8sService.playService.endpointControllerGetOneByNsName({
+          ns,
+          name,
+        })
     }
   }
 }
