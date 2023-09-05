@@ -18,9 +18,6 @@ function getIps() {
     })
   return ips
 }
-function getColor() {
-  return ColorHelper.randomColor()
-}
 </script>
 
 <template>
