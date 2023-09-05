@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiNetworkingV1IngressSpec } from './ioK8sApiNetworkingV1IngressSpec'
-import type { IoK8sApiNetworkingV1IngressStatus } from './ioK8sApiNetworkingV1IngressStatus'
+import type { V1IngressSpec } from './v1IngressSpec'
+import type { V1IngressStatus } from './v1IngressStatus'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by a backend. An Ingress can be configured to give services externally-reachable urls, load balance traffic, terminate SSL, offer name based virtual hosting etc.
  */
-export interface IoK8sApiNetworkingV1Ingress {
+export class V1Ingress {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -32,9 +32,9 @@ export interface IoK8sApiNetworkingV1Ingress {
   /**
      * spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-  spec?: IoK8sApiNetworkingV1IngressSpec
+  spec?: V1IngressSpec
   /**
      * status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-  status?: IoK8sApiNetworkingV1IngressStatus
+  status?: V1IngressStatus
 }

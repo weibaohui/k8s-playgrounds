@@ -19,4 +19,5 @@ export enum ResType {
   PodDisruptionBudget = 'PodDisruptionBudget',
   Endpoint = 'Endpoint',
   Service = 'Service',
+  Ingress = 'Ingress',
 }

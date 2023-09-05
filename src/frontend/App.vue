@@ -289,6 +289,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'Services' },
           ),
         key: 'go-to-services',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/ingresses',
+              },
+            },
+            { default: () => 'Ingresses' },
+          ),
+        key: 'go-to-ingresses',
       },
     ],
   },

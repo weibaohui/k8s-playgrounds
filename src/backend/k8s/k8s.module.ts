@@ -12,6 +12,8 @@ import {
   HorizontalPodAutoscalerController,
 } from '@backend/k8s/horizontalpodautoscaler/HorizontalPodAutoscaler.controller'
 import { HorizontalPodAutoscalerService } from '@backend/k8s/horizontalpodautoscaler/HorizontalPodAutoscaler.service'
+import { IngressController } from '@backend/k8s/ingress/ingress.controller'
+import { IngressService } from '@backend/k8s/ingress/ingress.service'
 import { JobController } from '@backend/k8s/job/job.controller'
 import { JobService } from '@backend/k8s/job/job.service'
 import { LimitRangeController } from '@backend/k8s/limitrange/limitrange.controller'
@@ -56,7 +58,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     JobController, CronJobController, ConfigmapController,
     SecretController, PriorityClassController, ResourceQuotaController,
     LimitRangeController, HorizontalPodAutoscalerController, PodDisruptionBudgetController,
-    EndpointController, NetworkSvcController,
+    EndpointController, NetworkSvcController, IngressController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -67,7 +69,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     JobService, CronJobService, ConfigMapService,
     SecretService, PriorityClassService, ResourceQuotaService,
     LimitRangeService, HorizontalPodAutoscalerService, PodDisruptionBudgetService,
-    EndpointService, NetworkSvcService,
+    EndpointService, NetworkSvcService, IngressService,
   ],
   exports: [K8sService],
 })

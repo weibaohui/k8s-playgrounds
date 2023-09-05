@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiNetworkingV1Ingress } from './ioK8sApiNetworkingV1Ingress'
+import type { V1Ingress } from './v1Ingress'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**
@@ -23,7 +23,7 @@ export interface IoK8sApiNetworkingV1IngressList {
   /**
      * items is the list of Ingress.
      */
-  items: Array<IoK8sApiNetworkingV1Ingress>
+  items: Array<V1Ingress>
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */

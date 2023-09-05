@@ -111,6 +111,11 @@ export class K8sService {
           ns,
           name,
         })
+      case ResType.Ingress:
+        return K8sService.playService.ingressControllerGetOneByNsName({
+          ns,
+          name,
+        })
     }
   }
 }

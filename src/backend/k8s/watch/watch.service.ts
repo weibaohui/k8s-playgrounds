@@ -95,6 +95,9 @@ export class WatchService {
       case ResType.PriorityClass:
         watchPath = '/apis/scheduling.k8s.io/v1/priorityclasses'
         break
+      case ResType.Ingress:
+        watchPath = '/apis/networking.k8s.io/v1/ingresses'
+        break
       case ResType.HorizontalPodAutoscaler:
         watchPath = '/apis/autoscaling/v2/horizontalpodautoscalers'
         break

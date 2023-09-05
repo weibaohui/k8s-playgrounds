@@ -14,7 +14,7 @@ import type { IoK8sApiNetworkingV1ServiceBackendPort } from './ioK8sApiNetworkin
 /**
  * IngressServiceBackend references a Kubernetes Service as a Backend.
  */
-export interface IoK8sApiNetworkingV1IngressServiceBackend {
+export interface V1IngressServiceBackend {
   /**
      * name is the referenced service. The service must exist in the same namespace as the Ingress object.
      */

@@ -10,12 +10,12 @@
  * Do not edit the class manually.
  */
 import type { V1TypedLocalObjectReference } from './V1TypedLocalObjectReference'
-import type { IoK8sApiNetworkingV1IngressServiceBackend } from './ioK8sApiNetworkingV1IngressServiceBackend'
+import type { V1IngressServiceBackend } from './v1IngressServiceBackend'
 
 /**
  * IngressBackend describes all endpoints for a given service and port.
  */
-export interface IoK8sApiNetworkingV1IngressBackend {
+export class V1IngressBackend {
   /**
      * resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with \"Service\".
      */
@@ -23,5 +23,5 @@ export interface IoK8sApiNetworkingV1IngressBackend {
   /**
      * service references a service as a backend. This is a mutually exclusive setting with \"Resource\".
      */
-  service?: IoK8sApiNetworkingV1IngressServiceBackend
+  service?: V1IngressServiceBackend
 }
