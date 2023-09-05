@@ -15,7 +15,10 @@ spec:
         - name: nginx-web
           image: nginx:alpine
           ports:
+            - containerPort: 443
+              name: https-web-svc
             - containerPort: 80
+              name: http-web-svc
           resources:
             limits:
               cpu: 500m
@@ -30,6 +33,13 @@ metadata:
     run: nginx-web
 spec:
   ports:
-    - port: 80
+    - name: http-web-svc
+      protocol: TCP
+      port: 80
+      targetPort: http-web-svc
+    - name: https-web-svc
+      protocol: TCP
+      port: 443
+      targetPort: https-web-svc
   selector:
     run: nginx-web

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { V1Endpoints } from '@backend/k8s/model/V1Endpoints'
 import { V1EndpointSubset } from '@backend/k8s/model/V1EndpointSubset'
 import { V1ObjectMeta } from '@backend/k8s/model/V1ObjectMeta'
 import type { V1ObjectReference } from '@backend/k8s/model/V1ObjectReference'
@@ -8,7 +7,6 @@ import ControlledByView from '@frontend/components/common/ControlledByView.vue'
 import { NDivider, NTable } from 'naive-ui'
 
 const props = defineProps({
-  ep: V1Endpoints,
   subset: V1EndpointSubset,
 })
 function getFakeV1ObjectMeta(t: V1ObjectReference) {

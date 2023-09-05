@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Clock, Cube, LayerGroup, ListAlt, Server } from '@vicons/fa'
+import { Clock, Cube, LayerGroup, ListAlt, NetworkWired, Server } from '@vicons/fa'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'
 import { RouterLink } from 'vue-router'
@@ -263,7 +263,7 @@ const menuOptions: MenuOption[] = [
   {
     label: 'Network',
     key: 'Network',
-    icon: renderIcon(ListAlt),
+    icon: renderIcon(NetworkWired),
     children: [
       {
         label: () =>

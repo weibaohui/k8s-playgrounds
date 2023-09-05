@@ -3,6 +3,7 @@ import type { V1Endpoints } from '@backend/k8s/model/V1Endpoints'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import EpActionView from '@frontend/components/endpoint/EpActionView.vue'
+import EpSubsetIPTagView from '@frontend/components/endpoint/EpSubsetIPTagView.vue'
 import EpView from '@frontend/components/endpoint/EpView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
@@ -62,6 +63,17 @@ function createColumns(): DataTableColumns<V1Endpoints> {
             },
           },
           { default: () => row.metadata.namespace },
+        )
+      },
+    },
+    {
+      title: 'Endpoints',
+      key: 'Endpoints',
+      render(row: V1Endpoints) {
+        return h(EpSubsetIPTagView,
+          {
+            ep: row,
+          },
         )
       },
     },
