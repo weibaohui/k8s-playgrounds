@@ -196,6 +196,9 @@ shamefully-hoist=true
 |                Endpoint | 列表-查看yaml      | ✅       |
 |                Endpoint | 列表-删除          | ✅       |
 |                Endpoint | 详情             | ✅       |
+|                Endpoint | 详情-IP列表        | ✅       |
+|                Endpoint | 详情-未生效IP列表     | ✅       |
+|                Endpoint | 详情-端口列表        | ✅       |
 |                Endpoint | 详情-查看yaml      | ✅       |
 |                Endpoint | 详情-删除          | ✅       |
 ## 开发提示
