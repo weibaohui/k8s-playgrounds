@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import ControlledByView from '@frontend/components/common/ControlledByView.vue'
 import ResourceWarnIcon from '@frontend/components/common/ResourceWarnIcon.vue'
+import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import moment from 'moment/moment'
-import { NList, NSpace, NTable } from 'naive-ui'
+import { NList, NSpace, NTable, NTag } from 'naive-ui'
 import { V1ObjectMeta } from '@backend/k8s/model/V1ObjectMeta'
 
 const props = defineProps({
@@ -36,13 +37,11 @@ const props = defineProps({
       <tr v-if="props.item.labels">
         <td>Labels</td>
         <td>
-          <NList>
-            <NListItem v-for="(v, k) in props.item.labels" :key="k">
-              <NSpace :wrap="true" class="words">
-                {{ k }}={{ v }}
-              </NSpace>
-            </NListItem>
-          </NList>
+          <NSpace :wrap="true" class="words">
+            <NTag v-for="(v, k) in props.item.labels" :key="k" :color="{ color: ColorHelper.randomColor(), textColor: '#fff' }">
+              {{ k }}={{ v }}
+            </NTag>
+          </NSpace>
         </td>
       </tr>
       <tr v-if="props.item.annotations">
@@ -51,7 +50,9 @@ const props = defineProps({
           <NList>
             <NListItem v-for="(v, k) in props.item.annotations" :key="k">
               <NSpace :wrap="true" class="words">
-                {{ k }}={{ v }}
+                <span :style="{ backendColor: ColorHelper.randomColor() }">
+                  {{ k }}={{ v }}
+                </span>
               </NSpace>
             </NListItem>
           </NList>
