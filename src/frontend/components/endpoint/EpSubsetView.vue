@@ -21,10 +21,10 @@ function getFakeV1ObjectMeta(t: V1ObjectReference) {
 </script>
 
 <template>
-  <NDivider title-placement="left">
+  <NDivider v-if="props.subset.addresses" title-placement="left">
     addresses
   </NDivider>
-  <NTable>
+  <NTable v-if="props.subset.addresses">
     <tbody>
       <tr>
         <th class="left">
@@ -41,15 +41,15 @@ function getFakeV1ObjectMeta(t: V1ObjectReference) {
         </td>
         <td>{{ sub.hostname }} {{ sub.nodeName }}</td>
         <td>
-          <ControlledByView :item="getFakeV1ObjectMeta(sub.targetRef)" :simple="false" />
+          <ControlledByView v-if="sub.targetRef" :item="getFakeV1ObjectMeta(sub.targetRef)" :simple="false" />
         </td>
       </tr>
     </tbody>
   </NTable>
-  <NDivider title-placement="left">
+  <NDivider v-if="props.subset.notReadyAddresses" title-placement="left">
     notReadyAddresses
   </NDivider>
-  <NTable>
+  <NTable v-if="props.subset.notReadyAddresses">
     <tbody>
       <tr>
         <th class="left">
@@ -71,10 +71,10 @@ function getFakeV1ObjectMeta(t: V1ObjectReference) {
       </tr>
     </tbody>
   </NTable>
-  <NDivider title-placement="left">
+  <NDivider v-if="props.subset.ports" title-placement="left">
     Ports
   </NDivider>
-  <NTable>
+  <NTable v-if="props.subset.ports">
     <tbody>
       <tr>
         <th class="left">
