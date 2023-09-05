@@ -65,6 +65,12 @@ export class WatchService {
       case ResType.LimitRange:
         watchPath = '/api/v1/limitranges'
         break
+      case ResType.Endpoint:
+        watchPath = '/api/v1/endpoints'
+        break
+      case ResType.Service:
+        watchPath = '/api/v1/services'
+        break
       case ResType.Deployment:
         watchPath = '/apis/apps/v1/deployments'
         break
@@ -82,9 +88,6 @@ export class WatchService {
         break
       case ResType.CronJob:
         watchPath = '/apis/batch/v1/cronjobs'
-        break
-      case ResType.Endpoint:
-        watchPath = '/apis/batch/v1/endpoints'
         break
       case ResType.PodDisruptionBudget:
         watchPath = '/apis/policy/v1/poddisruptionbudgets'

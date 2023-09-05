@@ -201,6 +201,12 @@ shamefully-hoist=true
 |                Endpoint | 详情-端口列表        | ✅       |
 |                Endpoint | 详情-查看yaml      | ✅       |
 |                Endpoint | 详情-删除          | ✅       |
+|                 Service | 列表             | ✅       |
+|                 Service | 列表-查看yaml      | ✅       |
+|                 Service | 列表-删除          | ✅       |
+|                 Service | 详情             | ✅       |
+|                 Service | 详情-查看yaml      | ✅       |
+|                 Service | 详情-删除          | ✅       |
 ## 开发提示
 
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成

@@ -12,6 +12,7 @@ import { ReplicaSetService } from '@backend/k8s/replicaset/replicaset.service'
 import { ReplicationControllerService } from '@backend/k8s/replicationController/replication.service'
 import { ResourceQuotaService } from '@backend/k8s/resourcequota/resourcequota.service'
 import { SecretService } from '@backend/k8s/secret/secret.service'
+import { NetworkSvcService } from '@backend/k8s/service/NetworkSvc.service'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
 import { Injectable, Logger } from '@nestjs/common'
@@ -47,5 +48,6 @@ export class K8sService {
     public horizontalPodAutoscalerService: HorizontalPodAutoscalerService,
     public podDisruptionBudgetService: PodDisruptionBudgetService,
     public endpointService: EndpointService,
+    public networkSvcService: NetworkSvcService,
   ) {}
 }

@@ -18,4 +18,5 @@ export enum ResType {
   HorizontalPodAutoscaler = 'HorizontalPodAutoscaler',
   PodDisruptionBudget = 'PodDisruptionBudget',
   Endpoint = 'Endpoint',
+  Service = 'Service',
 }

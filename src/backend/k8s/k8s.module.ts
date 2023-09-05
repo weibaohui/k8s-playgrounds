@@ -27,6 +27,8 @@ import { ResourceQuotaController } from '@backend/k8s/resourcequota/resourcequot
 import { ResourceQuotaService } from '@backend/k8s/resourcequota/resourcequota.service'
 import { SecretController } from '@backend/k8s/secret/secret.controller'
 import { SecretService } from '@backend/k8s/secret/secret.service'
+import { NetworkSvcController } from '@backend/k8s/service/NetworkSvc.controller'
+import { NetworkSvcService } from '@backend/k8s/service/NetworkSvc.service'
 import { StatefulSetController } from '@backend/k8s/statefulset/statefulset.controller'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
@@ -54,7 +56,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     JobController, CronJobController, ConfigmapController,
     SecretController, PriorityClassController, ResourceQuotaController,
     LimitRangeController, HorizontalPodAutoscalerController, PodDisruptionBudgetController,
-    EndpointController,
+    EndpointController, NetworkSvcController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -65,7 +67,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     JobService, CronJobService, ConfigMapService,
     SecretService, PriorityClassService, ResourceQuotaService,
     LimitRangeService, HorizontalPodAutoscalerService, PodDisruptionBudgetService,
-    EndpointService,
+    EndpointService, NetworkSvcService,
   ],
   exports: [K8sService],
 })

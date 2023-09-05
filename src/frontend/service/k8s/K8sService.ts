@@ -106,6 +106,11 @@ export class K8sService {
           ns,
           name,
         })
+      case ResType.Service:
+        return K8sService.playService.networkSvcControllerGetOneByNsName({
+          ns,
+          name,
+        })
     }
   }
 }

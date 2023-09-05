@@ -277,6 +277,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'Endpoints' },
           ),
         key: 'go-to-endpoints',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/services',
+              },
+            },
+            { default: () => 'Services' },
+          ),
+        key: 'go-to-services',
       },
     ],
   },
