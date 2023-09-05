@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import type { V1IngressClass } from '@backend/k8s/model/v1IngressClass'
 import type { V1PriorityClass } from '@backend/k8s/model/v1PriorityClass'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import PcActionView from '@frontend/components/priorityclass/PcActionView.vue'
+import PcGlobalDefaultView from '@frontend/components/priorityclass/PcGlobalDefaultView.vue'
 import PcView from '@frontend/components/priorityclass/PcView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
@@ -53,9 +55,13 @@ function createColumns(): DataTableColumns<V1PriorityClass> {
     },
     {
       title: 'GlobalDefault',
-      key: 'globalDefault',
-      render(row: V1PriorityClass) {
-        return row.globalDefault ? 'true' : 'false'
+      key: 'GlobalDefault',
+      render(row: V1IngressClass) {
+        return h(PcGlobalDefaultView,
+          {
+            pc: row,
+          },
+        )
       },
     },
     {
