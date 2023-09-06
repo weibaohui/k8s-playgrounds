@@ -180,8 +180,8 @@ metadata:
   name: testsecret-tls
   namespace: default
 data:
-  tls.crt: base64 encoded cert
-  tls.key: base64 encoded key
+  tls.crt: Nzc3Nzc3Nzc3Nzc3Nw==
+  tls.key: Nzc3Nzc3Nzc3Nzc3Nw==
 type: kubernetes.io/tls
 ---
 apiVersion: networking.k8s.io/v1
