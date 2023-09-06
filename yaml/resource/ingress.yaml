@@ -33,6 +33,13 @@ spec:
                 name: nginx-web
                 port:
                   number: 80
+          - pathType: Prefix
+            path: "/bar2"
+            backend:
+              resource:
+                apiGroup: k8s.example.com
+                kind: StorageBucket
+                name: static-assets
     - host: "*.foo.com"
       http:
         paths:
@@ -43,11 +50,18 @@ spec:
                 name: nginx-web
                 port:
                   number: 80
+          - pathType: Prefix
+            path: "/foo2"
+            backend:
+              service:
+                name: nginx-web
+                port:
+                  number: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-resource-backend
+  name: ingress-resource-default-backend
 spec:
   defaultBackend:
     resource:
@@ -68,7 +82,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: test-ingress
+  name: ingress-svc-default-backend
 spec:
   defaultBackend:
     service:
@@ -192,6 +206,13 @@ spec:
   tls:
     - hosts:
         - https-example.foo.com
+        - https-example2.foo.com
+        - https-example3.foo.com
+      secretName: testsecret-tls
+    - hosts:
+        - b1.bar.com
+        - b2.bar.com
+        - b3.bar.com
       secretName: testsecret-tls
   rules:
     - host: https-example.foo.com
