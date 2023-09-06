@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
   <NSpace vertical>
-    <NTag v-for="(k, v) in props.ns.metadata.labels" :key="k" :color="{ color: ColorHelper.randomColor() }">
+    <NTag v-for="(v, k) in props.ns.metadata.labels" :key="k" :color="{ color: ColorHelper.randomColor() }">
       {{ k }}={{ v }}
     </NTag>
   </NSpace>
