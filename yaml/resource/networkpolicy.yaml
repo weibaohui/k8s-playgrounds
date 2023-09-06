@@ -13,6 +13,17 @@ spec:
   ingress:
     - from:
         - ipBlock:
+            cidr: 190.17.0.0/16
+            except:
+              - 190.17.1.0/24
+        - namespaceSelector:
+            matchLabels:
+              project: from2
+        - podSelector:
+            matchLabels:
+              role: from2
+    - from:
+        - ipBlock:
             cidr: 172.17.0.0/16
             except:
               - 172.17.1.0/24
@@ -25,6 +36,12 @@ spec:
       ports:
         - protocol: TCP
           port: 6379
+          endPort: 35555
+        - protocol: UDP
+          port: 2200
+          endPort: 2300
+        - protocol: SCTP
+          port: 8888
   egress:
     - to:
         - ipBlock:
@@ -112,6 +129,10 @@ spec:
   podSelector:
     matchLabels:
       app: myapp
+    matchExpressions:
+      - key: namespace
+        operator: In
+        values: [ frontend, backend ]
   policyTypes:
     - Egress
   egress:

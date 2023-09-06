@@ -3,6 +3,8 @@ import { V1NetworkPolicy } from '@backend/k8s/model/v1NetworkPolicy'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import NetpolActionView from '@frontend/components/NetworkPolicy/NetpolActionView.vue'
 import NetpolBasicInfoView from '@frontend/components/NetworkPolicy/NetpolBasicInfoView.vue'
+import NetpolEgressView from '@frontend/components/NetworkPolicy/NetpolEgressView.vue'
+import NetpolIngressView from '@frontend/components/NetworkPolicy/NetpolIngressView.vue'
 import { NH6, NMessageProvider, NText } from 'naive-ui'
 
 const props = defineProps({
@@ -20,6 +22,19 @@ const props = defineProps({
     </NText>
   </NH6>
   <NetpolBasicInfoView :netpol="props.netpol" />
+
+  <NH6 prefix="bar" align-text type="success">
+    <NText type="success">
+      Ingress
+    </NText>
+  </NH6>
+  <NetpolIngressView :netpol="props.netpol" />
+  <NH6 prefix="bar" align-text type="success">
+    <NText type="success">
+      Egress
+    </NText>
+  </NH6>
+  <NetpolEgressView :netpol="props.netpol" />
 
   <NH6 prefix="bar" align-text type="success">
     <NText type="success">

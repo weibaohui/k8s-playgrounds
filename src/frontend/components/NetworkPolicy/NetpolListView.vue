@@ -3,6 +3,7 @@ import type { V1NetworkPolicy } from '@backend/k8s/model/V1NetworkPolicy'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import NetpolActionView from '@frontend/components/NetworkPolicy/NetpolActionView.vue'
+import NetpolPodSelectorView from '@frontend/components/NetworkPolicy/NetpolPodSelectorView.vue'
 import NetpolView from '@frontend/components/NetworkPolicy/NetpolView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
@@ -66,9 +67,27 @@ function createColumns(): DataTableColumns<V1NetworkPolicy> {
       },
     },
     {
+      title: 'Pod',
+      key: 'Pod',
+      render(row: V1NetworkPolicy) {
+        return h(NetpolPodSelectorView,
+          {
+            podSelector: row.spec.podSelector,
+          },
+        )
+      },
+    },
+    {
+      title: 'policyType',
+      key: 'policyType',
+      render(row: V1NetworkPolicy) {
+        return row.spec.policyTypes.join(',')
+      },
+    },
+    {
       title: 'Age',
       key: 'age',
-      render(row) {
+      render(row: V1NetworkPolicy) {
         return h(ResourceAgeView,
           {
             item: row,

@@ -13,7 +13,7 @@
 /**
  * A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
  */
-export class IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
+export class V1LabelSelectorRequirement {
   /**
      * key is the label key that the selector applies to.
      */
