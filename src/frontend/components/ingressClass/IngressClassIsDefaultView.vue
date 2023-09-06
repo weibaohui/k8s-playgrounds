@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Star } from '@vicons/fa'
-import { NIcon } from 'naive-ui'
+import { NIcon, NIconWrapper } from 'naive-ui'
 import { V1IngressClass } from '@backend/k8s/model/V1IngressClass'
 
 const props = defineProps({
@@ -12,7 +12,9 @@ function isDefault() {
 </script>
 
 <template>
-  <NIcon v-if="isDefault()" :component="Star" />
+  <NIconWrapper v-if="isDefault()" :size="24" :border-radius="10">
+    <NIcon :component="Star" />
+  </NIconWrapper>
 </template>
 
 <style scoped>

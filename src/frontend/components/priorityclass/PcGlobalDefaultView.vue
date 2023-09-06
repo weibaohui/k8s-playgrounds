@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { V1PriorityClass } from '@backend/k8s/model/v1PriorityClass'
 import { Star } from '@vicons/fa'
-import { NIcon } from 'naive-ui'
+import { NIcon, NIconWrapper } from 'naive-ui'
 
 const props = defineProps({
   pc: V1PriorityClass,
@@ -12,7 +12,9 @@ function isDefault() {
 </script>
 
 <template>
-  <NIcon v-if="isDefault()" :component="Star" />
+  <NIconWrapper v-if="isDefault()" :size="24" :border-radius="10">
+    <NIcon :component="Star" />
+  </NIconWrapper>
 </template>
 
 <style scoped>
