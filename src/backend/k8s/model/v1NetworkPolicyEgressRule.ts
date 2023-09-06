@@ -15,7 +15,7 @@ import type { V1NetworkPolicyPort } from './v1NetworkPolicyPort'
 /**
  * NetworkPolicyEgressRule describes a particular set of traffic that is allowed out of pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and to. This type is beta-level in 1.8
  */
-export class IoK8sApiNetworkingV1NetworkPolicyEgressRule {
+export class V1NetworkPolicyEgressRule {
   /**
      * ports is a list of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.
      */

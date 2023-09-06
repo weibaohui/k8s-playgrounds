@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApimachineryPkgUtilIntstrIntOrString } from './ioK8sApimachineryPkgUtilIntstrIntOrString'
+import type { IntOrString } from './intOrString'
 
 /**
  * TCPSocketAction describes an action based on opening a socket
@@ -22,5 +22,5 @@ export class V1TCPSocketAction {
   /**
      * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
      */
-  port: IoK8sApimachineryPkgUtilIntstrIntOrString
+  port: IntOrString
 }

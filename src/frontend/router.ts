@@ -8,6 +8,7 @@ import IngListView from '@frontend/components/ingress/IngListView.vue'
 import IngressClassListView from '@frontend/components/ingressClass/IngressClassListView.vue'
 import JobListView from '@frontend/components/job/JobListView.vue'
 import LimitsListView from '@frontend/components/limitrange/LimitsListView.vue'
+import NetpolListView from '@frontend/components/NetworkPolicy/NetpolListView.vue'
 import PdbListView from '@frontend/components/PodDisruptionBudget/PdbListView.vue'
 import PcListView from '@frontend/components/priorityclass/PcListView.vue'
 import RcListView from '@frontend/components/replicacontroller/RcListView.vue'
@@ -107,6 +108,9 @@ export default createRouter({
     }, {
       path: '/ingressClasses',
       component: IngressClassListView,
+    }, {
+      path: '/networkPolices',
+      component: NetpolListView,
     },
   ],
 })

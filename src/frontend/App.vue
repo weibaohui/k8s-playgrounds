@@ -313,6 +313,18 @@ const menuOptions: MenuOption[] = [
             { default: () => 'IngressClasses' },
           ),
         key: 'go-to-ingressClasses',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/networkPolices',
+              },
+            },
+            { default: () => 'NetworkPolices' },
+          ),
+        key: 'go-to-networkPolices',
       },
     ],
   },

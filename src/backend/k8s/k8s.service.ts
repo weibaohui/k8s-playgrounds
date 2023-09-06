@@ -8,6 +8,7 @@ import { IngressService } from '@backend/k8s/ingress/ingress.service'
 import { IngressClassService } from '@backend/k8s/ingressClass/IngressClass.service'
 import { JobService } from '@backend/k8s/job/job.service'
 import { LimitRangeService } from '@backend/k8s/limitrange/limitrange.service'
+import { NetworkPolicyService } from '@backend/k8s/networkPolicy/NetworkPolicy.service'
 import { PodDisruptionBudgetService } from '@backend/k8s/PodDisruptionBudget/PodDisruptionBudget.service'
 import { PriorityClassService } from '@backend/k8s/priorityclass/priorityclass.service'
 import { ReplicaSetService } from '@backend/k8s/replicaset/replicaset.service'
@@ -53,5 +54,6 @@ export class K8sService {
     public networkSvcService: NetworkSvcService,
     public ingressService: IngressService,
     public ingressClassService: IngressClassService,
+    public networkPolicyService: NetworkPolicyService,
   ) {}
 }

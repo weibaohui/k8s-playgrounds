@@ -9,13 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiNetworkingV1NetworkPolicySpec } from './ioK8sApiNetworkingV1NetworkPolicySpec'
+import type { V1NetworkPolicySpec } from './v1NetworkPolicySpec'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * NetworkPolicy describes what network traffic is allowed for a set of Pods
  */
-export class IoK8sApiNetworkingV1NetworkPolicy {
+export class V1NetworkPolicy {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -31,5 +31,5 @@ export class IoK8sApiNetworkingV1NetworkPolicy {
   /**
      * spec represents the specification of the desired behavior for this NetworkPolicy.
      */
-  spec?: IoK8sApiNetworkingV1NetworkPolicySpec
+  spec?: V1NetworkPolicySpec
 }

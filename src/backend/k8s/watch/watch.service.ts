@@ -98,6 +98,9 @@ export class WatchService {
       case ResType.Ingress:
         watchPath = '/apis/networking.k8s.io/v1/ingresses'
         break
+      case ResType.NetworkPolicy:
+        watchPath = '/apis/networking.k8s.io/v1/networkpolicies'
+        break
       case ResType.IngressClass:
         watchPath = '/apis/networking.k8s.io/v1/ingressclasses'
         break

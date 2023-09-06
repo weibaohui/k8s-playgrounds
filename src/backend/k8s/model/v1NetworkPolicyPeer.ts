@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiNetworkingV1IPBlock } from './ioK8sApiNetworkingV1IPBlock'
+import type { V1IPBlock } from './v1IPBlock'
 import type { V1LabelSelector } from './v1LabelSelector'
 
 /**
@@ -19,7 +19,7 @@ export class V1NetworkPolicyPeer {
   /**
      * ipBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.
      */
-  ipBlock?: IoK8sApiNetworkingV1IPBlock
+  ipBlock?: V1IPBlock
   /**
      * namespaceSelector selects namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.  If podSelector is also set, then the NetworkPolicyPeer as a whole selects the pods matching podSelector in the namespaces selected by namespaceSelector. Otherwise it selects all pods in the namespaces selected by namespaceSelector.
      */

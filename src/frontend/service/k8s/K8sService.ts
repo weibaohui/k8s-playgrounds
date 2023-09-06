@@ -120,6 +120,11 @@ export class K8sService {
           ns,
           name,
         })
+      case ResType.NetworkPolicy:
+        return K8sService.playService.networkPolicyControllerGetOneByNsName({
+          ns,
+          name,
+        })
     }
   }
 }

@@ -20,6 +20,8 @@ import { JobController } from '@backend/k8s/job/job.controller'
 import { JobService } from '@backend/k8s/job/job.service'
 import { LimitRangeController } from '@backend/k8s/limitrange/limitrange.controller'
 import { LimitRangeService } from '@backend/k8s/limitrange/limitrange.service'
+import { NetworkPolicyController } from '@backend/k8s/networkPolicy/NetworkPolicy.controller'
+import { NetworkPolicyService } from '@backend/k8s/networkPolicy/NetworkPolicy.service'
 import { PodDisruptionBudgetController } from '@backend/k8s/PodDisruptionBudget/PodDisruptionBudget.controller'
 import { PodDisruptionBudgetService } from '@backend/k8s/PodDisruptionBudget/PodDisruptionBudget.service'
 import { PriorityClassController } from '@backend/k8s/priorityclass/priorityclass.controller'
@@ -61,7 +63,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     SecretController, PriorityClassController, ResourceQuotaController,
     LimitRangeController, HorizontalPodAutoscalerController, PodDisruptionBudgetController,
     EndpointController, NetworkSvcController, IngressController,
-    IngressClassController,
+    IngressClassController, NetworkPolicyController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -73,7 +75,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     SecretService, PriorityClassService, ResourceQuotaService,
     LimitRangeService, HorizontalPodAutoscalerService, PodDisruptionBudgetService,
     EndpointService, NetworkSvcService, IngressService,
-    IngressClassService,
+    IngressClassService, NetworkPolicyService,
   ],
   exports: [K8sService],
 })
