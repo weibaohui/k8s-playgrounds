@@ -19,7 +19,7 @@ const props = defineProps({
           </template>
         </NTag>
       </template>
-      <span> {{ c.message }} </span>
+      <span> {{ c.message }} {{ c.reason }} </span>
     </NTooltip>
     <NTooltip v-else-if="c.status === 'False' && c.type.endsWith('Pressure') " placement="bottom" trigger="hover" type="success">
       <template #trigger>
@@ -30,7 +30,7 @@ const props = defineProps({
           </template>
         </NTag>
       </template>
-      <span> {{ c.message }} </span>
+      <span> {{ c.message }}  {{ c.reason }} </span>
     </NTooltip>
     <NTooltip v-else placement="bottom" trigger="hover" type="success">
       <template #trigger>
@@ -41,7 +41,7 @@ const props = defineProps({
           </template>
         </NTag>
       </template>
-      <span> {{ c.message }} </span>
+      <span> {{ c.message }}  {{ c.reason }} </span>
     </NTooltip>
   </span>
 </template>
