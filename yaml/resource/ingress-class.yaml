@@ -3,7 +3,7 @@ kind: IngressClass
 metadata:
   name: nginx
   annotations:
-     ingressclass.kubernetes.io/is-default-class: "true"
+    ingressclass.kubernetes.io/is-default-class: 'true'
 spec:
   controller: nginx.org/ingress-controller
 ---
@@ -21,8 +21,8 @@ metadata:
 spec:
   controller: example.com/ingress-controller
   parameters:
-    scope: Namespace
-#    scope: Cluster
+    #    scope: Namespace
+    scope: Cluster
     apiGroup: k8s.example.com
     kind: IngressParameters
     name: external-lb

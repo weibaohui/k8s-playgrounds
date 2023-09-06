@@ -23,35 +23,35 @@ metadata:
   name: ingress-wildcard-host
 spec:
   rules:
-    - host: "foo.bar.com"
+    - host: foo.bar.com
       http:
         paths:
           - pathType: Prefix
-            path: "/bar"
+            path: /bar
             backend:
               service:
                 name: nginx-web
                 port:
                   number: 80
           - pathType: Prefix
-            path: "/bar2"
+            path: /bar2
             backend:
               resource:
                 apiGroup: k8s.example.com
                 kind: StorageBucket
                 name: static-assets
-    - host: "*.foo.com"
+    - host: '*.foo.com'
       http:
         paths:
           - pathType: Prefix
-            path: "/foo"
+            path: /foo
             backend:
               service:
                 name: nginx-web
                 port:
                   number: 80
           - pathType: Prefix
-            path: "/foo2"
+            path: /foo2
             backend:
               service:
                 name: nginx-web
@@ -135,7 +135,7 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: "/"
+            path: /
             backend:
               service:
                 name: nginx-web
@@ -145,7 +145,7 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: "/"
+            path: /
             backend:
               service:
                 name: nginx-web
@@ -162,7 +162,7 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: "/"
+            path: /
             backend:
               service:
                 name: nginx-web
@@ -172,7 +172,7 @@ spec:
       http:
         paths:
           - pathType: Prefix
-            path: "/"
+            path: /
             backend:
               service:
                 name: nginx-web
@@ -181,7 +181,7 @@ spec:
     - http:
         paths:
           - pathType: Prefix
-            path: "/"
+            path: /
             backend:
               service:
                 name: nginx-web
