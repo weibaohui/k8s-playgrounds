@@ -11,13 +11,13 @@ import {
   NLayout,
   NLayoutSider,
   NMenu,
-  NNotificationProvider,
-  NSpace, darkTheme,
+  NNotificationProvider, NSpace, darkTheme,
 } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import DrawerServiceProvider from './service/drawer-service/DrawerServiceProvider'
 import router from './router'
 
+const containerRef = ref<HTMLElement>()
 const menuOptions: MenuOption[] = [
   {
     label: () =>
@@ -342,7 +342,7 @@ router.push('/pods')
 
 <template>
   <NConfigProvider :theme="darkTheme">
-    <NSpace vertical>
+    <NSpace ref="containerRef" vertical>
       <NLayout has-sider>
         <NLayoutSider
           bordered
