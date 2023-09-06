@@ -12,7 +12,7 @@ function getIps() {
     .forEach((subset) => {
       subset.ports.forEach((p) => {
         subset.addresses.forEach((ip) => {
-          ips.push(`${ip.ip}:${p.port}`)
+          ips.push(`${ip.ip}:${p.port}/${p.protocol}`)
         })
       })
     })
