@@ -226,7 +226,7 @@ shamefully-hoist=true
 * 安装 ：npm install openapi-typescript-codegen -g
 
 ### k8s model 生成
-
+* https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json
 * 使用https://editor.swagger.io/ 生成client，选择typescript-angular
 * 将文件名称中的ioK8sApiCore替换掉，文件内的处理掉。这样用起来方便
 
