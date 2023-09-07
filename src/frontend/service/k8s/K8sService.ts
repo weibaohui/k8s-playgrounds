@@ -133,6 +133,11 @@ export class K8sService {
           ns,
           name,
         })
+      case ResType.PersistentVolumeClaim:
+        return K8sService.playService.persistentVolumeClaimControllerGetOneByNsName({
+          ns,
+          name,
+        })
     }
   }
 }

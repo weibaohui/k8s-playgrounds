@@ -1,11 +1,30 @@
 <script setup lang="ts">
+import type { V1ObjectReference } from '@backend/k8s/model/V1ObjectReference'
 import { V1PersistentVolume } from '@backend/k8s/model/v1PersistentVolume'
-import { NTable } from 'naive-ui'
+import { ResType } from '@backend/k8s/watch/watch.model'
+import PvcView from '@frontend/components/PersistentVolumeClaim/PvcView.vue'
+import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
+import { K8sService } from '@frontend/service/k8s/K8sService'
+import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
+import { NButton, NTable } from 'naive-ui'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 
 const props = defineProps({
   persistentVolume: V1PersistentVolume,
 })
+const drawer = useDrawerService()
+
+async function onPvcClick(ref: V1ObjectReference) {
+  const resource = await K8sService.getResource({
+    resType: ResType.PersistentVolumeClaim,
+    ns: ref.namespace,
+    name: ref.name,
+  })
+  DrawerHelper
+    .instance
+    .drawer(drawer)
+    .show(`${ResType.PersistentVolumeClaim}:${ref.name}`, PvcView, { pvc: resource })
+}
 </script>
 
 <template>
@@ -65,8 +84,10 @@ const props = defineProps({
           Claim
         </td>
         <td>
-          {{ props.persistentVolume.spec.claimRef.kind }}
-          {{ props.persistentVolume.spec.claimRef.namespace }}/{{ props.persistentVolume.spec.claimRef.name }}
+          <NButton type="success" @click="onPvcClick(props.persistentVolume.spec.claimRef)">
+            {{ props.persistentVolume.spec.claimRef.kind }}
+            {{ props.persistentVolume.spec.claimRef.namespace }}/{{ props.persistentVolume.spec.claimRef.name }}
+          </NButton>
         </td>
       </tr>
     </tbody>

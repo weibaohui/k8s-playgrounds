@@ -96,6 +96,9 @@ export class DocHelper {
       case ResType.PersistentVolume:
         k = 'io.k8s.api.core.v1.PersistentVolume'
         break
+      case ResType.PersistentVolumeClaim:
+        k = 'io.k8s.api.core.v1.PersistentVolumeClaim'
+        break
       default:
         k = 'io.k8s.api.core.v1.Pod'
     }

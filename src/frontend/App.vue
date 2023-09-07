@@ -339,6 +339,18 @@ const menuOptions: MenuOption[] = [
             RouterLink,
             {
               to: {
+                path: '/persistentVolumesClaims',
+              },
+            },
+            { default: () => 'Persistent Volumes Claims' },
+          ),
+        key: 'go-to-persistentVolumesClaims',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
                 path: '/persistentVolumes',
               },
             },

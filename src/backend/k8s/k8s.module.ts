@@ -24,6 +24,8 @@ import { NetworkPolicyController } from '@backend/k8s/networkPolicy/NetworkPolic
 import { NetworkPolicyService } from '@backend/k8s/networkPolicy/NetworkPolicy.service'
 import { PersistentVolumeController } from '@backend/k8s/PersistentVolume/PersistentVolume.controller'
 import { PersistentVolumeService } from '@backend/k8s/PersistentVolume/PersistentVolume.service'
+import { PersistentVolumeClaimController } from '@backend/k8s/PersistentVolumeClaim/PersistentVolumeClaim.controller'
+import { PersistentVolumeClaimService } from '@backend/k8s/PersistentVolumeClaim/PersistentVolumeClaim.service'
 import { PodDisruptionBudgetController } from '@backend/k8s/PodDisruptionBudget/PodDisruptionBudget.controller'
 import { PodDisruptionBudgetService } from '@backend/k8s/PodDisruptionBudget/PodDisruptionBudget.service'
 import { PriorityClassController } from '@backend/k8s/priorityclass/priorityclass.controller'
@@ -68,7 +70,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     LimitRangeController, HorizontalPodAutoscalerController, PodDisruptionBudgetController,
     EndpointController, NetworkSvcController, IngressController,
     IngressClassController, NetworkPolicyController, StorageClassController,
-    PersistentVolumeController,
+    PersistentVolumeController, PersistentVolumeClaimController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -81,7 +83,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     LimitRangeService, HorizontalPodAutoscalerService, PodDisruptionBudgetService,
     EndpointService, NetworkSvcService, IngressService,
     IngressClassService, NetworkPolicyService, StorageClassService,
-    PersistentVolumeService,
+    PersistentVolumeService, PersistentVolumeClaimService,
   ],
   exports: [K8sService],
 })

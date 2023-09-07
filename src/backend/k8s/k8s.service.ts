@@ -10,6 +10,7 @@ import { JobService } from '@backend/k8s/job/job.service'
 import { LimitRangeService } from '@backend/k8s/limitrange/limitrange.service'
 import { NetworkPolicyService } from '@backend/k8s/networkPolicy/NetworkPolicy.service'
 import { PersistentVolumeService } from '@backend/k8s/PersistentVolume/PersistentVolume.service'
+import { PersistentVolumeClaimService } from '@backend/k8s/PersistentVolumeClaim/PersistentVolumeClaim.service'
 import { PodDisruptionBudgetService } from '@backend/k8s/PodDisruptionBudget/PodDisruptionBudget.service'
 import { PriorityClassService } from '@backend/k8s/priorityclass/priorityclass.service'
 import { ReplicaSetService } from '@backend/k8s/replicaset/replicaset.service'
@@ -59,5 +60,6 @@ export class K8sService {
     public networkPolicyService: NetworkPolicyService,
     public storageClassService: StorageClassService,
     public persistentVolumeService: PersistentVolumeService,
+    public persistentVolumeClaimService: PersistentVolumeClaimService,
   ) {}
 }
