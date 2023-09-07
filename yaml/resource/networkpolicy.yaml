@@ -132,7 +132,7 @@ spec:
     matchExpressions:
       - key: namespace
         operator: In
-        values: [ frontend, backend ]
+        values: [frontend, backend]
   policyTypes:
     - Egress
   egress:
