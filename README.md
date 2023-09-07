@@ -219,6 +219,28 @@ shamefully-hoist=true
 |            IngressClass | 详情-查看yaml      | ✅       |
 |            IngressClass | 详情-设置默认        | ✅       |
 |            IngressClass | 详情-删除          | ✅       |
+|            IngressClass | 列表             | ✅       |
+|            StorageClass | 列表-查看yaml      | ✅       |
+|            StorageClass | 列表-设置默认        | ✅       |
+|            StorageClass | 列表-删除          | ✅       |
+|            StorageClass | 详情             | ✅       |
+|            StorageClass | 详情-查看yaml      | ✅       |
+|            StorageClass | 详情-设置默认        | ✅       |
+|            StorageClass | 详情-删除          | ✅       |
+|                      PV | 列表             | ✅       |
+|                      PV | 列表-查看yaml      | ✅       |
+|                      PV | 列表-删除          | ✅       |
+|                      PV | 详情             | ✅       |
+|                      PV | 详情-查看yaml      | ✅       |
+|                      PV | 详情-查看PVC       | ✅       |
+|                      PV | 详情-删除          | ✅       |
+|                     PVC | 列表             | ✅       |
+|                     PVC | 列表-查看yaml      | ✅       |
+|                     PVC | 列表-删除          | ✅       |
+|                     PVC | 详情             | ✅       |
+|                     PVC | 详情-查看yaml      | ✅       |
+|                     PVC | 详情-查看PV        | ✅       |
+|                     PVC | 详情-删除          | ✅       |
 ## 开发提示
 
 ### nestjs 作为后端服务，前端使用 `openapi-typescript-codegen` 进行代码生成
