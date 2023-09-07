@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { V1StorageClass } from '@backend/k8s/model/v1StorageClass'
-import { NTable } from 'naive-ui'
+import { ColorHelper } from '@frontend/service/page/ColorHelper'
+import { NSpace, NTable, NTag } from 'naive-ui'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 
 const props = defineProps({
@@ -15,9 +16,39 @@ const props = defineProps({
     <tbody>
       <tr>
         <td class="left">
-          provisioner
+          Provisioner
         </td>
         <td>{{ props.storageClass.provisioner }}</td>
+      </tr>
+      <tr>
+        <td>
+          Binding Mode
+        </td>
+        <td>{{ props.storageClass.volumeBindingMode }}</td>
+      </tr>
+      <tr v-if="props.storageClass.mountOptions">
+        <td>
+          Mount Options
+        </td>
+        <td>{{ props.storageClass.mountOptions.join(' ') }}</td>
+      </tr>
+      <tr v-if="props.storageClass.reclaimPolicy">
+        <td>
+          Reclaim Policy
+        </td>
+        <td>{{ props.storageClass.reclaimPolicy }}</td>
+      </tr>
+      <tr v-if="props.storageClass.parameters">
+        <td>
+          Params
+        </td>
+        <td>
+          <NSpace v-for="([k, v]) in Object.entries(props.storageClass.parameters)" :key="k" vertical>
+            <NTag :color="{ color: ColorHelper.randomColor() }">
+              {{ k }}={{ v }}
+            </NTag>
+          </NSpace>
+        </td>
       </tr>
     </tbody>
   </NTable>
