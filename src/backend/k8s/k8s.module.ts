@@ -22,6 +22,8 @@ import { LimitRangeController } from '@backend/k8s/limitrange/limitrange.control
 import { LimitRangeService } from '@backend/k8s/limitrange/limitrange.service'
 import { NetworkPolicyController } from '@backend/k8s/networkPolicy/NetworkPolicy.controller'
 import { NetworkPolicyService } from '@backend/k8s/networkPolicy/NetworkPolicy.service'
+import { PersistentVolumeController } from '@backend/k8s/PersistentVolume/PersistentVolume.controller'
+import { PersistentVolumeService } from '@backend/k8s/PersistentVolume/PersistentVolume.service'
 import { PodDisruptionBudgetController } from '@backend/k8s/PodDisruptionBudget/PodDisruptionBudget.controller'
 import { PodDisruptionBudgetService } from '@backend/k8s/PodDisruptionBudget/PodDisruptionBudget.service'
 import { PriorityClassController } from '@backend/k8s/priorityclass/priorityclass.controller'
@@ -66,6 +68,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     LimitRangeController, HorizontalPodAutoscalerController, PodDisruptionBudgetController,
     EndpointController, NetworkSvcController, IngressController,
     IngressClassController, NetworkPolicyController, StorageClassController,
+    PersistentVolumeController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -78,6 +81,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     LimitRangeService, HorizontalPodAutoscalerService, PodDisruptionBudgetService,
     EndpointService, NetworkSvcService, IngressService,
     IngressClassService, NetworkPolicyService, StorageClassService,
+    PersistentVolumeService,
   ],
   exports: [K8sService],
 })

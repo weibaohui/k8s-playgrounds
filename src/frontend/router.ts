@@ -9,6 +9,7 @@ import IngressClassListView from '@frontend/components/ingressClass/IngressClass
 import JobListView from '@frontend/components/job/JobListView.vue'
 import LimitsListView from '@frontend/components/limitrange/LimitsListView.vue'
 import NetpolListView from '@frontend/components/NetworkPolicy/NetpolListView.vue'
+import PersistentVolumeListView from '@frontend/components/PersistentVolume/PersistentVolumeListView.vue'
 import PdbListView from '@frontend/components/PodDisruptionBudget/PdbListView.vue'
 import PcListView from '@frontend/components/priorityclass/PcListView.vue'
 import RcListView from '@frontend/components/replicacontroller/RcListView.vue'
@@ -116,6 +117,9 @@ export default createRouter({
     {
       path: '/storageClasses',
       component: StorageClassListView,
+    }, {
+      path: '/persistentVolumes',
+      component: PersistentVolumeListView,
     },
 
   ],

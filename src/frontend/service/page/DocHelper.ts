@@ -93,6 +93,9 @@ export class DocHelper {
       case ResType.StorageClass:
         k = 'io.k8s.api.storage.v1.StorageClass'
         break
+      case ResType.PersistentVolume:
+        k = 'io.k8s.api.core.v1.PersistentVolume'
+        break
       default:
         k = 'io.k8s.api.core.v1.Pod'
     }

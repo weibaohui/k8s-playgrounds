@@ -100,7 +100,7 @@ const menuOptions: MenuOption[] = [
                 path: '/replicaSets',
               },
             },
-            { default: () => 'ReplicaSets' },
+            { default: () => 'Replica Sets' },
           ),
         key: 'go-to-replicaSets',
       }, {
@@ -112,7 +112,7 @@ const menuOptions: MenuOption[] = [
                 path: '/replicationControllers',
               },
             },
-            { default: () => 'ReplicationControllers' },
+            { default: () => 'Replication Controllers' },
           ),
         key: 'go-to-replicationControllers',
       },
@@ -125,7 +125,7 @@ const menuOptions: MenuOption[] = [
                 path: '/daemonSets',
               },
             },
-            { default: () => 'DaemonSets' },
+            { default: () => 'Daemon Sets' },
           ),
         key: 'go-to-daemonSets',
       }, {
@@ -137,7 +137,7 @@ const menuOptions: MenuOption[] = [
                 path: '/statefulSets',
               },
             },
-            { default: () => 'StatefulSets' },
+            { default: () => 'Stateful Sets' },
           ),
         key: 'go-to-statefulSets',
       }, {
@@ -161,7 +161,7 @@ const menuOptions: MenuOption[] = [
                 path: '/cronJobs',
               },
             },
-            { default: () => 'CronJobs' },
+            { default: () => 'Cron Jobs' },
           ),
         key: 'go-to-cronJobs',
       },
@@ -181,7 +181,7 @@ const menuOptions: MenuOption[] = [
                 path: '/configMaps',
               },
             },
-            { default: () => 'ConfigMaps' },
+            { default: () => 'Config Maps' },
           ),
         key: 'go-to-configMaps',
       },
@@ -206,7 +206,7 @@ const menuOptions: MenuOption[] = [
                 path: '/priorityClasses',
               },
             },
-            { default: () => 'PriorityClasses' },
+            { default: () => 'Priority Classes' },
           ),
         key: 'go-to-priorityClasses',
       }, {
@@ -218,7 +218,7 @@ const menuOptions: MenuOption[] = [
                 path: '/resourceQuotas',
               },
             },
-            { default: () => 'ResourceQuotas' },
+            { default: () => 'Resource Quotas' },
           ),
         key: 'go-to-resourceQuotas',
       }, {
@@ -230,7 +230,7 @@ const menuOptions: MenuOption[] = [
                 path: '/limitRanges',
               },
             },
-            { default: () => 'LimitRanges' },
+            { default: () => 'Limit Ranges' },
           ),
         key: 'go-to-limitRanges',
       }, {
@@ -242,7 +242,7 @@ const menuOptions: MenuOption[] = [
                 path: '/horizontalPodAutoscaler',
               },
             },
-            { default: () => 'HorizontalPodAutoscalers' },
+            { default: () => 'Horizontal Pod Autoscalers' },
           ),
         key: 'go-to-horizontalPodAutoscaler',
       }, {
@@ -254,7 +254,7 @@ const menuOptions: MenuOption[] = [
                 path: '/podDisruptionBudgets',
               },
             },
-            { default: () => 'PodDisruptionBudgets' },
+            { default: () => 'Pod Disruption Budgets' },
           ),
         key: 'go-to-podDisruptionBudgets',
       },
@@ -310,7 +310,7 @@ const menuOptions: MenuOption[] = [
                 path: '/ingressClasses',
               },
             },
-            { default: () => 'IngressClasses' },
+            { default: () => 'Ingress Classes' },
           ),
         key: 'go-to-ingressClasses',
       }, {
@@ -322,7 +322,7 @@ const menuOptions: MenuOption[] = [
                 path: '/networkPolices',
               },
             },
-            { default: () => 'NetworkPolices' },
+            { default: () => 'Network Polices' },
           ),
         key: 'go-to-networkPolices',
       },
@@ -339,10 +339,22 @@ const menuOptions: MenuOption[] = [
             RouterLink,
             {
               to: {
+                path: '/persistentVolumes',
+              },
+            },
+            { default: () => 'Persistent Volumes' },
+          ),
+        key: 'go-to-persistentVolumes',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
                 path: '/storageClasses',
               },
             },
-            { default: () => 'StorageClasses' },
+            { default: () => 'Storage Classes' },
           ),
         key: 'go-to-storageClasses',
       },

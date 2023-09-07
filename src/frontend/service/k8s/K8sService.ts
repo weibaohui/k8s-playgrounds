@@ -90,6 +90,10 @@ export class K8sService {
         return K8sService.playService.ingressClassControllerGetOneByName({
           name,
         })
+      case ResType.PersistentVolume:
+        return K8sService.playService.persistentVolumeControllerGetOneByName({
+          name,
+        })
       case ResType.StorageClass:
         return K8sService.playService.storageClassControllerGetOneByName({
           name,

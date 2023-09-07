@@ -23,4 +23,5 @@ export enum ResType {
   IngressClass = 'IngressClass',
   NetworkPolicy = 'NetworkPolicy',
   StorageClass = 'StorageClass',
+  PersistentVolume = 'PersistentVolume',
 }
