@@ -245,5 +245,5 @@ shamefully-hoist=true
 * 操作demo
 <img src="doc/demo.gif">
 * 编辑器 文档 同屏显示
-<img src="doc/editor-with-doc.png">
+<img src="https://github.com/weibaohui/k8s-playgrounds/blob/main/doc/editor-with-doc.png?raw=true">
 
