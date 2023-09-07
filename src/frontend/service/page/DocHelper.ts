@@ -95,7 +95,7 @@ export class DocHelper {
 
   /**
      *
-     * @param k ppppppppp
+     * @param k io.k8s.api.core.v1.Pod
      * @private
      */
   private static extracted(k: string) {

@@ -1,3 +1,7 @@
+/**
+ * 定义来源
+ * https://raw.githubusercontent.com/kubernetes/kubernetes/master/api/openapi-spec/swagger.json
+ */
 export const definitions = `
 {
   "definitions": {
