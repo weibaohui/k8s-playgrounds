@@ -89,6 +89,12 @@ export class DocHelper {
         break
       case ResType.ConfigMap:
         k = 'io.k8s.api.core.v1.ConfigMap'
+        break
+      case ResType.StorageClass:
+        k = 'io.k8s.api.storage.v1.StorageClass'
+        break
+      default:
+        k = 'io.k8s.api.core.v1.Pod'
     }
     return this.extracted(k)
   }
@@ -138,7 +144,7 @@ export class DocHelper {
       if (item.items && item.items.$ref && item.$ref === undefined)
         dn.$ref = item.items.$ref
 
-      dn.name = `${k}(${dn.type})`
+      dn.name = `${k} (${dn.type}) `
 
       dt.properties.push(dn)
     })

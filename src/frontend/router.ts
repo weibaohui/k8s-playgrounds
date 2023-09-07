@@ -17,6 +17,7 @@ import QuotaListView from '@frontend/components/resourcequota/QuotaListView.vue'
 import SecretListView from '@frontend/components/secret/SecretListView.vue'
 import SvcListView from '@frontend/components/service/SvcListView.vue'
 import StsListView from '@frontend/components/statefulset/StsListView.vue'
+import StorageClassListView from '@frontend/components/StorageClass/StorageClassListView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import EventListView from '@frontend/components/event/EventListView.vue'
 import NodeListView from '@frontend/components/node/NodeListView.vue'
@@ -111,6 +112,10 @@ export default createRouter({
     }, {
       path: '/networkPolices',
       component: NetpolListView,
+    },
+    {
+      path: '/storageClasses',
+      component: StorageClassListView,
     },
 
   ],

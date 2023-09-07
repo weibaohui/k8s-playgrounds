@@ -37,6 +37,8 @@ import { NetworkSvcController } from '@backend/k8s/service/NetworkSvc.controller
 import { NetworkSvcService } from '@backend/k8s/service/NetworkSvc.service'
 import { StatefulSetController } from '@backend/k8s/statefulset/statefulset.controller'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
+import { StorageClassController } from '@backend/k8s/storageClass/StorageClass.controller'
+import { StorageClassService } from '@backend/k8s/storageClass/StorageClass.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
@@ -63,7 +65,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     SecretController, PriorityClassController, ResourceQuotaController,
     LimitRangeController, HorizontalPodAutoscalerController, PodDisruptionBudgetController,
     EndpointController, NetworkSvcController, IngressController,
-    IngressClassController, NetworkPolicyController,
+    IngressClassController, NetworkPolicyController, StorageClassController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -75,7 +77,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     SecretService, PriorityClassService, ResourceQuotaService,
     LimitRangeService, HorizontalPodAutoscalerService, PodDisruptionBudgetService,
     EndpointService, NetworkSvcService, IngressService,
-    IngressClassService, NetworkPolicyService,
+    IngressClassService, NetworkPolicyService, StorageClassService,
   ],
   exports: [K8sService],
 })

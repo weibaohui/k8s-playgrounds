@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ResType } from '@backend/k8s/watch/watch.model'
-import IngressClassActionView from '@frontend/components/ingressClass/IngressClassActionView.vue'
-import IngressClassIsDefaultView from '@frontend/components/ingressClass/IngressClassIsDefaultView.vue'
-import IngressClassView from '@frontend/components/ingressClass/IngressClassView.vue'
+import StorageClassActionView from '@frontend/components/storageClass/StorageClassActionView.vue'
+import StorageClassIsDefaultView from '@frontend/components/storageClass/StorageClassIsDefaultView.vue'
+import StorageClassView from '@frontend/components/storageClass/StorageClassView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
@@ -14,15 +14,15 @@ import WorkloadListView from '@frontend/components/common/ResourceListView.vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
-import type { V1IngressClass } from '@backend/k8s/model/V1IngressClass'
+import type { V1StorageClass } from '@backend/k8s/model/V1StorageClass'
 
 const drawer = useDrawerService()
 const dialog = useDialog()
-const itemList = ref<V1IngressClass[]>()
+const itemList = ref<V1StorageClass[]>()
 
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
 
-function createColumns(): DataTableColumns<V1IngressClass> {
+function createColumns(): DataTableColumns<V1StorageClass> {
   return [
     {
       type: 'selection',
@@ -30,7 +30,7 @@ function createColumns(): DataTableColumns<V1IngressClass> {
     {
       title: 'Name',
       key: 'metadata.name',
-      render(row: V1IngressClass) {
+      render(row: V1StorageClass) {
         return h(
           NButton,
           {
@@ -39,7 +39,7 @@ function createColumns(): DataTableColumns<V1IngressClass> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`${ResType.IngressClass}:${row.metadata.name}`, IngressClassView, { ingressClass: row })
+                .show(`${ResType.StorageClass}:${row.metadata.name}`, StorageClassView, { storageClass: row })
             },
           },
           { default: () => row.metadata.name },
@@ -49,46 +49,32 @@ function createColumns(): DataTableColumns<V1IngressClass> {
     {
       title: 'Default',
       key: 'Default',
-      render(row: V1IngressClass) {
-        return h(IngressClassIsDefaultView,
+      render(row: V1StorageClass) {
+        return h(StorageClassIsDefaultView,
           {
-            ingressClass: row,
+            storageClass: row,
           },
         )
       },
     },
     {
-      title: 'Controller',
-      key: 'Controller',
-      render(row: V1IngressClass) {
-        return row.spec.controller
+      title: 'Provisioner',
+      key: 'provisioner',
+      render(row: V1StorageClass) {
+        return row.provisioner
       },
     },
     {
-      title: 'ApiGroup',
-      key: 'ApiGroup',
-      render(row: V1IngressClass) {
-        return row.spec.parameters?.apiGroup
-      },
-    },
-    {
-      title: 'Scope',
-      key: 'Scope',
-      render(row: V1IngressClass) {
-        return row.spec.parameters?.scope
-      },
-    },
-    {
-      title: 'Kind',
-      key: 'Kind',
-      render(row: V1IngressClass) {
-        return row.spec.parameters?.kind
+      title: 'Reclaim Policy',
+      key: 'reclaimPolicy',
+      render(row: V1StorageClass) {
+        return row.reclaimPolicy
       },
     },
     {
       title: 'Age',
       key: 'age',
-      render(row: V1IngressClass) {
+      render(row: V1StorageClass) {
         return h(ResourceAgeView,
           {
             item: row,
@@ -99,10 +85,10 @@ function createColumns(): DataTableColumns<V1IngressClass> {
     {
       title: 'Action',
       key: 'Action',
-      render(row: V1IngressClass) {
-        return h(IngressClassActionView,
+      render(row: V1StorageClass) {
+        return h(StorageClassActionView,
           {
-            ingressClass: row,
+            storageClass: row,
             isDropdown: true,
           },
         )
@@ -112,12 +98,12 @@ function createColumns(): DataTableColumns<V1IngressClass> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.playService.ingressClassControllerList()
+  itemList.value = await K8sService.playService.storageClassControllerList()
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.playService.ingressClassControllerDelete({ requestBody: keys })
+    await K8sService.playService.storageClassControllerDelete({ requestBody: keys })
   })
 }
 
@@ -130,7 +116,7 @@ function onTextChanged(text: string) {
 }
 
 getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.IngressClass))
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.StorageClass))
 </script>
 
 <template>
@@ -139,7 +125,7 @@ TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, R
     :columns="createColumns()"
     :item-list="itemList"
     :show-ns-select="false"
-    name="Ingress Classes"
+    name="Storage Classes"
     @on-remove-btn-clicked="onRemoveBtnClicked"
     @on-text-changed="onTextChanged"
   />

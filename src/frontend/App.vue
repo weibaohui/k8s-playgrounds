@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Clock, Cube, LayerGroup, ListAlt, NetworkWired, Server } from '@vicons/fa'
+import { Clock, Cube, FileArchive, LayerGroup, ListAlt, NetworkWired, Server } from '@vicons/fa'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'
 import { RouterLink } from 'vue-router'
@@ -328,6 +328,26 @@ const menuOptions: MenuOption[] = [
       },
     ],
   },
+  {
+    label: 'Storage',
+    key: 'Storage',
+    icon: renderIcon(FileArchive),
+    children: [
+      {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/storageClasses',
+              },
+            },
+            { default: () => 'StorageClasses' },
+          ),
+        key: 'go-to-storageClasses',
+      },
+    ],
+  },
 ]
 
 const collapsed = ref(true)
@@ -343,7 +363,7 @@ router.push('/pods')
 <template>
   <NConfigProvider :theme="darkTheme">
     <NSpace ref="containerRef" vertical>
-      <NLayout has-sider>
+      <NLayout has-sider position="absolute">
         <NLayoutSider
           bordered
           collapse-mode="width"

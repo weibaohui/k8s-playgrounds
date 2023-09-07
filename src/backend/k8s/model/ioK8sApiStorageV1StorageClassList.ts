@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiStorageV1StorageClass } from './ioK8sApiStorageV1StorageClass'
+import type { V1StorageClass } from './v1StorageClass'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**
@@ -23,7 +23,7 @@ export class IoK8sApiStorageV1StorageClassList {
   /**
      * items is the list of StorageClasses
      */
-  items: Array<IoK8sApiStorageV1StorageClass>
+  items: Array<V1StorageClass>
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */

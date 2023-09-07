@@ -22,4 +22,5 @@ export enum ResType {
   Ingress = 'Ingress',
   IngressClass = 'IngressClass',
   NetworkPolicy = 'NetworkPolicy',
+  StorageClass = 'StorageClass',
 }

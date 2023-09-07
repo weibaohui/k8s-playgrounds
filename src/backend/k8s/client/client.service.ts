@@ -35,6 +35,10 @@ export class ClientService {
     return this.getKubeConfig().makeApiClient(k8s.BatchV1Api)
   }
 
+  public getStorageV1Api() {
+    return this.getKubeConfig().makeApiClient(k8s.StorageV1Api)
+  }
+
   public getPolicyV1Api() {
     return this.getKubeConfig().makeApiClient(k8s.PolicyV1Api)
   }

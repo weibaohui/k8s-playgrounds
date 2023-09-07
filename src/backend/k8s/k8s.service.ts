@@ -17,6 +17,7 @@ import { ResourceQuotaService } from '@backend/k8s/resourcequota/resourcequota.s
 import { SecretService } from '@backend/k8s/secret/secret.service'
 import { NetworkSvcService } from '@backend/k8s/service/NetworkSvc.service'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
+import { StorageClassService } from '@backend/k8s/storageClass/StorageClass.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
 import { Injectable, Logger } from '@nestjs/common'
 import { EventService } from './event/event.service'
@@ -55,5 +56,6 @@ export class K8sService {
     public ingressService: IngressService,
     public ingressClassService: IngressClassService,
     public networkPolicyService: NetworkPolicyService,
+    public storageClassService: StorageClassService,
   ) {}
 }

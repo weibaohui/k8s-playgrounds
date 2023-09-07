@@ -240,6 +240,10 @@ shamefully-hoist=true
 | IoK8sApiAutoscalingV2HorizontalPodAutoscaler   | V2HorizontalPodAutoscaler |
 | IoK8sApiPolicyV1PodDisruptionBudgetSpec        | V1PodDisruptionBudgetSpec |
 | IoK8sApiAdmissionregistrationV1MutatingWebhook | V1MutatingWebhook         |
+## TODO
+* 文档翻译按钮
+* AI相关Tab
+* 编辑器保存功能
 
 ## Demo
 * 操作demo
