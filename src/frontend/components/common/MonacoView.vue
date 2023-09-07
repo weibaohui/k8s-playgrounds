@@ -58,6 +58,7 @@ function onSaveBtnClicked() {
 
 <style scoped>
 .vue-monaco-editor {
+  min-height: 800px;
   width: 100%;
   height: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1);

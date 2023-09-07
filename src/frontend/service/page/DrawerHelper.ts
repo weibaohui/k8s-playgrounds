@@ -1,5 +1,5 @@
 import type { ResType } from '@backend/k8s/watch/watch.model'
-import MonacoView from '@frontend/components/common/MonacoView.vue'
+import EditorWithDocView from '@frontend/components/common/EditorWithDocView.vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import type { ConcreteComponent } from '@vue/runtime-core'
 import { h } from 'vue'
@@ -55,6 +55,6 @@ export class DrawerHelper {
       name,
     })
     this
-      .showWider(`${resource.kind}:${name}`, MonacoView, { item: resource })
+      .showWider(`${resource.kind}:${name}`, EditorWithDocView, { item: resource, docType: resType })
   }
 }

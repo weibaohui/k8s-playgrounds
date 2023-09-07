@@ -112,5 +112,6 @@ export default createRouter({
       path: '/networkPolices',
       component: NetpolListView,
     },
+
   ],
 })
