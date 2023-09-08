@@ -111,6 +111,9 @@ export class DocHelper {
       case ResType.RoleBinding:
         k = 'io.k8s.api.rbac.v1.RoleBinding'
         break
+      case ResType.ServiceAccount:
+        k = 'io.k8s.api.core.v1.ServiceAccount'
+        break
       default:
         k = 'io.k8s.api.core.v1.Pod'
     }

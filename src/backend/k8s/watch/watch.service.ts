@@ -71,6 +71,9 @@ export class WatchService {
       case ResType.Service:
         watchPath = '/api/v1/services'
         break
+      case ResType.ServiceAccount:
+        watchPath = '/api/v1/serviceaccounts'
+        break
       case ResType.PersistentVolumeClaim:
         watchPath = '/api/v1/persistentvolumeclaims'
         break

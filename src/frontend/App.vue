@@ -383,6 +383,18 @@ const menuOptions: MenuOption[] = [
             RouterLink,
             {
               to: {
+                path: '/serviceAccounts',
+              },
+            },
+            { default: () => 'Service Accounts' },
+          ),
+        key: 'go-to-serviceAccounts',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
                 path: '/clusterRoles',
               },
             },

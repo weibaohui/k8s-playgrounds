@@ -22,6 +22,7 @@ import { RoleService } from '@backend/k8s/Role/Role.service'
 import { RoleBindingService } from '@backend/k8s/RoleBinding/RoleBinding.service'
 import { SecretService } from '@backend/k8s/secret/secret.service'
 import { NetworkSvcService } from '@backend/k8s/service/NetworkSvc.service'
+import { ServiceAccountService } from '@backend/k8s/ServiceAccount/ServiceAccount.service'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
 import { StorageClassService } from '@backend/k8s/storageClass/StorageClass.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
@@ -69,5 +70,6 @@ export class K8sService {
     public clusterRoleBindingService: ClusterRoleBindingService,
     public roleService: RoleService,
     public roleBindingService: RoleBindingService,
+    public serviceAccountService: ServiceAccountService,
   ) {}
 }

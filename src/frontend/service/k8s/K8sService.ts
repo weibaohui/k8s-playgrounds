@@ -156,6 +156,11 @@ export class K8sService {
           ns,
           name,
         })
+      case ResType.ServiceAccount:
+        return K8sService.playService.serviceAccountControllerGetOneByNsName({
+          ns,
+          name,
+        })
     }
   }
 }

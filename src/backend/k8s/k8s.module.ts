@@ -47,6 +47,8 @@ import { SecretController } from '@backend/k8s/secret/secret.controller'
 import { SecretService } from '@backend/k8s/secret/secret.service'
 import { NetworkSvcController } from '@backend/k8s/service/NetworkSvc.controller'
 import { NetworkSvcService } from '@backend/k8s/service/NetworkSvc.service'
+import { ServiceAccountController } from '@backend/k8s/ServiceAccount/ServiceAccount.controller'
+import { ServiceAccountService } from '@backend/k8s/ServiceAccount/ServiceAccount.service'
 import { StatefulSetController } from '@backend/k8s/statefulset/statefulset.controller'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
 import { StorageClassController } from '@backend/k8s/storageClass/StorageClass.controller'
@@ -80,6 +82,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     IngressClassController, NetworkPolicyController, StorageClassController,
     PersistentVolumeController, PersistentVolumeClaimController, ClusterRoleController,
     ClusterRoleBindingController, RoleController, RoleBindingController,
+    ServiceAccountController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -94,6 +97,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     IngressClassService, NetworkPolicyService, StorageClassService,
     PersistentVolumeService, PersistentVolumeClaimService, ClusterRoleService,
     ClusterRoleBindingService, RoleService, RoleBindingService,
+    ServiceAccountService,
   ],
   exports: [K8sService],
 })

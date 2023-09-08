@@ -22,6 +22,7 @@ import RoleListView from '@frontend/components/Role/RoleListView.vue'
 import RoleBindingListView from '@frontend/components/RoleBinding/RoleBindingListView.vue'
 import SecretListView from '@frontend/components/secret/SecretListView.vue'
 import SvcListView from '@frontend/components/service/SvcListView.vue'
+import SaListView from '@frontend/components/ServiceAccount/SaListView.vue'
 import StsListView from '@frontend/components/statefulset/StsListView.vue'
 import StorageClassListView from '@frontend/components/StorageClass/StorageClassListView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -140,6 +141,9 @@ export default createRouter({
     }, {
       path: '/roleBindings',
       component: RoleBindingListView,
+    }, {
+      path: '/serviceAccounts',
+      component: SaListView,
     },
 
   ],
