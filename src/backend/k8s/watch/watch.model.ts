@@ -27,4 +27,5 @@ export enum ResType {
   PersistentVolumeClaim = 'PersistentVolumeClaim',
   ClusterRole = 'ClusterRole',
   ClusterRoleBinding = 'ClusterRoleBinding',
+  Role = 'Role',
 }

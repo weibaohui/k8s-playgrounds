@@ -18,6 +18,7 @@ import { PriorityClassService } from '@backend/k8s/priorityclass/priorityclass.s
 import { ReplicaSetService } from '@backend/k8s/replicaset/replicaset.service'
 import { ReplicationControllerService } from '@backend/k8s/replicationController/replication.service'
 import { ResourceQuotaService } from '@backend/k8s/resourcequota/resourcequota.service'
+import { RoleService } from '@backend/k8s/Role/Role.service'
 import { SecretService } from '@backend/k8s/secret/secret.service'
 import { NetworkSvcService } from '@backend/k8s/service/NetworkSvc.service'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
@@ -65,5 +66,6 @@ export class K8sService {
     public persistentVolumeClaimService: PersistentVolumeClaimService,
     public clusterRoleService: ClusterRoleService,
     public clusterRoleBindingService: ClusterRoleBindingService,
+    public roleService: RoleService,
   ) {}
 }
