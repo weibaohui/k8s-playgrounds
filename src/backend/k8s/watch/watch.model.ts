@@ -25,4 +25,5 @@ export enum ResType {
   StorageClass = 'StorageClass',
   PersistentVolume = 'PersistentVolume',
   PersistentVolumeClaim = 'PersistentVolumeClaim',
+  ClusterRole = 'ClusterRole',
 }

@@ -1,3 +1,4 @@
+import { ClusterRoleService } from '@backend/k8s/ClusterRole/ClusterRole.service'
 import { ConfigMapService } from '@backend/k8s/configmap/configmap.service'
 import { CronJobService } from '@backend/k8s/cronjob/cronjob.service'
 import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
@@ -61,5 +62,6 @@ export class K8sService {
     public storageClassService: StorageClassService,
     public persistentVolumeService: PersistentVolumeService,
     public persistentVolumeClaimService: PersistentVolumeClaimService,
+    public clusterRoleService: ClusterRoleService,
   ) {}
 }

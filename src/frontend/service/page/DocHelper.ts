@@ -99,6 +99,9 @@ export class DocHelper {
       case ResType.PersistentVolumeClaim:
         k = 'io.k8s.api.core.v1.PersistentVolumeClaim'
         break
+      case ResType.ClusterRole:
+        k = 'io.k8s.api.rbac.v1.ClusterRole'
+        break
       default:
         k = 'io.k8s.api.core.v1.Pod'
     }

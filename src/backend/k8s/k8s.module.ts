@@ -1,3 +1,5 @@
+import { ClusterRoleController } from '@backend/k8s/ClusterRole/ClusterRole.controller'
+import { ClusterRoleService } from '@backend/k8s/ClusterRole/ClusterRole.service'
 import { ConfigmapController } from '@backend/k8s/configmap/configmap.controller'
 import { ConfigMapService } from '@backend/k8s/configmap/configmap.service'
 import { CronJobController } from '@backend/k8s/cronjob/cronjob.controller'
@@ -70,7 +72,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     LimitRangeController, HorizontalPodAutoscalerController, PodDisruptionBudgetController,
     EndpointController, NetworkSvcController, IngressController,
     IngressClassController, NetworkPolicyController, StorageClassController,
-    PersistentVolumeController, PersistentVolumeClaimController,
+    PersistentVolumeController, PersistentVolumeClaimController, ClusterRoleController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -83,7 +85,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     LimitRangeService, HorizontalPodAutoscalerService, PodDisruptionBudgetService,
     EndpointService, NetworkSvcService, IngressService,
     IngressClassService, NetworkPolicyService, StorageClassService,
-    PersistentVolumeService, PersistentVolumeClaimService,
+    PersistentVolumeService, PersistentVolumeClaimService, ClusterRoleService,
   ],
   exports: [K8sService],
 })

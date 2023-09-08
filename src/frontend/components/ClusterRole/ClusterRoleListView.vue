@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { V1PriorityClass } from '@backend/k8s/model/v1PriorityClass'
+import type { V1ClusterRole } from '@backend/k8s/model/v1ClusterRole'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
-import PcActionView from '@frontend/components/priorityclass/PcActionView.vue'
-import PcGlobalDefaultView from '@frontend/components/priorityclass/PcGlobalDefaultView.vue'
-import PcView from '@frontend/components/priorityclass/PcView.vue'
+import ClusterRoleActionView from '@frontend/components/ClusterRole/ClusterRoleActionView.vue'
+import ClusterRoleView from '@frontend/components/ClusterRole/ClusterRoleView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
@@ -19,11 +18,11 @@ import WorkloadListView from '@frontend/components/common/ResourceListView.vue'
 const drawer = useDrawerService()
 const dialog = useDialog()
 
-const itemList = ref<V1PriorityClass[]>()
+const itemList = ref<V1ClusterRole[]>()
 const searchText = ref('')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
 
-function createColumns(): DataTableColumns<V1PriorityClass> {
+function createColumns(): DataTableColumns<V1ClusterRole> {
   return [
     {
       type: 'selection',
@@ -31,7 +30,7 @@ function createColumns(): DataTableColumns<V1PriorityClass> {
     {
       title: 'Name',
       key: 'metadata.name',
-      render(row: V1PriorityClass) {
+      render(row: V1ClusterRole) {
         return h(
           NButton,
           {
@@ -40,7 +39,7 @@ function createColumns(): DataTableColumns<V1PriorityClass> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`${ResType.PriorityClass}:${row.metadata.name}`, PcView, { pc: row })
+                .show(`${ResType.ClusterRole}:${row.metadata.name}`, ClusterRoleView, { clusterRole: row })
             },
           },
           { default: () => row.metadata.name },
@@ -51,17 +50,6 @@ function createColumns(): DataTableColumns<V1PriorityClass> {
     {
       title: 'Value',
       key: 'value',
-    },
-    {
-      title: 'GlobalDefault',
-      key: 'GlobalDefault',
-      render(row: V1PriorityClass) {
-        return h(PcGlobalDefaultView,
-          {
-            pc: row,
-          },
-        )
-      },
     },
     {
       title: 'Age',
@@ -77,10 +65,10 @@ function createColumns(): DataTableColumns<V1PriorityClass> {
     {
       title: 'Action',
       key: 'Action',
-      render(row: V1PriorityClass) {
-        return h(PcActionView,
+      render(row: V1ClusterRole) {
+        return h(ClusterRoleActionView,
           {
-            pc: row,
+            clusterRole: row,
             isDropdown: true,
           },
         )
@@ -90,14 +78,14 @@ function createColumns(): DataTableColumns<V1PriorityClass> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.playService.priorityClassControllerList()
+  itemList.value = await K8sService.playService.clusterRoleControllerList()
   if (!_.isEmpty(searchText.value))
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.playService.priorityClassControllerDelete({ requestBody: keys })
+    await K8sService.playService.clusterRoleControllerDelete({ requestBody: keys })
   })
 }
 
@@ -108,7 +96,7 @@ function onTextChanged(text: string) {
 }
 
 getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.PriorityClass))
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.ClusterRole))
 </script>
 
 <template>
@@ -117,7 +105,7 @@ TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, R
     :columns="createColumns()"
     :item-list="itemList"
     :show-ns-select="false"
-    name="Priority Classes"
+    name="Cluster Roles"
     @on-remove-btn-clicked="onRemoveBtnClicked"
     @on-text-changed="onTextChanged"
   />

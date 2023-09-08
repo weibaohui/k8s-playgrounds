@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Clock, Cube, FileArchive, LayerGroup, ListAlt, NetworkWired, Server } from '@vicons/fa'
+import { Clock, Cube, FileArchive, LayerGroup, ListAlt, NetworkWired, Server, UserShield } from '@vicons/fa'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'
 import { RouterLink } from 'vue-router'
@@ -369,6 +369,26 @@ const menuOptions: MenuOption[] = [
             { default: () => 'Storage Classes' },
           ),
         key: 'go-to-storageClasses',
+      },
+    ],
+  },
+  {
+    label: 'Rbac',
+    key: 'Rbac',
+    icon: renderIcon(UserShield),
+    children: [
+      {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/clusterRoles',
+              },
+            },
+            { default: () => 'Cluster Roles' },
+          ),
+        key: 'go-to-clusterRoles',
       },
     ],
   },

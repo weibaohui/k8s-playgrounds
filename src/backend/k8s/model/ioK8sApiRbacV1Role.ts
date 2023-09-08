@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiRbacV1PolicyRule } from './ioK8sApiRbacV1PolicyRule'
+import type { V1PolicyRule } from './v1PolicyRule'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
@@ -31,5 +31,5 @@ export class IoK8sApiRbacV1Role {
   /**
      * Rules holds all the PolicyRules for this Role
      */
-  rules?: Array<IoK8sApiRbacV1PolicyRule>
+  rules?: Array<V1PolicyRule>
 }

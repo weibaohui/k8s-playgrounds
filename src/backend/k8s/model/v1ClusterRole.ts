@@ -9,18 +9,18 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiRbacV1AggregationRule } from './ioK8sApiRbacV1AggregationRule'
-import type { IoK8sApiRbacV1PolicyRule } from './ioK8sApiRbacV1PolicyRule'
+import type { V1AggregationRule } from './v1AggregationRule'
+import type { V1PolicyRule } from './v1PolicyRule'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding.
  */
-export class IoK8sApiRbacV1ClusterRole {
+export class V1ClusterRole {
   /**
      * AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.
      */
-  aggregationRule?: IoK8sApiRbacV1AggregationRule
+  aggregationRule?: V1AggregationRule
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -36,5 +36,5 @@ export class IoK8sApiRbacV1ClusterRole {
   /**
      * Rules holds all the PolicyRules for this ClusterRole
      */
-  rules?: Array<IoK8sApiRbacV1PolicyRule>
+  rules?: Array<V1PolicyRule>
 }

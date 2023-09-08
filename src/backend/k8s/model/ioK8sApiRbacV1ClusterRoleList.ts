@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiRbacV1ClusterRole } from './ioK8sApiRbacV1ClusterRole'
+import type { V1ClusterRole } from './v1ClusterRole'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**
@@ -23,7 +23,7 @@ export class IoK8sApiRbacV1ClusterRoleList {
   /**
      * Items is a list of ClusterRoles
      */
-  items: Array<IoK8sApiRbacV1ClusterRole>
+  items: Array<V1ClusterRole>
   /**
      * Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
      */

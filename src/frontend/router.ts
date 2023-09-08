@@ -1,3 +1,4 @@
+import ClusterRoleListView from '@frontend/components/ClusterRole/ClusterRoleListView.vue'
 import CmListView from '@frontend/components/configmap/CmListView.vue'
 import CronJobListView from '@frontend/components/cronjob/CronJobListView.vue'
 import DsListView from '@frontend/components/daemonset/DsListView.vue'
@@ -124,6 +125,9 @@ export default createRouter({
     }, {
       path: '/persistentVolumesClaims',
       component: PvcListView,
+    }, {
+      path: '/clusterRoles',
+      component: ClusterRoleListView,
     },
 
   ],

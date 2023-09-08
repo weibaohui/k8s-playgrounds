@@ -116,6 +116,9 @@ export class WatchService {
       case ResType.HorizontalPodAutoscaler:
         watchPath = '/apis/autoscaling/v2/horizontalpodautoscalers'
         break
+      case ResType.ClusterRole:
+        watchPath = '/apis/rbac.authorization.k8s.io/v1/clusterroles'
+        break
       default:
         watchPath = '/api/v1/pods'
     }
