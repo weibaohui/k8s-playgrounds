@@ -1,5 +1,7 @@
 import { ClusterRoleController } from '@backend/k8s/ClusterRole/ClusterRole.controller'
 import { ClusterRoleService } from '@backend/k8s/ClusterRole/ClusterRole.service'
+import { ClusterRoleBindingController } from '@backend/k8s/ClusterRoleBinding/ClusterRoleBinding.controller'
+import { ClusterRoleBindingService } from '@backend/k8s/ClusterRoleBinding/ClusterRoleBinding.service'
 import { ConfigmapController } from '@backend/k8s/configmap/configmap.controller'
 import { ConfigMapService } from '@backend/k8s/configmap/configmap.service'
 import { CronJobController } from '@backend/k8s/cronjob/cronjob.controller'
@@ -73,6 +75,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     EndpointController, NetworkSvcController, IngressController,
     IngressClassController, NetworkPolicyController, StorageClassController,
     PersistentVolumeController, PersistentVolumeClaimController, ClusterRoleController,
+    ClusterRoleBindingController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -86,6 +89,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     EndpointService, NetworkSvcService, IngressService,
     IngressClassService, NetworkPolicyService, StorageClassService,
     PersistentVolumeService, PersistentVolumeClaimService, ClusterRoleService,
+    ClusterRoleBindingService,
   ],
   exports: [K8sService],
 })

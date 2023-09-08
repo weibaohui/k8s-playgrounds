@@ -119,6 +119,9 @@ export class WatchService {
       case ResType.ClusterRole:
         watchPath = '/apis/rbac.authorization.k8s.io/v1/clusterroles'
         break
+      case ResType.ClusterRoleBinding:
+        watchPath = '/apis/rbac.authorization.k8s.io/v1/clusterrolebindings'
+        break
       default:
         watchPath = '/api/v1/pods'
     }

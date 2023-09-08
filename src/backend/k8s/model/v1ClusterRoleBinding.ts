@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiRbacV1RoleRef } from './ioK8sApiRbacV1RoleRef'
-import type { IoK8sApiRbacV1Subject } from './ioK8sApiRbacV1Subject'
+import type { V1RoleRef } from './v1RoleRef'
+import type { V1Subject } from './v1Subject'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
  * ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole in the global namespace, and adds who information via Subject.
  */
-export class IoK8sApiRbacV1ClusterRoleBinding {
+export class V1ClusterRoleBinding {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -32,9 +32,9 @@ export class IoK8sApiRbacV1ClusterRoleBinding {
   /**
      * RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.
      */
-  roleRef: IoK8sApiRbacV1RoleRef
+  roleRef: V1RoleRef
   /**
      * Subjects holds references to the objects the role applies to.
      */
-  subjects?: Array<IoK8sApiRbacV1Subject>
+  subjects?: Array<V1Subject>
 }

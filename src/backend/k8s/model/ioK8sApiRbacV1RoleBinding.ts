@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiRbacV1RoleRef } from './ioK8sApiRbacV1RoleRef'
-import type { IoK8sApiRbacV1Subject } from './ioK8sApiRbacV1Subject'
+import type { V1RoleRef } from './v1RoleRef'
+import type { V1Subject } from './v1Subject'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
@@ -32,9 +32,9 @@ export class IoK8sApiRbacV1RoleBinding {
   /**
      * RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.
      */
-  roleRef: IoK8sApiRbacV1RoleRef
+  roleRef: V1RoleRef
   /**
      * Subjects holds references to the objects the role applies to.
      */
-  subjects?: Array<IoK8sApiRbacV1Subject>
+  subjects?: Array<V1Subject>
 }

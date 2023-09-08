@@ -102,6 +102,9 @@ export class DocHelper {
       case ResType.ClusterRole:
         k = 'io.k8s.api.rbac.v1.ClusterRole'
         break
+      case ResType.ClusterRoleBinding:
+        k = 'io.k8s.api.rbac.v1.ClusterRoleBinding'
+        break
       default:
         k = 'io.k8s.api.core.v1.Pod'
     }
