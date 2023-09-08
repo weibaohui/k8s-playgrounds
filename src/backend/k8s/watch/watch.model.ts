@@ -28,4 +28,5 @@ export enum ResType {
   ClusterRole = 'ClusterRole',
   ClusterRoleBinding = 'ClusterRoleBinding',
   Role = 'Role',
+  RoleBinding = 'RoleBinding',
 }

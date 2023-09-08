@@ -262,6 +262,7 @@ shamefully-hoist=true
 | IoK8sApiAutoscalingV2HorizontalPodAutoscaler   | V2HorizontalPodAutoscaler |
 | IoK8sApiPolicyV1PodDisruptionBudgetSpec        | V1PodDisruptionBudgetSpec |
 | IoK8sApiAdmissionregistrationV1MutatingWebhook | V1MutatingWebhook         |
+| IoK8sApiRbacV1Role                             | V1Role                    |
 ## TODO
 * 文档翻译按钮
 * AI相关Tab

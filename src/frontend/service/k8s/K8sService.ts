@@ -146,6 +146,16 @@ export class K8sService {
           ns,
           name,
         })
+      case ResType.Role:
+        return K8sService.playService.roleControllerGetOneByNsName({
+          ns,
+          name,
+        })
+      case ResType.RoleBinding:
+        return K8sService.playService.roleBindingControllerGetOneByNsName({
+          ns,
+          name,
+        })
     }
   }
 }

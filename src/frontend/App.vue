@@ -402,6 +402,31 @@ const menuOptions: MenuOption[] = [
           ),
         key: 'go-to-clusterRoleBindings',
       },
+      {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/roles',
+              },
+            },
+            { default: () => 'Roles' },
+          ),
+        key: 'go-to-roles',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/roleBindings',
+              },
+            },
+            { default: () => 'Role Bindings' },
+          ),
+        key: 'go-to-roleBindings',
+      },
     ],
   },
 ]

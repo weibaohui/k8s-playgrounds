@@ -18,6 +18,8 @@ import PcListView from '@frontend/components/priorityclass/PcListView.vue'
 import RcListView from '@frontend/components/replicacontroller/RcListView.vue'
 import RsListView from '@frontend/components/replicaset/RsListView.vue'
 import QuotaListView from '@frontend/components/resourcequota/QuotaListView.vue'
+import RoleListView from '@frontend/components/Role/RoleListView.vue'
+import RoleBindingListView from '@frontend/components/RoleBinding/RoleBindingListView.vue'
 import SecretListView from '@frontend/components/secret/SecretListView.vue'
 import SvcListView from '@frontend/components/service/SvcListView.vue'
 import StsListView from '@frontend/components/statefulset/StsListView.vue'
@@ -132,6 +134,12 @@ export default createRouter({
     }, {
       path: '/clusterRoleBindings',
       component: ClusterRoleBindingListView,
+    }, {
+      path: '/roles',
+      component: RoleListView,
+    }, {
+      path: '/roleBindings',
+      component: RoleBindingListView,
     },
 
   ],

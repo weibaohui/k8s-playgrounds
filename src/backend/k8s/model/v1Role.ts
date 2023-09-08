@@ -9,14 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1RoleRef } from './v1RoleRef'
-import type { V1Subject } from './v1Subject'
+import type { V1PolicyRule } from './v1PolicyRule'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
- * RoleBinding references a role, but does not contain it.  It can reference a Role in the same namespace or a ClusterRole in the global namespace. It adds who information via Subjects and namespace information by which namespace it exists in.  RoleBindings in a given namespace only have effect in that namespace.
+ * Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.
  */
-export class IoK8sApiRbacV1RoleBinding {
+export class V1Role {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -30,11 +29,7 @@ export class IoK8sApiRbacV1RoleBinding {
      */
   metadata?: V1ObjectMeta
   /**
-     * RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.
+     * Rules holds all the PolicyRules for this Role
      */
-  roleRef: V1RoleRef
-  /**
-     * Subjects holds references to the objects the role applies to.
-     */
-  subjects?: Array<V1Subject>
+  rules?: Array<V1PolicyRule>
 }

@@ -41,6 +41,8 @@ import { ResourceQuotaController } from '@backend/k8s/resourcequota/resourcequot
 import { ResourceQuotaService } from '@backend/k8s/resourcequota/resourcequota.service'
 import { RoleController } from '@backend/k8s/Role/Role.controller'
 import { RoleService } from '@backend/k8s/Role/Role.service'
+import { RoleBindingController } from '@backend/k8s/RoleBinding/RoleBinding.controller'
+import { RoleBindingService } from '@backend/k8s/RoleBinding/RoleBinding.service'
 import { SecretController } from '@backend/k8s/secret/secret.controller'
 import { SecretService } from '@backend/k8s/secret/secret.service'
 import { NetworkSvcController } from '@backend/k8s/service/NetworkSvc.controller'
@@ -77,7 +79,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     EndpointController, NetworkSvcController, IngressController,
     IngressClassController, NetworkPolicyController, StorageClassController,
     PersistentVolumeController, PersistentVolumeClaimController, ClusterRoleController,
-    ClusterRoleBindingController, RoleController,
+    ClusterRoleBindingController, RoleController, RoleBindingController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -91,7 +93,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     EndpointService, NetworkSvcService, IngressService,
     IngressClassService, NetworkPolicyService, StorageClassService,
     PersistentVolumeService, PersistentVolumeClaimService, ClusterRoleService,
-    ClusterRoleBindingService, RoleService,
+    ClusterRoleBindingService, RoleService, RoleBindingService,
   ],
   exports: [K8sService],
 })
