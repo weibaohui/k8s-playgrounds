@@ -3,6 +3,7 @@ import { V1Role } from '@backend/k8s/model/v1Role'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import RoleActionView from '@frontend/components/Role/RoleActionView.vue'
 import RoleBasicInfoView from '@frontend/components/Role/RoleBasicInfoView.vue'
+import RoleRulesView from '@frontend/components/Role/RoleRulesView.vue'
 import { NMessageProvider } from 'naive-ui'
 
 const props = defineProps({
@@ -16,7 +17,7 @@ const props = defineProps({
   </NMessageProvider>
 
   <RoleBasicInfoView :role="props.role" :show-title="true" />
-
+  <RoleRulesView :cluster-role="props.role" :show-title="true" />
   <InvolvedEventView :item="props.role.metadata" :show-title="true" />
 </template>
 
