@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { V1DaemonSet } from '@backend/k8s/model/V1DaemonSet'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import PodSpecView from '@frontend/components/pod/PodSpecView.vue'
 import { NTable } from 'naive-ui'
 
 const props = defineProps({
   ds: V1DaemonSet,
+  showTitle: Boolean,
+
 })
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.ds.metadata" />
   <PodSpecView :spec="props.ds.spec.template.spec" />
 

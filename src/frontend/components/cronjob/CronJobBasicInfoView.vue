@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { V1CronJob } from '@backend/k8s/model/v1CronJob'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'
 
 const props = defineProps({
   cj: V1CronJob,
+  showTitle: Boolean,
+
 })
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.cj.metadata" />
   <NTable :single-line="false">
     <tbody>

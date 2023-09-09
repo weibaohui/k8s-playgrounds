@@ -1,14 +1,19 @@
 <script setup lang="ts">
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NSpace, NTable, NTag } from 'naive-ui'
 import { V1Namespace } from '@backend/k8s/model/V1Namespace'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 
 const props = defineProps({
   ns: V1Namespace,
+  showTitle: Boolean,
+
 })
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.ns.metadata" />
 
   <NTable :single-line="false">

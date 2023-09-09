@@ -7,8 +7,9 @@ import NodeBasicInfoView from '@frontend/components/node/NodeBasicInfoView.vue'
 import NodeResourceView from '@frontend/components/node/NodeResourceView.vue'
 import PodListMiniView from '@frontend/components/pod/PodListMiniView.vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 import { ref } from 'vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 
 const props = defineProps({
   node: V1Node,
@@ -24,31 +25,14 @@ getPodsByNodeName()
   <NMessageProvider>
     <NodeActionView :node="props.node" :is-dropdown="false" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <NodeBasicInfoView :node="node" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Resource
-    </NText>
-  </NH6>
+
+  <NodeBasicInfoView :node="node" :show-title="true" />
+  <TitleBar title="Resource" />
   <NodeResourceView :node="node" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Pods
-    </NText>
-  </NH6>
-  <PodListMiniView :item-list="podList" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.node.metadata" />
+  <PodListMiniView :item-list="podList" :show-title="true" />
+
+  <InvolvedEventView :item="props.node.metadata" :show-title="true" />
 </template>
 
 <style scoped>

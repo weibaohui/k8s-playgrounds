@@ -4,7 +4,7 @@ import ClusterRoleBindingActionView from '@frontend/components/ClusterRoleBindin
 import ClusterRoleBindingBasicInfoView
   from '@frontend/components/ClusterRoleBinding/ClusterRoleBindingBasicInfoView.vue'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 
 const props = defineProps({
   clusterRoleBinding: V1ClusterRoleBinding,
@@ -15,19 +15,10 @@ const props = defineProps({
   <NMessageProvider>
     <ClusterRoleBindingActionView :is-dropdown="false" :cluster-role-binding="props.clusterRoleBinding" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <ClusterRoleBindingBasicInfoView :cluster-role-binding="props.clusterRoleBinding" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.clusterRoleBinding.metadata" />
+  <ClusterRoleBindingBasicInfoView :cluster-role-binding="props.clusterRoleBinding" :show-title="true" />
+
+  <InvolvedEventView :item="props.clusterRoleBinding.metadata" :show-title="true" />
 </template>
 
 <style scoped>

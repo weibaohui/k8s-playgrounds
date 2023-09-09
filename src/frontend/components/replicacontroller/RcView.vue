@@ -7,7 +7,7 @@ import PodListMiniView from '@frontend/components/pod/PodListMiniView.vue'
 import RcActionView from '@frontend/components/replicacontroller/RcActionView.vue'
 import RcBasicInfoView from '@frontend/components/replicacontroller/RcBasicInfoView.vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -26,25 +26,11 @@ getPods()
   <NMessageProvider>
     <RcActionView :is-dropdown="false" :rc="props.rc" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <RcBasicInfoView :rc="props.rc" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Pods (filter by label )
-    </NText>
-  </NH6>
-  <PodListMiniView :item-list="podList" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.rc.metadata" />
+  <RcBasicInfoView :rc="props.rc" :show-title="true" />
+  <PodListMiniView :item-list="podList" :show-title="true" />
+
+  <InvolvedEventView :item="props.rc.metadata" :show-title="true" />
 </template>
 
 <style scoped>

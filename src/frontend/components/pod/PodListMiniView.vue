@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { V1Pod } from '@backend/k8s/model/V1Pod'
 import WorkloadListView from '@frontend/components/common/ResourceListView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import ContainerReadyCount from '@frontend/components/container/ContainerReadyCount.vue'
 import ContainerRestartCount from '@frontend/components/container/ContainerRestartCount.vue'
 import ContainerStatusIcon from '@frontend/components/container/ContainerStatusIcon.vue'
@@ -15,6 +16,7 @@ import { h, ref } from 'vue'
 
 const props = defineProps({
   podList: Array<V1Pod>,
+  showTitle: Boolean,
 })
 
 const drawer = useDrawerService()
@@ -98,6 +100,7 @@ function createColumns(): DataTableColumns<V1Pod> {
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Pods" />
   <WorkloadListView
     ref="workloadListViewRef"
     :columns="createColumns()"

@@ -3,6 +3,7 @@ import { V1PersistentVolumeClaim } from '@backend/k8s/model/V1PersistentVolumeCl
 import { ResType } from '@backend/k8s/watch/watch.model'
 import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import PersistentVolumeView from '@frontend/components/PersistentVolume/PersistentVolumeView.vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
@@ -11,6 +12,8 @@ import { NButton, NTable } from 'naive-ui'
 
 const props = defineProps({
   pvc: V1PersistentVolumeClaim,
+  showTitle: Boolean,
+
 })
 const drawer = useDrawerService()
 async function onPvClick(name: string) {
@@ -27,6 +30,8 @@ async function onPvClick(name: string) {
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.pvc.metadata" />
   <NTable :single-line="false">
     <tbody>

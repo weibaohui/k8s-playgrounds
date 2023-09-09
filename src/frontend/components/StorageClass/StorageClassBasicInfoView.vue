@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { V1StorageClass } from '@backend/k8s/model/v1StorageClass'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { NSpace, NTable, NTag } from 'naive-ui'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 
 const props = defineProps({
   storageClass: V1StorageClass,
+  showTitle: Boolean,
+
 })
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.storageClass.metadata" />
 
   <NTable :single-line="false">

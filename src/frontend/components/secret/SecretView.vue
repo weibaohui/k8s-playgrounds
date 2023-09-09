@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { V1Secret } from '@backend/k8s/model/V1Secret'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import SecretActionView from '@frontend/components/secret/SecretActionView.vue'
 import SecretBasicInfoView from '@frontend/components/secret/SecretBasicInfoView.vue'
 import SecretDataListView from '@frontend/components/secret/SecretDataListView.vue'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 
 const props = defineProps({
   secret: V1Secret,
@@ -15,25 +16,14 @@ const props = defineProps({
   <NMessageProvider>
     <SecretActionView :is-dropdown="false" :secret="props.secret" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <SecretBasicInfoView :secret="props.secret" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
+
+  <SecretBasicInfoView :secret="props.secret" :show-title="true" />
+
   <InvolvedEventView :item="props.secret.metadata" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Data
-    </NText>
-  </NH6>
+
+  <TitleBar title="Data" />
   <NMessageProvider>
-    <SecretDataListView :secret="props.secret" />
+    <SecretDataListView :secret="props.secret" :show-title="true" />
   </NMessageProvider>
 </template>
 

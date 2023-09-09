@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { V1ReplicaSet } from '@backend/k8s/model/V1ReplicaSet'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'
 
 const props = defineProps({
   rs: V1ReplicaSet,
+  showTitle: Boolean,
+
 })
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.rs.metadata" />
   <NTable :single-line="false">
     <tbody>

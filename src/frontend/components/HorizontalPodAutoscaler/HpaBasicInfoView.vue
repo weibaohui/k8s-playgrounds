@@ -5,10 +5,13 @@ import { V2HorizontalPodAutoscaler } from '@backend/k8s/model/v2HorizontalPodAut
 import ControlledByView from '@frontend/components/common/ControlledByView.vue'
 import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'
 
 const props = defineProps({
   hpa: V2HorizontalPodAutoscaler,
+  showTitle: Boolean,
+
 })
 function getFakeV1ObjectMeta() {
   const om = new V1ObjectMeta()
@@ -22,6 +25,8 @@ function getFakeV1ObjectMeta() {
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.hpa.metadata" />
   <NTable :single-line="false">
     <tbody>

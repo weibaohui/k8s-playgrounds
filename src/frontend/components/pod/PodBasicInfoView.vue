@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import PodSpecView from '@frontend/components/pod/PodSpecView.vue'
 import { NTable, NTag } from 'naive-ui'
 import ContainerStatusText from '@frontend/components/container/ContainerStatusText.vue'
@@ -8,10 +9,14 @@ import { V1Pod } from '@backend/k8s/model/V1Pod'
 
 const props = defineProps({
   pod: V1Pod,
+  showTitle: Boolean,
+
 })
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.pod.metadata" />
   <NTable :single-line="false">
     <tbody>

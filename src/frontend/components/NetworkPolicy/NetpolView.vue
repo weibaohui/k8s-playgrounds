@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { V1NetworkPolicy } from '@backend/k8s/model/v1NetworkPolicy'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import NetpolActionView from '@frontend/components/NetworkPolicy/NetpolActionView.vue'
 import NetpolBasicInfoView from '@frontend/components/NetworkPolicy/NetpolBasicInfoView.vue'
 import NetpolEgressView from '@frontend/components/NetworkPolicy/NetpolEgressView.vue'
 import NetpolIngressView from '@frontend/components/NetworkPolicy/NetpolIngressView.vue'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 
 const props = defineProps({
   netpol: V1NetworkPolicy,
@@ -16,32 +17,16 @@ const props = defineProps({
   <NMessageProvider>
     <NetpolActionView :is-dropdown="false" :netpol="props.netpol" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <NetpolBasicInfoView :netpol="props.netpol" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Ingress
-    </NText>
-  </NH6>
+  <NetpolBasicInfoView :netpol="props.netpol" :show-title="true" />
+
+  <TitleBar title="Ingress" />
   <NetpolIngressView :netpol="props.netpol" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Egress
-    </NText>
-  </NH6>
+
+  <TitleBar title="Egress" />
   <NetpolEgressView :netpol="props.netpol" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.netpol.metadata" />
+  <InvolvedEventView :item="props.netpol.metadata" :show-title="true" />
 </template>
 
 <style scoped>

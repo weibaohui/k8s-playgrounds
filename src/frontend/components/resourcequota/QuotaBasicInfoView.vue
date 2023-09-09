@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { V1ResourceQuota } from '@backend/k8s/model/V1ResourceQuota'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'
 
 const props = defineProps({
   quota: V1ResourceQuota,
+  showTitle: Boolean,
+
 })
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.quota.metadata" />
   <NTable :single-line="false">
     <tbody>

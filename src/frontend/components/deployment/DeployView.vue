@@ -7,7 +7,7 @@ import DeployActionView from '@frontend/components/deployment/DeployActionView.v
 import DeployBasicInfoView from '@frontend/components/deployment/DeployBasicInfoView.vue'
 import PodListMiniView from '@frontend/components/pod/PodListMiniView.vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -27,24 +27,9 @@ getPods()
     <DeployActionView :is-dropdown="false" :deploy="props.deploy" />
   </NMessageProvider>
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <DeployBasicInfoView :deploy="props.deploy" />
+  <DeployBasicInfoView :deploy="props.deploy" :show-title="true" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Pods
-    </NText>
-  </NH6>
-  <PodListMiniView :item-list="podList" />
+  <PodListMiniView :item-list="podList" :show-title="true" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.deploy.metadata" />
+  <InvolvedEventView :item="props.deploy.metadata" :show-title="true" />
 </template>

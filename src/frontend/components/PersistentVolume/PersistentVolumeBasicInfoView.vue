@@ -2,6 +2,7 @@
 import type { V1ObjectReference } from '@backend/k8s/model/V1ObjectReference'
 import { V1PersistentVolume } from '@backend/k8s/model/v1PersistentVolume'
 import { ResType } from '@backend/k8s/watch/watch.model'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import PvcView from '@frontend/components/PersistentVolumeClaim/PvcView.vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
@@ -11,6 +12,8 @@ import ResourceMetadataView from '@frontend/components/common/ResourceMetadataVi
 
 const props = defineProps({
   persistentVolume: V1PersistentVolume,
+  showTitle: Boolean,
+
 })
 const drawer = useDrawerService()
 
@@ -28,6 +31,8 @@ async function onPvcClick(ref: V1ObjectReference) {
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.persistentVolume.metadata" />
 
   <NTable :single-line="false">

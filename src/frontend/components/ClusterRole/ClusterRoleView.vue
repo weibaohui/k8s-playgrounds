@@ -3,7 +3,7 @@ import { V1ClusterRole } from '@backend/k8s/model/v1ClusterRole'
 import ClusterRoleActionView from '@frontend/components/ClusterRole/ClusterRoleActionView.vue'
 import ClusterRoleBasicInfoView from '@frontend/components/ClusterRole/ClusterRoleBasicInfoView.vue'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 
 const props = defineProps({
   clusterRole: V1ClusterRole,
@@ -14,19 +14,8 @@ const props = defineProps({
   <NMessageProvider>
     <ClusterRoleActionView :is-dropdown="false" :cluster-role="props.clusterRole" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <ClusterRoleBasicInfoView :cluster-role="props.clusterRole" />
-
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.clusterRole.metadata" />
+  <ClusterRoleBasicInfoView :cluster-role="props.clusterRole" :show-title="true" />
+  <InvolvedEventView :item="props.clusterRole.metadata" :show-title="true" />
 </template>
 
 <style scoped>

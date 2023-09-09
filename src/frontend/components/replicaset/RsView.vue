@@ -7,7 +7,7 @@ import PodListMiniView from '@frontend/components/pod/PodListMiniView.vue'
 import RsActionView from '@frontend/components/replicaset/RsActionView.vue'
 import RsBasicInfoView from '@frontend/components/replicaset/RsBasicInfoView.vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -26,25 +26,11 @@ getPods()
   <NMessageProvider>
     <RsActionView :is-dropdown="false" :rs="props.rs" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <RsBasicInfoView :rs="rs" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Pods
-    </NText>
-  </NH6>
-  <PodListMiniView :item-list="podList" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.rs.metadata" />
+  <RsBasicInfoView :rs="rs" :show-title="true" />
+
+  <PodListMiniView :item-list="podList" :show-title="true" />
+  <InvolvedEventView :item="props.rs.metadata" :show-title="true" />
 </template>
 
 <style scoped>

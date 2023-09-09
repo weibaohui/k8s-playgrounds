@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 import EventActionView from '@frontend/components/event/EventActionView.vue'
 import EventBasicInfoView from '@frontend/components/event/EventBasicInfoView.vue'
 import EventInvolvedView from '@frontend/components/event/EventInvolvedView.vue'
 import { V1Event } from '@backend/k8s/model/V1Event'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 
 const props = defineProps({
   event: V1Event,
@@ -14,18 +15,10 @@ const props = defineProps({
   <NMessageProvider>
     <EventActionView :is-dropdown="false" :event="props.event" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <EventBasicInfoView :event="event" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Involved object
-    </NText>
-  </NH6>
-  <EventInvolvedView :event="event" />
+
+  <EventBasicInfoView :event="event" :show-title="true" />
+  <TitleBar title="Involved object" />
+  <EventInvolvedView :event="event" :show-title="true" />
 </template>
 
 <style scoped>

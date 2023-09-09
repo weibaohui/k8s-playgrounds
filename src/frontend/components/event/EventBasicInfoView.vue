@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'
 import moment from 'moment/moment'
 import { V1Event } from '@backend/k8s/model/V1Event'
@@ -6,10 +7,14 @@ import ResourceMetadataView from '@frontend/components/common/ResourceMetadataVi
 
 const props = defineProps({
   event: V1Event,
+  showTitle: Boolean,
+
 })
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.event.metadata" />
   <NTable :single-line="false">
     <tbody>

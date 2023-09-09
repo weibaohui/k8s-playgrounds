@@ -7,7 +7,7 @@ import PodListMiniView from '@frontend/components/pod/PodListMiniView.vue'
 import StsActionView from '@frontend/components/statefulset/StsActionView.vue'
 import StsBasicInfoView from '@frontend/components/statefulset/StsBasicInfoView.vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -26,25 +26,12 @@ getPods()
   <NMessageProvider>
     <StsActionView :is-dropdown="false" :sts="props.sts" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <StsBasicInfoView :sts="sts" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Pods
-    </NText>
-  </NH6>
-  <PodListMiniView :item-list="podList" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.sts.metadata" />
+  <StsBasicInfoView :sts="sts" :show-title="true" />
+
+  <PodListMiniView :item-list="podList" :show-title="true" />
+
+  <InvolvedEventView :item="props.sts.metadata" :show-title="true" />
 </template>
 
 <style scoped>

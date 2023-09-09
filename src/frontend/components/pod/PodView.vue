@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 import ContainersView from '@frontend/components/container/ContainersView.vue'
 import PodActionView from '@frontend/components/pod/PodActionView.vue'
 import PodBasicInfoView from '@frontend/components/pod/PodBasicInfoView.vue'
 import PodVolumesView from '@frontend/components/pod/PodVolumeView.vue'
 import { V1Pod } from '@backend/k8s/model/V1Pod'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 
 const props = defineProps({
   pod: V1Pod,
@@ -16,28 +17,12 @@ const props = defineProps({
   <NMessageProvider>
     <PodActionView :is-dropdown="false" :pod="props.pod" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <PodBasicInfoView :pod="props.pod" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Containers
-    </NText>
-  </NH6>
+
+  <PodBasicInfoView :pod="props.pod" :show-title="true" />
+  <TitleBar title="Containers" />
   <ContainersView :pod="props.pod" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Volumes
-    </NText>
-  </NH6>
+  <TitleBar title="Volumes" />
   <PodVolumesView :pod="props.pod" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.pod.metadata" />
+
+  <InvolvedEventView :item="props.pod.metadata" :show-title="true" />
 </template>

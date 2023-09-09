@@ -3,7 +3,7 @@ import { V1PersistentVolumeClaim } from '@backend/k8s/model/V1PersistentVolumeCl
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import PvcActionView from '@frontend/components/PersistentVolumeClaim/PvcActionView.vue'
 import PvcBasicInfoView from '@frontend/components/PersistentVolumeClaim/PvcBasicInfoView.vue'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 
 const props = defineProps({
   pvc: V1PersistentVolumeClaim,
@@ -14,19 +14,10 @@ const props = defineProps({
   <NMessageProvider>
     <PvcActionView :is-dropdown="false" :pvc="props.pvc" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <PvcBasicInfoView :pvc="props.pvc" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.pvc.metadata" />
+  <PvcBasicInfoView :pvc="props.pvc" :show-title="true" />
+
+  <InvolvedEventView :item="props.pvc.metadata" :show-title="true" />
 </template>
 
 <style scoped>

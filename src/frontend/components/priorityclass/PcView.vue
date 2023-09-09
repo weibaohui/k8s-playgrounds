@@ -3,7 +3,7 @@ import { V1PriorityClass } from '@backend/k8s/model/v1PriorityClass'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import PcActionView from '@frontend/components/priorityclass/PcActionView.vue'
 import PcBasicInfoView from '@frontend/components/priorityclass/PcBasicInfoView.vue'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 
 const props = defineProps({
   pc: V1PriorityClass,
@@ -14,19 +14,10 @@ const props = defineProps({
   <NMessageProvider>
     <PcActionView :is-dropdown="false" :pc="props.pc" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <PcBasicInfoView :pc="props.pc" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.pc.metadata" />
+  <PcBasicInfoView :pc="props.pc" :show-title="true" />
+
+  <InvolvedEventView :item="props.pc.metadata" :show-title="true" />
 </template>
 
 <style scoped>

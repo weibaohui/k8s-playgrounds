@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { V1StatefulSet } from '@backend/k8s/model/v1StatefulSet'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'
 
 const props = defineProps({
   sts: V1StatefulSet,
+  showTitle: Boolean,
+
 })
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.sts.metadata" />
   <NTable :single-line="false">
     <tbody>

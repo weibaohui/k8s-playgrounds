@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { V1NetworkPolicy } from '@backend/k8s/model/v1NetworkPolicy'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { NSpace, NTable, NTag } from 'naive-ui'
 
 const props = defineProps({
   netpol: V1NetworkPolicy,
+  showTitle: Boolean,
+
 })
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.netpol.metadata" />
   <NTable :single-line="false">
     <tbody>

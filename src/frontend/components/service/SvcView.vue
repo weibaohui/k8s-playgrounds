@@ -5,7 +5,8 @@ import SvcActionView from '@frontend/components/service/SvcActionView.vue'
 import SvcBasicInfoView from '@frontend/components/service/SvcBasicInfoView.vue'
 import SvcConnectView from '@frontend/components/service/SvcConnectView.vue'
 import SvcEndpointListView from '@frontend/components/service/SvcEndpointListView.vue'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 
 const props = defineProps({
   svc: V1Service,
@@ -16,32 +17,14 @@ const props = defineProps({
   <NMessageProvider>
     <SvcActionView :is-dropdown="false" :svc="props.svc" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
+  <TitleBar title="Basic info" :show-title="true" />
   <SvcBasicInfoView :svc="props.svc" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Connect Info
-    </NText>
-  </NH6>
+  <TitleBar title="Connect Info" />
   <SvcConnectView :svc="props.svc" />
-
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Endpoints
-    </NText>
-  </NH6>
+  <TitleBar title="Endpoints" />
   <SvcEndpointListView :svc="props.svc" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.svc.metadata" />
+  <InvolvedEventView :item="props.svc.metadata" :show-title="true" />
 </template>
 
 <style scoped>

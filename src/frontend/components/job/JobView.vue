@@ -7,7 +7,7 @@ import JobActionView from '@frontend/components/job/JobActionView.vue'
 import JobBasicInfoView from '@frontend/components/job/JobBasicInfoView.vue'
 import PodListMiniView from '@frontend/components/pod/PodListMiniView.vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -26,25 +26,12 @@ getPods()
   <NMessageProvider>
     <JobActionView :is-dropdown="false" :job="props.job" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <JobBasicInfoView :job="props.job" />
 
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Pods (filter by label )
-    </NText>
-  </NH6>
-  <PodListMiniView :item-list="podList" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.job.metadata" />
+  <JobBasicInfoView :job="props.job" :show-title="true" />
+
+  <PodListMiniView :item-list="podList" :show-title="true" />
+
+  <InvolvedEventView :item="props.job.metadata" :show-title="true" />
 </template>
 
 <style scoped>

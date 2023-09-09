@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 import NsActionView from '@frontend/components/ns/NsActionView.vue'
 import NsBasicInfoView from '@frontend/components/ns/NsBasicInfoView.vue'
 import { V1Namespace } from '@backend/k8s/model/V1Namespace'
@@ -14,18 +14,10 @@ const props = defineProps({
   <NMessageProvider>
     <NsActionView :is-dropdown="false" :ns="props.ns" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <NsBasicInfoView :ns="ns" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.ns.metadata" />
+
+  <NsBasicInfoView :ns="ns" :show-title="true" />
+
+  <InvolvedEventView :item="props.ns.metadata" :show-title="true" />
 </template>
 
 <style scoped>

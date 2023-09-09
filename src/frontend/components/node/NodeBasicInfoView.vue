@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { CheckCircle, ExclamationCircle } from '@vicons/fa'
 
 import { NBadge, NCollapse, NCollapseItem, NIcon, NTable, NTag } from 'naive-ui'
@@ -10,6 +11,8 @@ import ResourceMetadataView from '@frontend/components/common/ResourceMetadataVi
 
 const props = defineProps({
   node: V1Node,
+  showTitle: Boolean,
+
 })
 const isExpended = ref(false)
 const expendedText = ref('Hide')
@@ -25,6 +28,8 @@ function toggle() {
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.node.metadata" />
 
   <NTable :single-line="false">

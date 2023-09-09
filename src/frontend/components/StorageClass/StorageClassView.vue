@@ -3,7 +3,7 @@ import { V1StorageClass } from '@backend/k8s/model/v1StorageClass'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import StorageClassActionView from '@frontend/components/storageClass/StorageClassActionView.vue'
 import StorageClassBasicInfoView from '@frontend/components/storageClass/StorageClassBasicInfoView.vue'
-import { NH6, NMessageProvider, NText } from 'naive-ui'
+import { NMessageProvider } from 'naive-ui'
 
 const props = defineProps({
   storageClass: V1StorageClass,
@@ -14,18 +14,10 @@ const props = defineProps({
   <NMessageProvider>
     <StorageClassActionView :is-dropdown="false" :storage-class="props.storageClass" />
   </NMessageProvider>
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Basic Info
-    </NText>
-  </NH6>
-  <StorageClassBasicInfoView :storage-class="storageClass" />
-  <NH6 prefix="bar" align-text type="success">
-    <NText type="success">
-      Events
-    </NText>
-  </NH6>
-  <InvolvedEventView :item="props.storageClass.metadata" />
+
+  <StorageClassBasicInfoView :storage-class="storageClass" :show-title="true" />
+
+  <InvolvedEventView :item="props.storageClass.metadata" :show-title="true" />
 </template>
 
 <style scoped>

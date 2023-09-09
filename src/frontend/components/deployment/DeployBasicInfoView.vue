@@ -2,11 +2,14 @@
 import { V1Deployment } from '@backend/k8s/model/V1Deployment'
 import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NBadge, NCollapse, NCollapseItem, NTable } from 'naive-ui'
 import { ref } from 'vue'
 
 const props = defineProps({
   deploy: V1Deployment,
+  showTitle: Boolean,
+
 })
 const isExpended = ref(false)
 const expendedText = ref('Hide')
@@ -22,6 +25,8 @@ function toggle() {
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.deploy.metadata" />
   <NTable :single-line="false">
     <tbody>

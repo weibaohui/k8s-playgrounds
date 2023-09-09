@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { V1Ingress } from '@backend/k8s/model/v1Ingress'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
+import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'
 
 const props = defineProps({
   ing: V1Ingress,
+  showTitle: Boolean,
+
 })
 </script>
 
 <template>
+  <TitleBar v-if="props.showTitle === true" title="Basic info" />
+
   <ResourceMetadataView :item="props.ing.metadata" />
   <NTable :single-line="false">
     <tbody>
