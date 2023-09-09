@@ -44,12 +44,6 @@ async function onClusterRoleNameClick(name: string) {
           </NButton>
         </td>
       </tr>
-      <tr>
-        <td>
-          subjects
-        </td>
-        <td>{{ props.roleBinding.subjects }}</td>
-      </tr>
     </tbody>
   </NTable>
 </template>

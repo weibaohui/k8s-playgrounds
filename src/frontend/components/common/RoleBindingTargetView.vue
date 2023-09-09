@@ -52,7 +52,7 @@ async function onRoleBindClick(sub: V1Subject) {
           {{ sub.kind }}
         </td>
         <td>
-          <NButton type="success" @click="onRoleBindClick(sub)">
+          <NButton type="info" @click="onRoleBindClick(sub)">
             {{ sub.name }}
           </NButton>
         </td>
