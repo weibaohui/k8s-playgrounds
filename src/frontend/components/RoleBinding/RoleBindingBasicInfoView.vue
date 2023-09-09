@@ -36,12 +36,6 @@ async function onClusterRoleNameClick(name: string) {
     <tbody>
       <tr>
         <td class="left">
-          rules
-        </td>
-        <td>{{ props.roleBinding.roleRef }}</td>
-      </tr>
-      <tr>
-        <td class="left">
           Role
         </td>
         <td>
