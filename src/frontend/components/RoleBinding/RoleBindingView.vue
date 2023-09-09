@@ -3,6 +3,7 @@ import { V1RoleBinding } from '@backend/k8s/model/v1RoleBinding'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import RoleBindingActionView from '@frontend/components/RoleBinding/RoleBindingActionView.vue'
 import RoleBindingBasicInfoView from '@frontend/components/RoleBinding/RoleBindingBasicInfoView.vue'
+import RoleBindingTargetView from '@frontend/components/RoleBinding/RoleBindingTargetView.vue'
 import { NMessageProvider } from 'naive-ui'
 
 const props = defineProps({
@@ -16,6 +17,7 @@ const props = defineProps({
   </NMessageProvider>
 
   <RoleBindingBasicInfoView :role-binding="props.roleBinding" :show-title="true" />
+  <RoleBindingTargetView :role-binding="props.roleBinding" :show-title="true" />
 
   <InvolvedEventView :item="props.roleBinding.metadata" :show-title="true" />
 </template>
