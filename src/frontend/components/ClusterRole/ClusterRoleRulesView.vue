@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { V1ClusterRole } from '@backend/k8s/model/v1ClusterRole'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
+import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { NTable } from 'naive-ui'
 
 const props = defineProps({
@@ -11,7 +12,11 @@ const props = defineProps({
 
 <template>
   <TitleBar v-if="props.showTitle === true" title="Rules" />
-  <NTable v-for="ru in props.clusterRole.rules" :key="ru" style="margin-top: 20px;" :single-line="false">
+  <NTable
+    v-for="ru in props.clusterRole.rules" :key="ru"
+    :style="{ borderColor: ColorHelper.randomColor() }"
+    style="margin-top: 20px;" :single-line="false"
+  >
     <tbody>
       <tr v-if="ru.resources">
         <td class="left">
