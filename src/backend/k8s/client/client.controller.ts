@@ -15,8 +15,8 @@ export class ClientService {
     return this.kc
   }
 
-  public getClusters() {
-    return this.getKubeConfig().getClusters()
+  public getK8sApi() {
+    return this.getCoreV1Api()
   }
 
   public getAppsV1Api() {

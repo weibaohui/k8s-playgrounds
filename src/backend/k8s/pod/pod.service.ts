@@ -114,7 +114,7 @@ export class PodService {
   }
 
   async List(ns?: string) {
-    const k8sApi = this.clientService.getK8sApi()
+    const k8sApi = this.clientService.getCoreV1Api()
     if (!ns || ns === 'null') {
       const podAllResp = await k8sApi.listPodForAllNamespaces()
       return podAllResp.body.items
@@ -124,7 +124,7 @@ export class PodService {
   }
 
   async GetOne(ns: string, name: string) {
-    const k8sApi = this.clientService.getK8sApi()
+    const k8sApi = this.clientService.getCoreV1Api()
     const podResp = await k8sApi.readNamespacedPod(name, ns)
     return podResp.body
   }
@@ -135,19 +135,19 @@ export class PodService {
   }
 
   async ListByLabelSelector(selector: string) {
-    const k8sApi = this.clientService.getK8sApi()
+    const k8sApi = this.clientService.getCoreV1Api()
     const podResp = await k8sApi.listPodForAllNamespaces(undefined, undefined, undefined, selector)
     return podResp.body.items
   }
 
   async getPodsByFieldSelector(selector: string) {
-    const k8sApi = this.clientService.getK8sApi()
+    const k8sApi = this.clientService.getCoreV1Api()
     const podResp = await k8sApi.listPodForAllNamespaces(undefined, undefined, selector)
     return podResp.body.items
   }
 
   async Delete(name: string, ns: string) {
-    const k8sApi = this.clientService.getK8sApi()
+    const k8sApi = this.clientService.getCoreV1Api()
     const r = await k8sApi.deleteNamespacedPod(name, ns)
     return r.body
   }
