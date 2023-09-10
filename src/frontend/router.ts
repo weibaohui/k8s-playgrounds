@@ -9,6 +9,7 @@ import HpaListView from '@frontend/components/HorizontalPodAutoscaler/HpaListVie
 import IngListView from '@frontend/components/ingress/IngListView.vue'
 import IngressClassListView from '@frontend/components/ingressClass/IngressClassListView.vue'
 import JobListView from '@frontend/components/job/JobListView.vue'
+import KubeConfigView from '@frontend/components/KubeConfig/KubeConfigView.vue'
 import LimitsListView from '@frontend/components/limitrange/LimitsListView.vue'
 import NetpolListView from '@frontend/components/NetworkPolicy/NetpolListView.vue'
 import PersistentVolumeListView from '@frontend/components/PersistentVolume/PersistentVolumeListView.vue'
@@ -34,6 +35,10 @@ import PodListView from '@frontend/components/pod/PodListView.vue'
 export default createRouter({
   history: createWebHistory(),
   routes: [
+    {
+      path: '/kubeconfig',
+      component: KubeConfigView,
+    },
     {
       path: '/nodes',
       component: NodeListView,

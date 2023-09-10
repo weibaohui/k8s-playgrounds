@@ -1,5 +1,15 @@
 <script setup lang="ts">
-import { Clock, Cube, FileArchive, LayerGroup, ListAlt, NetworkWired, Server, UserShield } from '@vicons/fa'
+import {
+  Clock,
+  Cube,
+  FileArchive,
+  LayerGroup,
+  ListAlt,
+  NetworkWired,
+  Server,
+  StackExchange,
+  UserShield,
+} from '@vicons/fa'
 import type { Component } from 'vue'
 import { h, ref } from 'vue'
 import { RouterLink } from 'vue-router'
@@ -20,6 +30,19 @@ import router from './router'
 const containerRef = ref<HTMLElement>()
 const menuOptions: MenuOption[] = [
   {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            path: '/kubeconfig',
+          },
+        },
+        { default: () => 'Clusters' },
+      ),
+    key: 'go-to-kubeconfig',
+    icon: renderIcon(StackExchange),
+  }, {
     label: () =>
       h(
         RouterLink,

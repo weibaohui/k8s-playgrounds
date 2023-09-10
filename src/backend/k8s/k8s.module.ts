@@ -1,3 +1,4 @@
+import { ClientController } from '@backend/k8s/client/client.controller'
 import { ClusterRoleController } from '@backend/k8s/ClusterRole/ClusterRole.controller'
 import { ClusterRoleService } from '@backend/k8s/ClusterRole/ClusterRole.service'
 import { ClusterRoleBindingController } from '@backend/k8s/ClusterRoleBinding/ClusterRoleBinding.controller'
@@ -83,6 +84,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     PersistentVolumeController, PersistentVolumeClaimController, ClusterRoleController,
     ClusterRoleBindingController, RoleController, RoleBindingController,
     ServiceAccountController,
+    ClientController,
   ],
   providers: [
     K8sService, PodService, NsService,

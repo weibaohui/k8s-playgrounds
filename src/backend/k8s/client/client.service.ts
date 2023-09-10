@@ -19,6 +19,14 @@ export class ClientService {
     return this.getKubeConfig().getClusters()
   }
 
+  public getCurrentContext() {
+    return this.getKubeConfig().currentContext
+  }
+
+  public setContext(name) {
+    this.getKubeConfig().setCurrentContext(name)
+  }
+
   public getAppsV1Api() {
     return this.getKubeConfig().makeApiClient(k8s.AppsV1Api)
   }
