@@ -25,6 +25,7 @@ spec:
             - containerPort: 3007
           imagePullPolicy: Always
       restartPolicy: Always
+      serviceAccountName: k8s-playgrounds
 ---
 apiVersion: v1
 kind: Service
@@ -40,3 +41,73 @@ spec:
   type: NodePort
   selector:
     app: k8s-playgrounds
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: k8s-playgrounds
+  name: k8s-playgrounds
+  namespace: default
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    app: k8s-playgrounds
+  name: k8s-playgrounds
+  namespace: default
+rules:
+  - verbs:
+      - "*"
+    apiGroups:
+      - "*"
+    resources:
+      - "*"
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  labels:
+    app: k8s-playgrounds
+  name: k8s-playgrounds
+rules:
+  - verbs:
+      - "*"
+    apiGroups:
+      - "*"
+    resources:
+      - "*"
+  - verbs:
+      - "*"
+    nonResourceURLs:
+      - "*"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels:
+    app: k8s-playgrounds
+  name: k8s-playgrounds
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: k8s-playgrounds
+subjects:
+  - kind: ServiceAccount
+    name: k8s-playgrounds
+    namespace: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: k8s-playgrounds
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: k8s-playgrounds
+subjects:
+  - kind: ServiceAccount
+    name: k8s-playgrounds
+    namespace: default
