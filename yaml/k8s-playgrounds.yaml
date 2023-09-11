@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-playgrounds
+  labels:
+    app: k8s-playgrounds
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-playgrounds
+  template:
+    metadata:
+      name: k8s-playgrounds
+      labels:
+        app: k8s-playgrounds
+    spec:
+      containers:
+        - name: k8s-playgrounds
+          image: ghcr.io/weibaohui/k8s-playgrounds:latest
+          ports:
+            - containerPort: 3007
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-playgrounds
+  labels:
+    app: k8s-playgrounds
+spec:
+  ports:
+    - name: http-web-svc
+      protocol: TCP
+      port: 3007
+  type: NodePort
+  selector:
+    app: k8s-playgrounds

@@ -5,11 +5,13 @@ export class SocketIOService {
   private sc: Socket = null
   static instance = new SocketIOService()
   getSocket() {
+    // console.log(window.location)
+    // console.log(`${window.location.protocol}//${window.location.host}`)
     if (this.sc !== null) {
       this.sc.connect()
       return this.sc
     }
-    this.sc = io('http://127.0.0.1:3007', {
+    this.sc = io(`${window.location.protocol}//${window.location.host}`, {
       transports: ['websocket'], // 指定传输方式，如WebSocket
       autoConnect: true, // 是否自动连接
       reconnection: true, // 是否自动重新连接
