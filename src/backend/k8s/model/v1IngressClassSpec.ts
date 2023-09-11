@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1IngressClassParametersReference } from './v1IngressClassParametersReference'
+import type { V1IngressClassParametersReference } from './V1IngressClassParametersReference'
 
 /**
  * IngressClassSpec provides information about the class of an Ingress.

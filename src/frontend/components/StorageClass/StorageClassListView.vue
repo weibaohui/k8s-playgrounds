@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ResType } from '@backend/k8s/watch/watch.model'
-import StorageClassActionView from '@frontend/components/storageClass/StorageClassActionView.vue'
-import StorageClassIsDefaultView from '@frontend/components/storageClass/StorageClassIsDefaultView.vue'
-import StorageClassView from '@frontend/components/storageClass/StorageClassView.vue'
+import StorageClassActionView from '@frontend/components/StorageClass/StorageClassActionView.vue'
+import StorageClassIsDefaultView from '@frontend/components/StorageClass/StorageClassIsDefaultView.vue'
+import StorageClassView from '@frontend/components/StorageClass/StorageClassView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'

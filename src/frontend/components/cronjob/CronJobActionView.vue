@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1CronJob } from '@backend/k8s/model/v1CronJob'
+import { V1CronJob } from '@backend/k8s/model/V1CronJob'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
 import MultipleMenuActionView from '@frontend/components/common/MultipleMenuActionView.vue'

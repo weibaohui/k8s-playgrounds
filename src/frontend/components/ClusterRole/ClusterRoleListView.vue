@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { V1ClusterRole } from '@backend/k8s/model/v1ClusterRole'
+import type { V1ClusterRole } from '@backend/k8s/model/V1ClusterRole'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import ClusterRoleActionView from '@frontend/components/ClusterRole/ClusterRoleActionView.vue'

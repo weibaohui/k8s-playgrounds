@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1PodDisruptionBudget } from '@backend/k8s/model/v1PodDisruptionBudget'
+import { V1PodDisruptionBudget } from '@backend/k8s/model/V1PodDisruptionBudget'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import PdbActionView from '@frontend/components/PodDisruptionBudget/PdbActionView.vue'
 import PdbBasicInfoView from '@frontend/components/PodDisruptionBudget/PdbBasicInfoView.vue'

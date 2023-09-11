@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1DeploymentCondition } from './v1DeploymentCondition'
+import type { V1DeploymentCondition } from './V1DeploymentCondition'
 
 /**
  * DeploymentStatus is the most recently observed status of the Deployment.

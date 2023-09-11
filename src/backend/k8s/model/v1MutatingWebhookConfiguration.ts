@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1MutatingWebhook } from './v1MutatingWebhook'
+import type { V1MutatingWebhook } from './V1MutatingWebhook'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**

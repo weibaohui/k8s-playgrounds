@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1NetworkPolicy } from '@backend/k8s/model/v1NetworkPolicy'
+import { V1NetworkPolicy } from '@backend/k8s/model/V1NetworkPolicy'
 import LabelSelectorView from '@frontend/components/common/LabelSelectorView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'

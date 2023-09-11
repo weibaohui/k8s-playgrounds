@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IntOrString } from './intOrString'
+import type { IntOrString } from './IntOrString'
 
 /**
  * NetworkPolicyPort describes a port to allow traffic on

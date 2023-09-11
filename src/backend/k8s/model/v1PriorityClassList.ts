@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1PriorityClass } from './v1PriorityClass'
+import type { V1PriorityClass } from './V1PriorityClass'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**

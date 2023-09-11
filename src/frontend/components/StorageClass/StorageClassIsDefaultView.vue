@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1StorageClass } from '@backend/k8s/model/v1StorageClass'
+import { V1StorageClass } from '@backend/k8s/model/V1StorageClass'
 import { Star } from '@vicons/fa'
 import { NIcon, NIconWrapper } from 'naive-ui'
 

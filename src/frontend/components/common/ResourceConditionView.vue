@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { V1DeploymentCondition } from '@backend/k8s/model/v1DeploymentCondition'
+import type { V1DeploymentCondition } from '@backend/k8s/model/V1DeploymentCondition'
 import { CheckCircle, ExclamationCircle } from '@vicons/fa'
 import { NIcon, NTag, NTooltip } from 'naive-ui'
 

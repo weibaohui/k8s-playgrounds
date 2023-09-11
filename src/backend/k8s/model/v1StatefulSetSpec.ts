@@ -9,12 +9,12 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1StatefulSetOrdinals } from './v1StatefulSetOrdinals'
-import type { V1StatefulSetPersistentVolumeClaimRetentionPolicy } from './v1StatefulSetPersistentVolumeClaimRetentionPolicy'
-import type { V1StatefulSetUpdateStrategy } from './v1StatefulSetUpdateStrategy'
+import type { V1StatefulSetOrdinals } from './V1StatefulSetOrdinals'
+import type { V1StatefulSetPersistentVolumeClaimRetentionPolicy } from './V1StatefulSetPersistentVolumeClaimRetentionPolicy'
+import type { V1StatefulSetUpdateStrategy } from './V1StatefulSetUpdateStrategy'
 import type { V1PersistentVolumeClaim } from './V1PersistentVolumeClaim'
 import type { V1PodTemplateSpec } from './V1PodTemplateSpec'
-import type { V1LabelSelector } from './v1LabelSelector'
+import type { V1LabelSelector } from './V1LabelSelector'
 
 /**
  * A StatefulSetSpec is the specification of a StatefulSet.

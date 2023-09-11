@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1Ingress } from '@backend/k8s/model/v1Ingress'
+import { V1Ingress } from '@backend/k8s/model/V1Ingress'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Trash } from '@vicons/fa'

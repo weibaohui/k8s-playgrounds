@@ -1,4 +1,4 @@
-import type { V1LabelSelector } from '@backend/k8s/model/v1LabelSelector'
+import type { V1LabelSelector } from '@backend/k8s/model/V1LabelSelector'
 
 export class SelectorUtils {
   static getSelector(src: V1LabelSelector) {

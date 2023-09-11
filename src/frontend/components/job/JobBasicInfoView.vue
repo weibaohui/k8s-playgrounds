@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1Job } from '@backend/k8s/model/v1Job'
+import { V1Job } from '@backend/k8s/model/V1Job'
 import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'

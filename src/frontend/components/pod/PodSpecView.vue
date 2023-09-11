@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1PodSpec } from '@backend/k8s/model/v1PodSpec'
+import { V1PodSpec } from '@backend/k8s/model/V1PodSpec'
 import NodeView from '@frontend/components/node/NodeView.vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'

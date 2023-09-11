@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1StatefulSet } from '@backend/k8s/model/v1StatefulSet'
+import { V1StatefulSet } from '@backend/k8s/model/V1StatefulSet'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'

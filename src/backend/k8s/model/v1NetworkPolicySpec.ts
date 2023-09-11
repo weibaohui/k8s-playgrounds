@@ -9,9 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1NetworkPolicyEgressRule } from './v1NetworkPolicyEgressRule'
-import type { V1NetworkPolicyIngressRule } from './v1NetworkPolicyIngressRule'
-import type { V1LabelSelector } from './v1LabelSelector'
+import type { V1NetworkPolicyEgressRule } from './V1NetworkPolicyEgressRule'
+import type { V1NetworkPolicyIngressRule } from './V1NetworkPolicyIngressRule'
+import type { V1LabelSelector } from './V1LabelSelector'
 
 /**
  * NetworkPolicySpec provides the specification of a NetworkPolicy

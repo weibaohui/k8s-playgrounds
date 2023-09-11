@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { V1RoleBinding } from '@backend/k8s/model/v1RoleBinding'
-import type { V1Subject } from '@backend/k8s/model/v1Subject'
+import { V1RoleBinding } from '@backend/k8s/model/V1RoleBinding'
+import type { V1Subject } from '@backend/k8s/model/V1Subject'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import SaView from '@frontend/components/ServiceAccount/SaView.vue'

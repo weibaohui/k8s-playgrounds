@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1Condition } from './v1Condition'
+import type { V1Condition } from './V1Condition'
 import type { V1Time } from './V1Time'
 
 /**

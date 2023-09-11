@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { V1LoadBalancerStatus } from './V1LoadBalancerStatus'
-import type { V1Condition } from './v1Condition'
+import type { V1Condition } from './V1Condition'
 
 /**
  * ServiceStatus represents the current status of a service.

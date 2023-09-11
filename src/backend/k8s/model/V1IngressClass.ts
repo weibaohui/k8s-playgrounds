@@ -9,14 +9,13 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1IngressSpec } from './v1IngressSpec'
-import type { V1IngressStatus } from './v1IngressStatus'
+import type { V1IngressClassSpec } from './V1IngressClassSpec'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
- * Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by a backend. An Ingress can be configured to give services externally-reachable urls, load balance traffic, terminate SSL, offer name based virtual hosting etc.
+ * IngressClass represents the class of the Ingress, referenced by the Ingress Spec. The `ingressclass.kubernetes.io/is-default-class` annotation can be used to indicate that an IngressClass should be considered default. When a single IngressClass resource has this annotation set to true, new Ingress resources without a class specified will be assigned this default class.
  */
-export class V1Ingress {
+export class V1IngressClass {
   /**
      * APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
      */
@@ -30,11 +29,7 @@ export class V1Ingress {
      */
   metadata?: V1ObjectMeta
   /**
-     * spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+     * spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
      */
-  spec?: V1IngressSpec
-  /**
-     * status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-     */
-  status?: V1IngressStatus
+  spec?: V1IngressClassSpec
 }

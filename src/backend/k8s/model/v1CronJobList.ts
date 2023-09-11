@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1CronJob } from './v1CronJob'
+import type { V1CronJob } from './V1CronJob'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**

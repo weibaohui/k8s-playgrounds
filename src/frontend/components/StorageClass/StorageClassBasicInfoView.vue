@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1StorageClass } from '@backend/k8s/model/v1StorageClass'
+import { V1StorageClass } from '@backend/k8s/model/V1StorageClass'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { NSpace, NTable, NTag } from 'naive-ui'

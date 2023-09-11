@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1RoleBinding } from '@backend/k8s/model/v1RoleBinding'
+import { V1RoleBinding } from '@backend/k8s/model/V1RoleBinding'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Trash } from '@vicons/fa'

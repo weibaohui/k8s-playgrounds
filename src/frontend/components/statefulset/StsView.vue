@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { V1Pod } from '@backend/k8s/model/V1Pod'
-import { V1StatefulSet } from '@backend/k8s/model/v1StatefulSet'
+import { V1StatefulSet } from '@backend/k8s/model/V1StatefulSet'
 import { SelectorUtils } from '@backend/utils/SelectorUtils'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import PodListMiniView from '@frontend/components/pod/PodListMiniView.vue'

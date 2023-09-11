@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1StatefulSet } from '@backend/k8s/model/v1StatefulSet'
+import { V1StatefulSet } from '@backend/k8s/model/V1StatefulSet'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import StsScaleView from '@frontend/components/statefulset/StsScaleView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'

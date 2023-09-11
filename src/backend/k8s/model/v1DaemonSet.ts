@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1DaemonSetSpec } from './v1DaemonSetSpec'
-import type { V1DaemonSetStatus } from './v1DaemonSetStatus'
+import type { V1DaemonSetSpec } from './V1DaemonSetSpec'
+import type { V1DaemonSetStatus } from './V1DaemonSetStatus'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**

@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1JobSpec } from './v1JobSpec'
-import type { V1JobStatus } from './v1JobStatus'
+import type { V1JobSpec } from './V1JobSpec'
+import type { V1JobStatus } from './V1JobStatus'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1PriorityClass } from '@backend/k8s/model/v1PriorityClass'
+import { V1PriorityClass } from '@backend/k8s/model/V1PriorityClass'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import PcActionView from '@frontend/components/priorityclass/PcActionView.vue'
 import PcBasicInfoView from '@frontend/components/priorityclass/PcBasicInfoView.vue'

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { IoK8sApiAdmissionregistrationV1alpha1TypeChecking } from './ioK8sApiAdmissionregistrationV1alpha1TypeChecking'
-import type { V1Condition } from './v1Condition'
+import type { V1Condition } from './V1Condition'
 
 /**
  * ValidatingAdmissionPolicyStatus represents the status of a ValidatingAdmissionPolicy.

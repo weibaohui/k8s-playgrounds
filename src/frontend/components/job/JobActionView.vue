@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1Job } from '@backend/k8s/model/v1Job'
+import { V1Job } from '@backend/k8s/model/V1Job'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Trash } from '@vicons/fa'

@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1LabelSelector } from './v1LabelSelector'
-import type { IntOrString } from './intOrString'
+import type { V1LabelSelector } from './V1LabelSelector'
+import type { IntOrString } from './IntOrString'
 
 /**
  * PodDisruptionBudgetSpec is a description of a PodDisruptionBudget.

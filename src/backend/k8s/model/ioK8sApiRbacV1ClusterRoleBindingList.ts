@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1ClusterRoleBinding } from './v1ClusterRoleBinding'
+import type { V1ClusterRoleBinding } from './V1ClusterRoleBinding'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**

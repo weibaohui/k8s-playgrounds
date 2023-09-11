@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1Ingress } from '@backend/k8s/model/v1Ingress'
+import { V1Ingress } from '@backend/k8s/model/V1Ingress'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import IngActionView from '@frontend/components/ingress/IngActionView.vue'

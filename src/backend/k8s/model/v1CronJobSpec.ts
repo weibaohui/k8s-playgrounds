@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1JobTemplateSpec } from './v1JobTemplateSpec'
+import type { V1JobTemplateSpec } from './V1JobTemplateSpec'
 
 /**
  * CronJobSpec describes how the job execution will look like and when it will actually run.

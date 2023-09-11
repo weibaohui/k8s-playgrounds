@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1NetworkPolicy } from '@backend/k8s/model/v1NetworkPolicy'
+import { V1NetworkPolicy } from '@backend/k8s/model/V1NetworkPolicy'
 import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { NSpace, NTable, NTag } from 'naive-ui'
 

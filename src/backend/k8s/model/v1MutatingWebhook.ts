@@ -12,7 +12,7 @@
 import type { IoK8sApiAdmissionregistrationV1MatchCondition } from './ioK8sApiAdmissionregistrationV1MatchCondition'
 import type { IoK8sApiAdmissionregistration } from './ioK8sApiAdmissionregistration'
 import type { IoK8sApiAdmissionregistrationV1WebhookClientConfig } from './ioK8sApiAdmissionregistrationV1WebhookClientConfig'
-import type { V1LabelSelector } from './v1LabelSelector'
+import type { V1LabelSelector } from './V1LabelSelector'
 
 /**
  * MutatingWebhook describes an admission webhook and the resources and operations it applies to.

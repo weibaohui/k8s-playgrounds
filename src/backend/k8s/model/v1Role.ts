@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1PolicyRule } from './v1PolicyRule'
+import type { V1PolicyRule } from './V1PolicyRule'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**

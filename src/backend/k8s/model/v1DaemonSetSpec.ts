@@ -11,7 +11,7 @@
  */
 import type { IoK8sApiAppsV1DaemonSetUpdateStrategy } from './ioK8sApiAppsV1DaemonSetUpdateStrategy'
 import type { V1PodTemplateSpec } from './V1PodTemplateSpec'
-import type { V1LabelSelector } from './v1LabelSelector'
+import type { V1LabelSelector } from './V1LabelSelector'
 
 /**
  * DaemonSetSpec is the specification of a daemon set.

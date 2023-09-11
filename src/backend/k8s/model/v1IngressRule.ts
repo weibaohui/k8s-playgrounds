@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1HTTPIngressRuleValue } from './v1HTTPIngressRuleValue'
+import type { V1HTTPIngressRuleValue } from './V1HTTPIngressRuleValue'
 
 /**
  * IngressRule represents the rules mapping the paths under a specified host to the related backend services. Incoming requests are first evaluated for a host match, then routed to the backend associated with the matching IngressRuleValue.

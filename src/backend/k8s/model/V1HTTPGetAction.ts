@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { V1HTTPHeader } from './V1HTTPHeader'
-import type { IntOrString } from './intOrString'
+import type { IntOrString } from './IntOrString'
 
 /**
  * HTTPGetAction describes an action based on HTTP Get requests.

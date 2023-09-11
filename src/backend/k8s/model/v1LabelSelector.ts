@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1LabelSelectorRequirement } from './v1LabelSelectorRequirement'
+import type { V1LabelSelectorRequirement } from './V1LabelSelectorRequirement'
 
 /**
  * A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.

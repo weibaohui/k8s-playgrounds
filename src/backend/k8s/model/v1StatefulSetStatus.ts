@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1StatefulSetCondition } from './v1StatefulSetCondition'
+import type { V1StatefulSetCondition } from './V1StatefulSetCondition'
 
 /**
  * StatefulSetStatus represents the current state of a StatefulSet.

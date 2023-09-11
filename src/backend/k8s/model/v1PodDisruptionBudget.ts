@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1PodDisruptionBudgetSpec } from './v1PodDisruptionBudgetSpec'
-import type { V1PodDisruptionBudgetStatus } from './v1PodDisruptionBudgetStatus'
+import type { V1PodDisruptionBudgetSpec } from './V1PodDisruptionBudgetSpec'
+import type { V1PodDisruptionBudgetStatus } from './V1PodDisruptionBudgetStatus'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**

@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IntOrString } from './intOrString'
+import type { IntOrString } from './IntOrString'
 
 /**
  * Spec to control the desired behavior of rolling update.

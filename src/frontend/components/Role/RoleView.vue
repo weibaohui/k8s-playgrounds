@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1Role } from '@backend/k8s/model/v1Role'
+import { V1Role } from '@backend/k8s/model/V1Role'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import RoleActionView from '@frontend/components/Role/RoleActionView.vue'
 import RoleBasicInfoView from '@frontend/components/Role/RoleBasicInfoView.vue'

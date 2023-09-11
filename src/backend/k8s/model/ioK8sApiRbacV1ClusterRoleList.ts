@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1ClusterRole } from './v1ClusterRole'
+import type { V1ClusterRole } from './V1ClusterRole'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**

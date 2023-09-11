@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1Ingress } from '@backend/k8s/model/v1Ingress'
+import { V1Ingress } from '@backend/k8s/model/V1Ingress'
 import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { NSpace, NTable, NTag } from 'naive-ui'
 

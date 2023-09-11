@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { V1PriorityClass } from '@backend/k8s/model/v1PriorityClass'
+import type { V1PriorityClass } from '@backend/k8s/model/V1PriorityClass'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import PcActionView from '@frontend/components/priorityclass/PcActionView.vue'

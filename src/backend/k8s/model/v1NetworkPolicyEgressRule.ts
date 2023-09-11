@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1NetworkPolicyPeer } from './v1NetworkPolicyPeer'
-import type { V1NetworkPolicyPort } from './v1NetworkPolicyPort'
+import type { V1NetworkPolicyPeer } from './V1NetworkPolicyPeer'
+import type { V1NetworkPolicyPort } from './V1NetworkPolicyPort'
 
 /**
  * NetworkPolicyEgressRule describes a particular set of traffic that is allowed out of pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and to. This type is beta-level in 1.8

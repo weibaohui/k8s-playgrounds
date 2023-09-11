@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1IngressClass } from '@backend/k8s/model/v1IngressClass'
+import { V1IngressClass } from '@backend/k8s/model/V1IngressClass'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Lock, Trash } from '@vicons/fa'

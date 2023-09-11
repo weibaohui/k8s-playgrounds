@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { V1PersistentVolume } from '@backend/k8s/model/v1PersistentVolume'
+import { V1PersistentVolume } from '@backend/k8s/model/V1PersistentVolume'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
-import PersistentVolumeActionView from '@frontend/components/persistentVolume/PersistentVolumeActionView.vue'
-import PersistentVolumeBasicInfoView from '@frontend/components/persistentVolume/PersistentVolumeBasicInfoView.vue'
+import PersistentVolumeActionView from '@frontend/components/PersistentVolume/PersistentVolumeActionView.vue'
+import PersistentVolumeBasicInfoView from '@frontend/components/PersistentVolume/PersistentVolumeBasicInfoView.vue'
 import { NMessageProvider } from 'naive-ui'
 
 const props = defineProps({

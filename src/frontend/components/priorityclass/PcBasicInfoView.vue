@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1PriorityClass } from '@backend/k8s/model/v1PriorityClass'
+import { V1PriorityClass } from '@backend/k8s/model/V1PriorityClass'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'

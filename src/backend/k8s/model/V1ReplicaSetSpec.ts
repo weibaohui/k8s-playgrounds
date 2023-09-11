@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { V1PodTemplateSpec } from './V1PodTemplateSpec'
-import type { V1LabelSelector } from './v1LabelSelector'
+import type { V1LabelSelector } from './V1LabelSelector'
 
 /**
  * ReplicaSetSpec is the specification of a ReplicaSet.

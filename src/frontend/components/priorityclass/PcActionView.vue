@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1PriorityClass } from '@backend/k8s/model/v1PriorityClass'
+import { V1PriorityClass } from '@backend/k8s/model/V1PriorityClass'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import { Edit, Lock, Trash } from '@vicons/fa'

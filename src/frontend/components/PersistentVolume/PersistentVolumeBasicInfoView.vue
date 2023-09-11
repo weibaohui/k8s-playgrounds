@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { V1ObjectReference } from '@backend/k8s/model/V1ObjectReference'
-import { V1PersistentVolume } from '@backend/k8s/model/v1PersistentVolume'
+import { V1PersistentVolume } from '@backend/k8s/model/V1PersistentVolume'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import PvcView from '@frontend/components/PersistentVolumeClaim/PvcView.vue'

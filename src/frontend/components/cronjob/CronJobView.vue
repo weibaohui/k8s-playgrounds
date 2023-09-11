@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1CronJob } from '@backend/k8s/model/v1CronJob'
+import { V1CronJob } from '@backend/k8s/model/V1CronJob'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import CronJobActionView from '@frontend/components/cronjob/CronJobActionView.vue'
 import CronJobBasicInfoView from '@frontend/components/cronjob/CronJobBasicInfoView.vue'

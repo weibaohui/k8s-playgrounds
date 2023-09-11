@@ -10,6 +10,7 @@ export class ClientService {
   private kc = new k8s.KubeConfig()
 
   public getKubeConfig() {
+    this.kc.loadFromCluster()
     const home = process.env.HOME || process.env.USERPROFILE
     this.kc.loadFromFile(`${home}/.kube/config`)
     return this.kc

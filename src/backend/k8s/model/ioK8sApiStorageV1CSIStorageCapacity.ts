@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { ResourceQuantity } from './resourceQuantity'
-import type { V1LabelSelector } from './v1LabelSelector'
+import type { V1LabelSelector } from './V1LabelSelector'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1Job } from '@backend/k8s/model/v1Job'
+import { V1Job } from '@backend/k8s/model/V1Job'
 import type { V1Pod } from '@backend/k8s/model/V1Pod'
 import { SelectorUtils } from '@backend/utils/SelectorUtils'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'

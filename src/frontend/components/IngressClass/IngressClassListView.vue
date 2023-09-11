@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ResType } from '@backend/k8s/watch/watch.model'
-import IngressClassActionView from '@frontend/components/ingressClass/IngressClassActionView.vue'
-import IngressClassIsDefaultView from '@frontend/components/ingressClass/IngressClassIsDefaultView.vue'
-import IngressClassView from '@frontend/components/ingressClass/IngressClassView.vue'
+import IngressClassActionView from '@frontend/components/IngressClass/IngressClassActionView.vue'
+import IngressClassIsDefaultView from '@frontend/components/IngressClass/IngressClassIsDefaultView.vue'
+import IngressClassView from '@frontend/components/IngressClass/IngressClassView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'

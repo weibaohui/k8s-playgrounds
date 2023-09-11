@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1ClusterRole } from '@backend/k8s/model/v1ClusterRole'
+import { V1ClusterRole } from '@backend/k8s/model/V1ClusterRole'
 import ClusterRoleActionView from '@frontend/components/ClusterRole/ClusterRoleActionView.vue'
 import ClusterRoleBasicInfoView from '@frontend/components/ClusterRole/ClusterRoleBasicInfoView.vue'
 import ClusterRoleRulesView from '@frontend/components/ClusterRole/ClusterRoleRulesView.vue'

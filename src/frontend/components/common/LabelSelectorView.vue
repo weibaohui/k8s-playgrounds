@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1LabelSelector } from '@backend/k8s/model/v1LabelSelector'
+import { V1LabelSelector } from '@backend/k8s/model/V1LabelSelector'
 import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { NSpace, NTag } from 'naive-ui'
 

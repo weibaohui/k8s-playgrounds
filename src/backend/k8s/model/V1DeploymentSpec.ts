@@ -9,9 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1DeploymentStrategy } from './v1DeploymentStrategy'
+import type { V1DeploymentStrategy } from './V1DeploymentStrategy'
 import type { V1PodTemplateSpec } from './V1PodTemplateSpec'
-import type { V1LabelSelector } from './v1LabelSelector'
+import type { V1LabelSelector } from './V1LabelSelector'
 
 /**
  * DeploymentSpec is the specification of the desired behavior of the Deployment.

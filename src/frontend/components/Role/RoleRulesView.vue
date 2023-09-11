@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1ClusterRole } from '@backend/k8s/model/v1ClusterRole'
+import { V1ClusterRole } from '@backend/k8s/model/V1ClusterRole'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { NTable } from 'naive-ui'

@@ -9,9 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1PodFailurePolicy } from './v1PodFailurePolicy'
+import type { V1PodFailurePolicy } from './V1PodFailurePolicy'
 import type { V1PodTemplateSpec } from './V1PodTemplateSpec'
-import type { V1LabelSelector } from './v1LabelSelector'
+import type { V1LabelSelector } from './V1LabelSelector'
 
 /**
  * JobSpec describes how the job execution will look like.

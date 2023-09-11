@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1NetworkPolicySpec } from './v1NetworkPolicySpec'
+import type { V1NetworkPolicySpec } from './V1NetworkPolicySpec'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**

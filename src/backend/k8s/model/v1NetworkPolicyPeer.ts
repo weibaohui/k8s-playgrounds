@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1IPBlock } from './v1IPBlock'
-import type { V1LabelSelector } from './v1LabelSelector'
+import type { V1IPBlock } from './V1IPBlock'
+import type { V1LabelSelector } from './V1LabelSelector'
 
 /**
  * NetworkPolicyPeer describes a peer to allow traffic to/from. Only certain combinations of fields are allowed

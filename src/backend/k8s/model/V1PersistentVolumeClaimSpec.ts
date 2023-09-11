@@ -12,7 +12,7 @@
 import type { V1ResourceRequirements } from './V1ResourceRequirements'
 import type { V1TypedLocalObjectReference } from './V1TypedLocalObjectReference'
 import type { V1TypedObjectReference } from './V1TypedObjectReference'
-import type { V1LabelSelector } from './v1LabelSelector'
+import type { V1LabelSelector } from './V1LabelSelector'
 
 /**
  * PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes

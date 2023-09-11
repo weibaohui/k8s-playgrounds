@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1IngressClass } from '@backend/k8s/model/v1IngressClass'
+import { V1IngressClass } from '@backend/k8s/model/V1IngressClass'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'

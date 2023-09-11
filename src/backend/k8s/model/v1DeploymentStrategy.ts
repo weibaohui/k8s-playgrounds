@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1RollingUpdateDeployment } from './v1RollingUpdateDeployment'
+import type { V1RollingUpdateDeployment } from './V1RollingUpdateDeployment'
 
 /**
  * DeploymentStrategy describes how to replace existing pods with new ones.

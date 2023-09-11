@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1Role } from '@backend/k8s/model/v1Role'
+import { V1Role } from '@backend/k8s/model/V1Role'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 

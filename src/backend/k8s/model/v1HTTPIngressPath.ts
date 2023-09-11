@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1IngressBackend } from './v1IngressBackend'
+import type { V1IngressBackend } from './V1IngressBackend'
 
 /**
  * HTTPIngressPath associates a path with a backend. Incoming urls matching the path are forwarded to the backend.

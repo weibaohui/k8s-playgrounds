@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { V1TypedLocalObjectReference } from './V1TypedLocalObjectReference'
-import type { V1IngressServiceBackend } from './v1IngressServiceBackend'
+import type { V1IngressServiceBackend } from './V1IngressServiceBackend'
 
 /**
  * IngressBackend describes all endpoints for a given service and port.

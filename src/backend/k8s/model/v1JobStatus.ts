@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1JobCondition } from './v1JobCondition'
-import type { V1UncountedTerminatedPods } from './v1UncountedTerminatedPods'
+import type { V1JobCondition } from './V1JobCondition'
+import type { V1UncountedTerminatedPods } from './V1UncountedTerminatedPods'
 import type { V1Time } from './V1Time'
 
 /**

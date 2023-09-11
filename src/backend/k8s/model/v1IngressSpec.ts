@@ -9,9 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1IngressBackend } from './v1IngressBackend'
-import type { V1IngressRule } from './v1IngressRule'
-import type { V1IngressTLS } from './v1IngressTLS'
+import type { V1IngressBackend } from './V1IngressBackend'
+import type { V1IngressRule } from './V1IngressRule'
+import type { V1IngressTLS } from './V1IngressTLS'
 
 /**
  * IngressSpec describes the Ingress the user wishes to exist.

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1StatefulSet } from '@backend/k8s/model/v1StatefulSet'
+import { V1StatefulSet } from '@backend/k8s/model/V1StatefulSet'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { Docker } from '@vicons/fa'

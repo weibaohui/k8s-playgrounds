@@ -9,8 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1StatefulSetSpec } from './v1StatefulSetSpec'
-import type { V1StatefulSetStatus } from './v1StatefulSetStatus'
+import type { V1StatefulSetSpec } from './V1StatefulSetSpec'
+import type { V1StatefulSetStatus } from './V1StatefulSetStatus'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**

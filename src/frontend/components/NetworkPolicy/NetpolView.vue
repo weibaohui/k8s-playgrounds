@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1NetworkPolicy } from '@backend/k8s/model/v1NetworkPolicy'
+import { V1NetworkPolicy } from '@backend/k8s/model/V1NetworkPolicy'
 import InvolvedEventView from '@frontend/components/common/InvolvedEventView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import NetpolActionView from '@frontend/components/NetworkPolicy/NetpolActionView.vue'

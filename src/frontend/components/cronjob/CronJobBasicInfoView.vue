@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { V1CronJob } from '@backend/k8s/model/v1CronJob'
+import { V1CronJob } from '@backend/k8s/model/V1CronJob'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'

@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1IngressPortStatus } from './v1IngressPortStatus'
+import type { V1IngressPortStatus } from './V1IngressPortStatus'
 
 /**
  * IngressLoadBalancerIngress represents the status of a load-balancer ingress point.

@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1Role } from './v1Role'
+import type { V1Role } from './V1Role'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**

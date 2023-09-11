@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1DaemonSetCondition } from './v1DaemonSetCondition'
+import type { V1DaemonSetCondition } from './V1DaemonSetCondition'
 
 /**
  * DaemonSetStatus represents the current status of a daemon set.

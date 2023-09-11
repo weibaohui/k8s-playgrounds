@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1IngressClass } from './v1IngressClass'
+import type { V1IngressClass } from './V1IngressClass'
 import type { V1ListMeta } from './V1ListMeta'
 
 /**

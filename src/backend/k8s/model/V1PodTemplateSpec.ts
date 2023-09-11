@@ -9,7 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { V1PodSpec } from './v1PodSpec'
+import type { V1PodSpec } from './V1PodSpec'
 import type { V1ObjectMeta } from './V1ObjectMeta'
 
 /**
