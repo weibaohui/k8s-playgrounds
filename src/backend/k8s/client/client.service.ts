@@ -16,6 +16,9 @@ export class ClientService {
     if (!this.inClusterChecked)
       this.inClusterCheck()
 
+    if (this.inClusterChecked && this.inCluster)
+      return this.kc
+
     const home = process.env.HOME || process.env.USERPROFILE
     this.kc.loadFromFile(`${home}/.kube/config`)
     return this.kc
@@ -28,6 +31,7 @@ export class ClientService {
   private async inClusterCheck() {
     this.inClusterChecked = true
     this.kc.loadFromCluster()
+    this.logger.debug(JSON.stringify(this.kc.clusters))
     if (this.kc.clusters[0].server === 'https://undefined:undefined')
       this.inCluster = false
     this.logger.debug(`InClusterCheck ${this.inCluster}`)
