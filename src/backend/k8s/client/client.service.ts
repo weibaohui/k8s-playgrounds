@@ -8,12 +8,29 @@ import * as pty from 'node-pty'
 export class ClientService {
   private readonly logger = new Logger(ClientService.name)
   private kc = new k8s.KubeConfig()
-
+  private inClusterChecked = false
+  private inCluster = false
   public getKubeConfig() {
-    this.kc.loadFromCluster()
+    if (this.inClusterChecked && this.inCluster)
+      return this.kc
+    if (!this.inClusterChecked)
+      this.inClusterCheck()
+
     const home = process.env.HOME || process.env.USERPROFILE
     this.kc.loadFromFile(`${home}/.kube/config`)
     return this.kc
+  }
+
+  /**
+   * 检测是否在集群内
+   * @private
+   */
+  private async inClusterCheck() {
+    this.inClusterChecked = true
+    this.kc.loadFromCluster()
+    if (this.kc.clusters[0].server === 'https://undefined:undefined')
+      this.inCluster = false
+    this.logger.debug(`InClusterCheck ${this.inCluster}`)
   }
 
   public getClusters() {
