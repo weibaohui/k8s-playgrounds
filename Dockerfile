@@ -22,7 +22,7 @@ COPY --from=builder /usr/src/app/dist /app/
 COPY --from=builder /usr/src/app/node_modules /app/node_modules
 COPY --from=kubectl /opt/bitnami/kubectl/bin/kubectl /usr/local/bin/kubectl
 
-RUN apk update && apk --no-cache add ca-certificates
+RUN apk update && apk --no-cache add ca-certificates bash
 
 EXPOSE 3007
 CMD [ "pm2-runtime","start", "/app/backend/index.js" ]
