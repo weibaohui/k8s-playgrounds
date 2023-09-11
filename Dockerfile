@@ -1,7 +1,7 @@
 FROM node as builder
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package*.json ./
 RUN sed -i '/^    "electron/g' package.json
@@ -20,8 +20,8 @@ FROM bitnami/kubectl:latest as kubectl
 FROM node:alpine as final
 WORKDIR /app
 RUN npm install pm2@latest -g
-COPY --from=builder /usr/src/app/dist /app/
-COPY --from=builder /usr/src/app/node_modules /app/node_modules
+COPY --from=builder /app/dist /app/
+COPY --from=builder /app/node_modules /app/node_modules
 COPY --from=kubectl /opt/bitnami/kubectl/bin/kubectl /usr/local/bin/kubectl
 
 RUN apk update && apk --no-cache add ca-certificates bash
