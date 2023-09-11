@@ -18,6 +18,9 @@ spec:
       containers:
         - name: k8s-playgrounds
           image: ghcr.io/weibaohui/k8s-playgrounds:latest
+          env:
+            - name: inCluster
+              value: inCluster
           ports:
             - containerPort: 3007
           imagePullPolicy: Always
