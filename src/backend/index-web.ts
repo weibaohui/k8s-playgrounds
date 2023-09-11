@@ -1,3 +1,4 @@
+import * as fs from 'node:fs'
 import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { PlaygroundModule } from './playground.module'
@@ -17,7 +18,7 @@ async function bootstrap() {
       .addTag('k8s-playgrounds')
       .build()
     const document = SwaggerModule.createDocument(nestApp, options)
-    // fs.writeFileSync('./swagger-spec.json', JSON.stringify(document))
+    fs.writeFileSync('./swagger-spec.json', JSON.stringify(document))
     SwaggerModule.setup('api', nestApp, document)
     await nestApp.listen(3007)
   }

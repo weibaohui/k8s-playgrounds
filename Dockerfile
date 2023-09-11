@@ -12,7 +12,7 @@ COPY . .
 RUN rm -rf vite.config.ts && mv vite-web.config.ts vite.config.ts \
     && rm -rf src/backend/app/ \
     && rm -rf src/backend/index.ts && mv src/backend/index-web.ts src/backend/index.ts
-RUN pnpm dev & &&  pnpm gen
+RUN nohup pnpm dev & sleep 10 &&  openapi --input ./swagger-spec.json --output ./src/frontend/generated --useOptions --name=Play
 RUN pnpm build
 
 FROM bitnami/kubectl:latest as kubectl
