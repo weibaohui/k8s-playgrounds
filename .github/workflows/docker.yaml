@@ -1,4 +1,4 @@
-name: Server Build
+name: docker images make
 
 on:
   push:
