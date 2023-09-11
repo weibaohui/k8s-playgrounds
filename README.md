@@ -12,6 +12,10 @@
 ```docker
 docker run -it --rm -v ~/.kube:/root/.kube -p 3007:3007 ghcr.io/weibaohui/k8s-playgrounds:latest
 ```
+### 在k8s集群中运行
+```kubernetes helm
+kubectl apply -f https://raw.githubusercontent.com/weibaohui/k8s-playgrounds/main/yaml/k8s-playgrounds.yaml
+```
 ### dev
 - In the project folder:
   ```bash
