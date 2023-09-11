@@ -23,6 +23,7 @@
     "@nestjs/platform-express": "^10.2.2",
     "@nestjs/platform-socket.io": "^10.2.2",
     "@nestjs/schedule": "^3.0.3",
+    "@nestjs/serve-static": "^4.0.0",
     "@nestjs/swagger": "^7.1.10",
     "@nestjs/websockets": "^10.2.2",
     "axios": "^1.5.0",
