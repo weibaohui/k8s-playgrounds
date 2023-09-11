@@ -25,4 +25,4 @@ COPY --from=kubectl /opt/bitnami/kubectl/bin/kubectl /usr/local/bin/kubectl
 RUN apk update && apk --no-cache add ca-certificates
 
 EXPOSE 3007
-CMD [ "pm2","start", "/app/backend/index.js" ]
+CMD [ "pm2-runtime","start", "/app/backend/index.js" ]
