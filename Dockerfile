@@ -16,6 +16,8 @@ RUN pnpm build
 FROM bitnami/kubectl:latest as kubectl
 
 FROM node:alpine as final
+WORKDIR /app
+RUN npm install pm2@latest -g
 COPY --from=builder /usr/src/app/dist /app/
 COPY --from=builder /usr/src/app/node_modules /app/node_modules
 COPY --from=kubectl /opt/bitnami/kubectl/bin/kubectl /usr/local/bin/kubectl
@@ -23,4 +25,4 @@ COPY --from=kubectl /opt/bitnami/kubectl/bin/kubectl /usr/local/bin/kubectl
 RUN apk update && apk --no-cache add ca-certificates
 
 EXPOSE 3007
-CMD [ "node", "/app/backend/index.js" ]
+CMD [ "pm2","start", "/app/backend/index.js" ]
