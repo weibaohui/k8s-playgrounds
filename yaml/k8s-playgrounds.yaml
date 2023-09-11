@@ -20,7 +20,7 @@ spec:
           image: ghcr.io/weibaohui/k8s-playgrounds:latest
           ports:
             - containerPort: 3007
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
       restartPolicy: Always
 ---
 apiVersion: v1
