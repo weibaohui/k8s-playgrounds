@@ -34,6 +34,11 @@ export class ClientService {
     this.logger.debug(JSON.stringify(this.kc.clusters))
     if (this.kc.clusters[0].server === 'https://undefined:undefined')
       this.inCluster = false
+    const ns = await this.kc.makeApiClient(k8s.CoreV1Api).listNamespace()
+    if (ns.body.items.length > 0)
+      this.inCluster = true
+    this.logger.debug(JSON.stringify(ns.body.items))
+
     this.logger.debug(`InClusterCheck ${this.inCluster}`)
   }
 
