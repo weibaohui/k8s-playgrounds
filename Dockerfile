@@ -6,11 +6,13 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN sed -i '/^    "electron/g' package.json
 RUN sed -i '/^    "postinstall/g' package.json
-RUN npm install -g pnpm
+RUN npm install -g pnpm openapi-typescript-codegen
 RUN pnpm install
 COPY . .
 RUN rm -rf vite.config.ts && mv vite-web.config.ts vite.config.ts \
-    && rm -rf src/backend/app/ && rm -rf src/backend/index.ts && mv src/backend/index-web.ts src/backend/index.ts
+    && rm -rf src/backend/app/ \
+    && rm -rf src/backend/index.ts && mv src/backend/index-web.ts src/backend/index.ts
+RUN pnpm dev & &&  pnpm gen
 RUN pnpm build
 
 FROM bitnami/kubectl:latest as kubectl
