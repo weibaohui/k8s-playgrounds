@@ -1,3 +1,4 @@
+import { BackEndUrl } from '@frontend/service/k8s/BackEndUrl'
 import type { Socket } from 'socket.io-client'
 import { io } from 'socket.io-client'
 
@@ -11,7 +12,7 @@ export class SocketIOService {
       this.sc.connect()
       return this.sc
     }
-    this.sc = io(`${window.location.protocol}//${window.location.host}`, {
+    this.sc = io(BackEndUrl.getUrl(), {
       transports: ['websocket'], // 指定传输方式，如WebSocket
       autoConnect: true, // 是否自动连接
       reconnection: true, // 是否自动重新连接
