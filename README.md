@@ -7,7 +7,12 @@
 使用ChatGPT进行智能化加持，做使用简单、智能的k8s 管理UI。
 增加了编辑器及文档显示功能，边写边查，更快捷
 ## How to use
-
+### docker
+执行如下命令行
+```docker
+docker run -it --rm -v ~/.kube:/root/.kube -p 3007:3007 ghcr.io/weibaohui/k8s-playgrounds:latest
+```
+### dev
 - In the project folder:
   ```bash
   # install dependencies
