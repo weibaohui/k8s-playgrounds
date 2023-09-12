@@ -66,6 +66,10 @@ export class ClientService {
     return this.getKubeConfig().makeApiClient(k8s.RbacAuthorizationV1Api)
   }
 
+  public getAdmissionregistrationV1Api() {
+    return this.getKubeConfig().makeApiClient(k8s.AdmissionregistrationV1Api)
+  }
+
   public getNodePty() {
     const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
 

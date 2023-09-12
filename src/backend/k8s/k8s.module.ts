@@ -25,6 +25,8 @@ import { JobController } from '@backend/k8s/job/job.controller'
 import { JobService } from '@backend/k8s/job/job.service'
 import { LimitRangeController } from '@backend/k8s/limitrange/limitrange.controller'
 import { LimitRangeService } from '@backend/k8s/limitrange/limitrange.service'
+import { MutatingWebhookController } from '@backend/k8s/MutatingWebhook/MutatingWebhook.controller'
+import { MutatingWebhookService } from '@backend/k8s/MutatingWebhook/MutatingWebhook.service'
 import { NetworkPolicyController } from '@backend/k8s/networkPolicy/NetworkPolicy.controller'
 import { NetworkPolicyService } from '@backend/k8s/networkPolicy/NetworkPolicy.service'
 import { PersistentVolumeController } from '@backend/k8s/PersistentVolume/PersistentVolume.controller'
@@ -54,6 +56,8 @@ import { StatefulSetController } from '@backend/k8s/statefulset/statefulset.cont
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
 import { StorageClassController } from '@backend/k8s/storageClass/StorageClass.controller'
 import { StorageClassService } from '@backend/k8s/storageClass/StorageClass.service'
+import { ValidatingWebhookController } from '@backend/k8s/ValidatingWebhook/ValidatingWebhook.controller'
+import { ValidatingWebhookService } from '@backend/k8s/ValidatingWebhook/ValidatingWebhook.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
@@ -83,7 +87,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     IngressClassController, NetworkPolicyController, StorageClassController,
     PersistentVolumeController, PersistentVolumeClaimController, ClusterRoleController,
     ClusterRoleBindingController, RoleController, RoleBindingController,
-    ServiceAccountController,
+    ServiceAccountController, MutatingWebhookController, ValidatingWebhookController,
     ClientController,
   ],
   providers: [
@@ -99,7 +103,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     IngressClassService, NetworkPolicyService, StorageClassService,
     PersistentVolumeService, PersistentVolumeClaimService, ClusterRoleService,
     ClusterRoleBindingService, RoleService, RoleBindingService,
-    ServiceAccountService,
+    ServiceAccountService, MutatingWebhookService, ValidatingWebhookService,
   ],
   exports: [K8sService],
 })

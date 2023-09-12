@@ -11,6 +11,7 @@ import IngressClassListView from '@frontend/components/IngressClass/IngressClass
 import JobListView from '@frontend/components/job/JobListView.vue'
 import KubeConfigView from '@frontend/components/KubeConfig/KubeConfigView.vue'
 import LimitsListView from '@frontend/components/limitrange/LimitsListView.vue'
+import MutatingWebhookListView from '@frontend/components/MutatingWebhook/MutatingWebhookListView.vue'
 import NetpolListView from '@frontend/components/NetworkPolicy/NetpolListView.vue'
 import PersistentVolumeListView from '@frontend/components/PersistentVolume/PersistentVolumeListView.vue'
 import PvcListView from '@frontend/components/PersistentVolumeClaim/PvcListView.vue'
@@ -26,6 +27,7 @@ import SvcListView from '@frontend/components/service/SvcListView.vue'
 import SaListView from '@frontend/components/ServiceAccount/SaListView.vue'
 import StsListView from '@frontend/components/statefulset/StsListView.vue'
 import StorageClassListView from '@frontend/components/StorageClass/StorageClassListView.vue'
+import ValidatingWebhookListView from '@frontend/components/ValidatingWebhook/ValidatingWebhookListView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import EventListView from '@frontend/components/event/EventListView.vue'
 import NodeListView from '@frontend/components/node/NodeListView.vue'
@@ -150,6 +152,12 @@ export default createRouter({
       path: '/serviceAccounts',
       component: SaListView,
     },
-
+    {
+      path: '/mutatingWebhookConfigurations',
+      component: MutatingWebhookListView,
+    }, {
+      path: '/validatingWebhookConfigurations',
+      component: ValidatingWebhookListView,
+    },
   ],
 })

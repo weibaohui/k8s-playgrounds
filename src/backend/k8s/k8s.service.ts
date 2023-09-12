@@ -10,6 +10,7 @@ import { IngressService } from '@backend/k8s/ingress/ingress.service'
 import { IngressClassService } from '@backend/k8s/ingressClass/IngressClass.service'
 import { JobService } from '@backend/k8s/job/job.service'
 import { LimitRangeService } from '@backend/k8s/limitrange/limitrange.service'
+import { MutatingWebhookService } from '@backend/k8s/MutatingWebhook/MutatingWebhook.service'
 import { NetworkPolicyService } from '@backend/k8s/networkPolicy/NetworkPolicy.service'
 import { PersistentVolumeService } from '@backend/k8s/PersistentVolume/PersistentVolume.service'
 import { PersistentVolumeClaimService } from '@backend/k8s/PersistentVolumeClaim/PersistentVolumeClaim.service'
@@ -25,6 +26,7 @@ import { NetworkSvcService } from '@backend/k8s/service/NetworkSvc.service'
 import { ServiceAccountService } from '@backend/k8s/ServiceAccount/ServiceAccount.service'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
 import { StorageClassService } from '@backend/k8s/storageClass/StorageClass.service'
+import { ValidatingWebhookService } from '@backend/k8s/ValidatingWebhook/ValidatingWebhook.service'
 import { WatchService } from '@backend/k8s/watch/watch.service'
 import { Injectable, Logger } from '@nestjs/common'
 import { EventService } from './event/event.service'
@@ -71,5 +73,7 @@ export class K8sService {
     public roleService: RoleService,
     public roleBindingService: RoleBindingService,
     public serviceAccountService: ServiceAccountService,
+    public mutatingWebhookService: MutatingWebhookService,
+    public validatingWebhookService: ValidatingWebhookService,
   ) {}
 }

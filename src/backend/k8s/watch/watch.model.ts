@@ -30,4 +30,6 @@ export enum ResType {
   Role = 'Role',
   RoleBinding = 'RoleBinding',
   ServiceAccount = 'ServiceAccount',
+  MutatingWebhookConfiguration = 'MutatingWebhookConfiguration',
+  ValidatingWebhookConfiguration = 'ValidatingWebhookConfiguration',
 }

@@ -114,6 +114,12 @@ export class DocHelper {
       case ResType.ServiceAccount:
         k = 'io.k8s.api.core.v1.ServiceAccount'
         break
+      case ResType.MutatingWebhookConfiguration:
+        k = 'io.k8s.api.admissionregistration.v1.MutatingWebhookConfiguration'
+        break
+      case ResType.ValidatingWebhookConfiguration:
+        k = 'io.k8s.api.admissionregistration.v1.ValidatingWebhookConfiguration'
+        break
       default:
         k = 'io.k8s.api.core.v1.Pod'
     }

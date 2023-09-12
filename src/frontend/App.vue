@@ -280,6 +280,30 @@ const menuOptions: MenuOption[] = [
             { default: () => 'Pod Disruption Budgets' },
           ),
         key: 'go-to-podDisruptionBudgets',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/mutatingWebhookConfigurations',
+              },
+            },
+            { default: () => 'Mutating Webhooks' },
+          ),
+        key: 'go-to-mutatingWebhookConfigurations',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
+                path: '/validatingWebhookConfigurations',
+              },
+            },
+            { default: () => 'Validating Webhooks' },
+          ),
+        key: 'go-to-validatingWebhookConfigurations',
       },
     ],
   },

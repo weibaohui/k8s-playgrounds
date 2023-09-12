@@ -107,6 +107,14 @@ export class K8sService {
         return K8sService.playService.clusterRoleControllerGetOneByName({
           name,
         })
+      case ResType.MutatingWebhookConfiguration:
+        return K8sService.playService.mutatingWebhookControllerGetOneByName({
+          name,
+        })
+      case ResType.ValidatingWebhookConfiguration:
+        return K8sService.playService.validatingWebhookControllerGetOneByName({
+          name,
+        })
       case ResType.LimitRange:
         return K8sService.playService.limitRangeControllerGetOneByNsName({
           ns,

@@ -131,6 +131,12 @@ export class WatchService {
       case ResType.RoleBinding:
         watchPath = '/apis/rbac.authorization.k8s.io/v1/rolebindings'
         break
+      case ResType.MutatingWebhookConfiguration:
+        watchPath = '/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations'
+        break
+      case ResType.ValidatingWebhookConfiguration:
+        watchPath = '/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations'
+        break
       default:
         watchPath = '/api/v1/pods'
     }

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { V1ClusterRole } from '@backend/k8s/model/V1ClusterRole'
+import type { V1MutatingWebhookConfiguration } from '@backend/k8s/model/V1MutatingWebhookConfiguration'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
-import ClusterRoleActionView from '@frontend/components/ClusterRole/ClusterRoleActionView.vue'
-import ClusterRoleView from '@frontend/components/ClusterRole/ClusterRoleView.vue'
+import MutatingWebhookActionView from '@frontend/components/MutatingWebhook/MutatingWebhookActionView.vue'
+import MutatingWebhookView from '@frontend/components/MutatingWebhook/MutatingWebhookView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
@@ -18,11 +18,11 @@ import WorkloadListView from '@frontend/components/common/ResourceListView.vue'
 const drawer = useDrawerService()
 const dialog = useDialog()
 
-const itemList = ref<V1ClusterRole[]>()
+const itemList = ref<V1MutatingWebhookConfiguration[]>()
 const searchText = ref('')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
 
-function createColumns(): DataTableColumns<V1ClusterRole> {
+function createColumns(): DataTableColumns<V1MutatingWebhookConfiguration> {
   return [
     {
       type: 'selection',
@@ -30,7 +30,7 @@ function createColumns(): DataTableColumns<V1ClusterRole> {
     {
       title: 'Name',
       key: 'metadata.name',
-      render(row: V1ClusterRole) {
+      render(row: V1MutatingWebhookConfiguration) {
         return h(
           NButton,
           {
@@ -39,7 +39,7 @@ function createColumns(): DataTableColumns<V1ClusterRole> {
               DrawerHelper
                 .instance
                 .drawer(drawer)
-                .show(`${ResType.ClusterRole}:${row.metadata.name}`, ClusterRoleView, { clusterRole: row })
+                .show(`${ResType.MutatingWebhookConfiguration}:${row.metadata.name}`, MutatingWebhookView, { mw: row })
             },
           },
           { default: () => row.metadata.name },
@@ -60,10 +60,10 @@ function createColumns(): DataTableColumns<V1ClusterRole> {
     {
       title: 'Action',
       key: 'Action',
-      render(row: V1ClusterRole) {
-        return h(ClusterRoleActionView,
+      render(row: V1MutatingWebhookConfiguration) {
+        return h(MutatingWebhookActionView,
           {
-            clusterRole: row,
+            mw: row,
             isDropdown: true,
           },
         )
@@ -73,14 +73,14 @@ function createColumns(): DataTableColumns<V1ClusterRole> {
 }
 
 async function getItemList() {
-  itemList.value = await K8sService.playService.clusterRoleControllerList()
+  itemList.value = await K8sService.playService.mutatingWebhookControllerList()
   if (!_.isEmpty(searchText.value))
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.playService.clusterRoleControllerDelete({ requestBody: keys })
+    await K8sService.playService.mutatingWebhookControllerDelete({ requestBody: keys })
   })
 }
 
@@ -91,7 +91,7 @@ function onTextChanged(text: string) {
 }
 
 getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.ClusterRole))
+TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.MutatingWebhookConfiguration))
 </script>
 
 <template>
@@ -100,7 +100,7 @@ TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, R
     :columns="createColumns()"
     :item-list="itemList"
     :show-ns-select="false"
-    name="Cluster Roles"
+    name="Mutating Webhook Configurations"
     @on-remove-btn-clicked="onRemoveBtnClicked"
     @on-text-changed="onTextChanged"
   />
