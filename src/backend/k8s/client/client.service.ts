@@ -1,5 +1,6 @@
 import os from 'node:os'
 import process from 'node:process'
+import { KubernetesObject } from '@kubernetes/client-node'
 import * as k8s from '@kubernetes/client-node'
 import { Injectable, Logger } from '@nestjs/common'
 import * as pty from 'node-pty'
@@ -96,5 +97,11 @@ export class ClientService {
       pk.write(`clear;kubectl drain ${nodeName} --delete-emptydir-data --ignore-daemonsets --force \r`)
     }, 1000)
     return pk
+  }
+
+  async update(k8sObject: KubernetesObject) {
+    const k8sApi = this.getObjectApi()
+    const r = await k8sApi.replace(k8sObject)
+    return r.body
   }
 }

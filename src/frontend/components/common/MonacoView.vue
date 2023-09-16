@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
+import { K8sService } from '@frontend/service/k8s/K8sService'
 import { NButton, NButtonGroup, NHr } from 'naive-ui'
 import { onMounted, ref, toRaw } from 'vue'
 import * as monaco from 'monaco-editor'
@@ -6,12 +8,13 @@ import YAML from 'yaml'
 
 const props = defineProps({
   item: Object,
-  showToolbar: Boolean,
+  saveActionOverride: Boolean,
   itemKey: String,
 })
 const emit = defineEmits(['onSaveBtnClicked'])
 const monacoEditorRef = ref()
 const editor = ref<monaco.editor.IStandaloneCodeEditor>()
+const drawer = useDrawerService()
 
 onMounted(() => {
   editor.value = monaco.editor.create(monacoEditorRef.value, {
@@ -41,18 +44,27 @@ onMounted(() => {
   })
 })
 
-function onSaveBtnClicked() {
+async function onSaveBtnClicked() {
   emit('onSaveBtnClicked', props.itemKey, toRaw(editor.value).getValue())
+  if (props.saveActionOverride !== true) {
+    K8sService.playService.clientControllerUpdate({
+      requestBody: [toRaw(editor.value).getValue({
+        preserveBOM: false,
+        lineEnding: '',
+      })],
+    })
+  }
+  drawer.close()
 }
 </script>
 
 <template>
-  <NButtonGroup v-if="props.showToolbar === true">
+  <NButtonGroup>
     <NButton type="success" @click="onSaveBtnClicked">
       Save
     </NButton>
   </NButtonGroup>
-  <NHr v-if="props.showToolbar === true" />
+  <NHr />
   <div ref="monacoEditorRef" class="vue-monaco-editor" />
 </template>
 

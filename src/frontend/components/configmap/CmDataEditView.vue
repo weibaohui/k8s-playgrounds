@@ -26,7 +26,7 @@ async function onSaveBtnClicked(key: string, data: string) {
     <NDivider title-placement="left">
       {{ k }}
     </NDivider>
-    <MonacoView :item="YamlUtils.removeScalar(v)" :item-key="k" :show-toolbar="true" @on-save-btn-clicked="onSaveBtnClicked" />
+    <MonacoView :item="YamlUtils.removeScalar(v)" :item-key="k" :save-action-override="true" @on-save-btn-clicked="onSaveBtnClicked" />
   </div>
 </template>
 

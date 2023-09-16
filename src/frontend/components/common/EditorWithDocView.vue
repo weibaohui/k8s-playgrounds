@@ -6,7 +6,7 @@ import { NTabPane, NTabs } from 'naive-ui'
 const props = defineProps({
   docType: String,
   item: Object,
-  showToolbar: Boolean,
+  saveActionOverride: Boolean,
   itemKey: String,
 })
 </script>
@@ -17,7 +17,7 @@ const props = defineProps({
       <MonacoView
         :item-key="props.itemKey"
         :item="props.item"
-        :show-toolbar="props.showToolbar"
+        :save-action-override="props.saveActionOverride"
       />
     </NTabPane>
     <NTabPane name="doc" tab="Doc">
