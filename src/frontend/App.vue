@@ -35,6 +35,20 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
+            path: '/g6',
+          },
+        },
+        { default: () => 'g6' },
+      ),
+    key: 'go-to-g6',
+    icon: renderIcon(StackExchange),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
             path: '/kubeconfig',
           },
         },

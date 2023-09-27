@@ -15,6 +15,7 @@ import MutatingWebhookListView from '@frontend/components/MutatingWebhook/Mutati
 import NetpolListView from '@frontend/components/NetworkPolicy/NetpolListView.vue'
 import PersistentVolumeListView from '@frontend/components/PersistentVolume/PersistentVolumeListView.vue'
 import PvcListView from '@frontend/components/PersistentVolumeClaim/PvcListView.vue'
+import PodG6View from '@frontend/components/pod/PodG6View.vue'
 import PdbListView from '@frontend/components/PodDisruptionBudget/PdbListView.vue'
 import PcListView from '@frontend/components/priorityclass/PcListView.vue'
 import RcListView from '@frontend/components/replicacontroller/RcListView.vue'
@@ -158,6 +159,10 @@ export default createRouter({
     }, {
       path: '/validatingWebhookConfigurations',
       component: ValidatingWebhookListView,
+    },
+    {
+      path: '/g6',
+      component: PodG6View,
     },
   ],
 })

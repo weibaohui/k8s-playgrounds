@@ -151,4 +151,9 @@ export class PodService {
     const r = await k8sApi.deleteNamespacedPod(name, ns)
     return r.body
   }
+
+  async GetPVCRelations(ns: string, name: string) {
+    const pod = await this.GetOne(ns, name)
+    return pod.spec.volumes.filter(d => d.persistentVolumeClaim).map(r => r.persistentVolumeClaim).map(v => v.claimName)
+  }
 }
