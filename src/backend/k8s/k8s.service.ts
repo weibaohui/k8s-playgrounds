@@ -1,6 +1,7 @@
 import { ClusterRoleService } from '@backend/k8s/ClusterRole/ClusterRole.service'
 import { ClusterRoleBindingService } from '@backend/k8s/ClusterRoleBinding/ClusterRoleBinding.service'
 import { ConfigMapService } from '@backend/k8s/configmap/configmap.service'
+import { CounterService } from '@backend/k8s/Counter/Counter.service'
 import { CronJobService } from '@backend/k8s/cronjob/cronjob.service'
 import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
@@ -75,5 +76,6 @@ export class K8sService {
     public serviceAccountService: ServiceAccountService,
     public mutatingWebhookService: MutatingWebhookService,
     public validatingWebhookService: ValidatingWebhookService,
+    public counterService: CounterService,
   ) {}
 }
