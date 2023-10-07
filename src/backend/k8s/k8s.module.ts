@@ -5,7 +5,8 @@ import { ClusterRoleBindingController } from '@backend/k8s/ClusterRoleBinding/Cl
 import { ClusterRoleBindingService } from '@backend/k8s/ClusterRoleBinding/ClusterRoleBinding.service'
 import { ConfigmapController } from '@backend/k8s/configmap/configmap.controller'
 import { ConfigMapService } from '@backend/k8s/configmap/configmap.service'
-import { CounterService } from '@backend/k8s/Counter/Counter.service'
+import { CounterController } from '@backend/k8s/Counter/counter.controller'
+import { CounterService } from '@backend/k8s/Counter/counter.service'
 import { CronJobController } from '@backend/k8s/cronjob/cronjob.controller'
 import { CronJobService } from '@backend/k8s/cronjob/cronjob.service'
 import { DaemonSetController } from '@backend/k8s/daemonset/daemonset.controller'
@@ -89,7 +90,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     PersistentVolumeController, PersistentVolumeClaimController, ClusterRoleController,
     ClusterRoleBindingController, RoleController, RoleBindingController,
     ServiceAccountController, MutatingWebhookController, ValidatingWebhookController,
-    ClientController,
+    ClientController, CounterController,
   ],
   providers: [
     K8sService, PodService, NsService,

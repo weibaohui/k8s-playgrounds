@@ -5,7 +5,6 @@ import { computed, ref } from 'vue'
 import Line from '@opentiny/vue-chart-line'
 
 const props = defineProps({
-  count: Number,
   items: Array<number>,
 })
 // 设置横轴为连续的时间轴
@@ -45,7 +44,7 @@ const chartSettings = computed(() => {
         show: false,
       },
       axisLabel: {
-        show: false,
+        show: true,
       },
       axisTick: {
         show: false,
@@ -72,7 +71,12 @@ const chartSettings = computed(() => {
           width: 1,
         },
         tooltip: {
+          position: [10, 10],
+          formatter: '{b0}: {c0}<br />{b1}: {c1}',
           show: false,
+          textStyle: {
+            fontSize: 2,
+          },
         },
         areaStyle: {
           color: '#43505F',

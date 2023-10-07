@@ -33,7 +33,6 @@ export class CounterService {
     }
   }
 
-  @Cron(CronExpression.EVERY_SECOND)
   printCounter() {
     this.counterLine.forEach((v, k) => {
       this.logger.debug(`${k}=${v}`)
@@ -50,5 +49,21 @@ export class CounterService {
 
       this.counterLine.set(k, array)
     })
+  }
+
+  getCounterByKey(key: string) {
+    return this.counter.get(key)
+  }
+
+  getCounterLineByKey(key: string) {
+    return this.counterLine.get(key)
+  }
+
+  getAllCounter() {
+    return this.counter
+  }
+
+  getAllCounterLine() {
+    return this.counterLine
   }
 }
