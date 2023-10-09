@@ -1,47 +1,34 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
-
-// import { Gauge } from '@opentiny/vue-chart'
-import Line from '@opentiny/vue-chart-line'
+import EChartView from '@frontend/components/common/echart/EChartView.vue'
+import { computed } from 'vue'
 
 const props = defineProps({
   items: Array<number>,
+  width: String,
+  height: String,
+  name: String,
 })
-// 设置横轴为连续的时间轴
-const chartSettings = computed(() => {
+const opt = computed(() => {
   return {
-  // backgroundColor: '#1c1c1c',
-    xAxis: {
-      type: 'category',
-      axisLine: {
-        show: false,
-      },
-      axisLabel: {
-        show: false,
-      },
-      axisTick: {
-        show: false,
-      },
-      splitLine: {
-        show: false,
-      },
-      boundaryGap: false,
-      data: ['A', 'B', 'C', 'D', 'E', 'F'],
+    title: {
+      text: props.name,
+    },
+    tooltip: {
+      show: true,
+      formatter: '{c0}',
 
     },
-    yAxis: {
-      type: 'value',
-      min: 0,
-      // max: 140,
-      splitNumber: 1,
-      splitLine: {
-        show: false,
-        lineStyle: {
-          color: 'rgba(255,255,255,0.1)',
-        },
-      },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true,
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
       axisLine: {
-        show: false,
+        show: true,
       },
       axisLabel: {
         show: true,
@@ -49,17 +36,35 @@ const chartSettings = computed(() => {
       axisTick: {
         show: false,
       },
+      splitLine: {
+        show: false,
+      },
     },
-    grid: {
-      height: '20px',
-      width: '100px',
+    yAxis: {
+      type: 'value',
+      min: 0,
+      splitLine: {
+        show: false,
+        lineStyle: {
+          color: 'rgba(255,255,255,0.1)',
+        },
+      },
+      axisLine: {
+        show: true,
+      },
+      axisLabel: {
+        show: true,
+      },
+      axisTick: {
+        show: true,
+      },
     },
     series: [
       {
-        // data: [820, 932, 901, 934, 1290, 1330, 1320],
+        name: props.name,
+        type: 'line',
         data: props.items,
         smooth: true,
-        type: 'line',
         showAllSymbol: false,
         label: {
           show: false,
@@ -70,14 +75,6 @@ const chartSettings = computed(() => {
         lineStyle: {
           width: 1,
         },
-        tooltip: {
-          position: [10, 10],
-          formatter: '{b0}: {c0}<br />{b1}: {c1}',
-          show: false,
-          textStyle: {
-            fontSize: 2,
-          },
-        },
         areaStyle: {
           color: '#43505F',
         },
@@ -85,13 +82,10 @@ const chartSettings = computed(() => {
     ],
   }
 })
-const extend = ref({})
 </script>
 
 <template>
-  <div style="height: 20px;width: 100px">
-    <Line :settings="chartSettings" :extend="extend" />
-  </div>
+  <EChartView :option="opt" :width="props.width" :height="props.height" />
 </template>
 
 <style scoped>

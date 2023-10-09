@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { TimerUtils } from '@backend/utils/TimerUtils'
 import type { Ref } from 'vue'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
@@ -14,23 +15,22 @@ const echartInstance: Ref<echarts.ECharts | null> = ref(null)
 const main = ref() // 使用ref创建虚拟DOM引用，使用时用main.value
 onMounted(
   () => {
-    init()
+    // 基于准备好的dom，初始化echarts实例
+    echartInstance.value = echarts.init(main.value, 'light', {
+      renderer: 'canvas',
+    })
   },
 )
+const timerId = TimerUtils.everySecond(() => {
+  echartInstance.value && echartInstance.value.setOption(props.option)
+})
 onBeforeUnmount(() => {
   if (!echartInstance.value)
     return
   echartInstance.value!.dispose()
   echartInstance.value = null
+  clearInterval(timerId)
 })
-
-function init() {
-  // 基于准备好的dom，初始化echarts实例
-  echartInstance.value = echarts.init(main.value, 'light', {
-    renderer: 'canvas',
-  })
-  echartInstance.value.setOption(props.option)
-}
 </script>
 
 <template>

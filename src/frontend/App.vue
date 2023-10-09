@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {
+  ChartLine,
   Clock,
   Cube,
   FileArchive,
@@ -35,13 +36,13 @@ const menuOptions: MenuOption[] = [
         RouterLink,
         {
           to: {
-            path: '/g6',
+            path: '/ResCountLine',
           },
         },
-        { default: () => 'g6' },
+        { default: () => 'ResCountLine' },
       ),
-    key: 'go-to-g6',
-    icon: renderIcon(StackExchange),
+    key: 'go-to-ResCountLine',
+    icon: renderIcon(ChartLine),
   },
   {
     label: () =>
