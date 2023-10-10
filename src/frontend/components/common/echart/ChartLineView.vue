@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import EChartView from '@frontend/components/common/echart/EChartView.vue'
+import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { computed } from 'vue'
 
 const props = defineProps({
@@ -8,6 +9,7 @@ const props = defineProps({
   height: String,
   name: String,
 })
+const color = ColorHelper.randomColor()
 const opt = computed(() => {
   return {
     title: {
@@ -46,7 +48,7 @@ const opt = computed(() => {
       splitLine: {
         show: false,
         lineStyle: {
-          color: 'rgba(255,255,255,0.1)',
+          color,
         },
       },
       axisLine: {
@@ -70,13 +72,13 @@ const opt = computed(() => {
           show: false,
         },
         itemStyle: {
-          color: '#4870DB',
+          color,
         },
         lineStyle: {
           width: 1,
         },
         areaStyle: {
-          color: '#43505F',
+          color,
         },
       },
     ],
