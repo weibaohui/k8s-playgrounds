@@ -19,7 +19,7 @@ const props = defineProps({
   <NTable :single-line="false">
     <tbody>
       <tr>
-        <td>
+        <td class="left">
           Pods
         </td>
         <td>
