@@ -29,7 +29,7 @@ getPods()
 
   <DeployBasicInfoView :deploy="props.deploy" :show-title="true" />
 
-  <PodListMiniView :item-list="podList" :show-title="true" />
+  <PodListMiniView :pod-list="podList" :show-title="true" />
 
   <InvolvedEventView :item="props.deploy.metadata" :show-title="true" />
 </template>

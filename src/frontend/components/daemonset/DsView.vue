@@ -28,7 +28,7 @@ getPods()
   </NMessageProvider>
   <DsBasicInfoView :ds="props.ds" :show-title="true" />
 
-  <PodListMiniView :item-list="podList" :show-title="true" />
+  <PodListMiniView :pod-list="podList" :show-title="true" />
   <InvolvedEventView :item="props.ds.metadata" :show-title="true" />
 </template>
 

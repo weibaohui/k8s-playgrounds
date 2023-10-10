@@ -29,7 +29,7 @@ getPods()
 
   <StsBasicInfoView :sts="sts" :show-title="true" />
 
-  <PodListMiniView :item-list="podList" :show-title="true" />
+  <PodListMiniView :pod-list="podList" :show-title="true" />
 
   <InvolvedEventView :item="props.sts.metadata" :show-title="true" />
 </template>

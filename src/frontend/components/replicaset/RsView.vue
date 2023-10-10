@@ -29,7 +29,7 @@ getPods()
 
   <RsBasicInfoView :rs="rs" :show-title="true" />
 
-  <PodListMiniView :item-list="podList" :show-title="true" />
+  <PodListMiniView :pod-list="podList" :show-title="true" />
   <InvolvedEventView :item="props.rs.metadata" :show-title="true" />
 </template>
 

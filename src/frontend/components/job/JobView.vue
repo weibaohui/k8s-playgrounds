@@ -29,7 +29,7 @@ getPods()
 
   <JobBasicInfoView :job="props.job" :show-title="true" />
 
-  <PodListMiniView :item-list="podList" :show-title="true" />
+  <PodListMiniView :pod-list="podList" :show-title="true" />
 
   <InvolvedEventView :item="props.job.metadata" :show-title="true" />
 </template>

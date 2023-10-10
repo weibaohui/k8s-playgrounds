@@ -30,7 +30,7 @@ getPodsByNodeName()
   <TitleBar title="Resource" />
   <NodeResourceView :node="node" />
 
-  <PodListMiniView :item-list="podList" :show-title="true" />
+  <PodListMiniView :pod-list="podList" :show-title="true" />
 
   <InvolvedEventView :item="props.node.metadata" :show-title="true" />
 </template>
