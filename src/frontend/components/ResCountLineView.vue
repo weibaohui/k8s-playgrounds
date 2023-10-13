@@ -7,7 +7,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 const counterLines = ref<Map<string, Array<number>>>()
 const workloadCounterLines = ref()
-const wks = ['Pod', 'Deployment']
+const wks = ['Pod', 'Deployment', 'Job', 'CronJob']
 
 let timerId = 0
 onMounted(async () => {
@@ -31,14 +31,14 @@ onBeforeUnmount(() => {
       <NTabPane name="Workload" tab="Workload">
         <NGrid :x-gap="20" :y-gap="20" :cols="4">
           <NGridItem v-for="(v, k) in workloadCounterLines" :key="k">
-            <ChartLineView :items="v" :name="`${k}`" width="200px" height="200px" />
+            <ChartLineView :items="v" :name="`${k}:${v[0]}`" width="200px" height="200px" />
           </NGridItem>
         </NGrid>
       </NTabPane>
       <NTabPane name="全部" tab="ALL">
         <NGrid :x-gap="20" :y-gap="20" :cols="4">
           <NGridItem v-for="(v, k) in counterLines" :key="k">
-            <ChartLineView :items="v" :name="`${k}`" width="200px" height="200px" />
+            <ChartLineView :items="v" :name="`${k}:${v[0]}`" width="200px" height="200px" />
           </NGridItem>
         </NGrid>
       </NTabPane>
