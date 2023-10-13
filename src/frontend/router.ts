@@ -5,6 +5,7 @@ import CronJobListView from '@frontend/components/cronjob/CronJobListView.vue'
 import DsListView from '@frontend/components/daemonset/DsListView.vue'
 import DeployListView from '@frontend/components/deployment/DeployListView.vue'
 import EpListView from '@frontend/components/endpoint/EpListView.vue'
+import EndpointSliceListView from '@frontend/components/EndpointSlice/EndpointSliceListView.vue'
 import HpaListView from '@frontend/components/HorizontalPodAutoscaler/HpaListView.vue'
 import IngListView from '@frontend/components/ingress/IngListView.vue'
 import IngressClassListView from '@frontend/components/IngressClass/IngressClassListView.vue'
@@ -114,6 +115,10 @@ export default createRouter({
     {
       path: '/endpoints',
       component: EpListView,
+    },
+    {
+      path: '/endpointSlices',
+      component: EndpointSliceListView,
     },
     {
       path: '/services',

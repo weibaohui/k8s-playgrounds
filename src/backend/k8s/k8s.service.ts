@@ -6,6 +6,7 @@ import { CronJobService } from '@backend/k8s/cronjob/cronjob.service'
 import { DaemonSetService } from '@backend/k8s/daemonset/daemonset.service'
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
 import { EndpointService } from '@backend/k8s/endpoint/Endpoint.service'
+import { EndpointSliceService } from '@backend/k8s/EndpointSlice/EndpointSlice.service'
 import { HorizontalPodAutoscalerService } from '@backend/k8s/horizontalpodautoscaler/HorizontalPodAutoscaler.service'
 import { IngressService } from '@backend/k8s/ingress/ingress.service'
 import { IngressClassService } from '@backend/k8s/ingressClass/IngressClass.service'
@@ -77,5 +78,6 @@ export class K8sService {
     public mutatingWebhookService: MutatingWebhookService,
     public validatingWebhookService: ValidatingWebhookService,
     public counterService: CounterService,
+    public endpointSliceService: EndpointSliceService,
   ) {}
 }

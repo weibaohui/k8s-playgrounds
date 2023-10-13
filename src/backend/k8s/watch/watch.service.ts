@@ -31,10 +31,10 @@ export class WatchService {
   }
 
   /**
-     * 获取监控资源的访问地址
-     * @private
-     * @param resType
-     */
+   * 获取监控资源的访问地址
+   * @private
+   * @param resType
+   */
   private getResourceWatchPath(resType: ResType) {
     let watchPath = ''
     switch (resType) {
@@ -127,6 +127,9 @@ export class WatchService {
         break
       case ResType.Role:
         watchPath = '/apis/rbac.authorization.k8s.io/v1/roles'
+        break
+      case ResType.EndpointSlice:
+        watchPath = '/apis/discovery.k8s.io/v1/endpointslices'
         break
       case ResType.RoleBinding:
         watchPath = '/apis/rbac.authorization.k8s.io/v1/rolebindings'

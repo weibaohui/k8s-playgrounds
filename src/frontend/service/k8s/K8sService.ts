@@ -135,6 +135,11 @@ export class K8sService {
           ns,
           name,
         })
+      case ResType.EndpointSlice:
+        return K8sService.playService.endpointSliceControllerGetOneByNsName({
+          ns,
+          name,
+        })
       case ResType.Service:
         return K8sService.playService.networkSvcControllerGetOneByNsName({
           ns,

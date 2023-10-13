@@ -15,6 +15,8 @@ import { DeploymentController } from '@backend/k8s/deployment/deployment.control
 import { DeploymentService } from '@backend/k8s/deployment/deployment.service'
 import { EndpointController } from '@backend/k8s/endpoint/Endpoint.controller'
 import { EndpointService } from '@backend/k8s/endpoint/Endpoint.service'
+import { EndpointSliceController } from '@backend/k8s/EndpointSlice/EndpointSlice.controller'
+import { EndpointSliceService } from '@backend/k8s/EndpointSlice/EndpointSlice.service'
 import {
   HorizontalPodAutoscalerController,
 } from '@backend/k8s/horizontalpodautoscaler/HorizontalPodAutoscaler.controller'
@@ -90,7 +92,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     PersistentVolumeController, PersistentVolumeClaimController, ClusterRoleController,
     ClusterRoleBindingController, RoleController, RoleBindingController,
     ServiceAccountController, MutatingWebhookController, ValidatingWebhookController,
-    ClientController, CounterController,
+    ClientController, CounterController, EndpointSliceController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -106,7 +108,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     PersistentVolumeService, PersistentVolumeClaimService, ClusterRoleService,
     ClusterRoleBindingService, RoleService, RoleBindingService,
     ServiceAccountService, MutatingWebhookService, ValidatingWebhookService,
-    CounterService,
+    CounterService, EndpointSliceService,
   ],
   exports: [K8sService],
 })

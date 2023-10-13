@@ -13,9 +13,9 @@
 /**
  * ForZone provides information about which zones should consume this endpoint.
  */
-export class IoK8sApiDiscoveryV1ForZone {
+export class DiscoveryV1ForZone {
   /**
-     * name represents the name of the zone.
-     */
+   * name represents the name of the zone.
+   */
   name: string
 }

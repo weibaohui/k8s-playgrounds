@@ -75,6 +75,9 @@ export class DocHelper {
       case ResType.Endpoint:
         k = 'io.k8s.api.core.v1.Endpoints'
         break
+      case ResType.EndpointSlice:
+        k = 'io.k8s.api.discovery.v1.EndpointSlice'
+        break
       case ResType.Service:
         k = 'io.k8s.api.core.v1.Service'
         break
@@ -127,10 +130,10 @@ export class DocHelper {
   }
 
   /**
-     *
-     * @param k io.k8s.api.core.v1.Pod
-     * @private
-     */
+   *
+   * @param k io.k8s.api.core.v1.Pod
+   * @private
+   */
   private static extracted(k: string) {
     const root = JSON.parse(definitions).definitions
     const resource = this.getObjectValue(root, k)

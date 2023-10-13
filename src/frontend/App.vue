@@ -345,6 +345,18 @@ const menuOptions: MenuOption[] = [
             RouterLink,
             {
               to: {
+                path: '/endpointSlices',
+              },
+            },
+            { default: () => 'EndpointSlices' },
+          ),
+        key: 'go-to-endpointSlices',
+      }, {
+        label: () =>
+          h(
+            RouterLink,
+            {
+              to: {
                 path: '/services',
               },
             },

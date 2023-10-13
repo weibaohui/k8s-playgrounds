@@ -9,14 +9,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import type { IoK8sApiDiscoveryV1ForZone } from './ioK8sApiDiscoveryV1ForZone'
+import type { DiscoveryV1ForZone } from './discoveryV1ForZone'
 
 /**
  * EndpointHints provides hints describing how an endpoint should be consumed.
  */
-export class IoK8sApiDiscoveryV1EndpointHints {
+export class DiscoveryV1EndpointHints {
   /**
-     * forZones indicates the zone(s) this endpoint should be consumed by to enable topology aware routing.
-     */
-  forZones?: Array<IoK8sApiDiscoveryV1ForZone>
+   * forZones indicates the zone(s) this endpoint should be consumed by to enable topology aware routing.
+   */
+  forZones?: Array<DiscoveryV1ForZone>
 }

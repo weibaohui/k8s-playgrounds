@@ -32,4 +32,5 @@ export enum ResType {
   ServiceAccount = 'ServiceAccount',
   MutatingWebhookConfiguration = 'MutatingWebhookConfiguration',
   ValidatingWebhookConfiguration = 'ValidatingWebhookConfiguration',
+  EndpointSlice = 'EndpointSlice',
 }
