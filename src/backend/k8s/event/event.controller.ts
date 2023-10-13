@@ -17,6 +17,12 @@ export class EventController {
     return await this.k8sService.eventService.List(ns)
   }
 
+  @Get('/list/warning/:ns')
+  async ListWarningEventByNs(@Param('ns') ns: string) {
+    const fieldSelector = 'type=Warning'
+    return await this.k8sService.eventService.List(ns, fieldSelector)
+  }
+
   @Get('/ns/:ns/name/:name')
   async GetOneByNsName(@Param('ns') ns: string, @Param('name') name: string) {
     return await this.k8sService.eventService.GetOneByNsName(ns, name)
@@ -29,7 +35,7 @@ export class EventController {
   }
 
   @Get('/list/warning/ns/:ns/name/:name')
-  async ListInvolvedWarningEvenByNsName(@Param('ns') ns: string, @Param('name') name: string) {
+  async ListInvolvedWarningEventByNsName(@Param('ns') ns: string, @Param('name') name: string) {
     const fieldSelector = `type=Warning,involvedObject.name=${name},involvedObject.namespace=${ns}`
     return await this.k8sService.eventService.List(ns, fieldSelector)
   }

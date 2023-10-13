@@ -4,7 +4,7 @@ import { TimeAge } from '@backend/utils/timeAge'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
-import { NButton, NSpace, useDialog } from 'naive-ui'
+import { NButton, NSpace, NSwitch, useDialog } from 'naive-ui'
 import { h, ref } from 'vue'
 import type { V1Event } from '@backend/k8s/model/V1Event'
 import type { V1Pod } from '@backend/k8s/model/V1Pod'
@@ -20,6 +20,7 @@ const dialog = useDialog()
 const itemList = ref<V1Event[]>()
 const selectedNs = ref('default')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
+const onlyWarning = ref(true)
 
 function createColumns(): DataTableColumns<V1Event> {
   return [
@@ -121,6 +122,11 @@ function createColumns(): DataTableColumns<V1Event> {
 }
 
 async function getItemList() {
+  if (onlyWarning.value) {
+    itemList.value = await K8sService.playService.eventControllerListWarningEventByNs({ ns: selectedNs.value })
+    return
+  }
+
   itemList.value = await K8sService.playService.eventControllerListByNs({ ns: selectedNs.value })
 }
 
@@ -157,7 +163,18 @@ TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, R
     @on-ns-changed="onNsChanged"
     @on-remove-btn-clicked="onRemoveBtnClicked"
     @on-text-changed="onTextChanged"
-  />
+  >
+    <template #tools>
+      <NSwitch v-model:value="onlyWarning" @update:value="getItemList">
+        <template #checked>
+          warning
+        </template>
+        <template #unchecked>
+          all
+        </template>
+      </NSwitch>
+    </template>
+  </WorkloadListView>
 </template>
 
 <style scoped>

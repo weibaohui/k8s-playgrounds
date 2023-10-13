@@ -79,7 +79,9 @@ defineExpose({ setNsSelected })
     <NFormItemGi :span="2">
       {{ itemList && itemList.length ? itemList.length : 0 }}项
     </NFormItemGi>
-    <NFormItemGi :span="5" />
+    <NFormItemGi :span="5">
+      <slot name="tools" />
+    </NFormItemGi>
     <NFormItemGi :span="5">
       <NsSelect v-if="showNsSelect" ref="nsSelectRef" @on-ns-changed="onNsChanged" />
     </NFormItemGi>
