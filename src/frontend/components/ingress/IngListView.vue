@@ -3,6 +3,7 @@ import type { V1Ingress } from '@backend/k8s/model/V1Ingress'
 import { ResType } from '@backend/k8s/watch/watch.model'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import IngActionView from '@frontend/components/ingress/IngActionView.vue'
+import IngRulesHostMiniView from '@frontend/components/ingress/IngRulesHostMiniView.vue'
 import IngView from '@frontend/components/ingress/IngView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
@@ -62,6 +63,17 @@ function createColumns(): DataTableColumns<V1Ingress> {
             },
           },
           { default: () => row.metadata.namespace },
+        )
+      },
+    },
+    {
+      title: 'Host',
+      key: 'host',
+      render(row: V1Ingress) {
+        return h(IngRulesHostMiniView,
+          {
+            ing: row,
+          },
         )
       },
     },
