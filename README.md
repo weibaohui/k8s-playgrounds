@@ -209,6 +209,14 @@ shamefully-hoist=true
 |                      Endpoint | 详情-端口列表        | ✅       |
 |                      Endpoint | 详情-查看yaml      | ✅       |
 |                      Endpoint | 详情-删除          | ✅       |
+|                 EndpointSlice | 列表             | ✅       |
+|                 EndpointSlice | 列表-查看yaml      | ✅       |
+|                 EndpointSlice | 列表-删除          | ✅       |
+|                 EndpointSlice | 详情             | ✅       |
+|                 EndpointSlice | 详情-IP列表        | ✅       |
+|                 EndpointSlice | 详情-端口列表        | ✅       |
+|                 EndpointSlice | 详情-查看yaml      | ✅       |
+|                 EndpointSlice | 详情-删除          | ✅       |
 |                       Service | 列表             | ✅       |
 |                       Service | 列表-查看yaml      | ✅       |
 |                       Service | 列表-删除          | ✅       |
