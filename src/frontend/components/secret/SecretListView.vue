@@ -78,6 +78,13 @@ function createColumns(): DataTableColumns<V1Secret> {
       },
     },
     {
+      title: 'Type',
+      key: 'type',
+      render(row: V1Secret) {
+        return row.type
+      },
+    },
+    {
       title: 'Age',
       key: 'age',
       render(row) {
