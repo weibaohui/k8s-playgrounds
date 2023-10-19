@@ -33,6 +33,7 @@ users:
     client-certificate-data: LS0tL==
     client-key-data: LS0tL==
 EOF
+
 RUN nohup pnpm dev & sleep 10 &&  openapi --input ./swagger-spec.json --output ./src/frontend/generated --useOptions --name=Play
 RUN pnpm build
 
