@@ -11,7 +11,28 @@ RUN pnpm install
 COPY . .
 RUN rm -rf vite.config.ts && mv vite-web.config.ts vite.config.ts \
     && rm -rf src/backend/app/ \
-    && rm -rf src/backend/index.ts && mv src/backend/index-web.ts src/backend/index.ts
+    && rm -rf src/backend/index.ts && mv src/backend/index-web.ts src/backend/index.ts \
+RUN <<EOF cat >> /root/.kube/config
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tL==
+    server: https://kubernetes.docker.internal:6443
+  name: docker-desktop
+contexts:
+- context:
+    cluster: docker-desktop
+    user: docker-desktop
+  name: docker-desktop
+current-context: docker-desktop
+kind: Config
+preferences: {}
+users:
+- name: docker-desktop
+  user:
+    client-certificate-data: LS0tL==
+    client-key-data: LS0tL==
+EOF
 RUN nohup pnpm dev & sleep 10 &&  openapi --input ./swagger-spec.json --output ./src/frontend/generated --useOptions --name=Play
 RUN pnpm build
 
