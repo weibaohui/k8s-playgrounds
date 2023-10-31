@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ContainerStatusIcon from '@frontend/components/container/ContainerStatusIcon.vue'
+import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { ArrowsAltH, Docker } from '@vicons/fa'
 import { NDivider, NIcon, NSpace, NTable, NTag, NText } from 'naive-ui'
 import ContainerProbeView from '@frontend/components/container/ContainerProbeView.vue'
@@ -58,9 +59,9 @@ function getContainerStatusByName(name) {
         <tr v-if="t.env">
           <td>Environment</td>
           <td>
-            <NTag v-for="p in t.env" :key="p.name">
-              {{ p.name }}:{{ p.valueFrom }}({{ p.value }})
-            </NTag>
+            <p v-for="p in t.env" :key="p.name" :style="{ backgroundColor: ColorHelper.randomColor() }">
+              {{ p.name }}:{{ p.value }}
+            </p>
           </td>
         </tr>
         <tr>
