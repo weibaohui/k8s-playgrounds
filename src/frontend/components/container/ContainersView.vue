@@ -1,17 +1,33 @@
 <script setup lang="ts">
+import type { V1ContainerPort } from '@backend/k8s/model/V1ContainerPort'
 import ContainerStatusIcon from '@frontend/components/container/ContainerStatusIcon.vue'
+import { K8sService } from '@frontend/service/k8s/K8sService'
 import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { ArrowsAltH, Docker } from '@vicons/fa'
-import { NDivider, NIcon, NSpace, NTable, NTag, NText } from 'naive-ui'
+import { NButton, NDivider, NIcon, NSpace, NTable, NTag, NText, useMessage } from 'naive-ui'
 import ContainerProbeView from '@frontend/components/container/ContainerProbeView.vue'
 import ContainerState from '@frontend/components/container/ContainerState.vue'
 import { V1Pod } from '@backend/k8s/model/V1Pod'
+import * as _ from 'lodash'
 
 const props = defineProps({
   pod: V1Pod,
 })
+
+const message = useMessage()
+
 function getContainerStatusByName(name) {
   return props.pod.status.containerStatuses.filter(r => r.name === name).pop()
+}
+async function forward(pod: V1Pod, p: V1ContainerPort) {
+  const randomInt = _.random(30000, 60000)
+  await K8sService.playService.shellControllerForwardPod({
+    ns: pod.metadata.namespace,
+    localPort: randomInt,
+    podPort: `${p.containerPort}`,
+    podName: pod.metadata.name,
+  })
+  message.success('转发成功')
 }
 </script>
 
@@ -51,9 +67,12 @@ function getContainerStatusByName(name) {
         <tr v-if="t.ports">
           <td>Ports</td>
           <td>
-            <span v-for="p in t.ports" :key="p.containerPort">
-              {{ p.containerPort }}/{{ p.protocol }}
-            </span>
+            <p v-for="p in t.ports" :key="p.containerPort">
+              {{ p.name }}:{{ p.containerPort }}/{{ p.protocol }}
+              <NButton type="success" @click="forward(props.pod, p)">
+                Forward
+              </NButton>
+            </p>
           </td>
         </tr>
         <tr v-if="t.env">

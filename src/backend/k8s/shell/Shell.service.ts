@@ -108,31 +108,42 @@ export class ShellService {
   @Cron(CronExpression.EVERY_SECOND)
   cornCheckPortList() {
     this.shellList.forEach((d) => {
-      d.portForward.status = this.ncPort(d.portForward.localPort)
-      d.portForward.statusTimestamp = moment().local().toDate()
-      this.logger.log(`nc probe ${d.portForward.localPort}`)
+      this.ncPort(d.portForward.localPort,
+        () => {
+          d.portForward.status = 'succeeded'
+          d.portForward.statusTimestamp = moment().local().toDate()
+          // this.logger.log(`nc probe ${d.portForward.localPort} succeeded`)
+        },
+        () => {
+          d.portForward.status = 'refused'
+          d.portForward.statusTimestamp = moment().local().toDate()
+          // this.logger.log(`nc probe ${d.portForward.localPort} refused`)
+        })
+
+      // this.logger.log(`nc probe ${d.portForward.localPort}`)
     })
   }
 
-  ncPort(port: number) {
-    let result = 'refused'
+  ncPort(port: number, successCallback: () => void, refusedCallback: () => void) {
     const nc = spawn('nc', ['-v', '-w', '1', '-z', '127.0.0.1', `${port}`])
-    // nc.on('close', (code, signal) => {
-    //   this.logger.error(
-    //       `child process terminated due to receipt of signal ${code} ${signal}`)
-    // })
+    nc.on('close', (code, signal) => {
+      this.logger.log(
+          `nc probe ${port} end ${code} ${signal}`)
+    })
     nc.stdout.on('data', (data) => {
       if (data.toString().includes('succeeded'))
-        result = 'succeeded'
-      // this.logger.error(data.toString())
+        successCallback()
+      if (data.toString().includes('refused'))
+        refusedCallback()
     })
     //
-    // nc.stderr.on('data', (data) => {
-    //   this.logger.error(data.toString())
-    // })
+    nc.stderr.on('data', (data) => {
+      if (data.toString().includes('succeeded'))
+        successCallback()
+      if (data.toString().includes('refused'))
+        refusedCallback()
+    })
     // Send SIGHUP to process.
     // nc.kill('SIGHUP')
-
-    return result
   }
 }

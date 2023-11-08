@@ -16,13 +16,13 @@ const props = defineProps({
 <template>
   <NMessageProvider>
     <PodActionView :is-dropdown="false" :pod="props.pod" />
+
+    <PodBasicInfoView :pod="props.pod" :show-title="true" />
+    <TitleBar title="Containers" />
+    <ContainersView :pod="props.pod" />
+    <TitleBar title="Volumes" />
+    <PodVolumesView :pod="props.pod" />
+
+    <InvolvedEventView :item="props.pod.metadata" :show-title="true" />
   </NMessageProvider>
-
-  <PodBasicInfoView :pod="props.pod" :show-title="true" />
-  <TitleBar title="Containers" />
-  <ContainersView :pod="props.pod" />
-  <TitleBar title="Volumes" />
-  <PodVolumesView :pod="props.pod" />
-
-  <InvolvedEventView :item="props.pod.metadata" :show-title="true" />
 </template>

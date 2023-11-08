@@ -4,6 +4,7 @@ import { TimerUtils } from '@backend/utils/TimerUtils'
 import PortForwardActionView from '@frontend/components/PortFoward/PortForwardActionView.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
+import moment from 'moment/moment'
 import type { DataTableColumns } from 'naive-ui'
 import { useDialog } from 'naive-ui'
 import { h, onBeforeUnmount, onMounted, ref } from 'vue'
@@ -50,7 +51,9 @@ function createColumns(): DataTableColumns<PortForward> {
     {
       title: 'LastProbe',
       key: 'statusTimestamp',
-
+      render(row: PortForward) {
+        return moment(row.statusTimestamp).fromNow()
+      },
     },
     {
       title: 'Age',
