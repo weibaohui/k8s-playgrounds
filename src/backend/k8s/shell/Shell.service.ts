@@ -11,7 +11,6 @@ import { IPty } from 'node-pty'
 
 class ShellAction {
   shell: IPty
-  name: string
   cmd: string
   pid: number
   process: string
@@ -39,7 +38,6 @@ export class ShellService {
     sa.shell = pk
     sa.cmd = cmd
     sa.pid = pk.pid
-    sa.name = cmd
     sa.process = pk.process
     this.shellList.push(sa)
     return sa
@@ -50,8 +48,7 @@ export class ShellService {
     const pf = new PortForward()
     pf.metadata = new V1ObjectMeta()
     pf.type = 'Pod'
-    pf.type = 'Deployment'
-    pf.metadata.name = podName
+    pf.metadata.name = `${podName}-${podPort}-${localPort}`
     pf.kubePort = podPort
     pf.localPort = localPort
     pf.metadata.namespace = ns
@@ -63,7 +60,7 @@ export class ShellService {
     const sa = this.start(`kubectl port-forward --address 0.0.0.0 service/${svcName} ${localPort}:${svcPort}`)
     const pf = new PortForward()
     pf.metadata = new V1ObjectMeta()
-    pf.metadata.name = svcName
+    pf.metadata.name = `${svcName}-${svcPort}-${localPort}`
     pf.kubePort = svcPort
     pf.localPort = localPort
     pf.metadata.namespace = ns
@@ -77,7 +74,7 @@ export class ShellService {
     const pf = new PortForward()
     pf.metadata = new V1ObjectMeta()
     pf.type = 'Deployment'
-    pf.metadata.name = deployName
+    pf.metadata.name = `${deployName}-${deployPort}-${localPort}`
     pf.kubePort = deployPort
     pf.localPort = localPort
     pf.metadata.namespace = ns
@@ -85,11 +82,13 @@ export class ShellService {
     sa.portForward = pf
   }
 
-  kill(cmd: string) {
-    const sa = this.shellList.filter(s => s.cmd === cmd).pop()
+  Kill = (ns: string, name: string) => {
+    const sa = this.shellList.filter(
+      s => s.portForward.metadata.name === name && s.portForward.metadata.namespace === ns,
+    ).pop()
     if (sa !== undefined) {
       sa.shell.kill()
-      this.shellList = this.shellList.filter(s => s.cmd !== cmd)
+      this.shellList = this.shellList.filter(s => s.portForward.metadata.name !== name)
     }
   }
 

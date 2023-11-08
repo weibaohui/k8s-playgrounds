@@ -89,7 +89,7 @@ async function getItemList() {
 
 async function onRemoveBtnClicked(keys: string[]) {
   DialogHelper.instance.dialog(dialog).confirm('删除', async () => {
-    await K8sService.playService.podDisruptionBudgetControllerDelete({ requestBody: keys })
+    await K8sService.playService.shellControllerKill({ requestBody: keys })
   })
 }
 

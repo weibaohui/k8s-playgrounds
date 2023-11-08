@@ -1,5 +1,6 @@
 import { K8sService } from '@backend/k8s/k8s.service'
 import {
+  Body,
   Controller,
   Get, Param, Post,
 } from '@nestjs/common'
@@ -14,6 +15,17 @@ export class ShellController {
   @Get('/list')
   async List() {
     return this.k8sService.shellService.list()
+  }
+
+  @Post('/kill')
+  async Kill(@Body() nsn: Array<string>) {
+    nsn.forEach((r) => {
+      const nsname = r.split('/')
+      const ns = nsname[0]
+      const name = nsname[1]
+      this.k8sService.shellService.Kill(ns, name)
+    })
+    return {}
   }
 
   @Post('/ns/:ns/pod/:podName/localPort/:localPort/podPort/:podPort')
