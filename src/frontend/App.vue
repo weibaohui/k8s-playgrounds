@@ -3,13 +3,13 @@ import {
   ChartLine,
   Clock,
   Cube,
+  Ethernet,
   FileArchive,
   LayerGroup,
   ListAlt,
   NetworkWired,
   Server,
   StackExchange,
-  Tools,
   UserShield,
 } from '@vicons/fa'
 import type { Component } from 'vue'
@@ -43,7 +43,7 @@ const menuOptions: MenuOption[] = [
         { default: () => 'PortForward' },
       ),
     key: 'go-to-PortForward',
-    icon: renderIcon(Tools),
+    icon: renderIcon(Ethernet),
   },
   {
     label: () =>
