@@ -20,7 +20,7 @@ function getOptions(): ActionMenuOption[] {
       key: 'Open',
       icon: Edit,
       action: async () => {
-        console.log(`open ${props.pdb.LocalPort}`)
+        console.log(`open ${props.pdb.localPort}`)
       },
     },
   ]

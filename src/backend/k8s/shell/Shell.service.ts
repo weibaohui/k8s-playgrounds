@@ -1,9 +1,13 @@
+import { spawn } from 'node:child_process'
+import { Cron, CronExpression } from '@nestjs/schedule'
 import { ClientService } from '@backend/k8s/client/client.service'
 import { V1ObjectMeta } from '@backend/k8s/model/V1ObjectMeta'
 import { PortForward } from '@backend/model/PortForward'
 import { Injectable, Logger } from '@nestjs/common'
 import moment from 'moment/moment'
 import { IPty } from 'node-pty'
+
+// nc -v -w 1 -z 127.0.0.1 8080
 
 class ShellAction {
   shell: IPty
@@ -99,5 +103,36 @@ export class ShellService {
 
   list() {
     return this.shellList.map(r => r.portForward)
+  }
+
+  @Cron(CronExpression.EVERY_SECOND)
+  cornCheckPortList() {
+    this.shellList.forEach((d) => {
+      d.portForward.status = this.ncPort(d.portForward.localPort)
+      d.portForward.statusTimestamp = moment().local().toDate()
+      this.logger.log(`nc probe ${d.portForward.localPort}`)
+    })
+  }
+
+  ncPort(port: number) {
+    let result = 'refused'
+    const nc = spawn('nc', ['-v', '-w', '1', '-z', '127.0.0.1', `${port}`])
+    // nc.on('close', (code, signal) => {
+    //   this.logger.error(
+    //       `child process terminated due to receipt of signal ${code} ${signal}`)
+    // })
+    nc.stdout.on('data', (data) => {
+      if (data.toString().includes('succeeded'))
+        result = 'succeeded'
+      // this.logger.error(data.toString())
+    })
+    //
+    // nc.stderr.on('data', (data) => {
+    //   this.logger.error(data.toString())
+    // })
+    // Send SIGHUP to process.
+    // nc.kill('SIGHUP')
+
+    return result
   }
 }

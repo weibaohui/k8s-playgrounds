@@ -44,9 +44,18 @@ function createColumns(): DataTableColumns<PortForward> {
       key: 'localPort',
     },
     {
+      title: 'Status',
+      key: 'status',
+    },
+    {
+      title: 'LastProbe',
+      key: 'statusTimestamp',
+
+    },
+    {
       title: 'Age',
       key: 'age',
-      render(row) {
+      render(row: PortForward) {
         return h(ResourceAgeView,
           {
             item: row,
