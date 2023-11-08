@@ -9,6 +9,7 @@ import {
   NetworkWired,
   Server,
   StackExchange,
+  Tools,
   UserShield,
 } from '@vicons/fa'
 import type { Component } from 'vue'
@@ -30,6 +31,20 @@ import router from './router'
 
 const containerRef = ref<HTMLElement>()
 const menuOptions: MenuOption[] = [
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            path: '/PortForward',
+          },
+        },
+        { default: () => 'PortForward' },
+      ),
+    key: 'go-to-PortForward',
+    icon: renderIcon(Tools),
+  },
   {
     label: () =>
       h(
@@ -517,7 +532,7 @@ const menuOptions: MenuOption[] = [
   },
 ]
 
-const collapsed = ref(true)
+const collapsed = ref(false)
 
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })

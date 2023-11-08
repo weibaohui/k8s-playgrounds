@@ -17,6 +17,7 @@ import NetpolListView from '@frontend/components/NetworkPolicy/NetpolListView.vu
 import PersistentVolumeListView from '@frontend/components/PersistentVolume/PersistentVolumeListView.vue'
 import PvcListView from '@frontend/components/PersistentVolumeClaim/PvcListView.vue'
 import PdbListView from '@frontend/components/PodDisruptionBudget/PdbListView.vue'
+import PortForwardListView from '@frontend/components/PortFoward/PortForwardListView.vue'
 import PcListView from '@frontend/components/priorityclass/PcListView.vue'
 import RcListView from '@frontend/components/replicacontroller/RcListView.vue'
 import RsListView from '@frontend/components/replicaset/RsListView.vue'
@@ -168,6 +169,10 @@ export default createRouter({
     {
       path: '/ResCountLine',
       component: ResCountLineView,
+    },
+    {
+      path: '/PortForward',
+      component: PortForwardListView,
     },
   ],
 })

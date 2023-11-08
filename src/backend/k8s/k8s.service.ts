@@ -25,6 +25,7 @@ import { RoleBindingService } from '@backend/k8s/RoleBinding/RoleBinding.service
 import { SecretService } from '@backend/k8s/secret/secret.service'
 import { NetworkSvcService } from '@backend/k8s/service/NetworkSvc.service'
 import { ServiceAccountService } from '@backend/k8s/ServiceAccount/ServiceAccount.service'
+import { ShellService } from '@backend/k8s/shell/Shell.service'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
 import { StorageClassService } from '@backend/k8s/storageClass/StorageClass.service'
 import { ValidatingWebhookService } from '@backend/k8s/ValidatingWebhook/ValidatingWebhook.service'
@@ -77,5 +78,6 @@ export class K8sService {
     public mutatingWebhookService: MutatingWebhookService,
     public validatingWebhookService: ValidatingWebhookService,
     public endpointSliceService: EndpointSliceService,
+    public shellService: ShellService,
   ) {}
 }

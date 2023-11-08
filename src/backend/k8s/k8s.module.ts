@@ -56,6 +56,8 @@ import { NetworkSvcController } from '@backend/k8s/service/NetworkSvc.controller
 import { NetworkSvcService } from '@backend/k8s/service/NetworkSvc.service'
 import { ServiceAccountController } from '@backend/k8s/ServiceAccount/ServiceAccount.controller'
 import { ServiceAccountService } from '@backend/k8s/ServiceAccount/ServiceAccount.service'
+import { ShellController } from '@backend/k8s/shell/Shell.controller'
+import { ShellService } from '@backend/k8s/shell/Shell.service'
 import { StatefulSetController } from '@backend/k8s/statefulset/statefulset.controller'
 import { StatefulSetService } from '@backend/k8s/statefulset/statefulset.service'
 import { StorageClassController } from '@backend/k8s/storageClass/StorageClass.controller'
@@ -92,7 +94,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     PersistentVolumeController, PersistentVolumeClaimController, ClusterRoleController,
     ClusterRoleBindingController, RoleController, RoleBindingController,
     ServiceAccountController, MutatingWebhookController, ValidatingWebhookController,
-    ClientController, CounterController, EndpointSliceController,
+    ClientController, CounterController, EndpointSliceController, ShellController,
   ],
   providers: [
     K8sService, PodService, NsService,
@@ -108,7 +110,7 @@ import { ReplicaSetController } from '@backend/k8s/replicaset/replicaset.control
     PersistentVolumeService, PersistentVolumeClaimService, ClusterRoleService,
     ClusterRoleBindingService, RoleService, RoleBindingService,
     ServiceAccountService, MutatingWebhookService, ValidatingWebhookService,
-    CounterService, EndpointSliceService,
+    CounterService, EndpointSliceService, ShellService,
   ],
   exports: [K8sService],
 })
