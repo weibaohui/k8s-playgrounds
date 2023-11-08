@@ -11,7 +11,7 @@ import { AppService } from './app.service'
       useFactory: async () => {
         const isDev = !app.isPackaged
         const win = new BrowserWindow({
-          width: 1400,
+          width: 1600,
           height: 1000,
           autoHideMenuBar: true,
           webPreferences: {
