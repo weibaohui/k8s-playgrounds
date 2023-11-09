@@ -16,15 +16,14 @@ const props = defineProps({
 <template>
   <NMessageProvider>
     <SvcActionView :is-dropdown="false" :svc="props.svc" />
+    <TitleBar title="Basic info" :show-title="true" />
+    <SvcBasicInfoView :svc="props.svc" />
+    <TitleBar title="Connect Info" />
+    <SvcConnectView :svc="props.svc" />
+    <TitleBar title="Endpoints" />
+    <SvcEndpointListView :svc="props.svc" />
+    <InvolvedEventView :item="props.svc.metadata" :show-title="true" />
   </NMessageProvider>
-  <TitleBar title="Basic info" :show-title="true" />
-  <SvcBasicInfoView :svc="props.svc" />
-  <TitleBar title="Connect Info" />
-  <SvcConnectView :svc="props.svc" />
-  <TitleBar title="Endpoints" />
-  <SvcEndpointListView :svc="props.svc" />
-
-  <InvolvedEventView :item="props.svc.metadata" :show-title="true" />
 </template>
 
 <style scoped>

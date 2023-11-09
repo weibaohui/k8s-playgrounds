@@ -1,11 +1,27 @@
 <script setup lang="ts">
 import { V1Service } from '@backend/k8s/model/V1Service'
+import type { V1ServicePort } from '@backend/k8s/model/V1ServicePort'
+import { K8sService } from '@frontend/service/k8s/K8sService'
 import { ColorHelper } from '@frontend/service/page/ColorHelper'
-import { NSpace, NTable, NTag } from 'naive-ui'
+import * as _ from 'lodash'
+import { NButton, NSpace, NTable, NTag, useMessage } from 'naive-ui'
 
 const props = defineProps({
   svc: V1Service,
 })
+
+const message = useMessage()
+
+async function forward(svc: V1Service, p: V1ServicePort) {
+  const randomInt = _.random(30000, 60000)
+  await K8sService.playService.shellControllerForwardService({
+    ns: svc.metadata.namespace,
+    localPort: randomInt,
+    svcPort: `${p.port}`,
+    svcName: svc.metadata.name,
+  })
+  message.success('转发成功')
+}
 </script>
 
 <template>
@@ -52,9 +68,12 @@ const props = defineProps({
           Ports
         </td>
         <td>
-          <div v-for="port in props.svc.spec.ports" :key="port">
+          <p v-for="port in props.svc.spec.ports" :key="port">
             {{ port.port }}:{{ port.nodePort ? port.nodePort : port.targetPort }}/{{ port.protocol }}
-          </div>
+            <NButton type="success" @click="forward(props.svc, port)">
+              Forward
+            </NButton>
+          </p>
         </td>
       </tr>
     </tbody>
