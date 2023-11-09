@@ -74,6 +74,7 @@ shamefully-hoist=true
 |                           Pod | 详情-Env         | ✅       |
 |                           Pod | 详情-主机          | ✅       |
 |                           Pod | 详情-查看yaml      | ✅       |
+|                           Pod | 端口转发           | ✅       |
 |                         Event | 列表             | ✅       |
 |                         Event | 列表-单显Warning   | ✅       |
 |                         Event | 列表-关联Pod       | ✅       |
@@ -223,6 +224,7 @@ shamefully-hoist=true
 |                       Service | 详情             | ✅       |
 |                       Service | 详情-查看yaml      | ✅       |
 |                       Service | 详情-删除          | ✅       |
+|                       Service | 端口转发           | ✅       |
 |                       Ingress | 列表             | ✅       |
 |                       Ingress | 列表-域名映射        | ✅       |
 |                       Ingress | 列表-查看yaml      | ✅       |
