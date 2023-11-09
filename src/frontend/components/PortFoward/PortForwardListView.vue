@@ -2,6 +2,7 @@
 import type { PortForward } from '@backend/model/PortForward'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import PortForwardActionView from '@frontend/components/PortFoward/PortForwardActionView.vue'
+import PortForwardStatusText from '@frontend/components/PortFoward/PortForwardStatusText.vue'
 import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import moment from 'moment/moment'
@@ -47,6 +48,13 @@ function createColumns(): DataTableColumns<PortForward> {
     {
       title: 'Status',
       key: 'status',
+      render(row: PortForward) {
+        return h(PortForwardStatusText,
+          {
+            pf: row,
+          },
+        )
+      },
     },
     {
       title: 'LastProbe',
