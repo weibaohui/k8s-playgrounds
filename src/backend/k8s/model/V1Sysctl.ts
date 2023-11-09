@@ -15,11 +15,11 @@
  */
 export class V1Sysctl {
   /**
-     * Name of a property to set
-     */
+   * Name of a property to set
+   */
   name: string
   /**
-     * Value of a property to set
-     */
+   * Value of a property to set
+   */
   value: string
 }

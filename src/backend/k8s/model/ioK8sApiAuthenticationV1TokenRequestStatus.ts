@@ -16,11 +16,11 @@ import type { V1Time } from './V1Time'
  */
 export class IoK8sApiAuthenticationV1TokenRequestStatus {
   /**
-     * ExpirationTimestamp is the time of expiration of the returned token.
-     */
+   * ExpirationTimestamp is the time of expiration of the returned token.
+   */
   expirationTimestamp: V1Time
   /**
-     * Token is the opaque bearer token.
-     */
+   * Token is the opaque bearer token.
+   */
   token: string
 }

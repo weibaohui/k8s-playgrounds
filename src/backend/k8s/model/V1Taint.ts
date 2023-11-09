@@ -16,19 +16,19 @@ import type { V1Time } from './V1Time'
  */
 export class V1Taint {
   /**
-     * Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.
-     */
+   * Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.
+   */
   effect: string
   /**
-     * Required. The taint key to be applied to a node.
-     */
+   * Required. The taint key to be applied to a node.
+   */
   key: string
   /**
-     * TimeAdded represents the time at which the taint was added. It is only written for NoExecute taints.
-     */
+   * TimeAdded represents the time at which the taint was added. It is only written for NoExecute taints.
+   */
   timeAdded?: V1Time
   /**
-     * The taint value corresponding to the taint key.
-     */
+   * The taint value corresponding to the taint key.
+   */
   value?: string
 }

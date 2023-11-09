@@ -16,11 +16,11 @@ import type { V1NamespaceCondition } from './V1NamespaceCondition'
  */
 export class V1NamespaceStatus {
   /**
-     * Represents the latest available observations of a namespace's current state.
-     */
+   * Represents the latest available observations of a namespace's current state.
+   */
   conditions?: Array<V1NamespaceCondition>
   /**
-     * Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
-     */
+   * Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+   */
   phase?: string
 }

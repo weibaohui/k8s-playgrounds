@@ -16,7 +16,7 @@ import type { V1Time } from './V1Time'
  */
 export class V1ContainerStateRunning {
   /**
-     * Time at which the container was last (re-)started
-     */
+   * Time at which the container was last (re-)started
+   */
   startedAt?: V1Time
 }

@@ -16,23 +16,23 @@ import type { V1Time } from './V1Time'
  */
 export class IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition {
   /**
-     * Last time the condition transitioned from one status to another.
-     */
+   * Last time the condition transitioned from one status to another.
+   */
   lastTransitionTime?: V1Time
   /**
-     * Human-readable message indicating details about last transition.
-     */
+   * Human-readable message indicating details about last transition.
+   */
   message?: string
   /**
-     * Unique, one-word, CamelCase reason for the condition's last transition.
-     */
+   * Unique, one-word, CamelCase reason for the condition's last transition.
+   */
   reason?: string
   /**
-     * Status is the status of the condition. Can be True, False, Unknown.
-     */
+   * Status is the status of the condition. Can be True, False, Unknown.
+   */
   status: string
   /**
-     * Type is the type of the condition.
-     */
+   * Type is the type of the condition.
+   */
   type: string
 }

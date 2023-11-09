@@ -18,15 +18,15 @@ import type { V2MetricValueStatus } from './v2MetricValueStatus'
  */
 export class IoK8sApiAutoscalingV2ObjectMetricStatus {
   /**
-     * current contains the current value for the given metric
-     */
+   * current contains the current value for the given metric
+   */
   current: V2MetricValueStatus
   /**
-     * DescribedObject specifies the descriptions of a object,such as kind,name apiVersion
-     */
+   * DescribedObject specifies the descriptions of a object,such as kind,name apiVersion
+   */
   describedObject: IoK8sApiAutoscalingV2CrossVersionObjectReference
   /**
-     * metric identifies the target metric by name and selector
-     */
+   * metric identifies the target metric by name and selector
+   */
   metric: V2MetricIdentifier
 }

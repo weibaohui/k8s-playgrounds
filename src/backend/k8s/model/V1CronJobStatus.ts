@@ -17,15 +17,15 @@ import type { V1Time } from './V1Time'
  */
 export class V1CronJobStatus {
   /**
-     * A list of pointers to currently running jobs.
-     */
+   * A list of pointers to currently running jobs.
+   */
   active?: Array<V1ObjectReference>
   /**
-     * Information when was the last time the job was successfully scheduled.
-     */
+   * Information when was the last time the job was successfully scheduled.
+   */
   lastScheduleTime?: V1Time
   /**
-     * Information when was the last time the job successfully completed.
-     */
+   * Information when was the last time the job successfully completed.
+   */
   lastSuccessfulTime?: V1Time
 }

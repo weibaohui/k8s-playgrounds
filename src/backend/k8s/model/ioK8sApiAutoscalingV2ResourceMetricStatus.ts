@@ -16,11 +16,11 @@ import type { V2MetricValueStatus } from './v2MetricValueStatus'
  */
 export class IoK8sApiAutoscalingV2ResourceMetricStatus {
   /**
-     * current contains the current value for the given metric
-     */
+   * current contains the current value for the given metric
+   */
   current: V2MetricValueStatus
   /**
-     * name is the name of the resource in question.
-     */
+   * name is the name of the resource in question.
+   */
   name: string
 }

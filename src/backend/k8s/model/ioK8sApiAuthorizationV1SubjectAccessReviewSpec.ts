@@ -17,27 +17,27 @@ import type { IoK8sApiAuthorizationV1ResourceAttributes } from './ioK8sApiAuthor
  */
 export class IoK8sApiAuthorizationV1SubjectAccessReviewSpec {
   /**
-     * Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here.
-     */
+   * Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here.
+   */
   extra?: { [key: string]: Array<string> }
   /**
-     * Groups is the groups you're testing for.
-     */
+   * Groups is the groups you're testing for.
+   */
   groups?: Array<string>
   /**
-     * NonResourceAttributes describes information for a non-resource access request
-     */
+   * NonResourceAttributes describes information for a non-resource access request
+   */
   nonResourceAttributes?: IoK8sApiAuthorizationV1NonResourceAttributes
   /**
-     * ResourceAuthorizationAttributes describes information for a resource access request
-     */
+   * ResourceAuthorizationAttributes describes information for a resource access request
+   */
   resourceAttributes?: IoK8sApiAuthorizationV1ResourceAttributes
   /**
-     * UID information about the requesting user.
-     */
+   * UID information about the requesting user.
+   */
   uid?: string
   /**
-     * User is the user you're testing for. If you specify \"User\" but not \"Groups\", then is it interpreted as \"What if User were not a member of any groups
-     */
+   * User is the user you're testing for. If you specify \"User\" but not \"Groups\", then is it interpreted as \"What if User were not a member of any groups
+   */
   user?: string
 }

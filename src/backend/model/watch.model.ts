@@ -6,7 +6,7 @@ export class TerminalData {
   containerName: string
   /**
    * 命令
-    */
+   */
   command: string
   /**
    * 执行结果

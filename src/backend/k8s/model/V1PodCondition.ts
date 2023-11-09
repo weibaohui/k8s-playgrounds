@@ -16,27 +16,27 @@ import type { V1Time } from './V1Time'
  */
 export class V1PodCondition {
   /**
-     * Last time we probed the condition.
-     */
+   * Last time we probed the condition.
+   */
   lastProbeTime?: V1Time
   /**
-     * Last time the condition transitioned from one status to another.
-     */
+   * Last time the condition transitioned from one status to another.
+   */
   lastTransitionTime?: V1Time
   /**
-     * Human-readable message indicating details about last transition.
-     */
+   * Human-readable message indicating details about last transition.
+   */
   message?: string
   /**
-     * Unique, one-word, CamelCase reason for the condition's last transition.
-     */
+   * Unique, one-word, CamelCase reason for the condition's last transition.
+   */
   reason?: string
   /**
-     * Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
-     */
+   * Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
+   */
   status: string
   /**
-     * Type is the type of the condition. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
-     */
+   * Type is the type of the condition. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
+   */
   type: string
 }

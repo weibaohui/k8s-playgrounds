@@ -16,11 +16,11 @@ import type { V1LabelSelectorRequirement } from './V1LabelSelectorRequirement'
  */
 export class V1LabelSelector {
   /**
-     * matchExpressions is a list of label selector requirements. The requirements are ANDed.
-     */
+   * matchExpressions is a list of label selector requirements. The requirements are ANDed.
+   */
   matchExpressions?: Array<V1LabelSelectorRequirement>
   /**
-     * matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.
-     */
+   * matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.
+   */
   matchLabels?: { [key: string]: string }
 }

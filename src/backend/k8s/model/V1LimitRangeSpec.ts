@@ -16,7 +16,7 @@ import type { V1LimitRangeItem } from './V1LimitRangeItem'
  */
 export class V1LimitRangeSpec {
   /**
-     * Limits is the list of LimitRangeItem objects that are enforced.
-     */
+   * Limits is the list of LimitRangeItem objects that are enforced.
+   */
   limits: Array<V1LimitRangeItem>
 }

@@ -15,11 +15,11 @@
  */
 export class IoK8sApiFlowcontrolV1beta2ServiceAccountSubject {
   /**
-     * `name` is the name of matching ServiceAccount objects, or \"*\" to match regardless of name. Required.
-     */
+   * `name` is the name of matching ServiceAccount objects, or \"*\" to match regardless of name. Required.
+   */
   name: string
   /**
-     * `namespace` is the namespace of matching ServiceAccount objects. Required.
-     */
+   * `namespace` is the namespace of matching ServiceAccount objects. Required.
+   */
   namespace: string
 }

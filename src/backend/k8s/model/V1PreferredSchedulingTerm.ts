@@ -16,11 +16,11 @@ import type { V1NodeSelectorTerm } from './V1NodeSelectorTerm'
  */
 export class V1PreferredSchedulingTerm {
   /**
-     * A node selector term, associated with the corresponding weight.
-     */
+   * A node selector term, associated with the corresponding weight.
+   */
   preference: V1NodeSelectorTerm
   /**
-     * Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
-     */
+   * Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
+   */
   weight: number
 }

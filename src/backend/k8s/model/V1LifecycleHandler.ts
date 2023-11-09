@@ -18,15 +18,15 @@ import type { V1TCPSocketAction } from './V1TCPSocketAction'
  */
 export class V1LifecycleHandler {
   /**
-     * Exec specifies the action to take.
-     */
+   * Exec specifies the action to take.
+   */
   exec?: V1ExecAction
   /**
-     * HTTPGet specifies the http request to perform.
-     */
+   * HTTPGet specifies the http request to perform.
+   */
   httpGet?: V1HTTPGetAction
   /**
-     * Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept for the backward compatibility. There are no validation of this field and lifecycle hooks will fail in runtime when tcp handler is specified.
-     */
+   * Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept for the backward compatibility. There are no validation of this field and lifecycle hooks will fail in runtime when tcp handler is specified.
+   */
   tcpSocket?: V1TCPSocketAction
 }

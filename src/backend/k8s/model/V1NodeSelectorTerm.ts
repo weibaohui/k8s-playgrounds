@@ -16,11 +16,11 @@ import type { V1NodeSelectorRequirement } from './V1NodeSelectorRequirement'
  */
 export class V1NodeSelectorTerm {
   /**
-     * A list of node selector requirements by node's labels.
-     */
+   * A list of node selector requirements by node's labels.
+   */
   matchExpressions?: Array<V1NodeSelectorRequirement>
   /**
-     * A list of node selector requirements by node's fields.
-     */
+   * A list of node selector requirements by node's fields.
+   */
   matchFields?: Array<V1NodeSelectorRequirement>
 }

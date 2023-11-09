@@ -17,11 +17,11 @@ import type { V1Condition } from './V1Condition'
  */
 export class V1ServiceStatus {
   /**
-     * Current service state
-     */
+   * Current service state
+   */
   conditions?: Array<V1Condition>
   /**
-     * LoadBalancer contains the current status of the load-balancer, if one is present.
-     */
+   * LoadBalancer contains the current status of the load-balancer, if one is present.
+   */
   loadBalancer?: V1LoadBalancerStatus
 }

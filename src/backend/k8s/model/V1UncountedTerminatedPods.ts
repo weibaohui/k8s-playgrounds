@@ -15,11 +15,11 @@
  */
 export class V1UncountedTerminatedPods {
   /**
-     * failed holds UIDs of failed Pods.
-     */
+   * failed holds UIDs of failed Pods.
+   */
   failed?: Array<string>
   /**
-     * succeeded holds UIDs of succeeded Pods.
-     */
+   * succeeded holds UIDs of succeeded Pods.
+   */
   succeeded?: Array<string>
 }

@@ -16,7 +16,7 @@ import type { IoK8sApiNetworkingV1IngressLoadBalancerStatus } from './ioK8sApiNe
  */
 export class V1IngressStatus {
   /**
-     * loadBalancer contains the current status of the load-balancer.
-     */
+   * loadBalancer contains the current status of the load-balancer.
+   */
   loadBalancer?: IoK8sApiNetworkingV1IngressLoadBalancerStatus
 }

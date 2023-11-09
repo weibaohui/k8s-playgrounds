@@ -16,7 +16,7 @@ import type { V1ScopedResourceSelectorRequirement } from './V1ScopedResourceSele
  */
 export class V1ScopeSelector {
   /**
-     * A list of scope selector requirements by scope of the resources.
-     */
+   * A list of scope selector requirements by scope of the resources.
+   */
   matchExpressions?: Array<V1ScopedResourceSelectorRequirement>
 }

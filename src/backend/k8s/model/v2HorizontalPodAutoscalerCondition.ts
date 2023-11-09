@@ -16,23 +16,23 @@ import type { V1Time } from './V1Time'
  */
 export class V2HorizontalPodAutoscalerCondition {
   /**
-     * lastTransitionTime is the last time the condition transitioned from one status to another
-     */
+   * lastTransitionTime is the last time the condition transitioned from one status to another
+   */
   lastTransitionTime?: V1Time
   /**
-     * message is a human-readable explanation containing details about the transition
-     */
+   * message is a human-readable explanation containing details about the transition
+   */
   message?: string
   /**
-     * reason is the reason for the condition's last transition.
-     */
+   * reason is the reason for the condition's last transition.
+   */
   reason?: string
   /**
-     * status is the status of the condition (True, False, Unknown)
-     */
+   * status is the status of the condition (True, False, Unknown)
+   */
   status: string
   /**
-     * type describes the current condition
-     */
+   * type describes the current condition
+   */
   type: string
 }

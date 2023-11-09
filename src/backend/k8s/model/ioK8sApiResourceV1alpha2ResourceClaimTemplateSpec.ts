@@ -17,11 +17,11 @@ import type { V1ObjectMeta } from './V1ObjectMeta'
  */
 export class IoK8sApiResourceV1alpha2ResourceClaimTemplateSpec {
   /**
-     * ObjectMeta may contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
-     */
+   * ObjectMeta may contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation.
+   */
   metadata?: V1ObjectMeta
   /**
-     * Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here.
-     */
+   * Spec for the ResourceClaim. The entire content is copied unchanged into the ResourceClaim that gets created from this template. The same fields as in a ResourceClaim are also valid here.
+   */
   spec: IoK8sApiResourceV1alpha2ResourceClaimSpec
 }

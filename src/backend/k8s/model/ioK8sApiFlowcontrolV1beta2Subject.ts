@@ -18,19 +18,19 @@ import type { IoK8sApiFlowcontrolV1beta2UserSubject } from './ioK8sApiFlowcontro
  */
 export class IoK8sApiFlowcontrolV1beta2Subject {
   /**
-     * `group` matches based on user group name.
-     */
+   * `group` matches based on user group name.
+   */
   group?: IoK8sApiFlowcontrolV1beta2GroupSubject
   /**
-     * `kind` indicates which one of the other fields is non-empty. Required
-     */
+   * `kind` indicates which one of the other fields is non-empty. Required
+   */
   kind: string
   /**
-     * `serviceAccount` matches ServiceAccounts.
-     */
+   * `serviceAccount` matches ServiceAccounts.
+   */
   serviceAccount?: IoK8sApiFlowcontrolV1beta2ServiceAccountSubject
   /**
-     * `user` matches based on username.
-     */
+   * `user` matches based on username.
+   */
   user?: IoK8sApiFlowcontrolV1beta2UserSubject
 }

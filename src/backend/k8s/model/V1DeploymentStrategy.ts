@@ -16,11 +16,11 @@ import type { V1RollingUpdateDeployment } from './V1RollingUpdateDeployment'
  */
 export class V1DeploymentStrategy {
   /**
-     * Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
-     */
+   * Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
+   */
   rollingUpdate?: V1RollingUpdateDeployment
   /**
-     * Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate.
-     */
+   * Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate.
+   */
   type?: string
 }

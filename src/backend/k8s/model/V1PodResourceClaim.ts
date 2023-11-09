@@ -16,11 +16,11 @@ import type { V1ClaimSource } from './V1ClaimSource'
  */
 export class V1PodResourceClaim {
   /**
-     * Name uniquely identifies this resource claim inside the pod. This must be a DNS_LABEL.
-     */
+   * Name uniquely identifies this resource claim inside the pod. This must be a DNS_LABEL.
+   */
   name: string
   /**
-     * Source describes where to find the ResourceClaim.
-     */
+   * Source describes where to find the ResourceClaim.
+   */
   source?: V1ClaimSource
 }

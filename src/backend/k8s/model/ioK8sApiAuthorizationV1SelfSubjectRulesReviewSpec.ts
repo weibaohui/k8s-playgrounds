@@ -15,7 +15,7 @@
  */
 export class IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec {
   /**
-     * Namespace to evaluate rules for. Required.
-     */
+   * Namespace to evaluate rules for. Required.
+   */
   namespace?: string
 }

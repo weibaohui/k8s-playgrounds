@@ -15,15 +15,15 @@
  */
 export class V1ConfigMapKeySelector {
   /**
-     * The key to select.
-     */
+   * The key to select.
+   */
   key: string
   /**
-     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-     */
+   * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+   */
   name?: string
   /**
-     * Specify whether the ConfigMap or its key must be defined
-     */
+   * Specify whether the ConfigMap or its key must be defined
+   */
   optional?: boolean
 }

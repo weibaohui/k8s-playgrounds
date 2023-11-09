@@ -16,7 +16,7 @@ import type { V1NodeSelector } from './V1NodeSelector'
  */
 export class V1VolumeNodeAffinity {
   /**
-     * required specifies hard node constraints that must be met.
-     */
+   * required specifies hard node constraints that must be met.
+   */
   required?: V1NodeSelector
 }

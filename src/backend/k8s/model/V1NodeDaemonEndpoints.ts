@@ -16,7 +16,7 @@ import type { V1DaemonEndpoint } from './V1DaemonEndpoint'
  */
 export class V1NodeDaemonEndpoints {
   /**
-     * Endpoint on which Kubelet is listening.
-     */
+   * Endpoint on which Kubelet is listening.
+   */
   kubeletEndpoint?: V1DaemonEndpoint
 }

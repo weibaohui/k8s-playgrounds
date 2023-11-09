@@ -18,15 +18,15 @@ import type { V2MetricTarget } from './v2MetricTarget'
  */
 export class IoK8sApiAutoscalingV2ObjectMetricSource {
   /**
-     * describedObject specifies the descriptions of a object,such as kind,name apiVersion
-     */
+   * describedObject specifies the descriptions of a object,such as kind,name apiVersion
+   */
   describedObject: IoK8sApiAutoscalingV2CrossVersionObjectReference
   /**
-     * metric identifies the target metric by name and selector
-     */
+   * metric identifies the target metric by name and selector
+   */
   metric: V2MetricIdentifier
   /**
-     * target specifies the target value for the given metric
-     */
+   * target specifies the target value for the given metric
+   */
   target: V2MetricTarget
 }

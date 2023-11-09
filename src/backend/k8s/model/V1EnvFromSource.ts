@@ -17,15 +17,15 @@ import type { V1SecretEnvSource } from './V1SecretEnvSource'
  */
 export class V1EnvFromSource {
   /**
-     * The ConfigMap to select from
-     */
+   * The ConfigMap to select from
+   */
   configMapRef?: V1ConfigMapEnvSource
   /**
-     * An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
-     */
+   * An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+   */
   prefix?: string
   /**
-     * The Secret to select from
-     */
+   * The Secret to select from
+   */
   secretRef?: V1SecretEnvSource
 }

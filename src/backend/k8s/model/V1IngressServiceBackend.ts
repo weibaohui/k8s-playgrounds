@@ -16,11 +16,11 @@ import type { IoK8sApiNetworkingV1ServiceBackendPort } from './ioK8sApiNetworkin
  */
 export class V1IngressServiceBackend {
   /**
-     * name is the referenced service. The service must exist in the same namespace as the Ingress object.
-     */
+   * name is the referenced service. The service must exist in the same namespace as the Ingress object.
+   */
   name: string
   /**
-     * port of the referenced service. A port name or port number is required for a IngressServiceBackend.
-     */
+   * port of the referenced service. A port name or port number is required for a IngressServiceBackend.
+   */
   port?: IoK8sApiNetworkingV1ServiceBackendPort
 }

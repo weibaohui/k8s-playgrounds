@@ -16,11 +16,11 @@ import type { IoK8sApiAppsV1RollingUpdateStatefulSetStrategy } from './ioK8sApiA
  */
 export class V1StatefulSetUpdateStrategy {
   /**
-     * RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.
-     */
+   * RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.
+   */
   rollingUpdate?: IoK8sApiAppsV1RollingUpdateStatefulSetStrategy
   /**
-     * Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.
-     */
+   * Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.
+   */
   type?: string
 }

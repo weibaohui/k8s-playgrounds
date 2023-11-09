@@ -19,11 +19,11 @@ export class V1NamespaceCondition {
   message?: string
   reason?: string
   /**
-     * Status of the condition, one of True, False, Unknown.
-     */
+   * Status of the condition, one of True, False, Unknown.
+   */
   status: string
   /**
-     * Type of namespace controller condition.
-     */
+   * Type of namespace controller condition.
+   */
   type: string
 }

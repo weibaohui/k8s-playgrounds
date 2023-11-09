@@ -16,15 +16,15 @@ import type { V1IngressPortStatus } from './V1IngressPortStatus'
  */
 export class IoK8sApiNetworkingV1IngressLoadBalancerIngress {
   /**
-     * hostname is set for load-balancer ingress points that are DNS based.
-     */
+   * hostname is set for load-balancer ingress points that are DNS based.
+   */
   hostname?: string
   /**
-     * ip is set for load-balancer ingress points that are IP based.
-     */
+   * ip is set for load-balancer ingress points that are IP based.
+   */
   ip?: string
   /**
-     * ports provides information about the ports exposed by this LoadBalancer.
-     */
+   * ports provides information about the ports exposed by this LoadBalancer.
+   */
   ports?: Array<V1IngressPortStatus>
 }

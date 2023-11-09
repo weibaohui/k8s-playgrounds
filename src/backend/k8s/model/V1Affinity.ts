@@ -18,15 +18,15 @@ import type { V1PodAntiAffinity } from './V1PodAntiAffinity'
  */
 export class V1Affinity {
   /**
-     * Describes node affinity scheduling rules for the pod.
-     */
+   * Describes node affinity scheduling rules for the pod.
+   */
   nodeAffinity?: V1NodeAffinity
   /**
-     * Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
-     */
+   * Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
+   */
   podAffinity?: V1PodAffinity
   /**
-     * Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
-     */
+   * Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
+   */
   podAntiAffinity?: V1PodAntiAffinity
 }

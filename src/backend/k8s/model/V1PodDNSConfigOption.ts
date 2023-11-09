@@ -15,8 +15,8 @@
  */
 export class V1PodDNSConfigOption {
   /**
-     * Required.
-     */
+   * Required.
+   */
   name?: string
   value?: string
 }

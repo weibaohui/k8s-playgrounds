@@ -16,7 +16,7 @@ import type { V1HTTPIngressPath } from './V1HTTPIngressPath'
  */
 export class V1HTTPIngressRuleValue {
   /**
-     * paths is a collection of paths that map requests to backends.
-     */
+   * paths is a collection of paths that map requests to backends.
+   */
   paths: Array<V1HTTPIngressPath>
 }

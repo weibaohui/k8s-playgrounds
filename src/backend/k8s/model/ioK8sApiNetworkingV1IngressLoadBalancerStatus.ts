@@ -16,7 +16,7 @@ import type { IoK8sApiNetworkingV1IngressLoadBalancerIngress } from './ioK8sApiN
  */
 export class IoK8sApiNetworkingV1IngressLoadBalancerStatus {
   /**
-     * ingress is a list containing ingress points for the load-balancer.
-     */
+   * ingress is a list containing ingress points for the load-balancer.
+   */
   ingress?: Array<IoK8sApiNetworkingV1IngressLoadBalancerIngress>
 }

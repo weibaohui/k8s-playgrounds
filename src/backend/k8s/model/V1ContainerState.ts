@@ -18,15 +18,15 @@ import type { V1ContainerStateWaiting } from './V1ContainerStateWaiting'
  */
 export class V1ContainerState {
   /**
-     * Details about a running container
-     */
+   * Details about a running container
+   */
   running?: V1ContainerStateRunning
   /**
-     * Details about a terminated container
-     */
+   * Details about a terminated container
+   */
   terminated?: V1ContainerStateTerminated
   /**
-     * Details about a waiting container
-     */
+   * Details about a waiting container
+   */
   waiting?: V1ContainerStateWaiting
 }

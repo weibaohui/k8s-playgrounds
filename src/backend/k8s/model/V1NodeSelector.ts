@@ -16,7 +16,7 @@ import type { V1NodeSelectorTerm } from './V1NodeSelectorTerm'
  */
 export class V1NodeSelector {
   /**
-     * Required. A list of node selector terms. The terms are ORed.
-     */
+   * Required. A list of node selector terms. The terms are ORed.
+   */
   nodeSelectorTerms: Array<V1NodeSelectorTerm>
 }

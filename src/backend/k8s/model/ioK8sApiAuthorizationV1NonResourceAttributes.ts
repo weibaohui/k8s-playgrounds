@@ -15,11 +15,11 @@
  */
 export class IoK8sApiAuthorizationV1NonResourceAttributes {
   /**
-     * Path is the URL path of the request
-     */
+   * Path is the URL path of the request
+   */
   path?: string
   /**
-     * Verb is the standard HTTP verb
-     */
+   * Verb is the standard HTTP verb
+   */
   verb?: string
 }

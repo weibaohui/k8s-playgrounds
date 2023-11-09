@@ -15,11 +15,11 @@
  */
 export class V1NodeAddress {
   /**
-     * The node address.
-     */
+   * The node address.
+   */
   address: string
   /**
-     * Node address type, one of Hostname, ExternalIP or InternalIP.
-     */
+   * Node address type, one of Hostname, ExternalIP or InternalIP.
+   */
   type: string
 }

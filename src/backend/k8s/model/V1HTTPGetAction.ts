@@ -17,23 +17,23 @@ import type { IntOrString } from './IntOrString'
  */
 export class V1HTTPGetAction {
   /**
-     * Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.
-     */
+   * Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.
+   */
   host?: string
   /**
-     * Custom headers to set in the request. HTTP allows repeated headers.
-     */
+   * Custom headers to set in the request. HTTP allows repeated headers.
+   */
   httpHeaders?: Array<V1HTTPHeader>
   /**
-     * Path to access on the HTTP server.
-     */
+   * Path to access on the HTTP server.
+   */
   path?: string
   /**
-     * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-     */
+   * Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+   */
   port: IntOrString
   /**
-     * Scheme to use for connecting to the host. Defaults to HTTP.
-     */
+   * Scheme to use for connecting to the host. Defaults to HTTP.
+   */
   scheme?: string
 }

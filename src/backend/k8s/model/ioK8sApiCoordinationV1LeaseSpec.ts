@@ -16,23 +16,23 @@ import type { IoK8sApimachineryPkgApisMetaV1MicroTime } from './ioK8sApimachiner
  */
 export class IoK8sApiCoordinationV1LeaseSpec {
   /**
-     * acquireTime is a time when the current lease was acquired.
-     */
+   * acquireTime is a time when the current lease was acquired.
+   */
   acquireTime?: IoK8sApimachineryPkgApisMetaV1MicroTime
   /**
-     * holderIdentity contains the identity of the holder of a current lease.
-     */
+   * holderIdentity contains the identity of the holder of a current lease.
+   */
   holderIdentity?: string
   /**
-     * leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed renewTime.
-     */
+   * leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed renewTime.
+   */
   leaseDurationSeconds?: number
   /**
-     * leaseTransitions is the number of transitions of a lease between holders.
-     */
+   * leaseTransitions is the number of transitions of a lease between holders.
+   */
   leaseTransitions?: number
   /**
-     * renewTime is a time when the current holder of a lease has last updated the lease.
-     */
+   * renewTime is a time when the current holder of a lease has last updated the lease.
+   */
   renewTime?: IoK8sApimachineryPkgApisMetaV1MicroTime
 }

@@ -15,7 +15,7 @@
  */
 export class IoK8sApiAutoscalingV1ScaleSpec {
   /**
-     * replicas is the desired number of instances for the scaled object.
-     */
+   * replicas is the desired number of instances for the scaled object.
+   */
   replicas?: number
 }

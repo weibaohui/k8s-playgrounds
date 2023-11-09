@@ -15,7 +15,7 @@
  */
 export class IoK8sApiFlowcontrolV1beta2FlowDistinguisherMethod {
   /**
-     * `type` is the type of flow distinguisher method The supported types are \"ByUser\" and \"ByNamespace\". Required.
-     */
+   * `type` is the type of flow distinguisher method The supported types are \"ByUser\" and \"ByNamespace\". Required.
+   */
   type: string
 }

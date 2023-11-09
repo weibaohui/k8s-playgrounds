@@ -15,11 +15,11 @@
  */
 export class IoK8sApiAdmissionregistrationV1alpha1ParamRef {
   /**
-     * Name of the resource being referenced.
-     */
+   * Name of the resource being referenced.
+   */
   name?: string
   /**
-     * Namespace of the referenced resource. Should be empty for the cluster-scoped resources
-     */
+   * Namespace of the referenced resource. Should be empty for the cluster-scoped resources
+   */
   namespace?: string
 }

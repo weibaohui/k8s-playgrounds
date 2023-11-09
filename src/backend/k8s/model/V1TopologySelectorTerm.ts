@@ -16,7 +16,7 @@ import type { V1TopologySelectorLabelRequirement } from './V1TopologySelectorLab
  */
 export class V1TopologySelectorTerm {
   /**
-     * A list of topology selector requirements by labels.
-     */
+   * A list of topology selector requirements by labels.
+   */
   matchLabelExpressions?: Array<V1TopologySelectorLabelRequirement>
 }

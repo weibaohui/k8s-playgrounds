@@ -17,15 +17,15 @@ import type { V1Condition } from './V1Condition'
  */
 export class IoK8sApiAdmissionregistrationV1alpha1ValidatingAdmissionPolicyStatus {
   /**
-     * The conditions represent the latest available observations of a policy's current state.
-     */
+   * The conditions represent the latest available observations of a policy's current state.
+   */
   conditions?: Array<V1Condition>
   /**
-     * The generation observed by the controller.
-     */
+   * The generation observed by the controller.
+   */
   observedGeneration?: number
   /**
-     * The results of type checking for each expression. Presence of this field indicates the completion of the type checking.
-     */
+   * The results of type checking for each expression. Presence of this field indicates the completion of the type checking.
+   */
   typeChecking?: IoK8sApiAdmissionregistrationV1alpha1TypeChecking
 }

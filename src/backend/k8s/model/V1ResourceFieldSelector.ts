@@ -16,15 +16,15 @@ import type { ResourceQuantity } from './resourceQuantity'
  */
 export class V1ResourceFieldSelector {
   /**
-     * Container name: required for volumes, optional for env vars
-     */
+   * Container name: required for volumes, optional for env vars
+   */
   containerName?: string
   /**
-     * Specifies the output format of the exposed resources, defaults to \"1\"
-     */
+   * Specifies the output format of the exposed resources, defaults to \"1\"
+   */
   divisor?: ResourceQuantity
   /**
-     * Required: resource to select
-     */
+   * Required: resource to select
+   */
   resource: string
 }

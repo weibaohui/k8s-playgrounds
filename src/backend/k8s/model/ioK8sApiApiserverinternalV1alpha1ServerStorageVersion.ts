@@ -15,15 +15,15 @@
  */
 export class IoK8sApiApiserverinternalV1alpha1ServerStorageVersion {
   /**
-     * The ID of the reporting API server.
-     */
+   * The ID of the reporting API server.
+   */
   apiServerID?: string
   /**
-     * The API server can decode objects encoded in these versions. The encodingVersion must be included in the decodableVersions.
-     */
+   * The API server can decode objects encoded in these versions. The encodingVersion must be included in the decodableVersions.
+   */
   decodableVersions?: Array<string>
   /**
-     * The API server encodes the object to this version when persisting it in the backend (e.g., etcd).
-     */
+   * The API server encodes the object to this version when persisting it in the backend (e.g., etcd).
+   */
   encodingVersion?: string
 }

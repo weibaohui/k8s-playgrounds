@@ -16,11 +16,11 @@ import type { IoK8sApiAppsV1RollingUpdateDaemonSet } from './ioK8sApiAppsV1Rolli
  */
 export class IoK8sApiAppsV1DaemonSetUpdateStrategy {
   /**
-     * Rolling update config params. Present only if type = \"RollingUpdate\".
-     */
+   * Rolling update config params. Present only if type = \"RollingUpdate\".
+   */
   rollingUpdate?: IoK8sApiAppsV1RollingUpdateDaemonSet
   /**
-     * Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is RollingUpdate.
-     */
+   * Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is RollingUpdate.
+   */
   type?: string
 }

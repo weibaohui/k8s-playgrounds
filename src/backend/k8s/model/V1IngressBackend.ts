@@ -17,11 +17,11 @@ import type { V1IngressServiceBackend } from './V1IngressServiceBackend'
  */
 export class V1IngressBackend {
   /**
-     * resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with \"Service\".
-     */
+   * resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with \"Service\".
+   */
   resource?: V1TypedLocalObjectReference
   /**
-     * service references a service as a backend. This is a mutually exclusive setting with \"Resource\".
-     */
+   * service references a service as a backend. This is a mutually exclusive setting with \"Resource\".
+   */
   service?: V1IngressServiceBackend
 }

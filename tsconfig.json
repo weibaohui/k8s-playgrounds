@@ -1,26 +1,17 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "strict": false,
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "noImplicitAny": false,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "baseUrl": ".",
     "lib": [
       "esnext",
       "dom"
     ],
-    "types": [
-      "vite/client",
-      "./src/preload"
-    ],
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "jsxImportSource": "vue",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "baseUrl": ".",
     "paths": {
       "@frontend/*": [
         "src/frontend/*"
@@ -28,7 +19,16 @@
       "@backend/*": [
         "src/backend/*"
       ]
-    }
+    },
+    "types": [
+      "vite/client",
+      "./src/preload"
+    ],
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "strict": false,
+    "noImplicitAny": false
   },
   "include": [
     "src/**/*.ts",

@@ -16,7 +16,7 @@ import type { V1ConfigMapNodeConfigSource } from './V1ConfigMapNodeConfigSource'
  */
 export class V1NodeConfigSource {
   /**
-     * ConfigMap is a reference to a Node's ConfigMap
-     */
+   * ConfigMap is a reference to a Node's ConfigMap
+   */
   configMap?: V1ConfigMapNodeConfigSource
 }

@@ -15,19 +15,19 @@
  */
 export class IoK8sApiAuthenticationV1BoundObjectReference {
   /**
-     * API version of the referent.
-     */
+   * API version of the referent.
+   */
   apiVersion?: string
   /**
-     * Kind of the referent. Valid kinds are 'Pod' and 'Secret'.
-     */
+   * Kind of the referent. Valid kinds are 'Pod' and 'Secret'.
+   */
   kind?: string
   /**
-     * Name of the referent.
-     */
+   * Name of the referent.
+   */
   name?: string
   /**
-     * UID of the referent.
-     */
+   * UID of the referent.
+   */
   uid?: string
 }

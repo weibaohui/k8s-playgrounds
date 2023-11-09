@@ -17,11 +17,11 @@ import type { V2MetricTarget } from './v2MetricTarget'
  */
 export class IoK8sApiAutoscalingV2PodsMetricSource {
   /**
-     * metric identifies the target metric by name and selector
-     */
+   * metric identifies the target metric by name and selector
+   */
   metric: V2MetricIdentifier
   /**
-     * target specifies the target value for the given metric
-     */
+   * target specifies the target value for the given metric
+   */
   target: V2MetricTarget
 }

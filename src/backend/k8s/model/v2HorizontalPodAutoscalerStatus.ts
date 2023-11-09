@@ -18,27 +18,27 @@ import type { V1Time } from './V1Time'
  */
 export class V2HorizontalPodAutoscalerStatus {
   /**
-     * conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.
-     */
+   * conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.
+   */
   conditions?: Array<V2HorizontalPodAutoscalerCondition>
   /**
-     * currentMetrics is the last read state of the metrics used by this autoscaler.
-     */
+   * currentMetrics is the last read state of the metrics used by this autoscaler.
+   */
   currentMetrics?: Array<V2MetricStatus>
   /**
-     * currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.
-     */
+   * currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.
+   */
   currentReplicas?: number
   /**
-     * desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.
-     */
+   * desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.
+   */
   desiredReplicas: number
   /**
-     * lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.
-     */
+   * lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.
+   */
   lastScaleTime?: V1Time
   /**
-     * observedGeneration is the most recent generation observed by this autoscaler.
-     */
+   * observedGeneration is the most recent generation observed by this autoscaler.
+   */
   observedGeneration?: number
 }

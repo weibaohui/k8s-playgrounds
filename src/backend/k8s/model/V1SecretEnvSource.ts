@@ -15,11 +15,11 @@
  */
 export class V1SecretEnvSource {
   /**
-     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-     */
+   * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+   */
   name?: string
   /**
-     * Specify whether the Secret must be defined
-     */
+   * Specify whether the Secret must be defined
+   */
   optional?: boolean
 }

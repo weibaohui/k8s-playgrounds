@@ -15,11 +15,11 @@
  */
 export class V1TopologySelectorLabelRequirement {
   /**
-     * The label key that the selector applies to.
-     */
+   * The label key that the selector applies to.
+   */
   key: string
   /**
-     * An array of string values. One value must match the label to be selected. Each entry in Values is ORed.
-     */
+   * An array of string values. One value must match the label to be selected. Each entry in Values is ORed.
+   */
   values: Array<string>
 }

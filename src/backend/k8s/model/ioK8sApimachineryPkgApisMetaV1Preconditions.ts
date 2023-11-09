@@ -15,11 +15,11 @@
  */
 export class IoK8sApimachineryPkgApisMetaV1Preconditions {
   /**
-     * Specifies the target ResourceVersion
-     */
+   * Specifies the target ResourceVersion
+   */
   resourceVersion?: string
   /**
-     * Specifies the target UID.
-     */
+   * Specifies the target UID.
+   */
   uid?: string
 }

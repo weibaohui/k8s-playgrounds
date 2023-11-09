@@ -16,11 +16,11 @@ import type { ResourceQuantity } from './resourceQuantity'
  */
 export class V1ResourceQuotaStatus {
   /**
-     * Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
-     */
+   * Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
+   */
   hard?: { [key: string]: ResourceQuantity }
   /**
-     * Used is the current observed total usage of the resource in the namespace.
-     */
+   * Used is the current observed total usage of the resource in the namespace.
+   */
   used?: { [key: string]: ResourceQuantity }
 }

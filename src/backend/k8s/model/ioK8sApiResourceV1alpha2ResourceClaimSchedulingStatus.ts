@@ -15,11 +15,11 @@
  */
 export class IoK8sApiResourceV1alpha2ResourceClaimSchedulingStatus {
   /**
-     * Name matches the pod.spec.resourceClaims[*].Name field.
-     */
+   * Name matches the pod.spec.resourceClaims[*].Name field.
+   */
   name?: string
   /**
-     * UnsuitableNodes lists nodes that the ResourceClaim cannot be allocated for.  The size of this field is limited to 128, the same as for PodSchedulingSpec.PotentialNodes. This may get increased in the future, but not reduced.
-     */
+   * UnsuitableNodes lists nodes that the ResourceClaim cannot be allocated for.  The size of this field is limited to 128, the same as for PodSchedulingSpec.PotentialNodes. This may get increased in the future, but not reduced.
+   */
   unsuitableNodes?: Array<string>
 }

@@ -16,11 +16,11 @@ import type { V1Time } from './V1Time'
  */
 export class IoK8sApiStorageV1VolumeError {
   /**
-     * message represents the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
-     */
+   * message represents the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
+   */
   message?: string
   /**
-     * time represents the time the error was encountered.
-     */
+   * time represents the time the error was encountered.
+   */
   time?: V1Time
 }

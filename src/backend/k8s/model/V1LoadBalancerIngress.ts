@@ -16,15 +16,15 @@ import type { V1PortStatus } from './V1PortStatus'
  */
 export class V1LoadBalancerIngress {
   /**
-     * Hostname is set for load-balancer ingress points that are DNS based (typically AWS load-balancers)
-     */
+   * Hostname is set for load-balancer ingress points that are DNS based (typically AWS load-balancers)
+   */
   hostname?: string
   /**
-     * IP is set for load-balancer ingress points that are IP based (typically GCE or OpenStack load-balancers)
-     */
+   * IP is set for load-balancer ingress points that are IP based (typically GCE or OpenStack load-balancers)
+   */
   ip?: string
   /**
-     * Ports is a list of records of service ports If used, every port defined in the service should have an entry in it
-     */
+   * Ports is a list of records of service ports If used, every port defined in the service should have an entry in it
+   */
   ports?: Array<V1PortStatus>
 }

@@ -16,27 +16,27 @@ import type { V1Time } from './V1Time'
  */
 export class V1NodeCondition {
   /**
-     * Last time we got an update on a given condition.
-     */
+   * Last time we got an update on a given condition.
+   */
   lastHeartbeatTime?: V1Time
   /**
-     * Last time the condition transit from one status to another.
-     */
+   * Last time the condition transit from one status to another.
+   */
   lastTransitionTime?: V1Time
   /**
-     * Human readable message indicating details about last transition.
-     */
+   * Human readable message indicating details about last transition.
+   */
   message?: string
   /**
-     * (brief) reason for the condition's last transition.
-     */
+   * (brief) reason for the condition's last transition.
+   */
   reason?: string
   /**
-     * Status of the condition, one of True, False, Unknown.
-     */
+   * Status of the condition, one of True, False, Unknown.
+   */
   status: string
   /**
-     * Type of node condition.
-     */
+   * Type of node condition.
+   */
   type: string
 }

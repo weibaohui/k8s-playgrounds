@@ -16,31 +16,31 @@ import type { V1Time } from './V1Time'
  */
 export class V1ContainerStateTerminated {
   /**
-     * Container's ID in the format '<type>://<container_id>'
-     */
+   * Container's ID in the format '<type>://<container_id>'
+   */
   containerID?: string
   /**
-     * Exit status from the last termination of the container
-     */
+   * Exit status from the last termination of the container
+   */
   exitCode: number
   /**
-     * Time at which the container last terminated
-     */
+   * Time at which the container last terminated
+   */
   finishedAt?: V1Time
   /**
-     * Message regarding the last termination of the container
-     */
+   * Message regarding the last termination of the container
+   */
   message?: string
   /**
-     * (brief) reason from the last termination of the container
-     */
+   * (brief) reason from the last termination of the container
+   */
   reason?: string
   /**
-     * Signal from the last termination of the container
-     */
+   * Signal from the last termination of the container
+   */
   signal?: number
   /**
-     * Time at which previous execution of the container started
-     */
+   * Time at which previous execution of the container started
+   */
   startedAt?: V1Time
 }

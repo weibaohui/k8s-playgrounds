@@ -19,19 +19,19 @@ import type { V1ServiceAccountTokenProjection } from './V1ServiceAccountTokenPro
  */
 export class V1VolumeProjection {
   /**
-     * configMap information about the configMap data to project
-     */
+   * configMap information about the configMap data to project
+   */
   configMap?: V1ConfigMapProjection
   /**
-     * downwardAPI information about the downwardAPI data to project
-     */
+   * downwardAPI information about the downwardAPI data to project
+   */
   downwardAPI?: V1DownwardAPIProjection
   /**
-     * secret information about the secret data to project
-     */
+   * secret information about the secret data to project
+   */
   secret?: V1SecretProjection
   /**
-     * serviceAccountToken is information about the serviceAccountToken data to project
-     */
+   * serviceAccountToken is information about the serviceAccountToken data to project
+   */
   serviceAccountToken?: V1ServiceAccountTokenProjection
 }

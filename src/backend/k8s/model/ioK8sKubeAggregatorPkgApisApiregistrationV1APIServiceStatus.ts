@@ -16,7 +16,7 @@ import type { IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition } f
  */
 export class IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus {
   /**
-     * Current service state of apiService.
-     */
+   * Current service state of apiService.
+   */
   conditions?: Array<IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition>
 }

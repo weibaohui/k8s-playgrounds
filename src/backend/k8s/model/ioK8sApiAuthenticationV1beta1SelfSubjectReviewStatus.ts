@@ -16,7 +16,7 @@ import type { IoK8sApiAuthenticationV1UserInfo } from './ioK8sApiAuthenticationV
  */
 export class IoK8sApiAuthenticationV1beta1SelfSubjectReviewStatus {
   /**
-     * User attributes of the user making this request.
-     */
+   * User attributes of the user making this request.
+   */
   userInfo?: IoK8sApiAuthenticationV1UserInfo
 }

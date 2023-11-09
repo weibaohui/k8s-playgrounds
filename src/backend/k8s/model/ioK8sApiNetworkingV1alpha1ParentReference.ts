@@ -15,23 +15,23 @@
  */
 export class IoK8sApiNetworkingV1alpha1ParentReference {
   /**
-     * Group is the group of the object being referenced.
-     */
+   * Group is the group of the object being referenced.
+   */
   group?: string
   /**
-     * Name is the name of the object being referenced.
-     */
+   * Name is the name of the object being referenced.
+   */
   name?: string
   /**
-     * Namespace is the namespace of the object being referenced.
-     */
+   * Namespace is the namespace of the object being referenced.
+   */
   namespace?: string
   /**
-     * Resource is the resource of the object being referenced.
-     */
+   * Resource is the resource of the object being referenced.
+   */
   resource?: string
   /**
-     * UID is the uid of the object being referenced.
-     */
+   * UID is the uid of the object being referenced.
+   */
   uid?: string
 }

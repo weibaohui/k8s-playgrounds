@@ -16,7 +16,7 @@ import type { IoK8sApiResourceV1alpha2ResourceClaimSchedulingStatus } from './io
  */
 export class IoK8sApiResourceV1alpha2PodSchedulingContextStatus {
   /**
-     * ResourceClaims describes resource availability for each pod.spec.resourceClaim entry where the corresponding ResourceClaim uses \"WaitForFirstConsumer\" allocation mode.
-     */
+   * ResourceClaims describes resource availability for each pod.spec.resourceClaim entry where the corresponding ResourceClaim uses \"WaitForFirstConsumer\" allocation mode.
+   */
   resourceClaims?: Array<IoK8sApiResourceV1alpha2ResourceClaimSchedulingStatus>
 }

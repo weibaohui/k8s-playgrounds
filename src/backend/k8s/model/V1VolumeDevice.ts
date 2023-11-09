@@ -15,11 +15,11 @@
  */
 export class V1VolumeDevice {
   /**
-     * devicePath is the path inside of the container that the device will be mapped to.
-     */
+   * devicePath is the path inside of the container that the device will be mapped to.
+   */
   devicePath: string
   /**
-     * name must match the name of a persistentVolumeClaim in the pod
-     */
+   * name must match the name of a persistentVolumeClaim in the pod
+   */
   name: string
 }

@@ -15,11 +15,11 @@
  */
 export class V1HostAlias {
   /**
-     * Hostnames for the above IP address.
-     */
+   * Hostnames for the above IP address.
+   */
   hostnames?: Array<string>
   /**
-     * IP address of the host file entry.
-     */
+   * IP address of the host file entry.
+   */
   ip?: string
 }

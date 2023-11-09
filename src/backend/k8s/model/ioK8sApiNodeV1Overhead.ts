@@ -16,7 +16,7 @@ import type { ResourceQuantity } from './resourceQuantity'
  */
 export class IoK8sApiNodeV1Overhead {
   /**
-     * podFixed represents the fixed resource overhead associated with running a pod.
-     */
+   * podFixed represents the fixed resource overhead associated with running a pod.
+   */
   podFixed?: { [key: string]: ResourceQuantity }
 }

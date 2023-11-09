@@ -15,7 +15,7 @@
  */
 export class V1PodIP {
   /**
-     * ip is an IP address (IPv4 or IPv6) assigned to the pod
-     */
+   * ip is an IP address (IPv4 or IPv6) assigned to the pod
+   */
   ip?: string
 }

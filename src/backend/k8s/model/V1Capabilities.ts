@@ -15,11 +15,11 @@
  */
 export class V1Capabilities {
   /**
-     * Added capabilities
-     */
+   * Added capabilities
+   */
   add?: Array<string>
   /**
-     * Removed capabilities
-     */
+   * Removed capabilities
+   */
   drop?: Array<string>
 }

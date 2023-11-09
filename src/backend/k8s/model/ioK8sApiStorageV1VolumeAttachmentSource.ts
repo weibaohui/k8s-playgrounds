@@ -16,11 +16,11 @@ import type { V1PersistentVolumeSpec } from './V1PersistentVolumeSpec'
  */
 export class IoK8sApiStorageV1VolumeAttachmentSource {
   /**
-     * inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.
-     */
+   * inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.
+   */
   inlineVolumeSpec?: V1PersistentVolumeSpec
   /**
-     * persistentVolumeName represents the name of the persistent volume to attach.
-     */
+   * persistentVolumeName represents the name of the persistent volume to attach.
+   */
   persistentVolumeName?: string
 }

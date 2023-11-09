@@ -16,27 +16,27 @@ import type { V1Time } from './V1Time'
  */
 export class V1DeploymentCondition {
   /**
-     * Last time the condition transitioned from one status to another.
-     */
+   * Last time the condition transitioned from one status to another.
+   */
   lastTransitionTime?: V1Time
   /**
-     * The last time this condition was updated.
-     */
+   * The last time this condition was updated.
+   */
   lastUpdateTime?: V1Time
   /**
-     * A human readable message indicating details about the transition.
-     */
+   * A human readable message indicating details about the transition.
+   */
   message?: string
   /**
-     * The reason for the condition's last transition.
-     */
+   * The reason for the condition's last transition.
+   */
   reason?: string
   /**
-     * Status of the condition, one of True, False, Unknown.
-     */
+   * Status of the condition, one of True, False, Unknown.
+   */
   status: string
   /**
-     * Type of deployment condition.
-     */
+   * Type of deployment condition.
+   */
   type: string
 }

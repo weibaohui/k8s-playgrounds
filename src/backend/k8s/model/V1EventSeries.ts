@@ -16,11 +16,11 @@ import type { IoK8sApimachineryPkgApisMetaV1MicroTime } from './ioK8sApimachiner
  */
 export class V1EventSeries {
   /**
-     * Number of occurrences in this series up to the last heartbeat time
-     */
+   * Number of occurrences in this series up to the last heartbeat time
+   */
   count?: number
   /**
-     * Time of the last occurrence observed
-     */
+   * Time of the last occurrence observed
+   */
   lastObservedTime?: IoK8sApimachineryPkgApisMetaV1MicroTime
 }

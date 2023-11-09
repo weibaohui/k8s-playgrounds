@@ -16,7 +16,7 @@ import type { IoK8sApiAdmissionregistrationV1alpha1ExpressionWarning } from './i
  */
 export class IoK8sApiAdmissionregistrationV1alpha1TypeChecking {
   /**
-     * The type checking warnings for each expression.
-     */
+   * The type checking warnings for each expression.
+   */
   expressionWarnings?: Array<IoK8sApiAdmissionregistrationV1alpha1ExpressionWarning>
 }

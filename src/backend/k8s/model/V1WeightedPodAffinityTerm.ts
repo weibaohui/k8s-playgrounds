@@ -16,11 +16,11 @@ import type { V1PodAffinityTerm } from './V1PodAffinityTerm'
  */
 export class V1WeightedPodAffinityTerm {
   /**
-     * Required. A pod affinity term, associated with the corresponding weight.
-     */
+   * Required. A pod affinity term, associated with the corresponding weight.
+   */
   podAffinityTerm: V1PodAffinityTerm
   /**
-     * weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
-     */
+   * weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
+   */
   weight: number
 }

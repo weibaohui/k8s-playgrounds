@@ -16,11 +16,11 @@ import type { V2MetricTarget } from './v2MetricTarget'
  */
 export class V2ResourceMetricSource {
   /**
-     * name is the name of the resource in question.
-     */
+   * name is the name of the resource in question.
+   */
   name: string
   /**
-     * target specifies the target value for the given metric
-     */
+   * target specifies the target value for the given metric
+   */
   target: V2MetricTarget
 }

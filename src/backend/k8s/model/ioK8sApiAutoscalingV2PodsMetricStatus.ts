@@ -17,11 +17,11 @@ import type { V2MetricValueStatus } from './v2MetricValueStatus'
  */
 export class IoK8sApiAutoscalingV2PodsMetricStatus {
   /**
-     * current contains the current value for the given metric
-     */
+   * current contains the current value for the given metric
+   */
   current: V2MetricValueStatus
   /**
-     * metric identifies the target metric by name and selector
-     */
+   * metric identifies the target metric by name and selector
+   */
   metric: V2MetricIdentifier
 }

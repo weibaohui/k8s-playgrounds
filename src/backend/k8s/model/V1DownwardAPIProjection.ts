@@ -16,7 +16,7 @@ import type { V1DownwardAPIVolumeFile } from './V1DownwardAPIVolumeFile'
  */
 export class V1DownwardAPIProjection {
   /**
-     * Items is a list of DownwardAPIVolume file
-     */
+   * Items is a list of DownwardAPIVolume file
+   */
   items?: Array<V1DownwardAPIVolumeFile>
 }

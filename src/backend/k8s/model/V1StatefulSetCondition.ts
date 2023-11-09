@@ -16,23 +16,23 @@ import type { V1Time } from './V1Time'
  */
 export class V1StatefulSetCondition {
   /**
-     * Last time the condition transitioned from one status to another.
-     */
+   * Last time the condition transitioned from one status to another.
+   */
   lastTransitionTime?: V1Time
   /**
-     * A human readable message indicating details about the transition.
-     */
+   * A human readable message indicating details about the transition.
+   */
   message?: string
   /**
-     * The reason for the condition's last transition.
-     */
+   * The reason for the condition's last transition.
+   */
   reason?: string
   /**
-     * Status of the condition, one of True, False, Unknown.
-     */
+   * Status of the condition, one of True, False, Unknown.
+   */
   status: string
   /**
-     * Type of statefulset condition.
-     */
+   * Type of statefulset condition.
+   */
   type: string
 }

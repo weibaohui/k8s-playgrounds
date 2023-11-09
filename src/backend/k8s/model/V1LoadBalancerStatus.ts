@@ -16,7 +16,7 @@ import type { V1LoadBalancerIngress } from './V1LoadBalancerIngress'
  */
 export class V1LoadBalancerStatus {
   /**
-     * Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.
-     */
+   * Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.
+   */
   ingress?: Array<V1LoadBalancerIngress>
 }

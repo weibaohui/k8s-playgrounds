@@ -15,15 +15,15 @@
  */
 export class V1SecretKeySelector {
   /**
-     * The key of the secret to select from.  Must be a valid secret key.
-     */
+   * The key of the secret to select from.  Must be a valid secret key.
+   */
   key: string
   /**
-     * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-     */
+   * Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+   */
   name?: string
   /**
-     * Specify whether the Secret or its key must be defined
-     */
+   * Specify whether the Secret or its key must be defined
+   */
   optional?: boolean
 }
