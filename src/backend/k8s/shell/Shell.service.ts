@@ -92,14 +92,6 @@ export class ShellService {
     }
   }
 
-  print() {
-    this.shellList.forEach((r) => {
-      this.logger.error(JSON.stringify(r))
-      this.logger.error(r)
-      this.logger.error(r.portForward)
-    })
-  }
-
   list() {
     return this.shellList.map(r => r.portForward)
   }
