@@ -8,7 +8,7 @@ import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, useDialog } from 'naive-ui'
-import { h, ref } from 'vue'
+import { h, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
@@ -132,9 +132,19 @@ function onTextChanged(text: string) {
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
 
-getItemList()
-TimerUtils.everyTwoSeconds(() => {
+let intervalId: number
+onBeforeUnmount(() => {
+  clearInterval(intervalId)
+})
+
+onMounted(() => {
+  if (localStorage.selectedNs)
+    selectedNs.value = localStorage.selectedNs
+
   getItemList()
+  intervalId = TimerUtils.everyTwoSeconds(() => {
+    getItemList()
+  })
 })
 </script>
 

@@ -5,7 +5,7 @@ import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, NSpace, NSwitch, useDialog } from 'naive-ui'
-import { h, ref } from 'vue'
+import { h, onMounted, ref } from 'vue'
 import type { V1Event } from '@backend/k8s/model/V1Event'
 import type { V1Pod } from '@backend/k8s/model/V1Pod'
 import { TimerUtils } from '@backend/utils/TimerUtils'
@@ -148,9 +148,13 @@ function onTextChanged(text: string) {
   }
   itemList.value = itemList.value.filter(r => r.message.includes(text))
 }
+onMounted(() => {
+  if (localStorage.selectedNs)
+    selectedNs.value = localStorage.selectedNs
 
-getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Event, selectedNs))
+  getItemList()
+  TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Event, selectedNs))
+})
 </script>
 
 <template>

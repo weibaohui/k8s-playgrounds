@@ -20,7 +20,7 @@ import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, NText, useDialog } from 'naive-ui'
-import { h, ref } from 'vue'
+import { h, onMounted, ref } from 'vue'
 
 const drawer = useDrawerService()
 const dialog = useDialog()
@@ -217,8 +217,13 @@ function onTextChanged(text: string) {
   itemList.value = itemList.value.filter(r => r.metadata.name.includes(text))
 }
 
-getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Pod, selectedNs))
+onMounted(() => {
+  if (localStorage.selectedNs)
+    selectedNs.value = localStorage.selectedNs
+
+  getItemList()
+  TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Pod, selectedNs))
+})
 </script>
 
 <template>

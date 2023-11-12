@@ -4,7 +4,7 @@ import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, useDialog } from 'naive-ui'
-import { h, ref } from 'vue'
+import { h, onMounted, ref } from 'vue'
 import { TimerUtils } from '@backend/utils/TimerUtils'
 import ResourceAgeView from '@frontend/components/common/ResourceAgeView.vue'
 import WorkloadListView from '@frontend/components/common/ResourceListView.vue'
@@ -102,9 +102,10 @@ function onTextChanged(text: string) {
   }
   itemList.value = itemList.value.filter(r => r.metadata.name.includes(text))
 }
-
-getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Namespace))
+onMounted(() => {
+  getItemList()
+  TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Namespace))
+})
 </script>
 
 <template>

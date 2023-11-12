@@ -8,7 +8,7 @@ import { DialogHelper } from '@frontend/service/page/DialogHelper'
 import _ from 'lodash'
 import type { DataTableColumns } from 'naive-ui'
 import { NButton, useDialog } from 'naive-ui'
-import { h, ref } from 'vue'
+import { h, onMounted, ref } from 'vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import { DrawerHelper } from '@frontend/service/page/DrawerHelper'
@@ -89,9 +89,10 @@ function onTextChanged(text: string) {
   if (!_.isEmpty(searchText.value))
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
-
-getItemList()
-TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.ClusterRole))
+onMounted(() => {
+  getItemList()
+  TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.ClusterRole))
+})
 </script>
 
 <template>
