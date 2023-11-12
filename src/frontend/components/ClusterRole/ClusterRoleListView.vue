@@ -90,8 +90,9 @@ function onTextChanged(text: string) {
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
 onMounted(() => {
-  getItemList()
-  TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.ClusterRole))
+  TimerUtils.runOnceThenDelayTwoSeconds(getItemList,
+    () => K8sService.watchService.watchChange(itemList, ResType.ClusterRole),
+  )
 })
 </script>
 

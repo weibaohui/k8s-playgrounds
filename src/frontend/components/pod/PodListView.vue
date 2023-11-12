@@ -28,6 +28,7 @@ const dialog = useDialog()
 const itemList = ref<V1Pod[]>()
 const selectedNs = ref('default')
 const workloadListViewRef = ref<InstanceType<typeof WorkloadListView>>()
+
 function createColumns(): DataTableColumns<V1Pod> {
   return [
     {
@@ -209,6 +210,7 @@ function onNsChanged(ns: string) {
   selectedNs.value = ns
   getItemList()
 }
+
 function onTextChanged(text: string) {
   if (_.isEmpty(text)) {
     getItemList()
@@ -221,8 +223,7 @@ onMounted(() => {
   if (localStorage.selectedNs)
     selectedNs.value = localStorage.selectedNs
 
-  getItemList()
-  TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Pod, selectedNs))
+  TimerUtils.runOnceThenDelayTwoSeconds(getItemList, () => K8sService.watchService.watchChange(itemList, ResType.Pod, selectedNs))
 })
 </script>
 

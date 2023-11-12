@@ -139,12 +139,13 @@ function onTextChanged(text: string) {
   if (!_.isEmpty(searchText.value))
     itemList.value = itemList.value.filter(r => r.metadata.name.includes(searchText.value))
 }
+
 onMounted(() => {
   if (localStorage.selectedNs)
     selectedNs.value = localStorage.selectedNs
 
-  getItemList()
-  TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.CronJob, selectedNs))
+  TimerUtils.runOnceThenDelayTwoSeconds(getItemList,
+    () => K8sService.watchService.watchChange(itemList, ResType.CronJob, selectedNs))
 })
 </script>
 

@@ -23,6 +23,11 @@ export class TimerUtils {
     return setTimeout(handler, 2000)
   }
 
+  static runOnceThenDelayTwoSeconds(run: () => void, handler: TimerHandler) {
+    run()
+    return setTimeout(handler, 2000)
+  }
+
   static delay(handler: TimerHandler, timeout: number) {
     return setTimeout(handler, timeout)
   }

@@ -136,8 +136,8 @@ onMounted(() => {
   if (localStorage.selectedNs)
     selectedNs.value = localStorage.selectedNs
 
-  getItemList()
-  TimerUtils.delayTwoSeconds(() => K8sService.watchService.watchChange(itemList, ResType.Job, selectedNs))
+  TimerUtils.runOnceThenDelayTwoSeconds(getItemList,
+    () => K8sService.watchService.watchChange(itemList, ResType.Job, selectedNs))
 })
 </script>
 
