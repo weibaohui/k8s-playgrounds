@@ -1,6 +1,6 @@
 {
   "name": "k8s-playground",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "packageManager": "pnpm@8.6.11",
   "description": "k8s playground with NaiveUI+Vue+NestJS+Electron,made by TypeScript",
   "author": "weibaohui <weibaohui@yeah.net>",
