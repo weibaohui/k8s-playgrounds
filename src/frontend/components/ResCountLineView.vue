@@ -15,7 +15,8 @@ onMounted(async () => {
     counterLines.value = await K8sService.playService.counterControllerListAllCounterLine()
     workloadCounterLines.value = {}
     wks.forEach((k) => {
-      workloadCounterLines.value[k] = counterLines.value[k].toString().split(',')
+      if (counterLines.value[k])
+        workloadCounterLines.value[k] = counterLines.value[k].toString().split(',')
     })
   })
 })
