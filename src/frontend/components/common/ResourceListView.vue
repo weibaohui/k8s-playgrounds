@@ -25,7 +25,9 @@ const emit = defineEmits(['onNsChanged', 'onRemoveBtnClicked', 'onTextChanged'])
 const selectedNs = ref('default')
 const nsSelectRef = ref<InstanceType<typeof NsSelect>>()
 const checkedRowKeysRef = ref<string[]>([])
-
+const pageConfig = {
+  pageSize: 10,
+}
 function handleCheck(keys: string[]) {
   checkedRowKeysRef.value = keys
   // 过滤掉不存在的pod,尤其是已经选中的但是被删掉的pod
@@ -95,7 +97,7 @@ defineExpose({ setNsSelected })
     <NDataTable
       :columns="props.columns"
       :data="itemList"
-      :pagination="false"
+      :pagination="pageConfig"
       :bordered="false"
       :row-key="rowKey"
       :scroll-x="props.miniStyle ? 500 : 1300"
