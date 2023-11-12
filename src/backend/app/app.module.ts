@@ -23,10 +23,14 @@ import { AppService } from './app.service'
         win.on('closed', () => {
           win.destroy()
         })
+        // const URL = isDev
+        //
+        //   ? process.env.DS_RENDERER_URL
+        //   : `file://${join(app.getAppPath(), 'dist/frontend/index.html')}`
         const URL = isDev
 
           ? process.env.DS_RENDERER_URL
-          : `file://${join(app.getAppPath(), 'dist/frontend/index.html')}`
+          : 'http://127.0.0.1:3007'
         win.loadURL(URL)
 
         return { win }
