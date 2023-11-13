@@ -3,7 +3,7 @@ import { V1ConfigMap } from '@backend/k8s/model/V1ConfigMap'
 import { YamlUtils } from '@backend/utils/yamlUtils'
 import MonacoView from '@frontend/components/common/MonacoView.vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
-import { NDivider, useMessage } from 'naive-ui'
+import { NTabPane, NTabs, useMessage } from 'naive-ui'
 
 const props = defineProps({
   cm: V1ConfigMap,
@@ -22,12 +22,13 @@ async function onSaveBtnClicked(key: string, data: string) {
 </script>
 
 <template>
-  <div v-for="(v, k) in props.cm.data" :key="k" style="height: 50%;max-height: 100px">
-    <NDivider title-placement="left">
-      {{ k }}
-    </NDivider>
-    <MonacoView :item="YamlUtils.removeScalar(v)" :item-key="k" :save-action-override="true" @on-save-btn-clicked="onSaveBtnClicked" />
-  </div>
+  <NTabs type="card">
+    <NTabPane v-for="(v, k) in props.cm.data" :key="k" :name="k" :tab="k">
+      <div style="height: 100%;min-height: 20px">
+        <MonacoView :item="YamlUtils.removeScalar(v)" :item-key="k" :save-action-override="true" @on-save-btn-clicked="onSaveBtnClicked" />
+      </div>
+    </NTabPane>
+  </NTabs>
 </template>
 
 <style scoped>
