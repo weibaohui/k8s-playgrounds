@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { V1Secret } from '@backend/k8s/model/V1Secret'
 import SecretDataValueEditView from '@frontend/components/secret/SecretDataValueEditView.vue'
-import { NDivider } from 'naive-ui'
+import { NTabPane, NTabs } from 'naive-ui'
 
 const props = defineProps({
   secret: V1Secret,
@@ -9,12 +9,13 @@ const props = defineProps({
 </script>
 
 <template>
-  <div v-for="(v, k) in props.secret.data" :key="k" style="height: 50%;max-height: 100px">
-    <NDivider title-placement="left">
-      {{ k }}
-    </NDivider>
-    <SecretDataValueEditView :v="v" :k="k" :meta="props.secret.metadata" />
-  </div>
+  <NTabs type="card">
+    <NTabPane v-for="(v, k) in props.secret.data" :key="k" :name="k" :tab="k">
+      <div style="height: 100%;min-height: 20px">
+        <SecretDataValueEditView :v="v" :k="k" :meta="props.secret.metadata" />
+      </div>
+    </NTabPane>
+  </NTabs>
 </template>
 
 <style scoped>
