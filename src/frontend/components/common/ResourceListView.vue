@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import _ from 'lodash'
-import { NDataTable, NFormItemGi, NGrid, NMessageProvider } from 'naive-ui'
+import { NDataTable, NFormItemGi, NGrid, NMessageProvider, NNumberAnimation } from 'naive-ui'
 import type { TableColumns } from 'naive-ui/es/data-table/src/interface'
 import { ref } from 'vue'
 import SearchFilter from '@frontend/components/common/SearchFilter.vue'
@@ -28,6 +28,7 @@ const checkedRowKeysRef = ref<string[]>([])
 const pageConfig = {
   pageSize: 10,
 }
+
 function handleCheck(keys: string[]) {
   checkedRowKeysRef.value = keys
   // 过滤掉不存在的pod,尤其是已经选中的但是被删掉的pod
@@ -79,7 +80,7 @@ defineExpose({ setNsSelected })
       {{ props.name }}
     </NFormItemGi>
     <NFormItemGi :span="2">
-      {{ itemList && itemList.length ? itemList.length : 0 }}项
+      <NNumberAnimation :from="0" :to="itemList && itemList.length ? itemList.length : 0" />项
     </NFormItemGi>
     <NFormItemGi :span="5">
       <slot name="tools" />
