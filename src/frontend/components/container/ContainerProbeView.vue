@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { NSpace, NTag } from 'naive-ui'
 import { V1Probe } from '@backend/k8s/model/V1Probe'
+import ProbeType from '@frontend/components/container/ProbeType.vue'
+import { NAlert, NSpace, NTag } from 'naive-ui'
 
 const props = defineProps({
   probe: V1Probe,
@@ -10,39 +11,31 @@ const props = defineProps({
 <template>
   <NSpace v-if="props.probe">
     <div v-if="props.probe.httpGet">
-      <NTag type="success">
-        http-get
-      </NTag>
-      <NTag type="success">
+      <ProbeType type="httpGet" />
+      <NAlert :show-icon="false">
         {{ props.probe.httpGet.scheme.toLowerCase() }}://{{ probe.httpGet.host }}:{{ probe.httpGet.port }}{{ probe.httpGet.path }}
-      </NTag>
+      </NAlert>
       <NTag v-for="h in probe.httpGet.httpHeaders" :key="h.name">
         {{ h.name }}={{ h.value }}
       </NTag>
     </div>
     <div v-if="probe.exec">
-      <NTag type="success">
-        exec
-      </NTag>
-      <p type="success">
-        {{ probe.exec.command }}
-      </p>
+      <ProbeType type="exec" />
+      <NAlert :show-icon="false">
+        {{ probe.exec.command.join(" ") }}
+      </NAlert>
     </div>
     <div v-if="probe.tcpSocket">
-      <NTag type="success">
-        tcpSocket
-      </NTag>
-      <NTag type="success">
+      <ProbeType type="tcpSocket" />
+      <NAlert :show-icon="false">
         {{ probe.tcpSocket.host }}:{{ probe.tcpSocket.port }}
-      </NTag>
+      </NAlert>
     </div>
     <div v-if="probe.grpc">
-      <NTag type="success">
-        grpc
-      </NTag>
-      <NTag type="success">
-        :{{ probe.grpc.port }}/{{ probe.grpc.service }}
-      </NTag>
+      <ProbeType type="grpc" />
+      <NAlert :show-icon="false">
+        {{ probe.grpc.service }}:{{ probe.grpc.port }}
+      </NAlert>
     </div>
     <NSpace>
       <NTag type="success">
@@ -63,7 +56,3 @@ const props = defineProps({
     </NSpace>
   </NSpace>
 </template>
-
-<style scoped>
-
-</style>
