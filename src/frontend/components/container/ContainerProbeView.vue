@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NTag } from 'naive-ui'
+import { NSpace, NTag } from 'naive-ui'
 import { V1Probe } from '@backend/k8s/model/V1Probe'
 
 const props = defineProps({
@@ -24,9 +24,9 @@ const props = defineProps({
       <NTag type="success">
         exec
       </NTag>
-      <NTag type="success">
+      <p type="success">
         {{ probe.exec.command }}
-      </NTag>
+      </p>
     </div>
     <div v-if="probe.tcpSocket">
       <NTag type="success">
