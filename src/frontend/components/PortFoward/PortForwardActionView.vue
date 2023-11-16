@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PortForward } from '@backend/model/PortForward'
+import { ClipboardHelper } from '@frontend/service/page/ClipboardHelper'
 import { Chrome, Copy } from '@vicons/fa'
 import { useDialog, useMessage } from 'naive-ui'
 import type { ActionMenuOption } from '@backend/model/actionMenu'
@@ -14,13 +15,14 @@ const message = useMessage()
 const dialog = useDialog()
 const drawer = useDrawerService()
 function copyToClipboard(text) {
-  navigator.clipboard.writeText(text)
-    .then(() => {
-      message.success(`${text}已复制到剪贴板`)
-    })
-    .catch((error) => {
+  ClipboardHelper.copyToClipboard(text,
+    () => {
+      message.success('复制成功')
+    },
+    (error) => {
       console.error(`${text}复制文本到剪贴板时出错:${error}`)
-    })
+    },
+  )
 }
 function getOptions(): ActionMenuOption[] {
   return [

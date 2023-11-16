@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { V1Probe } from '@backend/k8s/model/V1Probe'
+import CopyableText from '@frontend/components/common/CopyableText.vue'
 import ProbeType from '@frontend/components/container/ProbeType.vue'
-import { NAlert, NSpace, NTag } from 'naive-ui'
+import { NSpace, NTag } from 'naive-ui'
 
 const props = defineProps({
   probe: V1Probe,
@@ -12,30 +13,22 @@ const props = defineProps({
   <NSpace v-if="props.probe">
     <div v-if="props.probe.httpGet">
       <ProbeType type="httpGet" />
-      <NAlert :show-icon="false">
-        {{ props.probe.httpGet.scheme.toLowerCase() }}://{{ probe.httpGet.host }}:{{ probe.httpGet.port }}{{ probe.httpGet.path }}
-      </NAlert>
+      <CopyableText :text="`${props.probe.httpGet.scheme.toLowerCase()}://${probe.httpGet.host}:${probe.httpGet.port}${probe.httpGet.path}`" />
       <NTag v-for="h in probe.httpGet.httpHeaders" :key="h.name">
         {{ h.name }}={{ h.value }}
       </NTag>
     </div>
     <div v-if="probe.exec">
       <ProbeType type="exec" />
-      <NAlert :show-icon="false">
-        {{ probe.exec.command.join(" ") }}
-      </NAlert>
+      <CopyableText :text="probe.exec.command.join(' ')" />
     </div>
     <div v-if="probe.tcpSocket">
       <ProbeType type="tcpSocket" />
-      <NAlert :show-icon="false">
-        {{ probe.tcpSocket.host }}:{{ probe.tcpSocket.port }}
-      </NAlert>
+      <CopyableText :text="`${probe.tcpSocket.host}:${probe.tcpSocket.port}`" />
     </div>
     <div v-if="probe.grpc">
       <ProbeType type="grpc" />
-      <NAlert :show-icon="false">
-        {{ probe.grpc.service }}:{{ probe.grpc.port }}
-      </NAlert>
+      <CopyableText :text="`${probe.grpc.service}:${probe.grpc.port}`" />
     </div>
     <NSpace>
       <NTag type="success">

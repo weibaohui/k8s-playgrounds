@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { V1ContainerPort } from '@backend/k8s/model/V1ContainerPort'
+import CopyableText from '@frontend/components/common/CopyableText.vue'
 import ContainerStatusIcon from '@frontend/components/container/ContainerStatusIcon.vue'
 import { K8sService } from '@frontend/service/k8s/K8sService'
+import { ClipboardHelper } from '@frontend/service/page/ClipboardHelper'
 import { ColorHelper } from '@frontend/service/page/ColorHelper'
 import { ArrowsAltH, Docker } from '@vicons/fa'
 import { NButton, NDivider, NIcon, NSpace, NTable, NTag, NText, useMessage } from 'naive-ui'
@@ -28,6 +30,16 @@ async function forward(pod: V1Pod, p: V1ContainerPort) {
     podName: pod.metadata.name,
   })
   message.success('转发成功')
+}
+function copy(text) {
+  ClipboardHelper.copyToClipboard(text,
+    () => {
+      message.success('复制成功')
+    },
+    (error) => {
+      console.error(`${text}复制文本到剪贴板时出错:${error}`)
+    },
+  )
 }
 </script>
 
@@ -106,7 +118,7 @@ async function forward(pod: V1Pod, p: V1ContainerPort) {
         <tr v-if="t.command">
           <td>Command</td>
           <td>
-            {{ t.command }}
+            <CopyableText :text="t.command.join(' ')" />
           </td>
         </tr>
         <tr v-if="t.livenessProbe">
