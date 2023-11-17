@@ -122,7 +122,7 @@ function copy(text) {
           </td>
         </tr>
         <tr v-if="t.livenessProbe">
-          <td>readinessProbe</td>
+          <td>livenessProbe</td>
           <td>
             <ContainerProbeView :probe="t.livenessProbe" />
           </td>
