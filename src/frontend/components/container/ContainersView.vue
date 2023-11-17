@@ -76,6 +76,13 @@ function copy(text) {
             {{ t.imagePullPolicy }}
           </td>
         </tr>
+
+        <tr v-if="t.command">
+          <td>Command</td>
+          <td>
+            <CopyableText :text="t.command.join(' ')" />
+          </td>
+        </tr>
         <tr v-if="t.ports">
           <td>Ports</td>
           <td>
@@ -85,6 +92,25 @@ function copy(text) {
                 Forward
               </NButton>
             </p>
+          </td>
+        </tr>
+
+        <tr v-if="t.livenessProbe">
+          <td>livenessProbe</td>
+          <td>
+            <ContainerProbeView :probe="t.livenessProbe" />
+          </td>
+        </tr>
+        <tr v-if="t.readinessProbe">
+          <td>readinessProbe</td>
+          <td>
+            <ContainerProbeView :probe="t.readinessProbe" />
+          </td>
+        </tr>
+        <tr v-if="t.startupProbe">
+          <td>startupProbe</td>
+          <td>
+            <ContainerProbeView :probe="t.startupProbe" />
           </td>
         </tr>
         <tr v-if="t.env">
@@ -113,30 +139,6 @@ function copy(text) {
                 {{ p.name }}
               </NTag>
             </div>
-          </td>
-        </tr>
-        <tr v-if="t.command">
-          <td>Command</td>
-          <td>
-            <CopyableText :text="t.command.join(' ')" />
-          </td>
-        </tr>
-        <tr v-if="t.livenessProbe">
-          <td>livenessProbe</td>
-          <td>
-            <ContainerProbeView :probe="t.livenessProbe" />
-          </td>
-        </tr>
-        <tr v-if="t.readinessProbe">
-          <td>readinessProbe</td>
-          <td>
-            <ContainerProbeView :probe="t.readinessProbe" />
-          </td>
-        </tr>
-        <tr v-if="t.startupProbe">
-          <td>startupProbe</td>
-          <td>
-            <ContainerProbeView :probe="t.startupProbe" />
           </td>
         </tr>
       </tbody>

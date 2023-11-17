@@ -24,7 +24,7 @@ const props = defineProps({
     </div>
     <div v-if="probe.tcpSocket">
       <ProbeType type="tcpSocket" />
-      <CopyableText :text="`${probe.tcpSocket.host}:${probe.tcpSocket.port}`" />
+      <CopyableText :text="`${probe.tcpSocket.host ? probe.tcpSocket.host : ''}:${probe.tcpSocket.port}`" />
     </div>
     <div v-if="probe.grpc">
       <ProbeType type="grpc" />
