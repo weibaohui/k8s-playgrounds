@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { V1PersistentVolumeClaim } from '@backend/k8s/model/V1PersistentVolumeClaim'
 import { ResType } from '@backend/k8s/watch/watch.model'
+import MiniJsonMonacoView from '@frontend/components/common/MiniJsonMonacoView.vue'
 import ResourceConditionView from '@frontend/components/common/ResourceConditionView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
@@ -45,7 +46,14 @@ async function onPvClick(name: string) {
         <td>
           requests
         </td>
-        <td>{{ props.pvc.spec.resources.requests }}</td>
+        <td>
+          <div style="width:90%;height: 100%">
+            <MiniJsonMonacoView
+              :min-height="150"
+              :item="props.pvc.spec.resources.requests "
+            />
+          </div>
+        </td>
       </tr>
       <tr>
         <td>

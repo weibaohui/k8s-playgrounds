@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { V1MutatingWebhookConfiguration } from '@backend/k8s/model/V1MutatingWebhookConfiguration'
 import LabelSelectorView from '@frontend/components/common/LabelSelectorView.vue'
+import MiniJsonMonacoView from '@frontend/components/common/MiniJsonMonacoView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NDivider, NTable } from 'naive-ui'
@@ -36,7 +37,12 @@ const props = defineProps({
             Client Config
           </td>
           <td>
-            {{ hook.clientConfig }}
+            <div style="width:90%;height: 100%">
+              <MiniJsonMonacoView
+                :min-height="200"
+                :item="hook.clientConfig"
+              />
+            </div>
           </td>
         </tr>
         <tr v-if="hook.matchPolicy">

@@ -2,6 +2,7 @@
 import type { V1ObjectReference } from '@backend/k8s/model/V1ObjectReference'
 import { V1PersistentVolume } from '@backend/k8s/model/V1PersistentVolume'
 import { ResType } from '@backend/k8s/watch/watch.model'
+import MiniJsonMonacoView from '@frontend/components/common/MiniJsonMonacoView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import PvcView from '@frontend/components/PersistentVolumeClaim/PvcView.vue'
 import { useDrawerService } from '@frontend/service/drawer-service/use-drawer'
@@ -47,7 +48,14 @@ async function onPvcClick(ref: V1ObjectReference) {
         <td>
           capacity
         </td>
-        <td>{{ props.persistentVolume.spec.capacity }}</td>
+        <td>
+          <div style="width:90%;height: 100%">
+            <MiniJsonMonacoView
+              :min-height="150"
+              :item="props.persistentVolume.spec.capacity "
+            />
+          </div>
+        </td>
       </tr>
       <tr>
         <td>

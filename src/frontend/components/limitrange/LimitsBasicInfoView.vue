@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { V1LimitRange } from '@backend/k8s/model/V1LimitRange'
+import MiniJsonMonacoView from '@frontend/components/common/MiniJsonMonacoView.vue'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
 import { NTable } from 'naive-ui'
@@ -21,7 +22,14 @@ const props = defineProps({
         <td class="left">
           limits
         </td>
-        <td>{{ props.limits.spec.limits }}</td>
+        <td>
+          <div style="width:90%;height: 100%">
+            <MiniJsonMonacoView
+              :min-height="450"
+              :item="props.limits.spec.limits "
+            />
+          </div>
+        </td>
       </tr>
     </tbody>
   </NTable>

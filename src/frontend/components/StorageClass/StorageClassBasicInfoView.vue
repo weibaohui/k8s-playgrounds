@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { V1StorageClass } from '@backend/k8s/model/V1StorageClass'
+import MiniJsonMonacoView from '@frontend/components/common/MiniJsonMonacoView.vue'
 import TitleBar from '@frontend/components/common/TitleBar.vue'
-import { ColorHelper } from '@frontend/service/page/ColorHelper'
-import { NSpace, NTable, NTag } from 'naive-ui'
+import { NTable } from 'naive-ui'
 import ResourceMetadataView from '@frontend/components/common/ResourceMetadataView.vue'
 
 const props = defineProps({
@@ -48,11 +48,11 @@ const props = defineProps({
           Params
         </td>
         <td>
-          <NSpace v-for="([k, v]) in Object.entries(props.storageClass.parameters)" :key="k" vertical>
-            <NTag :color="{ color: ColorHelper.randomColor() }">
-              {{ k }}={{ v }}
-            </NTag>
-          </NSpace>
+          <div style="width:90%;height: 100%">
+            <MiniJsonMonacoView
+              :item="props.storageClass.parameters "
+            />
+          </div>
         </td>
       </tr>
     </tbody>
