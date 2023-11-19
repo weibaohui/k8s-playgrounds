@@ -17,19 +17,35 @@ import { h, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 import {
+  NButton,
+  NCol,
   NConfigProvider,
   NDialogProvider,
   NIcon,
   NLayout,
-  NLayoutSider,
-  NMenu,
-  NNotificationProvider, NSpace, darkTheme,
+  NLayoutHeader, NLayoutSider, NMenu, NNotificationProvider, NRow, NSpace, darkTheme,
 } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import DrawerServiceProvider from './service/drawer-service/DrawerServiceProvider'
 import router from './router'
 
 const containerRef = ref<HTMLElement>()
+const headerMenuOptions: MenuOption[] = [
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            path: '/kubeconfig',
+          },
+        },
+        { default: () => 'Clusters' },
+      ),
+    key: 'go-to-kubeconfig',
+    icon: renderIcon(StackExchange),
+  },
+]
 const menuOptions: MenuOption[] = [
   {
     label: () =>
@@ -60,19 +76,6 @@ const menuOptions: MenuOption[] = [
     icon: renderIcon(ChartLine),
   },
   {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: {
-            path: '/kubeconfig',
-          },
-        },
-        { default: () => 'Clusters' },
-      ),
-    key: 'go-to-kubeconfig',
-    icon: renderIcon(StackExchange),
-  }, {
     label: () =>
       h(
         RouterLink,
@@ -545,7 +548,27 @@ router.push('/pods')
 <template>
   <NConfigProvider :theme="darkTheme">
     <NSpace ref="containerRef" vertical>
-      <NLayout has-sider position="absolute">
+      <NLayoutHeader bordered>
+        <NRow gutter="12">
+          <NCol :span="4" align="center">
+            <div class="header">
+              Playgrounds
+            </div>
+          </NCol>
+          <NCol :span="20">
+            <div class="header">
+              <NSpace justify="end">
+                <NMenu
+                  mode="horizontal" :options="headerMenuOptions"
+                />
+                <NButton>Oops!</NButton>
+                <NButton>Docker-Desktop</NButton>
+              </NSpace>
+            </div>
+          </NCol>
+        </NRow>
+      </NLayoutHeader>
+      <NLayout has-sider>
         <NLayoutSider
           bordered
           collapse-mode="width"
@@ -576,3 +599,11 @@ router.push('/pods')
     </NSpace>
   </NConfigProvider>
 </template>
+
+<style scoped>
+.header{
+  height: 60px;
+  display: table-cell;
+  vertical-align: middle;
+}
+</style>
