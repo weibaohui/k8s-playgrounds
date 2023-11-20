@@ -1,19 +1,46 @@
 import os from 'node:os'
 import process from 'node:process'
+import fs from 'node:fs'
+import path from 'node:path'
+import { KubeConfig } from '@backend/model/KubeConfig'
 import { KubernetesObject } from '@kubernetes/client-node'
 import * as k8s from '@kubernetes/client-node'
 import { Injectable, Logger } from '@nestjs/common'
 import * as pty from 'node-pty'
+import YAML from 'yaml'
 
 @Injectable()
 export class ClientService {
   private readonly logger = new Logger(ClientService.name)
   private kc = new k8s.KubeConfig()
+  private kubeConfigList: Map<string, string> = new Map<string, string>()
+  public autoLoadKubeConfig() {
+    const defaultHome = process.env.HOME || process.env.USERPROFILE
+    const folderPath = `${defaultHome}/.kube`
+    const items = fs.readdirSync(folderPath)
+    items.forEach((item) => {
+      const itemPath = path.join(folderPath, item)
+      const stats = fs.statSync(itemPath)
+      if (stats.isFile()) {
+        const data = fs.readFileSync(`${folderPath}/${item}`, 'utf8')
+        const x: KubeConfig = YAML.parse(data)
+        const key = x['current-context']
+        this.kubeConfigList.set(key, data)
+      }
+    })
+  }
+
+  public getKubeConfigByContext(key: string) {
+    this.autoLoadKubeConfig()
+    this.kc.loadFromString(this.kubeConfigList.get(key))
+  }
+
   public getKubeConfig() {
     if (process.env.inCluster) {
       this.kc.loadFromCluster()
       return this.kc
     }
+
     const home = process.env.HOME || process.env.USERPROFILE
     this.kc.loadFromFile(`${home}/.kube/config`)
     return this.kc
