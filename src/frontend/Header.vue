@@ -49,7 +49,6 @@ function renderIcon(icon: Component) {
             mode="horizontal" :options="headerMenuOptions"
           />
           <NButton>Oops!</NButton>
-          <NButton>Docker-Desktop</NButton>
         </NSpace>
       </div>
     </NCol>
