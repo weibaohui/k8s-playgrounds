@@ -2,8 +2,8 @@
 import type { Cluster } from '@backend/model/KubeConfig'
 import { K8sService } from '@frontend/service/k8s/K8sService'
 import { Star } from '@vicons/fa'
-import { NCard, NIcon, NIconWrapper, NSpace } from 'naive-ui'
-import { ref } from 'vue'
+import { NButton, NCard, NIcon, NIconWrapper, NSpace } from 'naive-ui'
+import { onMounted, ref } from 'vue'
 
 const props = defineProps({
   x: String,
@@ -15,11 +15,13 @@ async function getConfigs() {
   currentContext.value = await K8sService.playService.clientControllerCurrentContext()
 }
 function handleCheckedChange(name: string) {
-  console.log(name)
   K8sService.playService.clientControllerSetContext({ name })
+  getConfigs()
 }
 
-getConfigs()
+onMounted(() => {
+  getConfigs()
+})
 </script>
 
 <template>
@@ -31,6 +33,9 @@ getConfigs()
             <NIcon :component="Star" />
           </NIconWrapper>
           {{ c.server }}
+          <NButton @click="handleCheckedChange(c.name)">
+            切换
+          </NButton>
         </NCard>
       </div>
     </NSpace>
