@@ -1,5 +1,14 @@
 # ⚡k8s playground
 
+# Golang 版本
+## 请移步https://github.com/weibaohui/k8s
+
+# C# 版本
+## 请移步https://github.com/weibaohui/blazork8s
+
+# SDK版本
+## 请移步https://github.com/weibaohui/kom
+
 ## Introduce
 
 使用Vue、TypeScript、Electron技术打造的k8s playground客户端。
